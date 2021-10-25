@@ -1407,10 +1407,45 @@ examples
 
 # Implementação
 
+<div class="columns">
+<div class="column" width="48%">
+\tiny
+
+```cpp
+// Produz true se n é um dos números
+// em sorteados, false caso contrário.
+bool sorteado(int n, SeisNumeros sorteados)
+{
+    bool sorteado = false;
+    if (n == sorteados.a) {
+        sorteado = true;
+    }
+    if (n == sorteados.b) {
+        sorteado = true;
+    }
+    if (n == sorteados.c) {
+        sorteado = true;
+    }
+    if (n == sorteados.d) {
+        sorteado = true;
+    }
+    if (n == sorteados.e) {
+        sorteado = true;
+    }
+    if (n == sorteados.f) {
+        sorteado = true;
+    }
+    return sorteado;
+}
+```
+</div>
+<div class="column" width="48%">
+
 \scriptsize
 
 ```cpp
-// Produz true se n é um dos números em sorteados, false caso contrário.
+// Produz true se n é um dos números
+// em sorteados, false caso contrário.
 bool sorteado(int n, SeisNumeros sorteados)
 {
     return n == sorteados.a ||
@@ -1422,10 +1457,12 @@ bool sorteado(int n, SeisNumeros sorteados)
 }
 ```
 
-\pause
+</div>
+</div>
 
-\normalsize
 
-Verificação: ok \pause
+# Verificação e Revisão
+
+Verificação: \pause ok \pause
 
 Revisão: \pause o código parece repetitivo... \pause Vamos ver novas construções!
