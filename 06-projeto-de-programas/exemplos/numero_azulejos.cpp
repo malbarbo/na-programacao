@@ -17,8 +17,8 @@ examples
    // ceil(2.0 / 0.2) * ceil(2.4 / 0.2) -> 10 * 12 -> 120
    check_expect(numero_azulejos(2.0, 2.4), 120);
 
-   check_expect(numero_azulejos(1.5, 2.3), 96);
    // ceil(1.5 / 0.2) * ceil(2.3 / 0.2) -> 8 * 12 = 96
+   check_expect(numero_azulejos(1.5, 2.3), 96);
 
    // alguns casos extremos
    check_expect(numero_azulejos(0.2, 0.2), 1);
