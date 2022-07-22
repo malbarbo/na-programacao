@@ -84,7 +84,7 @@ Projete uma função recursiva que some todos os números naturais menores ou ig
 # Especificação
 
 <div class="columns">
-<div class="column" width="48%">
+<div class="column" width="45%">
 \scriptsize
 
 ```cpp
@@ -107,7 +107,7 @@ examples
 }
 ```
 </div>
-<div class="column" width="48%">
+<div class="column" width="52%">
 \pause
 
 \small
@@ -230,7 +230,7 @@ Projete uma função recursiva que receba como entrada um número $a \not = 0$ e
 # Especificação
 
 <div class="columns">
-<div class="column" width="48%">
+<div class="column" width="45%">
 \scriptsize
 
 ```cpp
@@ -255,7 +255,7 @@ examples
 }
 ```
 </div>
-<div class="column" width="48%">
+<div class="column" width="52%">
 \pause
 
 \small
@@ -292,7 +292,7 @@ if (n == 0) {
 # Especificação
 
 <div class="columns">
-<div class="column" width="48%">
+<div class="column" width="45%">
 \scriptsize
 
 ```cpp
@@ -310,7 +310,7 @@ examples
 }
 ```
 </div>
-<div class="column" width="48%">
+<div class="column" width="52%">
 \scriptsize
 
 ```cpp
@@ -337,7 +337,7 @@ double potencia(double a, int n)
 # Especificação
 
 <div class="columns">
-<div class="column" width="48%">
+<div class="column" width="45%">
 \scriptsize
 
 ```cpp
@@ -355,7 +355,7 @@ examples
 }
 ```
 </div>
-<div class="column" width="48%">
+<div class="column" width="52%">
 \scriptsize
 
 ```cpp
@@ -385,7 +385,7 @@ Projete uma função recursiva que calcule o fatorial de $n$, isto é, o produto
 # Especificação
 
 <div class="columns">
-<div class="column" width="48%">
+<div class="column" width="45%">
 \scriptsize
 
 ```cpp
@@ -409,7 +409,7 @@ examples
 }
 ```
 </div>
-<div class="column" width="48%">
+<div class="column" width="52%">
 \pause
 
 \small
@@ -446,7 +446,7 @@ if (n == 0) {
 # Especificação
 
 <div class="columns">
-<div class="column" width="48%">
+<div class="column" width="45%">
 \scriptsize
 
 ```cpp
@@ -460,7 +460,7 @@ examples
 }
 ```
 </div>
-<div class="column" width="48%">
+<div class="column" width="52%">
 \pause
 
 \scriptsize
@@ -493,7 +493,7 @@ int fatorial(int n)
 # Especificação
 
 <div class="columns">
-<div class="column" width="48%">
+<div class="column" width="45%">
 \scriptsize
 
 ```cpp
@@ -507,7 +507,7 @@ examples
 }
 ```
 </div>
-<div class="column" width="48%">
+<div class="column" width="52%">
 \scriptsize
 
 ```cpp

@@ -190,6 +190,8 @@ Como nossos programas serão pequenos e vamos utilizar apenas uma biblioteca ext
 
 # Espaço de nomes
 
+\small
+
 ```cpp
 #include <iostream>
 
@@ -449,7 +451,7 @@ x.cpp:7:13: note: to match this '('
 # Erros sintáticos
 
 <div class="columns">
-<div class="column" width="30%">
+<div class="column" width="32%">
 
 \footnotesize
 
@@ -469,9 +471,9 @@ Um nome não pode ter espaços e nem ser uma palavra chave (como `namespace`{.cp
 \pause
 
 </div>
-<div class="column" width="68%">
+<div class="column" width="66%">
 
-\footnotesize
+\scriptsize
 
 Erro gerado pelo `g++`
 
@@ -569,7 +571,7 @@ g++ -Wall -Wextra -Wconversion -Werror arquivo.cpp
 
 Produz a seguinte mensagem de erro
 
-\footnotesize
+\scriptsize
 
 ```
 x.cpp: In function ‘int main()’:
@@ -863,7 +865,10 @@ Chamada de métodos \pause
 
 # Novos tipos de expressões
 
-Embora a forma de utilizar operadores, função e métodos seja diferente, o propósito dessas construções é o mesmo: computar valores de saída a partir de valores de entrada.
+Embora a forma de utilizar operadores, funções e métodos seja diferente, o propósito dessas construções é o mesmo: computar valores de saída a partir de valores de entrada.
+
+
+# Novos tipos de expressões
 
 <div class="columns">
 <div class="column" width="35%">
