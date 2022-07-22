@@ -1,4 +1,4 @@
-# Eszte programa calcula o máximo divisor comum entre dois números informados
+# Este programa calcula o máximo divisor comum entre dois números informados
 # na linha de comando.
 #
 # Este programa não faz nenhuma validação da entrada!
