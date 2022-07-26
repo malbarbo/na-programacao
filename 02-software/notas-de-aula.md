@@ -113,12 +113,12 @@ Exemplos de sistemas operacionais proprietários \pause
 
 - macOS, iOS \pause
 
-- ChromeOS \pause
+- Android, ChromeOS \pause
 
 
 Exemplos de sistemas operacionais livres \pause
 
-- Linux (Debian, Ubuntu, Android, etc) \pause
+- Linux (Debian, Ubuntu, Android, ChromeOS, etc) \pause
 
 - FreeBSD, OpenBSD, NetBSD \pause
 
@@ -142,7 +142,7 @@ Exemplos de sistemas operacionais livres \pause
 
 # Shell
 
-A iteração entre o sistema operacional e o usuário final é feita através de um _Shell_ (lançados em dispositivos móveis).
+A iteração entre o sistema operacional e o usuário final é feita através de um _Shell_ (lançador em dispositivos móveis).
 
 Um _Shell_ pode oferecer uma interface gráfica ou interface textual. \pause
 
@@ -152,14 +152,14 @@ Quais as principais características de cada tipo de interface?
 # Shell
 
 <div class="columns">
-<div class="column" width="50%">
+<div class="column" width="48%">
 Shell Gráfico \pause
 
 - Geralmente utilizam a metáfora de área de trabalho \pause
 - Facilidade de uso e aprendizado \pause
 - Menos poderosos \pause
 </div>
-<div class="column" width="50%">
+<div class="column" width="48%">
 Shell Texto \pause
 
 - Comandos descritos por texto
