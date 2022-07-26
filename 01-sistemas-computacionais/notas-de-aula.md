@@ -10,7 +10,7 @@ O que é um computador? \pause
 
 - No passado: uma pessoa que faz cálculos (computa) \pause
 
-- Atualmente: uma máquina que pode ser programada para executar sequências de operações lógicas e aritméticas automaticamente
+- Atualmente: uma máquina que pode ser programada para executar sequências de instruções (operações lógicas e aritméticas) automaticamente
 
 
 # Introdução
@@ -71,7 +71,7 @@ A interligação entre esses componentes é feita pela placa-mãe.
 
 ![Fonte: \href{https://commons.wikimedia.org/wiki/File:Samsung_galaxy_s2_internal2.JPG}{Wikipedia}](imagens/placa-mae-smartphone.jpg){ width=7.5cm }
 
-# Dispositivos de entrada
+# Componentes / Dispositivos de entrada
 
 Fornecem dados para serem processadas e armazenados. \pause Exemplos \pause
 
@@ -83,7 +83,7 @@ Fornecem dados para serem processadas e armazenados. \pause Exemplos \pause
 - Tela sensível ao toque
 
 
-# Dispositivos de saída
+# Componentes / Dispositivos de saída
 
 Apresentam ou transmitem dados recuperados do armazenamento e resultados do processamento. \pause Exemplos \pause
 
@@ -93,15 +93,15 @@ Apresentam ou transmitem dados recuperados do armazenamento e resultados do proc
 - Atuadores
 
 
-# Dispositivos de entrada e saída
+# Componentes / Dispositivos de entrada e saída
 
-Dispositivos hibrídos \pause
+Dispositivos híbridos \pause
 
 - Adaptadores de rede
 - Dispositivos de armazenamento
 
 
-# Dispositivos de armazenamento
+# Componentes / Dispositivos de armazenamento
 
 Retêm dados para recuperação posterior. \pause Exemplos \pause
 
@@ -150,7 +150,7 @@ HDD
 - Mais barato
 
 
-# Memória
+# Componentes / Memória
 
 Memória principal \pause
 
@@ -159,7 +159,7 @@ Memória principal \pause
 - Mais rápida do que os dispositivos de armazenamento
 
 
-# Processador
+# Componentes / Processador
 
 <div class="columns">
 <div class="column" width="50%">
