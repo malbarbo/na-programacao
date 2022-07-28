@@ -14,11 +14,12 @@ O que são algoritmos e qual a relação deles com resolução de problemas e pr
 O que é um algoritmo?
 
 
-# Algoritmo
+# Definições de algoritmo
 
 Dicionário Silveira Bueno \pause
 
 > Conjunto predeterminado e definido de regras e processos destinados à solução de um problema, com um número finito de etapas.
+
 
 \pause
 
@@ -38,14 +39,12 @@ Knuth
 
 > Uma conjunto finito de regras que fornece uma sequência de operações para resolver um tipo específico de problema.
 
-\pause
-
 O que estas definições tem em comum?
 
 
 # Algoritmo
 
-As definições falam de
+O que estas definições tem em comum?
 
 - sequência de etapas/passos/operações \pause
 
@@ -86,13 +85,13 @@ Nessa forma de representação de algoritmo, todas as instruções são dadas at
 
 <div class="columns">
 <div class="column" width="50%">
-Obtenha a tabela com os pontos. \pause
+Obtenha a tabela com os pontos.
 
-Comece na linha 1 da tabela. \pause
+Marque a linha 1 da tabela como linha de referência.
 
-Olhando para a linha de início e para as linhas que estão após ela, procure pelo jogador com mais pontos e troque de lugar o conteúdo da linha de início com o conteúdo da linha desse jogador. \pause
+Olhando para a linha de referência e para as linhas que estão após ela, procure pela linha com o jogador com mais pontos e troque de lugar o conteúdo dessa linha com o conteúdo da linha de referência.
 
-Se ainda não acabaram as linhas, vá para a próxima linha e repita o processo, senão pare. \pause
+Se existe uma linha após a linha de referência, considere essa próxima linha como referência e repita o processo, senão pare.
 
 No final, a tabela foi reorganizada de acordo com a classificação dos jogadores. \pause
 
@@ -263,7 +262,7 @@ Os problemas que podem ser resolvidos com algoritmos são chamados de problemas 
 
 Pode existir mais que um algoritmo que resolve o mesmo problema? \pause Sim. \pause
 
-Quais características são importantes para um algoritmo? \pause
+O que considerar na escolha ou no projeto de algoritmos? \pause
 
 - Simplicidade \pause
 
