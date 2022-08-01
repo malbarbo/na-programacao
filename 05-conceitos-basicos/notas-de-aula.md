@@ -247,7 +247,7 @@ double c = 40.1;
 
 \pause
 
-Agora pode ver a instrução de entrada!
+Agora podemos ver a instrução de entrada!
 
 
 # Entrada
