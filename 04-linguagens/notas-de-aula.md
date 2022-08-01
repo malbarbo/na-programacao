@@ -150,6 +150,7 @@ Execução
 2.00061
 ```
 
+\pause
 
 **Linux**
 
