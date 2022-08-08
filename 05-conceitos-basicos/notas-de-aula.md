@@ -587,7 +587,7 @@ Se um programa foi compilado corretamente, isto é, não tem erros de sintaxe ou
 
 Um erro de execução pode fazer o programa \pause
 
-- Ser interrompido e exibir uma mensagem de erro (chashar) \pause
+- Ser interrompido e exibir uma mensagem de erro (crashar) \pause
 - Entrar em um laço infinito e nunca terminar (travar) \pause
 - Continuar a execução e produzir a resposta errada
 
