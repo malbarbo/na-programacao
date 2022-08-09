@@ -36,7 +36,7 @@ Se a linguagem fonte e a linguagem alvo forem bem definidas, podemos escrever um
 
 # Sintaxe e semântica
 
-Uma linguagem de programação é uma linguagem formal (bem definida) adequada para programar computadores. \pause
+Uma **linguagem de programação** é uma linguagem formal (bem definida) adequada para programar computadores. \pause
 
 Uma linguagem de programação é caracterizada por diversos aspectos, entre eles
 
