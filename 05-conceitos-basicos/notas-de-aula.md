@@ -5,6 +5,26 @@ title: Conceitos básicos
 
 # Introdução
 
+Até o momento nós estudamos
+
+- Sistemas computacionais
+- Algoritmos
+- Problemas
+- Linguagens
+
+\pause
+
+Agora vamos focar no nosso objetivo principal \pause
+
+- Resolver problemas projetando programas que sejam bem escritos e funcionem corretamente.
+
+\pause
+
+Vamos começar com um problema!
+
+
+# Introdução
+
 O André viaja muito. Sempre antes de fazer uma viagem ele calcula o quanto ele irá gastar com combustível. Ele determina a distância que ele irá percorrer na viagem, o preço do litro do combustível e consulta as suas anotações para ver o consumo do carro, isto é, a quantidade de quilômetros que o carro anda com um litro de combustível e então faz o cálculo do custo. O André acha um pouco chato fazer os cálculos na mão, então ele pediu para você escrever um programa que faça os cálculos para ele. \pause
 
 Como projetar um programa que atenda a necessidade do André? \pause
@@ -30,18 +50,18 @@ int main()
 
 \pause
 
-Compilação (Windows)
+Compilação (Linux)
 
 ```cpp
-g++ basico.cpp -o basico.exe
+g++ basico.cpp -o basico
 ```
 
 \pause
 
-Execução (Windows)
+Execução (Linux)
 
 ```
-basico.exe
+./basico
 ```
 
 \pause
@@ -63,8 +83,6 @@ Agora vamos escrever algumas instruções dentro da função `main`. \pause Os p
 
 Podemos escrever expressões matemáticas de forma similar ao que estamos acostumados \pause
 
-<div class="columns">
-<div class="column" width="30%">
 ```cpp
 int main()
 {
@@ -73,25 +91,24 @@ int main()
 ```
 
 \pause
-</div>
-<div class="column" width="65%">
 O que será exibido na tela após a execução desse programa? \pause
 
-Nada. \pause A sentença que escrevemos instrui o computador a fazer `4 * 3` e somar o resultado com `2`, apenas isso. \pause
+Nada. \pause
 
-Precisamos usar uma instrução específica para exibir o resultado na tela.
-</div>
-</div>
+A sentença que escrevemos instrui o computador a fazer `4 * 3` e somar o resultado com `2`, apenas isso. \pause Precisamos usar uma instrução específica para exibir o resultado na tela.
 
 
 # Saída
 
-Algumas instruções, como a soma e a multiplicação, estão disponíveis diretamente para o programador, outras instruções, como as de entrada e saída, estão em bibliotecas que precisar ser requisitas explicitamente. \pause
+Algumas instruções, como a soma e a multiplicação, estão disponíveis diretamente para o programador, outras instruções, como as de entrada e saída, estão em bibliotecas que precisam ser requisitas explicitamente. \pause
 
-Para usarmos o comando de saída, precisamos incluir o arquivo de cabeçalho `iostream` usando a diretiva `#include`{.cpp}. \pause
+Para usarmos a instrução de saída, precisamos incluir o arquivo de cabeçalho `iostream` (`io` é de _input/output_ -- entrada/saída em inglês) usando a diretiva `#include`{.cpp}.
 
-<div class="columns">
-<div class="column" width="55%">
+
+# Saída
+
+\small
+
 ```c++
 #include <iostream>
 
@@ -102,21 +119,35 @@ int main()
 ```
 
 \pause
-</div>
-<div class="column" width="35%">
-O que será exibido na tela após a execução do programa? \pause
 
-A mensagem "Olá mundo!".
-</div>
-</div>
+A instrução `std::cout` (_**c**onsole **out**put_) é usado para exibir informações no terminal (console). \pause
+
+O símbolo `<<` é usado para indicar a instrução `std::cout` um item que deve ser exibido. Os projetistas escolheram o símbolo `<<` porque dá a ideia de que a informação a direita do símbolo esta sendo "transmitida" para o console (`std::cout`). \pause O símbolo `std::endl` (_end line_ -- fim de linha em inglês) indica que a linha atual deve ser encerrada e o cursor posicionado no início da próxima linha. \pause
+
+As aspas (`"`) são utilizadas para delimitar uma sequência de caracteres (texto), que deve ser exibida na tela pelo `std::cout`. \pause O ponto e vírgula (`;`) é usando para indicar o fim da instrução.
+
+# Saída
+
+\small
+
+```c++
+#include <iostream>
+
+int main()
+{
+    std::cout << "Olá mundo!" << std::endl;
+}
+
+```
+O que ocorre após a execução do programa? \pause
+
+A mensagem "Olá mundo!" é exibida na tela e o cursor vai para o início da próxima linha.
 
 
 # Saída
 
 Podemos usar a instrução de saída para exibir resultados de expressões \pause
 
-<div class="columns">
-<div class="column" width="55%">
 ```cpp
 #include <iostream>
 
@@ -127,21 +158,15 @@ int main()
 ```
 
 \pause
-</div>
-<div class="column" width="35%">
 O que será exibido na tela após a execução desse programa? \pause
 
 O valor 14.
-</div>
-</div>
 
 
 # Saída
 
 Podemos exibir várias "coisas" com várias instruções de saída \pause
 
-<div class="columns">
-<div class="column" width="55%">
 ```cpp
 #include <iostream>
 
@@ -154,15 +179,10 @@ int main()
 ```
 
 \pause
-</div>
-<div class="column" width="32%">
+
 O que será exibido na tela após a execução desse programa? \pause
 
-"O resultado da expressão é 14". \pause
-
-Note que o `;` marca o fim de cada instrução.
-</div>
-</div>
+"O resultado da expressão é 14".
 
 
 # Saída
@@ -185,7 +205,7 @@ int main()
 
 Todas as construções que estão na biblioteca padrão (_standard library_) do C++ tem o prefixo `std::`{.cpp}, que é um "espaço de nomes". \pause A ideia de espaço de nomes é evitar colisões de nomes de bibliotecas diferentes, que é importante em programas que utilizam bibliotecas de diversas fontes distintas. \pause
 
-Como nossos programas serão pequenos e vamos utilizar apenas uma biblioteca externa, então a colisão de nomes não será uma preocupação. Por isso, vamos usar uma instrução que permite omitir o prefixo do espaço de nomes.
+Como nossos programas serão pequenos e vamos utilizar apenas uma biblioteca externa, então a colisão de nomes não será uma preocupação. Por isso, vamos usar uma diretiva que permite omitir o prefixo do espaço de nomes.
 
 
 # Espaço de nomes
@@ -213,9 +233,9 @@ Antes de vermos a instrução de entrada, precisamos aprender sobre variáveis.
 
 # Variáveis
 
-Uma variável é um nome para uma região da memória que é utilizada para armazenar valores. \pause
+Uma **variável** é um nome para uma região da memória que é utilizada para armazenar valores. \pause
 
-Cada variável tem um tipo, que determina o conjunto de valores que podem ser armazenado na memória associada com ela. \pause
+Cada variável tem um tipo, que determina o conjunto de valores que podem ser armazenados na memória associada com ela. \pause
 
 Uma variável é primeiro declarada para depois poder ser usada. \pause Na declaração a variável também pode ser inicializada. \pause
 
@@ -280,7 +300,7 @@ O mesmo número repetido duas vezes, na primeira vez é a digitação do usuári
 
 O que tem de errado com esse programa? \pause
 
-O usuário não é informado sobre o que digitar e nem o que o valor de saída significa.
+O usuário não é informado sobre o que digitar e nem o que a saída significa.
 </div>
 </div>
 
@@ -806,12 +826,12 @@ bool maior_de_idade = idade >= 18; // false
 
 # Booleanos
 
+Os operadores de `==`{.cpp} (igual) e `!=`{.cpp} (diferente) também podem ser usados para números e outros tipos de dados. \pause
+
 ```{.cpp}
 bool a = true;
 bool b = false;
 ```
-
-Os operadores de `==`{.cpp} (igual) e `!=`{.cpp} (diferente) também podem ser usado para números e outros tipos de dados. \pause
 
 Qual o resultado de `a == b`{.cpp}? \pause O resultado é `false`{.cpp} pois o valor armazenado em `a`{.cpp} não é igual ao valor armazenado em `b`{.cpp}. \pause
 
