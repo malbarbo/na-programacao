@@ -797,6 +797,39 @@ Note que o segundo argumento para `substr` representa a quantidade de bytes (nes
 O que acontece se especificarmos uma quantidade de bytes para extrair maior do que o "disponível", como por exemplo, `nome.substr(8, 7)`{.cpp}? \pause O método retorna apenas o que está disponível, nesse caso, `"Silva"`{.cpp}.
 
 
+# Strings
+
+Escreva um programa que leia um nome de uma pessoa e escreva uma mensagem de boas vindas para a pessoa.
+
+\pause
+
+Para ler uma string é necessário usar a função `getline` da biblioteca `string` da seguinte forma:
+
+```cpp
+string s;
+getline(cin, s);
+```
+
+
+# Strings
+
+```cpp
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+int main()
+{
+    cout << "Nome: ";
+    string nome;
+    getline(cin, nome);
+
+    cout << "Ola " << nome <<  ", seja bem vindo!" << endl;
+}
+```
+
+
 # Booleanos
 
 Qual resposta você daria para as seguintes expressões? \pause
@@ -836,6 +869,95 @@ bool b = false;
 Qual o resultado de `a == b`{.cpp}? \pause O resultado é `false`{.cpp} pois o valor armazenado em `a`{.cpp} não é igual ao valor armazenado em `b`{.cpp}. \pause
 
 Qual o resultado de `a != b`{.cpp}? \pause O resultado é `true`{.cpp} pois o valor armazenado em `a`{.cpp} é diferente do valor armazenado em `b`{.cpp}.
+
+
+# Booleanos
+
+Três operações são comuns com valores booleanos: \pause
+
+- Negação \pause
+- E lógico (conjunção) \pause
+- Ou lógico (disjunção)
+
+
+# Booleanos - Negação
+
+Em C++ o símbolo da operação de negação é `!`{.cpp}. \pause
+
+Qual o valor da expressão `4 < 5`{.cpp}? \pause `true`{.cpp}. \pause E da expressão `!(4 < 5)`{.cpp}? \pause `false`{.cpp}. \pause
+
+Qual o valor da expressão `2 == 1 + 2`{.cpp}? \pause `false`{.cpp}. \pause E da expressão `!(2 == 1 + 2)`{.cpp}? \pause `true`{.cpp}.  \pause
+
+Tabela verdade
+
+a        | !a
+---------|---------
+ `false` | `true`
+ `true`  | `false`
+
+
+# Booleanos - Conjunção
+
+Em C++ o símbolo da operação de conjunção é `&&`{.cpp} \pause
+
+
+Tabela verdade
+
+a        |  b      | a && b
+---------|---------|---------
+ `false` | `false` | `false`
+ `false` | `true ` | `false`
+ `true`  | `false` | `false`
+ `true`  | `true`  | `true`
+
+
+# Booleanos - Disjunção
+
+Em C++ o símbolo da operação de conjunção é `||`{.cpp} \pause
+
+
+Tabela verdade
+
+a        |  b      | a && b
+---------|---------|---------
+ `false` | `false` | `false`
+ `false` | `true ` | `true`
+ `true`  | `false` | `true`
+ `true`  | `true`  | `true`
+
+
+# Booleanos
+
+Em uma determinada cidade o transporte público é gratuito para crianças menores de 10 anos, adultos a partir de 60 anos e professores a partir de 50 anos. Escreva um programa que leia a idade de uma pessoa e se ela é professor e indique se essa pessoa pode usar o transporte público de forma gratuita. \pause
+
+Em C++ na entrada e saída de valores booleanos `0`{.cpp} é usado para indicar `false`{.cpp} e `1`{.cpp} é usado para indicar `true`{.cpp}.
+
+
+# Booleanos
+
+\scriptsize
+
+```cpp
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    cout << "Idade: ";
+    int idade;
+    cin >> idade;
+
+    cout << "E professor? ";
+    bool eh_professor;
+    cin >> eh_professor;
+
+    // Note que && tem priodade sobre ||
+    bool livre = idade < 10 || idade >= 60 || idade >= 50 && eh_professor;
+
+    cout << "Pode usar o transporte publico de forma gratuita? " << livre << endl;
+}
+```
 
 
 # Combinado dados de tipo diferente

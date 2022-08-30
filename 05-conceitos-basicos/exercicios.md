@@ -5,7 +5,7 @@ title: Conceitos básicos
 
 Algumas observações:
 
-- Nós vimos de maneira informal no final da aula do dia 02/09 uma sequência de passos para projetar uma função. Este vai ser o processo que vamos utilizar durante toda a disciplina. Mesmo tendo apenas uma noção do processo, é importante que você tente segui-lo para resolver esses exercícios. Se você tiver dificuldades, não se preocupe, na próxima aula vamos fazer muitos exemplos, mas é importante você tentar e observar as suas dificuldades. Com o tempo, as coisas vão ficar mais claras.
+- Nós vimos de maneira informal na última aula sobre "conceitos básicos" uma sequência de passos para projetar uma função. Este vai ser o processo que vamos utilizar durante toda a disciplina. Mesmo tendo apenas uma noção do processo, é importante que você tente segui-lo para resolver esses exercícios. Se você tiver dificuldades, não se preocupe, na próxima aula vamos fazer muitos exemplos, mas é importante você tentar e observar as suas dificuldades. Com o tempo, as coisas vão ficar mais claras.
 
 - Em geral, quando temos que projetar uma função que verifica algo, podemos escolher booleano como tipo de retorno. Por exemplo, se tivéssemos que projetar uma função que verifica se um número inteiro é positivo, teríamos algo como
 
