@@ -1,48 +1,64 @@
-#include <iostream>
+#include "bscpp.hpp"
+#include <string>
 
 using namespace std;
 
-// Devolve true se o primeiro nome de nome_completo é "Paula",
-// false caso contrário.
-// Exemplos
-// primeiro_nome_paula("Paula Silva") -> true
-// primeiro_nome_paula("Paulas Silva") -> false
-// primeiro_nome_paula("Paula") -> true
-// primeiro_nome_paula("Paulas") -> false
-// primeiro_nome_paula("Paulana") -> false
-// primeiro_nome_paula("paula") -> false
-// primeiro_nome_paula("PAULA") -> false
-bool primeiro_nome_paula(string nome_completo)
+// Análise
+//
+// Verificar se o primeiro nome de uma pessoa é Paula.
+//
+// Definição de tipos de dados
+//
+// O nome da pessoa será representado por uma string.
+
+// Devolve true se o primeiro nome de nome_completo é "Paula", false caso
+// contrário.
+bool primeiro_nome_eh_paula(string nome_completo)
 {
     return nome_completo == "Paula" || nome_completo.substr(0, 6) == "Paula ";
 }
 
-// Devolve true se o último sobrenome de nome_completo é "Silva",
-// false caso contrario.
-// Exemplo
-// sobrenome_silva("Paula Silva") -> true
-//   nome_completo.substr(nome_completo.length() - 6, 6) == " Silva"
-// sobrenome_silva("Jose Roberto Silva") -> true
-//   nome_completo.substr(nome_completo.length() - 6, 6) == " Silva"
-// sobrenome_silva("Silva") -> false
-// sobrenome_silva("Jose SaSilva") -> false
-// sobrenome_silva("Paula Silvana") -> false
-// sobrenome_silva("Jose Silva Roberto") -> false
-// sobrenome_silva("paula silva") -> false
-bool sobrenome_silva(string nome_completo) {
-    return (nome_completo.length() >= 6) && nome_completo.substr(nome_completo.length() - 6, 6) == " Silva";
+examples {
+    // nome_completo == "Paula"  ||  nome_completo.substr(0, 6) == "Paula "
+    check_expect(primeiro_nome_eh_paula("Paula"), true);
+    check_expect(primeiro_nome_eh_paula("Paula de Souza"), true);
+    check_expect(primeiro_nome_eh_paula("Paulas de Souza"), false);
+    check_expect(primeiro_nome_eh_paula("Alberto de Souza"), false);
+    check_expect(primeiro_nome_eh_paula("Paulo de Freitas"), false);
+    check_expect(primeiro_nome_eh_paula("Jorge de Paula Souza"), false);
+    check_expect(primeiro_nome_eh_paula("Aida"), false);
+    check_expect(primeiro_nome_eh_paula("Paula"), true);
+}
+
+
+// Análise
+//
+// Verificar se o sobrenome de uma pessoa é Silva
+//
+// Tipos de dados
+//
+// O nome será representado por uma string.
+
+// Devolve true se o último nome de nome_completo é "Silva" (nome_completo
+// precisa ter pelo menos dois nomes), false caso contrário.
+bool ultimo_nome_eh_silva(string nome_completo)
+{
+    return nome_completo.length() >= 6 &&
+        // termina com " Silva"
+        nome_completo.substr(nome_completo.length() - 6, 6) == " Silva";
+}
+
+examples {
+    // nome_completo.length() >= 6 && nome_completo.substr(nome_completo.length() - 6, 6) == " Silva"
+    check_expect(ultimo_nome_eh_silva("Paulo Silva"), true);
+    check_expect(ultimo_nome_eh_silva("Paulo D'Silva"), false);
+    check_expect(ultimo_nome_eh_silva("Paulo Silva Barbosa"), false);
+    check_expect(ultimo_nome_eh_silva("Paulo Barbosa Silva"), true);
+    check_expect(ultimo_nome_eh_silva("Silva"), false);
+    check_expect(ultimo_nome_eh_silva("Aida"), false);
 }
 
 int main()
 {
-    cout << "nome: ";
-    string nome;
-    getline(cin, nome);
-
-    bool eh_paula = primeiro_nome_paula(nome);
-    bool eh_silva = sobrenome_silva(nome);
-
-    cout << boolalpha;
-    cout << "primeiro nome paula? " << eh_paula << endl;
-    cout << "sobrenome silva? " << eh_silva << endl;
+    run_tests();
 }
