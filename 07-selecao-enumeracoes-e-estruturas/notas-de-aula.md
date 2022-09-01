@@ -20,7 +20,7 @@ cout << a;
 
 Qual o valor exibido pelo programa? \pause 12. \pause
 
-Nesse exemplo, o computador executa uma linha após a outra, por isso chamamos essa "estrutura" de código de sequencial (sequenciação). \pause
+Nesse exemplo, o computador executa uma linha após a outra, por isso chamamos essa "estrutura" de código sequencial (sequenciação). \pause
 
 Qual é a ordem que as linhas serão executadas? \pause 1, 2, 3.
 
