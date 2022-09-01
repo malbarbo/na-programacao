@@ -24,7 +24,7 @@ bool sorteado(int n, SeisNumeros sorteados)
 examples
 {
     SeisNumeros sorteados = {1, 7, 10, 40, 41, 60};
-    check_expect((SeisNumeros {1, 7, 10, 40, 41, 59}), sorteados)
+    check_expect((SeisNumeros {1, 7, 10, 40, 41, 60}), sorteados)
     check_expect(sorteado(1, sorteados), true);
     check_expect(sorteado(7, sorteados), true);
     check_expect(sorteado(10, sorteados), true);
