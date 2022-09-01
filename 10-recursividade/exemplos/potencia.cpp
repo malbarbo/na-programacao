@@ -18,17 +18,17 @@ double potencia(double a, int n)
 
 examples
 {
-    check_expect(potencia(2, 0), 1);
-    check_expect(potencia(2, 1), 2);
-    check_expect(potencia(2, 2), 4);
-    check_expect(potencia(2, 3), 8);
+    check_expect(potencia(2, 0), 1.0);
+    check_expect(potencia(2, 1), 2.0);
+    check_expect(potencia(2, 2), 4.0);
+    check_expect(potencia(2, 3), 8.0);
 
-    check_expect(potencia(3, 0), 1);
-    check_expect(potencia(3, 1), 3);
-    check_expect(potencia(3, 2), 9);
-    check_expect(potencia(3, 3), 27);
+    check_expect(potencia(3, 0), 1.0);
+    check_expect(potencia(3, 1), 3.0);
+    check_expect(potencia(3, 2), 9.0);
+    check_expect(potencia(3, 3), 27.0);
 
-    check_expect(potencia(-3, 3), -27);
+    check_expect(potencia(-3, 3), -27.0);
 }
 
 int main()

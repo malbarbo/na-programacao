@@ -5,7 +5,7 @@ using namespace std;
 // Verifica se os primeiros n elementos de
 // valores estão em ordem não-decrescente.
 // Requer que 0 <= n <= valores.size()
-int ordenado(const vector<int> &valores, int n)
+bool ordenado(const vector<int> &valores, int n)
 {
     bool ord;
     if (n <= 1) {
