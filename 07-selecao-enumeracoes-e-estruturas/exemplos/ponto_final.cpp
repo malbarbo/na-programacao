@@ -13,7 +13,7 @@ using namespace std;
 
 
 
-// Produz se s se é vazio ou termina com um ponto final, caso contrário
+// Produz s se s é vazia ou termina com um ponto final, caso contrário
 // produz s seguido de um ponto final.
 //
 // Requer que s não termine com espaço.
