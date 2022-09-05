@@ -1054,7 +1054,7 @@ TipoSaida nome_da_funcao(TipoEntrada1 entrada1, TipoEntrada2 entrada2, ...)
 
 \normalsize
 
-Baseado no programa que calcula a área de um retângulo, vamos criar uma função para calcular a área de um retângulo. (Veja o vídeo da aula para entender como a função foi criada)
+Baseado no programa que calcula a área de um retângulo, vamos criar uma função para calcular a área de um retângulo. (Solução desenvolvida em sala)
 
 
 # Criação de funções
@@ -1084,7 +1084,7 @@ Projete um programa que a partir de um tempo especificado em número de horas, m
 
 \pause
 
-Veja o vídeo da aula para ver o projeto desse programa.
+Projeto feito em sala.
 
 
 # Exercício

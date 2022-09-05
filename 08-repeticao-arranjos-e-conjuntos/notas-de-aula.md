@@ -1827,7 +1827,7 @@ O que essas funções têm de diferente das funções que temos escrito até ago
 
 A função `le_ditos` não tem argumentos de entrada e a função `escreve_ditos` não tem resposta (usamos o tipo `void`{.cpp} para representar isso). \pause
 
-Por isso não temos come escrever os exemplos para essas funções! Veja o vídeo da aula para mais informações.
+Por isso não temos come escrever os exemplos para essas funções!
 
 
 # Implementação
@@ -1957,9 +1957,7 @@ vector<string> le_ditos()
 
 # Execução do programa
 
-O programa está pronto! Agora podemos executar e testar o programa. \pause
-
-Veja o vídeo da aula para informações sobre redirecionamento de entrada e saída.
+O programa está pronto! Agora podemos executar e testar o programa.
 
 
 # Exercício
@@ -2173,7 +2171,7 @@ bool primo(int n)
 
 \normalsize
 
-Podemos melhorar! \pause Sim! \pause Veja o vídeo da aula para a discussão.
+Podemos melhorar! \pause Sim! (Discussão em sala)
 
 
 # Implementação

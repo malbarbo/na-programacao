@@ -404,7 +404,7 @@ int numero_azulejos(double comprimento, double altura)
 
 # Especificação
 
-Exemplos (veja o vídeo da aula para entender como criamos esses exemplos) \pause
+Exemplos (projeto feito em sala) \pause
 
 \footnotesize
 
