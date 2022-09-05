@@ -20,9 +20,9 @@ cout << a;
 
 Qual o valor exibido pelo programa? \pause 12. \pause
 
-Nesse exemplo, o computador executa uma linha após a outra, por isso chamamos essa "estrutura" de código sequencial (sequenciação). \pause
+Nesse exemplo, o computador executa uma linha após a outra, por isso chamamos essa "estrutura" de **código sequencial** (sequenciação). \pause
 
-Qual é a ordem que as linhas serão executadas? \pause 1, 2, 3.
+Qual é a ordem que as linhas são executadas? \pause 1, 2, 3.
 
 
 # Mudança de variável
@@ -125,7 +125,7 @@ int main() {
 \pause
 Qual o valor exibido pelo programa? \pause 20. \pause
 
-Qual é a ordem que as linhas são executadas? (veja o vídeo da aula para entender como o programa é executado) \pause
+Qual é a ordem que as linhas são executadas? (Feito em sala) \pause
 
 - 7 \pause
 - 8 (`b + 4`) \pause
@@ -176,13 +176,13 @@ Uma dessas instruções é o `if else`{.cpp} (se e senão em inglês).
 
 # Seleção
 
-O `if else`{.cpp} é uma instrução de seleção e sua forma geral é: \pause
+O `if else`{.cpp} é uma **instrução de seleção** e sua forma geral é: \pause
 
 ```cpp
 if (condição) {
-    intruções então;
+    instruções então;
 } else {
-    intruções senão;
+    instruções senão;
 }
 ```
 
@@ -241,7 +241,7 @@ Em que ordem as linhas são executas para gerar esse resultado? \pause 1, 2, 3, 
 
 Vamos voltar ao exemplo do valor máximo. \pause
 
-Projete uma função que encontre o maior valor entre dois números dados.
+Projete uma função que encontre o valor máximo entre dois números dados.
 
 # Especificação e implementação
 
@@ -275,7 +275,7 @@ A resposta da função `maximo` dependente de alguma condição? \pause Sim. \pa
 
 Se o valor de `a` for maior do que o valor de `b`, então a resposta é o valor de `a`, senão a resposta é o valor de `b`. \pause
 
-Quando a resposta depende de uma condição, usamos uma sentença de seleção!
+Quando a resposta depende de uma condição, usamos uma instrução de seleção!
 </div>
 </div>
 
@@ -495,7 +495,7 @@ Depois que você fez o programa para o André, a Márcia, amiga em comum de voc�
 <div class="column" width="48%">
 Análise \pause
 
-- Determinar o combustível que será utilizado. Se o preço do álcool for até 70% do preço da gasolina, então deve-se usar o álcool, senão a gasolina.
+- Determinar o combustível que será utilizado. Se o preço do álcool for até 70% do preço da gasolina, então deve-se usar álcool, senão gasolina.
 
 \pause
 
@@ -510,7 +510,7 @@ Definição de tipos de dados \pause
 
 # Especificação
 
-Veja no vídeo da aula como chegamos nesse resultado.
+Discutimos em sala o projeto desse programa.
 
 
 # Especificação
@@ -556,7 +556,7 @@ O resultado depende de uma condição? \pause Sim! \pause Então usamos seleçã
 // "alcool" se preco-alcool for menor ou igual a 70% do preco-gasolina, produz
 // "gasolina" caso contrário.
 string indica_combustivel(double preco_alcool, double preco_gasolina) {
-    string combustivel
+    string combustivel;
     if (preco_alcool <= 0.7 * preco_gasolina) {
         combustivel = "alcool";
     } else {
@@ -576,7 +576,7 @@ Revisão: \pause string não parece ser o tipo apropriado. \pause Pela assinatur
 
 # Tipos enumerados
 
-Em um tipo enumerado todos os valores válidos para o tipo são enumerados explicitamente. \pause
+Em um **tipo enumerado** todos os valores válidos para o tipo são enumerados explicitamente. \pause
 
 A forma geral para definir tipos enumerados é
 
@@ -637,9 +637,9 @@ Quando usar tipos enumerados? \pause
 
 Quando todos os valores válidos para o tipo podem ser nomeados. \pause
 
-Porque utilizar tipos enumerados? \pause
+Por que utilizar tipos enumerados? \pause
 
-Para expressar mais claramente o código e evitar a utilização de valores inválidos (como `"alcoo"`{.cpp} em uma variável string que representa o tipo do combustível).
+Para expressar mais claramente o propósito do código e evitar a utilização de valores inválidos (como `"alcoo"`{.cpp} em uma variável string que representa o tipo do combustível).
 
 
 # Revisão do exemplo
@@ -670,7 +670,7 @@ examples
 
 Projete uma função que receba como entrada a cor atual de um semáforo de trânsito e devolva a próxima cor que será ativada (considere um semáforo com três cores: verde, amarelo e vermelho). \pause
 
-Fizemos o projeto desse programa durante a aula obtivemos o seguinte resultado.
+Fizemos o projeto desse programa durante a aula obtivemos o seguinte resultado:
 
 
 # Semáforo
@@ -762,7 +762,7 @@ A `expressão` é avaliada e seu valor é comparado com cada caso na sequência.
 
 Quando um caso que tem o mesmo valor do resultado da expressão é encontrado, as `instruções` daquele caso são executadas até encontrar um `break`, quando então a instrução `switch/case`{.cpp} termina e o programa continua a execução com a próxima instrução após o `switch/case`{.cpp}. \pause
 
-Se o valor da expressão não é igual a nenhum caso, então as instruções da cláusula `default`{.cpp} é executada.
+Se o valor da expressão não é igual a nenhum caso, então as instruções da cláusula `default`{.cpp} são executadas.
 
 </div>
 </div>
@@ -772,7 +772,7 @@ Se o valor da expressão não é igual a nenhum caso, então as instruções da 
 
 Quando utilizar o `switch/case`{.cpp}? \pause
 
-Quando precisamos analisar o valor de um tipo enumerado ou quando precisamos analisar um conjunto de valores inteiros específicos (ex 1,3, 4, 5). \pause
+Quando precisamos analisar o valor de um tipo enumerado ou quando precisamos analisar um conjunto de valores inteiros específicos (ex 1, 3, 4, 5). \pause
 
 Qual é a vantagem de utilizar `switch/case`{.cpp} ao invés de uma sequência de `if`{.cpp}s? \pause
 
@@ -809,11 +809,11 @@ Cor proxima_cor(Cor c) {
 
 # Exemplo
 
-Em um determinado programa é necessário exibir para o usuário o tempo que uma operação demorou. Esse tempo está disponível em segundos, mas exibir essa informação em segundos para o usuário pode não ser interessante, afinal, ter uma noção razoável de tempo para 14678 segundos é difícil!
+Em um determinado programa é necessário exibir para o usuário o tempo que uma operação demorou. Esse tempo está disponível em segundos, mas exibir essa informação em segundos para o usuário pode não ser interessante, afinal, ter uma noção razoável de tempo para 14678 segundos é difícil! \pause
 
-a) Projete uma função que converta uma quantidade de segundos para uma quantidade de horas, minutos e segundos equivalentes.
+a) Projete uma função que converta uma quantidade de segundos para uma quantidade de horas, minutos e segundos equivalentes. \pause
 
-b) Projete uma função que que converta uma quantidade de horas, minutos e segundos em uma string amigável para o usuário. A string não deve conter informações sobre o tempo que são zeros (por exemplo, não deve informar 0 minutos).
+b) Projete uma função que que converta uma quantidade de horas, minutos e segundos em uma string amigável para o usuário. A string não deve conter informações sobre tempo que são zeros (por exemplo, não deve informar 0 minutos).
 
 
 # Exemplo
@@ -840,7 +840,7 @@ Vamos relembrar alguns tipos de dados que utilizamos até agora:
 
 \pause
 
-Esses tipos são chamados atômicos porque não são compostos de outros tipos. \pause
+Esses tipos são chamados atômicos porque não são compostos por partes. \pause
 
 Podemos criar novos tipos de dados a partir de tipos existentes. \pause
 
@@ -849,7 +849,7 @@ Uma forma de fazer isso é através de tipos estruturas.
 
 # Tipos estruturas
 
-Um tipo estrutura é um tipo de dado composto por um conjunto fixo de campos com nome e tipo.
+Um **tipo estrutura** é um tipo de dado composto por um conjunto fixo de campos com nome e tipo.
 
 A forma geral para definir um tipo estrutura é
 
@@ -984,11 +984,17 @@ Quando a informação consiste de dois ou mais itens que juntos descrevem uma en
 
 # Exemplo
 
+O novo problema inicial era:
+
 Em um determinado programa é necessário exibir para o usuário o tempo que uma operação demorou. Esse tempo está disponível em segundos, mas exibir essa informação em segundos para o usuário pode não ser interessante, afinal, ter uma noção razoável de tempo para 14678 segundos é difícil!
 
 a) Projete uma função que converta uma quantidade de segundos para uma quantidade de horas, minutos e segundos equivalentes.
 
 b) Projete uma função que que converta uma quantidade de horas, minutos e segundos em uma string amigável para o usuário. A string não deve conter informações sobre o tempo que são zeros (por exemplo, não deve informar 0 minutos).
+
+\pause
+
+Agora vamos fazer o item b. (Projeto desenvolvido em aula.)
 
 
 # Especificação
@@ -996,7 +1002,7 @@ b) Projete uma função que que converta uma quantidade de horas, minutos e segu
 \scriptsize
 
 ```cpp
-// Converte t em uma mensagem para os usuários. Cada componente de t aparece
+// Converte t em uma mensagem para o usuário. Cada componente de t aparece
 // com a sua unidade, mas se o valor do componente for 0, ele não aparece na
 // mensagem. Os componentes são separados com " e " ou ", " respeitando as
 // regras do Português. Se t for {0, 0, 0}, devolve "0 segundo(s)".
@@ -1108,13 +1114,18 @@ Modifique a especificação e implementação da função anterior para que o pl
 
 \small
 
-Segundo a Wikipédia, um pixel é o menor elemento de um dispositivo de exibição, como por exemplo, um monitor, ao qual é possível atribuir uma cor. Nos monitores atuais, os pixels são organizados em linhas e colunas, de maneira a formar a imagem exibida. Cada pixel pode ser referenciado por uma coordenada, que é o número da linha e coluna que ele aparece. Por exemplo, em um monitor de 1920 colunas por 1080 linhas, o pixel no canto superior esquerdo está na posição (0, 0), enquanto o pixel no canto inferior direito está na posição (1079, 1919).
+Segundo a Wikipédia, um pixel é o menor elemento de um dispositivo de exibição, como por exemplo, um monitor, ao qual é possível atribuir uma cor. Nos monitores atuais, os pixels são organizados em linhas e colunas, de maneira a formar a imagem exibida. Cada pixel pode ser referenciado por uma coordenada, que é o número da linha e coluna que ele aparece. Por exemplo, em um monitor de 1080 linhas e 1920 colunas, o pixel no canto superior esquerdo está na posição (0, 0), enquanto o pixel no canto inferior direito está na posição (1079, 1919). \pause
 
-Em um ambiente gráfico com muitas janelas, quando um usuário faz um clique com o mouse é necessário identificar em qual janela ocorreu o clique. Considerando que o espaço que uma janela ocupa pode ser representada pela coordenada do canto superior esquerdo e pela quantidade de pixels da largura e da altura da janela
+Em um ambiente gráfico com janelas, quando um usuário faz um clique com o mouse é necessário identificar em qual janela ocorreu o clique. Considerando que o espaço que uma janela ocupa pode ser representada pela coordenada do canto superior esquerdo e pela quantidade de pixels da largura e da altura da janela \pause
 
-a) Projete uma função que receba como parâmetros as informações sobre uma janela e um clique do mouse e determine se o clique aconteceu sobre a janela.
+a) Projete uma função que receba como parâmetros as informações sobre uma janela e um clique do mouse e determine se o clique aconteceu sobre a janela. \pause
 
 b) Projete uma função que verifique se os espaços de duas janelas se sobrepõem.
+
+
+# Definição de tipos de dados
+
+Projeto desenvolvido em aula.
 
 
 # Definição de tipos de dados
@@ -1302,6 +1313,9 @@ bool janelas_soprepoem(Janela a, Janela b)
 
 Em um jogo de loteria os apostadores fazem apostas escolhendo 6 números distintos entre 1 e 60. No sorteio são sorteados 6 números de forma aleatória. Os apostadores que acertam 4, 5 ou 6 números são contemplados com prêmios. Projete uma função que conte quantos números uma determinada aposta acertou.
 
+\pause
+
+Projeto desenvolvido em sala.
 
 # Definição de tipos de dados
 
