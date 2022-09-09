@@ -10,7 +10,8 @@ Algumas observações:
 - Em geral, quando temos que projetar uma função que verifica algo, podemos escolher booleano como tipo de retorno. Por exemplo, se tivéssemos que projetar uma função que verifica se um número inteiro é positivo, teríamos algo como
 
     ```cpp
-    // Devolve true se n é um número positivo, isto é, maior que zero, false caso constrário.
+    // Devolve true se n é um número positivo, isto é, maior que zero,
+    // false caso contrário.
     // Exemplos:
     // positivo(3) -> true
     // positivo(0) -> false
@@ -21,20 +22,35 @@ Algumas observações:
     }
     ```
 
+#. O governo federal aumentou o valor da pensão do INSS em 5% e agora precisa atualizar a pensão de todos os pensionistas. Ajude o governo e projete uma função que calcule o novo valor de uma dada pensão.
 
-#. Projete uma função que calcule o valor da hipotenusa a partir dos valores dos catetos.
+#. De acordo com a Wikipédia, um supercentenário é uma pessoa que atinge a idade de 110 anos. Projete uma função que verifique, a partir da idade, se uma pessoa é supercentenário.
 
-#. Projete uma função que calcule a unidade de um número inteiro positivo, por exemplo, para o número 152, a unidade é 2. Dica: operação de módulo.
+#. Uma polegada é um medida de comprimento utilizado no sistema imperial e corresponde a 2,54cm.
 
-#. Projete uma função que verifique se o primeiro nome de uma pessoa é "Paula".
+    a. Projete uma função que converta uma medida em centímetros para polegadas.
+
+    b. Projete uma função que converta uma medida em polegadas para centímetros.
+
+#. Quando escrevemos uma data no Brasil em geral usamos a ordem dia/mês/ano. Já em outros países a ordem usada é mês/dia/ano. Uma outra forma mais recente de escrever a data é ano/mês/dia. Projete uma função que receba como entra o dia o mês e o ano e gere uma string representando a data na forma ano/mês/dia.
+
+#. Dizemos que o nome de uma pessoal é curto se tem no máximo três letras e longo se tem mais que 8 letras. Um nome que não é nem curto e nem longo é mediano. Projete uma função que verifique se um dado nome é mediano.
+
+#. A operação de módulo é bastante comum na computação, mas muitos ainda não estão acostumados com essa operação, por isso é importante fazermos alguns exemplos para nos familiarizarmos com ela.
+
+    a. Projete uma função que calcule a unidade de um número inteiro positivo, por exemplo, para o número 152, a unidade é 2.
+
+    b. Projete uma função que calcule a dezena de um número inteiro positivo, por exemplo, para o número 152, a dezena é 5.
+
+    c. Projete uma função que verifique se um dado número inteiro positivo é par.
+
+    d. Projete uma função que verifique se os dois últimos dígitos de um número são 00.
+
+#. Projete uma função que verifique se o primeiro nome de uma pessoa é "Paula". (Dica: `substr`)
 
 #. Projete uma função que verifique se o sobrenome de uma pessoa é "Silva".
 
-#. Projete uma função que calcule a dezena de um número inteiro positivo, por exemplo, para o número 152, a dezena é 5. Dica: divisão inteira e módulo
-
-#. Projete uma função que calcule a centena de um número inteiro positivo, por exemplo, para o número 152, a centena é 1. Dica: divisão inteira e módulo.
-
-#. Projete uma função que verifique se um dado número inteiro positivo é par.
+#. Projete uma função que calcule o valor da hipotenusa a partir dos valores dos catetos.
 
 #. Resolva o problema do André, ele está esperando!
 
