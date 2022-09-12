@@ -33,7 +33,7 @@ O processo que vamos seguir está dividido em 6 etapas: \pause
 
 # Projeto de programas
 
-Ao final de cada etapa produzimos resultados que serão utilizados nas etapas posteriores, então devemos tentar seguir as etapas em ordem. \pause No entanto, em alguns situações, pode ser necessário mudar a ordem. \pause
+Ao final de cada etapa produzimos resultados que serão utilizados nas etapas posteriores, então devemos tentar seguir as etapas em ordem. \pause No entanto, em algumas situações, pode ser necessário mudar a ordem. \pause
 
 Por exemplo, às vezes estamos na implementação e encontramos uma nova condição e devemos
 voltar e alterar a especificação. \pause Em outra situação não estamos conseguindo entender o problema (análise) e então fazemos alguns exemplos (especificação) para nos ajudar. \pause
@@ -331,7 +331,7 @@ Objetivo: determinar o que deve ser feito. \pause
 
 **Resultado** \pause
 
-Calcular o número de azulejos necessários para azulejar uma parede com determinado comprimento e altura, considerando que o azulejo mede 0,2,0m x 0,2m e que nenhum azulejo é perdido e que recordes são descartados.
+Calcular o número de azulejos necessários para azulejar uma parede com determinado comprimento e altura, considerando que o azulejo mede 0,2,0m x 0,2m e que nenhum azulejo é perdido e que recortes são descartados.
 </div>
 </div>
 
@@ -342,7 +342,7 @@ Calcular o número de azulejos necessários para azulejar uma parede com determi
 <div class="column" width="48%">
 **Análise**
 
-Calcular o número de azulejos necessários para azulejar uma parede com determinado comprimento e altura, considerando que cada azulejo mede 0,2m x 0,2m e que nenhum azulejo é perdido e que recordes são descartados.
+Calcular o número de azulejos necessários para azulejar uma parede com determinado comprimento e altura, considerando que cada azulejo mede 0,2m x 0,2m e que nenhum azulejo é perdido e que recortes são descartados.
 </div>
 <div class="column" width="48%">
 Objetivo: definir como as informações serão representadas como dados no programa. \pause
@@ -366,7 +366,7 @@ O número de azulejos é representado por um número inteiro positivo.
 <div class="column" width="48%">
 **Análise**
 
-Calcular o número de azulejos necessários para azulejar uma parede com determinado comprimento e altura, considerando que cada azulejo mede 0,2m x 0,2m e que nenhum azulejo é perdido e que recordes são descartados.
+Calcular o número de azulejos necessários para azulejar uma parede com determinado comprimento e altura, considerando que cada azulejo mede 0,2m x 0,2m e que nenhum azulejo é perdido e que recortes são descartados.
 
 **Tipos de dados**
 
@@ -394,7 +394,7 @@ Objetivo: especificar com mais precisão e com exemplos o que o programa deve fa
 ```cpp
 // Calcula o número de azulejos de 0,2mx0,2m necessários para azulejar uma area
 // de tamanho comprimento x altura (em metros) considerando que nenhum azulejo
-// é perdido e que recordes são descartados.
+// é perdido e que recortes são descartados.
 int numero_azulejos(double comprimento, double altura)
 {
     return 0;

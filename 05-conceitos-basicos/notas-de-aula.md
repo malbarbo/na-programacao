@@ -122,9 +122,9 @@ int main()
 
 A instrução `std::cout` (_**c**onsole **out**put_) é usado para exibir informações no terminal (console). \pause
 
-O símbolo `<<` é usado para indicar a instrução `std::cout` um item que deve ser exibido. Os projetistas escolheram o símbolo `<<` porque dá a ideia de que a informação a direita do símbolo esta sendo "transmitida" para o console (`std::cout`). \pause O símbolo `std::endl` (_end line_ -- fim de linha em inglês) indica que a linha atual deve ser encerrada e o cursor posicionado no início da próxima linha. \pause
+O símbolo `<<` é usado para indicar a instrução `std::cout` um item que deve ser exibido. Os projetistas escolheram o símbolo `<<` porque dá a ideia de que a informação à direita do símbolo está sendo "transmitida" para o console (`std::cout`). \pause O símbolo `std::endl` (_end line_ -- fim de linha em inglês) indica que a linha atual deve ser encerrada e o cursor posicionado no início da próxima linha. \pause
 
-As aspas (`"`) são utilizadas para delimitar uma sequência de caracteres (texto), que deve ser exibida na tela pelo `std::cout`. \pause O ponto e vírgula (`;`) é usando para indicar o fim da instrução.
+As aspas (`"`) são utilizadas para delimitar uma sequência de caracteres (texto), que deve ser exibida na tela pelo `std::cout`. \pause O ponto e vírgula (`;`) é usado para indicar o fim da instrução.
 
 # Saída
 
@@ -257,7 +257,7 @@ int a = 10;
 int b = 2 * a;
 ```
 
-As variáveis `a` e `b` foram declaradas como inteiras (`int`{.cpp}), o que significa que apenas valor numéricos inteiros (no intervalo de -2.147.483.648 a 2.147.483.647) podem ser armazenados nessas variáveis. \pause
+As variáveis `a` e `b` foram declaradas como inteiras (`int`{.cpp}), o que significa que apenas valores numéricos inteiros (no intervalo de -2.147.483.648 a 2.147.483.647) podem ser armazenados nessas variáveis. \pause
 
 Além de números inteiros, também temos números de ponto flutuante (`double`{.cpp}), que são utilizadas para armazenar valores aproximados de números reais (15 dígitos significativos). \pause
 
@@ -564,14 +564,14 @@ Qual o erro nesse código? \pause Por padrão, esta construção é válida e n�
 
 Nesse caso, apesar de ir contra a nossa intuição, o compilador atribui um significado para a construção, que é armazenar apenas a parte inteira de `10.6`{.cpp} em `a`. \pause
 
-As vezes o comportamento da linguagem não está de acordo com a nossa intuição, por isso precisamos conhecer com precisão a semântica da linguagem!
+Às vezes o comportamento da linguagem não está de acordo com a nossa intuição, por isso precisamos conhecer com precisão a semântica da linguagem!
 
 
 # Erros semânticos
 
-Algumas construções que podem ser propensas a erros são aceitas por padrão pelos compiladores do C++. \pause Como programadores iniciantes é bom termos um compilador mais "exigente", que nos ajude a identificar essas construções. \pause
+Algumas construções que podem ser propensas a erros são aceitas por padrão pelos compiladores do C++. \pause Como programadores iniciantes, é bom termos um compilador mais "exigente", que nos ajude a identificar essas construções. \pause
 
-Então, para compilarmos os nossos programas, vamos utilizar as opções `-Wall -Wextra -Wconversion -Werror`, que faz o compilador apontar como erro mais construções que não muito claras.
+Então, para compilarmos os nossos programas, vamos utilizar as opções `-Wall -Wextra -Wconversion -Werror`, que faz o compilador apontar como erro mais construções que não são muito claras.
 
 
 # Erros semânticos
@@ -838,7 +838,7 @@ Qual resposta você daria para as seguintes expressões? \pause
 
 `9 + 2 > 7 * 2`{.cpp} \pause, Falso. \pause
 
-O tipo `bool`{.cpp} (booleano) tem dois valores, verdadeira (`true`{.cpp}) e falso (`false`{.cpp}). Assim como números e strings, os valores do tipo booleano podem ser armazenados e manipulados.
+O tipo `bool`{.cpp} (booleano) tem dois valores, verdadeiro (`true`{.cpp}) e falso (`false`{.cpp}). Assim como números e strings, os valores do tipo booleano podem ser armazenados e manipulados.
 
 
 # Booleanos
@@ -970,11 +970,11 @@ string texto = "1023"
 // texto.length() produz a quantidade de bytes em texto
 bool tem_4_caracteres = texto.length() == 4; // true
 
-// stoi converte um string que representa um número inteiro
+// stoi converte uma string que representa um número inteiro
 // em um número inteiro
 int x = stoi(texto) + 10; // 1033
 
-// to_string converte uma número para uma string
+// to_string converte um número para uma string
 string r = texto + to_string(x); // "10231033"
 ```
 

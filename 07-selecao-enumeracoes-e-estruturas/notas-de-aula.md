@@ -88,7 +88,7 @@ cout << n;
 
 Qual o valor exibido pelo programa? \pause 8. \pause
 
-Executando com um computador: \pause
+Executando como um computador: \pause
 
 - Na linha 1 alocamos uma célula de memória e nomeamos ela de `n` e armazenamos o valor 1 nessa célula; \pause
 - Na linha 2 lemos o valor de `n` e somamos com 2, depois armazenamos o resultado (3) em `n`; \pause
@@ -271,7 +271,7 @@ examples
 
 Implementação \pause
 
-A resposta da função `maximo` dependente de alguma condição? \pause Sim. \pause
+A resposta da função `maximo` depende de alguma condição? \pause Sim. \pause
 
 Se o valor de `a` for maior do que o valor de `b`, então a resposta é o valor de `a`, senão a resposta é o valor de `b`. \pause
 
@@ -306,7 +306,7 @@ int main() {
 </div>
 <div class="column" width="48%">
 \pause
-Qual é a saída exibido pelo programa? \pause 10 e 20. \pause
+Qual é a saída exibida pelo programa? \pause 10 e 20. \pause
 
 Em que ordem as linhas são executas para gerar esse resultado? \pause
 
@@ -813,7 +813,7 @@ Em um determinado programa é necessário exibir para o usuário o tempo que uma
 
 a) Projete uma função que converta uma quantidade de segundos para uma quantidade de horas, minutos e segundos equivalentes. \pause
 
-b) Projete uma função que que converta uma quantidade de horas, minutos e segundos em uma string amigável para o usuário. A string não deve conter informações sobre tempo que são zeros (por exemplo, não deve informar 0 minutos).
+b) Projete uma função que converta uma quantidade de horas, minutos e segundos em uma string amigável para o usuário. A string não deve conter informações sobre tempo que são zeros (por exemplo, não deve informar 0 minutos).
 
 
 # Exemplo

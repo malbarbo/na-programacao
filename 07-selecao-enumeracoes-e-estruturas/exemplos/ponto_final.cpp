@@ -9,7 +9,7 @@ using namespace std;
 //
 // Definição de tipos de dados
 //
-// O texto é representada por um string.
+// O texto é representada por uma string.
 
 
 

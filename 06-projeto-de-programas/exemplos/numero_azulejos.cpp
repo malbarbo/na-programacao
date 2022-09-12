@@ -7,7 +7,7 @@ using namespace std;
 //
 // Calcular o número de azulejos necessários para azulejar uma parede com
 // determinado comprimento e altura,  considerando que o azulejo mede 0,2,0m x
-// 0,2m e que nenhum azulejo é perdido e que recordes são
+// 0,2m e que nenhum azulejo é perdido e que recortes são
 // descartados.
 //
 // Tipos de dados
@@ -18,7 +18,7 @@ using namespace std;
 
 // Calcula o número de azulejos de 0,2mx0,2m necessários para azulejar uma area
 // de tamanho comprimento x altura (em metros) considerando que nenhum azulejo
-// é perdido e que recordes são descartados.
+// é perdido e que recortes são descartados.
 int numero_azulejos(double comprimento, double altura)
 {
     return (int)(ceil(comprimento / 0.2) * ceil(altura / 0.2));
