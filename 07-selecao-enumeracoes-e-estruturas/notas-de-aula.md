@@ -394,9 +394,10 @@ Qual é a condição para a resposta ser `c`? \pause `c >= a && c >= b`{.cpp}
 
 <div class="columns">
 <div class="column" width="48%">
+\scriptsize
+
 Especificação
 
-\scriptsize
 ```cpp
 // Encontra o valor máximo entre a, b e c.
 int maximo3(int a, int b, int c) {
@@ -634,6 +635,76 @@ Estratégia de implementação
 Encontrar o máximo entre `a` e `b` e depois o máximo entre o resultado e `c`.
 </div>
 </div>
+
+
+# Ponto final
+
+<div class="columns">
+<div class="column" width="48%">
+Em um determinado programa é necessário que o texto digitado pelo usuário termine com um ponto. Projete uma função que coloque um ponto final em um texto se ele ainda não terminar com ponto.
+</div>
+<div class="column" width="48%">
+\pause
+
+Análise \pause
+
+- Colocar um ponto final em um texto caso ele ainda não termine com ponto. \pause
+
+Definição dos tipos de dados \pause
+
+- O texto é representado por uma string.
+</div>
+</div>
+
+
+# Ponto final - Especificação
+
+\scriptsize
+
+```cpp
+// Produz s se s é vazia ou termina com um ponto
+// final, caso contrário produz s seguido de um
+// ponto final.
+string coloca_ponto_se_necessario(string s) {
+    return s;
+}
+examples {
+    // Coloca o ponto
+    // s.substr(s.length() - 1, 1) == "." é false
+    check_expect(coloca_ponto_se_necessario("casa"), "casa.");
+    // s.substr(s.length() - 1, 1) == "." é false
+    check_expect(coloca_ponto_se_necessario("eu tambem"), "eu tambem.");
+    // Não coloca o ponto
+    // s.substr(s.length() - 1, 1) == "." é true
+    check_expect(coloca_ponto_se_necessario("casa."), "casa.");
+    // s == "" é true
+    check_expect(coloca_ponto_se_necessario(""), "");
+}
+```
+
+# Ponto final - Implementação
+
+\scriptsize
+
+```cpp
+string coloca_ponto_se_necessario(string s) {
+    string r;
+    // s é vazia ou o último caractere é "."
+    if (s == "" ||
+          s.substr(s.length() - 1, 1) == ".") {
+        r = s;
+    } else {
+        r = s + ".";
+    }
+    return r;
+}
+```
+
+\pause
+
+Verificação: ok.
+
+Revisão: ok.
 
 
 # Álcool ou Gasolina?

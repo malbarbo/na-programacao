@@ -20,8 +20,8 @@ using namespace std;
 string coloca_ponto_se_necessario(string s)
 {
     string r;
-    // s é vazio ou o último caractere é "."
-    if (s == "" || (s.substr(s.length() - 1, 1) == ".")) {
+    // s é vazia ou o último caractere é "."
+    if (s == "" || s.substr(s.length() - 1, 1) == ".") {
         r = s;
     } else {
         r = s + ".";
@@ -31,13 +31,15 @@ string coloca_ponto_se_necessario(string s)
 
 examples
 {
-    // s = "casa", s.substr(3, 1) -> "a" == "." -> false -> adiciona ponto
+    // Coloca o ponto
+    // s.substr(s.length() - 1, 1) == "." é false
     check_expect(coloca_ponto_se_necessario("casa"), "casa.");
-    // s = "casa.", s.substr(4, 1) -> "." == "." -> true -> devolve s
-    check_expect(coloca_ponto_se_necessario("casa."), "casa.");
-    check_expect(coloca_ponto_se_necessario("casa ."), "casa .");
-    // s = "eu tambem", s.substr(8, 1) -> "m" == "." -> false -> adiciona ponto
+    // s.substr(s.length() - 1, 1) == "." é false
     check_expect(coloca_ponto_se_necessario("eu tambem"), "eu tambem.");
+    // Não coloca o ponto
+    // s.substr(s.length() - 1, 1) == "." é true
+    check_expect(coloca_ponto_se_necessario("casa."), "casa.");
+    // s == "" é true
     check_expect(coloca_ponto_se_necessario(""), "");
 }
 
