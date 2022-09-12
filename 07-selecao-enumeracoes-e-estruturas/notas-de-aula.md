@@ -188,7 +188,7 @@ if (condição) {
 
 \pause
 
-Como a instrução `if else`{.cpp} é executada? \pause O computador avaliação a condição e verifica o resultado. Se o resultado for `true`{.cpp}, então as instruções do bloco "instruções então" são executadas, senão (o resultado é `false`{.cpp}), as instruções do bloco "instruções senão" são executadas.
+Como a instrução `if else`{.cpp} é executada? \pause O computador avalia a condição e verifica o resultado. Se o resultado for `true`{.cpp}, então as instruções do bloco "instruções então" são executadas, senão (o resultado é `false`{.cpp}), as instruções do bloco "instruções senão" são executadas.
 
 
 # Exemplo
@@ -259,7 +259,9 @@ int maximo(int a, int b)
 
 examples
 {
+    // a é máximo
     check_expect(maximo(20, 10), 20);
+    // b é máximo
     check_expect(maximo(5, 10), 10);
     check_expect(maximo(5, 5), 5);
 }
@@ -269,13 +271,17 @@ examples
 </div>
 <div class="column" width="48%">
 
+\small
+
 Implementação \pause
 
-A resposta da função `maximo` depende de alguma condição? \pause Sim. \pause
+Até agora, todas as funções que projetamos tinham apenas uma "forma" de gerar o resultado. \pause
 
-Se o valor de `a` for maior do que o valor de `b`, então a resposta é o valor de `a`, senão a resposta é o valor de `b`. \pause
+Na função máximo, existem duas "formas" para a resposta, ou a resposta é `a`, ou a resposta é `b`. \pause
 
-Quando a resposta depende de uma condição, usamos uma instrução de seleção!
+Como escolher a resposta para a função? \pause Avaliando um condição: se o valor de `a` for maior do que o valor de `b`, então a resposta é o valor de `a`, senão a resposta é o valor de `b`. \pause
+
+Quando a resposta depende de uma ou mais condições, usamos uma instrução de seleção!
 </div>
 </div>
 
@@ -288,13 +294,13 @@ Quando a resposta depende de uma condição, usamos uma instrução de seleção
 
 ```{.cpp .number-lines}
 int maximo(int a, int b) {
-    int m;
+    int max;
     if (a > b) {
-        m = a;
+        max = a;
     } else {
-        m = b;
+        max = b;
     }
-    return m;
+    return max;
 }
 
 int main() {
@@ -366,10 +372,137 @@ examples {
 \pause
 </div>
 <div class="column" width="48%">
+
+\small
+
 Implementação \pause
 
+Quantas "formas" de reposta temos? \pause 3. \pause Ou a resposta é `a`, ou a resposta é `b`, ou a resposta é `c`. \pause
+
+Se temos respostas diferentes, então a resposta depende de uma ou mais condições. \pause Então, usamos instruções de seleção. \pause
+
+Qual é a condição para a resposta ser `a`? \pause `a >= b && a >= c`{.cpp} \pause
+
+Qual é a condição para a resposta ser `b`? \pause `b >= a && b >= c`{.cpp} \pause
+
+Qual é a condição para a resposta ser `c`? \pause `c >= a && c >= b`{.cpp}
+
+</div>
+</div>
+
+# Implementação
+
+<div class="columns">
+<div class="column" width="48%">
+Especificação
+
 \scriptsize
-Encontrar o máximo entre a e b e depois o máximo entre o resultado e c. \pause
+```cpp
+// Encontra o valor máximo entre a, b e c.
+int maximo3(int a, int b, int c) {
+   return 0;
+}
+examples {
+    // a é máximo
+    check_expect(maximo3(20, 10, 12), 20);
+    check_expect(maximo3(20, 12, 10), 20);
+    check_expect(maximo3(20, 12, 12), 20);
+    check_expect(maximo3(20, 20, 20), 20);
+    // b é máximo
+    check_expect(maximo3(5, 12, 3), 12);
+    check_expect(maximo3(3, 12, 5), 12);
+    check_expect(maximo3(5, 12, 5), 12);
+    // c é máximo
+    check_expect(maximo3(4, 8, 18), 18);
+    check_expect(maximo3(8, 4, 18), 18);
+    check_expect(maximo3(8, 8, 18), 18);
+}
+```
+
+</div>
+<div class="column" width="48%">
+
+\scriptsize
+
+Implementação \pause
+
+```cpp
+// Encontra o valor máximo entre a, b e c.
+int maximo3(int a, int b, int c) {
+    int max;
+    if (a >= b && a >= c) {
+        max = a;
+    } else if (b >= a && b >= c) {
+        max = b;
+    } else if (c >= a && c >= b) {
+        max = c;
+    }
+    return max;
+}
+```
+
+</div>
+</div>
+
+
+# Verificação e revisão
+
+Verificação: \pause ok. \pause
+
+Revisão
+
+\pause
+
+Dependendo do compilador, podemos obter o aviso
+
+\small
+
+```
+x.cpp:9:16: warning: variable 'm' is used uninitialized whenever 'if'
+condition is false [-Wsometimes-uninitialized]
+```
+
+\normalsize
+
+\pause
+
+Por que? \pause Se nenhuma das três condições for verdadeira, `m` não será inicializado. \pause Mas nós sabemos que sempre pelo menos uma das condições é verdadeira! \pause Então vamos ajustar o código!
+
+
+# Revisão
+
+```cpp
+// Encontra o valor máximo entre a, b e c.
+int maximo3(int a, int b, int c) {
+    int max;
+    if (a >= b && a >= c) {
+        max = a;
+    } else if (b >= a && b >= c) {
+        max = b;
+    } else { // c >= a && c >= b
+        max = c;
+    }
+    return max;
+}
+```
+
+
+# Revisão
+
+Podemos fazer uma implementação diferente? \pause Sim. \pause
+
+Ao invés de "perguntar" duas coisas por vez, podemos perguntar apenas uma coisa por vez e fazer uma "sequência" de decisões. \pause
+
+Se `a >= b`, quais valores podem ser o máximo? \pause Os valores de `a` e `c`. \pause E como descobrimos quem é o máximo entre `a` e `c`? \pause Fazendo outra seleção. \pause
+
+Se `a < b`, quais valores podem ser o máximo? \pause Os valores de `b` e `c`. \pause E como descobrimos quem é o máximo entre `b` e `c`? \pause Fazendo outra seleção.
+
+
+# Solução alternativa
+
+<div class="columns">
+<div class="column" width="48%">
+\footnotesize
 
 ```cpp
 int maximo3(int a, int b, int c) {
@@ -390,14 +523,32 @@ int maximo3(int a, int b, int c) {
     return max; }
 ```
 </div>
+<div class="column" width="48%">
+\footnotesize
+
+```cpp
+int maximo3(int a, int b, int c) {
+    int max;
+    if (a >= b && a >= c) {
+        max = a;
+    } else if (b >= a && b >= c) {
+        max = b;
+    } else {
+        max = c;
+    }
+    return m;
+}
+```
+
+\pause
+
+\small
+
+Qual versão é mais fácil de entender? \pause A primeira... \pause
+
+Podemos melhorar ainda? \pause Sim!
 </div>
-
-
-# Verificação e revisão
-
-Verificação: \pause ok. \pause
-
-Revisão: \pause muitas possibilidades!
+</div>
 
 
 # Revisão
@@ -480,7 +631,7 @@ int maximo3(int a, int b, int c) {
 <div class="column" width="48%">
 Estratégia de implementação
 
-Encontrar o máximo entre a e b e depois o máximo entre o resultado e c.
+Encontrar o máximo entre `a` e `b` e depois o máximo entre o resultado e `c`.
 </div>
 </div>
 
@@ -515,7 +666,7 @@ Discutimos em sala o projeto desse programa.
 
 # Especificação
 
-\footnotesize
+\scriptsize
 
 ```{.cpp}
 // Combustivel é "alcool" ou "gasolina".
@@ -535,11 +686,13 @@ string indica_combustivel(double preco_alcool, double preco_gasolina) {
 
 ```cpp
 examples {
-    // 4.000 <= 0.7 * 5.000 -> false -> "gasolina"
+    // Combustível é gasolina
+    // 4.000 <= 0.7 * 5.000 é false
     check_expect(indica_combustivel(4.000, 5.000), "gasolina");
-    // 4.000 <= 0.7 * 6.000 -> true -> "alcool"
+    // Combustível é alcool
+    // 4.000 <= 0.7 * 6.000 é true
     check_expect(indica_combustivel(4.000, 6.000), "alcool");
-    // 3.500 <= 0.7 * 5.000 -> true -> "alcool"
+    // 3.500 <= 0.7 * 5.000 é true
     checK_expect(indica_combustivel(4.200, 6.000), "alcool");
 }
 ```
@@ -547,7 +700,7 @@ examples {
 
 # Implementação
 
-O resultado depende de uma condição? \pause Sim! \pause Então usamos seleção \pause
+O resultado depende de uma condição? Ou seja, existe mais que uma forma para a resposta? \pause Sim! \pause Então usamos seleção. \pause
 
 \small
 
