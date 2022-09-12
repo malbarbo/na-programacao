@@ -9,7 +9,7 @@ enum Combustivel {
 };
 
 // Indica o combustível que deve ser utilizado no abastecimento. Produz
-// Alcool se preco-alcool for menor ou igual a 70% do preco-gasolina,
+// Alcool se preco_alcool for menor ou igual a 70% do preco_gasolina,
 // produz Gasolina caso contrário.
 Combustivel indica_combustivel(double preco_alcool, double preco_gasolina)
 {
@@ -24,12 +24,14 @@ Combustivel indica_combustivel(double preco_alcool, double preco_gasolina)
 
 examples
 {
-    // 4.000 <= 0.7 * 5.000 -> 4.000 <= 3.500 -> false -> Gasolina
-    check_expect(indica_combustivel(4.000, 5.000), Gasolina);
-    // 4.000 <= 0.7 * 6.000 -> 4.000 <= 4.200 -> true -> Alcool
+    // Alcool
+    // 4.000 <= 0.7 * 6.000 é true
     check_expect(indica_combustivel(4.000, 6.000), Alcool);
-    // 3.500 <= 0.7 * 5.000 -> 3.500 <= 3.500 -> true -> Alcool
+    // 3.500 <= 0.7 * 5.000 é true
     check_expect(indica_combustivel(3.500, 5.000), Alcool);
+    // Gasolina
+    // 4.000 <= 0.7 * 5.000 é false
+    check_expect(indica_combustivel(4.000, 5.000), Gasolina);
 }
 
 int main()

@@ -19,27 +19,92 @@ examples
     check_expect(maximo(5, 5), 5);
 }
 
+// Encontra o valor máximo entre a, b e c.
+int maximo3v1(int a, int b, int c) {
+    int max;
+    if (a >= b && a >= c) {
+        max = a;
+    } else if (b >= a && b >= c) {
+        max = b;
+    } else {
+        max = c;
+    }
+    return max;
+}
+
+examples
+{
+    // a é máximo
+    check_expect(maximo3v1(20, 10, 12), 20);
+    check_expect(maximo3v1(20, 12, 10), 20);
+    check_expect(maximo3v1(20, 12, 12), 20);
+    check_expect(maximo3v1(20, 20, 20), 20);
+    // b é máximo
+    check_expect(maximo3v1(5, 12, 3), 12);
+    check_expect(maximo3v1(3, 12, 5), 12);
+    check_expect(maximo3v1(5, 12, 5), 12);
+    // c é máximo
+    check_expect(maximo3v1(4, 8, 18), 18);
+    check_expect(maximo3v1(8, 4, 18), 18);
+    check_expect(maximo3v1(8, 8, 18), 18);
+}
+
+int maximo3v2(int a, int b, int c) {
+    int max;
+    if (a >= b) {
+        if (a >= c) {
+            max = a;
+        } else {
+            max = c;
+        }
+    } else {
+        if (b >= c) {
+            max = b;
+        } else {
+            max = c;
+        }
+    }
+    return max;
+}
+
+examples
+{
+    // a é máximo
+    check_expect(maximo3v2(20, 10, 12), 20);
+    check_expect(maximo3v2(20, 12, 10), 20);
+    check_expect(maximo3v2(20, 12, 12), 20);
+    check_expect(maximo3v2(20, 20, 20), 20);
+    // b é máximo
+    check_expect(maximo3v2(5, 12, 3), 12);
+    check_expect(maximo3v2(3, 12, 5), 12);
+    check_expect(maximo3v2(5, 12, 5), 12);
+    // c é máximo
+    check_expect(maximo3v2(4, 8, 18), 18);
+    check_expect(maximo3v2(8, 4, 18), 18);
+    check_expect(maximo3v2(8, 8, 18), 18);
+}
+
 // Encontra o máximo entre a, b e c.
-int maximo3(int a, int b, int c)
+int maximo3v3(int a, int b, int c)
 {
     return maximo(maximo(a, b), c);
 }
 
 examples
 {
-    // máximo é o a
-    check_expect(maximo3(4, 3, 1), 4);
-    check_expect(maximo3(4, 1, 3), 4);
-    check_expect(maximo3(4, 4, 3), 4);
-    check_expect(maximo3(-1, -2, -1), -1);
-    // máximo é o b
-    check_expect(maximo3(3, 4, 1), 4);
-    check_expect(maximo3(1, 4, 3), 4);
-    check_expect(maximo3(1, 8, 8), 8);
-    // máximo é o c
-    check_expect(maximo3(3, 1, 4), 4);
-    check_expect(maximo3(1, 3, 4), 4);
-    check_expect(maximo3(-2, -2, -2), -2);
+    // a é máximo
+    check_expect(maximo3v3(20, 10, 12), 20);
+    check_expect(maximo3v3(20, 12, 10), 20);
+    check_expect(maximo3v3(20, 12, 12), 20);
+    check_expect(maximo3v3(20, 20, 20), 20);
+    // b é máximo
+    check_expect(maximo3v3(5, 12, 3), 12);
+    check_expect(maximo3v3(3, 12, 5), 12);
+    check_expect(maximo3v3(5, 12, 5), 12);
+    // c é máximo
+    check_expect(maximo3v3(4, 8, 18), 18);
+    check_expect(maximo3v3(8, 4, 18), 18);
+    check_expect(maximo3v3(8, 8, 18), 18);
 }
 
 int main()

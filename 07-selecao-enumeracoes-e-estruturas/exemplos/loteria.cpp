@@ -63,6 +63,7 @@ int numero_acertos(SeisNumeros aposta, SeisNumeros sorteados)
 
 examples
 {
+    // verificar cada número de aposta e conta 1 se estiver em sorteados
     check_expect(numero_acertos({1, 2, 3, 4, 5, 6}, {8, 12, 20, 41, 52, 57}), 0);
     check_expect(numero_acertos({8, 2, 3, 4, 5, 6}, {8, 12, 20, 41, 52, 57}), 1);
     check_expect(numero_acertos({8, 12, 3, 4, 5, 6}, {8, 12, 20, 41, 52, 57}), 2);
