@@ -913,7 +913,7 @@ a        |  b      | a && b
 
 # Booleanos - Disjunção
 
-Em C++ o símbolo da operação de conjunção é `||`{.cpp} \pause
+Em C++ o símbolo da operação de disjunção é `||`{.cpp} \pause
 
 
 Tabela verdade
