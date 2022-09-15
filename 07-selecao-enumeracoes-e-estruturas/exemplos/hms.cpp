@@ -10,9 +10,11 @@ using namespace std;
 //
 // Definição de tipos de dados
 //
-// - Os segundos da entrada serão representados com números inteiros positivos
+// Os segundos da entrada serão representados com números inteiros positivos
 
 // Representa o tempo de duração de um evento.
+// horas, minutos e segundos devem ser positivos.
+// minutos e segundos devem ser menores que 60.
 struct Tempo {
     int horas;
     int minutos;
@@ -94,6 +96,7 @@ examples
     check_expect(tempo_para_string(Tempo {1, 2, 1}), "1 hora(s), 2 minuto(s) e 1 segundo(s)");
     check_expect(tempo_para_string(Tempo {4, 0, 25}), "4 hora(s) e 25 segundo(s)");
     check_expect(tempo_para_string(Tempo {2, 4, 0}), "2 hora(s) e 4 minuto(s)");
+    check_expect(tempo_para_string(Tempo {3, 0, 0}), "3 hora(s)");
 }
 
 

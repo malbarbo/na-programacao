@@ -345,9 +345,10 @@ Tipos de dados \pause
 
 <div class="columns">
 <div class="column" width="48%">
+\scriptsize
+
 Especificação \pause
 
-\scriptsize
 ```cpp
 // Encontra o valor máximo entre a, b e c.
 int maximo3(int a, int b, int c) {
@@ -358,6 +359,7 @@ examples {
     check_expect(maximo3(20, 10, 12), 20);
     check_expect(maximo3(20, 12, 10), 20);
     check_expect(maximo3(20, 12, 12), 20);
+    check_expect(maximo3(20, 20, 20), 20);
     // b é máximo
     check_expect(maximo3(5, 12, 3), 12);
     check_expect(maximo3(3, 12, 5), 12);
@@ -459,7 +461,7 @@ Dependendo do compilador, podemos obter o aviso
 \small
 
 ```
-x.cpp:9:16: warning: variable 'm' is used uninitialized whenever 'if'
+x.cpp:9:16: warning: variable 'max' is used uninitialized whenever 'if'
 condition is false [-Wsometimes-uninitialized]
 ```
 
@@ -494,9 +496,9 @@ Podemos fazer uma implementação diferente? \pause Sim. \pause
 
 Ao invés de "perguntar" duas coisas por vez, podemos perguntar apenas uma coisa por vez e fazer uma "sequência" de decisões. \pause
 
-Se `a >= b`, quais valores podem ser o máximo? \pause Os valores de `a` e `c`. \pause E como descobrimos quem é o máximo entre `a` e `c`? \pause Fazendo outra seleção. \pause
+Se `a >= b`{.cpp} é `true`{.cpp}, quais valores podem ser o máximo? \pause Os valores de `a` e `c`. \pause E como descobrimos quem é o máximo entre `a` e `c`? \pause Fazendo outra seleção. \pause
 
-Se `a < b`, quais valores podem ser o máximo? \pause Os valores de `b` e `c`. \pause E como descobrimos quem é o máximo entre `b` e `c`? \pause Fazendo outra seleção.
+Se `a >= b`{.cpp} é `false`{.cpp}, quais valores podem ser o máximo? \pause Os valores de `b` e `c`. \pause E como descobrimos quem é o máximo entre `b` e `c`? \pause Fazendo outra seleção.
 
 
 # Solução alternativa
@@ -690,8 +692,7 @@ examples {
 string coloca_ponto_se_necessario(string s) {
     string r;
     // s é vazia ou o último caractere é "."
-    if (s == "" ||
-          s.substr(s.length() - 1, 1) == ".") {
+    if (s == "" || s.substr(s.length() - 1, 1) == ".") {
         r = s;
     } else {
         r = s + ".";
@@ -701,6 +702,8 @@ string coloca_ponto_se_necessario(string s) {
 ```
 
 \pause
+
+\small
 
 Verificação: ok.
 
@@ -747,8 +750,8 @@ Discutimos em sala o projeto desse programa.
 
 ```{.cpp}
 // Indica o combustível que deve ser utilizado no abastecimento. Produz
-// "alcool" se preco-alcool for menor ou igual a 70% do preco-gasolina, produz
-// "gasolina" caso contrário.
+// "alcool" se preco-alcool for menor ou igual a 70% do preco-gasolina,
+// caso contrário produz "gasolina".
 string indica_combustivel(double preco_alcool, double preco_gasolina) {
     return "alcool";
 }
@@ -757,14 +760,14 @@ string indica_combustivel(double preco_alcool, double preco_gasolina) {
 
 ```cpp
 examples {
-    // Combustível é gasolina
-    // 4.000 <= 0.7 * 5.000 é false
-    check_expect(indica_combustivel(4.000, 5.000), "gasolina");
     // Combustível é alcool
     // 4.000 <= 0.7 * 6.000 é true
     check_expect(indica_combustivel(4.000, 6.000), "alcool");
     // 3.500 <= 0.7 * 5.000 é true
     checK_expect(indica_combustivel(4.200, 6.000), "alcool");
+    // Combustível é gasolina
+    // 4.000 <= 0.7 * 5.000 é false
+    check_expect(indica_combustivel(4.000, 5.000), "gasolina");
 }
 ```
 
@@ -777,8 +780,8 @@ O resultado depende de uma condição? Ou seja, existe mais que uma forma para a
 
 ```cpp
 // Indica o combustível que deve ser utilizado no abastecimento. Produz
-// "alcool" se preco-alcool for menor ou igual a 70% do preco-gasolina, produz
-// "gasolina" caso contrário.
+// "alcool" se preco-alcool for menor ou igual a 70% do preco-gasolina,
+// caso contrário produz "gasolina".
 string indica_combustivel(double preco_alcool, double preco_gasolina) {
     string combustivel;
     if (preco_alcool <= 0.7 * preco_gasolina) {
@@ -847,11 +850,12 @@ Combustivel c = false;
 
 Erro
 
+\footnotesize
+
 ```
-x.cpp: In function ‘int main()’:
-x.cpp:8:21: error: cannot convert ‘bool’ to ‘Combustivel’ in initialization
-    8 |     Combustivel c = false;
-      |                     ^~~~~
+x.cpp:13:21: error: cannot convert ‘const char*’ to ‘Combustivel’ in initialization
+   13 |     Combustivel c = "Alcool";
+      |                     ^~~~~~~~
 ```
 
 
@@ -939,6 +943,8 @@ examples
 ```
 
 \pause
+
+\small
 
 Verificação: \pause Ok. \pause
 
@@ -1050,7 +1056,7 @@ Definição de tipos de dados
 
 - Os segundos da entrada serão representados com números inteiros positivos \pause
 
-- A saída são três números inteiros positivos... \pause As funções em C++ só permitem um valor de saída, como proceder? \pause Vamos criar um novo tipo de dado que agrupa esses três valores.
+- A saída são três números inteiros positivos... \pause As funções em C++ só podem produzir um valor de saída, como proceder? \pause Vamos criar um novo tipo de dado que agrupa esses três valores.
 
 
 
@@ -1075,6 +1081,8 @@ Uma forma de fazer isso é através de tipos estruturas.
 
 Um **tipo estrutura** é um tipo de dado composto por um conjunto fixo de campos com nome e tipo.
 
+\pause
+
 A forma geral para definir um tipo estrutura é
 
 ```cpp
@@ -1088,10 +1096,14 @@ struct NomeDoTipo {
 
 # Tipos estruturas
 
+\small
+
 Podemos definir um novo tipo para representar um tempo da seguinte forma
 
 ```cpp
 // Representa o tempo de duração de um evento.
+// horas, minutos e segundos devem ser positivos.
+// minutos e segundos devem ser menores que 60.
 struct Tempo {
     int horas;
     int minutos;
@@ -1127,14 +1139,14 @@ cout << repr(t1) << endl; // Tempo {0, 20, 10}
 
 # Tipos estruturas
 
-Como valores do tipo `Tempo` são compostos de outros valores (partes), podemos acessar e alterar cada valor de forma separada
+Como valores do tipo `Tempo` são compostos de outros valores (partes), podemos acessar e alterar cada valor de forma separada. \pause
 
 ```cpp
 Tempo t1 = {0, 20, 10};
 
-cout << t1.horas << endl; // exibe 0
+cout << t1.minutos << endl; // exibe 20
 
-t1.minutos = 40; // muda a quantidade de minutos para 40
+t1.horas = 3; // muda a quantidade de horas para 3
 ```
 
 \pause
@@ -1234,19 +1246,38 @@ string tempo_para_string(Tempo t)
 {
    return "";
 }
+```
 
-examples
-{
+# Especificação
+
+\scriptsize
+
+```cpp
+examples {
+    // horas == 0 && minutos == 0
     check_expect(tempo_para_string(Tempo {0, 0, 0}), "0 segundo(s)");
+    check_expect(tempo_para_string(Tempo {0, 0, 1}), "1 segundo(s)");
     check_expect(tempo_para_string(Tempo {0, 0, 10}), "10 segundo(s)");
+    // horas == 0 && minutos != 0 && segundos != 0
     check_expect(tempo_para_string(Tempo {0, 1, 20}), "1 minuto(s) e 20 segundo(s)");
+    // horas == 0 && minutos != 0 && segundos == 0
     check_expect(tempo_para_string(Tempo {0, 2, 0}), "2 minuto(s)");
+    // horas != 0 && minutos != 0 && segundos != 0
     check_expect(tempo_para_string(Tempo {1, 2, 1}), "1 hora(s), 2 minuto(s) e 1 segundo(s)");
+    // horas != 0 && minutos == 0 && segundos != 0
     check_expect(tempo_para_string(Tempo {4, 0, 25}), "4 hora(s) e 25 segundo(s)");
+    // horas != 0 && minutos != 0 && segundos == 0
     check_expect(tempo_para_string(Tempo {2, 4, 0}), "2 hora(s) e 4 minuto(s)");
+    // horas != 0 && minutos == 0 && segundos == 0
+    check_expect(tempo_para_string(Tempo {3, 0, 0}), "3 hora(s)");
 }
 ```
 
+# Implementação
+
+A implementação direta usando as condições combinadas fica com exercício. \pause
+
+A implementação a seguir usando condições aninhadas foi desenvolvida em sala.
 
 #
 
