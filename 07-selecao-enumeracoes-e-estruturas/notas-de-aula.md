@@ -750,7 +750,7 @@ Discutimos em sala o projeto desse programa.
 
 ```{.cpp}
 // Indica o combustível que deve ser utilizado no abastecimento. Produz
-// "alcool" se preco-alcool for menor ou igual a 70% do preco-gasolina,
+// "alcool" se preco_alcool for menor ou igual a 70% do preco_gasolina,
 // caso contrário produz "gasolina".
 string indica_combustivel(double preco_alcool, double preco_gasolina) {
     return "alcool";
@@ -780,7 +780,7 @@ O resultado depende de uma condição? Ou seja, existe mais que uma forma para a
 
 ```cpp
 // Indica o combustível que deve ser utilizado no abastecimento. Produz
-// "alcool" se preco-alcool for menor ou igual a 70% do preco-gasolina,
+// "alcool" se preco_alcool for menor ou igual a 70% do preco_gasolina,
 // caso contrário produz "gasolina".
 string indica_combustivel(double preco_alcool, double preco_gasolina) {
     string combustivel;
@@ -843,7 +843,7 @@ Uma variável do tipo `Combustivel` só pode armazenar o valor `Alcool` ou `Gaso
 \small
 
 ```cpp
-Combustivel c = false;
+Combustivel c = "Alcool";
 ```
 
 \pause
@@ -1226,7 +1226,7 @@ Em um determinado programa é necessário exibir para o usuário o tempo que uma
 
 a) Projete uma função que converta uma quantidade de segundos para uma quantidade de horas, minutos e segundos equivalentes.
 
-b) Projete uma função que que converta uma quantidade de horas, minutos e segundos em uma string amigável para o usuário. A string não deve conter informações sobre o tempo que são zeros (por exemplo, não deve informar 0 minutos).
+b) Projete uma função que converta uma quantidade de horas, minutos e segundos em uma string amigável para o usuário. A string não deve conter informações sobre o tempo que são zeros (por exemplo, não deve informar 0 minutos).
 
 \pause
 
@@ -1391,7 +1391,7 @@ Projeto desenvolvido em aula.
 // Representa o espaço que uma janela ocupa em um ambiente gráfico.
 //
 // A coordenada (x, y) descreve a posição do canto superior esquerdo.
-// A largura representa a quantidade de pixels a direita de (x, y)
+// A largura representa a quantidade de pixels à direita de (x, y)
 // e a altura representa a quantidade de pixels abaixo de (x, y).
 //
 // Os valores da largura e altura devem ser maiores que zero.
@@ -1416,7 +1416,7 @@ struct Clique {
 \scriptsize
 
 ```cpp
-// Devolve true se o clique c esta dentro do espaço da janela j, false contrário.
+// Devolve true se o clique c está dentro do espaço da janela j, false contrário.
 bool dentro_janela(Janela j, Clique c)
 {
    return false;
@@ -1477,7 +1477,7 @@ examples {
 \scriptsize
 
 ```cpp
-// Devolve true se o clique c esta dentro do espaço da janela j, false contrário.
+// Devolve true se o clique c está dentro do espaço da janela j, false contrário.
 bool dentro_janela(Janela j, Clique c)
 {
     // c.x está dentro do espaço da largura e c.y dentro do espaço da altura

@@ -9,7 +9,7 @@
 // Representa o espaço que uma janela ocupa em um ambiente gráfico.
 //
 // A coordenada (x, y) descreve a posição do canto superior esquerdo.
-// A largura representa a quantidade de pixels a direita de (x, y)
+// A largura representa a quantidade de pixels à direita de (x, y)
 // e a altura representa a quantidade de pixels abaixo de (x, y).
 //
 // Os valores da largura e altura devem ser maiores que zero.
@@ -28,7 +28,7 @@ struct Clique {
     int y;
 };
 
-// Devolve true se o clique c esta dentro do espaço da janela j, false contrário.
+// Devolve true se o clique c está dentro do espaço da janela j, false contrário.
 bool dentro_janela(Janela j, Clique c)
 {
     // c.x está dentro do espaço da largura e c.y dentro do espaço da altura
