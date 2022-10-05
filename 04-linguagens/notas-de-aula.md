@@ -217,7 +217,7 @@ Interpretação
 
 # Linguagens
 
-Existem centenas de linguagens de programação, cada uma com sua próprias características e usos, então, qual delas aprender? \pause
+Existem centenas de linguagens de programação, cada uma com suas próprias características e usos, então, qual delas aprender? \pause
 
 Nenhuma em particular. \pause O mais importante não são as linguagens em si, mas os princípios que são utilizados para criar os programas nas linguagens. \pause
 
@@ -235,6 +235,6 @@ Vamos começar?
 
 # Atividades
 
-@. Tente relacionar construções do fluxograma do algoritmo que calcula a raiz quadrada com construções do código em C++.
+@. Tente relacionar as construções do fluxograma do algoritmo que calcula a raiz quadrada com construções do código em C++.
 
-@. Tente relacionar construções do pseudo código que calcula o MDC com construções do código em Python.
+@. Tente relacionar as construções do pseudo código que calcula o MDC com construções do código em Python.

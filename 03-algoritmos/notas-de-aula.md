@@ -37,7 +37,7 @@ Forbellone e Eberspächer \pause
 
 Knuth
 
-> Uma conjunto finito de regras que fornece uma sequência de operações para resolver um tipo específico de problema.
+> Um conjunto finito de regras que fornece uma sequência de operações para resolver um tipo específico de problema.
 
 O que estas definições tem em comum?
 

@@ -168,7 +168,7 @@ Processador ou CPU (unidade central de processamento) \pause
 - Registradores
     - Memória muito rápida que armazena os operandos e os resultados das operações
 - Unidade lógica e aritmética (ULA)
-    - Lê os operados dos registradores
+    - Lê os operandos dos registradores
     - Executa operações
     - Grava o resultado nos registradores
 - Unidade de controle
@@ -184,7 +184,7 @@ Processador ou CPU (unidade central de processamento) \pause
 
 # Hierarquia de memória
 
-Porque existem tantos tipos de memória? \pause
+Por que existem tantos tipos de memória? \pause
 
 Porque cada uma tem características específicas de capacidade, velocidade e custo.
 

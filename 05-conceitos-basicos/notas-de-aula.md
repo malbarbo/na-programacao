@@ -25,7 +25,7 @@ Vamos começar com um problema!
 
 # Introdução
 
-O André viaja muito. Sempre antes de fazer uma viagem ele calcula o quanto ele irá gastar com combustível. Ele determina a distância que ele irá percorrer na viagem, o preço do litro do combustível e consulta as suas anotações para ver o consumo do carro, isto é, a quantidade de quilômetros que o carro anda com um litro de combustível e então faz o cálculo do custo. O André acha um pouco chato fazer os cálculos na mão, então ele pediu para você escrever um programa que faça os cálculos para ele. \pause
+O André viaja muito. Sempre antes de fazer uma viagem ele calcula quanto irá gastar com combustível. Ele determina a distância que ele irá percorrer na viagem, o preço do litro do combustível e consulta as suas anotações para ver o consumo do carro, isto é, a quantidade de quilômetros que o carro anda com um litro de combustível e então faz o cálculo do custo. O André acha um pouco chato fazer os cálculos na mão, então ele pediu para você escrever um programa que faça os cálculos para ele. \pause
 
 Como projetar um programa que atenda a necessidade do André? \pause
 
@@ -100,7 +100,7 @@ A sentença que escrevemos instrui o computador a fazer `4 * 3` e somar o result
 
 # Saída
 
-Algumas instruções, como a soma e a multiplicação, estão disponíveis diretamente para o programador, outras instruções, como as de entrada e saída, estão em bibliotecas que precisam ser requisitas explicitamente. \pause
+Algumas instruções, como a soma e a multiplicação, estão disponíveis diretamente para o programador, outras instruções, como as de entrada e saída, estão em bibliotecas que precisam ser requisitadas explicitamente. \pause
 
 Para usarmos a instrução de saída, precisamos incluir o arquivo de cabeçalho `iostream` (`io` é de _input/output_ -- entrada/saída em inglês) usando a diretiva `#include`{.cpp}.
 
@@ -122,7 +122,7 @@ int main()
 
 A instrução `std::cout` (_**c**onsole **out**put_) é usado para exibir informações no terminal (console). \pause
 
-O símbolo `<<` é usado para indicar a instrução `std::cout` um item que deve ser exibido. Os projetistas escolheram o símbolo `<<` porque dá a ideia de que a informação à direita do símbolo está sendo "transmitida" para o console (`std::cout`). \pause O símbolo `std::endl` (_end line_ -- fim de linha em inglês) indica que a linha atual deve ser encerrada e o cursor posicionado no início da próxima linha. \pause
+O símbolo `<<` é usado para indicar à instrução `std::cout` um item que deve ser exibido. Os projetistas escolheram o símbolo `<<` porque dá a ideia de que a informação à direita do símbolo está sendo "transmitida" para o console (`std::cout`). \pause O símbolo `std::endl` (_end line_ -- fim de linha em inglês) indica que a linha atual deve ser encerrada e o cursor posicionado no início da próxima linha. \pause
 
 As aspas (`"`) são utilizadas para delimitar uma sequência de caracteres (texto), que deve ser exibida na tela pelo `std::cout`. \pause O ponto e vírgula (`;`) é usado para indicar o fim da instrução.
 
@@ -1019,7 +1019,7 @@ Embora a forma de utilizar operadores, funções e métodos seja diferente, o pr
 </div>
 <div class="column" width="63%">
 \small
-Se o propósito é o mesmo, porque não usar a mesma forma? \pause
+Se o propósito é o mesmo, por que não usar a mesma forma? \pause
 
 Por conveniência! \pause Por exemplo, se não tivéssemos a forma de operadores e apenas a forma de chamada de funções, então deveríamos escrever `+(*(30, 2), a)` ao invés de `30 * 2 + a`, o que seria inconveniente. \pause
 

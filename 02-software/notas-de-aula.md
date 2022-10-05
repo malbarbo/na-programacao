@@ -9,7 +9,7 @@ subtitle: Software
 
 O que é um software? \pause
 
-Coleção de instruções que dizem o que um computador deve fazer.
+Uma coleção de instruções que dizem o que um computador deve fazer.
 
 
 # Licença
@@ -87,7 +87,7 @@ E depois? \pause
 
 # Sistema Operacional
 
-Qual são os papeis do sistema operacional? \pause
+Quais são os papéis do sistema operacional? \pause
 
 - Gerenciar os recursos do sistema computacional \pause
 
