@@ -1401,6 +1401,11 @@ struct Janela {
     int largura;
     int altura;
 };
+```
+
+\pause
+
+```cpp
 // Representa a posição de um clique em um ambiente gráfico.
 // Os valores de x e y devem ser maiores que 0 e menores do que as dimensões do
 // ambiente.
@@ -1507,7 +1512,7 @@ bool janelas_soprepoem(Janela a, Janela b)
 
 examples
 {
-    // fixa (eixo y): caixa a vem antes da caixa b
+    // fixa (eixo y): a janela a vem antes da janela b
     // variável: posição da borda direita de a
     check_expect(janelas_soprepoem({  10, 20, 100, 200 }, { 300, 400, 50, 100 }), false);
     check_expect(janelas_soprepoem({ 210, 20, 100, 200 }, { 300, 400, 50, 100 }), false);
@@ -1532,7 +1537,7 @@ examples
     check_expect(janelas_soprepoem({ 210, 450, 100, 200 }, { 300, 400, 50, 100 }), true);
     check_expect(janelas_soprepoem({ 310, 450, 100, 200 }, { 300, 400, 50, 100 }), true);
     check_expect(janelas_soprepoem({ 410, 450, 100, 200 }, { 300, 400, 50, 100 }), false);
-    // fixa: (eixo y) caixa a vem depois da caixa b
+    // fixa: (eixo y) a janela a vem depois da janela b
     // variável: posição da borda direita de a
     check_expect(janelas_soprepoem({  10, 550, 100, 200 }, { 300, 400, 50, 100 }), false);
     check_expect(janelas_soprepoem({ 210, 550, 100, 200 }, { 300, 400, 50, 100 }), false);
@@ -1618,9 +1623,32 @@ examples
 }
 ```
 
+\normalsize
+
+\pause
+
+Qual o processo que utilizamos para determinar as repostas?
+
+
+# Especificação
+
+Começamos o número de acertos com zero. \pause
+
+Depois verificamos se o primeiro número está entre os sorteados, se sim, aumentamentos os acertos em 1. \pause
+
+Depois verificamos se o segundo número está entre os sorteados, se sim, aumentamentos os acertos em 1. \pause
+
+E assim com o restante dos números. No final, temos a quantidade de acertos. \pause
+
+Este processo não parece muito detalhado... \pause como verificamos se um número está entre os sorteados? \pause Vamos deixar esse problema para depois. \pause
+
+Como expressar esse processo em C++? \pause Com uma sequência de etapas, como em muitos exercícios anteriores.
+
 
 # Implementação
 
+<div class="columns">
+<div class="column" width="48%">
 \scriptsize
 
 ```cpp
@@ -1645,6 +1673,34 @@ if (sorteado(aposta.f, sorteados)) {
 }
 return acertos;
 ```
+</div>
+<div class="column" width="48%">
+\pause
+
+\small
+
+Aqui utilizamos o pensamento desejoso e desejamos que a função `sorteado`{.cpp} exista e funcione de acordo com a seguinte especificação:
+
+\scriptsize
+
+```cpp
+// Produz true se n é um dos números em sorteados,
+// false caso contrário.
+bool sorteado(int n, SeisNumeros sorteados);
+```
+
+\small
+
+\pause
+
+Todas as funções que desejamos durante o projeto de outra função são colocas em uma lista de pendência. Após o término da implementação da função em questão, precisamos implementar as funções da lista de pendências.
+
+\pause
+
+Agora precisamos terminar o projeto da função `sorteado`{.cpp}.
+
+</div>
+</div>
 
 
 # Lista de pendências
@@ -1658,8 +1714,7 @@ bool sorteado(int n, SeisNumeros sorteados)
     return false;
 }
 
-examples
-{
+examples {
     SeisNumeros sorteados = {1, 7, 10, 40, 41, 60};
     check_expect(sorteado(1, sorteados), true);
     check_expect(sorteado(7, sorteados), true);
@@ -1672,6 +1727,24 @@ examples
     check_expect(sorteado(49, sorteados), false);
 }
 ```
+
+\pause
+
+\normalsize
+
+Qual o processo que utilizamos para determinar as repostas?
+
+
+# Implementação
+
+Verificamos se `n` é igual ao primeiro valor sorteado, se sim, guardamos a resposta `true`{.cpp}. \pause
+
+Senão, verificamos se `n` é igual ao segundo valor sorteado, se sim, guardamos a resposta `true`{.cpp}. \pause
+
+Senão, verificamos se `n` é igual ao terceiro valor... Senão guardamos a resposta `false`{.cpp}. \pause
+
+Como expressar esse processo em C++? \pause Com uma sequência de etapas! \pause Aqui vamos fazer uma simplificação para evitar o aninhamento demasiado de ifs. \pause Vamos colocar um if após o outro (você consegue ver que este processo alternativo continua correto?)
+
 
 
 # Implementação
@@ -1710,7 +1783,11 @@ bool sorteado(int n, SeisNumeros sorteados)
 </div>
 <div class="column" width="48%">
 
-\scriptsize
+\pause
+
+Implementação alternativa.
+
+\tiny
 
 ```cpp
 // Produz true se n é um dos números

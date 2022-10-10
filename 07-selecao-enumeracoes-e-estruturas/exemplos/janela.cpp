@@ -86,7 +86,7 @@ bool janelas_soprepoem(Janela a, Janela b)
 
 examples
 {
-    // fixa (eixo y): caixa a vem antes da caixa b
+    // fixa (eixo y): a janela a vem antes da janela b
     // variável: posição da borda direita de a
     check_expect(janelas_soprepoem({  10, 20, 100, 200 }, { 300, 400, 50, 100 }), false);
     check_expect(janelas_soprepoem({ 210, 20, 100, 200 }, { 300, 400, 50, 100 }), false);
@@ -104,7 +104,7 @@ examples
     check_expect(janelas_soprepoem({ 210, 450, 100, 200 }, { 300, 400, 50, 100 }), true);
     check_expect(janelas_soprepoem({ 310, 450, 100, 200 }, { 300, 400, 50, 100 }), true);
     check_expect(janelas_soprepoem({ 410, 450, 100, 200 }, { 300, 400, 50, 100 }), false);
-    // fixa: (eixo y) caixa a vem depois da caixa b
+    // fixa: (eixo y) a janela a vem depois da janela b
     // variável: posição da borda direita de a
     check_expect(janelas_soprepoem({  10, 550, 100, 200 }, { 300, 400, 50, 100 }), false);
     check_expect(janelas_soprepoem({ 210, 550, 100, 200 }, { 300, 400, 50, 100 }), false);
