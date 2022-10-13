@@ -33,11 +33,13 @@ examples
 {
     // Coloca o ponto
     // s.substr(s.length() - 1, 1) == "." é false
+    // s + "."
     check_expect(coloca_ponto_se_necessario("casa"), "casa.");
     // s.substr(s.length() - 1, 1) == "." é false
     check_expect(coloca_ponto_se_necessario("eu tambem"), "eu tambem.");
     // Não coloca o ponto
     // s.substr(s.length() - 1, 1) == "." é true
+    // s
     check_expect(coloca_ponto_se_necessario("casa."), "casa.");
     // s == "" é true
     check_expect(coloca_ponto_se_necessario(""), "");
