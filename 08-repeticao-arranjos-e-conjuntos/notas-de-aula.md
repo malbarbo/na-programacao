@@ -1,6 +1,7 @@
 ---
 # vim: set spell spelllang=pt_br:
 # TODO: separar em diversos arquivos
+# TODO: colocara definiçãode arranjo?
 title: Repetição, arranjos e conjuntos
 ---
 
@@ -10,6 +11,8 @@ Vimos anteriormente que devemos definir uma estrutura para representar uma infor
 
 - No problema da conversão de segundos para horas, minutos e segundos, definimos a estrutura `Tempo`. \pause
 
+- No problema do ambiente gráfico, definimos as estruturas `Janela` e `Clique`. \pause
+
 - No problema da loteria, definimos a estrutura `SeisNumeros`.
 
 
@@ -17,16 +20,16 @@ Vimos anteriormente que devemos definir uma estrutura para representar uma infor
 
 O `Tempo` era composto de três "itens", que foram representados pelos campos horas, minutos e segundos. \pause
 
-Já para `SeisNúmeros` cada item não tinha uma interpretação particular, então não usamos nomes significativos, tivemos que "inventar" os nomes de `a`, ..., `f`. \pause
+Já para `SeisNumeros` cada item não tinha uma interpretação particular, então não usamos nomes significativos, tivemos que "inventar" os nomes de `a`, ..., `f`. \pause
 
-Como faríamos se ao invés de 6 itens tivéssemos 20? \pause E 1.000? E 1.000.000? \pause Ou ainda, uma quantidade indefinida? \pause E como escrever o código para processar esse tipo de dado? \pause
+Como faríamos se ao invés de 6 itens tivéssemos 20? \pause E 1.000? \pause E 1.000.000? \pause Ou ainda, uma quantidade indefinida? \pause E como escrever o código para processar esse tipo de dado? \pause
 
-Vamos ver como fazer essas!
+Vamos ver como fazer essas coisas!
 
 
 # Arranjos de tamanho fixo
 
-Quando precisamos representar uma coleção com um número fixo de valores de mesma natureza (todos os itens são notas, nomes, pontos, janelas, etc), utilizamos arranjos de tamanho fixo. \pause
+Quando precisamos representar uma coleção com um número fixo de valores da mesma natureza (todos os itens são notas, nomes, pontos, janelas, etc), utilizamos arranjos de tamanho fixo. \pause
 
 Os arranjos em C++ são definidos na biblioteca `array`. Quando declaramos uma variável do tipo arranjo, precisamos especificar o tipo e a quantidade de elementos. A inicialização é feita de forma semelhante a valores do tipo estrutura.
 
@@ -38,7 +41,7 @@ Os arranjos em C++ são definidos na biblioteca `array`. Quando declaramos uma v
 ```cpp
 
 #include <array>
-...
+using namespace std;
 
 examples
 {
@@ -73,7 +76,9 @@ Observe que o primeiro elemento de um arranjo tem índice 0.
 
 # Arranjos de tamanho fixo
 
-O valor do índice deve estar no intervalo válido para o arranjo, caso contrário, o programa pode não funcionar corretamente. \pause Por padrão, os índices dos arranjos não são verificados antes de serem acessados. \pause Caso seja necessário fazer a verificação, deve-se usar o método `at`.
+O valor do índice deve estar no intervalo válido para o arranjo, caso contrário, o programa pode não funcionar corretamente. \pause Por padrão, os índices dos arranjos não são verificados antes de serem acessados. \pause
+
+Para habilitar a verificação do índice no acesso aos elementos devemos usar o método `at`. \pause
 
 \scriptsize
 
@@ -103,9 +108,9 @@ Abortado
 
 # Estruturas vs Arranjos
 
-Tanto as estruturas quanto os arranjos são utilizados para representar informações com dois ou mais itens.
+Tanto as estruturas quanto os arranjos são utilizados para representar informações com dois ou mais itens. \pause Então, como escolher qual utilizar? \pause
 
-- Usamos estruturas quando cada item da informação tem uma interpretação particular (estrutura Tempo, Janela, etc)
+- Usamos estruturas quando cada item da informação tem uma interpretação particular (na estrutura `Tempo`, temos os componentes `horas`, `minutos` e `segundos`) \pause
 
 - Usamos arranjos quando os itens da informação são da mesma natureza (todos são nomes, notas, etc)
 
@@ -149,6 +154,7 @@ bool sorteado(int n, SeisNumeros sorteados)
 ```
 </div>
 <div class="column" width="48%">
+\pause
 \tiny
 
 ```cpp
@@ -189,7 +195,7 @@ bool sorteado(int n, array<int, 6> sorteados)
 \tiny
 
 ```cpp
-// Calcula quantos números da aposta estão em sorteados.
+// Calcula quantos números de aposta estão em sorteados.
 int numero_acertos(SeisNumeros aposta, SeisNumeros sorteados)
 {
     int acertos = 0;
@@ -216,10 +222,11 @@ int numero_acertos(SeisNumeros aposta, SeisNumeros sorteados)
 ```
 </div>
 <div class="column" width="48%">
+\pause
 \tiny
 
 ```cpp
-// Calcula quantos números da aposta estão em sorteados.
+// Calcula quantos números de aposta estão em sorteados.
 int numero_acertos(array<int, 6> aposta, array<int, 6> sorteados)
 {
     int acertos = 0;
@@ -250,9 +257,9 @@ int numero_acertos(array<int, 6> aposta, array<int, 6> sorteados)
 
 # Loteria
 
-E então, o código melhorou? \pause Ainda não! \pause
+E então, o código melhorou? \pause Ainda não! Ele continua repetitivo! \pause
 
-Agora vamos eliminar a repetição física do código por uma repetição lógica, usando uma nova estrutura de controle. Isso é possível porque os elementos de um arranjo têm a mesma natureza.
+Agora vamos trocar a repetição física do código por uma repetição lógica, usando uma nova estrutura de controle. Isso é possível porque os elementos de um arranjo têm a mesma natureza.
 
 
 # Para cada
@@ -262,7 +269,7 @@ Em C++, uma das construções de repetição é o "para cada", que tem a seguint
 \scriptsize
 
 ```cpp
-for (Tipo var : arranjo) {
+for (Tipo nome : arranjo) {
     instruções;
 }
 ```
@@ -271,12 +278,12 @@ for (Tipo var : arranjo) {
 
 \normalsize
 
-O funcionamento do "para cada" é a seguinte \pause
+O "para cada" funciona da seguinte maneira: \pause
 
-- O primeiro valor de `arranjo` é atribuído para `var` e as `instruções` são executadas; \pause
-- O segundo valor de `arranjo` é atribuído para `var` e as `instruções` são executadas; \pause
+- O primeiro valor de `arranjo` é atribuído para `nome` e as `instruções` são executadas; \pause
+- O segundo valor de `arranjo` é atribuído para `nome` e as `instruções` são executadas; \pause
 - ... \pause
-- E as sim por diante até que todos os valores de `arranjo` tenham sidos atribuídos para `nome`. \pause
+- E assim por diante até que todos os valores de `arranjo` tenham sidos atribuídos para `nome`. \pause
 
 Ou seja, o "para cada" executa as mesmas instruções atribuindo cada valor de `arranjo` para `nome`, por isso ele chama "para cada"!
 
@@ -350,7 +357,7 @@ bool sorteado(int n, array<int, 6> sorteados)
 \tiny
 
 ```cpp
-// Calcula quantos números da aposta estão em sorteados.
+// Calcula quantos números de aposta estão em sorteados.
 int numero_acertos(array<int, 6> aposta, array<int, 6> sorteados)
 {
     int acertos = 0;
@@ -386,7 +393,7 @@ Nesse código, queremos executar as mesmas instruções, uma vez para cada valor
 \tiny
 
 ```cpp
-// Calcula quantos números da aposta estão em sorteados.
+// Calcula quantos números de aposta estão em sorteados.
 int numero_acertos(array<int, 6> aposta, array<int, 6> sorteados)
 {
     int acertos = 0;
@@ -406,7 +413,7 @@ int numero_acertos(array<int, 6> aposta, array<int, 6> sorteados)
 
 No exemplo da loteria, vimos como uma repetição física de código pode ser substituída por uma repetição lógica. \pause
 
-Em geral, não precisamos ter uma repetição física de código para depois trocar por uma repetição lógica, podemos projetar a função usando uma repetição lógica diretamente. \pause
+Em geral, não precisamos ter uma repetição física de código para depois trocarmos por uma repetição lógica, podemos projetar a função usando uma repetição lógica diretamente. \pause
 
 Vamos ver como fazer isso!
 
@@ -420,8 +427,8 @@ Esse valores podem ser o resultado final da função ou podem ser usados em outr
 Então, para escrever o código que processa os elementos de um arranjo com o "para cada" precisamos responder três perguntas \pause
 
 1) Quais variáveis (valores) queremos calcular? \pause
-2) Como as variáveis são inicializados? \pause
-3) Como as variáveis são atualizados? \pause
+2) Como as variáveis são inicializadas? \pause
+3) Como as variáveis são atualizadas? \pause
 
 Para responder cada pergunta, usamos os exemplos e perguntas auxiliares.
 
@@ -441,9 +448,9 @@ a) Quais variáveis (valores) queremos calcular? \pause
 
 # Com projetar funções que processam arranjos usando o "para cada"
 
-b) Como as variáveis são inicializados? \pause
+b) Como as variáveis são inicializadas? \pause
 
-   Se o arranjo não tivesse nenhum elemento, qual seria o valor esperado para as variáveis? \pause
+   Se o arranjo não tiver nenhum elemento, qual é o valor esperado para as variáveis? \pause
 
    Use esses valores para inicializar as variáveis.
 
@@ -452,9 +459,9 @@ b) Como as variáveis são inicializados? \pause
 
 c) Como as variáveis são atualizadas? \pause
 
-   Pegue alguns exemplos e suponha que o "para cada" já tenha processado de forma correta todos os elementos do arranjo, exceto o último, e determine os valores que as variáveis deveriam ter. \pause
+   Pegue alguns exemplos e suponha que o "para cada" já tenha processado de forma correta todos os elementos do arranjo, exceto o último, e determine os valores que as variáveis devem ter. \pause
 
-   Agora considere que o último elemento está sendo processado e determine quais operações são necessárias para modificar os valores das variáveis para que elas fiquem com o valor final esperado. \pause
+   Em seguida, considere que o último elemento está sendo processado e determine quais operações são necessárias para modificar os valores das variáveis para que elas fiquem com o valor final esperado. \pause
 
    Generalize e escreva o código para fazer essas operações.
 
@@ -490,8 +497,8 @@ examples
 \pause
 
 1) Quais variáveis (valores) queremos calcular? \pause A soma. \pause
-2) Como as variáveis são inicializados? \pause A soma é inicializada com 0. \pause
-3) Como as variáveis são atualizados? \pause A soma é atualizada somando elemento atual. \pause
+2) Como as variáveis são inicializadas? \pause A soma é inicializada com 0. \pause
+3) Como as variáveis são atualizadas? \pause A soma é atualizada somando o elemento atual. \pause
 
 </div>
 <div class="column" width="38%">
@@ -542,9 +549,9 @@ examples
 
 \pause
 
-1) Quais variáveis (valores) queremos calcular? \pause O maximo. \pause
-2) Como as variáveis são inicializados? \pause O máximo é inicializado com o primeiro elemento. \pause
-3) Como as variáveis são atualizados? \pause Se o elemento atual é maior que o máximo, ele passa a ser o máximo.
+1) Quais variáveis (valores) queremos calcular? \pause O máximo. \pause
+2) Como as variáveis são inicializadas? \pause O máximo é inicializado com o primeiro elemento. \pause
+3) Como as variáveis são atualizadas? \pause Se o elemento atual é maior que o máximo, ele passa a ser o máximo. \pause
 
 </div>
 <div class="column" width="38%">
@@ -595,8 +602,8 @@ examples
 \small
 
 1) Quais variáveis (valores) queremos calcular? \pause A concatenação das strings. \pause
-2) Como as variáveis são inicializados? \pause A concatenação é inicializada com vazio. \pause
-3) Como as variáveis são atualizados? \pause A concatenação é atualizada concatenando o elemento atual.
+2) Como as variáveis são inicializadas? \pause A concatenação é inicializada com vazio. \pause
+3) Como as variáveis são atualizadas? \pause A concatenação é atualizada concatenando o elemento atual.
 
 
 # Concatenação
@@ -663,8 +670,8 @@ examples {
 \small
 
 1) Quais variáveis (valores) queremos calcular? \pause A quantidade de positivos e negativos. \pause
-2) Como as variáveis são inicializados? \pause Com zero. \pause
-3) Como as variáveis são atualizados? \pause Se o elemento atual é positivo, incrementa o número de positivos, se o elemento atual é negativo, incrementa o número de negativos.
+2) Como as variáveis são inicializadas? \pause Com zero. \pause
+3) Como as variáveis são atualizadas? \pause Se o elemento atual é positivo, incrementa o número de positivos, se o elemento atual é negativo, incrementa o número de negativos.
 
 
 # Positivos ou negativos
@@ -698,11 +705,11 @@ Tipo mais_positivos_ou_negativos(array<int, 5> numeros)
 
 O exemplo da loteria requeria arranjos com 6 elementos. \pause
 
-Já para os demais exemplos, o tamanho fixo do arranjo parece uma imposição artificial. \pause
+Mas para esses últimos exemplos, o tamanho fixo do arranjo parece uma imposição artificial. \pause
 
 De fato, o mais comum é problemas que precisam de arranjos de tamanho dinâmico. \pause
 
-Em C++ tipo arranjo de tamanho dinâmico (ou arranjos dinâmicos, ou vetores, ou listas, ou ...) é chamado de `vector` e está disponível através da biblioteca `vector`. \pause
+Em C++ o tipo arranjo de tamanho dinâmico (ou arranjo dinâmico, ou vetor, ou lista, ou ...) é chamado de `vector` e está disponível na da biblioteca `vector`. \pause
 
 Vamos ver as operações básicas com arranjos dinâmicos.
 
@@ -717,7 +724,7 @@ A forma de inicializar arranjos dinâmicos é similar a forma de inicializar arr
 
 ```cpp
 #include <vector>
-...
+using namespace std;
 examples {
     vector<int> valores = {10, 4, 9, -1};
     vector<string> nomes = {"joao", "jose", "maria"};
@@ -727,7 +734,7 @@ examples {
 
 \small
 
-Assim com para `array`, também acessamos e modificamos os elementos de um `vector` com índices e/ou com o método `at`
+Assim como para `array`, também acessamos e modificamos os elementos de um `vector` com índices e/ou com o método `at`
 
 \scriptsize
 
@@ -744,7 +751,7 @@ Assim com para `array`, também acessamos e modificamos os elementos de um `vect
 
 # Tamanho e adição no final
 
-Como `vector` tem tamanho dinâmico, podemos consultar o tamanho (quantidade de elementos) atual com o método `size`
+Como `vector` tem tamanho dinâmico, podemos consultar o tamanho (quantidade de elementos) com o método `size`
 
 \small
 
@@ -773,7 +780,7 @@ check_expect(idades, (vector<int> {2, 7, 1, 9, 4}));
 # {.plain}
 
 \Large
-**ATENÇÃO**: quando queremos utilizar um `vector`, um `array` ou uma estrutura como **resultado esperado** em um `checke_expect` precisamos colocar o resultado todo entre parênteses e nome do tipo antes de `{`
+**ATENÇÃO**: quando queremos utilizar um `vector`, um `array` ou uma estrutura como **resultado esperado** em um `check_expect` precisamos colocar o resultado todo entre parênteses e nome do tipo antes de `{`
 
 ```cpp
 check_expect(..., (array<string, 2> {"casa", "agua"}));
@@ -784,7 +791,7 @@ check_expect(..., (Janela {10, 40, 100, 200}));
 
 # Soma
 
-Utilizamos o mesmo processo para escrever a implementação de funções que processam arranjos de tamanho fixo e arranjos de tamanho dinâmico.
+Utilizamos o mesmo processo para escrever a implementação de funções que processam arranjos de tamanho fixo e arranjos de tamanho dinâmico. \pause
 
 \scriptsize
 
@@ -810,7 +817,7 @@ examples
 
 # Eleições
 
-Uma eleição é realizada com apenas dois candidatos. Cada eleitor pode votar ou no primeiro candidato, ou no segundo candidato ou ainda, votar em branco. O candidato que tiver mais votos ganha a eleição. Se os votos em branco forem mais do que 50% do total de votos, novas eleições devem ser convocadas. Projete uma função que receba como entrada uma lista não vazia de votos e determine qual foi o resultado da eleição. Dica: deseje uma função auxilar!
+Uma eleição é realizada com apenas dois candidatos. Cada eleitor pode votar ou no primeiro candidato, ou no segundo candidato, ou ainda, votar em branco. O candidato que tiver mais votos ganha a eleição. Se os votos em branco forem mais do que 50% do total de votos, novas eleições devem ser convocadas. Projete uma função que receba como entrada uma lista não vazia de votos e determine qual foi o resultado da eleição. Dica: deseje uma função auxilar que conte votos de um tipo especificado por parâmetro.
 
 
 # Análise
@@ -852,7 +859,7 @@ enum ResultadoEleicao {
 
 ```cpp
 // Apura o resultado da eleicao considerando os votos no arranjo votos.
-// - Produz NovasEleicoes se mais do que 50% do total de votos for branco ou a
+// - Produz NovasEleicoes se mais do que 50% do total de votos for branco ou se a
 // quantidade de votos do Candidato1 for igual ao do Candidato2.
 // - Senão, produz Venceu1 se o Candidato1 teve mais votos ou Venceu2 se o
 // Candidato2 teve mais votos.
@@ -969,6 +976,7 @@ Projete uma função que encontre o índice (posição) da primeira ocorrência 
 
 ```cpp
 // Encontra o índice da primeira ocorrência do valor máximo de valores.
+// Requer que valores não seja vazio.
 int indice_maximo(vector<int> valores)
 {
     return 0;
@@ -1142,7 +1150,7 @@ Mais alguma coisa? \pause Sim! \pause Também precisamos definir os itens do la�
 
 \pause
 
-Note em que algumas situações as variáveis do laço são o que queremos calcular.
+Em algumas situações as variáveis do laço são as que queremos calcular.
 
 
 # Índice do máximo
@@ -1189,6 +1197,8 @@ int indice_maximo(vector<int> valores)
 ```
 </div>
 </div>
+
+\pause
 
 Qual é mais adequada? \pause A que usa o "para". \pause
 
@@ -1300,7 +1310,7 @@ vector<int> insere_posicao(vector<int> valores, int pos, int valor) {
 
 Verificação: \pause Ok. \pause
 
-Revisão: o código tem um caso especial... \pause O que podemos fazer? \pause Separar em três etapas, inserir os elementos antes de `pos`, inserir o `valor`, inserir os elementos de `pos` até o final.
+Revisão: o código tem um caso especial... \pause O que podemos fazer? \pause Separar em três etapas, inserir os elementos antes de `pos`, inserir o `valor` em `pos`, inserir os elementos de `pos` até o final.
 
 
 # Implementação
@@ -1557,7 +1567,7 @@ bool palindromo(array<int, 5> valores)
     if (valores[0] != valores[4]) {
         palindromo = false;
     }
-    if (valores[1] > valores[3]) {
+    if (valores[1] != valores[3]) {
         palindromo = false;
     }
     return palindromo;
@@ -1603,7 +1613,7 @@ bool palindromo(vector<int> valores)
 
 # Exercício
 
-A escola do seu irmão mais novo está fazendo um coletânea de ditos populares. Cada aluno da escola escolheu um dito popular e a escola agregou todos eles em um arquivo texto (um dito por linha). Agora a escola precisa eliminar os ditos repetidos e classificá-los em ordem, mas ela não sabe como fazer isso. Você pode ajudar?
+A escola do seu irmão mais novo está fazendo uma coletânea de ditos populares. Cada aluno da escola escolheu um dito popular e a escola agregou todos eles em um arquivo texto (um dito por linha). Agora a escola precisa eliminar os ditos repetidos e classificá-los em ordem, mas ela não sabe como fazer isso. Você pode ajudar?
 
 
 # Análise
@@ -1725,7 +1735,7 @@ vector<string> classifica_ditos_unicos_em_ordem(vector<string> ditos) {
 examples
 {
     string dito1 = "Esmola demais até santo desconfia";
-    string dito2 = "Diga com quem anda que lhe direi quem és";
+    string dito2 = "Diga com quem andas que lhe direi quem és";
     string dito3 = "Saco vazio não para em pé";
     check_expect(classifica_ditos_unicos_em_ordem({}),
                  (vector<string> {}));
@@ -1797,7 +1807,7 @@ int main()
     vector<string> ditos_unicos = classifica_ditos_unicos_em_ordem(ditos);
 
     // Saída
-    escreve_ditos(ditos_unicos);
+    exibe_ditos(ditos_unicos);
 }
 ```
 
@@ -1813,8 +1823,8 @@ vector<string> le_ditos()
     return {};
 }
 
-// Escreve na saída padrão os ditos.
-void escreve_ditos(vector<string> ditos)
+// Exibe na saída padrão os ditos.
+void exibe_ditos(vector<string> ditos)
 {
 }
 ```
@@ -1825,20 +1835,20 @@ void escreve_ditos(vector<string> ditos)
 
 O que essas funções têm de diferente das funções que temos escrito até agora? \pause
 
-A função `le_ditos` não tem argumentos de entrada e a função `escreve_ditos` não tem resposta (usamos o tipo `void`{.cpp} para representar isso). \pause
+A função `le_ditos` não tem argumentos de entrada e a função `exibe_ditos` não tem resposta (usamos o tipo `void`{.cpp} para representar isso). \pause
 
 Por isso não temos come escrever os exemplos para essas funções!
 
 
 # Implementação
 
-A implementação da função `escreve_ditos` é direta: \pause
+A implementação da função `exibe_ditos` é direta: \pause
 
 \scriptsize
 
 ```cpp
 // Escreve na saída padrão os ditos.
-void escreve_ditos(vector<string> ditos)
+void exibe_ditos(vector<string> ditos)
 {
     for (string dito: ditos) {
         cout << dito << endl;
@@ -1849,7 +1859,7 @@ void escreve_ditos(vector<string> ditos)
 
 # Implementação
 
-Mas e a implementação da função `le_ditos`? \pause Ler um dito para simples \pause
+Mas e a implementação da função `le_ditos`? \pause Ler um dito parece simples \pause
 
 \scriptsize
 
@@ -1926,13 +1936,13 @@ Em geral, quando precisamos de uma repetição que não dependa de uma coleção
 
 # Implementação
 
-Agora podemos voltar para a implementação do `le_ditos`. \pause
+Agora podemos voltar para a implementação de `le_ditos`. \pause
 
-A função `getline` produz um valor que pode ser usado com uma condição. Se `getline` conseguir ler uma linha da entrada, o valor produzido corresponde a `true`{.cpp}, caso contrário, o valores corresponde a `false`{.cpp}. \pause
+A função `getline` produz um valor que pode ser usado com uma condição. Se `getline` conseguir ler uma linha da entrada, o valor produzido corresponde a `true`{.cpp}, caso contrário, o valor corresponde a `false`{.cpp}. \pause
 
 Então, a ideia para implementar a função `le_ditos` é: \pause
 
-- Enquanto conseguiu ler uma linha, adiciona a linha em um arranjo.
+- Enquanto conseguiu ler uma linha, adiciona a linha no arranjo.
 
 
 # Implementação
@@ -1957,8 +1967,52 @@ vector<string> le_ditos()
 
 # Execução do programa
 
-O programa está pronto! Agora podemos executar e testar o programa.
+O programa está pronto! Agora podemos compilar e testar. \pause
 
+Quando o programa é executado ele fica esperando os ditos serem digitados, um por linha. Para sinalizar que não serão digitados mais ditos, pressionamos "crtl + d". \pause
+
+Compile e teste o programa dessa forma. \pause Qual a sua impressão sobre a "facilidade" de uso do programa?
+
+
+# Redirecionamento de entrada
+
+Parece repetitivo ter que digitar os ditos, afinal, estes ditos já foram coletados e estão salvos em algum arquivo. \pause
+
+Quando temos um arquivo `.txt`, podemos utilizar o seu conteúdo como entrada do nosso programa. Nesse caso, tudo o que está no arquivo aparece para o programa como se tivesse sido digitado pelo usuário. \pause
+
+Se o arquivo com os ditos chama `"ditos.txt"`, podemos utilizar o conteúdo do arquivo como entrada para o programa da seguinte forma \pause
+
+```
+./ditos < ditos.txt
+```
+
+\pause
+
+O símbolo `<` é interpretado pelo shell como redirecionamento da entrada, então, ao invés de esperar o usuário digitar a entrada para o programa, o shell utiliza o conteúdo do arquivo como entrada do programa.
+
+
+# Redirecionamento de saída
+
+Da mesma forma que existe redirecionamento de entrada, também existe redirecionamento de saída. \pause
+
+Quando utilizamos redirecionamento de saída, ao invés do resultado do programa ser exibido na tela, ele é salvo em um arquivo. \pause
+
+Para ler a entrada do arquivo `"ditos.txt"` e salvar o resultado no arquivo `"ditos-unicos.txt"`, executamos \pause
+
+```
+./ditos < ditos.txt > ditos-unicos.txt
+```
+
+\pause
+
+O símbolo `>` é interpretado pelo shell como redirecionamento da saída.
+
+
+# Momento de apreciação
+
+\pause
+
+Aprecie esse momento. \pause Temos um programa completo que pode ser utilizado por um usuário final para realizar uma tarefa útil!
 
 # Exercício
 
@@ -1970,7 +2024,7 @@ Projete uma função que separe as "partes" de uma string usando um espaço como
 \scriptsize
 
 ```cpp
-// Produz uma lista das "partes" de s usando espaços como delimitador.
+// Produz uma lista das "partes" de s usando um espaço como delimitador.
 vector<string> separa(string s)
 {
     return {};
@@ -2080,7 +2134,21 @@ vector<string> separa(string s)
 
 \pause
 
-Podemos melhorar? \pause Sim! \pause `fim` é usado apenas dentro do laço, então podemo mover a declaração.
+\small
+
+Podemos melhorar? \pause Sim! \pause Como `fim` é usado apenas dentro do laço, mudamos o local da declaração.
+
+
+# Exercício
+
+Modifique a função `separa` de maneira que a string seja separada por um ou mais espaços:
+
+\scriptsize
+
+```cpp
+check_expect(separa("mais   de  um "), (vector<string> { "mais", "de", "um" }));
+```
+
 
 
 # Exercício
@@ -2133,7 +2201,6 @@ if (n % 1 == 0) {
 }
 if (n % 2 == 0) {
     num_divisores = num_divisores + 1;
-
 }
 if (n % 3 == 0) {
     num_divisores = num_divisores + 1;

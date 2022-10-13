@@ -29,7 +29,7 @@ examples
     check_expect(sorteado(49, sorteados), false);
 }
 
-// Calcula quantos números da aposta estão em sorteados.
+// Calcula quantos números de aposta estão em sorteados.
 int numero_acertos(array<int, 6> aposta, array<int, 6> sorteados)
 {
     int acertos = 0;

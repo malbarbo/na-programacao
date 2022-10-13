@@ -29,7 +29,7 @@ vector<string> classifica_ditos_unicos_em_ordem(vector<string> ditos)
 examples
 {
     string dito1 = "Esmola demais até santo desconfia";
-    string dito2 = "Diga com quem anda que lhe direi quem és";
+    string dito2 = "Diga com quem andas que lhe direi quem és";
     string dito3 = "Saco vazio não para em pé";
     check_expect(classifica_ditos_unicos_em_ordem({}),
                  (vector<string> {}));
@@ -54,8 +54,8 @@ vector<string> le_ditos()
     return ditos;
 }
 
-// Escreve na saída padrão os ditos.
-void escreve_ditos(vector<string> ditos)
+// Exibe na saída padrão os ditos.
+void exibe_ditos(vector<string> ditos)
 {
     for (string dito: ditos) {
         cout << dito << endl;
@@ -73,5 +73,5 @@ int main()
     vector<string> ditos_unicos = classifica_ditos_unicos_em_ordem(ditos);
 
     // Saída
-    escreve_ditos(ditos_unicos);
+    exibe_ditos(ditos_unicos);
 }

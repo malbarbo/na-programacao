@@ -4,6 +4,7 @@
 using namespace std;
 
 // Encontra o índice da primeira ocorrência do valor máximo de valores.
+// Requer que valores não seja vazio.
 int indice_maximo(vector<int> valores)
 {
     int imax = 0;

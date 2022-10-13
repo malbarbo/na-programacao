@@ -39,7 +39,7 @@ examples
 }
 
 // Apura o resultado da eleicoes considerando os votos no arranjo votos.
-// - Produz NovasEleicoes se mais do que 50% do total de votos for branco ou a
+// - Produz NovasEleicoes se mais do que 50% do total de votos for branco ou se a
 // quantidade de votos do Candidato1 for igual ao do Candidato2.
 // - Senão, produz Venceu1 se o Candidato1 teve mais votos ou Venceu2 se o
 // Candidato2 teve mais votos.
