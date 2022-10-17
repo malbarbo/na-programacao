@@ -3,7 +3,7 @@
 
 using namespace std;
 
-// Cria um nova arranjo inserindo o valor no índice pos de valores.
+// Cria um novo arranjo inserindo o valor no índice pos de valores.
 // Requer que 0 <= pos <= valores.size().
 vector<int> insere_posicao(vector<int> valores, int pos, int valor)
 {

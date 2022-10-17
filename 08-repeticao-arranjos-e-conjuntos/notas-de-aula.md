@@ -116,7 +116,7 @@ Tanto as estruturas quanto os arranjos são utilizados para representar informa�
 
 \pause
 
-No exemplo da loteria, os itens da aposta e do resultados têm a mesma natureza, são todos números, então devemos utilizar arranjos ao invés de estruturas. \pause Vamos altera o código!
+No exemplo da loteria, os itens da aposta e dos resultados têm a mesma natureza, são todos números, então devemos utilizar arranjos ao invés de estruturas. \pause Vamos alterar o código!
 
 
 # Loteria
@@ -409,7 +409,7 @@ int numero_acertos(array<int, 6> aposta, array<int, 6> sorteados)
 </div>
 
 
-# Com projetar funções que processam arranjos usando o "para cada"
+# Como projetar funções que processam arranjos usando o "para cada"
 
 No exemplo da loteria, vimos como uma repetição física de código pode ser substituída por uma repetição lógica. \pause
 
@@ -418,11 +418,11 @@ Em geral, não precisamos ter uma repetição física de código para depois tro
 Vamos ver como fazer isso!
 
 
-# Com projetar funções que processam arranjos usando o "para cada"
+# Como projetar funções que processam arranjos usando o "para cada"
 
 Quando precisamos processar um arranjo, geralmente queremos calcular valores de forma incremental, analisando um por um os elementos do arranjo. \pause
 
-Esse valores podem ser o resultado final da função ou podem ser usados em outras instruções para determinar o resultado final da função. \pause
+Esses valores podem ser o resultado final da função ou podem ser usados em outras instruções para determinar o resultado final da função. \pause
 
 Então, para escrever o código que processa os elementos de um arranjo com o "para cada" precisamos responder três perguntas \pause
 
@@ -433,7 +433,7 @@ Então, para escrever o código que processa os elementos de um arranjo com o "p
 Para responder cada pergunta, usamos os exemplos e perguntas auxiliares.
 
 
-# Com projetar funções que processam arranjos usando o "para cada"
+# Como projetar funções que processam arranjos usando o "para cada"
 
 a) Quais variáveis (valores) queremos calcular? \pause
 
@@ -446,7 +446,7 @@ a) Quais variáveis (valores) queremos calcular? \pause
    Em ambos os casos, criamos variáveis para armazenar esses valores.
 
 
-# Com projetar funções que processam arranjos usando o "para cada"
+# Como projetar funções que processam arranjos usando o "para cada"
 
 b) Como as variáveis são inicializadas? \pause
 
@@ -455,7 +455,7 @@ b) Como as variáveis são inicializadas? \pause
    Use esses valores para inicializar as variáveis.
 
 
-# Com projetar funções que processam arranjos usando o "para cada"
+# Como projetar funções que processam arranjos usando o "para cada"
 
 c) Como as variáveis são atualizadas? \pause
 
@@ -709,7 +709,7 @@ Mas para esses últimos exemplos, o tamanho fixo do arranjo parece uma imposiç�
 
 De fato, o mais comum é problemas que precisam de arranjos de tamanho dinâmico. \pause
 
-Em C++ o tipo arranjo de tamanho dinâmico (ou arranjo dinâmico, ou vetor, ou lista, ou ...) é chamado de `vector` e está disponível na da biblioteca `vector`. \pause
+Em C++ o tipo arranjo de tamanho dinâmico (ou arranjo dinâmico, ou vetor, ou lista, ou ...) é chamado de `vector` e está disponível na biblioteca `vector`. \pause
 
 Vamos ver as operações básicas com arranjos dinâmicos.
 
@@ -824,8 +824,8 @@ Uma eleição é realizada com apenas dois candidatos. Cada eleitor pode votar o
 
 Determinar o resultado de uma eleição. \pause
 
-- O voto pode ser em um de dois candidatos ou em braco; \pause
-- Se mais que 50% dos votos forem brancos ou se os candidatos tiverem o mesmo número de votos, é necessário uma nova eleição. \pause
+- O voto pode ser em um de dois candidatos ou em branco; \pause
+- Se mais que 50% dos votos forem brancos ou se os candidatos tiverem o mesmo número de votos, é necessário uma nova eleição; \pause
 - Se não for necessário uma nova eleição, ganha quem tiver mais votos.
 
 
@@ -938,8 +938,8 @@ examples
 <div class="columns">
 <div class="column" width="48%">
 1) Quais variáveis (valores) queremos calcular? \pause A quantidade de votos iguais ao alvo. \pause
-2) Como as variáveis são inicializados? \pause A quantidade é inicializada com 0. \pause
-3) Como as variáveis são atualizados? \pause A quantidade é atualizada em 1 quanto o elemento atual for igual ao alvo. \pause
+2) Como as variáveis são inicializadas? \pause A quantidade é inicializada com 0. \pause
+3) Como as variáveis são atualizadas? \pause A quantidade é atualizada em 1 quanto o elemento atual for igual ao alvo. \pause
 </div>
 <div class="column" width="48%">
 \scriptsize
@@ -995,8 +995,8 @@ examples
 # Implementação
 
 1) Quais variáveis (valores) queremos calcular? \pause O índice da primeira ocorrência do máximo (`imax`) e o índice o elemento atual (`i`). \pause
-2) Como as variáveis são inicializados? \pause Os dois valores são inicializados com 0. \pause
-3) Como as variáveis são atualizados? \pause `imax` é atualizado para `i` se o elemento atual for maior que o elemento na posição `imax`. `i` é incrementado com 1.
+2) Como as variáveis são inicializadas? \pause Os dois valores são inicializados com 0. \pause
+3) Como as variáveis são atualizadas? \pause `imax` é atualizado para `i` se o elemento atual for maior que o elemento na posição `imax`. `i` é incrementado com 1.
 
 
 # Implementação
@@ -1137,8 +1137,8 @@ Abrimos mão da simplicidade pela flexibilidade. \pause
 Assim como no "para cada", precisamos responder as três perguntas \pause
 
 1) Quais variáveis (valores) queremos calcular?
-2) Como as variáveis são inicializados?
-3) Como as variáveis são atualizados?
+2) Como as variáveis são inicializadas?
+3) Como as variáveis são atualizadas?
 
 \pause
 
@@ -1215,7 +1215,7 @@ Projete uma função que receba como entrada um arranjo dinâmico de números, u
 \scriptsize
 
 ```cpp
-// Cria um nova arranjo inserindo o valor no índice pos de valores.
+// Cria um novo arranjo inserindo o valor no índice pos de valores.
 // Requer que 0 <= pos <= valores.size().
 vector<int> insere_posicao(vector<int> valores, int pos, int valor)
 {
@@ -1347,7 +1347,7 @@ Projete uma função que receba como entrada um arranjo dinâmico de números e 
 \scriptsize
 
 ```cpp
-// Cria um nova arranjo removendo o elemento da posição pos de valores.
+// Cria um novo arranjo removendo o elemento da posição pos de valores.
 // Requer que 0 <= pos < valores.size().
 vector<int> remove_posicao(vector<int> valores, int pos)
 {
@@ -1370,7 +1370,7 @@ examples {
 \scriptsize
 
 ```cpp
-// Cria um nova arranjo removendo o elemento da posição pos de valores.
+// Cria um novo arranjo removendo o elemento da posição pos de valores.
 // Requer que 0 <= pos < valores.size().
 vector<int> remove_posicao(vector<int> valores, int pos)
 {
@@ -1429,7 +1429,7 @@ Antes só precisávamos analisar um único elemento do arranjo a cada iteração
 
 Como podemos proceder nesse caso? \pause
 
-Vamos resolver o problema para arranjos com 5 elementos usando repetição física de código e depois vamos tentar transformação essa repetição física em uma repetição lógica.
+Vamos resolver o problema para arranjos com 5 elementos usando repetição física de código e depois vamos tentar transformar essa repetição física em uma repetição lógica.
 
 
 # Implementação
@@ -1791,7 +1791,7 @@ vector<string> classifica_ditos_unicos_em_ordem(vector<string> ditos)
 
 # Programa
 
-Temos a função que calcula o que queremos, e agora, o que precisamo fazer para ter um programa? \pause
+Temos a função que calcula o que queremos, e agora, o que precisamos fazer para ter um programa? \pause
 
 Escrever o código que faz a entrada e saída. \pause Vamos desejar por funções auxiliares e escrever a função principal. \pause
 
@@ -1837,7 +1837,7 @@ O que essas funções têm de diferente das funções que temos escrito até ago
 
 A função `le_ditos` não tem argumentos de entrada e a função `exibe_ditos` não tem resposta (usamos o tipo `void`{.cpp} para representar isso). \pause
 
-Por isso não temos come escrever os exemplos para essas funções!
+Por isso não temos como escrever os exemplos para essas funções!
 
 
 # Implementação

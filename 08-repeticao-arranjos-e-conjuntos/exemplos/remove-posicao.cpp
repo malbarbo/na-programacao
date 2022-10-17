@@ -3,7 +3,7 @@
 
 using namespace std;
 
-// Cria um nova arranjo removendo o elemento da posição pos de valores.
+// Cria um novo arranjo removendo o elemento da posição pos de valores.
 // Requer que 0 <= pos < valores.size().
 vector<int> remove_posicao(vector<int> valores, int pos)
 {
