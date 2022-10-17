@@ -574,55 +574,6 @@ int maximo(array<int, 5> numeros)
 </div>
 
 
-# Concatenação
-
-Projete uma função que junte todas as string de um arranjo de 5 strings.
-
-
-# Concatenação
-
-\scriptsize
-
-```cpp
-// Concatena as strings de strs uma após a outra.
-string concatena(array<string, 5> strs)
-{
-    return "";
-}
-
-examples
-{
-    check_expect(concatena({"Ola", " ", "mundo", "", "!"}), "Ola mundo!");
-    check_expect(concatena({"ab", "c", "de", "", "fgh"}), "abcdefgh");
-}
-```
-
-\pause
-
-\small
-
-1) Quais variáveis (valores) queremos calcular? \pause A concatenação das strings. \pause
-2) Como as variáveis são inicializadas? \pause A concatenação é inicializada com vazio. \pause
-3) Como as variáveis são atualizadas? \pause A concatenação é atualizada concatenando o elemento atual.
-
-
-# Concatenação
-
-\scriptsize
-
-```cpp
-// Concatena as strings de strs uma após a outra.
-string concatena(array<string, 5> strs)
-{
-    string concatenacao = "";
-    for (string str : strs) {
-        concatenacao = concatenacao + str;
-    }
-    return concatenacao;
-}
-```
-
-
 # Positivos ou negativos
 
 Projete uma função que verifique se um arranjo com 5 números inteiros positivos tem mais números pares ou ímpares.
