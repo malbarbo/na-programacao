@@ -3,8 +3,8 @@
 
 using namespace std;
 
-// O tipo de um número.
-enum Tipo {
+// O sinal de um número.
+enum Sinal {
     Positivo,
     Negativo,
     Nenhum,
@@ -14,7 +14,7 @@ enum Tipo {
 // Devolve Positivo se existem mais positivos do que negativos.
 // Devolve Negativo se existem mais negativos do que positivos.
 // Devolve Nenhum se a quantidade de positivos é igual a de negativos.
-Tipo mais_positivos_ou_negativos(array<int, 5> numeros)
+Sinal mais_positivos_ou_negativos(array<int, 5> numeros)
 {
     int num_positivos = 0;
     int num_negativos = 0;
@@ -25,13 +25,13 @@ Tipo mais_positivos_ou_negativos(array<int, 5> numeros)
             num_negativos = num_negativos + 1;
         }
     }
-    Tipo tipo = Nenhum;
+    Sinal sinal = Nenhum;
     if (num_positivos > num_negativos) {
-        tipo = Positivo;
+        sinal = Positivo;
     } else if (num_negativos > num_positivos) {
-        tipo = Negativo;
+        sinal = Negativo;
     }
-    return tipo;
+    return sinal;
 }
 
 examples

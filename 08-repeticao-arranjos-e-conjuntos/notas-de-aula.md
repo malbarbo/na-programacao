@@ -576,7 +576,7 @@ int maximo(array<int, 5> numeros)
 
 # Positivos ou negativos
 
-Projete uma função que verifique se um arranjo com 5 números inteiros positivos tem mais números pares ou ímpares.
+Projete uma função que verifique se um arranjo com 5 números inteiros existem mais positivos ou mais negativos.
 
 
 # Positivos ou negativos
@@ -586,8 +586,8 @@ Definição dos tipos de dados
 \scriptsize
 
 ```cpp
-// O tipo de um número.
-enum Tipo {
+// O sinal de um número.
+enum Sinal {
     Positivo,
     Negativo,
     Nenhum,
@@ -604,7 +604,7 @@ enum Tipo {
 // Devolve Positivo se existem mais positivos do que negativos.
 // Devolve Negativo se existem mais negativos do que positivos.
 // Devolve Nenhum se a quantidade de positivos é igual a de negativos.
-Tipo mais_positivos_ou_negativos(array<int, 5> numeros) {
+Sinal mais_positivos_ou_negativos(array<int, 5> numeros) {
     return Nenhum;
 }
 
@@ -630,7 +630,7 @@ examples {
 \scriptsize
 
 ```cpp
-Tipo mais_positivos_ou_negativos(array<int, 5> numeros)
+Sinal mais_positivos_ou_negativos(array<int, 5> numeros)
 {
     int num_positivos = 0;
     int num_negativos = 0;
@@ -641,13 +641,13 @@ Tipo mais_positivos_ou_negativos(array<int, 5> numeros)
             num_negativos = num_negativos + 1;
         }
     }
-    Tipo tipo = Nenhum;
+    Sinal sinal = Nenhum;
     if (num_positivos > num_negativos) {
-        tipo = Positivo;
+        sinal = Positivo;
     } else if (num_negativos > num_positivos) {
-        tipo = Negativo;
+        sinal = Negativo;
     }
-    return tipo;
+    return sinal;
 }
 ```
 

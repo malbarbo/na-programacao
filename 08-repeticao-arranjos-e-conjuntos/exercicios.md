@@ -13,7 +13,7 @@ title: Repetição, arranjos e conjuntos
 
 #. Projete uma função que junte todas as string de um arranjo de 5 strings.
 
-#. Projete uma função que verifique se um arranjo com 5 números inteiros positivos tem mais números pares ou ímpares.
+#. Projete uma função que verifique se um arranjo com 5 números inteiros tem mais números positivos ou negativos.
 
 #. A Láurea Acadêmica é uma homenagem prestada a alunos que tiveram elevado nível de aproveitamento no curso de graduação. Na UEM, todos os alunos que tiveram mais do que 2/3 das notas finais das disciplinas maiores do que 9,0 recebem esta homenagem. Projete um programa que receba as notas finais de um aluno e determine se ele receberá a Láurea Acadêmica.
 
