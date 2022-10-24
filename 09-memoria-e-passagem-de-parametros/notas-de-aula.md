@@ -256,7 +256,7 @@ examples
 
 \normalsize
 
-Lendo o código do exemplo com cuidado, podemos entender a intenção do código, sem se preocupar com como ele funciona. \pause Crie um arranjo `x` com os elementos `{5, 1, 8}`, \pause some 1 no primeiro elemento de `x`, \pause verifique que a soma foi feita corretamente.
+Lendo o código do exemplo com cuidado, podemos entender a intenção do código, sem se preocupar com como ele funciona. \pause Cria um arranjo `x` com os elementos `{5, 1, 8}`, \pause soma 1 no primeiro elemento de `x`, \pause verifica que a soma foi feita corretamente.
 
 
 # Referências
@@ -281,7 +281,7 @@ examples
 
 Note que a função `soma_1_no_primeiro` não tem retorno. \pause
 
-Como uma função sem retorno produz algo de útil? \pause Através de **efeitos colaterais**, no caso de `soma_1_no_primeiro`, o efeito colateral é alterar o valor do parâmetro. \pause
+Como uma função sem retorno produz algo de útil? \pause Através de **efeitos colaterais**, no caso de `soma_1_no_primeiro`, o efeito colateral é alterar o valor do parâmetro `v`. \pause
 
 Como a função não tem retorno, temos que testá-la em três etapas, inicializar as variáveis, chamar a função e verificar se as variáveis foram alteradas corretamente.
 
