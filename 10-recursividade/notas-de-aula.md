@@ -172,7 +172,7 @@ int soma_naturais(int n)
         // Qual é a soma dos naturais até n == 0?
         soma = ...;
     } else {
-        // Tento a soma dos naturais até n - 1 e o natural n,
+        // Tendo a soma dos naturais até n - 1 e o natural n,
         // como obter a soma para os naturais até n?
         soma = n ... soma_naturais(n - 1);
     }
@@ -323,7 +323,7 @@ double potencia(double a, int n)
         // Qual o valor de a^n quando n == 0?
         pot = a ...;
     } else {
-        // Tento a potencia a^(n - 1), o valor
+        // Tendo a potência a^(n - 1), o valor
         // de a e n, como calulcar a^n?
         pot = a ... n ... potencia(a, n - 1);
     }
@@ -479,7 +479,7 @@ int fatorial(int n)
         // naturais maiores que 0?
         fat = ...;
     } else {
-        // Tento o fatorial de n - 1 e o natural n,
+        // Tendo o fatorial de n - 1 e o natural n,
         // como obter o fatorial de n?
         fat = n ... fatorial(n - 1);
     }
@@ -535,7 +535,7 @@ int fatorial(int n)
 
 Quando estamos projetando funções recursivas, temos que considerar alguns aspectos: \pause
 
-- A chamada recursiva deve ser feita para um entrada "menor", dessa forma, temos a certeza que o caso baso será alcançado e a função está bem definida. \pause
+- A chamada recursiva deve ser feita para um entrada "menor", dessa forma, temos a certeza que o caso base será alcançado e a função está bem definida. \pause
 
 - Devemos confiar que a chamada recursiva produz a resposta correta e nos preocuparmos apenas em como utilizar essa resposta para calcular o resultado da função.
 
@@ -1091,7 +1091,7 @@ Se quisermos encontrar todos os divisores de um número $n$, podemos aplicar ess
 
 Conseguimos resolver o caso base? \pause Sim. \pause
 
-Tendo os divisores de $n - 1$, podemos encontrar os divisores de $n$? \pause Sabendo os divisores de $9 (1, 3, 9)$, podemos determinar os divisores de $10 (1, 5, 10)$? Não! \pause
+Tendo os divisores de $n - 1$, podemos encontrar os divisores de $n$? \pause Sabendo os divisores de $9 (1, 3, 9)$, podemos determinar os divisores de $10 (1, 5, 10)$? \pause Não! \pause
 
 Então essa técnica não é adequada para esse problema.
 
