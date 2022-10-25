@@ -2,9 +2,8 @@
 
 using namespace std;
 
-// Calcula o fatorial de n, isto é,
-// o produto dos n primeiros números
-// naturais maiores que 0.
+// Calcula o fatorial de n, isto é, o produto dos n primeiros números naturais
+// maiores que 0.
 //
 // Requer que n >= 0.
 int fatorial(int n)

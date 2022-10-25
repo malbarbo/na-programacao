@@ -3,8 +3,9 @@
 using namespace std;
 
 // Soma os primeiros n elementos de valores.
+//
 // Requere que 0 <= n <= valores.size()
-int soma(const vector<int> &valores, int n)
+int soma(const vector<int>& valores, int n)
 {
     int s;
     if (n == 0) {
@@ -17,11 +18,11 @@ int soma(const vector<int> &valores, int n)
 
 examples
 {
-    check_expect(soma({5, 1, 4, 3}, 0), 0);
-    check_expect(soma({5, 1, 4, 3}, 1), 5);
-    check_expect(soma({5, 1, 4, 3}, 2), 6);
-    check_expect(soma({5, 1, 4, 3}, 3), 10);
-    check_expect(soma({5, 1, 4, 3}, 4), 13);
+    check_expect(soma({ 5, 1, 4, 3 }, 0), 0);
+    check_expect(soma({ 5, 1, 4, 3 }, 1), 5);
+    check_expect(soma({ 5, 1, 4, 3 }, 2), 6);
+    check_expect(soma({ 5, 1, 4, 3 }, 3), 10);
+    check_expect(soma({ 5, 1, 4, 3 }, 4), 13);
 }
 
 int main()
