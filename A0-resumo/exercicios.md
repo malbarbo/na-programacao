@@ -14,21 +14,21 @@ g++ -o ola ola.cpp
 
 ## Notação
 
-`[]`: opcional.
+`[]`: significa que a construção que está entre os colchetes é opcional e portando não precisa ser especificada.
 
-`...`: o padrão se repete.
+`...`: significa que a construção que veio antes pode ser repetida
 
-## Declaração de variáveis
+## Variáveis
 
 _Forma geral_
 
 ```cpp
-Tipo nome_variavel [= expressão valor inicial];
+Tipo nome_variavel [= valor inicial];
 ```
 
 _Forma de execução_
 
-O computador aloca uma célula de memória e associa o nome `nome_varial` com a célula. Se "expressão valor inicial" existir, a expressão é avaliada e  o valor resultante é armazenado na célula `nome_varial`. Note que se um valor inicial não for fornecido, o valor armazenado na na célula de memória é indefinido.
+O computador aloca uma célula de memória e associa o nome `nome_variavel` com a célula. Se a expressão "valor inicial" existir, ela é avaliada e o valor resultante é armazenado na célula `nome_varial`. Note que se um valor inicial não for fornecido, o valor armazenado na célula de memória é indefinido.
 
 _Exemplos_
 
@@ -49,13 +49,13 @@ _Forma geral_
 TipoSaida nome_da_funcao(TipoEntrada1 e1, ...)
 {
     [instruções; ...]
-    return expressão resultado;
+    return resultado;
 }
 ```
 
 _Forma de execução_
 
-Na chamada de uma função o fluxo de execução é desviado para a primeira instrução dentro da função e volta para o local do desvio quando a instrução `return` é executada.
+Para executar uma função, o fluxo de execução é desviado para o início da função e as instruções da função são executadas em ordem. No final, quando a instrução `return` é executada, o fluxo de execução volta para o local onde a função foi chamada.
 
 _Exemplos_
 
@@ -69,13 +69,14 @@ bool inverte_unidade_dezena(int num)
     return restante * 100 + u * 10 + d;
 }
 
-int main() {
+int main()
+{
     int x = inverte_unidade_dezena(4367); // 4376
     cout << x << endl;
 }
 ```
 
-Nesse exemplo as linhas são executadas na ordem 11, 4, 5, 6, 7, 11, 12.
+Nesse exemplo as linhas são executadas na ordem 12, 4, 5, 6, 7, 12, 13.
 
 ## Instrução `if/else`{.cpp}
 
@@ -91,12 +92,13 @@ if (condição) {
 
 _Forma de execução_
 
-O computador avalia a "condição" e verifica o resultado. Se o resultado for `true`{.cpp}, então as instruções do bloco "instruções então" são executadas, senão (o resultado é `false`{.cpp}), as instruções do bloco "instruções senão" são executadas.
+O computador avalia a "condição" e verifica o resultado. Se o resultado for `true`{.cpp}, então as instruções do bloco "instruções então" são executadas, senão (o resultado é `false`{.cpp}), se as instruções do bloco "instruções senão" são executadas (se elas foram especificadas).
 
 __Exemplos__
 
 ```{.cpp .number-lines}
-int main() {
+int main()
+{
     int a = 10;
     int b = 20;
     int m;
@@ -109,9 +111,10 @@ int main() {
 }
 ```
 
-O valor exibido por esse programa é 20 e as linhas são executadas na ordem 2, 3, 4, 5, 8, 10.
+O valor exibido por esse programa é 20 e as linhas são executadas na ordem 3, 4, 5, 6, 9, 11.
 
-## Tipo enumerado
+
+## Tipos enumerados
 
 _Forma geral_
 
@@ -131,7 +134,8 @@ _Exemplos_
 
 A cor de um semáforo só pode assumir 3 valores: vermelho, amarelo ou verde, então criamos um tipo enumerado.
 
-```
+```cpp
+// Representa a cor de um semáforo
 enum Cor {
   Vermelho,
   Amarelo,
@@ -142,21 +146,202 @@ enum Cor {
 
 ## Instrução `switch/case`{.cpp}
 
+_Forma geral_
+
 ```cpp
 switch (expressão) {
-    case caso:
-        instruções;
-        break;
     [case caso:
         instruções;
         break;
-     ...
-    ]
+    ]...
     [default:
         instruções;
         break;]
 }
 ```
+
+_Forma de execução_
+
+A "expressão" é avaliada e seu valor é comparado com cada caso na sequência.
+
+Quando um "caso" tem o mesmo valor do resultado da expressão é encontrado, as "instruções" daquele caso são executadas até encontrar um `break`, então a instrução `switch/case`{.cpp} termina e o programa continua a execução com a próxima instrução após o `switch/case`{.cpp}.
+
+Se o valor da expressão não é igual a nenhum "caso", então as instruções da cláusula `default`{.cpp} são executadas (se elas foram especificadas).
+
+_Exemplo_
+
+```{.cpp .number-lines}
+int main()
+{
+    Cor atual = Vermelho;
+    Cor proxima;
+    switch (c) {
+        case Verde:
+            proxima = Amarelo;
+            break;
+        case Vermelho:
+            proxima = Verde;
+            break;
+        case Amarelo:
+            proxima = Vermelho;
+            break;
+    }
+    cout << repr(proxima) << endl;
+}
+```
+
+O valor exibido por esse programa é Vermelho e as linhas são executadas na ordem 3, 4, 5, 6, 9, 10, 11, 16.
+
+
+## Tipos compostos
+
+_Forma geral_
+
+```cpp
+struct NomeDoTipo {
+    Tipo1 campo1;
+    Tipo2 campo2;
+    ...
+};
+```
+
+_Quando utilizar_
+
+Quando a informação consiste de dois ou mais itens que juntos descrevem uma entidade.
+
+_Exemplos_
+
+```cpp
+// Representado o resultado de um Jogo.
+struct ResultadoJogo {
+    string time_anfitriao;
+    int gols_anfitriao;
+    string time_visitante;
+    int gols_visitante;
+};
+
+int main()
+{
+    ResultadoJogo r = { "Brazil", 1, "Argentina", 0 };
+    cout << "O resultado do jogo foi:" << endl;
+    cout << r.time_anfitriao << " " << r.gols_anfitriao << endl;
+    cout << r.time_visitante << " " << r.gols_visitante << endl;
+}
+```
+
+Este programa produz a seguinte saída:
+
+```
+O resultado do jogo foi:
+Brazil 1
+Argentina 0
+```
+
+
+## Instrução `for`{.cpp} each
+
+_Forma geral_
+
+```cpp
+for (Tipo nome_variavel : arranjo) {
+    instruções;
+}
+```
+
+_Forma de execução_
+
+- O primeiro valor de `arranjo` é atribuído para `nome_varialve` e as `instruções` são executadas;
+- O segundo valor de `arranjo` é atribuído para `nome_variavel` e as `instruções` são executadas;
+- ...
+- E assim por diante até que todos os valores de `arranjo` tenham sidos atribuídos para `nome_variavel`.
+
+
+_Exemplo_
+
+```{.cpp .number-lines}
+int main()
+{
+    vector<int> valores = {3, 1, 5, 2};
+    int soma = 0
+    for (int v : valores) {
+        soma = soma + v;
+    }
+    cout << soma << endl;
+}
+```
+
+Este programa exibe o valor 11 e as linhas são executadas na ordem 3, 4, 5, 6, 5, 6, 5, 6, 5, 6, 5, 8.
+
+
+## Instrução `for`{.cpp}
+
+_Forma geral_
+
+```cpp
+for (inicialização; condição; atualização) {
+   instruções;
+}
+```
+
+_Forma de execução_
+
+- A "inicialização" é executada;
+- Em seguida a "condição" é verificada, se ela for `true`{.cpp} as "instruções" são executadas, senão a repetição termina;
+- Depois a "atualização" é executada e o passo anterior é executado novamente.
+
+
+_Exemplo_
+
+```{.cpp .number-lines}
+int main()
+{
+    vector<int> valores = {1, 3, 2, 4, 5};
+    bool em_ordem = true;
+    for (int i = 1; i < valores.size() && em_ordem; i = i + 1) {
+        if (valores[i - 1] > valores[i]) {
+            em_ordem = false
+        }
+    }
+    cout << em_ordem << endl;
+}
+```
+
+Este programa exibe o valor 0 (false) e as linhas são executadas na ordem 3, 4, 5, 6, 5, 6, 7, 5, 10.
+
+
+## Instrução `while`{.cpp}
+
+_Forma geral_
+
+```cpp
+while (condição) {
+    instruções;
+}
+```
+
+_Forma de execução_
+
+A condição é avaliada, se o resultado for `true`{.cpp}, as "instruções" são executadas e processo começa novamente, senão, a repetição é finalizada.
+
+_Exemplo_
+
+```{.cpp .number-lines}
+int main()
+{
+    int num = 9;
+    int primo = true;
+    int divisor = 2;
+    while (divisor < num / 2 && primo) {
+        if (num % divisor == 0) {
+            primo = false;
+        }
+        divisor = divistor + 1;
+    }
+    cout << primo << endl;
+}
+```
+
+Este programa exibe o valor 0 (false) e as linhas são executadas na ordem 3, 4, 5, 6, 7, 10, 6, 7, 8, 10, 6, 12.
 
 
 # Tipos primitivos e pré-definidos
@@ -165,7 +350,7 @@ switch (expressão) {
 
 `int`{.cpp}: números inteiros no intervalo $-2^{32}$ a $2^{32} - 1$.
 
-`double`{.cpp}: aproximação de número decimais com até 15 casas decimais.
+`double`{.cpp}: aproximação de número decimais com até 15 casas.
 
 Operações que misturam `double`{.cpp} e `int`{.cpp} produzem `double`{.cpp} como resposta.
 
@@ -180,7 +365,7 @@ Operações que misturam `double`{.cpp} e `int`{.cpp} produzem `double`{.cpp} co
 // Módulo
 15 % 5; // 0
 15 % 7; // 1
-18 % 7; // 3
+18 % 7; // 4
 ```
 
 ```cpp
@@ -194,7 +379,7 @@ Operações que misturam `double`{.cpp} e `int`{.cpp} produzem `double`{.cpp} co
 Função da biblioteca `cmath`.
 
 ```cpp
-// Produz o maior inteiro menor ou igual a (piso).
+// Produz o maior inteiro menor ou igual a n (piso).
 double floor(double n);
 floor(1.0); // 1.0
 floor(1.3); // 1.0
@@ -203,7 +388,7 @@ floor(1.7); // 1.0
 ```
 
 ```cpp
-Produz o menor inteiro menor ou igual a n (teto).
+// Produz o menor inteiro menor ou igual a n (teto).
 double ceil(double n);
 ceil(1.3); // 2.0
 ceil(1.5); // 2.0
@@ -294,6 +479,21 @@ int string::length();
 string s = "jorge";
 s.length(); // 5
 ```
+
+
+## `array`
+
+Necessário incluir a biblioteca `array`.
+
+
+## `vector`
+
+Necessário incluir a biblioteca `vector`.
+
+
+## `set`
+
+Necessário incluir a biblioteca `set`.
 
 
 # Projeto de programas
