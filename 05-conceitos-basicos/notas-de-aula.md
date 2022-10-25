@@ -42,7 +42,7 @@ O programa mais simples que podemos escrever é \pause
 
 Arquivo `basico.cpp`
 
-```c++
+```cpp
 int main()
 {
 }
@@ -109,7 +109,7 @@ Para usarmos a instrução de saída, precisamos incluir o arquivo de cabeçalho
 
 \small
 
-```c++
+```cpp
 #include <iostream>
 
 int main()
@@ -130,7 +130,7 @@ As aspas (`"`) são utilizadas para delimitar uma sequência de caracteres (text
 
 \small
 
-```c++
+```cpp
 #include <iostream>
 
 int main()

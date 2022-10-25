@@ -1013,7 +1013,7 @@ O laço "para" tem a seguinte forma geral
 
 \small
 
-```c++
+```cpp
 for(inicialização; condição; atualização) {
    instruções;
 }
