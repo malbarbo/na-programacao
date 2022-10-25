@@ -58,7 +58,7 @@ for (int t : v) {
 
 \normalsize
 
-Que conclusão podemos tirar dessa atividade? \pause A gerencia de memória **pode** ser complicada!
+Que conclusão podemos tirar dessa atividade? \pause A gerência de memória **pode** ser complicada!
 
 
 # Gerência de memória em C++
@@ -256,7 +256,7 @@ examples
 
 \normalsize
 
-Lendo o código do exemplo com cuidado, podemos entender a intenção do código, sem se preocupar com como ele funciona. \pause Cria um arranjo `x` com os elementos `{5, 1, 8}`, \pause soma 1 no primeiro elemento de `x`, \pause verifica que a soma foi feita corretamente.
+Lendo o código do exemplo com cuidado, podemos entender a intenção do código, sem se preocupar com como ele funciona. \pause Cria um arranjo `x` com os elementos `{5, 1, 8}`{.cpp}, \pause soma 1 no primeiro elemento de `x`, \pause verifica que a soma foi feita corretamente.
 
 
 # Referências
@@ -371,13 +371,13 @@ valores[2] = t;
 </div>
 <div class="column" width="48%">
 \pause
-Quais variáveis vamos precisar para o laço? \pause O índice `i` do elemento que está fora de ordem. \pause
+Quais variáveis vamos precisar para o laço? \pause O índice `i`{.cpp} do elemento que está fora de ordem. \pause
 
-Como as variáveis são inicializadas? \pause `i = valores.size() - 1`. \pause
+Como as variáveis são inicializadas? \pause `i = valores.size() - 1`{.cpp}. \pause
 
-Qual a condição para o laço continuar a execução? \pause `i > 0` e `valores[i - 1] > valores[i]`. \pause
+Qual a condição para o laço continuar a execução? \pause `i > 0`{.cpp} e `valores[i - 1] > valores[i]`{.cpp}. \pause
 
-O que é feito a cada iteração? O elemento na posição `i` é trocado de lugar com o elemento na posição `i - 1` e `i` é decrementado.
+O que é feito a cada iteração? O elemento na posição `i`{.cpp} é trocado de lugar com o elemento na posição `i - 1`{.cpp} e `i`{.cpp} é decrementado.
 </div>
 </div>
 
