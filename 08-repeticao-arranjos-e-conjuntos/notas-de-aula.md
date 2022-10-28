@@ -1374,7 +1374,7 @@ examples {
 
 # Implementação
 
-A implementação desse função parece ser diferente das anteriores. \pause
+A implementação dessa função parece ser diferente das anteriores. \pause
 
 Antes só precisávamos analisar um único elemento do arranjo a cada iteração, agora temos que analisar dois elementos. \pause
 
@@ -1850,7 +1850,7 @@ while (condição) {
 
 \normalsize
 
-O funcionamento do "enquanto" é a seguinte \pause
+O funcionamento do "enquanto" é o seguinte \pause
 
 - A condição é verificada; \pause
 - Se a condição for `true`{.cpp}, as instruções são executadas e processo começa novamente.\pause
@@ -2051,7 +2051,7 @@ Como as variáveis são inicializadas? \pause `inicio = 0`{.cpp}. \pause
 
 O que precisa ser feito a cada iteração? \pause Calcular `fim`, extrair e adicionar a substring em `palavras`. \pause O que mais? \pause Atualizar o `inicio` para a próxima iteração! \pause
 
-Todas as iterações são iguais? \pause Não, a última interação é diferente. \pause Como identificar se estamos na última iteração? \pause `find` produz `-1`{.cpp}. \pause
+Todas as iterações são iguais? \pause Não, a última iteração é diferente. \pause Como identificar se estamos na última iteração? \pause `find` produz `-1`{.cpp}. \pause
 
 Como o `inicio` é atualizado? \pause No caso geral, `inicio = fim + 1`{.cpp}. \pause E no último caso? \pause `inicio = s.length()`{.cpp}. \pause
 
