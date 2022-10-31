@@ -1,5 +1,6 @@
 ---
 title: Resumo
+# TODO: adicionar entrada e saída
 ---
 
 # Compilação
@@ -16,7 +17,7 @@ g++ -o ola ola.cpp
 
 `[]`: significa que a construção que está entre os colchetes é opcional e portando não precisa ser especificada.
 
-`...`: significa que a construção que veio antes pode ser repetida
+`...`: significa que a construção que veio antes pode ser repetida.
 
 ## Variáveis
 
@@ -28,7 +29,7 @@ Tipo nome_variavel [= valor inicial];
 
 _Forma de execução_
 
-O computador aloca uma célula de memória e associa o nome `nome_variavel` com a célula. Se a expressão "valor inicial" existir, ela é avaliada e o valor resultante é armazenado na célula `nome_varial`. Note que se um valor inicial não for fornecido, o valor armazenado na célula de memória é indefinido.
+O computador aloca uma célula de memória e associa o nome `nome_variavel` com a célula. Se a expressão "valor inicial" existir, ela é avaliada e o valor resultante é armazenado na célula `nome_variavel`. Note que se um valor inicial não for fornecido, o valor armazenado na célula de memória é indefinido.
 
 _Exemplos_
 
@@ -92,7 +93,7 @@ if (condição) {
 
 _Forma de execução_
 
-O computador avalia a "condição" e verifica o resultado. Se o resultado for `true`{.cpp}, então as instruções do bloco "instruções então" são executadas, senão (o resultado é `false`{.cpp}), se as instruções do bloco "instruções senão" são executadas (se elas foram especificadas).
+O computador avalia a "condição" e verifica o resultado. Se o resultado for `true`{.cpp}, então as instruções do bloco "instruções então" são executadas, senão (o resultado é `false`{.cpp}), as instruções do bloco "instruções senão" são executadas (se elas foram especificadas).
 
 __Exemplos__
 
@@ -119,9 +120,8 @@ O valor exibido por esse programa é 20 e as linhas são executadas na ordem 3, 
 _Forma geral_
 
 ```cpp
-enum Nome {
-    Enum1,
-    Enum2,
+enum NomeEnum {
+    ValorEnum,
     ...
 };
 ```
@@ -164,7 +164,7 @@ _Forma de execução_
 
 A "expressão" é avaliada e seu valor é comparado com cada caso na sequência.
 
-Quando um "caso" tem o mesmo valor do resultado da expressão é encontrado, as "instruções" daquele caso são executadas até encontrar um `break`, então a instrução `switch/case`{.cpp} termina e o programa continua a execução com a próxima instrução após o `switch/case`{.cpp}.
+Quando um "caso" que tem o mesmo valor do resultado da expressão é encontrado, as "instruções" daquele caso são executadas até encontrar um `break`, então a instrução `switch/case`{.cpp} termina e o programa continua a execução com a próxima instrução após o `switch/case`{.cpp}.
 
 Se o valor da expressão não é igual a nenhum "caso", então as instruções da cláusula `default`{.cpp} são executadas (se elas foram especificadas).
 
@@ -198,14 +198,13 @@ O valor exibido por esse programa é Vermelho e as linhas são executadas na ord
 _Forma geral_
 
 ```cpp
-struct NomeDoTipo {
-    Tipo1 campo1;
-    Tipo2 campo2;
+struct NomeStruct {
+    Tipo campo_struct;
     ...
 };
 ```
 
-_Quando utilizar_
+_Quando utilizar_?
 
 Quando a informação consiste de dois ou mais itens que juntos descrevem uma entidade.
 
@@ -262,7 +261,7 @@ _Exemplo_
 int main()
 {
     vector<int> valores = {3, 1, 5, 2};
-    int soma = 0
+    int soma = 0;
     for (int v : valores) {
         soma = soma + v;
     }
@@ -321,7 +320,7 @@ while (condição) {
 
 _Forma de execução_
 
-A condição é avaliada, se o resultado for `true`{.cpp}, as "instruções" são executadas e processo começa novamente, senão, a repetição é finalizada.
+A condição é avaliada, se o resultado for `true`{.cpp}, as "instruções" são executadas e o processo começa novamente, senão, a repetição é finalizada.
 
 _Exemplo_
 
@@ -381,6 +380,7 @@ Função da biblioteca `cmath`.
 ```cpp
 // Produz o maior inteiro menor ou igual a n (piso).
 double floor(double n);
+// Exemplos
 floor(1.0); // 1.0
 floor(1.3); // 1.0
 floor(1.5); // 1.0
@@ -390,6 +390,7 @@ floor(1.7); // 1.0
 ```cpp
 // Produz o menor inteiro menor ou igual a n (teto).
 double ceil(double n);
+// Exemplos
 ceil(1.3); // 2.0
 ceil(1.5); // 2.0
 ceil(1.7); // 2.0
@@ -399,6 +400,7 @@ ceil(2.0); // 2.0
 ```cpp
 // Produz o inteiro mais próximo de n (arredondamento).
 double round(double n);
+// Exemplos
 round(1.3); // 1.0
 round(1.5); // 2.0
 round(1.7); // 2.0
@@ -407,18 +409,21 @@ round(1.7); // 2.0
 ```cpp
 // Calcula o seno de x (dado em radianos).
 double sin(double x);
+// Exemplos
 sin(3.14); // 0.00159265
 ```
 
 ```cpp
 // Calcula a raiz quadrada de x.
 double sqrt(double x);
+// Exemplos
 sqrt(2.0); // 1.41421
 ```
 
 ```cpp
 // Calcular x elevado a potência y.
 double pow(double x, double y);
+// Exemplos
 pow(2.0, 4.0); // 16
 ```
 
@@ -428,6 +433,7 @@ pow(2.0, 4.0); // 16
 // Negação
 // Produz true se x é false e produz false se x é true.
 bool operator!(bool x);
+// Exemplos
 !(4 == 2 + 2); // false
 !false; // true
 ```
@@ -436,6 +442,7 @@ bool operator!(bool x);
 // Conjunção (e)
 // Produz true se a e b são true, false caso contrário.
 bool operator&&(bool a, bool b);
+// Exemplos
 // par e maior que 12
 int n = 14;
 n % 2 == 0 && n > 12; // false
@@ -443,6 +450,7 @@ n % 2 == 0 && n > 12; // false
 // Disjunção (ou)
 // Produz true se a ou b é true, false caso contrário.
 bool operator||(bool a, bool b);
+// Exemplos
 // menor de idade ou idoso
 int idade = 72;
 idade < 18 || idade >= 60; // true
@@ -456,7 +464,7 @@ Necessário incluir a biblioteca `string`.
 // Concatenação
 // Produz uma nova string juntado a string b no final da string a.
 string operator+(string a, string b);
-
+// Exemplos
 string s = "Jorge";
 "Ola " + s + "!"; // "Ola Jorge!"
 ```
@@ -464,9 +472,10 @@ string s = "Jorge";
 ```cpp
 // Substring
 // Produz uma substring de this que começa na posição start e termina na
-// posição start + len - 1. Requer que 0 <= start < this.length().
-string string::substr(int start, int len);
-
+// posição min(len, start + len - 1).
+// Requer que 0 <= start < this.length().
+string substr(string this, int start, int len);
+// Exemplos
 string s = "jorge";
 s.substr(1, 3); // "org"
 ```
@@ -474,8 +483,8 @@ s.substr(1, 3); // "org"
 ```cpp
 // Número de bytes
 // Produz o número de bytes de this.
-int string::length();
-
+int length(string this);
+// Exemplos
 string s = "jorge";
 s.length(); // 5
 ```
@@ -485,15 +494,115 @@ s.length(); // 5
 
 Necessário incluir a biblioteca `array`.
 
+_Operações básica_
+
+```cpp
+// Inicialização
+array<int, 4> x = {6, 1, 8, 3}.
+
+// Acesso ao elemento pelo índice, sem verificação
+x[2]; // lê o valor da posição 2, que é 8.
+x[3] = 4; // armazena o valor 4 na posição 3.
+x[5]; // funcionamento indefinido, índice fora da faixa.
+
+// Acesso ao elemento pelo índice, com verificação
+x.at(0); // lê o valor da posição 0, que é 6.
+x.at(1) = 7; // armazena o valor 7 na posição 1.
+x.at(5); // erro em tempo de execução.
+```
+
+_Exemplo_
+
+```cpp
+int main()
+{
+    array<int, 4> valores = {3, 1, 5, 2};
+    int soma = 0;
+    for (int v : valores) {
+        soma = soma + v;
+    }
+    cout << soma << endl; // exibe 11
+}
+```
+
 
 ## `vector`
 
 Necessário incluir a biblioteca `vector`.
 
+_Operações básicas_
+
+```cpp
+// Todas as operações básica de array também funcionam com vector.
+
+// Um vector pode ser inicializado com qualquer quantidade de elementos
+vector<string> x = { "et", "telefone", "minha" };
+
+// Quantidade de elementos
+x.size(); // 3
+
+// Adição de elemento no final do arranjo
+x.push_back("casa"); // x = { "et", "telefone", "minha", "casa" }
+x.size(); // 4
+
+// Remoção do último elemento
+x.pop_back(); // x = { "et", "telefone", "minha" }
+```
+
+_Exemplo_
+
+```cpp
+int main()
+{
+    vector<int> valores = {3, 1, 5, 2};
+    int soma = 0;
+    for (int v : valores) {
+        soma = soma + v;
+    }
+    cout << soma << endl; // exibe 11
+}
+```
+
 
 ## `set`
 
 Necessário incluir a biblioteca `set`.
+
+_Operações básicas_
+
+```cpp
+// Inicialização
+set<int> s = {3, 1, 4};
+
+// Inserção
+s.insert(5);
+s.insert(4);
+s.insert(1); // s = {1, 5, 4, 3}
+s.size() // 4
+
+// Remoção
+s.erase(10);
+s.erase(1);
+s.erase(3); // s = {4, 5}
+
+// Verificação se um elemento está presente
+s.count(4) // 1
+s.count(3) // 0)
+```
+
+_Exemplo_
+
+```cpp
+int main()
+{
+    set<int> valores = {1, 1, 5, 1};
+    int soma = 0;
+    for (int v : valores) {
+        soma = soma + v;
+    }
+    cout << soma << endl; // exibe 6, só existe os elementos 1 e 5 no conjunto
+}
+```
 
 
 # Projeto de programas
@@ -527,6 +636,35 @@ Escrever com mais precisão e com exemplos o que a função faz. Inclui
 
 Escrever o corpo da função para que ela faça o que está na especificação.
 
+_Quando utilizar seleção?_
+
+Quando a forma de fazer a computação depende dos valores da entrada. Analisando os exemplos determinamos a forma da computação, se existir mais que uma forma, então precisamos usar seleção.
+
+_Quando utilize repetição?_
+
+Quando precisamos computar algo de forma incremental, repetindo um processo.
+
+Em geral, se temos listas de valores na entrada, então precisaremos de repetição para processar as listas.
+
+Se precisamos analisar todos os elementos de uma lista, um por vez, na ordem que eles aparecem, então usamos o "para cada". Se a forma de análise dos elementos é mais elaborada (precisamos do índice, precisamos analisar mais que um elemento por vez, etc), então utilizamos o "para".
+
+Para escrever uma repetição com o "para cada", precisamos responder três perguntas:
+
+1) Quais variáveis (valores) queremos calcular?
+2) Como as variáveis são inicializadas?
+3) Como as variáveis são atualizadas?
+
+No caso do "para", também precisamos responder
+
+1) Quais são as variáveis do laço e como elas são inicializadas?
+2) Qual a condição do laço?
+3) Como as variáveis do laço são atualizadas?
+
+_E o enquanto?_
+
+Em geral, utilizamos o "enquanto" para repetições que não envolvam lista de valores. Para projetar esse tipo de repetição, podemos começar com repetição física de código e generalizar para repetição lógica de código.
+
+
 ## Verificação
 
 Compilar e executar o programa para verificar se a implementação está de acordo com a especificação.
@@ -539,7 +677,7 @@ Alterar a organização do programa para que fique mais fácil de ser lido, ente
 
 _Problema_
 
-O André viaja muito. Sempre antes de fazer uma viagem ele calcula o quanto ele irá gastar com             combustível. Ele determina a distância que ele irá percorrer na viagem, o preço do litro do combustível e consulta as suas anotações para ver o consumo do carro, isto é, a quantidade de quilômetros que o carro   anda com um litro de combustível e então faz o cálculo do custo. O André acha um pouco chato fazer os     cálculos na mão, então ele pediu para você escrever um programa que faça os cálculos para ele.
+O André viaja muito. Sempre antes de fazer uma viagem ele calcula o quanto ele irá gastar com combustível. Ele determina a distância que ele irá percorrer na viagem, o preço do litro do combustível e consulta as suas anotações para ver o consumo do carro, isto é, a quantidade de quilômetros que o carro anda com um litro de combustível e então faz o cálculo do custo. O André acha um pouco chato fazer os cálculos na mão, então ele pediu para você escrever um programa que faça os cálculos para ele.
 
 _Projeto_
 
