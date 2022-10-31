@@ -1870,6 +1870,7 @@ int i = 0;
 int soma = 0;
 while (i < valores.size()) {
     soma = soma + valores[i];
+    i = i + 1;
 }
 
 check_expect(soma, 7).
