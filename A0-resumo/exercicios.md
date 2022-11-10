@@ -489,6 +489,16 @@ string s = "jorge";
 s.length(); // 5
 ```
 
+```cpp
+// Repetição de caractere
+// Produz uma string repetindo o caractere x n vezes.
+int string(int n, char x);
+// Exemplos
+string s = string(3, 'a');
+s.length(); // 3
+s == "aaa"; // true
+```
+
 
 ## `array`
 
