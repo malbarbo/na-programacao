@@ -41,7 +41,7 @@ Em todos os exercícios, exceto o primeiro, o arranjo de entrada deve ser passad
     // Escreva mais exemplos!
     ```
 
-#. Projete uma função que remova todas as strings vazias de uma lista de strings.
+#. Projete uma função que remova todas as strings vazias de uma lista de strings. Use a função do exercício 5 como auxiliar.
 
 #. Ordenação por seleção é outro algoritmo para ordenar um arranjo de valores. A ideia do algoritmo é selecionar um valor mínimo do arranjo a partir da posição 0 e colocá-lo na posição 0, depois encontrar um valor mínimo do arranjo a partir da posição 1 e colocá-lo na posição 1, depois encontrar um valor mínimo do arranjo a partir da posição 2 ... e assim por diante. Por exemplo, vamos considerar o arranjo `{8, 5, 4, 1, 2}`{.cpp}.
 
