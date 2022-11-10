@@ -222,7 +222,7 @@ void soma_1_no_primeiro(vector<int> &v)
 examples
 {
     vector<int> x = {5, 1, 8};
-    soma_1_no_primero(x);
+    soma_1_no_primeiro(x);
     check_expect(x, (vector<int> {6, 1, 8}));
 }
 ```
@@ -233,7 +233,7 @@ examples
 
 O que está acontecendo aqui? \pause
 
-Quando `soma_1_no_primero` é chamada, `v` passa a referenciar a mesma memória de `x`, então, quando `v` é alterado, de fato é `x` que está sendo alterado.
+Quando `soma_1_no_primeiro` é chamada, `v` passa a referenciar a mesma memória de `x`, então, quando `v` é alterado, de fato é `x` que está sendo alterado.
 
 
 # Referências
@@ -249,7 +249,7 @@ void soma_1_no_primeiro(vector<int> &v)
 examples
 {
     vector<int> x = {5, 1, 8};
-    soma_1_no_primero(x);
+    soma_1_no_primeiro(x);
     check_expect(x, (vector<int> {6, 1, 8}));
 }
 ```
@@ -272,7 +272,7 @@ void soma_1_no_primeiro(vector<int> &v)
 examples
 {
     vector<int> x = {5, 1, 8};
-    soma_1_no_primero(x);
+    soma_1_no_primeiro(x);
     check_expect(x, (vector<int> {6, 1, 8}));
 }
 ```
@@ -394,6 +394,7 @@ void insere_ordenado(vector<int> &valores, int v) {
         int t = valores[i];
         valores[i] = valores[i - 1];
         valores[i - 1] = t;
+        i = i - 1;
     }
 }
 ```
