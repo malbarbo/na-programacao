@@ -306,7 +306,7 @@ Generalizando exemplos concretos.
 
 # Exemplo
 
-Dado um arranjo ordenado em ordem não decrescente e um valor `v`, projete uma função que modifique o arranjo inserido o valor `v` de maneira que o arranjo continue em ordem.
+Dado um arranjo ordenado em ordem não decrescente e um valor `v`, projete uma função que modifique o arranjo inserindo o valor `v` de maneira que o arranjo continue em ordem.
 
 
 # Especificação

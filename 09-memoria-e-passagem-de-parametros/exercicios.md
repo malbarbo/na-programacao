@@ -11,7 +11,7 @@ Em todos os exercícios, exceto o primeiro, o arranjo de entrada deve ser passad
 
 #. Projete uma função que some um valor `n` a cada elemento de um arranjo de números.
 
-#. Dado um arranjo ordenado em ordem não decrescente e um valor `v`, projete uma função que modifique o arranjo inserido o valor `v` de maneira que o arranjo continue em ordem.
+#. Dado um arranjo ordenado em ordem não decrescente e um valor `v`, projete uma função que modifique o arranjo inserindo o valor `v` de maneira que o arranjo continue em ordem.
 
 #. Projete uma função que receba como parâmetro um arranjo de inteiros e modifique-o trocando de posições o primeiro elemento com o último elemento, o segundo elemento com o penúltimo elemento e assim por diante.
 

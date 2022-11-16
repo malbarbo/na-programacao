@@ -1883,7 +1883,7 @@ Claro, não precisamos do "enquanto" para fazer a soma dos valores de um arranjo
 
 Então, quando usamos o "enquanto"? \pause
 
-Em geral, quando precisamos de uma repetição que não dependa de uma coleção de valores. \pause Mas também podemos usar o "enquanto" quando precisamos analisar os elementos de um arranjo e o "para" e o "para cada" não são adequados (deixa o código mais complicado).
+Em geral, quando precisamos de uma repetição que não dependa de uma coleção de valores. \pause Mas também podemos usar o "enquanto" quando precisamos analisar os elementos de um arranjo e o "para" e o "para cada" não são adequados (deixam o código mais complicado).
 
 
 # Implementação
