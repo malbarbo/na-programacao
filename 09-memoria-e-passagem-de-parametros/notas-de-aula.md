@@ -158,7 +158,7 @@ palindromo(v);
 
 # Palíndromo
 
-Uma memória para 1000000 de elementos é alocada para `valores` e `v` é copiado para essa memória. A após a execução de palíndromo a memória de `valores` é desalocada. \pause
+Uma memória para 1000000 de elementos é alocada para `valores` e `v` é copiado para essa memória. Após a execução de palíndromo a memória de `valores` é desalocada. \pause
 
 Parece um desperdício! \pause E é! \pause Podemo melhorar? \pause Sim! \pause
 

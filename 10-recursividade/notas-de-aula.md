@@ -26,7 +26,7 @@ No segundo caso, um número natural é definido em termos de outro número natur
 
 Como é possível definir uma coisa em termos dela mesmo? \pause
 
-Este tipo de definição é chamada de **definição recursiva** (ou definição indutiva) e é muito utilizada na computação é matemática. \pause
+Este tipo de definição é chamada de **definição recursiva** (ou definição indutiva) e é muito utilizada na computação e matemática. \pause
 
 Para ser válida, uma definição recursiva precisa de\pause
 
