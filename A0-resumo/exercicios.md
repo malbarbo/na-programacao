@@ -499,6 +499,19 @@ s.length(); // 3
 s == "aaa"; // true
 ```
 
+```cpp
+// Busca de substring
+// Procura pela primeira ocorrência de s em this iniciando a partir do caracteres em pos.
+// Se s for encontrada em this, devolve a posição do primeiro caractere em this
+// a partir de pos que é igual ao primeiro caractere de s. Se s não for encontrada
+// em this, devolve -1.
+int find(string this, string s, int pos);
+// Exemplos
+string t = "casarao";
+t.find("asa", 0); // 1
+t.find("asa", 2); // -1
+t.find("o", 2); // 6
+```
 
 ## `array`
 
