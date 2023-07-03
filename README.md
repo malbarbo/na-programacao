@@ -5,6 +5,8 @@ Para gerar os pdfs execute o comando `make pdf`. Os arquivos pdfs serão gerados
 Este comando irá baixar e executar os programas [pandoc](https://pandoc.org/)
 e [tectonic](http://tectonic-typesetting.github.io/).
 
+Este material utilizava inicialmente a linguagem C++, mas está sendo atualizado para utilizar a linguagem Python. O material em C++ está no ramo [cpp](../../tree/cpp).
+
 
 # Licença
 
@@ -14,7 +16,7 @@ e [tectonic](http://tectonic-typesetting.github.io/).
 <br />
 <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text" property="dct:title" rel="dct:type">
 Notas de aula de introdução a programação</span> de
-<a xmlns:cc="http://creativecommons.org/ns#" href="http://mabarbo.pro.br" property="cc:attributionName" rel="cc:attributionURL">
+<a xmlns:cc="http://creativecommons.org/ns#" href="http://malbarbo.pro.br" property="cc:attributionName" rel="cc:attributionURL">
 Marco A L Barbosa</a>
 está licenciado com uma Licença
 <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">
