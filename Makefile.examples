@@ -1,0 +1,10 @@
+SOURCES := $(shell ls exemplos/*.cpp)
+
+all: $(SOURCES:exemplos/%.cpp=../target/%)
+
+../target/%: exemplos/%.cpp
+	@echo Compilando e testando $@
+	@mkdir -p ../target/
+	@g++ -Wall -Wextra -Wconversion -I ../ -o $@ $<
+	@$@ < /dev/null
+	@rm $@

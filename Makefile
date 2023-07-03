@@ -1,4 +1,4 @@
-.PHONY: default all pdf handout tex clean clean-bin clean-all
+.PHONY: default all pdf handout tex testes clean clean-bin clean-all
 
 SHELL=bash
 DEST=target
@@ -90,6 +90,13 @@ $(TECTONIC):
 	mkdir -p $(DEST)/bin/
 	curl -L https://github.com/tectonic-typesetting/tectonic/releases/download/tectonic@$(TECTONIC_VERSION)/tectonic-$(TECTONIC_VERSION)-x86_64-unknown-linux-musl.tar.gz \
 		| tar xz -C $(DEST)/bin/
+
+testes:
+	cd 06-projeto-de-programas && make
+	cd 07-selecao-enumeracoes-e-estruturas && make
+	cd 08-repeticao-arranjos-e-conjuntos && make
+	cd 09-memoria-e-passagem-de-parametros && make
+	cd 10-recursividade && make
 
 clean:
 	@echo Removendo $(DEST_PDF) $(DEST_TEX) $(DEST_ZIP)
