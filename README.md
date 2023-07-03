@@ -6,6 +6,11 @@ Este comando irá baixar e executar os programas [pandoc](https://pandoc.org/)
 e [tectonic](http://tectonic-typesetting.github.io/).
 
 
+# Observação
+
+Este ramo (`cpp`) contém uma versão do material que utiliza a linguagem C++, para uma versão mais recente, que utiliza a linguagem Python, veja o ramo `main`.
+
+
 # Licença
 
 <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">
@@ -14,7 +19,7 @@ e [tectonic](http://tectonic-typesetting.github.io/).
 <br />
 <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text" property="dct:title" rel="dct:type">
 Notas de aula de introdução a programação</span> de
-<a xmlns:cc="http://creativecommons.org/ns#" href="http://mabarbo.pro.br" property="cc:attributionName" rel="cc:attributionURL">
+<a xmlns:cc="http://creativecommons.org/ns#" href="http://malbarbo.pro.br" property="cc:attributionName" rel="cc:attributionURL">
 Marco A L Barbosa</a>
 está licenciado com uma Licença
 <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">
