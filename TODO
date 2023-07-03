@@ -1,1 +1,50 @@
+Build
+
+- target/Makefile.inc não é gerrado automaticamente quando há novos arquivos ou mudança de nomes de arquivos
+
+Geral
+
 - Juntar algoritmos e linguagens e simplificar.
+
+- Padronizar a formação do código ({ de funções deve ficar sozinho em uma linha)
+
+- Adicionar um resumo da linguem e do processo
+
+- Distinguir exemplos feito em aula de exercícios
+
+- Introduzir o processo de execução passo a passo deste o início e colocar exemplos para cada construção da linguagem
+
+- A cada nova construção, mostrar a execução passo a passo
+
+- Seguir um processo na apresentação do material (ver vídeo do Ricard Feldman, https://www.youtube.com/watch?v=G-GhUxeYc1U, o que os alunos já sabem, motivação, menor caminho...)
+
+
+Conceitos básicos
+
+- Explorar melhorar a analogia de "caixas" que fazem o processamento
+
+- Na hora de apresentar a sintaxe de definição de função perguntar quais são os elementos necessários (nome, tipo de entrada e tipo de saída)
+
+- Dividir melhor os exercícios de conceitos básicos e de projeto de programas
+
+
+Projeto de programas
+
+- O processo parece ter ficado muito complicado para quem está começando...
+
+- Mais exemplos com execução sequencial
+
+
+Seleção, enumerações e estruturas
+
+- Adicionar animação para as alocações.
+
+- Discutir if sem else?
+
+- Discutir encadeamento com else if
+
+- Exemplificar a diferença de uma sequência de if e if aninhados (exemplo do semáforo)
+
+- Adicionar um seção explicando como projetar funções com seleção
+
+- Expressar melhor as condições nos exemplos
