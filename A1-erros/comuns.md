@@ -6,6 +6,7 @@ Análise
 - Interpretação equivocada
 - Síntese confusa
 
+
 Definição de tipos de dados
 
 - Informação não considerada
@@ -16,6 +17,7 @@ Especificação
 
 - Inconsistência entre o propósito/exemplos
 - Inconsistência entre o propósito/implementação
+
 
 Propósito
 
