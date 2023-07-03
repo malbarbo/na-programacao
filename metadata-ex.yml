@@ -2,16 +2,10 @@ author:
     - Marco A L Barbosa
     - \href{http://malbarbo.pro.br}{malbarbo.pro.br}
 header-includes: |
-    \usepackage{caption}
-    \usepackage{clrscode3e}
-    \captionsetup[figure]{labelformat=empty}
     \usepackage[super]{nth}
-    \makeatletter
-    \def\bbl@cs#1{\csname bbl@#1\endcsname}
 # Substitui a licença do arquivo metadata-ex.yml
 license:
+numbersections: true
 lang: pt-BR
 toc-title: Conteúdo
-theme: metropolis
-themeoptions: numbering=fraction,sectionpage=simple
 fontsize: 11pt
