@@ -16,89 +16,67 @@ Um sistema estruturado para comunicação.
 
 # Introdução
 
-Podemos utilizar o português para programar um computador? \pause Não, porque o computador não entende o português! \pause Ainda que o computador entendesse o português, ele não seria uma linguagem adequada para programação porque não é preciso o bastante. \pause
+Podemos utilizar o português para programar um computador? \pause
 
-E que linguagem o computador entende? \pause Cada tipo de computador entende um linguagem específica, a sua linguagem de máquina. \pause
+Não, porque o computador não entende o português! \pause Ainda que o computador entendesse o português, ele não seria uma linguagem adequada para programação porque não é preciso o bastante. \pause
 
-Então, precisamos programar o computador usando a linguagem de máquina? \pause Hoje em dia não, mas os primeiros computadores eram programados usando linguagem de máquina!
+E que linguagem o computador entende? \pause
+
+Cada tipo de computador entende uma linguagem específica, a sua linguagem de máquina. \pause
+
+Então, precisamos programar um computador usando sua linguagem de máquina? \pause
+
+Hoje em dia não, mas os primeiros computadores eram programados usando linguagem de máquina!
 
 # {.plain}
 
 ![](imagens/eniac.jpeg)
 
 
+# Tradução
+
+Se não queremos utilizar linguagem de máquina, como podemos programar os computadores? \pause Como duas entidades que usam linguagens diferentes podem se comunicar? \pause
+
+Usando um tradutor.\pause
+
+Se a linguagem fonte e a linguagem alvo forem bem definidas, podemos escrever um programa que faça a tradução de forma automática. \pause A linguagem alvo (de máquina) é bem definida, precisamos de uma linguagem fonte (de programação) que também seja bem definida.
+
+
 # Linguagem de programação
-
-Se não queremos utilizar linguagem de máquina, como podemos programar os computadores? \pause Como duas entidades que falam linguagens diferentes podem se comunicar? \pause Usando um tradutor.\pause
-
-Se a linguagem fonte e a linguagem alvo forem bem definidas, podemos escrever um programa que faça a tradução de forma automática. \pause A linguagem de máquina (alvo) é bem definida, precisamos de uma linguagem fonte que também seja bem definida.
-
-
-# Sintaxe e semântica
 
 Uma **linguagem de programação** é uma linguagem formal (bem definida) adequada para programar computadores. \pause
 
-Uma linguagem de programação é caracterizada por diversos aspectos, entre eles
-
-- A sintaxe e a semântica
-- Nível de abstração
-- Modo de execução
+Uma linguagem de programação é caracterizada por diversos aspectos, entre eles a sintaxe, a semântica e o modo de execução.
 
 
-# Sintaxe e semântica
+# Sintaxe
 
 A **sintaxe** de uma linguagem é o conjunto de regras que define como os símbolos podem ser agrupados para criar as sentenças na linguagem. \pause
 
-Operação de soma com dois número: \pause
+Por exemplo, a instrução para soma de dois número é expressa: \pause
 
-- Na maioria das linguagens: `20 + 17` \pause
-- No Lisp: `(+ 20 17)`
+- Na maioria das linguagens: `20 + 17`{.python} \pause
+- Em Lisp: `(+ 20 17)`{.scheme}
 
 
-# Sintaxe e semântica
+# Semântica
 
 A **semântica** de uma linguagem define o significado das construções da linguagem. \pause
 
-A expressão `12 + "3"` é valida sintaticamente em muitas linguagens, mas o significado é diferente entre elas \pause
+A expressão `12 + "3"`{.python} é valida sintaticamente em muitas linguagens, mas o significado é diferente entre elas. \pause
 
-- Lua: significa que o texto "3" deve ser convertido para um número e depois somado com 12. \pause
-- Javascrip: significa que o número 12 deve ser transformado para um texto e depois juntado com "3". \pause
+- Lua: o texto `"3"`{.python} deve ser convertido para um número e depois somado com `12`{.python}. \pause
+- Javascrip: o número `12`{.python} deve ser transformado para um texto e depois juntado com `"3"`{.python}. \pause
 - Na maioria linguagens: é um erro semântico.
-
-
-# Nível de abstração
-
-Uma linguagem de programação pode requerer (ou permitir) que o programador controle com mais detalhes ou menos detalhes o computador. Quanto mais detalhes são necessários, mais baixo nível é a linguagem, quanto menos detalhes, mais alto nível. \pause
-
-
-_A programming language is low level when its programs require attention to the irrelevant_. (Alan Perlis) \pause
-
-Ser relevante ou não depende do contexto, por exemplo, para sistemas embarcados, controlar com detalhes o uso da memória pode ser bastante relevante, já para um _script_ que será executado em um computador de trabalho, nem tanto.
 
 
 # Modo de execução
 
-Uma linguagem de programação pode ser compilada ou interpretada. \pause
+Os dois principais **modos de execução** das linguagens de programação são a compilação e a interpretação. \pause
 
 Em uma linguagem compilada o código do programa é primeiro traduzido (compilado) para código de máquina e posteriormente executado. \pause
 
-Em uma linguagem interpretada o código do programa é lido e executado diretamente pelo interpretador.
-
-
-# Compilação vs interpretação
-
-Características de programas compilados \pause
-
-- Execução eficiente
-
-- Ciclo de desenvolvimento lento (tem que esperar o compilador) \pause
-
-
-Características de programas interpretados \pause
-
-- Execução menos eficiente
-
-- Ciclo de desenvolvimento mais rápido (não precisa esperar o compilador)
+Em uma linguagem interpretada o código do programa é lido, traduzido e executado diretamente pelo interpretador.
 
 
 # Exemplo C++
@@ -215,7 +193,7 @@ Interpretação
 </div>
 
 
-# Linguagens
+# Escolhendo uma linguagem
 
 Existem centenas de linguagens de programação, cada uma com suas próprias características e usos, então, qual delas aprender? \pause
 
@@ -224,11 +202,11 @@ Nenhuma em particular. \pause O mais importante não são as linguagens em si, m
 Dominando os fundamentos de algoritmos e paradigmas de programação, aprender uma nova linguagem não é uma tarefa difícil!
 
 
-# Linguagens
+# Escolhendo uma linguagem
 
-Mas precisamos de uma linguagem para começar. \pause Nessa disciplina vamos utilizar a linguagem C++! \pause
+Mas precisamos de uma linguagem para começar. \pause Nessa disciplina vamos utilizar a linguagem Python! \pause
 
-C++ é uma das linguagens mais poderosas que existem, \pause mas também uma das mais complicas! \pause Mas não se preocupe, vamos utilizar apenas construções básicas! \pause
+Python é uma linguagem bastante utilizada e versátil, \pause mas também é uma linguagem extensa! \pause Mas não se preocupe, vamos utilizar apenas construções básicas! \pause
 
 Vamos começar?
 
