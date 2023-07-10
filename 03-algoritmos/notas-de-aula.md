@@ -16,50 +16,53 @@ O que é um algoritmo?
 
 # Definições de algoritmo
 
-Dicionário Silveira Bueno \pause
+## Dicionário Silveira Bueno
 
 > Conjunto predeterminado e definido de regras e processos destinados à solução de um problema, com um número finito de etapas.
 
-
 \pause
 
-Dicionário Merriam-Webster \pause
+## Dicionário Merriam-Webster
 
 > Um procedimento passo a passo para resolver um problema ou atingir um objetivo.
 
 \pause
 
-Forbellone e Eberspächer \pause
+## Forbellone e Eberspächer
 
 > Uma sequência de passos que visam atingir um objetivo bem definido.
 
 \pause
 
-Knuth
+## Knuth
 
 > Um conjunto finito de regras que fornece uma sequência de operações para resolver um tipo específico de problema.
 
-O que estas definições tem em comum?
-
-
-# Algoritmo
+\pause
 
 O que estas definições tem em comum?
 
-- sequência de etapas/passos/operações \pause
 
-- resolução de um problema \pause
+# Definição de Algoritmo
 
-Então, qual a relação de algoritmo e resolução de problemas? \pause
+O que estas definições tem em comum? \pause
 
-Processos de resolução de problemas podem ser descritos com algoritmos. \pause
+- Sequência de etapas/passos/operações \pause
 
-Embora algoritmos possam ser usados em diversos contextos, estamos interessados nos algoritmos que podem ser executados por computadores.
+- Resolução de um problema \pause
+
+Então, qual a relação de algoritmo e resolução de problemas e programas de computadores? \pause
+
+- Processos de resolução de problemas podem ser descritos com algoritmos. \pause
+
+E a relação com programas de computadores? \pause
+
+- Algoritmos podem ser implementados como programas de computadores (embora algoritmos possam ser usados em diversos contextos, estamos interessados apenas naqueles que podem ser executados por computadores)
 
 
 # Algoritmos
 
-Podemos descrever/representar um algoritmo de algumas maneiras, entre elas \pause
+Como expressar um algoritmo? \pause
 
 - Descrição textual
 
@@ -67,161 +70,108 @@ Podemos descrever/representar um algoritmo de algumas maneiras, entre elas \paus
 
 - Pseudocódigo
 
+- Funções matemáticas
+
+- Etc
+
 \pause
 
-Vamos ver alguns exemplos!
+Vamos fazer uma dinâmica!
 
 
-# Descrição textual
+# Dinâmica
 
-Temos uma tabela com nomes de jogadores e os seus pontos em um determinado campeonato e queremos determinar a classificação dos jogadores. \pause Podemos criar um algoritmo que descreve uma forma de fazer isso? \pause Sim! \pause
+Quatro equipes, cada equipe recebe um algoritmo e deve fazer \pause
 
-Vamos fazer um algoritmo usando descrição textual. \pause
+- Leitura do algoritmo \pause
 
-Nessa forma de representação de algoritmo, todas as instruções são dadas através de texto em linguagem natural.
+- Tentativa de execução do algoritmo \pause
+
+- Descoberta do propósito do algoritmo \pause
+
+- Apresentação para a turma
 
 
-# Descrição textual
+# Algoritmo 1 - Descrição textual
+
+Considere a tabela ao lado.
 
 <div class="columns">
 <div class="column" width="50%">
-Obtenha a tabela com os pontos.
-
 Marque a linha 1 da tabela como linha de referência.
 
-Olhando para a linha de referência e para as linhas que estão após ela, procure pela linha com o jogador com mais pontos e troque de lugar o conteúdo dessa linha com o conteúdo da linha de referência.
+Olhando para a linha de referência e para as linhas que estão após ela, procure pela linha com a coluna **B** com maior valor e troque de lugar o conteúdo dessa linha com o conteúdo da linha de referência.
 
 Se existe uma linha após a linha de referência, considere essa próxima linha como referência e repita o processo, senão pare.
-
-No final, a tabela foi reorganizada de acordo com a classificação dos jogadores. \pause
-
-</div>
-<div class="column" width="25%">
-**Entrada**
-
-Jogador | Pontos
---------|-------
-Paula   | 8
-Jorge   | 10
-Maria   | 7
-José    | 6
-Ana     | 9
-Mário   | 8
-
-\pause
-
-</div>
-<div class="column" width="25%">
-**Saída**
-
-Jogador | Pontos
---------|-------
-Jorge   | 10
-Ana     | 9
-Paula   | 8
-Mário   | 8
-Maria   | 7
-José    | 6
-
-</div>
 </div>
 
-
-# Fluxograma
-
-Temos um número positivo e um chute inicial para a raiz quadrado desse número, queremos, a partir do chute inicial, encontrar um valor aproximado para a raiz quadrado do número. \pause Podemos criar um algoritmo que descreve uma forma de fazer isso? \pause Sim! \pause
-
-Vamos fazer um algoritmo usando fluxograma. \pause
-
-Em um fluxograma, utilizamos símbolos para representar graficamente a sequência de ações do algoritmo.
-
-
-# Fluxograma
-
-<div class="columns">
 <div class="column" width="50%">
-**Método de Newton**
+_     |A       | B
+------|--------|-------
+**1** |Paula   | 8
+**2** |Jorge   | 10
+**3** |Maria   | 7
+**4** |José    | 6
+**5** |Ana     | 9
+**6** |Mário   | 8
 
-![](imagens/fluxograma.pdf)
-
-\pause
-
-</div>
-<div class="column" width="25%">
-**Entrada**
-
-$N = 4$
-
-$C = 1$
-
-\pause
-
-</div>
-<div class="column" width="25%">
-**Saída**
-
-$2$
 </div>
 </div>
 
 
-# Pseudocódigo
+# Algoritmo 2 - Fluxograma
 
-Temos dois números inteiros positivos e queremos encontrar o máximo divisor comum entre eles. \pause Podemos criar um algoritmo que descreve uma forma de fazer isso? \pause Sim! \pause
+Usando $N = 4$ e $C = 1$, faça
 
-Vamos fazer um algoritmo em pseudocódigo. \pause
-
-Pseudocódigo usa linguagem natural e geralmente é estruturado para parecer mais com código em uma linguagem de programação.
+![](imagens/fluxograma.pdf){width=7cm}
 
 
-# Pseudocódigo
+# Algoritmo 3 - Pseudocódigo
 
-<div class="columns">
-<div class="column" width="60%">
-**Algoritmo de Euclides**
+Passo 0:
+
+- Começa com $A = 52$ e $B = 36$
 
 Passo 1:
 
-- Obtenha os números inteiros positivos $A$ e $B$
 - Se $A < B$, troque o valor de $A$ por $B$ e vice-versa
 
 Passo 2:
 
-- Se $B = 0$, então pare e a resposta é o valor de $A$
+- Se $B = 0$, então pare e a saída é o valor de $A$
 - Senão
     - $C \leftarrow A - B$
-    - $A \leftarrow B$ // Copie o valor de $B$ para $A$
-    - $B \leftarrow C$ // Copie o valor de $C$ para $B$
-    - Se $A < B$, troque o valor de $A$ por $B$ e vice-versa
-    - Repita o passo 2
+    - $A \leftarrow B$
+    - $B \leftarrow C$
+    - Repita o passo 1
 
-\pause
 
-</div>
-<div class="column" width="20%">
-**Entrada**
+# Algoritmo 4 - Função matemática
 
-$A = 52$
+Calcule o valor de $f([2, 1, 4, 1, 2])$
 
-$B = 36$
+$$f(x) = \begin{cases}
+primeiro(x) & \text{se } num\_itens(x) = 1 \\
+primeiro(x) + f(sem\_primeiro(x)) & \text{caso contrário}
+\end{cases}$$
 
-\pause
 
-</div>
-<div class="column" width="20%">
-**Saída**
+# Algoritmos
 
-$4$
-</div>
-</div>
+O que foi necessário para entender/executar esses algoritmos? \pause
+
+- Entender a notação \pause
+
+- Entender a semântica \pause
+
+- Entender o modelo de execução
 
 
 # Algoritmos
 
 <div class="columns">
 <div class="column" width="50%">
-
-O que todos esses algoritmos têm em comum? \pause
+O que esses algoritmos têm em comum? \pause
 
 - Entrada e saída \pause
 
@@ -233,7 +183,7 @@ O que todos esses algoritmos têm em comum? \pause
 
     - Repetição de ações \pause
 
-- Uso de memória (leitura e armazenamento de valores) \pause
+- Uso de memória \pause
 </div>
 <div class="column" width="50%">
 ![](imagens/arq.pdf)
@@ -268,7 +218,7 @@ O que considerar na escolha ou no projeto de algoritmos? \pause
 
 - Uso de recursos (tempo de processamento, memória, energia, etc) \pause
 
-- Corretude
+- Corretude e/ou precisão
 
 
 # Algoritmos e computadores
@@ -276,6 +226,7 @@ O que considerar na escolha ou no projeto de algoritmos? \pause
 Qual representação utilizar para escrever algoritmos que possam ser executados por um computador? \pause
 
 Vamos discutir esta questão em seguida!
+
 
 
 # Atividades
