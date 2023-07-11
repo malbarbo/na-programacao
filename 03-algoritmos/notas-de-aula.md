@@ -151,9 +151,22 @@ Passo 2:
 Calcule o valor de $f([2, 1, 4, 1, 2])$
 
 $$f(x) = \begin{cases}
-primeiro(x) & \text{se } num\_itens(x) = 1 \\
+0 & \text{se } num\_itens(x) = 0 \\
 primeiro(x) + f(sem\_primeiro(x)) & \text{caso contrário}
 \end{cases}$$
+
+
+# Propósitos
+
+Qual o propósito de cada algoritmo? \pause
+
+1) Organizar os nomes em ordem decrescente de pontos \pause
+
+2) Calcular a raiz quadrada (método de Newton) \pause
+
+3) Encontrar o MDC de dois números (algoritmo de Euclides) \pause
+
+4) Somar os valores de uma lista
 
 
 # Algoritmos
@@ -231,6 +244,4 @@ Vamos discutir esta questão em seguida!
 
 # Atividades
 
-@. Aja como um computador humano e execute o algoritmo (fluxograma) para calcular a raiz quadrado de 8 com chute inicial 1.
-
-@. Aja como um computador humano e execute o algoritmo (pseudocódigo) para calcular o mdc de 48 e 15.
+@. Aja como um computador humano e execute os algoritmos de 1 a 4 (inclusive o algoritmo que a sua equipe trabalhou em sala).
