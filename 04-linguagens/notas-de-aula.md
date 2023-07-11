@@ -213,6 +213,6 @@ Vamos começar?
 
 # Atividades
 
-@. Tente relacionar as construções do fluxograma do algoritmo que calcula a raiz quadrada com construções do código em C++.
+@. Tente relacionar as construções do fluxograma do algoritmo que calcula a raiz quadrada com as construções do código em C++.
 
-@. Tente relacionar as construções do pseudo código que calcula o MDC com construções do código em Python.
+@. Tente relacionar as construções do pseudo código que calcula o MDC com as construções do código em Python.
