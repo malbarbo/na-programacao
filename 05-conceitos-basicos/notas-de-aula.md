@@ -5,230 +5,410 @@ title: Conceitos básicos
 
 # Introdução
 
-Até o momento nós estudamos
+Até o momento nós estudamos alguns aspectos de
 
 - Sistemas computacionais
 - Algoritmos
-- Problemas
-- Linguagens
+- Linguagens de programação
 
 \pause
 
-Agora vamos focar no nosso objetivo principal \pause
+Agora vamos ver as construções básicas da linguagem Python, para em seguida começarmos a estudar o processo de projeto de programas.
 
-- Resolver problemas projetando programas que sejam bem escritos e funcionem corretamente.
+
+# Instalação
+
+O Python é um software livre e pode ser baixado e instalado de <https://python.org>. \pause
+
+Além do interpretador, a instalação padrão do Python vem com um ambiente de desenvolvimento e aprendizagem chamado IDLE. \pause
+
+Ao iniciar o IDLE a janela a seguir é exibida \pause
+
+![](imagens/idle.png){width=10cm}
+
+
+# Janela de interações (REPL)
+
+Utilizamos essa janela, chamada de janela de **interações** (ou REPL), para testar pequenos trechos de código. \pause
+
+O símbolo `>>>` é chamado de _prompt_ e indica que o interpretador está pronto.
+
+
+# Janela de interações (REPL)
+
+As interações acontecem da seguinte forma
+
+- Digitamos um trecho de código (_Read_)
+- O código é avaliado (_Eval_)
+- O resultado é mostrado na tela (_Print_)
+- O processo se repete (_Loop_)
 
 \pause
 
-Vamos começar com um problema!
+Exemplo de interação
+
+```python
+>>> 3 * 4
+12
+```
 
 
-# Introdução
+# Janela de interações (REPL)
 
-O André viaja muito. Sempre antes de fazer uma viagem ele calcula quanto irá gastar com combustível. Ele determina a distância que ele irá percorrer na viagem, o preço do litro do combustível e consulta as suas anotações para ver o consumo do carro, isto é, a quantidade de quilômetros que o carro anda com um litro de combustível e então faz o cálculo do custo. O André acha um pouco chato fazer os cálculos na mão, então ele pediu para você escrever um programa que faça os cálculos para ele. \pause
+O modo de interações também pode ser iniciado executado `python` no terminal de comandos. \pause
 
-Como projetar um programa que atenda a necessidade do André? \pause
-
-Antes de começarmos a projetar programas, vamos estudar algumas construções básicas.
+![](imagens/python-terminal.png){width=10cm}
 
 
-# Função `main`
+# Observação
 
-Todo programa começa a execução a partir de um ponto. Em C++ esse ponto é a função `main`. \pause
+Note que na janela de interações não criamos programas para seres utilizados por usuários, mas experimentamos aspectos do Python e testamos os nossos programas. \pause
+
+Veremos posteriormente como criar programas completos. \pause
+
+Agora vamos explorar o Python!
+
+
+# Tipos de dados e operações pré-definidas
+
+A primeira coisa que aprendemos em uma linguagem de programação é o tipo de valores e operações já disponíveis na linguagem.
+
+
+# Números
+
+Python tem diversos tipos de números, os dois principais que vamos utilizar são \pause
 
 <div class="columns">
-<div class="column" width="48%">
-O programa mais simples que podemos escrever é \pause
+<div class="column" width="50%">
 
-Arquivo `basico.cpp`
+Inteiros (`int`{.python}) \pause
 
-```cpp
-int main()
-{
-}
-```
-
-\pause
-
-Compilação (Linux)
-
-```cpp
-g++ basico.cpp -o basico
-```
-
-\pause
-
-Execução (Linux)
-
-```
-./basico
+```python
+>>> 102
+102
+>>> -18
+-18
 ```
 
 \pause
 
 </div>
-<div class="column" width="48%">
+<div class="column" width="50%">
 
-O que será exibido na tela após a execução desse programa? \pause
+Ponto flutuante (`float`{.python}), representação aproximada de números reais \pause
 
-Nada! \pause O programa inicia e termina logo em seguida, sem fazer "nada".
+```python
+>>> 1.3
+1.3
+>>> 0.345
+0.345
+>>> # Notação científica
+>>> # 1.23 * 10^2
+>>> 1.23e2
+123.0
+```
 
 </div>
 </div>
 
 
-# Saída
+# Operações básicas
 
-Agora vamos escrever algumas instruções dentro da função `main`. \pause Os primeiros computadores foram criados para fazerem cálculos matemáticos, então vamos começar com isso. \pause
+Podemos usar as quatro operações aritméticas básicas com esses tipos numéricos e algumas outras operações, conforme veremos a seguir.
 
-Podemos escrever expressões matemáticas de forma similar ao que estamos acostumados \pause
 
-```cpp
-int main()
-{
-    2 + 4 * 3;
-}
+# Operações básicas
+
+<div class="columns">
+<div class="column" width="50%">
+
+```python
+>>> # Soma e subtração
+>>> 4 + 2
+6
+>>> 4 + 2.0 - 5
+1.0
 ```
 
 \pause
-O que será exibido na tela após a execução desse programa? \pause
 
-Nada. \pause
+```python
+>>> # Multiplicação e divisão
+>>> 3 * 5.0
+15.0
+>>> 7 / 2
+3.5
+```
 
-A sentença que escrevemos instrui o computador a fazer `4 * 3` e somar o resultado com `2`, apenas isso. \pause Precisamos usar uma instrução específica para exibir o resultado na tela.
+\pause
+
+```python
+>>> # Divisão sempre produz float
+>>> 8 / 4
+2.0
+```
+</div>
+<div class="column" width="50%">
+\pause
+
+```python
+>>> # Piso da divisão
+>>> 7 // 2
+3
+>>> 5 // 1.3
+3.0
+```
+
+\pause
+
+```python
+>>> # Resto da divisão
+>>> 14 % 3
+2
+>>> # float é uma aproximação
+>>> # de números reais
+>>> 5 % 1.3
+1.0999999999999999
+```
+
+</div>
+</div>
 
 
-# Saída
+# Comentários
 
-Algumas instruções, como a soma e a multiplicação, estão disponíveis diretamente para o programador, outras instruções, como as de entrada e saída, estão em bibliotecas que precisam ser requisitadas explicitamente. \pause
-
-Para usarmos a instrução de saída, precisamos incluir o arquivo de cabeçalho `iostream` (`io` é de _input/output_ -- entrada/saída em inglês) usando a diretiva `#include`{.cpp}.
+O símbolo `#`{.python} (cerquilha), é utilizado para indicar um comentário. O comentário incia em `#`{.python} e vai até o final da linha. Os comentários são ignorados pelo interpretador do Python, mas são utilizados para adicionar informações relevantes para os leitores do código.
 
 
-# Saída
+# Exponenciação
+
+```python
+>>> # Exponenciação e radiciação
+>>> 3 ** 4
+81
+>>> 2 ** 80
+1208925819614629174706176
+>>> 16 ** 0.5
+4.0
+```
+
+\pause
+
+```python
+>>> # A exponenciação tem prioridade sobre a divisão
+>>> 27 ** 1/3
+9.0
+>>> # Usamos parênteses para mudar a prioridade
+>>> 27 ** (1/3)
+3.0
+```
+
+
+# Prioridades
+
+O Python utiliza a mesma precedência que estamos acostumados na matemática. Podemos usar o acrônimo PEMDAS para lembrar das prioridades
+
+- **P**arênteses
+- **E**xponenciação
+- **M**ultiplicação e **D**ivisão
+- **A**dição e **S**ubtração
+
+Operadores com a mesma precedência são avaliados da esquerda para a direita, exceto a exponenciação, que é da direita para a esquerda.
+
+
+# Exercício
+
+Qual é o resultado de cada expressão a seguir?
 
 \small
 
-```cpp
-#include <iostream>
+```python
+>>> 15 // 7
 
-int main()
-{
-    std::cout << "Olá mundo!" << std::endl;
-}
+>>> 15 % 7
+
+>>> 12 // 27
+
+>>> 12 % 27
+
+>>> 3 * 4 - 5 / (8 // 3)
+
+>>> 5 * 8 // 3 / 4 % 3
+
+>>> 2 ** 2 ** 3 // 4 * 3
+
 ```
 
-\pause
 
-A instrução `std::cout` (_**c**onsole **out**put_) é usado para exibir informações no terminal (console). \pause
+# Exercício
 
-O símbolo `<<` é usado para indicar à instrução `std::cout` um item que deve ser exibido. Os projetistas escolheram o símbolo `<<` porque dá a ideia de que a informação à direita do símbolo está sendo "transmitida" para o console (`std::cout`). \pause O símbolo `std::endl` (_end line_ -- fim de linha em inglês) indica que a linha atual deve ser encerrada e o cursor posicionado no início da próxima linha. \pause
-
-As aspas (`"`) são utilizadas para delimitar uma sequência de caracteres (texto), que deve ser exibida na tela pelo `std::cout`. \pause O ponto e vírgula (`;`) é usado para indicar o fim da instrução.
-
-# Saída
+Qual é o resultado de cada expressão a seguir?
 
 \small
 
-```cpp
-#include <iostream>
-
-int main()
-{
-    std::cout << "Olá mundo!" << std::endl;
-}
-
-```
-O que ocorre após a execução do programa? \pause
-
-A mensagem "Olá mundo!" é exibida na tela e o cursor vai para o início da próxima linha.
-
-
-# Saída
-
-Podemos usar a instrução de saída para exibir resultados de expressões \pause
-
-```cpp
-#include <iostream>
-
-int main()
-{
-    std::cout << 2 + 4 * 3 << std::endl;
-}
+```python
+>>> 15 // 7
+2
+>>> 15 % 7
+1
+>>> 12 // 27
+0
+>>> 12 % 27
+12
+>>> 3 * 4 - 5 / (8 // 3)
+9.5
+>>> 5 * 8 // 3 / 4 % 3
+0.25
+>>> 2 ** 2 ** 3 // 4 * 3
+192
 ```
 
-\pause
-O que será exibido na tela após a execução desse programa? \pause
 
-O valor 14.
+# Conversão
 
-
-# Saída
-
-Podemos exibir várias "coisas" com várias instruções de saída \pause
-
-```cpp
-#include <iostream>
-
-int main()
-{
-    std::cout << "O resultado da expressão é ";
-    std::cout << 2 + 4 * 3;
-    std::cout << std::endl;
-}
+```python
+>>> # Arredondamento
+>>> round(3.4)
+3
+>>> round(3.5)
+4
+>>> round(3.5134, 2)
+3.51
 ```
 
 \pause
 
-O que será exibido na tela após a execução desse programa? \pause
-
-"O resultado da expressão é 14".
-
-
-# Saída
-
-Também podemos exibir várias coisas com uma única instrução de saída \pause
-
-```cpp
-#include <iostream>
-
-int main()
-{
-    std::cout << "O resultado da expressão é "
-              << 2 + 4 * 3
-              << std::endl;
-}
+```python
+>>> # Conversão entre int e float
+>>> int(7.6)
+7
+>>> int(-2.3)
+-2
+>>> float(4)
+4.0
 ```
 
 
-# Espaço de nomes
+# Módulos
 
-Todas as construções que estão na biblioteca padrão (_standard library_) do C++ tem o prefixo `std::`{.cpp}, que é um "espaço de nomes". \pause A ideia de espaço de nomes é evitar colisões de nomes de bibliotecas diferentes, que é importante em programas que utilizam bibliotecas de diversas fontes distintas. \pause
+As operações que vimos até agora estão disponíveis automaticamente, outras operações estão disponíveis em módulos, que devem ser importados antes de poderem ser utilizados. \pause
 
-Como nossos programas serão pequenos e vamos utilizar apenas uma biblioteca externa, então a colisão de nomes não será uma preocupação. Por isso, vamos usar uma diretiva que permite omitir o prefixo do espaço de nomes.
+O Python tem uma extensa biblioteca padrão, com muitos módulos, este é um dos motivos que a linguagem é bastante utilizada. A documentação da biblioteca padrão do Python está disponível em <https://docs.python.org/3/library/index.html>. \pause
+
+Por hora, vamos ver apenas algumas funções do módulo [`math`](https://docs.python.org/3/library/math.html).
 
 
-# Espaço de nomes
 
-\small
+# Piso e teto
 
-```cpp
-#include <iostream>
+<div class="columns">
+<div class="column" width="50%">
 
-using namespace std;
-
-int main()
-{
-    cout << "Não precisamos mais do prefixo std:: em cout e endl!" << endl;
-}
+```python
+>>> import math
+>>> # Piso
+>>> # maior inteiro <= ao número
+>>> math.floor(4.2)
+4
+>>> math.floor(-2.3)
+-3
 ```
 
+\pause
 
-# Programa completo
+</div>
+<div class="column" width="50%">
 
-Já vimos a instrução de saída e expressões matemáticas, o que está faltando para fazermos um programa "completo"? \pause Instrução de entrada. \pause
+```python
+>>> # Teto
+>>> # menor inteiro >= ao númeo
+>>> math.ceil(4.2)
+5
+>>> math.ceil(-2.3)
+-2
+```
 
-Antes de vermos a instrução de entrada, precisamos aprender sobre variáveis.
+</div>
+</div>
+
+
+# Operações relacionais
+
+Além das operações aritméticas, também podemos fazer operações relacionais com números. \pause
+
+Que resposta você espera a comparação `3 > 4`{.python}? \pause E para `3 < 4`{.python}? \pause
+
+Em Python a resposta da primeira comparação é `False`{.python} (falso) e da segunda `True`{.python} (verdadeiro). \pause
+
+```python
+>>> 3 > 4
+False
+>>> 3 < 4
+True
+```
+
+\pause
+
+Na computação os valores verdadeiro e falso são chamados de booleanos. Em Python, o tipo dos valores booleanos é `bool`{.python}. As operações relacionais produzem como resposta um valor booleano.
+
+
+# Operações relacionais
+
+<div class="columns">
+<div class="column" width="50%">
+
+```python
+>>> # Maior e maior ou igual
+>>> 4 > 2 + 2
+False
+>>> 4 >= 2 + 2
+True
+```
+
+\pause
+
+```python
+>>> # Menor e menor ou igual
+>>> 1 + 4 * 2 < 3 ** 2
+False
+>>> 1 + 4 * 2 <= 3 ** 2
+True
+```
+
+\pause
+
+</div>
+<div class="column" width="50%">
+
+```python
+>>> # Igual
+>>> 3 * 2 == 4 + 2 ** 2
+False
+>>> 9 == 4 + 2 ** 2
+True
+```
+
+\pause
+
+```python
+>>> # Igual
+>>> 3 * 2 != 4 + 2 ** 2
+True
+>>> 9 != 4 + 2 ** 2
+False
+```
+
+</div>
+</div>
+
+\pause
+
+Note que as operações relacionais tem prioridade menor do que as operações aritméticas.
+
+
+# Operações lógicas
+
+Podemos combinar operações relacionais.
 
 
 # Variáveis
