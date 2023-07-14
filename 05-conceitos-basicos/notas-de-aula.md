@@ -71,7 +71,9 @@ Agora vamos explorar o Python!
 
 # Tipos de dados e operações pré-definidas
 
-A primeira coisa que aprendemos em uma linguagem de programação é o tipo de valores e operações já disponíveis na linguagem.
+A primeira coisa que aprendemos de uma linguagem de programação é o tipo de valores (tipo de dados) e operações já disponíveis na linguagem. \pause
+
+Os primeiros computadores foram criados para fazerem cálculos matemáticos, então vamos começar com isso.
 
 
 # Números
@@ -266,6 +268,9 @@ Qual é o resultado de cada expressão a seguir?
 
 # Conversão
 
+<div class="columns">
+<div class="column" width="50%">
+
 ```python
 >>> # Arredondamento
 >>> round(3.4)
@@ -278,6 +283,9 @@ Qual é o resultado de cada expressão a seguir?
 
 \pause
 
+</div>
+<div class="column" width="50%">
+
 ```python
 >>> # Conversão entre int e float
 >>> int(7.6)
@@ -288,15 +296,17 @@ Qual é o resultado de cada expressão a seguir?
 4.0
 ```
 
+</div>
+</div>
+
 
 # Módulos
 
 As operações que vimos até agora estão disponíveis automaticamente, outras operações estão disponíveis em módulos, que devem ser importados antes de poderem ser utilizados. \pause
 
-O Python tem uma extensa biblioteca padrão, com muitos módulos, este é um dos motivos que a linguagem é bastante utilizada. A documentação da biblioteca padrão do Python está disponível em <https://docs.python.org/3/library/index.html>. \pause
+O Python tem uma [extensa](https://xkcd.com/353/) biblioteca padrão, com muitos módulos, este é um dos motivos que a linguagem é bastante utilizada. A documentação da biblioteca padrão do Python está disponível em <https://docs.python.org/3/library/index.html>. \pause
 
 Por hora, vamos ver apenas algumas funções do módulo [`math`](https://docs.python.org/3/library/math.html).
-
 
 
 # Piso e teto
@@ -326,6 +336,169 @@ Por hora, vamos ver apenas algumas funções do módulo [`math`](https://docs.py
 5
 >>> math.ceil(-2.3)
 -2
+```
+
+</div>
+</div>
+
+
+# Cadeia de caracteres
+
+Outro tipo de dado pré-definido em Python é a cadeia de caracteres -- _string_ em inglês (`str`{.python}). \pause
+
+Geralmente usamos strings para armazenar informações simbólicas, como por exemplo palavras e textos. \pause
+
+Uma string em Python é escrita entre apóstrofo ou aspas \pause
+
+```python
+>>> 'casa'
+'casa'
+>>> "gota d'agua"
+"gota d'agua"
+>>> "mesa"
+'mesa'
+```
+
+
+# Operações com strings
+
+Assim como existem operações pré-definidas para números, também existem operações pré-definidas para strings. \pause
+
+<div class="columns">
+<div class="column" width="50%">
+
+```python
+>>> # Concatenação
+>>> 'casa' + ' da ' + 'sogra'
+'casa da sogra'
+```
+
+\pause
+
+```python
+>>> # Repetição
+>>> 'abc' * 3
+'abcabcabc'
+>>> 'algum' * 0
+''
+>>> 'algum' * -4
+''
+```
+
+\pause
+
+</div>
+<div class="column" width="50%">
+
+```python
+>>> # Quantidade de caracteres
+>>> len('ciência da computação')
+21
+>>> len('')
+0
+```
+
+\pause
+
+```python
+>>> # Remoção de espaços no início
+>>> # e fim
+>>> str.strip('  José da Silva ')
+'José da Silva'
+```
+
+</div>
+</div>
+
+<!--
+
+# Substrings
+
+<div class="columns">
+<div class="column" width="50%">
+
+```python
+>>> # Indexação de caractere
+>>> # O primeiro caractere
+>>> # tem índice 0
+>>> 'casa'[0]
+'c'
+>>> 'casa'[1]
+'a'
+```
+
+\pause
+
+```python
+>>> # Acesso de índice fora
+>>> # do intervalo
+>>> 'casa'[4]
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+IndexError: string index out of range
+```
+
+\pause
+
+</div>
+<div class="column" width="50%">
+
+```python
+>>> # Substring do início até 3 - 1
+>>> 'apenas um teste'[:3]
+'ape'
+```
+
+\pause
+
+```python
+>>> # Substring de 4 até o final
+>>> 'apenas um teste'[:4]
+'as um teste'
+```
+
+\pause
+
+```python
+>>> # Substring de 7 até 9 - 1
+>>> 'apenas um teste'[7:9]
+'um'
+```
+
+</div>
+</div>
+
+-->
+
+# Conversão entre strings e números
+
+<div class="columns">
+<div class="column" width="50%">
+
+```python
+>>> # Conversão de int para str
+>>> str(127)
+'127'
+>>> # Conversão de float para str
+>>> str(4.1)
+4.1
+>>> # Concatenação de str e int
+>>> 'Idade: ' + str(19)
+'Idade: 19'
+```
+
+</div>
+<div class="column" width="50%">
+
+```python
+>>> # Conversão de str para int
+>>> int('127')
+127
+>>> # Conversão de str para float
+>>> float('25')
+25.0
+>>> float('12.67')
+12.67
 ```
 
 </div>
