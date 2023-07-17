@@ -379,6 +379,11 @@ Assim como existem operações pré-definidas para números, também existem ope
 >>> # Repetição
 >>> 'abc' * 3
 'abcabcabc'
+```
+
+\pause
+
+```python
 >>> 'algum' * 0
 ''
 >>> 'algum' * -4
@@ -394,35 +399,35 @@ Assim como existem operações pré-definidas para números, também existem ope
 >>> # Quantidade de caracteres
 >>> len('ciência da computação')
 21
->>> len('')
-0
 ```
 
 \pause
 
 ```python
->>> # Remoção de espaços no início
->>> # e fim
->>> str.strip('  José da Silva ')
-'José da Silva'
+>>> # Conversão maiúscula
+>>> 'José'.upper() # ou str.upper('José')
+'JOSÉ'
+>>> # Conversão minúscula
+>>> 'José'.lower() # ou str.lower('José')
+'josé'
 ```
 
 </div>
 </div>
 
-<!--
 
 # Substrings
 
-<div class="columns">
-<div class="column" width="50%">
-
 ```python
 >>> # Indexação de caractere
->>> # O primeiro caractere
->>> # tem índice 0
->>> 'casa'[0]
+>>> # O primeiro caractere tem índice 0
+>>> 'casa'[0] # ou str.__getitem__('casa', 0)
 'c'
+```
+
+\pause
+
+```python
 >>> 'casa'[1]
 'a'
 ```
@@ -430,45 +435,38 @@ Assim como existem operações pré-definidas para números, também existem ope
 \pause
 
 ```python
->>> # Acesso de índice fora
->>> # do intervalo
+>>> # Acesso de índice fora do intervalo
 >>> 'casa'[4]
 Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
 IndexError: string index out of range
 ```
 
-\pause
 
-</div>
-<div class="column" width="50%">
+# Substrings
 
 ```python
 >>> # Substring do início até 3 - 1
->>> 'apenas um teste'[:3]
-'ape'
+>>> 'veja isso'[:3] # ou str.__getitem__('veja isso', slice(None, 3))
+'vej'
 ```
 
 \pause
 
 ```python
 >>> # Substring de 4 até o final
->>> 'apenas um teste'[:4]
-'as um teste'
+>>> 'veja isso'[4:] # ou str.__getitem__('veja isso', slice(4, None))
+' isso'
 ```
 
 \pause
 
 ```python
->>> # Substring de 7 até 9 - 1
->>> 'apenas um teste'[7:9]
-'um'
+>>> # Substring de 2 até 6 - 1
+>>> 'veja isso'[2:6] # ou str.__getitem__('veja isso', slice(7, 9))
+'ja i'
 ```
 
-</div>
-</div>
-
--->
 
 # Conversão entre strings e números
 
@@ -481,11 +479,18 @@ IndexError: string index out of range
 '127'
 >>> # Conversão de float para str
 >>> str(4.1)
-4.1
+'4.1'
+```
+
+\pause
+
+```python
 >>> # Concatenação de str e int
 >>> 'Idade: ' + str(19)
 'Idade: 19'
 ```
+
+\pause
 
 </div>
 <div class="column" width="50%">
@@ -494,6 +499,11 @@ IndexError: string index out of range
 >>> # Conversão de str para int
 >>> int('127')
 127
+```
+
+\pause
+
+```python
 >>> # Conversão de str para float
 >>> float('25')
 25.0
@@ -501,6 +511,169 @@ IndexError: string index out of range
 12.67
 ```
 
+</div>
+</div>
+
+
+# Formas de expressões
+
+Inicialmente as expressões (cálculos) dos nossos programas usavam apenas operadores matemáticos \pause
+
+```python
+30 * 2 + 3
+```
+
+\pause
+
+Depois vimos que as expressões podem conter chamadas de funções \pause
+
+```python
+round(3.5)
+```
+
+\pause
+
+e métodos
+
+```python
+'José'.lower()
+```
+
+\pause
+
+Por fim, vimos que strings podem ser indexadas \pause
+
+```python
+'veja isso'[2:6]
+```
+
+
+# Formas de expressões
+
+Embora a forma de utilizar operadores, funções, métodos e indexação seja diferente, o propósito dessas construções é o mesmo: computar valores de saída a partir de valores de entrada.
+
+
+# Formas de expressões
+
+<div class="columns">
+<div class="column" width="50%">
+![](imagens/operacoes-entrada-saida.pdf){width=6cm}
+\pause
+</div>
+<div class="column" width="50%">
+\small
+Se o propósito é o mesmo, por que não usar a mesma forma? \pause
+
+Por conveniência! \pause
+
+Por exemplo, se não tivéssemos a forma de operadores e apenas a forma de chamada de funções, então deveríamos escrever
+
+```python
+from operator import add, mull
+add(mul(30, 2), 3)
+```
+
+ao invés de `30 * 2 + 3`{.python}, o que seria inconveniente. \pause
+
+Além da conveniência de escrita, a forma de chamada métodos e indexação tem outras vantagens, que não vamos discutir nessa disciplina.
+</div>
+</div>
+
+
+# Exercício
+
+Qual é o resultado de cada expressão a seguir?
+
+\small
+
+```python
+>>> len('casa') * 'x'
+
+>>> str(10) + 2 * '*' + str(2.0)
+
+>>> 'Jose da Silva'[:4].upper()
+
+>>> 'Jose da Silva'[8:].lower()
+
+>>> str(int('12') * 100)[1:3]
+
+>>> int(('1' * 3 + 3 * '2').upper()[2:5])
+
+```
+
+
+# Exercício
+
+Qual é o resultado de cada expressão a seguir?
+
+\small
+
+```python
+>>> len('casa') * 'x'
+'xxxx'
+>>> str(10) + 2 * '*' + str(2.0)
+'10**2.0'
+>>> 'Jose da Silva'[:4].upper()
+'JOSE'
+>>> 'Jose da Silva'[8:].lower()
+'silva'
+>>> str(int('12') * 100)[1:3]
+'20'
+>>> int(('1' * 3 + 3 * '2').upper()[2:5])
+12
+```
+
+
+# Definindo novas funções
+
+Além de podermos usar as funções pré-definidas no Python, também podemos definir as nossas próprias funções.
+
+\pause
+
+Apesar de ser possível definir uma nova função na janela de interações, nos vamos fazer isso na janela de edição de código. Isso nos permite salvar o código para uso/edição posterior.
+
+
+# Definindo novas funções
+
+Para abrir a janela de edição de código selecionamos o menu File $\rightarrow$ New File (crtl + n). \pause
+
+![](imagens/editor.png){width=9cm}
+
+
+# Definindo novas funções
+
+Vamos criar uma função que calcule o dobro de um dado número. \pause
+
+O que precisamos para definir tal função? \pause
+
+- O nome da função (`dobro`) \pause
+- O nomes e tipo da entrada (`x: int`{.python}) \pause
+- O tipo da saída (`int`{.python}) \pause
+- As instruções que calculam o valor da saída a partir da entrada (`2 * x`{.python}) \pause
+
+Com essas informações, definimos a função usando a forma
+
+```python
+def nome(entrada1: tipo, entrada2: tipo, ...) -> tipo:
+    return exp
+```
+
+
+# Definindo novas funções
+
+<div class="columns">
+<div class="column" width="50%">
+Escrevemos o código da função na janela de código e salvamos o arquivo (File $\rightarrow$ Save - crtl\ +\ s).
+
+![](imagens/dobro.png){width=6.5cm}
+
+\pause
+</div>
+<div class="column" width="50%">
+
+Para testar a função executamos o arquivo (Run $\rightarrow$ Run Module - F5) e chamamos a função na janela de interações. \pause
+
+![](imagens/dobro-ex.png){width=6.5cm}
 </div>
 </div>
 
@@ -532,9 +705,9 @@ Na computação os valores verdadeiro e falso são chamados de booleanos. Em Pyt
 
 ```python
 >>> # Maior e maior ou igual
->>> 4 > 2 + 2
+>>> 4 > 4
 False
->>> 4 >= 2 + 2
+>>> 4 >= 4
 True
 ```
 
@@ -542,9 +715,9 @@ True
 
 ```python
 >>> # Menor e menor ou igual
->>> 1 + 4 * 2 < 3 ** 2
+>>> 6 < 6
 False
->>> 1 + 4 * 2 <= 3 ** 2
+>>> 6 <= 6
 True
 ```
 
@@ -555,7 +728,7 @@ True
 
 ```python
 >>> # Igual
->>> 3 * 2 == 4 + 2 ** 2
+>>> 5 == 
 False
 >>> 9 == 4 + 2 ** 2
 True
@@ -1330,55 +1503,6 @@ int x = stoi(texto) + 10; // 1033
 // to_string converte um número para uma string
 string r = texto + to_string(x); // "10231033"
 ```
-
-
-# Novos tipos de expressões
-
-Inicialmente as expressões (cálculos) dos nossos programas usavam apenas operadores matemáticos. \pause
-
-- `30 * 2 + a`{.cpp} \pause
-
-Nos últimos exemplos vimos que as expressões podem conter outros tipos de construções: as chamadas de funções e métodos.\pause
-
-<div class="columns">
-<div class="column" width="50%">
-Chamada de funções \pause
-
-- `sin(3.14)`{.cpp}
-- `stoi("123")`{.cpp}
-
-\pause
-</div>
-<div class="column" width="50%">
-Chamada de métodos \pause
-
-- `texto.length()`{.cpp}
-- `nome.substr(0, 4)`{.cpp}
-</div>
-</div>
-
-
-# Novos tipos de expressões
-
-Embora a forma de utilizar operadores, funções e métodos seja diferente, o propósito dessas construções é o mesmo: computar valores de saída a partir de valores de entrada.
-
-
-# Novos tipos de expressões
-
-<div class="columns">
-<div class="column" width="35%">
-![](imagens/operacoes-entrada-saida.pdf){width=4.8cm}
-\pause
-</div>
-<div class="column" width="63%">
-\small
-Se o propósito é o mesmo, por que não usar a mesma forma? \pause
-
-Por conveniência! \pause Por exemplo, se não tivéssemos a forma de operadores e apenas a forma de chamada de funções, então deveríamos escrever `+(*(30, 2), a)` ao invés de `30 * 2 + a`, o que seria inconveniente. \pause
-
-Se não tivéssemos a forma de chamada de método, então deveríamos escrever `substr(nome, 0, 5)` ao invés de `nome.substr(0, 5)`, o que parece ok! Mas a questão é que chamadas de métodos são mais flexíveis do que chamada de funções, mas essa flexibilidade não será importante nessa disciplina e por isso não vamos discutir esse aspecto. Para nós, basta sabermos que algumas operações são chamadas como métodos.
-</div>
-</div>
 
 
 # Criar e nomear novas operações
