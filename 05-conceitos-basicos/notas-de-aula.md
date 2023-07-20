@@ -71,7 +71,7 @@ Agora vamos explorar o Python!
 
 # Tipos de dados e operações pré-definidas
 
-A primeira coisa que aprendemos de uma linguagem de programação é o tipo de valores (tipo de dados) e operações já disponíveis na linguagem. \pause
+A primeira coisa que aprendemos de uma linguagem de programação são os tipos de valores (tipos de dados) e operações já disponíveis na linguagem. \pause
 
 Os primeiros computadores foram criados para fazerem cálculos matemáticos, então vamos começar com isso.
 
@@ -344,7 +344,7 @@ Por hora, vamos ver apenas algumas funções do módulo [`math`](https://docs.py
 
 # Cadeia de caracteres
 
-Outro tipo de dado pré-definido em Python é a cadeia de caracteres -- _string_ em inglês (`str`{.python}). \pause
+Outro tipo de dado pré-definido em Python é a cadeia de caracteres (`str`{.python}) -- _string_ em inglês. \pause
 
 Geralmente usamos strings para armazenar informações simbólicas, como por exemplo palavras e textos. \pause
 
@@ -517,10 +517,10 @@ IndexError: string index out of range
 
 # Formas de expressões
 
-Inicialmente as expressões (cálculos) dos nossos programas usavam apenas operadores matemáticos \pause
+Inicialmente as expressões (cálculos) que vimos usavam apenas operadores matemáticos \pause
 
 ```python
-30 * 2 + 3
+30 * 2
 ```
 
 \pause
@@ -533,7 +533,7 @@ round(3.5)
 
 \pause
 
-e métodos
+e chamadas de métodos
 
 ```python
 'José'.lower()
@@ -647,7 +647,7 @@ Vamos criar uma função que calcule o dobro de um dado número. \pause
 O que precisamos para definir tal função? \pause
 
 - O nome da função (`dobro`) \pause
-- O nomes e tipo da entrada (`x: int`{.python}) \pause
+- O nome e tipo da entrada (`x: int`{.python}) \pause
 - O tipo da saída (`int`{.python}) \pause
 - As instruções que calculam o valor da saída a partir da entrada (`2 * x`{.python}) \pause
 
@@ -678,6 +678,73 @@ Para testar a função executamos o arquivo (Run $\rightarrow$ Run Module - F5) 
 </div>
 
 
+# Diferenças entre a janela de interações e a de edição de código
+
+O que acontece se escrevermos o exemplo de execução de `dobro` após a sua definição e executarmos o arquivo?
+
+```python
+def dobro(x: int) -> int:
+    return 2 * x
+
+dobro(4)
+```
+
+\pause
+
+A função `dobro` será executada para o valor `4`{.python} mais nenhum resultado será exibido na tela. \pause
+
+Por que na execução do exemplo na janela de interações o resultado é exibido e aqui não? \pause
+
+Por que o modo de interação a exibição é feita automaticamente (o P -- _print_ -- de REPL) para facilitar a interação com o Python. \pause No arquivo de código, precisamos indicar explicitamente que queremos que o resultado seja exibido.
+
+
+# Instrução de saída
+
+A forma mais comum de exibir um valor em Python é utilizando a função `print`{.python}. \pause
+
+```python
+def dobro(x: int) -> int:
+    return 2 * x
+
+print(dobro(4))
+```
+
+\pause
+
+Ao executar o código, o valor `8` será exibido na tela. \pause
+
+Note que o `print`{.python} posiciona o cursor no início da próxima linha, dessa forma, a próxima informação começara a ser exibida no início da próxima linha.
+
+
+# Instrução de saída
+
+A função `print`{.python}, pode ser utilizada com mais de um argumento e os argumentos pode ser de tipos diferentes. Nesse caso, os argumentos são exibidos separados por espaço. \pause
+
+```python
+def dobro(x: int) -> int:
+    return 2 * x
+
+print("O dobro de 4 é:", dobro(4))
+```
+
+Saída
+
+```
+O dobro de 4 é: 8
+```
+
+
+# Programas
+
+Agora que aprendemos algumas das construções básicas do Python, podemos avançar e ver como fazer um programa completo. \pause
+
+Para isso, vamos precisar de mais três coisas
+
+- Variáveis
+- Instrução de entrada
+
+
+<!--
 # Operações relacionais
 
 Além das operações aritméticas, também podemos fazer operações relacionais com números. \pause
@@ -756,44 +823,98 @@ Note que as operações relacionais tem prioridade menor do que as operações a
 
 Podemos combinar operações relacionais.
 
+-->
 
 # Variáveis
 
-Uma **variável** é um nome para uma região da memória que é utilizada para armazenar valores. \pause
+Uma **variável** é um nome para uma região da memória (célula) que é utilizada para armazenar valores. \pause
 
 Cada variável tem um tipo, que determina o conjunto de valores que podem ser armazenados na memória associada com ela. \pause
 
-Uma variável é primeiro declarada para depois poder ser usada. \pause Na declaração a variável também pode ser inicializada. \pause
+Uma variável pode ser primeiro declarada e depois inicializa ou pode ser declarada e inicializada de uma vez só. \pause
 
-A forma geral para declaração de variável é
+A forma geral para declaração de variável é (o `valor inicial` é opcional)
 
+```python
+nome: tipo [= valor inicial]
 ```
-Tipo nome [= valor inicial];
-```
-
-\pause
-
-Alguns exemplos a seguir omitem a função `main` para não ficar repetitivo, mas na hora de testar o código, ele deve ser colocado dentro da função `main`.
-
 
 # Variáveis
 
-```cpp
-int a = 10;
-int b = 2 * a;
-```
-
-As variáveis `a` e `b` foram declaradas como inteiras (`int`{.cpp}), o que significa que apenas valores numéricos inteiros (no intervalo de -2.147.483.648 a 2.147.483.647) podem ser armazenados nessas variáveis. \pause
-
-Além de números inteiros, também temos números de ponto flutuante (`double`{.cpp}), que são utilizadas para armazenar valores aproximados de números reais (15 dígitos significativos). \pause
-
-```cpp
-double c = 40.1;
+```python
+>>> a: int = 10
+>>> b: int = 2 * a
+>>> b
+20
 ```
 
 \pause
 
-Agora podemos ver a instrução de entrada!
+As variáveis `a` e `b` foram declaradas com tipo `int`{.python} e inicializadas na declaração. A variável `a` foi inicializada com o valor `10`{.python} e a variável `b` com o valor `2 * a`{.python}. \pause
+
+O símbolo `=` representa **atribuição**. Para executar uma atribuição o Python primeiro avalia a expressão do lado direito para obter um valor, e depois associa a memória que armazena esse valor com o nome da variável.
+
+
+# Sequenciação de instruções
+
+O Python executa as instruções de forma sequencial, uma linha após a outra, por isso, a ordem das instruções é importante. \pause
+
+Qual o resultado da execução das instruções abaixo?
+
+```python
+>>> x: int = 2 * y
+>>> y: int = 10
+>>> x
+?
+```
+
+\pause
+
+Um erro de execução! Quando o Python avalia a expressão `2 * y`{.python} a variável `y` ainda não foi definida, então não é possível calcular o valor da expressão.
+
+
+# Sequenciação de instruções
+
+Qual o resultado de `b` no seguinte trecho de código?
+
+```python
+>>> a: int = 10
+>>> b: int = 2 * a
+>>> a = 30
+>>> b
+?
+```
+
+\pause
+
+`20`{.python}. \pause O Python executar uma linha por vez, na primeira linha a variável `a` é criada referenciando uma célula de memória com o valor `10`{.python}. \pause Depois a expressão `2 * a`{.python} é avaliada com resultado `20`{.python} e a variável `b` é criada referenciado a célula de memória que armazena esse valor. \pause Depois a variável `a` é alterada, passando a referenciar a célula de memória com o valor `30`{.python}. \pause Por vim, o valor armazenado na célula de memória associada com `b`, que é `20`{.python}, é exibido.
+
+
+# Instrução de entrada
+
+A forma mais comum de ler um valor digitado pelo usuário em Python é utilizando a função `input`{.python}. \pause
+
+```python
+nome: str = input('Qual o seu nome?: ')
+print('Olá', nome)
+```
+
+
+# Programa para calcular o dobro de um número
+
+```python
+def dobro(x: int) -> int:
+    return 2 * x
+
+# Entrada
+numero: int = int(input('Digite um número inteiro:'))
+
+# Processamento
+d: int = dobro(numero)
+
+# Saída
+print('O dobro de', numero, 'é', d)
+```
 
 
 # Entrada
@@ -1587,7 +1708,6 @@ Referências
 
 - [Tutorial C++ - W3 Schools](https://www.w3schools.com/cpp/)
 
-<!--
 https://docs.microsoft.com/pt-br/cpp/?view=msvc-160
 
 https://docs.microsoft.com/pt-br/cpp/cpp/cpp-language-reference?view=msvc-160
@@ -1599,4 +1719,4 @@ https://devdocs.io/
 https://www.cplusplus.com
 
 https://cppreference.com
-!-->
+!>
