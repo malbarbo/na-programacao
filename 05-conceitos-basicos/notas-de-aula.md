@@ -912,19 +912,35 @@ Qual o resultado de `b` no seguinte trecho de código?
 
 A forma mais comum de ler um valor digitado pelo usuário em Python é utilizando a função `input`{.python}. \pause
 
+A função `input`{.python} exibi uma mensagem e aguarda o usuário digitar a entrada e pressionar enter. Em seguida o valor digitado pelo usuário é retornado como uma string.
+
+
+# Instrução de entrada
+
+Se escrevermos o seguinte código em um arquivo `ola.py`,
+
 ```python
 nome: str = input('Qual o seu nome?: ')
 print('Olá', nome)
 ```
 
-\pause
+executarmos com F5, e fizermos a entrada do nome `João`, obtemos o seguinte resultado
 
-A função `input`{.python} exibi uma mensagem e aguarda o usuário digitar a entrada e pressionar enter. Em seguida o valor digitado pelo usuário é retornado como uma string, e no caso do exemplo, armazenado na variável `nome`.
+![](imagens/ola.png){width=10cm}
 
 
 # Instrução de entrada
 
-Note que apesar de ser possível utilizar as funções de entrada e saída na janela de interações, isso não é muito comum, afinal, podemos executar diretamente as funções com os argumentos que queremos e ver o resultado automaticamente, não é necessário perguntar nada para o usuário! \pause
+Também podemos executar o programa no terminal de comando
+
+![](imagens/ola-terminal.png){width=11cm}
+
+Note que é preciso estar no diretório onde o arquivo está salvo (no caso `projetos/na-programacao/`) ou utilizar o caminho completo para o arquivo.
+
+
+# Instrução de entrada vs modo interativo
+
+Apesar de ser possível utilizar as funções de entrada e saída na janela de interações, isso não é muito comum, afinal, podemos executar diretamente as funções com os argumentos que queremos e ver o resultado automaticamente, não é necessário perguntar nada para o usuário! \pause
 
 Por exemplo, se estamos testando a função `len`{.python}, ao invés de fazermos a entrada
 
@@ -945,17 +961,21 @@ podemos fazer diretamente
 
 # Programa para calcular o dobro de um número
 
-Agora já podemos criar um programa completo com entrada, processamento e saída!
+Agora já podemos criar um programa completo com entrada, processamento e saída! \pause
+
+Vamos fazer um programa que utiliza a função `dobro` para fazer o processamento.
 
 
 # Programa para calcular o dobro de um número
+
+\small
 
 ```python
 def dobro(x: int) -> int:
     return 2 * x
 
 # Entrada
-numero: int = int(input('Digite um número inteiro:'))
+numero: int = int(input('Digite um número inteiro: '))
 
 # Processamento
 d: int = dobro(numero)
@@ -966,93 +986,96 @@ print('O dobro de', numero, 'é', d)
 
 \pause
 
+\normalsize
+
 Note que a função `input`{.python} produz como resultado uma string, como queremos um inteiro, usamos a função `int`{.python} para converter a entrada do usuário para um inteiro.
 
 
-# Entrada
+# Programa para calcular o dobro de um número
 
-A instrução de entrada, assim como a instrução de saída, está na biblioteca `iostream`. \pause Para ler um número de entrada fazemos \pause
+![](imagens/dobro-terminal.png)
+
+
+# Organizando o código
+
+Apesar do programa funcionar corretamente, podemos melhorar a organização agrupando as instruções de entrada, processamento e saída em uma função, que convencionalmente chamaremos de `main`. \pause
+
+Além disso, colocamos a função `main` no início do arquivo.
+
+
+# Organizando o código
+
+\small
+
+```python
+def main():
+    # Entrada
+    numero: int = int(input('Digite um número inteiro: '))
+
+    # Processamento
+    d: int = dobro(numero)
+
+    # Saída
+    print('O dobro de', numero, 'é', d)
+
+def dobro(x: int) -> int:
+    return 2 * x
+
+main()
+```
+
+
+# Organizando o código
+
+Note que precisamos chamar explicitamente a função `main` no final do arquivo. \pause
+
+O que aconteceria se removêssemos a chamada da função `main` e executássemos o arquivo? \pause Nada, sem a chamada da função `main`, nenhuma instrução é executada.
+
+
+# Execução passo a passo
+
+Nós vimos anteriormente que o Python executa as instruções de forma sequencial, uma linha após a outra. Mas isso nem sempre é verdade, vamos ver como o Python executa o programa dobro.
+
+
+# Execução passo a passo
 
 <div class="columns">
-<div class="column" width="48%">
-```cpp
-#include <iostream>
+<div class="column" width="50%">
 
-using namespace std;
+\footnotesize
 
-int main()
-{
-    int a;
-    cin >> a;
-    cout << a << endl;
-}
+```{.python .number-lines}
+def main():
+    # Entrada
+    numero: int = int(input('Número: '))
+
+    # Processamento
+    d: int = dobro(numero)
+
+    # Saída
+    print('O dobro de', numero, 'é', d)
+
+def dobro(x: int) -> int:
+    return 2 * x
+
+main()
 ```
-
 </div>
-
+<div class="column" width="50%">
 \pause
+Em qual ordem as linhas do programa são executadas pelo Python? \pause
 
-<div class="column" width="48%">
-O que veremos na tela após a execução desse programa? \pause
+14, \pause e depois? \pause
 
-O mesmo número repetido duas vezes, na primeira vez é a digitação do usuário e a segunda vez é pelo uso do `cout`. \pause
+3 (primeira linha de código da função `main`), \pause 6, \pause e depois? \pause
 
-O que tem de errado com esse programa? \pause
+12 (primeira linha de código da função `dobro`), \pause e depois? \pause
 
-O usuário não é informado sobre o que digitar e nem o que a saída significa.
+6 (retorna com o resultado para onde `dobro` foi chamada), \pause 9, \pause e depois? \pause
+
+14 (retorna para onde `main` foi chamada)
 </div>
 </div>
-
-# Entrada (arquivo `echo.cpp`)
-
-```cpp
-#include <iostream>
-
-using namespace std;
-
-int main()
-{
-    cout << "Digite um número: ";
-    int a;
-    cin >> a;
-    cout << "O número que você digitou foi " << a << "." <<endl;
-}
-```
-
-
-# Exercício
-
-Agora já podemos fazer um programa completo! \pause
-
-Escreva um programa que calcule a área de um retângulo.
-
-
-# Exercício (arquivo `area-retangulo.cpp`)
-
-\scriptsize
-
-```cpp
-#include <iostream>
-
-using namespace std;
-
-int main()
-{
-    cout << "Digite a medida da base: ";
-    double base;
-    cin >> base;
-
-    cout << "Digite a medida da altura: ";
-    double altura;
-    cin >> altura;
-
-    double area = base * altura;
-    cout << "A area do retangulo e "
-         << area
-         << "."
-         << endl;
-}
-```
 
 
 # Erros
@@ -1067,104 +1090,29 @@ Durante a compilação de um programa, podem ocorrer dois tipos de erros: \pause
 
 # Erros sintáticos
 
-Um erro sintático ocorre quando não seguimos as regras sintáticas da linguagem e o compilador não consegue "entender" a estrutura do programa.
+Um erro sintático ocorre quando não seguimos as regras sintáticas da linguagem e o interpretador não consegue "entender" a estrutura do programa.
 
 <div class="columns">
 <div class="column" width="30%">
 
 ```cpp
-int x
-cin >> x;
+x: int = 2 + 4) * 6
 ```
 
 \pause
 
 Qual é o erro nesse código? \pause
 
-Falta `;` no final da sentença.
+Falta `(` na expressão.
 
 \pause
 
 </div>
 <div class="column" width="68%">
 
-\small
-
-Erro gerado pelo `g++`
-
-```
-x.cpp: In function ‘int main()’:
-x.cpp:8:5: error: expected initializer before ‘cin’
-    8 |     cin >> x;
-      |     ^~~
-```
-
-\pause
-
-Erro gerado pelo `clang++`
-
-```
-x.cpp:7:10: error: expected ';' at end of declaration
-    int x
-         ^
-         ;
-1 error generated.
-```
-
 </div>
 </div>
 
-
-
-# Erros sintáticos
-
-<div class="columns">
-<div class="column" width="30%">
-
-```cpp
-int x = (10 + 4;
-```
-
-\pause
-
-Qual é o erro nesse código? \pause
-
-Faltou fechar o parêntese.
-
-
-\pause
-
-</div>
-<div class="column" width="68%">
-
-\small
-
-Erro gerado pelo `g++`
-
-```
-x.cpp: In function ‘int main()’:
-x.cpp:7:20: error: expected ‘)’ before ‘;’ token
-    7 |     int x = (10 + 4;
-      |             ~      ^
-      |                    )
-```
-
-\pause
-
-Erro gerado pelo `clang++`
-
-```
-x.cpp:7:20: error: expected ')'
-    int x = (10 + 4;
-                   ^
-x.cpp:7:13: note: to match this '('
-    int x = (10 + 4;
-            ^
-1 error generated.
-```
-
-</div>
-</div>
 
 
 # Erros sintáticos
@@ -1175,50 +1123,22 @@ x.cpp:7:13: note: to match this '('
 \footnotesize
 
 ```cpp
-int nome com espaco = 10;
-double namespace = 20.3;
+nome com espaco: int = 10
+def: float = 20.3
 ```
 
 \normalsize
 
 Quais os erros nesse código? \pause
 
-Usar nomes inválidos para variáveis. \pause
+Uso de nomes inválidos para variáveis. \pause
 
-Um nome não pode ter espaços e nem ser uma palavra chave (como `namespace`{.cpp}).
+Um nome não pode ter espaços e nem ser uma palavra chave (como `def`{.def}).
 
 \pause
 
 </div>
 <div class="column" width="66%">
-
-\scriptsize
-
-Erro gerado pelo `g++`
-
-```
-x.cpp: In function ‘int main()’:
-x.cpp:7:14: error: expected initializer before ‘com’
-    7 |     int nome com espaco = 10;
-      |              ^~~
-x.cpp:8:12: error: expected unqualified-id before ‘namespace’
-    8 |     double namespace = 20.3;
-      |            ^~~~~~~~~
-```
-
-\pause
-
-Erro gerado pelo `clang++`
-
-```
-x.cpp:7:13: error: expected ';' at end of declaration
-    int nome com espaco = 10;
-            ^
-            ;
-x.cpp:8:12: error: expected unqualified-id
-    double namespace = 20.3;
-           ^
-```
 
 </div>
 </div>
@@ -1229,75 +1149,22 @@ x.cpp:8:12: error: expected unqualified-id
 Um erro semântico ocorre quando o compilador não "consegue" atribuir um significado para uma construção. \pause
 
 
-```cpp
-int a = 10 + "3";
+```python
+a: int = 10 + "3"
 ```
 
 Qual é o erro nesse código? \pause Usar operandos de tipos inválidos para uma operação.
-
-\pause
-
-Erro gerado pelo `g++`
-
-\scriptsize
-
-```
-x.cpp: In function ‘int main()’:
-x.cpp:7:16: error: invalid operands of types ‘int’ and ‘const char [2]’ to binary ‘operator*’
-    7 |     int a = 10 * "3";
-      |             ~~ ^ ~~~
-      |             |    |
-      |             int  const char [2]
-```
 
 
 # Erros semânticos
 
 ```cpp
-int a = 10.6;
+a: int = 10.6;
 ```
 
 \pause
 
 Qual o erro nesse código? \pause Por padrão, esta construção é válida e não gera erro! \pause
-
-Nesse caso, apesar de ir contra a nossa intuição, o compilador atribui um significado para a construção, que é armazenar apenas a parte inteira de `10.6`{.cpp} em `a`. \pause
-
-Às vezes o comportamento da linguagem não está de acordo com a nossa intuição, por isso precisamos conhecer com precisão a semântica da linguagem!
-
-
-# Erros semânticos
-
-Algumas construções que podem ser propensas a erros são aceitas por padrão pelos compiladores do C++. \pause Como programadores iniciantes, é bom termos um compilador mais "exigente", que nos ajude a identificar essas construções. \pause
-
-Então, para compilarmos os nossos programas, vamos utilizar as opções `-Wall -Wextra -Wconversion -Werror`, que faz o compilador apontar como erro mais construções que não são muito claras.
-
-
-# Erros semânticos
-
-```cpp
-int main()
-{
-    int a = 10.6;
-}
-```
-
-Compilando o programa acima com o comando
-
-```
-g++ -Wall -Wextra -Wconversion -Werror arquivo.cpp
-```
-
-Produz a seguinte mensagem de erro
-
-\scriptsize
-
-```
-x.cpp: In function ‘int main()’:
-x.cpp:7:13: error: conversion from ‘double’ to ‘int’ changes value from ‘1.06e+1’ to ‘10’
-    7 |     int a = 10.6;
-      |             ^~~~
-```
 
 
 # Erros de execução
@@ -1313,462 +1180,6 @@ Um erro de execução pode fazer o programa \pause
 
 # Erros de execução
 
-No programa que calcula a área do retângulo, o que acontece se o usuário digitar um número muito grande ou digitar algo que não é um número? \pause O programa executa até o final mas produz uma resposta incorreta. \pause
+No programa que calcula o dobro de um número, o que acontece se o usuário digitar um float ou algo que não é um número? \pause O programa é interrompido com um erro. \pause
 
 Como garantir que um programa não terá erros em tempo de execução? \pause Veremos isso ao longo da disciplina.
-
-
-# Construções
-
-Vamos voltar para o programa que calcula a área de um retângulo. \pause
-
-<div class="columns">
-<div class="column" width="50%">
-\footnotesize
-```cpp
-#include <iostream>
-using namespace std;
-int main() {
-    cout << "Digite a medida da base: ";
-    double base;
-    cin >> base;
-
-    cout << "Digite a medida da altura: ";
-    double altura;
-    cin >> altura;
-
-    double area = base * altura;
-    cout << "A area do retangulo e "
-         << area  << "." << endl;
-}
-```
-</div>
-<div class="column" width="50%">
-\pause
-\small
-
-Quais construções da linguagem usamos nesse programa? \pause
-
-- Uso de biblioteca e namespace; \pause
-- Comandos de entrada e saída; \pause
-- Tipo de dado e variáveis numéricos; \pause
-- Operações com números. \pause
-
-O que precisamos para escrever programas mais interessantes? \pause
-
-- Outras operações com números; \pause
-- Outros tipos de dados e operações; \pause
-- Maneira de criar e nomear novas operações;
-
-</div>
-</div>
-
-
-# Outras operações com números
-
-As quatro operações aritméticas podem ser usadas com número inteiros ou de ponto flutuante. \pause Se os dois operandos são `int`{.cpp}, então o resultado é `int`{.cpp}. \pause Se pelo menos um dos operandos é `double`{.cpp}, então o resultado é `double`{.cpp}.
-
-# Outras operações com números
-
-<div class="columns">
-<div class="column" width="50%">
-\small
-
-```cpp
-// Soma e subtração
-10 + 3 - 20.5; // -7.5
-// Multiplicação
-13 * 3; // 39
-// Divisão "real"
-21 / 3.0; // 7.0
-21 / 8.0; // 2.625
-// Divisão inteira
-21 / 3; // 7;
-21 / 8; // 2;
-// Menos e mais unário
-int a = 10;
--a; // -10;
-+a; // +10;
-```
-\pause
-
-</div>
-<div class="column" width="50%">
-Para números inteiros, também temos a operação de módulo (resto da divisão) \pause
-
-```cpp
-21 % 3; // 0
-21 % 8; // 5
-```
-</div>
-</div>
-
-
-# Outras operações com números
-
-Outras operações estão disponíveis na biblioteca [`cmath`](https://en.cppreference.com/w/cpp/header/cmath). \pause Alguns exemplos
-
-\small
-
-```cpp
-// Função piso - maior inteiro que não é maior que o número
-floor(1.0); // 1.0
-floor(1.3); // 1.0
-floor(1.5); // 1.0
-floor(1.7); // 1.0
-// Função teto - menor inteiro que não é menor que o número
-ceil(1.3); // 2.0
-ceil(1.5); // 2.0
-ceil(1.7); // 2.0
-ceil(2.0); // 2.0
-// Função de aredondadmento - inteiro mais próximo do número
-round(1.3); // 1.0
-round(1.5); // 2.0
-round(1.7); // 2.0
-```
-
-# Outras operações com números
-
-```cpp
-// Módulo (resto da divisão) para double
-fmod(5.5, 2.0); // 1.5
-fmod(15.0, 5.0); // 0.0
-// Seno (o argumento é em radianos)
-sin(3.14); // 0.00159265
-// Raiz quadrada
-sqrt(2.0); // 1.41421
-// Exponencial
-pow(2, 4); // 16
-```
-
-\pause
-
-Podemos fazer muitas coisas com valores numéricos! \pause Mas também temos outros tipos de valores.
-
-
-# Strings
-
-Informações textuais podem ser representas por cadeias de caracteres. \pause
-
-Usamos o tipo `string`, definido na biblioteca `string`, para armazenar cadeia de caracteres. \pause
-
-Valores literais de strings são delimitados por `"`{.cpp}. \pause
-
-```cpp
-#include <string>
-
-using namespace std;
-
-int main()
-{
-    string nome = "Joao da Silva";
-}
-```
-
-
-# Strings
-
-Assim como podemos fazer operações com números, também podemos fazer operações com strings. \pause
-
-```cpp
-string nome = "Joao da Silva";
-
-// Concatenação de strings
-string junior = nome + " Filho"; // "Joao da Silva Filho"
-
-// Extração de substring
-// A partir da primeira letra, que está no índice 0,
-// pegue 4 bytes (nesse caso, caracteres)
-string primeiro_nome = nome.substr(0, 4); // "Joao"
-```
-
-
-# Strings
-
-```cpp
-string nome = "Joao da Silva";
-```
-
-Como extrair a substring `"Silva"` de `nome`? \pause `nome.substr(8, 5)`{.cpp}. \pause
-
-Note que o segundo argumento para `substr` representa a quantidade de bytes (nesse caso, caracteres) a serem extraídos. \pause
-
-O que acontece se especificarmos uma quantidade de bytes para extrair maior do que o "disponível", como por exemplo, `nome.substr(8, 7)`{.cpp}? \pause O método retorna apenas o que está disponível, nesse caso, `"Silva"`{.cpp}.
-
-
-# Strings
-
-Escreva um programa que leia um nome de uma pessoa e escreva uma mensagem de boas vindas para a pessoa.
-
-\pause
-
-Para ler uma string é necessário usar a função `getline` da biblioteca `string` da seguinte forma:
-
-```cpp
-string s;
-getline(cin, s);
-```
-
-
-# Strings
-
-```cpp
-#include <iostream>
-#include <string>
-
-using namespace std;
-
-int main()
-{
-    cout << "Nome: ";
-    string nome;
-    getline(cin, nome);
-
-    cout << "Ola " << nome <<  ", seja bem vindo!" << endl;
-}
-```
-
-
-# Booleanos
-
-Qual resposta você daria para as seguintes expressões? \pause
-
-`5 < 10`{.cpp} \pause, Verdadeiro. \pause
-
-`9 + 2 > 7 * 2`{.cpp} \pause, Falso. \pause
-
-O tipo `bool`{.cpp} (booleano) tem dois valores, verdadeiro (`true`{.cpp}) e falso (`false`{.cpp}). Assim como números e strings, os valores do tipo booleano podem ser armazenados e manipulados.
-
-
-# Booleanos
-
-```{.cpp}
-bool a = true;
-bool b = false;
-
-string nome = "Jose";
-// O operador == verifica se dois valores são iguais
-bool chama_jose = nome == "Jose"; // true
-
-// Operador >= (maior ou igual)
-int idade = 17;
-bool maior_de_idade = idade >= 18; // false
-// Também podemos usar >, < e <=
-```
-
-# Booleanos
-
-Os operadores de `==`{.cpp} (igual) e `!=`{.cpp} (diferente) também podem ser usados para números e outros tipos de dados. \pause
-
-```{.cpp}
-bool a = true;
-bool b = false;
-```
-
-Qual o resultado de `a == b`{.cpp}? \pause O resultado é `false`{.cpp} pois o valor armazenado em `a`{.cpp} não é igual ao valor armazenado em `b`{.cpp}. \pause
-
-Qual o resultado de `a != b`{.cpp}? \pause O resultado é `true`{.cpp} pois o valor armazenado em `a`{.cpp} é diferente do valor armazenado em `b`{.cpp}.
-
-
-# Booleanos
-
-Três operações são comuns com valores booleanos: \pause
-
-- Negação \pause
-- E lógico (conjunção) \pause
-- Ou lógico (disjunção)
-
-
-# Booleanos - Negação
-
-Em C++ o símbolo da operação de negação é `!`{.cpp}. \pause
-
-Qual o valor da expressão `4 < 5`{.cpp}? \pause `true`{.cpp}. \pause E da expressão `!(4 < 5)`{.cpp}? \pause `false`{.cpp}. \pause
-
-Qual o valor da expressão `2 == 1 + 2`{.cpp}? \pause `false`{.cpp}. \pause E da expressão `!(2 == 1 + 2)`{.cpp}? \pause `true`{.cpp}.  \pause
-
-Tabela verdade
-
-a        | !a
----------|---------
- `false` | `true`
- `true`  | `false`
-
-
-# Booleanos - Conjunção
-
-Em C++ o símbolo da operação de conjunção é `&&`{.cpp} \pause
-
-
-Tabela verdade
-
-a        |  b      | a && b
----------|---------|---------
- `false` | `false` | `false`
- `false` | `true ` | `false`
- `true`  | `false` | `false`
- `true`  | `true`  | `true`
-
-
-# Booleanos - Disjunção
-
-Em C++ o símbolo da operação de disjunção é `||`{.cpp} \pause
-
-
-Tabela verdade
-
-a        |  b      | a && b
----------|---------|---------
- `false` | `false` | `false`
- `false` | `true ` | `true`
- `true`  | `false` | `true`
- `true`  | `true`  | `true`
-
-
-# Booleanos
-
-Em uma determinada cidade o transporte público é gratuito para crianças menores de 10 anos, adultos a partir de 60 anos e professores a partir de 50 anos. Escreva um programa que leia a idade de uma pessoa e se ela é professor e indique se essa pessoa pode usar o transporte público de forma gratuita. \pause
-
-Em C++ na entrada e saída de valores booleanos `0`{.cpp} é usado para indicar `false`{.cpp} e `1`{.cpp} é usado para indicar `true`{.cpp}.
-
-
-# Booleanos
-
-\scriptsize
-
-```cpp
-#include <iostream>
-
-using namespace std;
-
-int main()
-{
-    cout << "Idade: ";
-    int idade;
-    cin >> idade;
-
-    cout << "E professor? ";
-    bool eh_professor;
-    cin >> eh_professor;
-
-    // Note que && tem priodade sobre ||
-    bool livre = idade < 10 || idade >= 60 || idade >= 50 && eh_professor;
-
-    cout << "Pode usar o transporte publico de forma gratuita? " << livre << endl;
-}
-```
-
-
-# Combinado dados de tipo diferente
-
-Podemos usar tipos diferentes na mesma expressão. \pause
-
-```cpp
-string texto = "1023"
-
-// texto.length() produz a quantidade de bytes em texto
-bool tem_4_caracteres = texto.length() == 4; // true
-
-// stoi converte uma string que representa um número inteiro
-// em um número inteiro
-int x = stoi(texto) + 10; // 1033
-
-// to_string converte um número para uma string
-string r = texto + to_string(x); // "10231033"
-```
-
-
-# Criar e nomear novas operações
-
-Vimos que para escrever programas mais interessantes vamos precisar de:
-
-- Outras operações com números; \pause
-- Outros tipos de dados e operações; \pause
-- Maneira de criar e nomear novas operações; \pause Ou seja, nós vamos criar as nossas próprias funções!
-
-
-# Criação de funções
-
-A forma geral para definição de funções é \pause
-
-\small
-
-```cpp
-TipoSaida nome_da_funcao(TipoEntrada1 entrada1, TipoEntrada2 entrada2, ...)
-{
-    return saida_da_funcao;
-}
-```
-
-\pause
-
-\normalsize
-
-Baseado no programa que calcula a área de um retângulo, vamos criar uma função para calcular a área de um retângulo. (Solução desenvolvida em sala)
-
-
-# Criação de funções
-
-\small
-
-```cpp
-// Calcula a área do retângulo com a base b e a altura a.
-// 10.0 5.0 -> 50.0
-// 2.0 3.0 -> 6.0
-double area_retangulo(double b, double a) {
-    return b * a;
-}
-
-int main()
-{
-    // entrada omitida para economizar espaço no slide
-    double area = area_retangulo(base, altura);
-    // saída omitida para economizar espaço no slide
-}
-```
-
-
-# Exercício
-
-Projete um programa que a partir de um tempo especificado em número de horas, minutos e segundos, calcule o total de segundos do tempo.
-
-\pause
-
-Projeto feito em sala.
-
-
-# Exercício
-
-```cpp
-// As h, m, s serão representados por inteiros positivos
-
-// Calcula o total de segundos do tempo com h horas,
-// m minutos e s segundos.
-// Exemplos
-// h=0 m=0 s=4 -> 4 + 0 * 60 + 0 * 3600 -> 4
-// h=0 m=10 s=5 -> 5 + 10 * 60 + 0 * 3600 -> 605
-// h=3 m=2 s=25 -> 25 + 2 * 60 + 3 * 3600 -> 10945
-int total_segundos(int h, int m, int s)
-{
-    return s + m * 60 + h * 3600;
-}
-```
-
-# Referências
-
-Referências
-
-- [Tutorial C++ - W3 Schools](https://www.w3schools.com/cpp/)
-
-https://docs.microsoft.com/pt-br/cpp/?view=msvc-160
-
-https://docs.microsoft.com/pt-br/cpp/cpp/cpp-language-reference?view=msvc-160
-
-https://docs.microsoft.com/pt-br/cpp/cpp/welcome-back-to-cpp-modern-cpp
-
-https://devdocs.io/
-
-https://www.cplusplus.com
-
-https://cppreference.com
-!>
