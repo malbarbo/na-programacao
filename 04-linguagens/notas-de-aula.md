@@ -216,3 +216,5 @@ Vamos começar?
 @. Tente relacionar as construções do fluxograma do algoritmo que calcula a raiz quadrada com as construções do código em C++.
 
 @. Tente relacionar as construções do pseudo código que calcula o MDC com as construções do código em Python.
+
+@. Uma linguagem pode surgir a partir de processos naturais?
