@@ -1,6 +1,9 @@
 ---
 # vim: set spell spelllang=pt_br:
 title: Conceitos básicos
+# TODO: Execução passo a passo
+# TODO: Verificação de tipos
+# TODO: Erros
 ---
 
 # Introdução
@@ -597,7 +600,7 @@ Qual é o resultado de cada expressão a seguir?
 
 >>> str(int('12') * 100)[1:3]
 
->>> int(('1' * 3 + 3 * '2').upper()[2:5])
+>>> int(('1' * 3 + 3 * '2').upper()[2:4])
 
 ```
 
@@ -619,7 +622,7 @@ Qual é o resultado de cada expressão a seguir?
 'silva'
 >>> str(int('12') * 100)[1:3]
 '20'
->>> int(('1' * 3 + 3 * '2').upper()[2:5])
+>>> int(('1' * 3 + 3 * '2').upper()[2:4])
 12
 ```
 
@@ -630,7 +633,7 @@ Além de podermos usar as funções pré-definidas no Python, também podemos de
 
 \pause
 
-Apesar de ser possível definir uma nova função na janela de interações, nos vamos fazer isso na janela de edição de código. Isso nos permite salvar o código para uso/edição posterior.
+Apesar de ser possível definir uma nova função na janela de interações, nós vamos fazer isso na janela de edição de código. Isso nos permite salvar o código para uso/edição posterior.
 
 
 # Definindo novas funções
@@ -642,9 +645,9 @@ Para abrir a janela de edição de código selecionamos o menu File $\rightarrow
 
 # Definindo novas funções
 
-Vamos criar uma função que calcule o dobro de um dado número. \pause
+Vamos criar uma função que calcula o dobro de um dado número. \pause
 
-O que precisamos para definir tal função? \pause
+O que precisamos para definir essa função? \pause
 
 - O nome da função (`dobro`) \pause
 - O nome e tipo da entrada (`x: int`{.python}) \pause
@@ -663,7 +666,7 @@ def nome(entrada1: tipo, entrada2: tipo, ...) -> tipo:
 
 <div class="columns">
 <div class="column" width="50%">
-Escrevemos o código da função na janela de código e salvamos o arquivo (File $\rightarrow$ Save - crtl\ +\ s).
+Escrevemos o código da função na janela de edição de código e salvamos o arquivo (File $\rightarrow$ Save - crtl\ +\ s).
 
 ![](imagens/dobro.png){width=6.5cm}
 
@@ -680,7 +683,7 @@ Para testar a função executamos o arquivo (Run $\rightarrow$ Run Module - F5) 
 
 # Diferenças entre a janela de interações e a de edição de código
 
-O que acontece se escrevermos o exemplo de execução de `dobro` após a sua definição e executarmos o arquivo?
+O que acontece se escrevermos o exemplo de execução da função `dobro` após a sua definição e executarmos o arquivo (Run Module)?
 
 ```python
 def dobro(x: int) -> int:
@@ -718,13 +721,13 @@ Note que o `print`{.python} posiciona o cursor no início da próxima linha, des
 
 # Instrução de saída
 
-A função `print`{.python}, pode ser utilizada com mais de um argumento e os argumentos pode ser de tipos diferentes. Nesse caso, os argumentos são exibidos separados por espaço. \pause
+A função `print`{.python} pode ser utilizada com mais de um argumento e os argumentos podem ser de tipos diferentes \pause
 
 ```python
 def dobro(x: int) -> int:
     return 2 * x
 
-print("O dobro de 4 é:", dobro(4))
+print('O dobro de 4 é:', dobro(4))
 ```
 
 Saída
@@ -733,15 +736,30 @@ Saída
 O dobro de 4 é: 8
 ```
 
+\pause
+
+Note que não colocamos espaço após `'é:'`{.python} na chamada do `print`{.python}, mas um espaço aparece na saída. Isto porque o `print`{.python} adiciona um espaço automaticamente entre cada argumento antes de exibir na tela.
+
+# Instrução de saída
+
+Esse comportamento do `print`{.python} pode ser indesejável em algumas situações, como por exemplo, se quiséssemos colocar um ponto final após o valor calculado do dobro. \pause Nesse caso, podemos instruir o `print`{.python} a não fazer a separação automática (especificando `sep=''`{.python}) e fazermos a separação manualmente \pause
+
+```python
+def dobro(x: int) -> int:
+    return 2 * x
+
+print('O dobro de 4 é: ', dobro(4), '.', sep='')
+```
+
 
 # Programas
 
 Agora que aprendemos algumas das construções básicas do Python, podemos avançar e ver como fazer um programa completo. \pause
 
-Para isso, vamos precisar de mais três coisas
+Para isso, vamos precisar de mais duas coisas \pause
 
+- Instrução de entrada \pause
 - Variáveis
-- Instrução de entrada
 
 
 <!--
@@ -899,6 +917,36 @@ nome: str = input('Qual o seu nome?: ')
 print('Olá', nome)
 ```
 
+\pause
+
+A função `input`{.python} exibi uma mensagem e aguarda o usuário digitar a entrada e pressionar enter. Em seguida o valor digitado pelo usuário é retornado como uma string, e no caso do exemplo, armazenado na variável `nome`.
+
+
+# Instrução de entrada
+
+Note que apesar de ser possível utilizar as funções de entrada e saída na janela de interações, isso não é muito comum, afinal, podemos executar diretamente as funções com os argumentos que queremos e ver o resultado automaticamente, não é necessário perguntar nada para o usuário! \pause
+
+Por exemplo, se estamos testando a função `len`{.python}, ao invés de fazermos a entrada
+
+```python
+>>> palavra: str = input('Digite uma palavra: ')
+Digite uma palavra: casa
+>>> len(palavra)
+4
+```
+
+podemos fazer diretamente
+
+```python
+>>> len('casa')
+4
+```
+
+
+# Programa para calcular o dobro de um número
+
+Agora já podemos criar um programa completo com entrada, processamento e saída!
+
 
 # Programa para calcular o dobro de um número
 
@@ -915,6 +963,10 @@ d: int = dobro(numero)
 # Saída
 print('O dobro de', numero, 'é', d)
 ```
+
+\pause
+
+Note que a função `input`{.python} produz como resultado uma string, como queremos um inteiro, usamos a função `int`{.python} para converter a entrada do usuário para um inteiro.
 
 
 # Entrada
