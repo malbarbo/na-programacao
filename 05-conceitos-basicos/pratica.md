@@ -1,5 +1,5 @@
 ---
-title: Aula prática 01
+title: Conceitos básicos - Prática
 urlcolor: Blue
 ---
 
@@ -81,3 +81,5 @@ urlcolor: Blue
     >>> censura('ferrou geral!', 6)
     'xxxxxx geral!'
     ```
+
+#. Para cada exercício anterior, faça um programa com uma função `main` com entrada, processamento e saída.
