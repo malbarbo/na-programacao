@@ -1,61 +1,83 @@
 ---
 # vim: set spell spelllang=pt_br sw=4:
-title: Conceitos básicos
+title: Conceitos básicos - Exercícios
+# TODO: Pensar com mais cuidados na questões para que elas atigam todo o conteúdo
+# TODO: Fazer outro quiz
 ---
 
-Algumas observações:
+Observações:
 
-- Nós vimos de maneira informal na última aula sobre "conceitos básicos" uma sequência de passos para projetar uma função. Este vai ser o processo que vamos utilizar durante toda a disciplina. Mesmo tendo apenas uma noção do processo, é importante que você tente segui-lo para resolver esses exercícios. Se você tiver dificuldades, não se preocupe, na próxima aula vamos fazer muitos exemplos, mas é importante você tentar e observar as suas dificuldades. Com o tempo, as coisas vão ficar mais claras.
+- Deixe anotado com comentários os exemplos que você utilizou para testar a função.
 
-- Em geral, quando temos que projetar uma função que verifica algo, podemos escolher booleano como tipo de retorno. Por exemplo, se tivéssemos que projetar uma função que verifica se um número inteiro é positivo, teríamos algo como
+- A funções que verificam algo devem ter como saída um `bool`{.python}.
 
-    ```cpp
-    // Devolve true se n é um número positivo, isto é, maior que zero,
-    // false caso contrário.
-    // Exemplos:
-    // positivo(3) -> true
-    // positivo(0) -> false
-    // positivo(-1) -> false
-    bool positivo(int n)
-    {
-        return n > 0;
-    }
+\ 
+
+#) Leia o material de conceitos básicos.
+
+#) Indique o valor de cada resultado oculto nessa seção de interações. Use a janela de interações após calcular as respostas manualmente para conferir se elas estão corretas.
+
+    ```python
+    >>> 2 * 19 // 3
+    ?
+    >>> 64 ** 1 / 4
+    ?
+    >>> 15 % 6 * 8 / 4
+    ?
+    >>> a: int = len('palavra') + 11
+    >>> a // 2 * 2
+    ?
+    >>> b: int = a + a // 3
+    >>> a = 12
+    >>> b
+    ?
+    >>> b = 2 * b
+    >>> b
+    ?
+    >>> nome: str = 'José da Silva'
+    >>> nome[:4].to_upper()
+    ?
+    >>> nome[5:].to_lower()
+    ?
+    >>> nome[3:7]
+    ?
+    >>> nome[3:7][1]
+    ?
+    >>> str(len(nome))
+    ?
+    >>> int('1' * len(nome)) % 100
+    ?
+    >>> nome = nome + ' e Almeida'
+    >>> nome
+    ?
     ```
 
-#. O governo federal aumentou o valor da pensão do INSS em 5% e agora precisa atualizar a pensão de todos os pensionistas. Ajude o governo e projete uma função que calcule o novo valor de uma dada pensão.
+#) Projete uma função que calcule o valor da hipotenusa a partir dos valores dos catetos.
 
-#. De acordo com a Wikipédia, um supercentenário é uma pessoa que atinge a idade de 110 anos. Projete uma função que verifique, a partir da idade, se uma pessoa é supercentenário.
-
-#. Uma polegada é um medida de comprimento utilizado no sistema imperial e corresponde a 2,54cm.
+#) Uma polegada é um medida de comprimento utilizado no sistema imperial e corresponde a 2,54cm.
 
     a. Projete uma função que converta uma medida em centímetros para polegadas.
 
     b. Projete uma função que converta uma medida em polegadas para centímetros.
 
-#. Quando escrevemos uma data no Brasil em geral usamos a ordem dia/mês/ano. Já em outros países a ordem usada é mês/dia/ano. Uma outra forma mais recente de escrever a data é ano/mês/dia. Projete uma função que receba como entra o dia o mês e o ano e gere uma string representando a data na forma ano/mês/dia.
+#) Quando escrevemos uma data no Brasil em geral usamos a ordem dia/mês/ano. Já em outros países a ordem usada é mês/dia/ano. Uma outra forma mais recente de escrever a data é ano/mês/dia. Projete uma função que receba como entrada o dia o mês e o ano e gere uma string representando a data na forma ano/mês/dia.
 
-#. Dizemos que o nome de uma pessoal é curto se tem no máximo três letras e longo se tem mais que 8 letras. Um nome que não é nem curto e nem longo é mediano. Projete uma função que verifique se um dado nome é mediano.
+#) Dizemos que o nome de uma pessoal é curto se tem no máximo três letras e longo se tem mais que 8 letras. Um nome que não é nem curto e nem longo é mediano. Projete uma função que verifique se um dado nome é mediano.
 
-#. A operação de módulo é bastante comum na computação, mas muitos ainda não estão acostumados com essa operação, por isso é importante fazermos alguns exemplos para nos familiarizarmos com ela.
+#) A operação de resto da divisão é bastante comum na computação, mas muitos ainda não estão acostumados com essa operação, por isso é importante fazermos alguns exemplos para nos familiarizarmos com ela.
 
     a. Projete uma função que calcule a unidade de um número inteiro positivo, por exemplo, para o número 152, a unidade é 2.
 
     b. Projete uma função que calcule a dezena de um número inteiro positivo, por exemplo, para o número 152, a dezena é 5.
 
-    c. Projete uma função que verifique se um dado número inteiro positivo é par.
+    c. Projete uma função que calcule a centena de um número inteiro positivo, por exemplo, para o número 152, a centena é 1.
 
     d. Projete uma função que verifique se os dois últimos dígitos de um número são 00.
 
-#. Projete uma função que verifique se o primeiro nome de uma pessoa é "Paula". (Dica: `substr`)
+#) Projete uma função que verifique se o primeiro nome de uma pessoa é "Paula". Você pode assumir que a string de entrada não tem espaços no início e no final e que contém pelo menos um espaço em branco.
 
-#. Projete uma função que verifique se o sobrenome de uma pessoa é "Silva".
+#) Projete uma função que verifique se o último nome (sobrenome) de uma pessoa é "Silva". Você pode assumir que a string de entrada não tem espaços no início e no final e que contém pelo menos um espaço em branco.
 
-#. Projete uma função que calcule o valor da hipotenusa a partir dos valores dos catetos.
+#) Para cada exercícios de projeto de função, faça um programa com a função `main` com entrada, processamento e saída.
 
-#. Resolva o problema do André, ele está esperando!
-
-   O André viaja muito. Sempre antes de fazer uma viagem ele calcula o quanto ele irá gastar com combustível. Ele determina a distância que ele irá percorrer na viagem, o preço do litro do combustível e consulta as suas anotações para ver o consumo do carro, isto é, a quantidade de quilômetros que o carro anda com um litro de combustível e então faz o cálculo do custo. O André acha um pouco chato fazer os cálculos na mão, então ele pediu para você escrever um programa que faça os cálculos para ele.
-
-#. Um construtor precisa calcular a quantidade de azulejos necessários pra azulejar uma determinada parede. Cada azulejo é quadrado e tem 20cm de lado. Ajude o construtor e defina uma função que receba como entrada o comprimento e a altura em metros de uma parede e calcule a quantidade de azulejos inteiros necessários para azulejar a parede. Considere que o construtor nunca perde um azulejo e que recortes de azulejos não são reaproveitados.
-
-#. (Desafio) Projete uma função que encontre o maior valor entre dois números dados.
+#) (Desafio) Projete uma função que encontre o maior valor entre dois números dados.
