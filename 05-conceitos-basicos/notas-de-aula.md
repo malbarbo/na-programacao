@@ -1,9 +1,7 @@
 ---
 # vim: set spell spelllang=pt_br:
 title: Conceitos básicos
-# TODO: Execução passo a passo
-# TODO: Verificação de tipos
-# TODO: Erros
+# TODO: operações relacionais e lógicas
 ---
 
 # Introdução
@@ -626,6 +624,83 @@ Qual é o resultado de cada expressão a seguir?
 12
 ```
 
+<!--
+
+# Operações relacionais
+
+Outro tipo de operação que podemos fazer com números e strings são operações relacionais. \pause
+
+Que resposta você espera para a comparação `3 > 4`{.python}? \pause E para `3 < 4`{.python}? \pause
+
+Em Python a resposta da primeira comparação é `False`{.python} (falso) e da segunda `True`{.python} (verdadeiro). \pause
+
+```python
+>>> 3 > 4
+False
+>>> 3 < 4
+True
+```
+
+\pause
+
+Na computação os valores verdadeiro e falso são chamados de booleanos. Em Python, o tipo dos valores booleanos é `bool`{.python}. As operações relacionais produzem como resposta um valor booleano.
+
+
+# Operações relacionais
+
+<div class="columns">
+<div class="column" width="50%">
+
+```python
+>>> # Maior e maior ou igual
+>>> 4 > 4
+False
+>>> 4 >= 4
+True
+```
+
+\pause
+
+```python
+>>> # Menor e menor ou igual
+>>> 6 < 6
+False
+>>> 6 <= 6
+True
+```
+
+\pause
+
+</div>
+<div class="column" width="50%">
+
+```python
+>>> # Igual
+>>> 5 == 6
+False
+>>> 9 == 5 + 2 ** 2
+True
+```
+
+\pause
+
+```python
+>>> # Diferente
+>>> 3 * 2 != 4 + 2 ** 2
+True
+>>> 9 != 4 + 2 ** 2
+False
+```
+
+</div>
+</div>
+
+\pause
+
+Note que as operações relacionais tem prioridade menor do que as operações aritméticas.
+
+-->
+
 
 # Definindo novas funções
 
@@ -674,7 +749,7 @@ Escrevemos o código da função na janela de edição de código e salvamos o a
 </div>
 <div class="column" width="50%">
 
-Para testar a função executamos o arquivo (Run $\rightarrow$ Run Module - F5) e chamamos a função na janela de interações. \pause
+Para testarmos a função executamos o arquivo (Run $\rightarrow$ Run Module - F5) e chamamos a função na janela de interações. \pause
 
 ![](imagens/dobro-ex.png){width=6.5cm}
 </div>
@@ -683,7 +758,7 @@ Para testar a função executamos o arquivo (Run $\rightarrow$ Run Module - F5) 
 
 # Diferenças entre a janela de interações e a de edição de código
 
-O que acontece se escrevermos o exemplo de execução da função `dobro` após a sua definição e executarmos o arquivo (Run Module)?
+O que acontece se escrevermos uma chamada função `dobro` após a sua definição e executarmos o arquivo (Run Module)?
 
 ```python
 def dobro(x: int) -> int:
@@ -698,7 +773,7 @@ A função `dobro` será executada para o valor `4`{.python} mais nenhum resulta
 
 Por que na execução do exemplo na janela de interações o resultado é exibido e aqui não? \pause
 
-Por que o modo de interação a exibição é feita automaticamente (o P -- _print_ -- de REPL) para facilitar a interação com o Python. \pause No arquivo de código, precisamos indicar explicitamente que queremos que o resultado seja exibido.
+Por que no modo de interação a exibição é feita automaticamente (o P -- _print_ -- de REPL) para facilitar a interação com o Python. \pause No arquivo de código, precisamos indicar explicitamente que queremos que o resultado seja exibido.
 
 
 # Instrução de saída
@@ -761,87 +836,6 @@ Para isso, vamos precisar de mais duas coisas \pause
 - Instrução de entrada \pause
 - Variáveis
 
-
-<!--
-# Operações relacionais
-
-Além das operações aritméticas, também podemos fazer operações relacionais com números. \pause
-
-Que resposta você espera a comparação `3 > 4`{.python}? \pause E para `3 < 4`{.python}? \pause
-
-Em Python a resposta da primeira comparação é `False`{.python} (falso) e da segunda `True`{.python} (verdadeiro). \pause
-
-```python
->>> 3 > 4
-False
->>> 3 < 4
-True
-```
-
-\pause
-
-Na computação os valores verdadeiro e falso são chamados de booleanos. Em Python, o tipo dos valores booleanos é `bool`{.python}. As operações relacionais produzem como resposta um valor booleano.
-
-
-# Operações relacionais
-
-<div class="columns">
-<div class="column" width="50%">
-
-```python
->>> # Maior e maior ou igual
->>> 4 > 4
-False
->>> 4 >= 4
-True
-```
-
-\pause
-
-```python
->>> # Menor e menor ou igual
->>> 6 < 6
-False
->>> 6 <= 6
-True
-```
-
-\pause
-
-</div>
-<div class="column" width="50%">
-
-```python
->>> # Igual
->>> 5 == 
-False
->>> 9 == 4 + 2 ** 2
-True
-```
-
-\pause
-
-```python
->>> # Igual
->>> 3 * 2 != 4 + 2 ** 2
-True
->>> 9 != 4 + 2 ** 2
-False
-```
-
-</div>
-</div>
-
-\pause
-
-Note que as operações relacionais tem prioridade menor do que as operações aritméticas.
-
-
-# Operações lógicas
-
-Podemos combinar operações relacionais.
-
--->
 
 # Variáveis
 
@@ -1082,104 +1076,275 @@ Em qual ordem as linhas do programa são executadas pelo Python? \pause
 
 Vamos parar um pouco e pensar sobre erros. \pause
 
-Durante a compilação de um programa, podem ocorrer dois tipos de erros: \pause
+Você já encontrou algum tipo de erro enquanto fazia os programas? \pause Sim! \pause
 
-- Sintáticos
-- Semânticos
+Que tipo de erro? \pause
+
+- O programa nem inicia a execução \pause
+
+- O programa executa mas é interrompido por um erro \pause
+
+- O programa executa até o final mas gera uma resposta errada
+
+
+# Erros
+
+Classificamos esses erros em estáticos e dinâmicos. \pause
+
+Os **erros estáticos** são aqueles detectados antes da execução do programa. \pause
+
+Os **erros dinâmicos** são detectados durante a execução do programa. \pause
+
+Por padrão, o único tipo de erro estático detectado pelo Python é o erro sintático. \pause
+
+Um **erro sintático** ocorre quando o programa não segue as regras sintáticas da linguagem e o interpretador não consegue "entender" a estrutura do programa, por isso o o interpretador nem inicia a execução do programa.
 
 
 # Erros sintáticos
 
-Um erro sintático ocorre quando não seguimos as regras sintáticas da linguagem e o interpretador não consegue "entender" a estrutura do programa.
+\small
 
-<div class="columns">
-<div class="column" width="30%">
-
-```cpp
-x: int = 2 + 4) * 6
+```python
+x: int = (2 + 4
 ```
 
 \pause
 
 Qual é o erro nesse código? \pause
 
-Falta `(` na expressão.
+Faltou fechar o parênteses.
 
 \pause
 
-</div>
-<div class="column" width="68%">
-
-</div>
-</div>
-
+```
+    x: int = (2 + 4
+             ^
+SyntaxError: '(' was never closed
+```
 
 
 # Erros sintáticos
 
-<div class="columns">
-<div class="column" width="32%">
+\small
 
-\footnotesize
-
-```cpp
-nome com espaco: int = 10
+```python
+nota maxima: int = 10
 def: float = 20.3
 ```
 
-\normalsize
-
 Quais os erros nesse código? \pause
 
-Uso de nomes inválidos para variáveis. \pause
-
-Um nome não pode ter espaços e nem ser uma palavra chave (como `def`{.def}).
+Identificador com espaço no nome
 
 \pause
 
-</div>
-<div class="column" width="66%">
+```
+    nota maxima: int = 10
+         ^^^^^^
+SyntaxError: invalid syntax
+```
 
-</div>
-</div>
+Use da palavra chave `def`{.python} como identificador
+
+\pause
+
+```
+    def: float = 20.3
+       ^
+SyntaxError: invalid syntax
+```
+
+
+# Erros sintáticos
+
+\small
+
+```python
+def soma(a: int b: int) -> int
+    return a + b
+```
+
+Quais são os erros nesse código? \pause
+
+Falta a vírgula antes de `b`
+
+```
+    def soma(a: int b: int) -> int
+                ^^^^^
+SyntaxError: invalid syntax. Perhaps you forgot a comma?
+```
+
+\pause
+
+Falta os dois pontos após o tipo de retorno da função
+
+```
+    def soma(a: int, b: int) -> int
+                                   ^
+SyntaxError: expected ':'
+```
+
+
+# Erros sintáticos
+
+\small
+
+```python
+def soma(a: int, b: int) -> int:
+return a + b
+```
+
+Qual é o erro nesse código? \pause
+
+Falta a indentação (recuo) do `return`{.python}.
+
+```
+    return a + b
+    ^
+IndentationError: expected an indented block after function definition
+```
+
+# Erros sintáticos
+
+\small
+
+```python
+def main():
+    nome: str = input('Qual é o seu nome?: ')
+   print('Olá', nome)
+```
+
+Qual é o erro nesse código? \pause
+
+A indentação está inconsistente. Devemos sempre utilizar 4 espaço para fazer a indentação.
+
+```
+    print('Olá', nome)
+                       ^
+IndentationError: unindent does not match any outer indentation level
+```
 
 
 # Erros semânticos
 
-Um erro semântico ocorre quando o compilador não "consegue" atribuir um significado para uma construção. \pause
-
+\small
 
 ```python
 a: int = 10 + "3"
 ```
 
-Qual é o erro nesse código? \pause Usar operandos de tipos inválidos para uma operação.
+Qual é o erro nesse código? \pause
 
+Uso de operandos de tipos inválidos para o operador `+`{.python}. \pause
 
-# Erros semânticos
-
-```cpp
-a: int = 10.6;
+```
+    10 + "a"
+TypeError: unsupported operand type(s) for +: 'int' and 'str'
 ```
 
 \pause
 
-Qual o erro nesse código? \pause Por padrão, esta construção é válida e não gera erro! \pause
+Esse é um erro sintático? \pause Não! É um erro semântico. \pause
+
+Um **erro semântico** ocorre quando o interpretador não “consegue” atribuir um significado para
+uma construção mesmo ela sendo válida sintaticamente. \pause
+
+O Python identifica esse erro de forma estática ou dinâmica? \pause De forma dinâmica, lembre-se, os únicos erros identificados de forma estática pelo Python são os erros sintáticos.
+
+
+# Erros semânticos
+
+\small
+
+```python
+def dobro(x: int) -> int:
+    return 2 * x
+
+print(dobro(10))
+print(dobro(10.0))
+print(dobro('10'))
+```
+
+\pause
+
+Quais são os erros nesse código? \pause
+
+Nenhum! \pause Whyyyyy? \pause
+
+O Python ignora todas as anotações de tipo. Se um programa está sintaticamente correto, o Python faz a sua execução e só para quando o programa termina ou um erro semântico é encontrado. \pause
+
+Esse exemplo executa até o termino ou é interrompido por um erro? \pause Executa até o final! \pause Howwww?
+
+
+# Erros semânticos
+
+Quando `dobro` é chamada com o valor `10`{.python} a expressão `2 * x`{.python} produz `20` e esse valor é exibido na tela. \pause
+
+Em seguida `dobro` é chamada com o valor `10.0`{.python} e a expressão `2 * x`{.python} produz `20.0` e esse valor é exibido na tela. \pause
+
+Por fim, `dobro` é chamada com o valor `'10'`{.python} e a expressão `2 * x`{.python} produz `1010` e esse valor é exibido na tela.
+
+
+# Tipagem dinâmica vs estática
+
+Embora nesse caso específico seja interessante poder usar a função `dobro` para diversos tipos de dados, mesmo que não projetamos a função com esta intenção, em outros casos essa flexibilidade pode gerar erros de execução, ou pior, resultados inesperados. \pause
+
+Essa característica do Python é chamada de tipagem dinâmica, isso é, os tipos são associados com os valores, e não com as variáveis. Em Python, qualquer valor pode ser atribuído a qualquer variável.\pause
+
+Outras linguagens de programação, como C/C++, utilizam tipagem estática, onde os tipos são associados com as variáveis. Nessas linguagens, um valor só pode ser atribuído para uma variável se o tipo do valor é compatível com o tipo da variável.
+
+
+# `mypy`
+
+Existem muitas considerações que podemos fazer sobre as vantagens e as desvantagens de cada modelo, mas nós vamos nos ater à um aspecto: o pedagógico. \pause
+
+Considerando a pedagogia que estamos utilizando na disciplina, é importante que os tipos sejam verificados estaticamente. \pause
+
+Mas como podemos fazer isso se o Python não funciona dessa forma? \pause
+
+Utilizando uma ferramenta chamada `mypy`. \pause
+
+O `mypy` é um analisador estático, que além de fazer uma análise estática dos tipos, também identifica uma série de erros de forma estática, que só seriam identificados pelo Python durante a execução do programa.
+
+
+# `mypy`
+
+\small
+
+```python
+def dobro(x: int) -> int:
+    return 2 * x
+
+print(dobro(10))
+print(dobro(10.0))
+print(dobro('10'))
+```
+
+Ao executar o `mypy` para o arquivo `dobro.py` com o comando
+
+```
+mypy dobro.py
+```
+
+obtemos o seguinte resultado
+
+\scriptsize
+
+```
+x.py:5: error: Argument 1 to "dobro" has incompatible type "float"; expected "int"
+x.py:6: error: Argument 1 to "dobro" has incompatible type "str"; expected "int"
+Found 2 errors in 1 file (checked 1 source file)
+```
 
 
 # Erros de execução
 
-Se um programa foi compilado corretamente, isto é, não tem erros de sintaxe ou semântica, significa que ele não tem erros? \pause Não! \pause Erros podem ocorrer durante a execução do programa. \pause
+Se um programa foi verificado pelo `mypy`, isto é, não tem erros de sintaxe ou semântica, significa que ele não tem erros? \pause Não! \pause Ainda podemos ter erros durante a execução do programa. \pause
 
 Um erro de execução pode fazer o programa \pause
 
 - Ser interrompido e exibir uma mensagem de erro (crashar) \pause
 - Entrar em um laço infinito e nunca terminar (travar) \pause
-- Continuar a execução e produzir a resposta errada
-
-
-# Erros de execução
-
-No programa que calcula o dobro de um número, o que acontece se o usuário digitar um float ou algo que não é um número? \pause O programa é interrompido com um erro. \pause
+- Continuar a execução e produzir a resposta errada \pause
 
 Como garantir que um programa não terá erros em tempo de execução? \pause Veremos isso ao longo da disciplina.
