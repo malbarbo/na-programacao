@@ -35,9 +35,9 @@ Observações:
     >>> b
     ?
     >>> nome: str = 'José da Silva'
-    >>> nome[:4].to_upper()
+    >>> nome[:4].upper()
     ?
-    >>> nome[5:].to_lower()
+    >>> nome[5:].lower()
     ?
     >>> nome[3:7]
     ?
