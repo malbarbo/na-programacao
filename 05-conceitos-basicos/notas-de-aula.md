@@ -1,7 +1,9 @@
 ---
 # vim: set spell spelllang=pt_br:
 title: Conceitos básicos
-# TODO: operações relacionais e lógicas
+# TODO: and e or tem avaliação em curto circuito
+# TODO: exercícios de operações relacionais e lógicas
+# TODO: adicionar referências
 ---
 
 # Introdução
@@ -21,7 +23,7 @@ Agora vamos ver as construções básicas da linguagem Python, para em seguida c
 
 O Python é um software livre e pode ser baixado e instalado de <https://python.org>. \pause
 
-Além do interpretador, a instalação padrão do Python vem com um ambiente de desenvolvimento e aprendizagem chamado IDLE. \pause
+Além do interpretador, a instalação do Python vem com um ambiente de desenvolvimento e aprendizagem chamado IDLE. \pause
 
 Ao iniciar o IDLE a janela a seguir é exibida \pause
 
@@ -63,7 +65,7 @@ O modo de interações também pode ser iniciado executado `python` no terminal 
 
 # Observação
 
-Note que na janela de interações não criamos programas para seres utilizados por usuários, mas experimentamos aspectos do Python e testamos os nossos programas. \pause
+Note que na janela de interações não criamos programas para serem utilizados por usuários, mas experimentamos aspectos do Python e testamos os nossos programas. \pause
 
 Veremos posteriormente como criar programas completos. \pause
 
@@ -79,7 +81,7 @@ Os primeiros computadores foram criados para fazerem cálculos matemáticos, ent
 
 # Números
 
-Python tem diversos tipos de números, os dois principais que vamos utilizar são \pause
+O Python tem diversos **tipos numéricos**, os dois principais são \pause
 
 <div class="columns">
 <div class="column" width="50%">
@@ -106,8 +108,7 @@ Ponto flutuante (`float`{.python}), representação aproximada de números reais
 >>> 0.345
 0.345
 >>> # Notação científica
->>> # 1.23 * 10^2
->>> 1.23e2
+>>> 1.23e2 # 1.23 * 10^2
 123.0
 ```
 
@@ -168,8 +169,9 @@ Podemos usar as quatro operações aritméticas básicas com esses tipos numéri
 >>> # Resto da divisão
 >>> 14 % 3
 2
->>> # float é uma aproximação
->>> # de números reais
+>>> # Experávamos obter exatamente
+>>> # 1.1, mas float é apenas
+>>> # uma aproximação dos reais...
 >>> 5 % 1.3
 1.0999999999999999
 ```
@@ -180,18 +182,18 @@ Podemos usar as quatro operações aritméticas básicas com esses tipos numéri
 
 # Comentários
 
-O símbolo `#`{.python} (cerquilha), é utilizado para indicar um comentário. O comentário incia em `#`{.python} e vai até o final da linha. Os comentários são ignorados pelo interpretador do Python, mas são utilizados para adicionar informações relevantes para os leitores do código.
+O símbolo `#`{.python} (cerquilha), é utilizado para indicar um **comentário**. O comentário incia em `#`{.python} e vai até o final da linha. Os comentários são ignorados pelo interpretador do Python, mas são utilizados para adicionar informações relevantes para os leitores do código.
 
 
 # Exponenciação
 
 ```python
 >>> # Exponenciação e radiciação
->>> 3 ** 4
+>>> 3 ** 4 # 3 elevado a 4
 81
 >>> 2 ** 80
 1208925819614629174706176
->>> 16 ** 0.5
+>>> 16 ** 0.5 # raiz quadrada, o mesmo que 16 ** (1 / 2)
 4.0
 ```
 
@@ -199,10 +201,10 @@ O símbolo `#`{.python} (cerquilha), é utilizado para indicar um comentário. O
 
 ```python
 >>> # A exponenciação tem prioridade sobre a divisão
->>> 27 ** 1/3
+>>> 27 ** 1 / 3 # o mesmo que (27 ** 1) / 3
 9.0
 >>> # Usamos parênteses para mudar a prioridade
->>> 27 ** (1/3)
+>>> 27 ** (1 / 3) # raiz cúbica
 3.0
 ```
 
@@ -221,7 +223,7 @@ Operadores com a mesma precedência são avaliados da esquerda para a direita, e
 
 # Exercício
 
-Qual é o resultado de cada expressão a seguir?
+Qual é o resultado da avaliação de cada expressão a seguir?
 
 \small
 
@@ -245,7 +247,7 @@ Qual é o resultado de cada expressão a seguir?
 
 # Exercício
 
-Qual é o resultado de cada expressão a seguir?
+Qual é o resultado da avaliação de cada expressão a seguir?
 
 \small
 
@@ -305,7 +307,7 @@ Qual é o resultado de cada expressão a seguir?
 
 As operações que vimos até agora estão disponíveis automaticamente, outras operações estão disponíveis em módulos, que devem ser importados antes de poderem ser utilizados. \pause
 
-O Python tem uma [extensa](https://xkcd.com/353/) biblioteca padrão, com muitos módulos, este é um dos motivos que a linguagem é bastante utilizada. A documentação da biblioteca padrão do Python está disponível em <https://docs.python.org/3/library/index.html>. \pause
+O Python tem uma [extensa](https://xkcd.com/353/) biblioteca padrão, com muitos módulos, este é um dos motivos pelos quais a linguagem é bastante utilizada. A documentação da biblioteca padrão do Python está disponível em <https://docs.python.org/3/library/index.html>. \pause
 
 Por hora, vamos ver apenas algumas funções do módulo [`math`](https://docs.python.org/3/library/math.html).
 
@@ -321,6 +323,8 @@ Por hora, vamos ver apenas algumas funções do módulo [`math`](https://docs.py
 >>> # maior inteiro <= ao número
 >>> math.floor(4.2)
 4
+>>> math.floor(4.0)
+4
 >>> math.floor(-2.3)
 -3
 ```
@@ -335,6 +339,8 @@ Por hora, vamos ver apenas algumas funções do módulo [`math`](https://docs.py
 >>> # menor inteiro >= ao númeo
 >>> math.ceil(4.2)
 5
+>>> math.ceil(4.0)
+4
 >>> math.ceil(-2.3)
 -2
 ```
@@ -345,11 +351,11 @@ Por hora, vamos ver apenas algumas funções do módulo [`math`](https://docs.py
 
 # Cadeia de caracteres
 
-Outro tipo de dado pré-definido em Python é a cadeia de caracteres (`str`{.python}) -- _string_ em inglês. \pause
+Outro tipo de dado pré-definido em Python é a cadeia de caracteres (`str`{.python}), _string_ em inglês. \pause
 
 Geralmente usamos strings para armazenar informações simbólicas, como por exemplo palavras e textos. \pause
 
-Uma string em Python é escrita entre apóstrofo ou aspas \pause
+Uma string em Python é escrita entre apóstrofo (`'`) ou aspas (`"`) \pause
 
 ```python
 >>> 'casa'
@@ -518,7 +524,7 @@ IndexError: string index out of range
 
 # Formas de expressões
 
-Inicialmente as expressões (cálculos) que vimos usavam apenas operadores matemáticos \pause
+Inicialmente as expressões que vimos usavam apenas operadores matemáticos \pause
 
 ```python
 30 * 2
@@ -624,11 +630,10 @@ Qual é o resultado de cada expressão a seguir?
 12
 ```
 
-<!--
 
 # Operações relacionais
 
-Outro tipo de operação que podemos fazer com números e strings são operações relacionais. \pause
+Outro tipo de operação que podemos fazer com números e strings são as operações relacionais. \pause
 
 Que resposta você espera para a comparação `3 > 4`{.python}? \pause E para `3 < 4`{.python}? \pause
 
@@ -663,9 +668,9 @@ True
 
 ```python
 >>> # Menor e menor ou igual
->>> 6 < 6
+>>> 6.0 < 6.0
 False
->>> 6 <= 6
+>>> 6.0 <= 1.0 + 5.0
 True
 ```
 
@@ -697,14 +702,238 @@ False
 
 \pause
 
-Note que as operações relacionais tem prioridade menor do que as operações aritméticas.
+\ 
 
--->
+Observe que as operações relacionais tem prioridade menor do que as operações aritméticas.
+
+
+# Operações relacionais
+
+As operações relacionais podem ser utilizadas com outros tipos, incluindo strings e booleanos. \pause
+
+<div class="columns">
+<div class="column" width="50%">
+
+```python
+>>> # As strings são comparadas
+>>> # lexicograficamente, o
+>>> # que pode gerar algumas
+>>> # supressas
+>>> 'a' < 'b'
+True
+>>> 'á' < 'b'
+False
+```
+
+\pause
+
+</div>
+<div class="column" width="50%">
+```python
+>>> 'André' < 'Paulo'
+True
+>>> 'André' < 'paulo'
+True
+>>> 'casa' == 'Casa'
+False
+>>> 'á' != 'a'
+True
+```
+</div>
+</div>
+
+
+# Operações relacionais
+
+<div class="columns">
+<div class="column" width="50%">
+
+```python
+>>> # O valor False é considerado
+>>> # menor que o valor True
+>>> False < True
+True
+>>> True > False
+True
+```
+
+\pause
+
+</div>
+<div class="column" width="50%">
+
+```Python
+>>> False == False
+True
+>>> False == True
+False
+>>> True == False
+False
+>>> True == True
+True
+```
+
+</div>
+</div>
+
+
+# Operadores booleanos
+
+Assim como existem operações com números e strings, também existem operações com booleanos. \pause
+
+As três operações mais comuns com booleanos são: `not`{.python} (negação), `or`{.python} (ou) e `and`{.python} (e). \pause
+
+\small
+
+<div class="columns">
+<div class="column" width="50%">
+
+```python
+>>> # O not é um operator unário.
+>>> not True
+False
+>>> not False
+True
+>>> not not True
+True
+```
+
+\pause
+
+</div>
+<div class="column" width="50%">
+
+```Python
+>>> # O not tem menor precedência
+>>> # do que os operadores relacionais
+>>> # e aritméticos.
+>>> # 4 > 4.0 é False
+>>> not 3 + 1 > 2 + 2.0
+True
+>>> # 14 == 14 é True
+>>> not 2 + 3 * 4 == 14
+False
+```
+
+</div>
+</div>
+
+
+# Operadores booleanos
+
+<div class="columns">
+<div class="column" width="50%">
+
+```python
+>>> # O and é um operador binário
+>>> # que só produz True se os
+>>> # dois operandos forem True.
+
+>>> # Tabela verdade do and
+>>> False and False
+False
+>>> False and True
+False
+>>> True and False
+False
+>>> True and True
+True
+```
+
+\pause
+
+</div>
+<div class="column" width="50%">
+
+```Python
+>>> # O and tem menor precedência
+>>> # do que os operadores relacionais
+>>> # e aritméticos.
+
+>>> # 15 > 8 é True
+>>> # 4 == 3 é False
+>>> 15 > 2 ** 3 and 4 == 1 + 2
+False
+>>> # 2 == 2 é True
+>>> # 3 != 4 é True
+>>> 2 == 1 + 1 and 3 != 4
+True
+```
+
+</div>
+</div>
+
+
+# Operadores booleanos
+
+<div class="columns">
+<div class="column" width="50%">
+
+```python
+>>> # O or é um operador binário
+>>> # que produz True se pelo menos
+>>> # um dos operandos for True.
+
+>>> # Tabela verdade do or
+>>> False or False
+False
+>>> False or True
+True
+>>> True or False
+True
+>>> True or True
+True
+```
+
+\pause
+
+</div>
+<div class="column" width="50%">
+
+```Python
+>>> # O or tem menor precedência
+>>> # do que os operadores relacionais
+>>> # e aritméticos.
+
+>>> # 15 > 8 é True
+>>> # 4 == 3 é False
+>>> 15 > 2 ** 3 or 4 == 1 + 2
+True
+>>> # 2 == 3 é False
+>>> # 3 + 1 != 4 é False
+>>> 2 == 2 + 1 or 3 + 1 != 4
+False
+```
+
+</div>
+</div>
+
+
+# Operadores relacionais
+
+Quem tem maior prioridade, o `and`{.python} ou o `or`{.python}? \pause O `and`{.python}. \pause Vamos criar uma expressão que mostre que isso é verdade. \pause
+
+\small
+
+```python
+>>> # A expressão é equivalente a
+>>> # (False and False) or True
+>>> # que produz True
+>>> False and False or True
+True
+>>> # Se o or tivesse prioridade
+>>> # sobre o and, então a expressão
+>>> # seria equivalente a
+>>> # False and (False or True)
+>>> # que produz False
+>>> False and (False or True)
+False
+```
 
 
 # Definindo novas funções
 
-Além de podermos usar as funções pré-definidas no Python, também podemos definir as nossas próprias funções.
+Além de podermos usar as operações e funções pré-definidas no Python, também podemos definir as nossas próprias funções.
 
 \pause
 
@@ -1347,4 +1576,13 @@ Um erro de execução pode fazer o programa \pause
 - Entrar em um laço infinito e nunca terminar (travar) \pause
 - Continuar a execução e produzir a resposta errada \pause
 
-Como garantir que um programa não terá erros em tempo de execução? \pause Veremos isso ao longo da disciplina.
+Como garantir que um programa não terá erros durante a execução? \pause Veremos isso ao longo da disciplina.
+
+
+# Projeto de funções
+
+Agora que conhecemos os conceitos básicos de programação e do Python, podemos avançar para o processo de projeto de programas. \pause
+
+Mas antes, pratique fazendo a lista de exercícios disponível na página da disciplina! \pause
+
+Até mais e bons estudos.
