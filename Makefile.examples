@@ -1,10 +1,7 @@
-SOURCES := $(shell ls exemplos/*.cpp)
+.PHONY: check
 
-all: $(SOURCES:exemplos/%.cpp=../target/%)
+SOURCES := $(shell fd -e py )
 
-../target/%: exemplos/%.cpp
-	@echo Compilando e testando $@
-	@mkdir -p ../target/
-	@g++ -Wall -Wextra -Wconversion -I ../ -o $@ $<
-	@$@ < /dev/null
-	@rm $@
+check:
+	mypy --check-untyped-defs ${SOURCES}
+	python -B -m doctest ${SOURCES}

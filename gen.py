@@ -22,7 +22,7 @@ for cap in sorted(os.listdir()):
     if not os.path.isdir(cap) or cap[2:3] != '-':
         continue
     for item in os.listdir(cap):
-        if item == 'imagens':
+        if item == 'imagens' or '.mypy' in item:
             continue
         if os.path.isdir(f'{cap}/{item}'):
             target = f'{DEST}/{cap}-{item}.zip'
@@ -30,7 +30,7 @@ for cap in sorted(os.listdir()):
             print(f'{target}: {cap}/{item}/*')
             print(f'\t@echo {target}')
             print(f'\t@mkdir -p {DEST}')
-            print(f'\t@zip {target} -x *.swp -r {cap}/{item}')
+            print(f'\t@zip {target} -x *.swp -x *.mypy* -r {cap}/{item}')
             print()
         elif item == 'notas-de-aula.md':
             base = os.path.splitext(item)[0]
