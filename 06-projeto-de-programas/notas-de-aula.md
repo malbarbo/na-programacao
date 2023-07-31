@@ -19,7 +19,7 @@ Projetar programas que funcionem corretamente e sejam bem escritos é um desafio
 No início, para problemas simples, o processo poderá parecer muito custoso, mas vamos apreciar a sua utilidade conforme progredimos.
 
 
-# Projeto de programas
+# Projeto de funções
 
 O processo que vamos seguir está dividido em 6 etapas: \pause
 
@@ -31,7 +31,19 @@ O processo que vamos seguir está dividido em 6 etapas: \pause
 - Revisão
 
 
-# Projeto de programas
+# Objetivos
+
+Cada etapa tem um objetivo \pause
+
+- Análise: \pause identificar o problema a ser resolvido \pause
+- Definição dos tipos de dados: \pause identificar e definir como as informações serão representadas \pause
+- Especificação: \pause especificar com precisão o que a função deve fazer \pause
+- Implementação: \pause implementar a função de acordo com a especificação \pause
+- Verificação: \pause verificar se a implementação está de acordo com a especificação \pause
+- Revisão: \pause identificar e fazer melhorias
+
+
+# Projeto de funções
 
 Ao final de cada etapa produzimos resultados que serão utilizados nas etapas posteriores, então devemos tentar seguir as etapas em ordem. \pause No entanto, em algumas situações, pode ser necessário mudar a ordem. \pause
 
@@ -41,6 +53,17 @@ voltar e alterar a especificação. \pause Em outra situação não estamos cons
 Mas devemos evitar fazer a implementação diretamente!
 
 
+# Projeto de programas
+
+Mas esse processe serve para projetar funções, como projetamos programas? \pause
+
+Um programa é composto de várias funções, então temos que decompor o programa em funções e aplicar o processo para projetar cada função. \pause
+
+Vamos treinar com problemas simples, de uma função, depois vamos utilizar o processo em problemas mais elaborados. \pause
+
+Vamos iniciar resolvendo o problema do André!
+
+
 # Análise
 
 <div class="columns">
@@ -48,7 +71,7 @@ Mas devemos evitar fazer a implementação diretamente!
 O André viaja muito. Sempre antes de fazer uma viagem ele calcula o quanto ele irá gastar com combustível. Ele determina a distância que ele irá percorrer na viagem, o preço do litro do combustível e consulta as suas anotações para ver o consumo do carro, isto é, a quantidade de quilômetros que o carro anda com um litro de combustível e então faz o cálculo do custo. O André acha um pouco chato fazer os cálculos na mão, então ele pediu para você escrever um programa que faça os cálculos para ele. \pause
 </div>
 <div class="column" width="48%">
-Objetivo: determinar o que deve ser feito. \pause
+**Objetivo**: identificar o problema a ser resolvido. \pause
 
 - Quais informações são relevantes e quais podem ser descartadas?
 - Existe alguma omissão?
@@ -72,9 +95,9 @@ Calcular o custo em reais para percorrer uma determinada distância levando em c
 Calcular o custo em reais para percorrer uma determinada distância levando em consideração o desempenho do carro e o preço do litro do combustível. \pause
 </div>
 <div class="column" width="48%">
-Objetivo: definir como as informações serão representadas como dados no programa. \pause
+**Objetivo**: identificar e definir como as informações serão representadas. \pause
 
-- Quais são as informações envolvidas no problema?
+- Quais são as informações envolvidas no problema? \pause
 
 - Como as informações serão representadas? \pause
 
@@ -103,7 +126,7 @@ Todos os valores serão representados por números positivos.
 \pause
 </div>
 <div class="column" width="48%">
-Objetivo: especificar com mais precisão e com exemplos o que o programa deve fazer. \pause
+**Objetivo**: especificar com mais precisão e com exemplos o que o programa deve fazer. \pause
 
 - Assinatura da função (nome, tipo das entradas e saídas)
 
@@ -118,104 +141,137 @@ Objetivo: especificar com mais precisão e com exemplos o que o programa deve fa
 
 **Assinatura e propósito da função** \pause
 
-```cpp
-// Calcula o custo em reais para percorrer a distancia especificada
-// considerando o rendimento do carro e o preco do litro do combustível.
-double custo_viagem(double distancia, double rendimento, double preco)
-{
-    return 0.0;
-}
+O propósito descreve **o quê** a função faz (deve fazer). Devemos usar o nome dos parâmetros na descrição do propósito para que a relação da entrada e da saída fique clara.
+
+\pause
+
+\small
+
+```python
+def custo_viagem(distancia: float, rendimento: float, preco: float) -> float:
+    '''
+    Calcula o custo em reais para percorrer a *distancia* especificada
+    considerando o *rendimento* do carro e o *preco* do litro do combustível.
+    '''
+    return 0.0
 ```
+
+
+# Especificação
+
+No propósito da função descrevemos **o quê** a função faz, e não **como** ela faz (que é a implementação - as vezes precisamos dizer como ela faz, mas isso é raro). \pause
+
+Número par \pause
+
+- O quê: verifica se um número é par \pause
+- Como: faz o resto da divisão do número por 2 e compara com 0; ou; faz a divisão inteira do número e multiplica por 2 e compara com o número
 
 
 # Especificação
 
 **Exemplos**
 
-Ilustrar com exemplos de entrada e saída o funcionamento da função. \pause
+Ilustrar com exemplos de entrada e saída o funcionamento da função, o que auxilia o programador a entender melhor como a função deve funcionar e como ela pode ser implementada. \pause
 
+<div class="columns">
+<div class="column" width="48%">
 Como escolher bons exemplos? \pause
 
 - Usar valores de casos práticos para o problema \pause
 
 - Considerar diversas situações, incluindo casos extremos \pause
 
-```cpp
-// custo_viagem(120, 10, 5)
+</div>
+<div class="column" width="48%">
+
+```python
+>>> # (120.0 / 10.0) * 5.0
+>>> custo_viagem(120.0, 10.0, 5.0)
+60.0
 ```
 
 \pause
 
-```cpp
-// (120 / 10) * 5 -> 12 * 5 -> 60
+```python
+>>> # (300.0 / 15.0) * 6.0
+>>> custo_viagem(300.0, 15.0, 6.0)
+120.0
 ```
 
-\pause
+Note que podemos deixar como comentário a expressão utilizada para calcular a resposta.
 
-```cpp
-// custo_viagem(300, 15, 6)
-```
+</div>
+</div>
 
-\pause
 
-```cpp
-// (300 / 15) * 6 -> 20 * 6 -> 120
-```
+# Especificação
+
+Para saber se a especificação está boa, faça a segunda pergunta: \pause
+
+Um outro programador, que não tem acesso ao problema original e nem a análise, tem as informações necessárias na especificação para fazer uma implementação e verificação inicial? \pause
+
+Se a resposta for sim, então a especificação está boa, senão ela está incompleta.
 
 
 # Implementação
 
+**Objetivo**: escrever o corpo da função para que ela faça o que está na especificação. \pause
 
-<div class="columns">
-<div class="column" width="48%">
+\scriptsize
 
-\footnotesize
+```python
+def custo_viagem(distancia: float, rendimento: float, preco: float) -> float:
+    '''
+    Calcula o custo em reais para percorrer a *distancia* especificada
+    considerando o *rendimento* do carro e o *preco* do litro do combustível.
 
-```cpp
-// Calcula o custo em reais para percorrer
-// a distancia especificada considerando o
-// rendimento do carro e o preco do litro
-// do combustível.
-// Exemplos
-// custo_viagem(120, 10, 5)
-// (120 / 10) * 5 -> 12 * 5 -> 60
-// custo_viagem(300, 15, 6)
-// (300 / 15) * 6 -> 20 * 6 -> 120
-double custo_viagem(double distancia,
-                    double rendimento,
-                    double preco)
-{
-    return 0.0;
-}
+    Exemplos
+    >>> # (120.0 / 10.0) * 5.0
+    >>> custo_viagem(120.0, 10.0, 5.0)
+    60.0
+    >>> # outro exemplo omitido
+    '''
+    return 0.0
 ```
 
 \pause
-</div>
-<div class="column" width="48%">
-Objetivo: escrever o corpo da função para que ela faça o que está na especificação. \pause
+
+\normalsize
 
 Baseado nos exemplos, generalizamos a forma de calcular a resposta. \pause
 
-\footnotesize
+\scriptsize
 
-```cpp
-double custo_viagem(double distancia,
-                    double rendimento,
-                    double preco)
-{
-    return (distancia / rendimento)
-           * preco;
-}
+```python
+def custo_viagem(distancia: float, rendimento: float, preco: float) -> float:
+    return (distancia / rendimento) * preco
 ```
-</div>
-</div>
 
 
 # Verificação
 
-Objetivo: verificar se a implementação está de acordo com a especificação. \pause
+**Objetivo**: verificar se a implementação está de acordo com a especificação. \pause
 
-Usamos os exemplos para testar se o programa funciona corretamente. \pause
+Usamos os exemplos para verificar se o programa funciona corretamente. \pause
+
+Iniciamos o modo interativo, digitamos cada e exemplo e conferimos se a resposta é a esperada: \pause
+
+\small
+
+```python
+>>> custo_viagem(120.0, 10.0, 5.0)
+60.0
+```
+
+\pause
+
+```python
+>>> custo_viagem(300.0, 15.0, 6.0)
+120.0
+```
+
+
+# Verificação
 
 Se o programa produzir a resposta errada para algum exemplo, onde está o erro? \pause
 
@@ -223,91 +279,45 @@ Se o programa produzir a resposta errada para algum exemplo, onde está o erro? 
 - No código da função \pause
 - Em ambos \pause
 
-Primeiro verificamos os exemplos, se algum estiver errado, corrigimos o exemplo e executamos novamente os testes. \pause
+Primeiro conferimos os exemplos, se algum estiver errado, corrigimos o exemplo e fazemos a verificação novamente. \pause
 
-Se os exemplos estiverem corretos, então analisamos o corpo da função para tentar identificar e corrigir o erro. \pause Após a alteração do código, executamos novamente os testes.
+Se os exemplos estiverem corretos, então analisamos o corpo da função para tentar identificar e corrigir o erro. \pause Após a alteração do código, fazemos a verificação novamente.
 
 
 # Revisão
 
-Objetivo: alterar a organização do programa para que fique mais fácil de ser lido, entendido e alterado. \pause
+**Objetivo**: alterar a organização do programa para que fique mais fácil de ser lido, entendido e alterado. \pause
 
-Se modificarmos o código, precisamos executar novamente os testes!
+Se modificarmos o código, precisamos fazer a verificação novamente!
 
 
 # Melhorias
 
 Alguma parte desse processo parece repetitiva? \pause
 
-Sim, a execução dos exemplos e a verificação se as saídas estão corretas. \pause
+Sim, a verificação do exemplos. \pause
 
 Ao invés de executarmos cada exemplo manualmente, vamos usar uma biblioteca que executa os exemplos e verifica se as saídas estão corretas automaticamente!
 
 
-# Testes automatizados
+# Verificação automatizada
 
-A biblioteca que vamos utilizar foi desenvolvida especificamente para esta disciplina e chama "Begin Student C++" (bscpp). \pause
+A biblioteca que vamos utilizar já vem com o Python e chama `doctest`. \pause
 
-Para usar a biblioteca é necessário fazer o download do arquivo `bscpp.hpp` (\url{https://malbarbo.pro.br/bscpp.hpp}) e salvá-lo no mesmo diretório dos arquivos `.cpp`.
-
-
-# Testes automatizados
-
-Incluímos a biblioteca com a instrução
-
-```cpp
-#include "bscpp.hpp"
-```
-
-Escrevemos os exemplos dentro de um bloco `examples` após a função. Cada exemplo é especificado por uma cláusula `check_expect`. \pause
-
-No `main` chamamos a função `run_tests`. \pause
-
-Para compilar o programa, precisamos especificar a opção `-std=c++17` pois a biblioteca de testes foi escrita usando o C++17.
-
-
-# Testes automatizados
-
-\footnotesize
-
-```cpp
-#include "bscpp.hpp"
-
-// Calcula o custo em reais para percorrer a distancia especificada
-// considerando o rendimento do carro e o preco do litro do combustível.
-double custo_viagem(double distancia, double rendimento, double preco) {
-    return (distancia / rendimento) * preco;
-}
-
-examples {
-    check_expect(custo_viagem(120, 10, 5), 60);
-    check_expect(custo_viagem(300, 15, 6), 120);
-}
-
-int main() {
-    run_tests();
-}
-```
-
-
-# Testes automatizados
-
-Compilação
+Para fazer a verificação dos exemplos em uma arquivo `a.py`, executamos no terminal de comandos:
 
 ```
-> g++ -std=c++17 -o programa programa.cpp
+$ python -m doctest -v a.py
 ```
 
 \pause
 
-Execução dos testes
+Como o Python sabe qual exemplo executar? \pause Ele executar os exemplos que parecem uma seção do modo interativo, por isso escrevemos os exemplos com `>>>`!
 
-```
-> ./programa
-Ran 2 tests.
-All tests passed!
-```
 
+# Verificação automatizada
+
+![](imagens/combustivel.png){width=13cm}
 
 
 # Exemplo
@@ -322,7 +332,7 @@ Vamos fazer outro exemplo.
 Um construtor precisa calcular a quantidade de azulejos necessários pra azulejar uma determinada parede. Cada azulejo é quadrado e tem 20cm de lado. Ajude o construtor e defina uma função que receba como entrada o comprimento e a altura em metros de uma parede e calcule a quantidade de azulejos inteiros necessários para azulejar a parede. Considere que o construtor nunca perde um azulejo e que recortes de azulejos não são reaproveitados.
 </div>
 <div class="column" width="53%">
-Objetivo: determinar o que deve ser feito. \pause
+**Objetivo**: identificar o problema a ser resolvido. \pause
 
 - Quais informações são relevantes e quais podem ser descartadas?
 - Existe alguma omissão?
@@ -345,7 +355,7 @@ Calcular o número de azulejos necessários para azulejar uma parede com determi
 Calcular o número de azulejos necessários para azulejar uma parede com determinado comprimento e altura, considerando que cada azulejo mede 0,2m x 0,2m e que nenhum azulejo é perdido e que recortes são descartados.
 </div>
 <div class="column" width="48%">
-Objetivo: definir como as informações serão representadas como dados no programa. \pause
+**Objetivo**: identificar e definir como as informações serão representadas. \pause
 
 - Quais são as informações envolvidas no problema?
 
@@ -375,7 +385,7 @@ O comprimento e a altura da parede são dados em metros e representados com núm
 O número de azulejos é representado por um número inteiro positivo.
 </div>
 <div class="column" width="48%">
-Objetivo: especificar com mais precisão e com exemplos o que o programa deve fazer. \pause
+**Objetivo**: especificar com mais precisão e com exemplos o que o programa deve fazer. \pause
 
 - Assinatura da função (nome, tipo das entradas e saídas)
 
@@ -391,39 +401,43 @@ Objetivo: especificar com mais precisão e com exemplos o que o programa deve fa
 
 \small
 
-```cpp
-// Calcula o número de azulejos de 0,2mx0,2m necessários para azulejar uma area
-// de tamanho comprimento x altura (em metros) considerando que nenhum azulejo
-// é perdido e que recortes são descartados.
-int numero_azulejos(double comprimento, double altura)
-{
-    return 0;
-}
+```python
+def numero_azulejos(comprimento: float, altura: float) -> int:
+    '''
+    Calcula o número de azulejos de 0,2mx0,2m necessários para azulejar uma
+    area de tamanho *comprimento* x *altura* (em metros) considerando que
+    nenhum azulejo é perdido e que recortes são descartados.
+    '''
+    return 0
 ```
+
+\pause
+
+A seguir os exemplos feito em sala
 
 
 # Especificação
 
-Exemplos (projeto feito em sala) \pause
-
 \footnotesize
 
-```cpp
-examples
-{
-   // alguns exemplos práticos
-   // ceil(2.0 / 0.2) * ceil(2.4 / 0.2) -> 10 * 12 -> 120
-   check_expect(numero_azulejos(2.0, 2.4), 120);
+```python
+    >>> # math.ceil(2.0 / 0.2) * math.ceil(2.4 / 0.2)
+    >>> numero_azulejos(2.0, 2.4)
+    120
 
-   check_expect(numero_azulejos(1.5, 2.3), 96);
-   // ceil(1.5 / 0.2) * ceil(2.3 / 0.2) -> 8 * 12 = 96
+    >>> # math.ceil(1.5 / 0.2) * math.ceil(2.3 / 0.2)
+    >>> numero_azulejos(1.5, 2.3)
+    96
 
-   // alguns casos extremos
-   check_expect(numero_azulejos(0.2, 0.2), 1);
-   check_expect(numero_azulejos(0.3, 0.2), 2);
-   check_expect(numero_azulejos(0.3, 0.3), 4);
-   check_expect(numero_azulejos(0.4, 0.4), 4);
-}
+    >>> # Alguns casos extremos
+    >>> numero_azulejos(0.2, 0.2)
+    1
+    >>> numero_azulejos(0.3, 0.2)
+    2
+    >>> numero_azulejos(0.3, 0.3)
+    4
+    >>> numero_azulejos(0.4, 0.4)
+    4
 ```
 
 
@@ -431,10 +445,11 @@ examples
 
 Implementação
 
-```cpp
-int numero_azulejos(double comprimento, double altura) {
-    return ceil(comprimeto / 0.2) * ceil(altura / 0.2);
-}
+```python
+import math
+
+def numero_azulejos(comprimento: float, altura: float) -> int:
+    return math.ceil(comprimeto / 0.2) * math.ceil(altura / 0.2)
 ```
 
 \pause
@@ -442,8 +457,7 @@ int numero_azulejos(double comprimento, double altura) {
 Verificação \pause
 
 ```
-Ran 6 tests.
-All tests passed!
+6 passed and 0 failed.
 ```
 
 \pause
@@ -477,19 +491,21 @@ Tipos de dados \pause
 \small
 Especificação \pause
 
-```cpp
-// Encontra o valor máximo entre a e b.
-int maximo(int a, int b)
-{
-    return 0;
-}
+```python
+def maximo(a: int, b: int) -> int:
+    '''
+    Encontra o valor máximo entre *a*
+    e *b*.
 
-examples
-{
-    check_expect(maximo(20, 10), 20);
-    check_expect(maximo(5, 10), 10);
-    check_expect(maximo(5, 5), 5);
-}
+    Exemplos
+    >>> maximo(20, 10)
+    20
+    >>> maximo(5, 10)
+    10
+    >>> maximo(5, 5)
+    5
+    '''
+    return 0
 ```
 
 \pause
@@ -502,7 +518,7 @@ Como determinar o valor máximo entre dois números utilizando as operações qu
 
 Não tem como! \pause
 
-A resposta depende de uma condição, se `a > b`, então a resposta é `a`, senão a reposta é `b`. \pause
+A resposta depende de uma condição, se `a > b`{.python}, então a resposta é `a`{.python}, senão a reposta é `b`{.python}. \pause
 
 Vamos ver como expressar esse tipo de construção a seguir.
 </div>
