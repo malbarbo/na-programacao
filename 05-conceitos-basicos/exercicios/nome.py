@@ -15,9 +15,9 @@ def main():
 
 def nome_eh_paula(nome_completo: str) -> bool:
     '''
-    Produz True se o primeiro nome de nome_completo é Paula, False caso contrário.
+    Produz True se o primeiro nome de *nome_completo* é Paula, False caso contrário.
 
-    Requer que nome_completo não começe e nem termine com espaços e que
+    Requer que *nome_completo* não começe e nem termine com espaços e que
     contenha pelo menos um espaço em branco.
 
     Exemplos
@@ -33,10 +33,10 @@ def nome_eh_paula(nome_completo: str) -> bool:
 
 def sobrenome_eh_silva(nome_completo: str) -> bool:
     '''
-    Produz True se o último nome (sobrenome) de nome_completo é Silva, False
+    Produz True se o último nome (sobrenome) de *nome_completo* é Silva, False
     caso contrário.
 
-    Requer que nome_completo não começe e nem termine com espaços e que
+    Requer que *nome_completo* não começe e nem termine com espaços e que
     contenha pelo menos um espaço em branco.
 
     Exemplos

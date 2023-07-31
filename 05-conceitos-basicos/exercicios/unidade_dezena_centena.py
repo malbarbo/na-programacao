@@ -17,7 +17,7 @@ def main():
 
 def unidade(n: int) -> int:
     '''
-    Devolve a unidade de n.
+    Devolve a unidade de *n*.
 
     Exemplos
     >>> unidade(152)
@@ -28,7 +28,7 @@ def unidade(n: int) -> int:
 
 def dezena(n: int) -> int:
     '''
-    Devolve a dezena de n.
+    Devolve a dezena de *n*.
 
     Exemplos
     >>> dezena(152)
@@ -39,7 +39,7 @@ def dezena(n: int) -> int:
 
 def centena(n: int) -> int:
     '''
-    Devolve a centena de n.
+    Devolve a centena de *n*.
 
     Exemplos
     >>> centena(152)

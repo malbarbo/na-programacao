@@ -13,7 +13,7 @@ def main():
 
 def zera_dezena_e_unidade(n: int) -> int:
     '''
-    Zera a dezena e unidade de n.
+    Zera a dezena e unidade de *n*.
 
     >>> zera_dezena_e_unidade(19)
     0

@@ -11,7 +11,7 @@ def main():
 
 def dobro(x: int) -> int:
     '''
-    Calcula o dobro de x.
+    Calcula o dobro de *x*.
 
     Exemplo
     >>> dobro(4)

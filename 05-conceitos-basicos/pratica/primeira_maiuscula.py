@@ -13,10 +13,10 @@ def main():
 
 def primeira_maiuscula(frase: str) -> str:
     '''
-    Devolve uma nova string que é como frase, mas com apenas a primeira letra
+    Devolve uma nova string que é como *frase*, mas com apenas a primeira letra
     em maiúscula.
 
-    Requer que frase começe com uma letra.
+    Requer que *frase* começe com uma letra.
 
     Exemplos
     >>> primeira_maiuscula('joao venceu.')
