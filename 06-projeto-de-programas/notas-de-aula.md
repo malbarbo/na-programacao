@@ -1,6 +1,8 @@
 ---
 # vim: set spell spelllang=pt_br:
 title: Projeto de programas
+# TODO: mais um exemplo (verdadeiro / falso)
+# TODO: mais de uma instrução
 ---
 
 # Introdução
@@ -45,10 +47,13 @@ Cada etapa tem um objetivo \pause
 
 # Projeto de funções
 
-Ao final de cada etapa produzimos resultados que serão utilizados nas etapas posteriores, então devemos tentar seguir as etapas em ordem. \pause No entanto, em algumas situações, pode ser necessário mudar a ordem. \pause
+Ao final de cada etapa produzimos resultados que são utilizados nas etapas posteriores, então devemos tentar seguir as etapas em ordem. \pause
 
-Por exemplo, às vezes estamos na implementação e encontramos uma nova condição e devemos
-voltar e alterar a especificação. \pause Em outra situação não estamos conseguindo entender o problema (análise) e então fazemos alguns exemplos (especificação) para nos ajudar. \pause
+No entanto, em algumas situações, pode ser necessário mudar a ordem. \pause
+
+- Estamos na implementação e encontramos uma nova condição e devemos voltar e alterar a especificação. \pause
+
+- Não estamos conseguindo entender o problema (análise) e então fazemos alguns exemplos (especificação) para nos ajudar. \pause
 
 Mas devemos evitar fazer a implementação diretamente!
 
@@ -159,7 +164,7 @@ def custo_viagem(distancia: float, rendimento: float, preco: float) -> float:
 
 # Especificação
 
-No propósito da função descrevemos **o quê** a função faz, e não **como** ela faz (que é a implementação - as vezes precisamos dizer como ela faz, mas isso é raro). \pause
+No propósito da função descrevemos **o quê** a função faz, e não **como** ela faz (que é a implementação - as vezes precisamos dizer como é feito, mas isso é raro). \pause
 
 Número par \pause
 
@@ -171,7 +176,7 @@ Número par \pause
 
 **Exemplos**
 
-Ilustrar com exemplos de entrada e saída o funcionamento da função, o que auxilia o programador a entender melhor como a função deve funcionar e como ela pode ser implementada. \pause
+Ilustrar com exemplos de entrada e saída o funcionamento da função. Os exemplos auxiliam o projetista a entender melhor como a função deve funcionar e como ela pode ser implementada. \pause
 
 <div class="columns">
 <div class="column" width="48%">
@@ -206,9 +211,9 @@ Note que podemos deixar como comentário a expressão utilizada para calcular a 
 
 # Especificação
 
-Para saber se a especificação está boa, faça a segunda pergunta: \pause
+Para saber se a especificação está boa, faça a seguinte pergunta: \pause
 
-Um outro programador, que não tem acesso ao problema original e nem a análise, tem as informações necessárias na especificação para fazer uma implementação e verificação inicial? \pause
+Outro desenvolvedor, que não tem acesso ao problema original e nem a análise, tem as informações necessárias na especificação para fazer uma implementação e verificação inicial? \pause
 
 Se a resposta for sim, então a especificação está boa, senão ela está incompleta.
 
@@ -229,21 +234,19 @@ def custo_viagem(distancia: float, rendimento: float, preco: float) -> float:
     >>> # (120.0 / 10.0) * 5.0
     >>> custo_viagem(120.0, 10.0, 5.0)
     60.0
-    >>> # outro exemplo omitido
     '''
-    return 0.0
 ```
 
 \pause
 
 \normalsize
 
-Baseado nos exemplos, generalizamos a forma de calcular a resposta. \pause
+Observando a especificação, em particular os **exemplos**, generalizamos a forma de calcular a resposta. \pause Nesse problema, só temos uma forma de resposta, então a generalização é direta. \pause
+
 
 \scriptsize
 
 ```python
-def custo_viagem(distancia: float, rendimento: float, preco: float) -> float:
     return (distancia / rendimento) * preco
 ```
 
@@ -252,9 +255,9 @@ def custo_viagem(distancia: float, rendimento: float, preco: float) -> float:
 
 **Objetivo**: verificar se a implementação está de acordo com a especificação. \pause
 
-Usamos os exemplos para verificar se o programa funciona corretamente. \pause
+Usamos os exemplos para fazer uma verificação inicial. \pause
 
-Iniciamos o modo interativo, digitamos cada e exemplo e conferimos se a resposta é a esperada: \pause
+No modo interativo, digitamos cada e exemplo e conferimos se a resposta é a esperada: \pause
 
 \small
 
@@ -312,7 +315,7 @@ $ python -m doctest -v a.py
 
 \pause
 
-Como o Python sabe qual exemplo executar? \pause Ele executar os exemplos que parecem uma seção do modo interativo, por isso escrevemos os exemplos com `>>>`!
+Como o Python identifica os exemplos que devem ser executados? \pause Ele procura trechos de comentários semelhantes a uma seção do modo interativo, por isso escrevemos os exemplos com `>>>`!
 
 
 # Verificação automatizada
@@ -320,7 +323,7 @@ Como o Python sabe qual exemplo executar? \pause Ele executar os exemplos que pa
 ![](imagens/combustivel.png){width=13cm}
 
 
-# Exemplo
+# Exemplo - Número de azulejos
 
 Vamos fazer outro exemplo.
 
@@ -341,7 +344,7 @@ Um construtor precisa calcular a quantidade de azulejos necessários pra azuleja
 
 **Resultado** \pause
 
-Calcular o número de azulejos necessários para azulejar uma parede com determinado comprimento e altura, considerando que o azulejo mede 0,2,0m x 0,2m e que nenhum azulejo é perdido e que recortes são descartados.
+Calcular o número de azulejos necessários para azulejar uma parede com determinado comprimento e altura. \pause Cada azulejo mede 0,2,0m x 0,2m. \pause Nenhum azulejo é perdido e recortes são descartados.
 </div>
 </div>
 
@@ -352,7 +355,7 @@ Calcular o número de azulejos necessários para azulejar uma parede com determi
 <div class="column" width="48%">
 **Análise**
 
-Calcular o número de azulejos necessários para azulejar uma parede com determinado comprimento e altura, considerando que cada azulejo mede 0,2m x 0,2m e que nenhum azulejo é perdido e que recortes são descartados.
+Calcular o número de azulejos necessários para azulejar uma parede com determinado comprimento e altura. Cada azulejo mede 0,2m x 0,2m. Nenhum azulejo é perdido e recortes são descartados.
 </div>
 <div class="column" width="48%">
 **Objetivo**: identificar e definir como as informações serão representadas. \pause
@@ -364,8 +367,6 @@ Calcular o número de azulejos necessários para azulejar uma parede com determi
 **Resultado** \pause
 
 O comprimento e a altura da parede são dados em metros e representados com números positivos.
-
-O número de azulejos é representado por um número inteiro positivo.
 </div>
 </div>
 
@@ -376,13 +377,12 @@ O número de azulejos é representado por um número inteiro positivo.
 <div class="column" width="48%">
 **Análise**
 
-Calcular o número de azulejos necessários para azulejar uma parede com determinado comprimento e altura, considerando que cada azulejo mede 0,2m x 0,2m e que nenhum azulejo é perdido e que recortes são descartados.
+Calcular o número de azulejos necessários para azulejar uma parede com determinado comprimento e altura. Cada azulejo mede 0,2m x 0,2m. Nenhum azulejo é perdido e recortes são descartados.
 
 **Tipos de dados**
 
 O comprimento e a altura da parede são dados em metros e representados com números positivos.
 
-O número de azulejos é representado por um número inteiro positivo.
 </div>
 <div class="column" width="48%">
 **Objetivo**: especificar com mais precisão e com exemplos o que o programa deve fazer. \pause
@@ -405,7 +405,7 @@ O número de azulejos é representado por um número inteiro positivo.
 def numero_azulejos(comprimento: float, altura: float) -> int:
     '''
     Calcula o número de azulejos de 0,2mx0,2m necessários para azulejar uma
-    area de tamanho *comprimento* x *altura* (em metros) considerando que
+    parede de tamanho *comprimento* x *altura* (em metros) considerando que
     nenhum azulejo é perdido e que recortes são descartados.
     '''
     return 0
@@ -413,7 +413,7 @@ def numero_azulejos(comprimento: float, altura: float) -> int:
 
 \pause
 
-A seguir os exemplos feito em sala
+Qual deve ser o resultado para `numero_azulejos(1.5, 2.3)`{.python}? \pause `96`{.python} (discutido em sala).
 
 
 # Especificação
@@ -421,15 +421,14 @@ A seguir os exemplos feito em sala
 \footnotesize
 
 ```python
-    >>> # math.ceil(2.0 / 0.2) * math.ceil(2.4 / 0.2)
-    >>> numero_azulejos(2.0, 2.4)
-    120
-
     >>> # math.ceil(1.5 / 0.2) * math.ceil(2.3 / 0.2)
     >>> numero_azulejos(1.5, 2.3)
     96
 
-    >>> # Alguns casos extremos
+    >>> # math.ceil(2.0 / 0.2) * math.ceil(2.4 / 0.2)
+    >>> numero_azulejos(2.0, 2.4)
+    120
+
     >>> numero_azulejos(0.2, 0.2)
     1
     >>> numero_azulejos(0.3, 0.2)
@@ -445,6 +444,8 @@ A seguir os exemplos feito em sala
 
 Implementação
 
+\small
+
 ```python
 import math
 
@@ -453,6 +454,8 @@ def numero_azulejos(comprimento: float, altura: float) -> int:
 ```
 
 \pause
+
+\normalsize
 
 Verificação \pause
 
@@ -468,58 +471,214 @@ Revisão \pause
 O código está ok.
 
 
-# Valor máximo
+# Exemplo - massa tudo de ferro
 
-Projete uma função que encontre o maior valor entre dois números dados.
+O Jorge precisa saber a massa de diversos pequenos tubos de ferro mas está sem uma balança. No entanto, ele possui um paquímetro e pode medir com precisão o diâmetro interno e externo e a altura dos tubos, agora ele só precisa de um programa para fazer os cálculos. Algum voluntário? \pause
+
+Alguma coisa parece complicada nesse exercício?
+
+
+# Exemplo - massa tudo de ferro
+
+Nesse exercício precisamos de conhecimento de um domínio (área), que talvez ainda não tenhamos, isso pode fazer o problema parecer mais difícil do que realmente é. \pause Mas então, como proceder nesses casos? \pause
+
+Precisamos de uma pessoa (ou livros) que possam nos instruir sobre o conhecimento do domínio, geralmente os interessados no software podem indicar tais pessoas. \pause
+
+O importante é entender que o desenvolvedor de software geralmente resolve o problema de outras pessoas, e esses problemas podem envolver conhecimentos que não temos e por isso precisamos estar dispostos a estudar e aprender o conhecimento de outras áreas. \pause
+
+Vamos resolver esse problema, por onde começamos?
+
+
+# Exemplo - massa tudo de ferro
+
+**Análise** \pause
+
+- Calcular a massa de um tubo de ferro a partir das suas dimensões. \pause Como as dimensões de um tubo de ferro está relacionada com a massa do tubo? \pause
+
+- Dimensões $\rightarrow$ Volume $\rightarrow$ Massa \pause
+
+- Como determinamos o volume de um tubo de ferro a partir das suas dimensões? \pause O volume de um tubo é dado por $\pi ((diametro\_externo - diametro\_interno)/2)^2 \times altura$ \pause
+
+- Como obtemos a massa a partir do volume? \pause A massa é dado por $volume \times densidade$. \pause
+
+- Qual a densidade do ferro? \pause A densidade do ferro é 7874 $kg/m^3$.
+
+
+# Exemplo - massa tudo de ferro
+
+**Definição de tipos de dados** \pause
+
+- Comprimento é um número positivo dado em metros.
+- Massa é um número positivo dado em quilogramas.
+
+
+# Exemplo - massa tudo de ferro
+
+\small
+
+```python
+def massa_tubo_ferro(
+        diametro_externo: float,
+        diametro_interno: float,
+        altura: float)
+        -> float:
+    '''
+    Calcula a massa de um tubo de ferro a partir das suas dimensões.
+
+    Requer diametro_externo > diametro-interno.
+
+    Exemplos
+    >>> # 3.14 * ((0.05 - 0.03) / 2) ** 2 * 0.1 * 7874
+    >>> massa_tubo_ferro(0.05, 0.03, 0.1)
+    0.2472436
+    '''
+```
+
+
+# Exemplo - massa tudo de ferro
+
+**Implementação** \pause
+
+Direto a partir da especificação (do exemplo). \pause
+
+\small
+
+```python
+def massa_tubo_ferro(
+        diametro_externo: float,
+        diametro_interno: float,
+        altura: float)
+        -> float:
+    return 3.14 * ((diametro_externo - diametro_interno) / 2) ** 2 * altura * 7874
+```
+
+
+# Exemplo - massa tudo de ferro
+
+**Verificação** \pause
+
+\small
+
+```
+Failed example:
+    massa_tubo_ferro(0.05, 0.03, 0.1)
+Expected:
+    0.2472436
+Got:
+    0.24724360000000015
+```
+
+
+# Exemplo - massa tudo de ferro
+
+Comparação de igualdade de números de ponto flutuante quase não dá certo! \pause Nesses casos, podemos arredondar o resultado. \pause
+
+```python
+    >>> # 3.14 * ((0.05 - 0.03) / 2) ** 2 * 0.1 * 7874
+    >>> round(massa_tubo_ferro(0.05, 0.03, 0.1), 7)
+    0.2472436
+```
+
+
+# Exemplo - massa tudo de ferro
+
+**Revisão**
+
+\small
+
+```python
+def massa_tubo_ferro(
+        diametro_externo: float,
+        diametro_interno: float,
+        altura: float)
+        -> float:
+    return 3.14 * ((diametro_externo - diametro_interno) / 2) ** 2 * altura * 7874
+```
+
+\normalsize
+
+O que podemos melhorar? \pause
+
+- Definir constantes para os número "mágicos" \pause
+
+- Separar o cálculo em etapas
+
+
+# Exemplo - massa tudo de ferro
+
+\small
+
+```python
+PI: float = 3.14
+DENSIDADE_FERRO: float = 7874
+
+def massa_tubo_ferro(
+        diametro_externo: float,
+        diametro_interno: float,
+        altura: float)
+        -> float:
+    area = PI * ((diametro_externo - diametro_interno) / 2) ** 2
+    volume = area * altura
+    return volume * DENSIDADE_FERRO
+```
+
+
+# Observações
+
+Podemos ter uma sequência de instruções dentro de uma função. \pause
+
+Não é preciso indicar o tipo das variáveis locais. O `mypy` considera que o tipo da variável é o mesmo do valor utilizado para inicializar a variável.
+
+
+# Exemplo - Ajuste número telefone
+
+No período de 2015 à 2016 todos os números de telefones celulares no Brasil passaram a ter nove dígitos. Na época, os números de telefones que tinham apenas oito dígitos foram alterados adicionando-se o 9 na frete do número. Embora oficialmente todos os número de celulares tenham nove dígitos, na agenda de muitas pessoas ainda é comum encontrar números registrados com apenas oito dígitos. Projete uma função que adicione o nono dígito em um dado número de telefone celular caso ele ainda não tenha o nono dígito. Considere que os números de entrada são dados com o DDD entre parênteses e com um hífen separando os últimos quatro dígitos. Exemplos de entradas: (44) 9787-1241, (51) 95872-9989, (41) 8876-1562. A saída deve ter o mesmo formato, mas garantindo que o número do telefone tenha 9 dígitos.
 
 
 # Análise e definição de tipos de dados
 
-Análise \pause
+**Análise** \pause
 
-- Encontrar o valor máximo entre dois número dados \pause
-
-Tipos de dados \pause
-
-- Os valores serão números inteiros
-
-
-# Especificação e implementação
-
-<div class="columns">
-<div class="column" width="48%">
-\small
-Especificação \pause
-
-```python
-def maximo(a: int, b: int) -> int:
-    '''
-    Encontra o valor máximo entre *a*
-    e *b*.
-
-    Exemplos
-    >>> maximo(20, 10)
-    20
-    >>> maximo(5, 10)
-    10
-    >>> maximo(5, 5)
-    5
-    '''
-    return 0
-```
+Ajustar o número de um telefone adicionando 9 como o nono dígito se necessário.
 
 \pause
-</div>
-<div class="column" width="48%">
 
-Implementação \pause
+**Definição de tipo de dados** \pause
 
-Como determinar o valor máximo entre dois números utilizando as operações que vimos até agora? \pause
+O número de telefone é uma string no formato (XX) XXXX-XXXX ou (XX) XXXXX-XXXX, onde X pode ser qualquer dígito.
 
-Não tem como! \pause
 
-A resposta depende de uma condição, se `a > b`{.python}, então a resposta é `a`{.python}, senão a reposta é `b`{.python}. \pause
+# Especificação
 
-Vamos ver como expressar esse tipo de construção a seguir.
-</div>
-</div>
+\footnotesize
+
+```python
+def ajusta_numero(numero: str) -> str:
+    '''
+    Ajusta *numero* adicionando o 9 como nono dígito se necessário, ou seja, se
+    *numero* tem apenas 8 dígitos (sem contar o DDD).
+
+    Requer que numero esteja no formato (XX) XXXX-XXXX ou (XX) XXXXX-XXXX, onde
+    X pode ser qualquer dígito.
+
+    Exemplos
+    >>> # '(44) 9787-1241'[:5] + '9' + '(44) 9787-1241'[5:]
+    >>> ajusta_numero('(44) 9787-1241')
+    '(44) 99787-1241'
+    >>> # não precisa de ajuste, a saída e a própria entrada
+    >>> ajusta_numero('(51) 95872-9989')
+    '(51) 95872-9989'
+    '''
+    return numero
+```
+
+
+# Implementação
+
+O que mudou na forma que calculamos a reposta dos exemplos desse projeto em relação aos exemplos dos projetos anteriores? \pause
+
+Nos projetos anteriores a resposta tinha apenas uma forma. Nesse projeto existem duas formas de reposta: ou a resposta é a própria entrada ou fazemos algumas operações específicas. \pause
+
+Como escolher entre uma forma de resposta e outra? \pause
+
+Usando instrução de seleção! \pause Vamos continuar na próxima aula.
