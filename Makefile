@@ -57,4 +57,6 @@ clean-all:
 	@echo Removendo $(DEST)
 	@rm -rf $(DEST)
 
+
+# FIXME: não é regenerado quando a árvore de diretórios muda
 include $(DEST)/Makefile.inc

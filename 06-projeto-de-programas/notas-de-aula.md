@@ -2,7 +2,7 @@
 # vim: set spell spelllang=pt_br:
 title: Projeto de programas
 # TODO: mais um exemplo (verdadeiro / falso)
-# TODO: mais de uma instrução
+# TODO: fazer um quiz
 ---
 
 # Introdução
