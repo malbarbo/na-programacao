@@ -5,155 +5,26 @@ title: Seleção, enumerações e estruturas
 
 # Introdução
 
-Antes de estudarmos instruções de seleção, vamos analisar como um computador "executa" um programa.
-
-
-# Sequenciação
-
-```{.cpp .number-lines}
-int n = 10;
-int a = n + 2;
-cout << a;
-```
-
-\pause
-
-Qual o valor exibido pelo programa? \pause 12. \pause
-
-Nesse exemplo, o computador executa uma linha após a outra, por isso chamamos essa "estrutura" de **código sequencial** (sequenciação). \pause
-
-Qual é a ordem que as linhas são executadas? \pause 1, 2, 3.
-
-
-# Mudança de variável
-
-<div class="columns">
-<div class="column" width="48%">
-
-```{.cpp .number-lines}
-int n;
-int a = 10;
-n = a;
-cout << n;
-```
-
-Qual o valor exibido pelo programa? \pause 10. \pause
-
-```{.cpp .number-lines}
-int n = 5;
-int a = 10;
-n = a;
-cout << n;
-```
-
-\pause
-
-Qual o valor exibido pelo programa? \pause 10. \pause
-</div>
-<div class="column" width="48%">
-No primeiro caso, a variável `n` é declarada mas não é inicializada na linha 1. Quando a linha 3 é executada, o `n` é inicializado com o valor que está armazenado em `a`, que é 10. Na linha 4 o valor de `n` é exibido. \pause
-
-Já no segundo caso, a variável `n` é declarada e inicializada na linha 1 com o valor 5. Na linha 3 o valor de `a` é copiado para `n` (célula de memória com o nome `n`), substituindo o valor 5 por 10. Na linha 4 o valor de `n` é exibido.
-</div>
-</div>
-
-
-# Mudança de variável
-
-```{.cpp .number-lines}
-int n = 1;
-int a = n + 1;
-n = a + 3;
-cout << n;
-```
-
-Qual o valor exibido pelo programa? \pause 5. \pause
-
-Para entender esse resultado devemos executar o programa como um computador! \pause
-
-- Na linha 1 alocamos uma célula de memória e nomeamos ela de `n` e armazenamos o valor 1 nessa célula; \pause
-- Na linha 2 alocamos uma célula de memória e nomeamos ela de `a`. Lemos o valor de `n`, somamos 1 e armazenamos o resultado (2) em `a`; \pause
-- Na linha 3 lemos o valor de `a` e somamos com 3, depois armazenamos o resultado (5) em `n`; \pause
-- Na linha 4 lemos e exibimos o valor de `n`.
-
-
-# Mudança de variável
-
-```{.cpp .number-lines}
-int n = 1;
-n = n + 2;
-n = n + 5;
-cout << n;
-```
-
-Qual o valor exibido pelo programa? \pause 8. \pause
-
-Executando como um computador: \pause
-
-- Na linha 1 alocamos uma célula de memória e nomeamos ela de `n` e armazenamos o valor 1 nessa célula; \pause
-- Na linha 2 lemos o valor de `n` e somamos com 2, depois armazenamos o resultado (3) em `n`; \pause
-- Na linha 3 lemos o valor de `n` e somamos com 5, depois armazenamos o resultado (8) em `n`; \pause
-- Na linha 4 lemos e exibimos o valor de `n`.
-
-
-# Pergunta
-
-Em todos os programas que escrevemos até agora as linhas são sempre executadas na sequência? \pause Não! \pause
-
-Quando chamamos uma função, o fluxo de execução é desviado para o início do corpo da função. Quando uma função executa uma instrução `return`{.cpp}, o fluxo de execução volta para onde ele estava antes da chamada da função.
+Antes de estudarmos instruções de seleção, vamos revisar como o Python executa um programa.
 
 
 # Execução de funções
 
 <div class="columns">
 <div class="column" width="48%">
+\small
 
-```{.cpp .number-lines}
-int dobro_mais_um(int n) {
-    int a = 2 * n;
-    return a + 1;
-}
+```{.python .number-lines}
+def dobro_mais_um(n: int) -> int:
+    a = 2 * n
+    return a + 1
 
-int main() {
-   int b = 5;
-   int c = dobro_mais_um(b + 4) + 1;
-   cout << c;
-}
-```
-</div>
-<div class="column" width="48%">
-\pause
-Qual o valor exibido pelo programa? \pause 20. \pause
+main():
+   a = 5
+   n = dobro_mais_um(a + 4) + 1
+   print(n)
 
-Qual é a ordem que as linhas são executadas? (Feito em sala) \pause
-
-- 7 \pause
-- 8 (`b + 4`) \pause
-- 2 \pause
-- 3 \pause
-- 8 (soma do resultado da função (19) com 1 e atribuição do valor a `c`) \pause
-- 9
-</div>
-</div>
-
-
-# Escopo, nomes e chamadas de funções
-
-<div class="columns">
-<div class="column" width="48%">
-
-```{.cpp .number-lines}
-int soma_1(int n) {
-    int a = n + 1;
-    return a;
-}
-
-int main() {
-   int n = 2;
-   int a = 3;
-   n = soma_1(a);
-   cout << n << " " << a;
-}
+main()
 ```
 </div>
 <div class="column" width="48%">
@@ -162,33 +33,40 @@ Qual o valor exibido pelo programa? \pause
 
 Não tente "executar" a chamada da função, pense apenas no seu propósito, sem olhar para o seu corpo. \pause
 
-Então, qual o valor exibido pelo programa? \pause 4 e 3.
+Então, qual é o valor exibido na tela? \pause 20. \pause
+
+Qual é a ordem que as linhas são executadas? (Feito em sala) \pause
+
+- 10, \pause 6, \pause 7, \pause 2, \pause 3, \pause 7, \pause 8, \pause 10
+
 </div>
 </div>
 
 
 # Seleção
 
-Além das chamadas de funções, temos outras instruções que alteram o fluxo de execução do programa. \pause
+O fluxo "normal" de execução de um programa é sequencial, isto é, a execução de uma linha após a outra. Algumas instruções alteram esse fluxo, como por exemplo, as chamadas de funções. \pause
 
-Uma dessas instruções é o `if else`{.cpp} (se e senão em inglês).
+Agora veremos a **instrução de seleção** `if else`{.python} (se e senão em inglês), que permite, a partir de uma condição, escolher qual conjunto de instruções executar.
 
 
 # Seleção
 
-O `if else`{.cpp} é uma **instrução de seleção** e sua forma geral é: \pause
+A forma geral do `if else`{.python} é:
 
 ```cpp
-if (condição) {
-    instruções então;
-} else {
-    instruções senão;
-}
+if condição:
+    instruções então
+else:
+    instruções senão
 ```
 
 \pause
 
-Como a instrução `if else`{.cpp} é executada? \pause O computador avalia a condição e verifica o resultado. Se o resultado for `true`{.cpp}, então as instruções do bloco "instruções então" são executadas, senão (o resultado é `false`{.cpp}), as instruções do bloco "instruções senão" são executadas.
+Como a instrução `if else`{.python} é executada? \pause O Python avalia a condição e verifica o resultado \pause
+
+- Se o resultado for `True`{.python}, então as instruções do bloco "instruções então" são executadas; \pause
+- Senão (o resultado é `False`{.python}), as instruções do bloco "instruções senão" são executadas;
 
 
 # Exemplo
@@ -196,136 +74,154 @@ Como a instrução `if else`{.cpp} é executada? \pause O computador avalia a co
 <div class="columns">
 <div class="column" width="48%">
 
-```{.cpp .number-lines}
-int a = 10;
-int b = 20;
-int m;
-if (a > b) {
-    m = a;
-} else {
-    m = b;
-}
-cout << m;
+```{.python .number-lines}
+a = 10
+b = 20;
+if a > b:
+    m = a
+else:
+    m = b
+print(m)
 ```
 
 \pause
 
 Qual o valor exibido pelo programa? \pause 20. \pause
 
-Em que ordem as linhas são executas para gerar esse resultado? \pause 1, 2, 3, 4, 7, 9. \pause
+Em que ordem as linhas são executas para gerar esse resultado? \pause 1, 2, 3, 6, 7. \pause
 </div>
 <div class="column" width="48%">
 
-```{.cpp .number-lines}
-int a = 15;
-int b = 8;
-int m;
-if (a > b) {
-    m = a;
-} else {
-    m = b;
-}
-cout << m;
+```{.python .number-lines}
+a = 15
+b = 8;
+if a > b:
+    m = a
+else:
+    m = b
+print(m)
 ```
 
 \pause
 
 Qual o valor exibido pelo programa? \pause 15. \pause
 
-Em que ordem as linhas são executas para gerar esse resultado? \pause 1, 2, 3, 4, 5, 9.
+Em que ordem as linhas são executas para gerar esse resultado? \pause 1, 2, 3, 4, 7 \pause
 </div>
 </div>
 
+\ 
 
-# Valor máximo
+Qual o propósito do `if/else`{.python} nesses exemplos? \pause Determinar o valor máximo entre `a` e `b`.
 
-Vamos voltar ao exemplo do valor máximo. \pause
 
-Projete uma função que encontre o valor máximo entre dois números dados.
+# Máximo
 
-# Especificação e implementação
+Vamos projetar uma função para encontrar o máximo entre dois números. \pause
 
 <div class="columns">
-<div class="column" width="48%">
-\small
-Especificação \pause
+<div class="column" width="50%">
 
-```cpp
-// Encontra o valor máximo entre a e b.
-int maximo(int a, int b)
-{
-    return 0;
-}
+\footnotesize
 
-examples
-{
-    // a é máximo
-    check_expect(maximo(20, 10), 20);
-    // b é máximo
-    check_expect(maximo(5, 10), 10);
-    check_expect(maximo(5, 5), 5);
-}
+```{.python .number-lines}
+def maximo(a: int, b: int) -> int:
+    '''Devolve o valor máximo entre *a* e *b*.
+    Exemplos
+    >>> # a é o máximo
+    >>> maximo(10, 8)
+    10
+    >>> # b é o máximo
+    >>> maximo(-2, -1)
+    -1
+    '''
+    if a > b:
+        m = a
+    else:
+        m = b
+    return m
 ```
 
+</div>
+<div class="column" width="46%">
 \pause
-</div>
-<div class="column" width="48%">
 
-\small
+Qual é a ordem que as linhas são executadas para o exemplo `maximo(10, 8)`{.python}? \pause
 
-Implementação \pause
+11, \pause 12, \pause 15 \pause
 
-Até agora, todas as funções que projetamos tinham apenas uma "forma" de gerar o resultado. \pause
+Qual é a ordem que as linhas são executadas para o exemplo `maximo(-2, -1)`{.python}? \pause
 
-Na função máximo, existem duas "formas" para a resposta, ou a resposta é `a`, ou a resposta é `b`. \pause
+11, \pause 14, \pause 15
 
-Como escolher a resposta para a função? \pause Avaliando um condição: se o valor de `a` for maior do que o valor de `b`, então a resposta é o valor de `a`, senão a resposta é o valor de `b`. \pause
-
-Quando a resposta depende de uma ou mais condições, usamos uma instrução de seleção!
 </div>
 </div>
+
+
+# Atualização número de telefone
+
+Como "descobrimos" que precisamos utilizar uma instrução de seleção? \pause
+
+Vamos voltar ao exemplo da atualização do número do telefone. \pause
+
+No período de 2015 à 2016 todos os números de telefones celulares no Brasil passaram a ter nove dígitos. Na época, os números de telefones que tinham apenas oito dígitos foram alterados adicionando-se o 9 na frete do número. Embora oficialmente todos os número de celulares tenham nove dígitos, na agenda de muitas pessoas ainda é comum encontrar números registrados com apenas oito dígitos. Projete uma função que adicione o nono dígito em um dado número de telefone celular caso ele ainda não tenha o nono dígito. Considere que os números de entrada são dados com o DDD entre parênteses e com um hífen separando os últimos quatro dígitos. Exemplos de entradas: (44) 9787-1241, (51) 95872-9989, (41) 8876-1562. A saída deve ter o mesmo formato, mas garantindo que o número do telefone tenha 9 dígitos.
+
+
+# Especificação
+
+\footnotesize
+
+```python
+def ajusta_numero(numero: str) -> str:
+    '''
+    Ajusta *numero* adicionando o 9 como nono dígito se necessário, ou seja, se
+    *numero* tem apenas 8 dígitos (sem contar o DDD).
+
+    Requer que numero esteja no formato (XX) XXXX-XXXX ou (XX) XXXXX-XXXX, onde
+    X pode ser qualquer dígito.
+
+    Exemplos
+    >>> # não precisa de ajuste, a saída e a própria entrada
+    >>> ajusta_numero('(51) 95872-9989')
+    '(51) 95872-9989'
+    >>> # '(44) 9787-1241'[:5] + '9' + '(44) 9787-1241'[5:]
+    >>> ajusta_numero('(44) 9787-1241')
+    '(44) 99787-1241'
+    '''
+    return numero
+```
 
 
 # Implementação
 
-<div class="columns">
-<div class="column" width="48%">
+Até agora, todas as funções que projetamos tinham apenas uma "forma" de gerar o resultado. \pause
+
+Na função `ajusta_numero`, existem duas "formas" para a resposta, ou a resposta é o próprio número, ou a resposta é o número ajustado.
+
+Como escolher quando cada forma é utilizada na resposta da função? \pause Utilizando um condição: \pause
+
+- Se a quantidade de caracteres de `numero` for 15, então a resposta é `numero`; \pause
+
+- Senão a resposta é `numero[:5] + '9' + numero[5:]`{.python}. \pause
+
+Quando a resposta depende de uma ou mais condições, usamos uma instrução de seleção!
+
+
+# Implementação
+
 \small
 
-```{.cpp .number-lines}
-int maximo(int a, int b) {
-    int max;
-    if (a > b) {
-        max = a;
-    } else {
-        max = b;
-    }
-    return max;
-}
-
-int main() {
-    int a = maximo(10, 8);
-    int b = maximo(14, 20);
-    cout << a << " " << b;
-}
+```python
+def ajusta_numero(numero: str) -> str:
+    if len(numero) == 15:
+        ajustado = numero
+    else:
+        ajustado = numero[:5] + '9' + numero[5:]
+    return ajustado
 ```
-</div>
-<div class="column" width="48%">
-\pause
-Qual é a saída exibida pelo programa? \pause 10 e 20. \pause
-
-Em que ordem as linhas são executas para gerar esse resultado? \pause
-
-12, \pause 2, \pause 3, \pause 4, \pause 8, \pause 12, \pause
-
-13, \pause 2, \pause 3, \pause 6, \pause 8, \pause 13, \pause
-
-14
-</div>
-</div>
 
 
-# Máximo 3
+# Máximo de 3
 
 Projete uma função que encontre o valor máximo entre três números.
 
@@ -338,37 +234,49 @@ Análise \pause
 
 Tipos de dados \pause
 
-- Os valores serão números inteiros
+- Os valores serão números inteiros \pause
+
+Especificação (assinatura e propósito) \pause
+
+\small
+
+```python
+def maximo3(a: int, b: int, c: int) -> int:
+    '''
+    Encontra o valor máximo entre *a*, *b* e *c*.
+
+    Exemplos
+    '''
+```
 
 
-# Especificação
+# Exemplos e implementação
 
 <div class="columns">
 <div class="column" width="48%">
 \scriptsize
 
-Especificação \pause
-
-```cpp
-// Encontra o valor máximo entre a, b e c.
-int maximo3(int a, int b, int c) {
-   return 0;
-}
-examples {
-    // a é máximo
-    check_expect(maximo3(20, 10, 12), 20);
-    check_expect(maximo3(20, 12, 10), 20);
-    check_expect(maximo3(20, 12, 12), 20);
-    check_expect(maximo3(20, 20, 20), 20);
-    // b é máximo
-    check_expect(maximo3(5, 12, 3), 12);
-    check_expect(maximo3(3, 12, 5), 12);
-    check_expect(maximo3(5, 12, 5), 12);
-    // c é máximo
-    check_expect(maximo3(4, 8, 18), 18);
-    check_expect(maximo3(8, 4, 18), 18);
-    check_expect(maximo3(8, 8, 18), 18);
-}
+```python
+>>> maximo3(20, 10, 12) # a é o máximo
+20
+>>> maximo3(20, 12, 10)
+20
+>>> maximo3(20, 12, 12)
+20
+>>> maximo3(20, 20, 20)
+20
+>>> maximo3(5, 12, 3) # b é o máximo
+12
+>>> maximo3(3, 12, 5)
+12
+>>> maximo3(5, 12, 5)
+12
+>>> maximo3(4, 8, 18) # c é o máximo
+18
+>>> maximo3(8, 4, 18)
+18
+>>> maximo3(8, 8, 18)
+18
 ```
 
 \pause
@@ -379,115 +287,105 @@ examples {
 
 Implementação \pause
 
-Quantas "formas" de reposta temos? \pause 3. \pause Ou a resposta é `a`, ou a resposta é `b`, ou a resposta é `c`. \pause
+Quantas "formas" de reposta nós temos? \pause 3. \pause Ou a resposta é `a`, ou a resposta é `b`, ou a resposta é `c`. \pause
 
 Se temos respostas diferentes, então a resposta depende de uma ou mais condições. \pause Então, usamos instruções de seleção. \pause
 
-Qual é a condição para a resposta ser `a`? \pause `a >= b && a >= c`{.cpp} \pause
+Qual é a condição para a resposta ser `a`? \pause `a >= b and a >= c`{.python} \pause
 
-Qual é a condição para a resposta ser `b`? \pause `b >= a && b >= c`{.cpp} \pause
+Qual é a condição para a resposta ser `b`? \pause `b >= a and b >= c`{.python} \pause
 
-Qual é a condição para a resposta ser `c`? \pause `c >= a && c >= b`{.cpp}
+Qual é a condição para a resposta ser `c`? \pause `c >= a and c >= b`{.python}
 
 </div>
 </div>
+
 
 # Implementação
 
 <div class="columns">
-<div class="column" width="48%">
-\scriptsize
+<div class="column" width="55%">
+\footnotesize
 
-Especificação
-
-```cpp
-// Encontra o valor máximo entre a, b e c.
-int maximo3(int a, int b, int c) {
-   return 0;
-}
-examples {
-    // a é máximo
-    check_expect(maximo3(20, 10, 12), 20);
-    check_expect(maximo3(20, 12, 10), 20);
-    check_expect(maximo3(20, 12, 12), 20);
-    check_expect(maximo3(20, 20, 20), 20);
-    // b é máximo
-    check_expect(maximo3(5, 12, 3), 12);
-    check_expect(maximo3(3, 12, 5), 12);
-    check_expect(maximo3(5, 12, 5), 12);
-    // c é máximo
-    check_expect(maximo3(4, 8, 18), 18);
-    check_expect(maximo3(8, 4, 18), 18);
-    check_expect(maximo3(8, 8, 18), 18);
-}
+```{.python .number-lines}
+def maximo3(a: int, b: int, c: int) -> int:
+    '''
+    Encontra o valor máximo entre
+    *a*, *b* e *c*.
+    '''
+    if a >= b and a >= c:
+        m = a
+    else:
+        if b >= a and b >= c:
+            m = b
+        else: # c >= a and c >= b
+            m = c
+    return m
 ```
 
 </div>
-<div class="column" width="48%">
+<div class="column" width="45%">
+Qual é a ordem que as linhas são executadas para o exemplo a seguir:
 
-\scriptsize
+`maximo(10, 6, 8)`{.python}? \pause 6, \pause 7, \pause 13 \pause
 
-Implementação \pause
+`maximo(10, 15, 8)`{.python}? \pause 6, \pause 9, \pause 10, \pause 13 \pause
 
-```cpp
-// Encontra o valor máximo entre a, b e c.
-int maximo3(int a, int b, int c) {
-    int max;
-    if (a >= b && a >= c) {
-        max = a;
-    } else if (b >= a && b >= c) {
-        max = b;
-    } else if (c >= a && c >= b) {
-        max = c;
-    }
-    return max;
-}
-```
-
+`maximo(10, 15, 20)`{.python}? \pause 6, \pause 9, \pause 12, \pause 13 \pause
 </div>
 </div>
 
 
 # Verificação e revisão
 
-Verificação: \pause ok. \pause
+<div class="columns">
+<div class="column" width="50%">
+\footnotesize
 
-Revisão
+```python
+def maximo3(a: int, b: int, c: int) -> int:
+    '''
+    Encontra o valor máximo entre
+    *a*, *b* e *c*.
+    '''
+    if a >= b and a >= c:
+        m = a
+    else:
+        if b >= a and b >= c:
+            m = b
+        else: # c >= a and c >= b
+            m = c
+    return m
+```
 
 \pause
-
-Dependendo do compilador, podemos obter o aviso
 
 \small
 
+Verificação: \pause ok. \pause
+
+
+</div>
+<div class="column" width="50%">
+
+\small
+
+Revisão \pause
+
+O Python permite "juntar" um `else`{.python} seguido de um `if`{.python} em um `elif`{.python}. Isto ajuda a diminuir os níveis de indentação, facilitando a escrita e leitura do código. \pause
+
+```python
+def maximo3(a: int, b: int, c: int) -> int:
+    if a >= b and a >= c:
+        m = a
+    elif b >= a and b >= c:
+        m = b
+    else: # c >= a and c >= b
+        m = c
+    return m
 ```
-x.cpp:9:16: warning: variable 'max' is used uninitialized whenever 'if'
-condition is false [-Wsometimes-uninitialized]
-```
-
-\normalsize
-
-\pause
-
-Por que? \pause Se nenhuma das três condições for verdadeira, `m` não será inicializado. \pause Mas nós sabemos que sempre pelo menos uma das condições é verdadeira! \pause Então vamos ajustar o código!
-
-
-# Revisão
-
-```cpp
-// Encontra o valor máximo entre a, b e c.
-int maximo3(int a, int b, int c) {
-    int max;
-    if (a >= b && a >= c) {
-        max = a;
-    } else if (b >= a && b >= c) {
-        max = b;
-    } else { // c >= a && c >= b
-        max = c;
-    }
-    return max;
-}
-```
+</div>
+</div>
 
 
 # Revisão
@@ -496,51 +394,52 @@ Podemos fazer uma implementação diferente? \pause Sim. \pause
 
 Ao invés de "perguntar" duas coisas por vez, podemos perguntar apenas uma coisa por vez e fazer uma "sequência" de decisões. \pause
 
-Se `a >= b`{.cpp} é `true`{.cpp}, quais valores podem ser o máximo? \pause Os valores de `a` e `c`. \pause E como descobrimos quem é o máximo entre `a` e `c`? \pause Fazendo outra seleção. \pause
+Se `a >= b`{.python} é `True`{.python}, quais valores podem ser o máximo? \pause Os valores de `a` e `c`. \pause E como descobrimos quem é o máximo entre `a` e `c`? \pause Fazendo outra seleção. \pause
 
-Se `a >= b`{.cpp} é `false`{.cpp}, quais valores podem ser o máximo? \pause Os valores de `b` e `c`. \pause E como descobrimos quem é o máximo entre `b` e `c`? \pause Fazendo outra seleção.
+Se `a >= b`{.python} é `False`{.python}, quais valores podem ser o máximo? \pause Os valores de `b` e `c`. \pause E como descobrimos quem é o máximo entre `b` e `c`? \pause Fazendo outra seleção.
 
 
 # Solução alternativa
 
 <div class="columns">
 <div class="column" width="48%">
+
+Versão alternativa
+
 \footnotesize
 
-```cpp
-int maximo3(int a, int b, int c) {
-    int max;
-    if (a >= b) {
-        if (a >= c) {
-            max = a;
-        } else {
-            max = c;
-        }
-    } else {
-        if (b >= c) {
-            max = b;
-        } else {
-            max = c;
-        }
-    }
-    return max; }
+```python
+def maximo3(a: int, b: int, c: int) -> int:
+    if a >= b:
+        if a >= c:
+            m = a
+        else:
+            m = c
+    else:
+        if b >= c:
+            m = b
+        else:
+            m = c
+    return m
 ```
+
+\pause
 </div>
 <div class="column" width="48%">
+
+Primeira versão
+
 \footnotesize
 
-```cpp
-int maximo3(int a, int b, int c) {
-    int max;
-    if (a >= b && a >= c) {
-        max = a;
-    } else if (b >= a && b >= c) {
-        max = b;
-    } else {
-        max = c;
-    }
-    return m;
-}
+```python
+def maximo3(a: int, b: int, c: int) -> int:
+    if a >= b and a >= c:
+        m = a
+    elif b >= a and b >= c:
+        m = b
+    else: # c >= a and c >= b
+        m = c
+    return m
 ```
 
 \pause
@@ -557,35 +456,30 @@ Podemos melhorar ainda? \pause Sim!
 # Revisão
 
 <div class="columns">
-<div class="column" width="48%">
+<div class="column" width="60%">
 
-\scriptsize
+\small
 
-```{.cpp .number-lines}
-int maximo3(int a, int b, int c) {
-    int max;
-    if (a >= b) {
-        if (a >= c) {
-            max = a;
-        } else {
-            max = c;
-        }
-    } else {
-        if (b >= c) {
-            max = b;
-        } else {
-            max = c;
-        }
-    }
-    return max;
-}
+```{.python .number-lines}
+def maximo3(a: int, b: int, c: int) -> int:
+    if a >= b:
+        if a >= c:
+            m = a
+        else:
+            m = c
+    else:
+        if b >= c:
+            m = b
+        else:
+            m = c
+    return m
 ```
 </div>
-<div class="column" width="48%">
+<div class="column" width="40%">
 \pause
-Qual o propósito do bloco das linhas 4 a 8? \pause Encontrar o máximo entre `a` e `c`. \pause
+Qual o propósito do bloco das linhas 3 a 6? \pause Encontrar o máximo entre `a` e `c`. \pause
 
-Qual o propósito do bloco das linhas 10 a 14? \pause Encontrar o máximo entre `b` e `c`. \pause
+Qual o propósito do bloco das linhas 8 a 11? \pause Encontrar o máximo entre `b` e `c`. \pause
 
 Já temos uma função para encontrar o máximo entre dois números? \pause Sim! \pause A função `maximo` que fizemos anteriormente.
 </div>
@@ -595,25 +489,22 @@ Já temos uma função para encontrar o máximo entre dois números? \pause Sim!
 # Revisão
 
 <div class="columns">
-<div class="column" width="48%">
+<div class="column" width="60%">
 
 \small
 
-```{.cpp .number-lines}
-int maximo3(int a, int b, int c) {
-    int max;
-    if (a >= b) {
-        max = maximo(a, c);
-    } else {
-        max = maximo(b, c);
-    }
-    return max;
-}
+```{.python .number-lines}
+def maximo3(a: int, b: int, c: int) -> int:
+    if a >= b:
+        m = maximo(a, c)
+    else:
+        m = maximo(b, c)
+    return m
 ```
 </div>
-<div class="column" width="48%">
+<div class="column" width="40%">
 \pause
-Qual o propósito da estrutura de seleção da linha 3? \pause Encontrar o máximo entre `a` e `b`... \pause Nós já temos uma função para fazer isso!
+Qual o propósito da seleção da linha 2? \pause Encontrar o máximo entre `a` e `b`... \pause Nós já temos uma função para fazer isso!
 </div>
 </div>
 
@@ -621,17 +512,16 @@ Qual o propósito da estrutura de seleção da linha 3? \pause Encontrar o máxi
 # Revisão
 
 <div class="columns">
-<div class="column" width="48%">
+<div class="column" width="60%">
 
 \small
 
-```{.cpp .number-lines}
-int maximo3(int a, int b, int c) {
-    return maximo(maximo(a, b), c);
-}
+```{.python .number-lines}
+def maximo3(a: int, b: int, c: int) -> int:
+    return maximo(maximo(a, b), c)
 ```
 </div>
-<div class="column" width="48%">
+<div class="column" width="40%">
 Estratégia de implementação
 
 Encontrar o máximo entre `a` e `b` e depois o máximo entre o resultado e `c`.
@@ -663,44 +553,14 @@ Definição dos tipos de dados \pause
 
 \scriptsize
 
-```cpp
-// Produz s se s é vazia ou termina com um ponto
-// final, caso contrário produz s seguido de um
-// ponto final.
-string coloca_ponto_se_necessario(string s) {
-    return s;
-}
-examples {
-    // Coloca o ponto
-    // s.substr(s.length() - 1, 1) == "." é false
-    // s + "."
-    check_expect(coloca_ponto_se_necessario("casa"), "casa.");
-    // s.substr(s.length() - 1, 1) == "." é false
-    check_expect(coloca_ponto_se_necessario("eu tambem"), "eu tambem.");
-    // Não coloca o ponto
-    // s.subsr(s.length() - 1, 1) == "." é true
-    // s
-    check_expect(coloca_ponto_se_necessario("casa."), "casa.");
-    // s == "" é true
-    check_expect(coloca_ponto_se_necessario(""), "");
-}
+```python
 ```
 
 # Ponto final - Implementação
 
 \scriptsize
 
-```cpp
-string coloca_ponto_se_necessario(string s) {
-    string r;
-    // s é vazia ou o último caractere é "."
-    if (s == "" || s.substr(s.length() - 1, 1) == ".") {
-        r = s;
-    } else {
-        r = s + ".";
-    }
-    return r;
-}
+```python
 ```
 
 \pause
@@ -728,7 +588,7 @@ Análise \pause
 
 Definição de tipos de dados \pause
 
-- O preço do litro do combustível será representado por um número positivo com três casas decimais; \pause
+- O preço do litro do combustível será representado por um número positivo; \pause
 
 - O tipo de combustível será representado por uma string.
 </div>
@@ -740,58 +600,24 @@ Definição de tipos de dados \pause
 Discutimos em sala o projeto desse programa.
 
 
-# Especificação
-
-\scriptsize
-
-```{.cpp}
-// Combustivel é "alcool" ou "gasolina".
-```
-
-\pause
-
-```{.cpp}
-// Indica o combustível que deve ser utilizado no abastecimento. Produz
-// "alcool" se preco_alcool for menor ou igual a 70% do preco_gasolina,
-// caso contrário produz "gasolina".
-string indica_combustivel(double preco_alcool, double preco_gasolina) {
-    return "alcool";
-}
-```
-\pause
-
-```cpp
-examples {
-    // Combustível é alcool
-    // 4.000 <= 0.7 * 6.000 é true
-    check_expect(indica_combustivel(4.000, 6.000), "alcool");
-    // 3.500 <= 0.7 * 5.000 é true
-    checK_expect(indica_combustivel(4.200, 6.000), "alcool");
-    // Combustível é gasolina
-    // 4.000 <= 0.7 * 5.000 é false
-    check_expect(indica_combustivel(4.000, 5.000), "gasolina");
-}
-```
-
-
 # Implementação
 
 O resultado depende de uma condição? Ou seja, existe mais que uma forma para a resposta? \pause Sim! \pause Então usamos seleção. \pause
 
 \small
 
-```cpp
-// Indica o combustível que deve ser utilizado no abastecimento. Produz
-// "alcool" se preco_alcool for menor ou igual a 70% do preco_gasolina,
-// caso contrário produz "gasolina".
-string indica_combustivel(double preco_alcool, double preco_gasolina) {
-    string combustivel;
-    if (preco_alcool <= 0.7 * preco_gasolina) {
-        combustivel = "alcool";
-    } else {
-        combustivel = "gasolina";
-    }
-    return combustivel;
+```python
+def indica_combustivel(preco_alcool: float, preco_gasolina: float) -> str:
+    '''
+    Indica o combustível que deve ser utilizado no abastecimento. Produz
+    'alcool' se *preco_alcool* for menor ou igual a 70% do *preco_gasolina*,
+    caso contrário produz 'gasolina'.
+    '''
+    if preco_alcool <= 0.7 * preco_gasolina:
+        combustivel = "alcool"
+    else:
+        combustivel = "gasolina"
+    return combustivel
 }
 ```
 
@@ -800,7 +626,7 @@ string indica_combustivel(double preco_alcool, double preco_gasolina) {
 
 Verificação: \pause ok. \pause
 
-Revisão: \pause string não parece ser o tipo apropriado. \pause Pela assinatura da função, "qualquer" string pode ser dada como resposta, mas de fato apenas dois valores são possível: "alcool" e "gasolina". \pause Podemos melhorar? \pause Sim.
+Revisão: \pause string não parece ser o tipo apropriado. \pause Pela assinatura da função, "qualquer" string pode ser dada como resposta, mas de fato apenas dois valores são possível: `'alcool'`{.python} e `'gasolina'`{.python}. \pause Podemos melhorar? \pause Sim.
 
 
 # Tipos enumerados
