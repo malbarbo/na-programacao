@@ -1,24 +1,29 @@
 ---
-title: Projejto de programas - Prática
+title: Projeto de programas - Prática
 urlcolor: Blue
+# TODO: refazer a lista com exercícios mais objetivos
+# TODO: fazer exercícios sobre cada etapa individual
 ---
 
-#. Faça o download do exemplos na página da disciplina.
+#. Faça o download dos exemplos de projeto de programas na página da disciplina.
 
-    a) Abra os arquivo no vscode
-    b) Use o mypy com o comando `mypy arquivo.py` para verificar possíveis erros no código
-    c) Execute a verificação automática do exemplos com o comando `python -m doctest -v arquivo.py`
-    d) Crie erros e use o mypy para identificá-los
-    e) Crie erros e use o docttest para identificá-los
+    a) Abra o diretório com o código no vscode.
+    b) Faça a verificação de tipos com o `mypy`.
+    c) Faça a verificação dos exemplos com o `doctest`.
+    d) Adicione algum erro no código e use o `mypy` para identificá-lo.
+    e) Adicione algum erro no código e use o `doctest` para identificá-lo.
 
-#. Leia o projeto das soluções da prática de conceitos básicos na página da disciplina.
 
-    a) Observe a forma como o propósito foi escrito.
+#. Faça o download e leia as soluções da prática de conceitos básicos na página da disciplina.
+
+    a) Observe a forma como os propósitos foram escritos.
     b) Observe a forma como os exemplos foram escritos.
-    c) Observe como a implementação foi feita
-    d) Execute a verificação automática do exemplos
+    c) Observe como as implementações foram feitas.
+    d) Faça a verificação de tipos com o `mypy`
+    e) Faça a verificação dos exemplos com o `doctest`
 
-#. Veja as suas soluções dos exercícios de conceitos básicos na página da disciplina.
 
-    a) Escreve a especificação para cada função
-    b) Execute a verificação automática dos exemplos para o seu código
+#. Faça o download e leia as soluções dos exercícios de conceitos básicos na página da disciplina.
+
+    a) Leia com cuidado o código observando como a especificação e a implementação foram feitas.
+    b) Escreva a especificação para os demais exercícios (no seu código) de conceitos básicos e faça a verificação de tipos com o `mypy` e a verificação dos exemplos com o `doctest`.
