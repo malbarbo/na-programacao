@@ -662,12 +662,12 @@ def ajusta_numero(numero: str) -> str:
     X pode ser qualquer dígito.
 
     Exemplos
-    >>> # '(44) 9787-1241'[:5] + '9' + '(44) 9787-1241'[5:]
-    >>> ajusta_numero('(44) 9787-1241')
-    '(44) 99787-1241'
     >>> # não precisa de ajuste, a saída e a própria entrada
     >>> ajusta_numero('(51) 95872-9989')
     '(51) 95872-9989'
+    >>> # '(44) 9787-1241'[:5] + '9' + '(44) 9787-1241'[5:]
+    >>> ajusta_numero('(44) 9787-1241')
+    '(44) 99787-1241'
     '''
     return numero
 ```
