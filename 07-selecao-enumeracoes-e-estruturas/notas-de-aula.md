@@ -1,6 +1,9 @@
 ---
 # vim: set spell spelllang=pt_br:
 title: Seleção, enumerações e estruturas
+# TODO: deixar claro que cada bloco pode ter mais que uma instrução
+# TODO: dar nome ao processo de criar a implementação analisando as formas de resposta
+# TODO: falar do contrato de função, entre o fornecedor e o usuário da função
 ---
 
 # Introdução
@@ -19,7 +22,7 @@ def dobro_mais_um(n: int) -> int:
     a = 2 * n
     return a + 1
 
-main():
+def main():
    a = 5
    n = dobro_mais_um(a + 4) + 1
    print(n)
@@ -31,13 +34,13 @@ main()
 \pause
 Qual o valor exibido pelo programa? \pause
 
-Não tente "executar" a chamada da função, pense apenas no seu propósito, sem olhar para o seu corpo. \pause
+Não tente "executar" a chamada da função `dobro_mais_um`, pense apenas no seu propósito, sem olhar para o seu corpo. \pause
 
 Então, qual é o valor exibido na tela? \pause 20. \pause
 
-Qual é a ordem que as linhas são executadas? (Feito em sala) \pause
+Qual é a ordem que as linhas são executadas? \pause
 
-- 10, \pause 6, \pause 7, \pause 2, \pause 3, \pause 7, \pause 8, \pause 10
+10, \pause 6, \pause 7, \pause 2, \pause 3, \pause 7, \pause 8, \pause 10
 
 </div>
 </div>
@@ -45,7 +48,7 @@ Qual é a ordem que as linhas são executadas? (Feito em sala) \pause
 
 # Seleção
 
-O fluxo "normal" de execução de um programa é sequencial, isto é, a execução de uma linha após a outra. Algumas instruções alteram esse fluxo, como por exemplo, as chamadas de funções. \pause
+O fluxo "normal" de execução de um programa é sequencial, isto é, a execução é de uma linha após a outra. Algumas instruções alteram esse fluxo, como por exemplo, as chamadas e retornos de funções. \pause
 
 Agora veremos a **instrução de seleção** `if else`{.python} (se e senão em inglês), que permite, a partir de uma condição, escolher qual conjunto de instruções executar.
 
@@ -112,7 +115,7 @@ Em que ordem as linhas são executas para gerar esse resultado? \pause 1, 2, 3, 
 
 \ 
 
-Qual o propósito do `if/else`{.python} nesses exemplos? \pause Determinar o valor máximo entre `a` e `b`.
+Qual é o propósito do `if else`{.python} nesses exemplos? \pause Determinar o valor máximo entre `a` e `b`.
 
 
 # Máximo
@@ -196,9 +199,9 @@ def ajusta_numero(numero: str) -> str:
 
 Até agora, todas as funções que projetamos tinham apenas uma "forma" de gerar o resultado. \pause
 
-Na função `ajusta_numero`, existem duas "formas" para a resposta, ou a resposta é o próprio número, ou a resposta é o número ajustado.
+Na função `ajusta_numero`, existem duas "formas" para a resposta: o próprio número ou o número ajustado. \pause
 
-Como escolher quando cada forma é utilizada na resposta da função? \pause Utilizando um condição: \pause
+Como escolher quando cada forma deve ser utilizada na resposta da função? \pause Utilizando um condição: \pause
 
 - Se a quantidade de caracteres de `numero` for 15, então a resposta é `numero`; \pause
 
@@ -244,8 +247,6 @@ Especificação (assinatura e propósito) \pause
 def maximo3(a: int, b: int, c: int) -> int:
     '''
     Encontra o valor máximo entre *a*, *b* e *c*.
-
-    Exemplos
     '''
 ```
 
@@ -287,7 +288,7 @@ def maximo3(a: int, b: int, c: int) -> int:
 
 Implementação \pause
 
-Quantas "formas" de reposta nós temos? \pause 3. \pause Ou a resposta é `a`, ou a resposta é `b`, ou a resposta é `c`. \pause
+Quantas "formas" de resposta nós temos? \pause 3. \pause Ou a resposta é `a`, ou a resposta é `b`, ou a resposta é `c`. \pause
 
 Se temos respostas diferentes, então a resposta depende de uma ou mais condições. \pause Então, usamos instruções de seleção. \pause
 
@@ -331,7 +332,7 @@ Qual é a ordem que as linhas são executadas para o exemplo a seguir:
 
 `maximo(10, 15, 8)`{.python}? \pause 6, \pause 9, \pause 10, \pause 13 \pause
 
-`maximo(10, 15, 20)`{.python}? \pause 6, \pause 9, \pause 12, \pause 13 \pause
+`maximo(10, 15, 20)`{.python}? \pause 6, \pause 9, \pause 12, \pause 13
 </div>
 </div>
 
@@ -339,14 +340,13 @@ Qual é a ordem que as linhas são executadas para o exemplo a seguir:
 # Verificação e revisão
 
 <div class="columns">
-<div class="column" width="50%">
-\footnotesize
+<div class="column" width="65%">
+\small
 
 ```python
 def maximo3(a: int, b: int, c: int) -> int:
     '''
-    Encontra o valor máximo entre
-    *a*, *b* e *c*.
+    Encontra o valor máximo entre *a*, *b* e *c*.
     '''
     if a >= b and a >= c:
         m = a
@@ -358,24 +358,33 @@ def maximo3(a: int, b: int, c: int) -> int:
     return m
 ```
 
-\pause
+</div>
+<div class="column" width="35%">
 
 \small
+
+\pause
 
 Verificação: \pause ok. \pause
 
+Revisão \pause
 
+Podemos modificar o código para torná-lo mais fácil de ler e entender? \pause
+
+O Python permite "juntar" um `else`{.python} seguido de um `if`{.python} em um `elif`{.python}. Isto ajuda a diminuir os níveis de indentação, facilitando a escrita e leitura do código.
 </div>
-<div class="column" width="50%">
+</div>
+
+
+# Revisão
 
 \small
 
-Revisão \pause
-
-O Python permite "juntar" um `else`{.python} seguido de um `if`{.python} em um `elif`{.python}. Isto ajuda a diminuir os níveis de indentação, facilitando a escrita e leitura do código. \pause
-
 ```python
 def maximo3(a: int, b: int, c: int) -> int:
+    '''
+    Encontra o valor máximo entre *a*, *b* e *c*.
+    '''
     if a >= b and a >= c:
         m = a
     elif b >= a and b >= c:
@@ -384,22 +393,36 @@ def maximo3(a: int, b: int, c: int) -> int:
         m = c
     return m
 ```
-</div>
-</div>
 
 
-# Revisão
+# Implementação
 
-Podemos fazer uma implementação diferente? \pause Sim. \pause
+Vamos parar por um momento e relembrar como fazemos a implementação de uma função. \pause
 
-Ao invés de "perguntar" duas coisas por vez, podemos perguntar apenas uma coisa por vez e fazer uma "sequência" de decisões. \pause
+Olhamos para a especificação, com atenção especial para os exemplos, e perguntamos: quantas formas de resposta temos nos exemplos? \pause
+
+- Se existe apenas uma forma de resposta, isto é, a resposta dos exemplos são sempre calculadas da mesma forma, então usamos essa forma para implementar a função. \pause
+
+- Se existe mais de uma forma, isto é, a resposta para pelo menos dois exemplos tem a forma distinta, então precisamos usar seleção. \pause Para cada forma de resposta identificamos uma condição e usamos as condições e as formas de resposta para implementar a função (o que fizemos na implementação da função `maximo3`).
+
+
+# Implementação
+
+No caso de mais de uma forma de resposta, a condição de cada forma pode ser composta, como no exemplo `maximo3`, onde a condição para a resposta ser `a`{.python} era `a >= b and a >= c`{.python} (a condição é composta por duas partes). \pause
+
+Nesses casos, podemos verificar cada parte da condição de forma separada. A cada verificação, dividimos as formas de resposta em dois grupos, as que precisam da condição e as que não precisam da condição. Usando verificação subsequentes, vamos restringindo as opções de forma de resposta até chegar em apenas uma forma. \pause
+
+Vamos tentar utilizar essa abordagem para fazer um implementação alternativa da função `maximo3`.
+
+
+# Implementação alternativa
 
 Se `a >= b`{.python} é `True`{.python}, quais valores podem ser o máximo? \pause Os valores de `a` e `c`. \pause E como descobrimos quem é o máximo entre `a` e `c`? \pause Fazendo outra seleção. \pause
 
 Se `a >= b`{.python} é `False`{.python}, quais valores podem ser o máximo? \pause Os valores de `b` e `c`. \pause E como descobrimos quem é o máximo entre `b` e `c`? \pause Fazendo outra seleção.
 
 
-# Solução alternativa
+# Implementação alternativa
 
 <div class="columns">
 <div class="column" width="48%">
@@ -448,7 +471,7 @@ def maximo3(a: int, b: int, c: int) -> int:
 
 Qual versão é mais fácil de entender? \pause A primeira... \pause
 
-Podemos melhorar ainda? \pause Sim!
+Podemos melhorar? \pause Sim!
 </div>
 </div>
 
@@ -511,20 +534,48 @@ Qual o propósito da seleção da linha 2? \pause Encontrar o máximo entre `a` 
 
 # Revisão
 
+```python
+def maximo3(a: int, b: int, c: int) -> int:
+    return maximo(maximo(a, b), c)
+```
+
+\ 
+
+Poderíamos ter chegado nessa implementação na primeira vez? \pause
+
+Sim, mas nesse caso, deveríamos ter visto que as três formas de resposta distintas poderiam ter sido generalizadas em uma única forma, que é `maximo(maximo(a, b), c)`{.python}. Essa generalização direta requer prática, por enquanto, podemos fazer os casos distintos e tentar durante a revisão simplificar o código.
+
+
+# Execução passo a passo
+
 <div class="columns">
 <div class="column" width="60%">
 
 \small
 
 ```{.python .number-lines}
+def maximo(a: int, b: int) -> int:
+    if a > b:
+        m = a
+    else:
+        m = b
+    return a
+
 def maximo3(a: int, b: int, c: int) -> int:
     return maximo(maximo(a, b), c)
+
+maximo3(10, 2, 15)
 ```
 </div>
 <div class="column" width="40%">
-Estratégia de implementação
+\pause
 
-Encontrar o máximo entre `a` e `b` e depois o máximo entre o resultado e `c`.
+Vamos treinar mais uma vez a execução passo a passo. \pause
+
+Qual é a ordem que as linhas são executadas para o exemplo ao lado? \pause
+
+11, 9, 2, 3, 6, 9, 2, 5, 6, 9, 11.
+
 </div>
 </div>
 
@@ -549,27 +600,162 @@ Definição dos tipos de dados \pause
 </div>
 
 
-# Ponto final - Especificação
+# Ponto final - especificação
 
-\scriptsize
+<div class="columns">
+<div class="column" width="48%">
 
-```python
-```
-
-# Ponto final - Implementação
-
-\scriptsize
+\footnotesize
 
 ```python
+def ponto_final(texto: str) -> str:
+    '''
+    Coloca um ponto final em *texto* se
+    *texto* não termina com ponto final.
+
+    Exemplos
+    >>> # Não adiciona o ponto
+    >>> ponto_final('Talvez.')
+    'Talvez.'
+    >>> # Adiciona ponto
+    >>> ponto_final('Sim, eu gostaria')
+    'Sim, eu gostaria.'
+    '''
 ```
+
+</div>
+<div class="column" width="48%">
 
 \pause
 
-\small
+Essa especificação está completa? \pause Não! \pause
 
-Verificação: ok.
+Está faltando considerar um caso extremo, quando `texto` é vazio. \pause
 
-Revisão: ok.
+Como proceder nesse caso? \pause Temos duas opções: \pause
+
+- Definimos que vazio não é uma entrada válida; ou \pause
+
+- Definimos uma saída para a entrada vazia. \pause
+
+Vamos explorar as duas possibilidades.
+
+</div>
+</div>
+
+
+# Ponto final - especificação - vazio inválido
+
+<div class="columns">
+<div class="column" width="48%">
+
+\footnotesize
+
+```python
+def ponto_final(texto: str) -> str:
+    '''
+    Coloca um ponto final em *texto* se
+    *texto* não termina com ponto final.
+    Requer que *texto* não seja vazio.
+
+    Exemplos
+    >>> # Não adiciona o ponto
+    >>> ponto_final('Talvez.')
+    'Talvez.'
+    >>> # Adiciona ponto
+    >>> ponto_final('Sim, eu gostaria')
+    'Sim, eu gostaria.'
+    '''
+```
+
+</div>
+<div class="column" width="48%">
+
+\pause
+
+Implementação
+
+\pause
+
+Como temos duas formas de resposta, adiciona ou não o ponto, usamos seleção. \pause A condição para não adicionar ponto é que `texto` termine com ponto. \pause
+
+\footnotesize
+
+```python
+def ponto_final(texto: str) -> str:
+    assert texto != ''
+    if texto[len(texto) - 1] == '.':
+        com_ponto = texto
+    else:
+        com_ponto = texto + '.'
+    return com_ponto
+```
+</div>
+</div>
+
+
+# `assert`{.python}
+
+Usamos o `assert`{.python} quando queremos expressar uma condição que precisa ser verdadeira para que o código continue executando. Caso a condição não seja verdadeira, o programa é interrompido (crasha) com uma mensagem de erro. \pause
+
+O que acontece na função `ponto_final` se não utilizarmos o `assert`{.python} e a função for chamada com o argumento `''`{.python}? \pause
+
+Vai crashar na expressão `texto[len(texto) - 1]`{.python}, pois estamos querendo acessar o último caractere de uma string vazia. \pause
+
+Se as duas formas o programa crasha, porque utilizar o `assert`{.python}? \pause Para que a falha tenha uma causa mais precisa, facilitando a depuração do programa.
+
+
+# Ponto final - especificação - vazio válido
+
+<div class="columns">
+<div class="column" width="48%">
+
+\footnotesize
+
+```python
+def ponto_final(texto: str) -> str:
+    '''
+    Coloca um ponto final em *texto* se
+    *texto* não termina com ponto final
+    e não é ''. Devolve *texto* caso
+    contrário.
+
+    Exemplos
+    >>> # Não adiciona o ponto
+    >>> ponto_final('')
+    ''
+    >>> ponto_final('Talvez.')
+    'Talvez.'
+    >>> # Adiciona ponto
+    >>> ponto_final('Sim, eu gostaria')
+    'Sim, eu gostaria.'
+    '''
+```
+
+</div>
+<div class="column" width="48%">
+
+\pause
+
+Implementação
+
+\pause
+
+Como temos duas formas de resposta, adiciona ou não o ponto, usamos seleção. \pause A condição para não adicionar ponto é que `texto` seja `''`{.python} ou termine com ponto. \pause
+
+\footnotesize
+
+```python
+def ponto_final(texto: str) -> str:
+    if texto == '' or \
+                texto[len(texto) - 1] == '.':
+        com_ponto = texto
+    else:
+        com_ponto = texto + '.'
+    return com_ponto
+```
+</div>
+</div>
 
 
 # Álcool ou Gasolina?
@@ -597,14 +783,7 @@ Definição de tipos de dados \pause
 
 # Especificação
 
-Discutimos em sala o projeto desse programa.
-
-
-# Implementação
-
-O resultado depende de uma condição? Ou seja, existe mais que uma forma para a resposta? \pause Sim! \pause Então usamos seleção. \pause
-
-\small
+\footnotesize
 
 ```python
 def indica_combustivel(preco_alcool: float, preco_gasolina: float) -> str:
@@ -612,7 +791,28 @@ def indica_combustivel(preco_alcool: float, preco_gasolina: float) -> str:
     Indica o combustível que deve ser utilizado no abastecimento. Produz
     'alcool' se *preco_alcool* for menor ou igual a 70% do *preco_gasolina*,
     caso contrário produz 'gasolina'.
+
+    Exemplos
+    >>> # 'alcool'
+    >>> indica_combustivel(4.00, 6.00) # 4.00 <= 0.7 * 6.00 é True
+    'alcool'
+    >>> indica_combustivel(3.50, 5.00) # 3.50 <= 0.7 * 5.00 é True
+    'alcool'
+    >>> # 'gasolina'
+    >>> indica_combustivel(4.00, 5.00) # 4.00 <= 0.7 * 5.00 é False
+    'gasolina'
     '''
+```
+
+
+# Implementação
+
+Quantas formas para a resposta existem? \pause 2, `'alcool'`{.python} e `'gasolina'`{.python}. \pause Então precisamos usar seleção. \pause Qual é a condição para a resposta `'alcool'`{.python}? \pause `preco_alcool <= 0.7 * preco_gasolina`{.python} \pause
+
+\small
+
+```python
+def indica_combustivel(preco_alcool: float, preco_gasolina: float) -> str:
     if preco_alcool <= 0.7 * preco_gasolina:
         combustivel = "alcool"
     else:
@@ -628,6 +828,8 @@ Verificação: \pause ok. \pause
 
 Revisão: \pause string não parece ser o tipo apropriado. \pause Pela assinatura da função, "qualquer" string pode ser dada como resposta, mas de fato apenas dois valores são possível: `'alcool'`{.python} e `'gasolina'`{.python}. \pause Podemos melhorar? \pause Sim.
 
+
+<!--
 
 # Tipos enumerados
 
@@ -1455,7 +1657,7 @@ examples
 
 \pause
 
-Qual o processo que utilizamos para determinar as repostas?
+Qual o processo que utilizamos para determinar as respostas?
 
 
 # Especificação
@@ -1560,7 +1762,7 @@ examples {
 
 \normalsize
 
-Qual o processo que utilizamos para determinar as repostas?
+Qual o processo que utilizamos para determinar as respostas?
 
 
 # Implementação
@@ -1640,3 +1842,5 @@ bool sorteado(int n, SeisNumeros sorteados)
 Verificação: \pause ok \pause
 
 Revisão: \pause o código parece repetitivo... \pause Vamos ver novas construções!
+
+-->
