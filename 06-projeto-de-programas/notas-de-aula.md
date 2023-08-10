@@ -675,9 +675,9 @@ def ajusta_numero(numero: str) -> str:
 
 # Implementação
 
-O que mudou na forma que calculamos a reposta dos exemplos desse projeto em relação aos exemplos dos projetos anteriores? \pause
+O que mudou na forma que calculamos a resposta dos exemplos desse projeto em relação aos exemplos dos projetos anteriores? \pause
 
-Nos projetos anteriores a resposta tinha apenas uma forma. Nesse projeto existem duas formas de reposta: ou a resposta é a própria entrada ou fazemos algumas operações específicas. \pause
+Nos projetos anteriores a resposta tinha apenas uma forma. Nesse projeto existem duas formas de resposta: ou a resposta é a própria entrada ou fazemos algumas operações específicas. \pause
 
 Como escolher entre uma forma de resposta e outra? \pause
 
