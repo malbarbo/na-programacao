@@ -1,4 +1,12 @@
-def indica_combustivel(preco_alcool: float, preco_gasolina: float) -> str:
+from enum import Enum, auto
+
+class Combustivel(Enum):
+    '''O tipo do combustivel em um abastecimento'''
+    ALCOOL = auto()
+    GASOLINA = auto()
+
+
+def indica_combustivel(preco_alcool: float, preco_gasolina: float) -> Combustivel:
     '''
     Indica o combustível que deve ser utilizado no abastecimento. Produz
     'alcool' se *preco_alcool* for menor ou igual a 70% do *preco_gasolina*,
@@ -7,17 +15,17 @@ def indica_combustivel(preco_alcool: float, preco_gasolina: float) -> str:
     Exemplos
     >>> # 'alcool'
     >>> # preco_alcool <= 0.7 * preco_gasolina é True
-    >>> indica_combustivel(4.00, 6.00)
-    'alcool'
-    >>> indica_combustivel(3.50, 5.00)
-    'alcool'
+    >>> indica_combustivel(4.00, 6.00).name
+    'ALCOOL'
+    >>> indica_combustivel(3.50, 5.00).name
+    'ALCOOL'
     >>> # 'gasolina'
     >>> # preco_alcool <= 0.7 * preco_gasolina é False
-    >>> indica_combustivel(4.00, 5.00)
-    'gasolina'
+    >>> indica_combustivel(4.00, 5.00).name
+    'GASOLINA'
     '''
     if preco_alcool <= 0.7 * preco_gasolina:
-        combustivel = "alcool"
+        combustivel = Combustivel.ALCOOL
     else:
-        combustivel = "gasolina"
+        combustivel = Combustivel.GASOLINA
     return combustivel

@@ -4,6 +4,7 @@ title: Seleção, enumerações e estruturas
 # TODO: deixar claro que cada bloco pode ter mais que uma instrução
 # TODO: dar nome ao processo de criar a implementação analisando as formas de resposta
 # TODO: falar do contrato de função, entre o fornecedor e o usuário da função
+# TODO: apresentar match/case?
 ---
 
 # Introdução
@@ -481,7 +482,7 @@ Podemos melhorar? \pause Sim!
 <div class="columns">
 <div class="column" width="60%">
 
-\small
+\footnotesize
 
 ```{.python .number-lines}
 def maximo3(a: int, b: int, c: int) -> int:
@@ -504,7 +505,9 @@ Qual o propósito do bloco das linhas 3 a 6? \pause Encontrar o máximo entre `a
 
 Qual o propósito do bloco das linhas 8 a 11? \pause Encontrar o máximo entre `b` e `c`. \pause
 
-Já temos uma função para encontrar o máximo entre dois números? \pause Sim! \pause A função `maximo` que fizemos anteriormente.
+Já temos uma função para encontrar o máximo entre dois números? \pause Sim! \pause A função `maximo` que fizemos anteriormente. \pause
+
+Então vamos usar a função!
 </div>
 </div>
 
@@ -540,6 +543,8 @@ def maximo3(a: int, b: int, c: int) -> int:
 ```
 
 \ 
+
+\pause
 
 Poderíamos ter chegado nessa implementação na primeira vez? \pause
 
@@ -702,7 +707,7 @@ O que acontece na função `ponto_final` se não utilizarmos o `assert`{.python}
 
 Vai crashar na expressão `texto[len(texto) - 1]`{.python}, pois estamos querendo acessar o último caractere de uma string vazia. \pause
 
-Se as duas formas o programa crasha, porque utilizar o `assert`{.python}? \pause Para que a falha tenha uma causa mais precisa, facilitando a depuração do programa.
+Se usando ou não o `assert`{.python} o programa crasha, porque utilizar o `assert`{.python}? \pause Para que a falha tenha uma causa mais precisa, facilitando a depuração do programa.
 
 
 # Ponto final - especificação - vazio válido
@@ -807,7 +812,7 @@ def indica_combustivel(preco_alcool: float, preco_gasolina: float) -> str:
 
 # Implementação
 
-Quantas formas para a resposta existem? \pause 2, `'alcool'`{.python} e `'gasolina'`{.python}. \pause Então precisamos usar seleção. \pause Qual é a condição para a resposta `'alcool'`{.python}? \pause `preco_alcool <= 0.7 * preco_gasolina`{.python} \pause
+Quantas formas para a resposta existem? \pause Duas: `'alcool'`{.python} e `'gasolina'`{.python}. \pause Então precisamos usar seleção. \pause Qual é a condição para que a resposta seja `'alcool'`{.python}? \pause `preco_alcool <= 0.7 * preco_gasolina`{.python} \pause
 
 \small
 
@@ -818,7 +823,6 @@ def indica_combustivel(preco_alcool: float, preco_gasolina: float) -> str:
     else:
         combustivel = "gasolina"
     return combustivel
-}
 ```
 
 
@@ -826,10 +830,8 @@ def indica_combustivel(preco_alcool: float, preco_gasolina: float) -> str:
 
 Verificação: \pause ok. \pause
 
-Revisão: \pause string não parece ser o tipo apropriado. \pause Pela assinatura da função, "qualquer" string pode ser dada como resposta, mas de fato apenas dois valores são possível: `'alcool'`{.python} e `'gasolina'`{.python}. \pause Podemos melhorar? \pause Sim.
+Revisão: \pause string não parece ser o tipo apropriado. \pause Pela assinatura da função, "qualquer" string pode ser dada como resposta, mas de fato apenas dois valores são possível: `'alcool'`{.python} e `'gasolina'`{.python}. \pause Podemos melhorar? \pause Sim!
 
-
-<!--
 
 # Tipos enumerados
 
@@ -837,55 +839,85 @@ Em um **tipo enumerado** todos os valores válidos para o tipo são enumerados e
 
 A forma geral para definir tipos enumerados é
 
-```cpp
-enum NomeDoTipo {
-    Valor1,
-    Valor2,
-    ...,
-};
-```
+\small
 
+```python
+from enum import Enum, auto
 
-# Tipos enumerados
-
-```cpp
-// O tipo do combustível utilizado no abastecimento.
-enum Combustivel {
-    Alcool,
-    Gasolina,
-};
+class NomeDoTipo(Enum):
+    VALOR1 = auto()
+    ...
+    VALORN = auto()
 ```
 
 \pause
 
 \normalsize
 
-Observações \pause
-
-- Sempre vamos adicionar um comentário sobre o propósito do tipo; \pause
-- É necessário finalizar a declaração com um ponto e vírgula;
+Vamos definir um tipo enumerado para representar o tipo de combustível.
 
 
-# Tipos enumerados
+# Definição do tipo `Combustivel`
 
-Uma variável do tipo `Combustivel` só pode armazenar o valor `Alcool` ou `Gasolina`, se tentarmos atribuir um valor diferente, o compilador indicará um erro. \pause
-
-\small
-
-```cpp
-Combustivel c = "Alcool";
+```python
+class Combustivel(Enum):
+    '''O tipo do combustivel em um abastecimento'''
+    ALCOOL = auto()
+    GASOLINA = auto()
 ```
 
 \pause
 
+\normalsize
+
+`auto()` é utilizado para associar um número com o valor da enumeração. \pause Se quisermos, podemos escolher um número diretamente. \pause
+
+Sempre vamos adicionar um comentário sobre o propósito do tipo, se necessário, adicionamos comentários para os valores da enumeração.
+
+
+# Uso de tipo enumerado
+
+Cada valor da enumeração tem dois atributos: `name` e `value`. \pause
+
+\small
+
+```python
+>>> c = Combustivel.ALCOOL
+>>> c
+<Combustivel.ALCOOL: 1>
+>>> c.value
+1
+>>> c.name
+'ALCOOL'
+>>> c = Combustivel.GASOLINA
+>>> c.value
+2
+>>> c.name
+'GASOLINA'
+```
+
+
+# Tipos enumerados
+
+Uma variável do tipo `Combustivel` só pode armazenar o valor `Combustivel.ALCOOL` ou `Combustivel.GASOLINA`, se tentarmos atribuir um valor diferente, o `mypy` indicará um erro. \pause
+
+\small
+
+```python
+c: Combustivel = "Alcool"
+```
+
+\pause
+
+\normalsize
+
 Erro
 
-\footnotesize
+\small
 
 ```
-x.cpp:13:21: error: cannot convert ‘const char*’ to ‘Combustivel’ in initialization
-   13 |     Combustivel c = "Alcool";
-      |                     ^~~~~~~~
+error: Incompatible types in assignment (expression has type "str",
+                                         variable has type "Combustivel")
 ```
 
 
@@ -897,38 +929,35 @@ Quando todos os valores válidos para o tipo podem ser nomeados. \pause
 
 Por que utilizar tipos enumerados? \pause
 
-Para expressar mais claramente o propósito do código e evitar a utilização de valores inválidos (como `"alcoo"`{.cpp} em uma variável string que representa o tipo do combustível).
+Para expressar mais claramente o propósito do código e evitar a utilização de valores inválidos (como `'alcoo'`{.python} em uma variável string que representa o tipo do combustível).
 
 
-# Revisão do exemplo
+# Revisão do projeto de `indica_combustive`
 
 \footnotesize
 
-```cpp
-Combustivel indica_combustivel(double preco_alcool, double preco_gasolina)
-{
-    Combustivel combustivel;
-    if (preco_alcool <= 0.7 * preco_gasolina) {
-        combustivel = Alcool;
-    } else {
-        combustivel = Gasolina;
-    }
-    return combustivel;
-}
-examples
-{
-    check_expect(indica_combustivel(4.000, 5.000), Gasolina);
-    check_expect(indica_combustivel(4.000, 6.000), Alcool);
-    check_expect(indica_combustivel(3.500, 5.000), Alcool);
-}
+```python
+def indica_combustivel(preco_alcool: float, preco_gasolina: float) -> Combustivel:
+    '''
+    Exemplos
+    >>> indica_combustivel(4.00, 6.00).name
+    'ALCOOL'
+    >>> indica_combustivel(3.50, 5.00).name
+    'ALCOOL'
+    >>> indica_combustivel(4.00, 5.00).name
+    'GASOLINA'
+    '''
+    if preco_alcool <= 0.7 * preco_gasolina:
+        combustivel = Combustivel.ALCOOL
+    else:
+        combustivel = Combustivel.GASOLINA
+    return combustivel
 ```
 
 
 # Exemplo
 
-Projete uma função que receba como entrada a cor atual de um semáforo de trânsito e devolva a próxima cor que será ativada (considere um semáforo com três cores: verde, amarelo e vermelho). \pause
-
-Fizemos o projeto desse programa durante a aula obtivemos o seguinte resultado:
+Projete uma função que receba como entrada a cor atual de um semáforo de trânsito e devolva a próxima cor que será ativada (considere um semáforo com três cores: verde, amarelo e vermelho).
 
 
 # Semáforo
@@ -937,39 +966,48 @@ Fizemos o projeto desse programa durante a aula obtivemos o seguinte resultado:
 <div class="column" width="48%">
 \scriptsize
 
-```cpp
-// Representa a cor de um semáforo.
-enum Cor {
-    Verde,
-    Vermelho,
-    Amarelo,
-};
-// Produz a próximo cor de um semáforo
-// que está com a cor c.
-Cor proxima_cor(Cor c) {
-    Cor proxima;
-    if (c == Verde) {
-        proxima = Amarelo;
-    } else if (c == Vermelho) {
-        proxima = Verde;
-    } else { // c == Amarelo
-        proxima = Vermelho;
-    }
-    return proxima;
-}
+```python
+from enum import Enum, auto
+
+class Cor(Enum):
+    '''O cor de um semáforo de trânsito'''
+    VERDE = auto()
+    VERMELHO = auto()
+    AMARELO = auto()
+```
+
+\pause
+
+```python
+def proxima_cor(atual: Cor) -> Cor:
+    '''
+    Produz a próxima cor de uma semáfaro que
+    está na cor *atual*.
+    Exemplos
+    >>> proxima_cor(Cor.VERDE).name
+    'AMARELO'
+    >>> proxima_cor(Cor.AMARELO).name
+    'VERMELHO'
+    >>> proxima_cor(Cor.VERMELHO).name
+    'VERDE'
+    '''
 ```
 </div>
 <div class="column" width="48%">
 
 \scriptsize
 
-```cpp
-examples
-{
-    check_expect(proxima_cor(Verde), Amarelo);
-    check_expect(proxima_cor(Vermelho), Verde);
-    check_expect(proxima_cor(Amarelo), Vermelho);
-}
+\pause
+
+```python
+def proxima_cor(atual: Cor) -> Cor:
+    if atual == Cor.VERDE:
+        proxima = Cor.AMARELO
+    elif atual == Cor.AMARELO:
+        proxima = Cor.VERMELHO
+    elif atual == Cor.VERMELHO:
+        proxima = Cor.VERDE
+    return proxima
 ```
 
 \pause
@@ -978,96 +1016,13 @@ examples
 
 Verificação: \pause Ok. \pause
 
-Revisão: \pause vamos usar uma construção nova, o `switch/case`{.cpp}.
+Revisão: \pause Ok.
 
 </div>
 </div>
 
 
-# `switch/case`{.cpp}
-
-<div class="columns">
-<div class="column" width="48%">
-A sintaxe simplificada do `switch/case`{.cpp} é
-
-\scriptsize
-
-```cpp
-switch (expressão) {
-    // zero ou mais casos
-    case caso1:
-        instruções;
-        break;
-    // ...
-    case cason:
-        instruções;
-        break;
-    // opcional
-    default:
-        instruções;
-        break;
-}
-```
-
-\small
-
-Onde `expressão` precisa gerar um valor do tipo inteiro ou enumerado.
-</div>
-<div class="column" width="48%">
-\small
-\pause
-A instrução `switch/case`{.cpp} funciona da seguinte forma: \pause
-
-A `expressão` é avaliada e seu valor é comparado com cada caso na sequência. \pause
-
-Quando um caso que tem o mesmo valor do resultado da expressão é encontrado, as `instruções` daquele caso são executadas até encontrar um `break`, quando então a instrução `switch/case`{.cpp} termina e o programa continua a execução com a próxima instrução após o `switch/case`{.cpp}. \pause
-
-Se o valor da expressão não é igual a nenhum caso, então as instruções da cláusula `default`{.cpp} são executadas.
-
-</div>
-</div>
-
-
-# `switch/case`{.cpp}
-
-Quando utilizar o `switch/case`{.cpp}? \pause
-
-Quando precisamos analisar o valor de um tipo enumerado ou quando precisamos analisar um conjunto de valores inteiros específicos (ex 1, 3, 4, 5). \pause
-
-Qual é a vantagem de utilizar `switch/case`{.cpp} ao invés de uma sequência de `if`{.cpp}s? \pause
-
-O código fica mais fácil de ler. \pause
-
-O compilador (usando a opção `-Wall`) gera um aviso se esquecermos de algum valor na análise de valores enumerados.
-
-
-
-# Semáforo
-
-Escrevendo a função `proxima_cor` para utilizar o `switch/case`{.cpp} obtemos \pause
-
-\footnotesize
-
-```cpp
-Cor proxima_cor(Cor c) {
-    Cor proxima;
-    switch (c) {
-        case Verde:
-            proxima = Amarelo;
-            break;
-        case Vermelho:
-            proxima = Verde;
-            break;
-        case Amarelo:
-            proxima = Vermelho;
-            break;
-    }
-    return proxima;
-}
-```
-
-
-# Exemplo
+# Exemplo - tempo
 
 Em um determinado programa é necessário exibir para o usuário o tempo que uma operação demorou. Esse tempo está disponível em segundos, mas exibir essa informação em segundos para o usuário pode não ser interessante, afinal, ter uma noção razoável de tempo para 14678 segundos é difícil! \pause
 
@@ -1076,7 +1031,7 @@ a) Projete uma função que converta uma quantidade de segundos para uma quantid
 b) Projete uma função que converta uma quantidade de horas, minutos e segundos em uma string amigável para o usuário. A string não deve conter informações sobre tempo que são zeros (por exemplo, não deve informar 0 minutos).
 
 
-# Exemplo
+# Exemplo - HMS
 
 Análise
 
@@ -1086,7 +1041,7 @@ Definição de tipos de dados
 
 - Os segundos da entrada serão representados com números inteiros positivos \pause
 
-- A saída são três números inteiros positivos... \pause As funções em C++ só podem produzir um valor de saída, como proceder? \pause Vamos criar um novo tipo de dado que agrupa esses três valores.
+- A saída são três números inteiros positivos... \pause As funções em Python só podem produzir um valor de saída, como proceder? \pause Vamos criar um novo tipo de dado que agrupa esses três valores.
 
 
 
@@ -1094,15 +1049,14 @@ Definição de tipos de dados
 
 Vamos relembrar alguns tipos de dados que utilizamos até agora:
 
-- Tipos atômicos pré-definidos (primitivos) na linguagem: `int, double, bool`{.cpp}
-- Tipos atômicos definidos em bibliotecas: `string`{.cpp}
-- Tipos atômicos enumerados definidos pelo usuário: `enum`{.cpp}
+- Tipos atômicos pré-definidos na linguagem: `int, float, bool, str`{.python}
+- Tipos enumerados definidos pelo usuário: `Combustivel`, `Cor`
 
 \pause
 
-Esses tipos são chamados atômicos porque não são compostos por partes. \pause
+Os tipos atômicos têm esse porque não são compostos por partes. \pause
 
-Podemos criar novos tipos de dados a partir de tipos existentes. \pause
+Podemos criar novos tipos agregando partes (campos) de tipos já existentes. \pause
 
 Uma forma de fazer isso é através de tipos estruturas.
 
@@ -1115,12 +1069,16 @@ Um **tipo estrutura** é um tipo de dado composto por um conjunto fixo de campos
 
 A forma geral para definir um tipo estrutura é
 
-```cpp
-struct NomeDoTipo {
-    Tipo1 campo1;
-    Tipo2 campo2;
+\small
+
+```python
+from dataclasses import dataclass
+
+@dataclass
+class NomeDoTipo:
+    campo1: Tipo1
     ...
-};
+    campon: TipoN
 ```
 
 
@@ -1130,24 +1088,25 @@ struct NomeDoTipo {
 
 Podemos definir um novo tipo para representar um tempo da seguinte forma
 
-```cpp
-// Representa o tempo de duração de um evento.
-// horas, minutos e segundos devem ser positivos.
-// minutos e segundos devem ser menores que 60.
-struct Tempo {
-    int horas;
-    int minutos;
-    int segundos;
-};
+```python
+@dataclass
+class Tempo:
+    '''
+    Representa o tempo de duração de um evento.
+    horas, minutos e segundos devem ser positivos.
+    minutos e segundos devem ser menores que 60.
+    '''
+    horas: int
+    minutos: int
+    segundos: int
 ```
 
 \pause
 
-Observações
+Assim como para definição de tipos enumerados, sempre vamos adicionar um comentário sobre o propósito do tipo.
 
-- Assim como para definição de tipos enumerados, sempre vamos adicionar um comentário sobre o propósito do tipo; \pause
-- É necessário finalizar a declaração com um ponto e vírgula.
 
+<!--
 
 # Tipos estruturas
 
