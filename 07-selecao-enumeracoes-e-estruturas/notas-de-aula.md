@@ -291,7 +291,7 @@ Implementação \pause
 
 Quantas "formas" de resposta nós temos? \pause 3. \pause Ou a resposta é `a`, ou a resposta é `b`, ou a resposta é `c`. \pause
 
-Se temos respostas diferentes, então a resposta depende de uma ou mais condições. \pause Então, usamos instruções de seleção. \pause
+Se temos formas de respostas diferentes, então a resposta depende de uma ou mais condições. \pause Então, usamos instruções de seleção. \pause
 
 Qual é a condição para a resposta ser `a`? \pause `a >= b and a >= c`{.python} \pause
 
@@ -830,7 +830,73 @@ def indica_combustivel(preco_alcool: float, preco_gasolina: float) -> str:
 
 Verificação: \pause ok. \pause
 
-Revisão: \pause string não parece ser o tipo apropriado. \pause Pela assinatura da função, "qualquer" string pode ser dada como resposta, mas de fato apenas dois valores são possível: `'alcool'`{.python} e `'gasolina'`{.python}. \pause Podemos melhorar? \pause Sim!
+Revisão: \pause string não parece ser um tipo de dado apropriado... \pause
+
+Vamos parar um momento e conversar sobre a etapa de definição de tipos de dados.
+
+
+# Definição de tipos de dados
+
+Durante a etapa de definição de tipos de dados identificamos as informações e definimos como elas são representadas no programa. \pause
+
+Essa etapa pode ter parecido, até então, muito simples ou talvez até desnecessária, isto porque as informações que precisávamos representar eram "simples". \pause
+
+No entanto, essa etapa é muito importante no projeto de programas, de fato, uma representação adequada pode facilitar a escrita do programa e diminuir as possibilidades de erros, aumentando a confiabilidade do programa. \pause
+
+Mas o que exatamente é um tipo de dado e como projetar um tipo de dado é adequado para representar uma informação?
+
+
+# Tipos de dados
+
+Um **tipo de dado** é o conjunto de valores que uma variável pode assumir. \pause
+
+Exemplos \pause
+
+- `bool`{.python} $= \{$ `True`{.python} , `False`{.python} $\}$ \pause
+- `int`{.python} = $\{\dots, -2, -1, 0, 1, 2, \dots \}$ \pause
+- `float`{.python} = $\{\dots, -0.1, -0.0, 0.0, 0.1, \dots \}$ \pause
+- `str`{.python} = $\{$ `''`{.python}, `'a'`{.python}, `'b'`{.python}, $\dots \}$
+
+
+<!--
+# Tipos de dados
+
+Para uma variável do tipo `bool`{.python}, apenas dois valores são válidos. \pause
+
+Para uma variável do do tipo `int`{.python}, qualquer número inteiro é válido (na prática existe um limite). \pause Em outras linguagens, como C/C+++, um `int`{.c} só pode armazenar inteiros no intervalo de $-2.147.483.648$ a $2.147.483.647$. \pause
+
+Uma variável do tipo `float`{.python} pode assumir um de pouco menos do que $2^{64}$ valores (esses valores estão distribuídos no intervalo de $2.2250738585072014 \times 10^{-308}$ a $1.7976931348623157 \times 10^{308}$).
+-->
+
+
+# Requisitos de um tipo de dado
+
+Um inteiro é adequado para representar a quantidade de pessoas em um planeta? \pause
+
+- Não é adequado pois um número inteiro pode ser negativo mas a quantidade de pessoas em um planeta não pode, ou seja, o tipo de dado permite a representação de valores inválidos. \pause
+
+O ideal seria um número natural, mas o Python não tem um tipo de dado específico para representar apenas números naturais. \pause Outras linguagens oferecem outras opções. Por exemplo, em Rust temos `u32`{.rust} ($0$ a $4.294.967.296$) e `u64`{.rust} ($0$ a $18.446.744.073.709.551.616$). \pause
+
+`u32`{.rust} seria adequado para representar a quantidade de pessoas em um planeta? \pause
+
+- Não pois o número pessoas no planeta terra não está no intervalo de valores válido para o tipo, ou seja, nem todos os valores válidos poder ser representados.
+
+
+# Requisitos de um tipo de dado
+
+Durante a etapa de definição de tipos de dados temos que levar em consideração as seguintes diretrizes:
+
+- Faça os valores válidos representáveis.
+
+- Faça os valores inválidos irrepresentáveis.
+
+\pause
+
+Quando fizemos o projeto da função `indica_combustivel` escolhemos o tipo `str`{.python} para representar a informação do tipo de combustível. Essa escolha é adequada? \pause
+
+Não! Muitos valores válidos para `str`{.python} não correspondem a nenhum valor válido para a informação do tipo de combustível. \pause
+
+Como proceder nesse caso? \pause Vamos definir um novo tipo onde apenas os valores para álcool e gasolina são válidos.
 
 
 # Tipos enumerados
@@ -859,6 +925,8 @@ Vamos definir um tipo enumerado para representar o tipo de combustível.
 
 # Definição do tipo `Combustivel`
 
+\small
+
 ```python
 class Combustivel(Enum):
     '''O tipo do combustivel em um abastecimento'''
@@ -870,7 +938,7 @@ class Combustivel(Enum):
 
 \normalsize
 
-`auto()` é utilizado para associar um número com o valor da enumeração. \pause Se quisermos, podemos escolher um número diretamente. \pause
+`auto()` é utilizado para associar automaticamente um número com o valor da enumeração. \pause Se quisermos, podemos escolher um número explicitamente. \pause
 
 Sempre vamos adicionar um comentário sobre o propósito do tipo, se necessário, adicionamos comentários para os valores da enumeração.
 
@@ -878,6 +946,9 @@ Sempre vamos adicionar um comentário sobre o propósito do tipo, se necessário
 # Uso de tipo enumerado
 
 Cada valor da enumeração tem dois atributos: `name` e `value`. \pause
+
+<div class="columns">
+<div class="column" width="48%">
 
 \small
 
@@ -889,17 +960,32 @@ Cada valor da enumeração tem dois atributos: `name` e `value`. \pause
 1
 >>> c.name
 'ALCOOL'
+```
+
+</div>
+<div class="column" width="48%">
+
+\pause
+
+\small
+
+```python
 >>> c = Combustivel.GASOLINA
+>>> c
+<Combustivel.GASOLINA: 2>
 >>> c.value
 2
 >>> c.name
 'GASOLINA'
 ```
 
+</div>
+</div>
+
 
 # Tipos enumerados
 
-Uma variável do tipo `Combustivel` só pode armazenar o valor `Combustivel.ALCOOL` ou `Combustivel.GASOLINA`, se tentarmos atribuir um valor diferente, o `mypy` indicará um erro. \pause
+Assim como uma variável do tipo `bool`{.python} só pode armazenar os valores `True`{.python} e `False`{.python}, uma variável do tipo `Combustivel` só pode armazenar o valor `Combustivel.ALCOOL` ou `Combustivel.GASOLINA`, se tentarmos atribuir um valor diferente, o `mypy` indicará um erro. \pause
 
 \small
 
@@ -921,7 +1007,7 @@ error: Incompatible types in assignment (expression has type "str",
 ```
 
 
-# Tipos enumerados
+# Quando usar tipos enumerados?
 
 Quando usar tipos enumerados? \pause
 
@@ -932,7 +1018,7 @@ Por que utilizar tipos enumerados? \pause
 Para expressar mais claramente o propósito do código e evitar a utilização de valores inválidos (como `'alcoo'`{.python} em uma variável string que representa o tipo do combustível).
 
 
-# Revisão do projeto de `indica_combustive`
+# Revisão do projeto de `indica_combustivel`
 
 \footnotesize
 
@@ -955,12 +1041,24 @@ def indica_combustivel(preco_alcool: float, preco_gasolina: float) -> Combustive
 ```
 
 
-# Exemplo
+# Exemplo - Semáforo
 
-Projete uma função que receba como entrada a cor atual de um semáforo de trânsito e devolva a próxima cor que será ativada (considere um semáforo com três cores: verde, amarelo e vermelho).
+Projete uma função que receba como entrada a cor atual de um semáforo de trânsito e devolva a próxima cor que será exibida (considere um semáforo com três cores: verde, amarelo e vermelho).
+
+\pause
+
+Análise \pause
+
+- Determinar a próxima cor de um semáforo dado a cor atual \pause
+
+Projeto de tipos de dados \pause
+
+- Quais são as informações? \pause A cor do semáforo. \pause
+
+- Como representar essa informação? \pause Com um tipo enumerado.
 
 
-# Semáforo
+# Exemplo - Semáforo
 
 <div class="columns">
 <div class="column" width="48%">
@@ -995,9 +1093,17 @@ def proxima_cor(atual: Cor) -> Cor:
 </div>
 <div class="column" width="48%">
 
-\scriptsize
+\pause
+
+Implementação
 
 \pause
+
+São três formas de resposta, então usamos seleção com uma condição para cada forma.
+
+\pause
+
+\scriptsize
 
 ```python
 def proxima_cor(atual: Cor) -> Cor:
@@ -1028,10 +1134,10 @@ Em um determinado programa é necessário exibir para o usuário o tempo que uma
 
 a) Projete uma função que converta uma quantidade de segundos para uma quantidade de horas, minutos e segundos equivalentes. \pause
 
-b) Projete uma função que converta uma quantidade de horas, minutos e segundos em uma string amigável para o usuário. A string não deve conter informações sobre tempo que são zeros (por exemplo, não deve informar 0 minutos).
+b) Projete uma função que converta uma quantidade de horas, minutos e segundos em uma string amigável para o usuário (algo como 1 hora, 10 minutos e 2 segundos). A string não deve conter informações sobre tempo que são zeros.
 
 
-# Exemplo - HMS
+# Exemplo - tempo - parte a
 
 Análise
 
@@ -1054,20 +1160,20 @@ Vamos relembrar alguns tipos de dados que utilizamos até agora:
 
 \pause
 
-Os tipos atômicos têm esse porque não são compostos por partes. \pause
+Os tipos atômicos têm esse nome porque não são compostos por partes. \pause
 
 Podemos criar novos tipos agregando partes (campos) de tipos já existentes. \pause
 
-Uma forma de fazer isso é através de tipos estruturas.
+Uma forma de fazer isso é através de tipos compostos (estruturas).
 
 
-# Tipos estruturas
+# Tipos compostos
 
-Um **tipo estrutura** é um tipo de dado composto por um conjunto fixo de campos com nome e tipo.
+Um **tipo composto** é um tipo de dado composto por um conjunto fixo de campos com nome e tipo.
 
 \pause
 
-A forma geral para definir um tipo estrutura é
+A forma geral para definir um tipo composto é
 
 \small
 
@@ -1082,7 +1188,7 @@ class NomeDoTipo:
 ```
 
 
-# Tipos estruturas
+# Tipos compostos
 
 \small
 
@@ -1106,92 +1212,117 @@ class Tempo:
 Assim como para definição de tipos enumerados, sempre vamos adicionar um comentário sobre o propósito do tipo.
 
 
-<!--
+# Tipos compostos
 
-# Tipos estruturas
+Para inicializar uma variável de um tipo composto, chamamos o construtor (função) para o tipo e especificamos os valores dos campos na ordem que eles foram declarados. \pause
 
-Para inicializar uma variável de um tipo estrutura, especificamos os valores dos campos (na ordem que eles foram declarados) entre chaves e separados por vírgula \pause
+\small
 
-```cpp
-Tempo t1 = {0, 20, 10};
-Tempo t2 = {4, 0, 20};
+```python
+>>> t1: Tempo = Tempo(0, 20, 10)
+>>> t1
+Tempo(horas=0, minutos=20, segundos=10)
 ```
 
 \pause
 
-Para exibir um valor de um tipo estrutura podemos utilizar a função `repr` da biblioteca `bscpp`
-
-```cpp
-cout << repr(t1) << endl; // Tempo {0, 20, 10}
+```python
+>>> # A anotação do tipo é opcional
+>>> t2 = Tempo(4, 0, 20)
+>>> t2
+Tempo(horas=4, minutos=0, segundos=20)
 ```
 
 
-# Tipos estruturas
+# Tipos compostos
 
-Como valores do tipo `Tempo` são compostos de outros valores (partes), podemos acessar e alterar cada valor de forma separada. \pause
+Como valores do tipo `Tempo` são compostos de outros valores (campos), podemos acessar e alterar cada campo de forma separada. \pause
 
-```cpp
-Tempo t1 = {0, 20, 10};
+<div class="columns">
+<div class="column" width="48%">
+\small
 
-cout << t1.minutos << endl; // exibe 20
-
-t1.horas = 3; // muda a quantidade de horas para 3
+```python
+>>> t1 = Tempo(0, 20, 10)
+>>> t1.segundos
+10
+>>> t1.minutos
+20
+>>> t1.horas
+0
 ```
 
 \pause
 
-Agora podemos voltar para o nosso problema.
+</div>
+<div class="column" width="48%">
+
+\small
+
+```python
+>>> t1.horas = 3
+>>> t1
+Tempo(horas=3, minutos=20, segundos=10)
+>>> # Podemos deixar o valor em um
+>>> # estado inconsistente...
+>>> t1.segundos = 70
+Tempo(horas=3, minutos=20, segundos=70)
+```
+
+</div>
+</div>
 
 
 # Especificação e implementação
 
 <div class="columns">
-<div class="column" width="65%">
-Especificação
-
+<div class="column" width="55%">
 \scriptsize
 
-```cpp
-// Converte a quantidade segundos para o tempo equivalente em
-// horas, minutos e segundos. A quantidade de segundos e
-// minutos da resposta é sempre menor que 60.
-Tempo segundos_para_tempo(int segundos) {
-    return Tempo {0, 0, 0};
-}
+```python
+def segundos_para_tempo(segundos: int) -> Tempo:
+    '''
+    Converte a quantidade *segundos* para o tempo
+    equivalente em horas, minutos e segundos.
+    A quantidade de segundos e minutos da resposta
+    é sempre menor que 60.
+    Requer que segundos seja não negativo.
 
-examples {
-    // 160 / 60 -> 2
-    // 160 % 60 -> 40
-    check_expect(segundos_para_tempo(160), (Tempo {0, 2, 40}));
-    // 3760 / 3600 -> 1
-    // 3760 % 3600 -> 160 segundos que sobraram
-    // 160 / 60 -> 2
-    // 160 % 60 -> 40
-    check_expect(segundos_para_tempo(3760), (Tempo {1, 2, 40}));
-}
+    Exemplos
+    >>> # 160 // 60 -> 2 mins, 160 % 60 -> 40 segs
+    >>> segundos_para_tempo(160)
+    Tempo(horas=0, minutos=2, segundos=40)
+    >>> # 3760 // 3600 -> 1 hora
+    >>> # 3760 % 3600 -> 160 segundos que sobraram
+    >>> # 160 // 60 -> 2 mins, 160 % 60 -> 40 segs
+    >>> segundos_para_tempo(3760)
+    Tempo(horas=1, minutos=2, segundos=40)
+    '''
+    return Tempo(0, 0, 0)
 ```
 
-\pause
 </div>
-<div class="column" width="33%">
-Implementação
+<div class="column" width="45%">
+\pause
+
+Quantas formas de resposta nós temos? \pause Podemos generalizar para apenas uma forma que utiliza uma sequência de instruções. \pause
 
 \scriptsize
 
-```cpp
-Tempo segundos_para_tempo(int segundos)
-{
-    int h = segundos / 3600;
-    // segundos que não foram
-    // convertidos para hora
-    int restantes = segundos % 3600;
-    int m = restantes / 60;
-    int s = restantes % 60;
-    return Tempo {h, m, s};
-}
+```python
+def segundos_para_tempo(int segundos) -> Tempo:
+    h = segundos / 3600
+    # segundos que não foram
+    # convertidos para hora
+    restantes = segundos % 3600
+    m = restantes / 60
+    s = restantes % 60
+    return Tempo(h, m, s)
 ```
 
 \pause
+
+\normalsize
 
 Verificação: ok \pause
 
@@ -1200,22 +1331,20 @@ Revisão: ok
 </div>
 
 
-# Estruturas
+# Dados compostos
 
-Quando utilizamos estruturas? \pause
+Quando utilizamos dados compostos? \pause
 
 Quando a informação consiste de dois ou mais itens que juntos descrevem uma entidade.
 
 
-# Exemplo
-
-O novo problema inicial era:
+# Exemplo - tempo - parte b
 
 Em um determinado programa é necessário exibir para o usuário o tempo que uma operação demorou. Esse tempo está disponível em segundos, mas exibir essa informação em segundos para o usuário pode não ser interessante, afinal, ter uma noção razoável de tempo para 14678 segundos é difícil!
 
 a) Projete uma função que converta uma quantidade de segundos para uma quantidade de horas, minutos e segundos equivalentes.
 
-b) Projete uma função que converta uma quantidade de horas, minutos e segundos em uma string amigável para o usuário. A string não deve conter informações sobre o tempo que são zeros (por exemplo, não deve informar 0 minutos).
+b) Projete uma função que converta uma quantidade de horas, minutos e segundos em uma string amigável para o usuário (algo como 1 hora, 10 minutos e 2 segundos). A string não deve conter informações sobre tempo que são zeros.
 
 \pause
 
@@ -1226,45 +1355,70 @@ Agora vamos fazer o item b. (Projeto desenvolvido em aula.)
 
 \scriptsize
 
-```cpp
-// Converte t em uma mensagem para o usuário. Cada componente de t aparece
-// com a sua unidade, mas se o valor do componente for 0, ele não aparece na
-// mensagem. Os componentes são separados com " e " ou ", " respeitando as
-// regras do Português. Se t for {0, 0, 0}, devolve "0 segundo(s)".
-string tempo_para_string(Tempo t)
-{
-   return "";
-}
+```python
+def tempo_para_string(t: Tempo) -> str:
+    '''
+    Converte *t* em uma mensagem para o usuário. Cada componente de *t* aparece
+    com a sua unidade, mas se o valor do componente for 0, ele não aparece na
+    mensagem. Os componentes são separados com "e" ou "," respeitando as regras
+    do Português. Se *t* for Tempo(0, 0, 0), devolve "0 segundo(s)".
+    '''
+    return ''
 ```
 
 # Especificação
 
+<div class="columns">
+<div class="column" width="48%">
 \scriptsize
 
-```cpp
-examples {
-    // horas == 0 && minutos == 0
-    check_expect(tempo_para_string(Tempo {0, 0, 0}), "0 segundo(s)");
-    check_expect(tempo_para_string(Tempo {0, 0, 1}), "1 segundo(s)");
-    check_expect(tempo_para_string(Tempo {0, 0, 10}), "10 segundo(s)");
-    // horas == 0 && minutos != 0 && segundos != 0
-    check_expect(tempo_para_string(Tempo {0, 1, 20}), "1 minuto(s) e 20 segundo(s)");
-    // horas == 0 && minutos != 0 && segundos == 0
-    check_expect(tempo_para_string(Tempo {0, 2, 0}), "2 minuto(s)");
-    // horas != 0 && minutos != 0 && segundos != 0
-    check_expect(tempo_para_string(Tempo {1, 2, 1}), "1 hora(s), 2 minuto(s) e 1 segundo(s)");
-    // horas != 0 && minutos == 0 && segundos != 0
-    check_expect(tempo_para_string(Tempo {4, 0, 25}), "4 hora(s) e 25 segundo(s)");
-    // horas != 0 && minutos != 0 && segundos == 0
-    check_expect(tempo_para_string(Tempo {2, 4, 0}), "2 hora(s) e 4 minuto(s)");
-    // horas != 0 && minutos == 0 && segundos == 0
-    check_expect(tempo_para_string(Tempo {3, 0, 0}), "3 hora(s)");
-}
+```python
+>>> # horas == 0 and minutos == 0
+>>> tempo_para_string(Tempo(0, 0, 0))
+'0 segundo(s)'
+>>> tempo_para_string(Tempo(0, 0, 1))
+'1 segundo(s)'
+>>> tempo_para_string(Tempo(0, 0, 10))
+'10 segundo(s)'
+>>> # horas == 0 and minutos != 0 \
+>>> #            and segundos != 0
+>>> tempo_para_string(Tempo(0, 1, 20))
+'1 minuto(s) e 20 segundo(s)'
+>>> # horas == 0 and minutos != 0 \
+>>> #            and segundos == 0
+>>> tempo_para_string(Tempo(0, 2, 0)),
+'2 minuto(s)'
 ```
+
+</div>
+<div class="column" width="48%">
+
+\scriptsize
+
+```python
+>>> # horas != 0 and minutos != 0 and segundos != 0
+>>> tempo_para_string(Tempo(1, 2, 1))
+'1 hora(s), 2 minuto(s) e 1 segundo(s)'
+>>> # horas != 0 and minutos == 0 and segundos != 0
+>>> tempo_para_string(Tempo(4, 0, 25))
+'4 hora(s) e 25 segundo(s)'
+>>> # horas != 0 and minutos != 0 and segundos == 0
+>>> tempo_para_string(Tempo(2, 4, 0))
+'2 hora(s) e 4 minuto(s)'
+>>> # horas != 0 and minutos == 0 and segundos == 0
+>>> tempo_para_string(Tempo(3, 0, 0))
+'3 hora(s)'
+```
+
+</div>
+</div>
+
 
 # Implementação
 
-A implementação direta usando as condições combinadas fica com exercício. \pause
+Quantas formas de resposta existem? \pause 7! \pause Então temos que usar seleção. \pause
+
+A implementação direta usando as condições de cada forma fica com exercício. \pause
 
 A implementação a seguir usando condições aninhadas foi desenvolvida em sala.
 
@@ -1276,35 +1430,30 @@ Implementação
 
 \tiny
 
-```cpp
-string tempo_para_string(Tempo t) {
-    string h = to_string(t.horas) + " hora(s)";
-    string m = to_string(t.minutos) + " minuto(s)";
-    string s = to_string(t.segundos) + " segundo(s)";
-    string msg = "";
-    // nos exemplos são 7 casos distintos
-    if (t.horas > 0) {
-        if (t.minutos > 0) {
-            if (t.segundos > 0) {
-                msg = h + ", " + m + " e " + s;
-            } else {
-                msg = h + " e " + m;
-            }
-        } else if (t.segundos > 0) {
-            msg = h + " e " + s;
-        } else {
-            msg = h;
-        }
-    } else if (t.minutos > 0) {
-        if (t.segundos > 0) {
-            msg = m + " e " + s;
-        } else {
-            msg = m;
-        }
-    } else {
-        msg = s;
-    };
-    return msg; }
+```python
+def tempo_para_string(Tempo t) -> str:
+    string h = str(t.horas) + ' hora(s)'
+    string m = str(t.minutos) + ' minuto(s)'
+    string s = str(t.segundos) + ' segundo(s)'
+    # Temos 7 formas distintas
+    if t.horas > 0:
+        if t.minutos > 0:
+            if t.segundos > 0:
+                msg = h + ', ' + m + ' e ' + s
+            else:
+                msg = h + ' e ' + m
+        elif t.segundos > 0:
+            msg = h + ' e ' + s
+        else:
+            msg = h
+    elif t.minutos > 0:
+        if t.segundos > 0:
+            msg = m + ' e ' + s
+        else:
+            msg = m
+    else:
+        msg = s
+    return msg
 ```
 
 </div>
@@ -1315,35 +1464,28 @@ Implementação alternativa
 
 \tiny
 
-```cpp
-string tempo_para_string(Tempo t) {
-    // usado para separar cada componente de t
-    string sep = "";
-    string msg = "";
-    if (t.segundos > 0) {
-        sep = " e ";
-        msg = to_string(t.segundos) + " segundo(s)";
-    }
+```python
+def tempo_para_string(Tempo t) -> str:
+    # usado para separar cada componente de t
+    sep = ''
+    if t.segundos > 0:
+        sep = ' e '
+        msg = str(t.segundos) + ' segundo(s)'
 
-    if (t.minutos > 0) {
-        msg = to_string(t.minutos) + " minuto(s)" + sep + msg;
-        if (t.segundos > 0) {
-            sep = ", ";
-        } else {
-            sep = " e ";
-        }
-    }
+    if t.minutos > 0:
+        msg = str(t.minutos) + ' minuto(s)' + sep + msg
+        if t.segundos > 0:
+            sep = ', '
+        else:
+            sep = ' e '
 
-    if (t.horas > 0) {
-        msg = to_string(t.horas) + " hora(s)" + sep + msg;
-    }
+    if t.horas > 0:
+        msg = str(t.horas) + ' hora(s)' + sep + msg
 
-    if (msg == "") {
-        msg = "0 segundo(s)";
-    }
+    if msg == '':
+        msg = '0 segundo(s)'
 
-    return msg;
-}
+    return msg
 ```
 </div>
 </div>
@@ -1353,6 +1495,7 @@ string tempo_para_string(Tempo t) {
 
 Modifique a especificação e implementação da função anterior para que o plural dos componentes fique de acordo com o Português.
 
+<!--
 
 # Exemplo
 
@@ -1555,31 +1698,44 @@ bool janelas_soprepoem(Janela a, Janela b)
 }
 ```
 
+# Exemplo - Loteria
 
-# Exemplo
+Em um jogo de loteria os apostadores fazem apostas escolhendo 6 números distintos entre 1 e 60. No sorteio são sorteados 6 números de forma aleatória. Os apostadores que acertam 4, 5 ou 6 números são contemplados com prêmios. Projete uma função que determine quantos números uma determinada aposta acertou.
 
-\small
 
-Em um jogo de loteria os apostadores fazem apostas escolhendo 6 números distintos entre 1 e 60. No sorteio são sorteados 6 números de forma aleatória. Os apostadores que acertam 4, 5 ou 6 números são contemplados com prêmios. Projete uma função que conte quantos números uma determinada aposta acertou.
+# Exemplo - Loteria
+
+Análise \pause
+
+- Determinar o número de acertos de uma aposta de 6 números sendo que 6 números foram sorteados; \pause
+
+- Os números estão entre 1 e 60;
 
 \pause
 
-Projeto desenvolvido em sala.
+Definição de tipos de dados \pause
+
+- Quais são as informações? \pause A aposta de 6 números e os 6 números sorteados. \pause
+
+- Como representar a aposta de 6 números? E os 6 número sorteados? \pause Com um dado composto.
+
 
 # Definição de tipos de dados
 
 \scriptsize
 
-```cpp
-// Coleção de 6 números distintos entre 1 e 60.
-struct SeisNumeros {
-    int a;
-    int b;
-    int c;
-    int d;
-    int e;
-    int f;
-};
+```python
+from dataclasses import dataclass
+
+@dataclass
+class SeisNumeros:
+    '''Coleção de 6 números distintos entre 1 e 60.'''
+    a: int
+    b: int
+    c: int
+    d: int
+    e: int
+    f: int
 ```
 
 \pause
@@ -1593,23 +1749,27 @@ As apostas e os números sorteados serão representados pela estrutura `SeisNume
 
 \scriptsize
 
-```cpp
-// Calcula quantos números da aposta estão em sorteados.
-int numero_acertos(SeisNumeros aposta, SeisNumeros sorteados)
-{
-    return 0;
-}
-
-examples
-{
-    check_expect(numero_acertos({1, 2, 3, 4, 5, 6}, {8, 12, 20, 41, 52, 57}), 0);
-    check_expect(numero_acertos({8, 2, 3, 4, 5, 6}, {8, 12, 20, 41, 52, 57}), 1);
-    check_expect(numero_acertos({8, 12, 3, 4, 5, 6}, {8, 12, 20, 41, 52, 57}), 2);
-    check_expect(numero_acertos({8, 12, 20, 4, 5, 6}, {8, 12, 20, 41, 52, 57}), 3);
-    check_expect(numero_acertos({8, 12, 20, 41, 5, 6}, {8, 12, 20, 41, 52, 57}), 4);
-    check_expect(numero_acertos({8, 12, 20, 41, 52, 6}, {8, 12, 20, 41, 52, 57}), 5);
-    check_expect(numero_acertos({8, 12, 20, 41, 52, 57}, {8, 12, 20, 41, 52, 57}), 6);
-}
+```python
+def numero_acertos(aposta: SeisNumeros, sorteados: SeisNumeros) -> int:
+    '''
+    Determina quantos números da *aposta* estão em *sorteados*.
+    Exemplos
+    >>> numero_acertos(SeisNumeros(1, 2, 3, 4, 5, 6), SeisNumeros(8, 12, 20, 41, 52, 57))
+    0
+    >>> numero_acertos(SeisNumeros(8, 2, 3, 4, 5, 6), SeisNumeros(8, 12, 20, 41, 52, 57))
+    1
+    >>> numero_acertos(SeisNumeros(8, 12, 3, 4, 5, 6), SeisNumeros(8, 12, 20, 41, 52, 57))
+    2
+    >>> numero_acertos(SeisNumeros(8, 12, 20, 4, 5, 6), SeisNumeros(8, 12, 20, 41, 52, 57))
+    3
+    >>> numero_acertos(SeisNumeros(8, 12, 20, 41, 5, 6), SeisNumeros(8, 12, 20, 41, 52, 57))
+    4
+    >>> numero_acertos(SeisNumeros(8, 12, 20, 41, 52, 6), SeisNumeros(8, 12, 20, 41, 52, 57))
+    5
+    >>> numero_acertos(SeisNumeros(8, 12, 20, 41, 52, 57), SeisNumeros(8, 12, 20, 41, 52, 57))
+    6
+    '''
+    return 0
 ```
 
 \normalsize
@@ -1631,7 +1791,7 @@ E assim com o restante dos números. No final, temos a quantidade de acertos. \p
 
 Este processo não parece muito detalhado... \pause como verificamos se um número está entre os sorteados? \pause Vamos deixar esse problema para depois. \pause
 
-Como expressar esse processo em C++? \pause Com uma sequência de etapas, como em muitos exercícios anteriores.
+Como expressar esse processo? \pause Com uma sequência de instruções, como em muitos exercícios anteriores.
 
 
 # Implementação
@@ -1640,27 +1800,24 @@ Como expressar esse processo em C++? \pause Com uma sequência de etapas, como e
 <div class="column" width="48%">
 \scriptsize
 
-```cpp
-int acertos = 0;
-if (sorteado(aposta.a, sorteados)) {
-    acertos = acertos + 1;
-}
-if (sorteado(aposta.b, sorteados)) {
-    acertos = acertos + 1;
-}
-if (sorteado(aposta.c, sorteados)) {
-    acertos = acertos + 1;
-}
-if (sorteado(aposta.d, sorteados)) {
-    acertos = acertos + 1;
-}
-if (sorteado(aposta.e, sorteados)) {
-    acertos = acertos + 1;
-}
-if (sorteado(aposta.f, sorteados)) {
-    acertos = acertos + 1;
-}
-return acertos;
+```python
+def numero_acertos(
+        aposta: SeisNumeros,
+        sorteados: SeisNumeros) -> int:
+    acertos = 0
+    if sorteado(aposta.a, sorteados):
+        acertos = acertos + 1
+    if sorteado(aposta.b, sorteados):
+        acertos = acertos + 1
+    if sorteado(aposta.c, sorteados):
+        acertos = acertos + 1
+    if sorteado(aposta.d, sorteados):
+        acertos = acertos + 1;
+    if sorteado(aposta.e, sorteados):
+        acertos = acertos + 1
+    if sorteado(aposta.f, sorteados):
+        acertos = acertos + 1
+    return acertos
 ```
 </div>
 <div class="column" width="48%">
@@ -1668,25 +1825,28 @@ return acertos;
 
 \small
 
-Aqui utilizamos o pensamento desejoso e desejamos que a função `sorteado`{.cpp} exista e funcione de acordo com a seguinte especificação:
+Aqui utilizamos o pensamento desejoso e desejamos que a função `sorteado`{.python} exista e funcione de acordo com a seguinte especificação:
 
 \scriptsize
 
-```cpp
-// Produz true se n é um dos números em sorteados,
-// false caso contrário.
-bool sorteado(int n, SeisNumeros sorteados);
+```python
+def sorteado(n: int, sorteados: SeisNumeros) -> bool:
+    '''
+    Produz True se *n* é um dos números
+    em *sorteados*. False caso contrário.
+    '''
+    return False
 ```
 
 \small
 
 \pause
 
-Todas as funções que desejamos durante o projeto de outra função são colocas em uma lista de pendência. Após o término da implementação da função em questão, precisamos implementar as funções da lista de pendências.
+Todas as funções que desejamos durante o projeto de outra função são colocas em uma lista de pendências. Após o término da implementação da função em questão, precisamos implementar as funções da lista de pendências.
 
 \pause
 
-Agora precisamos terminar o projeto da função `sorteado`{.cpp}.
+Agora precisamos terminar o projeto da função `sorteado`{.python}.
 
 </div>
 </div>
