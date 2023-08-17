@@ -1,10 +1,13 @@
 ---
 # vim: set spell spelllang=pt_br:
 title: Seleção, enumerações e estruturas
-# TODO: deixar claro que cada bloco pode ter mais que uma instrução
+# TODO: deixar claro que cada bloco pode ter mais de uma instrução
 # TODO: dar nome ao processo de criar a implementação analisando as formas de resposta
 # TODO: falar do contrato de função, entre o fornecedor e o usuário da função
+# TODO: explicar diretamente como escrever os exemplos para funções que retornam enum
 # TODO: apresentar match/case?
+# TODO: adicionar mais exemplos (juntando estruturas e enumerações, contagem de tipos de sorvertes?)
+#       a questão é que atualizar uma contagem pode requerer passagem por referência.
 ---
 
 # Introdução
@@ -56,6 +59,9 @@ Agora veremos a **instrução de seleção** `if else`{.python} (se e senão em 
 
 # Seleção
 
+<div class="columns">
+<div class="column" width="48%">
+
 A forma geral do `if else`{.python} é:
 
 ```cpp
@@ -67,10 +73,16 @@ else:
 
 \pause
 
+</div>
+<div class="column" width="48%">
+
 Como a instrução `if else`{.python} é executada? \pause O Python avalia a condição e verifica o resultado \pause
 
 - Se o resultado for `True`{.python}, então as instruções do bloco "instruções então" são executadas; \pause
 - Senão (o resultado é `False`{.python}), as instruções do bloco "instruções senão" são executadas;
+
+</div>
+</div>
 
 
 # Exemplo
@@ -149,6 +161,8 @@ def maximo(a: int, b: int) -> int:
 </div>
 <div class="column" width="46%">
 \pause
+
+Vamos treinar mais uma vez a execução passo a passo. \pause
 
 Qual é a ordem que as linhas são executadas para o exemplo `maximo(10, 8)`{.python}? \pause
 
@@ -297,7 +311,9 @@ Qual é a condição para a resposta ser `a`? \pause `a >= b and a >= c`{.python
 
 Qual é a condição para a resposta ser `b`? \pause `b >= a and b >= c`{.python} \pause
 
-Qual é a condição para a resposta ser `c`? \pause `c >= a and c >= b`{.python}
+Qual é a condição para a resposta ser `c`? \pause `c >= a and c >= b`{.python} \pause
+
+Agora podemos escrever o corpo da função!
 
 </div>
 </div>
@@ -325,8 +341,13 @@ def maximo3(a: int, b: int, c: int) -> int:
     return m
 ```
 
+\pause
+
 </div>
 <div class="column" width="45%">
+
+Vamos treinar mais uma vez a execução passo a passo. \pause
+
 Qual é a ordem que as linhas são executadas para o exemplo a seguir:
 
 `maximo(10, 6, 8)`{.python}? \pause 6, \pause 7, \pause 13 \pause
@@ -341,13 +362,14 @@ Qual é a ordem que as linhas são executadas para o exemplo a seguir:
 # Verificação e revisão
 
 <div class="columns">
-<div class="column" width="65%">
-\small
+<div class="column" width="60%">
+\footnotesize
 
 ```python
 def maximo3(a: int, b: int, c: int) -> int:
     '''
-    Encontra o valor máximo entre *a*, *b* e *c*.
+    Encontra o valor máximo entre
+    *a*, *b* e *c*.
     '''
     if a >= b and a >= c:
         m = a
@@ -360,9 +382,7 @@ def maximo3(a: int, b: int, c: int) -> int:
 ```
 
 </div>
-<div class="column" width="35%">
-
-\small
+<div class="column" width="40%">
 
 \pause
 
@@ -370,7 +390,7 @@ Verificação: \pause ok. \pause
 
 Revisão \pause
 
-Podemos modificar o código para torná-lo mais fácil de ler e entender? \pause
+Podemos modificar o código para torná-lo mais fácil de ler e entender? \pause Sim!
 
 O Python permite "juntar" um `else`{.python} seguido de um `if`{.python} em um `elif`{.python}. Isto ajuda a diminuir os níveis de indentação, facilitando a escrita e leitura do código.
 </div>
@@ -379,12 +399,13 @@ O Python permite "juntar" um `else`{.python} seguido de um `if`{.python} em um `
 
 # Revisão
 
-\small
+\footnotesize
 
 ```python
 def maximo3(a: int, b: int, c: int) -> int:
     '''
-    Encontra o valor máximo entre *a*, *b* e *c*.
+    Encontra o valor máximo entre
+    *a*, *b* e *c*.
     '''
     if a >= b and a >= c:
         m = a
@@ -501,9 +522,9 @@ def maximo3(a: int, b: int, c: int) -> int:
 </div>
 <div class="column" width="40%">
 \pause
-Qual o propósito do bloco das linhas 3 a 6? \pause Encontrar o máximo entre `a` e `c`. \pause
+Qual o propósito do bloco das linhas de 3 à 6? \pause Encontrar o máximo entre `a` e `c`. \pause
 
-Qual o propósito do bloco das linhas 8 a 11? \pause Encontrar o máximo entre `b` e `c`. \pause
+Qual o propósito do bloco das linhas de 8 à 11? \pause Encontrar o máximo entre `b` e `c`. \pause
 
 Já temos uma função para encontrar o máximo entre dois números? \pause Sim! \pause A função `maximo` que fizemos anteriormente. \pause
 
@@ -517,7 +538,7 @@ Então vamos usar a função!
 <div class="columns">
 <div class="column" width="60%">
 
-\small
+\footnotesize
 
 ```{.python .number-lines}
 def maximo3(a: int, b: int, c: int) -> int:
@@ -548,7 +569,7 @@ def maximo3(a: int, b: int, c: int) -> int:
 
 Poderíamos ter chegado nessa implementação na primeira vez? \pause
 
-Sim, mas nesse caso, deveríamos ter visto que as três formas de resposta distintas poderiam ter sido generalizadas em uma única forma, que é `maximo(maximo(a, b), c)`{.python}. Essa generalização direta requer prática, por enquanto, podemos fazer os casos distintos e tentar durante a revisão simplificar o código.
+Sim, mas nesse caso, deveríamos ter visto que as três formas de resposta distintas poderiam ter sido generalizadas em uma única forma, que é `maximo(maximo(a, b), c)`{.python}. Essa generalização direta requer prática, por enquanto, podemos fazer os casos distintos e tentar, durante a revisão, simplificar o código.
 
 
 # Execução passo a passo
@@ -763,7 +784,7 @@ def ponto_final(texto: str) -> str:
 </div>
 
 
-# Álcool ou Gasolina?
+# Exemplo - Álcool ou Gasolina?
 
 <div class="columns">
 <div class="column" width="48%">
@@ -843,7 +864,7 @@ Essa etapa pode ter parecido, até então, muito simples ou talvez até desneces
 
 No entanto, essa etapa é muito importante no projeto de programas, de fato, uma representação adequada pode facilitar a escrita do programa e diminuir as possibilidades de erros, aumentando a confiabilidade do programa. \pause
 
-Mas o que exatamente é um tipo de dado e como projetar um tipo de dado é adequado para representar uma informação?
+Mas o que exatamente é um tipo de dado e como projetar um tipo de dado adequado para representar uma informação?
 
 
 # Tipos de dados
@@ -879,7 +900,7 @@ O ideal seria um número natural, mas o Python não tem um tipo de dado específ
 
 `u32`{.rust} seria adequado para representar a quantidade de pessoas em um planeta? \pause
 
-- Não pois o número pessoas no planeta terra não está no intervalo de valores válido para o tipo, ou seja, nem todos os valores válidos poder ser representados.
+- Não pois o número pessoas no planeta terra não está no intervalo de valores válidos para o tipo, ou seja, nem todos os valores válidos poder ser representados.
 
 
 # Requisitos de um tipo de dado
@@ -1134,16 +1155,16 @@ Em um determinado programa é necessário exibir para o usuário o tempo que uma
 
 a) Projete uma função que converta uma quantidade de segundos para uma quantidade de horas, minutos e segundos equivalentes. \pause
 
-b) Projete uma função que converta uma quantidade de horas, minutos e segundos em uma string amigável para o usuário (algo como 1 hora, 10 minutos e 2 segundos). A string não deve conter informações sobre tempo que são zeros.
+b) Projete uma função que converta uma quantidade de horas, minutos e segundos em uma string amigável para o usuário (algo como 1 hora, 10 minutos e 2 segundos). A string não deve conter valores zeros.
 
 
 # Exemplo - tempo - parte a
 
-Análise
+Análise \pause
 
 - Converter uma quantidade de segundos em horas, minutos e segundos. \pause
 
-Definição de tipos de dados
+Definição de tipos de dados \pause
 
 - Os segundos da entrada serão representados com números inteiros positivos \pause
 
@@ -1344,11 +1365,11 @@ Em um determinado programa é necessário exibir para o usuário o tempo que uma
 
 a) Projete uma função que converta uma quantidade de segundos para uma quantidade de horas, minutos e segundos equivalentes.
 
-b) Projete uma função que converta uma quantidade de horas, minutos e segundos em uma string amigável para o usuário (algo como 1 hora, 10 minutos e 2 segundos). A string não deve conter informações sobre tempo que são zeros.
+b) Projete uma função que converta uma quantidade de horas, minutos e segundos em uma string amigável para o usuário (algo como 1 hora, 10 minutos e 2 segundos). A string não deve conter valores zeros.
 
 \pause
 
-Agora vamos fazer o item b. (Projeto desenvolvido em aula.)
+Agora vamos fazer o item b.
 
 
 # Especificação
@@ -1380,13 +1401,15 @@ def tempo_para_string(t: Tempo) -> str:
 '1 segundo(s)'
 >>> tempo_para_string(Tempo(0, 0, 10))
 '10 segundo(s)'
+
 >>> # horas == 0 and minutos != 0 \
 >>> #            and segundos != 0
 >>> tempo_para_string(Tempo(0, 1, 20))
 '1 minuto(s) e 20 segundo(s)'
+
 >>> # horas == 0 and minutos != 0 \
 >>> #            and segundos == 0
->>> tempo_para_string(Tempo(0, 2, 0)),
+>>> tempo_para_string(Tempo(0, 2, 0))
 '2 minuto(s)'
 ```
 
@@ -1399,12 +1422,15 @@ def tempo_para_string(t: Tempo) -> str:
 >>> # horas != 0 and minutos != 0 and segundos != 0
 >>> tempo_para_string(Tempo(1, 2, 1))
 '1 hora(s), 2 minuto(s) e 1 segundo(s)'
+
 >>> # horas != 0 and minutos == 0 and segundos != 0
 >>> tempo_para_string(Tempo(4, 0, 25))
 '4 hora(s) e 25 segundo(s)'
+
 >>> # horas != 0 and minutos != 0 and segundos == 0
 >>> tempo_para_string(Tempo(2, 4, 0))
 '2 hora(s) e 4 minuto(s)'
+
 >>> # horas != 0 and minutos == 0 and segundos == 0
 >>> tempo_para_string(Tempo(3, 0, 0))
 '3 hora(s)'
@@ -1420,7 +1446,7 @@ Quantas formas de resposta existem? \pause 7! \pause Então temos que usar sele�
 
 A implementação direta usando as condições de cada forma fica com exercício. \pause
 
-A implementação a seguir usando condições aninhadas foi desenvolvida em sala.
+A implementação a seguir usa condições aninhadas.
 
 #
 
@@ -1432,9 +1458,9 @@ Implementação
 
 ```python
 def tempo_para_string(Tempo t) -> str:
-    string h = str(t.horas) + ' hora(s)'
-    string m = str(t.minutos) + ' minuto(s)'
-    string s = str(t.segundos) + ' segundo(s)'
+    h = str(t.horas) + ' hora(s)'
+    m = str(t.minutos) + ' minuto(s)'
+    s = str(t.segundos) + ' segundo(s)'
     # Temos 7 formas distintas
     if t.horas > 0:
         if t.minutos > 0:
@@ -1468,6 +1494,7 @@ Implementação alternativa
 def tempo_para_string(Tempo t) -> str:
     # usado para separar cada componente de t
     sep = ''
+    msg = ''
     if t.segundos > 0:
         sep = ' e '
         msg = str(t.segundos) + ' segundo(s)'
@@ -1495,208 +1522,6 @@ def tempo_para_string(Tempo t) -> str:
 
 Modifique a especificação e implementação da função anterior para que o plural dos componentes fique de acordo com o Português.
 
-<!--
-
-# Exemplo
-
-\small
-
-Segundo a Wikipédia, um pixel é o menor elemento de um dispositivo de exibição, como por exemplo, um monitor, ao qual é possível atribuir uma cor. Nos monitores atuais, os pixels são organizados em linhas e colunas, de maneira a formar a imagem exibida. Cada pixel pode ser referenciado por uma coordenada, que é o número da linha e coluna que ele aparece. Por exemplo, em um monitor de 1080 linhas e 1920 colunas, o pixel no canto superior esquerdo está na posição (0, 0), enquanto o pixel no canto inferior direito está na posição (1079, 1919). \pause
-
-Em um ambiente gráfico com janelas, quando um usuário faz um clique com o mouse é necessário identificar em qual janela ocorreu o clique. Considerando que o espaço que uma janela ocupa pode ser representada pela coordenada do canto superior esquerdo e pela quantidade de pixels da largura e da altura da janela \pause
-
-a) Projete uma função que receba como parâmetros as informações sobre uma janela e um clique do mouse e determine se o clique aconteceu sobre a janela. \pause
-
-b) Projete uma função que verifique se os espaços de duas janelas se sobrepõem.
-
-
-# Definição de tipos de dados
-
-Projeto desenvolvido em aula.
-
-
-# Definição de tipos de dados
-
-\scriptsize
-
-```cpp
-// Representa o espaço que uma janela ocupa em um ambiente gráfico.
-//
-// A coordenada (x, y) descreve a posição do canto superior esquerdo.
-// A largura representa a quantidade de pixels à direita de (x, y)
-// e a altura representa a quantidade de pixels abaixo de (x, y).
-//
-// Os valores da largura e altura devem ser maiores que zero.
-struct Janela {
-    int x;
-    int y;
-    int largura;
-    int altura;
-};
-```
-
-\pause
-
-```cpp
-// Representa a posição de um clique em um ambiente gráfico.
-// Os valores de x e y devem ser maiores que 0 e menores do que as dimensões do
-// ambiente.
-struct Clique {
-    int x;
-    int y;
-};
-```
-
-
-# Especificação
-
-\scriptsize
-
-```cpp
-// Devolve true se o clique c está dentro do espaço da janela j, false contrário.
-bool dentro_janela(Janela j, Clique c)
-{
-   return false;
-}
-```
-
-# Especificação
-
-\scriptsize
-
-```cpp
-examples {
-    //  x = 100, y = 100, largura = 300, altura = 200
-    //
-    //        p5
-    //      +-----------+
-    //  p4  | p1        | p2
-    //      |           |
-    //      +-----------+
-    //        p3
-    Janela janela = { 100, 100, 300, 200 };
-    // p1 - dentro da janela
-    check_expect(dentro_janela(janela, { 150, 150 }), true);
-    // p2 - dentro do espaço da altura e depois do espaço da largura
-    check_expect(dentro_janela(janela, { 600, 150 }), false);
-    // p3 - depois do espaço da altura e dentro do espaço da largura
-    check_expect(dentro_janela(janela, { 150, 300 }), false);
-    // p4 - dentro do espaço da altura e antes do espaço da largura
-    check_expect(dentro_janela(janela, { 150, 50 }), false);
-    // p5 - antes do espaço da altura e dentro do espaço da largura
-    check_expect(dentro_janela(janela, { 150, 50 }), false);
-```
-
-
-# Especificação
-
-\scriptsize
-
-```cpp
-    // canto superior esquerdo
-    check_expect(dentro_janela(janela, { 100, 100 }), true);
-    // canto superior direito
-    check_expect(dentro_janela(janela, { 399, 100 }), true);
-    check_expect(dentro_janela(janela, { 400, 100 }), false);
-    // canto inferior direito
-    check_expect(dentro_janela(janela, { 399, 299 }), true);
-    check_expect(dentro_janela(janela, { 400, 299 }), false);
-    check_expect(dentro_janela(janela, { 399, 300 }), false);
-    check_expect(dentro_janela(janela, { 400, 300 }), false);
-    // canto inferior esquerdo
-    check_expect(dentro_janela(janela, { 100, 299 }), true);
-    check_expect(dentro_janela(janela, { 100, 300 }), false);
-}
-```
-
-# Implementação
-
-\scriptsize
-
-```cpp
-// Devolve true se o clique c está dentro do espaço da janela j, false contrário.
-bool dentro_janela(Janela j, Clique c)
-{
-    // c.x está dentro do espaço da largura e c.y dentro do espaço da altura
-    return j.x <= c.x && c.x < (j.x + j.largura) && j.y <= c.y && c.y < (j.y + j.altura);
-}
-```
-
-\pause
-
-\normalsize
-
-Verificação: ok \pause
-
-Revisão: ok
-
-
-# Especificação
-
-\scriptsize
-
-```cpp
-// Produz true se o espaço das janelas a e b se soprepõem, false caso contrário.
-bool janelas_soprepoem(Janela a, Janela b)
-{
-    return false;
-}
-
-examples
-{
-    // fixa (eixo y): a janela a vem antes da janela b
-    // variável: posição da borda direita de a
-    check_expect(janelas_soprepoem({  10, 20, 100, 200 }, { 300, 400, 50, 100 }), false);
-    check_expect(janelas_soprepoem({ 210, 20, 100, 200 }, { 300, 400, 50, 100 }), false);
-    check_expect(janelas_soprepoem({ 310, 20, 100, 200 }, { 300, 400, 50, 100 }), false);
-    check_expect(janelas_soprepoem({ 410, 20, 100, 200 }, { 300, 400, 50, 100 }), false);
-    // fixa: (eixo y) interseção da parte de baixo de a com a parte de cima de b
-    // variável: posição da borda direita de a
-    check_expect(janelas_soprepoem({  10, 250, 100, 200 }, { 300, 400, 50, 100 }), false);
-    check_expect(janelas_soprepoem({ 210, 250, 100, 200 }, { 300, 400, 50, 100 }), true);
-    check_expect(janelas_soprepoem({ 310, 250, 100, 200 }, { 300, 400, 50, 100 }), true);
-    check_expect(janelas_soprepoem({ 410, 250, 100, 200 }, { 300, 400, 50, 100 }), false);
-```
-
-# Especificação
-
-\scriptsize
-
-```cpp
-    // fixa: (eixo y) interseção da parte de cima de a com a parte de baixo de b
-    // variável: posição da borda direita de a
-    check_expect(janelas_soprepoem({  10, 450, 100, 200 }, { 300, 400, 50, 100 }), false);
-    check_expect(janelas_soprepoem({ 210, 450, 100, 200 }, { 300, 400, 50, 100 }), true);
-    check_expect(janelas_soprepoem({ 310, 450, 100, 200 }, { 300, 400, 50, 100 }), true);
-    check_expect(janelas_soprepoem({ 410, 450, 100, 200 }, { 300, 400, 50, 100 }), false);
-    // fixa: (eixo y) a janela a vem depois da janela b
-    // variável: posição da borda direita de a
-    check_expect(janelas_soprepoem({  10, 550, 100, 200 }, { 300, 400, 50, 100 }), false);
-    check_expect(janelas_soprepoem({ 210, 550, 100, 200 }, { 300, 400, 50, 100 }), false);
-    check_expect(janelas_soprepoem({ 310, 550, 100, 200 }, { 300, 400, 50, 100 }), false);
-    check_expect(janelas_soprepoem({ 410, 550, 100, 200 }, { 300, 400, 50, 100 }), false);
-}
-```
-
-
-# Implementação
-
-\scriptsize
-
-```cpp
-// Produz true se o espaço das janelas a e b se soprepõem, false caso contrário.
-bool janelas_soprepoem(Janela a, Janela b)
-{
-    return a.x < (b.x + b.largura) &&
-           // borda direta de a vem antes da borda esquerda de b
-           b.x < (a.x + a.largura) &&
-           // borda direta de b vem antes da borda esquerda de a
-           a.y < (b.y + b.altura) &&
-           // borda superior de a vem antes da borda inferior de b
-           b.y < (a.y + a.altura);
-           // borda superior de b vem antes da borda inferior de a
-}
-```
 
 # Exemplo - Loteria
 
@@ -1776,7 +1601,7 @@ def numero_acertos(aposta: SeisNumeros, sorteados: SeisNumeros) -> int:
 
 \pause
 
-Qual o processo que utilizamos para determinar as respostas?
+Qual o processo que utilizamos para determinar a resposta?
 
 
 # Especificação
@@ -1856,25 +1681,29 @@ Agora precisamos terminar o projeto da função `sorteado`{.python}.
 
 \scriptsize
 
-```cpp
-// Produz true se n é um dos números em sorteados, false caso contrário.
-bool sorteado(int n, SeisNumeros sorteados)
-{
-    return false;
-}
-
-examples {
-    SeisNumeros sorteados = {1, 7, 10, 40, 41, 60};
-    check_expect(sorteado(1, sorteados), true);
-    check_expect(sorteado(7, sorteados), true);
-    check_expect(sorteado(10, sorteados), true);
-    check_expect(sorteado(40, sorteados), true);
-    check_expect(sorteado(41, sorteados), true);
-    check_expect(sorteado(60, sorteados), true);
-    check_expect(sorteado(2, sorteados), false);
-    check_expect(sorteado(15, sorteados), false);
-    check_expect(sorteado(49, sorteados), false);
-}
+```python
+def sorteado(n: int, sorteados: SeisNumeros) -> bool:
+    '''
+    Produz True se *n* é um dos números
+    em *sorteados*. False caso contrário.
+    Exemplos
+    >>> sorteados = SeisNumeros(1, 7, 10, 40, 41, 60)
+    >>> sorteado(1, sorteados)
+    True
+    >>> sorteado(7, sorteados)
+    True
+    >>> sorteado(10, sorteados)
+    True)
+    >>> sorteado(40, sorteados)
+    True
+    >>> sorteado(41, sorteados)
+    True
+    >>> sorteado(60, sorteados)
+    True
+    >>> sorteado(2, sorteados)
+    False
+    ```
+    return False
 ```
 
 \pause
@@ -1886,80 +1715,43 @@ Qual o processo que utilizamos para determinar as respostas?
 
 # Implementação
 
-Verificamos se `n` é igual ao primeiro valor sorteado, se sim, guardamos a resposta `true`{.cpp}. \pause
+Verificamos se `n` é igual ao primeiro valor sorteado, se sim, guardamos a resposta `True`{.python}. \pause
 
-Senão, verificamos se `n` é igual ao segundo valor sorteado, se sim, guardamos a resposta `true`{.cpp}. \pause
+Senão, verificamos se `n` é igual ao segundo valor sorteado, se sim, guardamos a resposta `True`{.python}. \pause
 
-Senão, verificamos se `n` é igual ao terceiro valor... Senão guardamos a resposta `false`{.cpp}. \pause
+Senão, verificamos se `n` é igual ao terceiro valor... Senão guardamos a resposta `False`{.python}. \pause
 
-Como expressar esse processo em C++? \pause Com uma sequência de etapas! \pause Aqui vamos fazer uma simplificação para evitar o aninhamento demasiado de ifs. \pause Vamos colocar um if após o outro (você consegue ver que este processo alternativo continua correto?)
-
+Vamos escrever esse processo!
 
 
 # Implementação
 
-<div class="columns">
-<div class="column" width="48%">
-\tiny
+\small
 
-```cpp
-// Produz true se n é um dos números
-// em sorteados, false caso contrário.
-bool sorteado(int n, SeisNumeros sorteados)
-{
-    bool sorteado = false;
-    if (n == sorteados.a) {
-        sorteado = true;
-    }
-    if (n == sorteados.b) {
-        sorteado = true;
-    }
-    if (n == sorteados.c) {
-        sorteado = true;
-    }
-    if (n == sorteados.d) {
-        sorteado = true;
-    }
-    if (n == sorteados.e) {
-        sorteado = true;
-    }
-    if (n == sorteados.f) {
-        sorteado = true;
-    }
-    return sorteado;
-}
+```python
+def sorteado(n: int, sorteados: SeisNumeros) -> bool:
+    if n == sorteados.a:
+        sorteado = True
+    elif n == sorteados.b:
+        sorteado = True
+    elif n == sorteados.c:
+        sorteado = True
+    elif n == sorteados.d:
+        sorteado = True
+    elif n == sorteados.e:
+        sorteado = True
+    elif n == sorteados.f:
+        sorteado = True
+    else:
+        sorteado = False
+    return sorteado
 ```
-</div>
-<div class="column" width="48%">
-
-\pause
-
-Implementação alternativa.
-
-\tiny
-
-```cpp
-// Produz true se n é um dos números
-// em sorteados, false caso contrário.
-bool sorteado(int n, SeisNumeros sorteados)
-{
-    return n == sorteados.a ||
-        n == sorteados.b ||
-        n == sorteados.c ||
-        n == sorteados.d ||
-        n == sorteados.e ||
-        n == sorteados.f;
-}
-```
-
-</div>
-</div>
 
 
 # Verificação e Revisão
 
 Verificação: \pause ok \pause
 
-Revisão: \pause o código parece repetitivo... \pause Vamos ver novas construções!
+Revisão: \pause o código parece repetitivo... \pause Como resolver essa questão? \pause
 
--->
+Usando instrução de repetição! \pause Vamos continuar na próxima aula.
