@@ -1815,7 +1815,7 @@ Começamos a resposta com `False`{.python}, \pause se `n == a`{.python} mudamos 
 def sorteado(n: int,
              sorteados: SeisNumeros)
              -> bool:
-    em_sorteado = False
+    em_sorteados = False
     if n == sorteados.a:
         em_sorteados = True
     if n == sorteados.b:
