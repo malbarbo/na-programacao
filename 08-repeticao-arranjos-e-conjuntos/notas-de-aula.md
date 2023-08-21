@@ -11,8 +11,6 @@ Vimos anteriormente que devemos definir uma estrutura para representar uma infor
 
 - No problema da conversão de segundos para horas, minutos e segundos, definimos a estrutura `Tempo`. \pause
 
-- No problema do ambiente gráfico, definimos as estruturas `Janela` e `Clique`. \pause
-
 - No problema da loteria, definimos a estrutura `SeisNumeros`.
 
 
@@ -27,83 +25,13 @@ Como faríamos se ao invés de 6 itens tivéssemos 20? \pause E 1.000? \pause E 
 Vamos ver como fazer essas coisas!
 
 
-# Arranjos de tamanho fixo
+# Arranjos
 
-Quando precisamos representar uma coleção com um número fixo de valores da mesma natureza (todos os itens são notas, nomes, pontos, janelas, etc), utilizamos arranjos de tamanho fixo. \pause
+Quando precisamos representar uma coleção de valores da mesma natureza (todos os itens são notas, nomes, pontos, janelas, etc), utilizamos arranjos. \pause
 
-Os arranjos em C++ são definidos na biblioteca `array`. Quando declaramos uma variável do tipo arranjo, precisamos especificar o tipo e a quantidade de elementos. A inicialização é feita de forma semelhante a valores do tipo estrutura.
+Os arranjos em Python são dinâmicos, isto é, podem mudar de tamanho. \pause
 
-
-# Arranjos de tamanho fixo
-
-\scriptsize
-
-```cpp
-
-#include <array>
-using namespace std;
-
-examples
-{
-    array<int, 4> valores = {10, 4, 9, -1};
-    array<string, 3> nomes = {"joao", "jose", "maria"};
-```
-
-\pause
-
-\normalsize
-
-Para ler ou modificar um valor específico do arranjo, especificamos o seu índice entre colchetes \pause
-
-\scriptsize
-
-```cpp
-    check_expect(valores[0], 10);
-    check_expect(nomes[2], "maria");
-
-    check_expect(valores[1], 4);
-    valores[1] = 25;
-    check_expect(valores[1], 25);
-}
-```
-
-\pause
-
-\normalsize
-
-Observe que o primeiro elemento de um arranjo tem índice 0.
-
-
-# Arranjos de tamanho fixo
-
-O valor do índice deve estar no intervalo válido para o arranjo, caso contrário, o programa pode não funcionar corretamente. \pause Por padrão, os índices dos arranjos não são verificados antes de serem acessados. \pause
-
-Para habilitar a verificação do índice no acesso aos elementos devemos usar o método `at`. \pause
-
-\scriptsize
-
-```cpp
-array<int, 4> valores = {10, 4, 9, -1};
-check_expec(valores.at(1), 4);
-valores.at(1) = 12;
-check_expec(valores.at(1), 12);
-```
-
-\pause
-
-No caso de
-
-```cpp
-valores.at(4);
-```
-
-o seguinte erro é gerado
-
-```
-terminate called after throwing an instance of 'std::out_of_range'
-  what():  array::at: __n (which is 4) >= _Nm (which is 4)
-Abortado
-```
+Usamos o tipo `list`{.python} para arranjos dinâmicos.
 
 
 # Estruturas vs Arranjos
@@ -123,66 +51,51 @@ No exemplo da loteria, os itens da aposta e dos resultados têm a mesma natureza
 
 <div class="columns">
 <div class="column" width="48%">
-\tiny
+\scriptsize
 
-```cpp
-// Produz true se n é um dos números
-// em sorteados, false caso contrário.
-bool sorteado(int n, SeisNumeros sorteados)
-{
-    bool sorteado = false;
-    if (n == sorteados.a) {
-        sorteado = true;
-    }
-    if (n == sorteados.b) {
-        sorteado = true;
-    }
-    if (n == sorteados.c) {
-        sorteado = true;
-    }
-    if (n == sorteados.d) {
-        sorteado = true;
-    }
-    if (n == sorteados.e) {
-        sorteado = true;
-    }
-    if (n == sorteados.f) {
-        sorteado = true;
-    }
-    return sorteado;
-}
+```python
+def sorteado(n: int,
+             sorteados: SeisNumeros)
+             -> bool:
+    em_sorteados = False
+    if n == sorteados.a:
+        em_sorteados = True
+    if n == sorteados.b:
+        em_sorteados = True
+    if n == sorteados.c:
+        em_sorteados = True
+    if n == sorteados.d:
+        em_sorteados = True
+    if n == sorteados.e:
+        em_sorteados = True
+    if n == sorteados.f:
+        em_sorteados = True
+    return em_sorteados
 ```
+
 </div>
 <div class="column" width="48%">
 \pause
-\tiny
+\scriptsize
 
-```cpp
-// Produz true se n é um dos números
-// em sorteados, false caso contrário.
-bool sorteado(int n, array<int, 6> sorteados)
-{
-    bool sorteado = false;
-    if (n == sorteados[0]) {
-        sorteado = true;
-    }
-    if (n == sorteados[1]) {
-        sorteado = true;
-    }
-    if (n == sorteados[2]) {
-        sorteado = true;
-    }
-    if (n == sorteados[3]) {
-        sorteado = true;
-    }
-    if (n == sorteados[4]) {
-        sorteado = true;
-    }
-    if (n == sorteados[5]) {
-        sorteado = true;
-    }
-    return sorteado;
-}
+```python
+def sorteado(n: int,
+             sorteados: list[int])
+             -> bool:
+    em_sorteados = False
+    if n == sorteados[0]:
+        em_sorteados = True
+    if n == sorteados[1]:
+        em_sorteados = True
+    if n == sorteados[2]:
+        em_sorteados = True
+    if n == sorteados[3]:
+        em_sorteados = True
+    if n == sorteados[4]:
+        em_sorteados = True
+    if n == sorteados[5]:
+        em_sorteados = True
+    return em_sorteados
 ```
 </div>
 </div>
@@ -192,64 +105,52 @@ bool sorteado(int n, array<int, 6> sorteados)
 
 <div class="columns">
 <div class="column" width="48%">
-\tiny
+\scriptsize
 
-```cpp
-// Calcula quantos números de aposta estão em sorteados.
-int numero_acertos(SeisNumeros aposta, SeisNumeros sorteados)
-{
-    int acertos = 0;
-    if (sorteado(aposta.a, sorteados)) {
+```python
+def numero_acertos(aposta: SeisNumeros,
+                   sorteados: SeisNumeros)
+                   -> int:
+    acertos = 0
+    if sorteado(aposta.a, sorteados):
+        acertos = acertos + 1
+    if sorteado(aposta.b, sorteados):
+        acertos = acertos + 1
+    if sorteado(aposta.c, sorteados):
+        acertos = acertos + 1
+    if sorteado(aposta.d, sorteados):
         acertos = acertos + 1;
-    }
-    if (sorteado(aposta.b, sorteados)) {
-        acertos = acertos + 1;
-    }
-    if (sorteado(aposta.c, sorteados)) {
-        acertos = acertos + 1;
-    }
-    if (sorteado(aposta.d, sorteados)) {
-        acertos = acertos + 1;
-    }
-    if (sorteado(aposta.e, sorteados)) {
-        acertos = acertos + 1;
-    }
-    if (sorteado(aposta.f, sorteados)) {
-        acertos = acertos + 1;
-    }
-    return acertos;
-}
+    if sorteado(aposta.e, sorteados):
+        acertos = acertos + 1
+    if sorteado(aposta.f, sorteados):
+        acertos = acertos + 1
+    return acertos
 ```
+
 </div>
 <div class="column" width="48%">
 \pause
-\tiny
 
-```cpp
-// Calcula quantos números de aposta estão em sorteados.
-int numero_acertos(array<int, 6> aposta, array<int, 6> sorteados)
-{
-    int acertos = 0;
-    if (sorteado(aposta[0], sorteados)) {
+\scriptsize
+
+```python
+def numero_acertos(aposta: list[int],
+                   sorteados: list[int])
+                   -> int:
+    acertos = 0
+    if sorteado(aposta[0], sorteados):
+        acertos = acertos + 1
+    if sorteado(aposta[1], sorteados):
+        acertos = acertos + 1
+    if sorteado(aposta[2], sorteados):
+        acertos = acertos + 1
+    if sorteado(aposta[3], sorteados):
         acertos = acertos + 1;
-    }
-    if (sorteado(aposta[1], sorteados)) {
-        acertos = acertos + 1;
-    }
-    if (sorteado(aposta[2], sorteados)) {
-        acertos = acertos + 1;
-    }
-    if (sorteado(aposta[3], sorteados)) {
-        acertos = acertos + 1;
-    }
-    if (sorteado(aposta[4], sorteados)) {
-        acertos = acertos + 1;
-    }
-    if (sorteado(aposta[5], sorteados)) {
-        acertos = acertos + 1;
-    }
-    return acertos;
-}
+    if sorteado(aposta[4], sorteados):
+        acertos = acertos + 1
+    if sorteado(aposta[5], sorteados):
+        acertos = acertos + 1
+    return acertos
 ```
 </div>
 </div>
@@ -264,14 +165,13 @@ Agora vamos trocar a repetição física do código por uma repetição lógica,
 
 # Para cada
 
-Em C++, uma das construções de repetição é o "para cada", que tem a seguinte forma geral \pause
+Em Python, uma das construções de repetição é o "para cada", que tem a seguinte forma geral \pause
 
 \scriptsize
 
-```cpp
-for (Tipo nome : arranjo) {
-    instruções;
-}
+```python
+for nome in lista:
+    instruções
 ```
 
 \pause
@@ -280,46 +180,38 @@ for (Tipo nome : arranjo) {
 
 O "para cada" funciona da seguinte maneira: \pause
 
-- O primeiro valor de `arranjo` é atribuído para `nome` e as `instruções` são executadas; \pause
-- O segundo valor de `arranjo` é atribuído para `nome` e as `instruções` são executadas; \pause
+- O primeiro valor de `lista` é atribuído para `nome` e as `instruções` são executadas; \pause
+- O segundo valor de `lista` é atribuído para `nome` e as `instruções` são executadas; \pause
 - ... \pause
-- E assim por diante até que todos os valores de `arranjo` tenham sidos atribuídos para `nome`. \pause
+- E assim por diante até que todos os valores de `lista` tenham sidos atribuídos para `nome`. \pause
 
-Ou seja, o "para cada" executa as mesmas instruções atribuindo cada valor de `arranjo` para `nome`, por isso ele chama "para cada"!
+Ou seja, o "para cada" executa as mesmas instruções atribuindo cada valor de `lista` para `nome`, por isso ele chama "para cada"!
 
 
 # Para cada
 
 <div class="columns">
 <div class="column" width="48%">
-\tiny
+\scriptsize
 
-```cpp
-// Produz true se n é um dos números
-// em sorteados, false caso contrário.
-bool sorteado(int n, array<int, 6> sorteados)
-{
-    bool sorteado = false;
-    if (n == sorteados[0]) {
-        sorteado = true;
-    }
-    if (n == sorteados[1]) {
-        sorteado = true;
-    }
-    if (n == sorteados[2]) {
-        sorteado = true;
-    }
-    if (n == sorteados[3]) {
-        sorteado = true;
-    }
-    if (n == sorteados[4]) {
-        sorteado = true;
-    }
-    if (n == sorteados[5]) {
-        sorteado = true;
-    }
-    return sorteado;
-}
+```python
+def sorteado(n: int,
+             sorteados: list[int])
+             -> bool:
+    em_sorteados = False
+    if n == sorteados[0]:
+        em_sorteados = True
+    if n == sorteados[1]:
+        em_sorteados = True
+    if n == sorteados[2]:
+        em_sorteados = True
+    if n == sorteados[3]:
+        em_sorteados = True
+    if n == sorteados[4]:
+        em_sorteados = True
+    if n == sorteados[5]:
+        em_sorteados = True
+    return em_sorteados
 ```
 </div>
 <div class="column" width="48%">
@@ -332,20 +224,17 @@ Nesse código, queremos executar as mesmas instruções, uma vez para cada valor
 
 \scriptsize
 
-```cpp
-// Produz true se n é um dos números em sorteados,
-// false caso contrário.
-bool sorteado(int n, array<int, 6> sorteados)
-{
-    bool sorteado = false;
-    for (int s : sorteados) {
-        if (n == s) {
-            sorteado = true;
-        }
-    }
-    return sorteado;
-}
+```python
+def sorteado(n: int,
+             sorteados: list[int])
+             -> bool:
+    em_sorteados = False
+    for x in sorteados:
+        if n == x:
+            em_sorteados = True
+    return em_sorteados
 ```
+
 </div>
 </div>
 
@@ -354,33 +243,26 @@ bool sorteado(int n, array<int, 6> sorteados)
 
 <div class="columns">
 <div class="column" width="48%">
-\tiny
+\scriptsize
 
-```cpp
-// Calcula quantos números de aposta estão em sorteados.
-int numero_acertos(array<int, 6> aposta, array<int, 6> sorteados)
-{
-    int acertos = 0;
-    if (sorteado(aposta[0], sorteados)) {
+```python
+def numero_acertos(aposta: list[int],
+                   sorteados: list[int])
+                   -> int:
+    acertos = 0
+    if sorteado(aposta[0], sorteados):
+        acertos = acertos + 1
+    if sorteado(aposta[1], sorteados):
+        acertos = acertos + 1
+    if sorteado(aposta[2], sorteados):
+        acertos = acertos + 1
+    if sorteado(aposta[3], sorteados):
         acertos = acertos + 1;
-    }
-    if (sorteado(aposta[1], sorteados)) {
-        acertos = acertos + 1;
-    }
-    if (sorteado(aposta[2], sorteados)) {
-        acertos = acertos + 1;
-    }
-    if (sorteado(aposta[3], sorteados)) {
-        acertos = acertos + 1;
-    }
-    if (sorteado(aposta[4], sorteados)) {
-        acertos = acertos + 1;
-    }
-    if (sorteado(aposta[5], sorteados)) {
-        acertos = acertos + 1;
-    }
-    return acertos;
-}
+    if sorteado(aposta[4], sorteados):
+        acertos = acertos + 1
+    if sorteado(aposta[5], sorteados):
+        acertos = acertos + 1
+    return acertos
 ```
 </div>
 <div class="column" width="48%">
@@ -390,20 +272,17 @@ Nesse código, queremos executar as mesmas instruções, uma vez para cada valor
 
 \pause
 
-\tiny
+\scriptsize
 
-```cpp
-// Calcula quantos números de aposta estão em sorteados.
-int numero_acertos(array<int, 6> aposta, array<int, 6> sorteados)
-{
-    int acertos = 0;
-    for (int num : aposta) {
-        if (sorteado(num, sorteados)) {
-            acertos = acertos + 1;
-        }
-    }
-    return acertos;
-}
+```python
+def numero_acertos(aposta: list[int],
+                   sorteados: list[int])
+                   -> int:
+    acertos = 0
+    for n in aposta:
+        if sorteado(aposta[0], sorteados):
+            acertos = acertos + 1
+    return acertos
 ```
 </div>
 </div>
@@ -417,6 +296,7 @@ Em geral, não precisamos ter uma repetição física de código para depois tro
 
 Vamos ver como fazer isso!
 
+<!--
 
 # Como projetar funções que processam arranjos usando o "para cada"
 
@@ -2209,3 +2089,5 @@ bool primo(int n)
     return primo;
 }
 ```
+
+-->
