@@ -8,6 +8,7 @@ title: Seleção, enumerações e estruturas
 # TODO: apresentar match/case?
 # TODO: adicionar mais exemplos (juntando estruturas e enumerações, contagem de tipos de sorvertes?)
 #       a questão é que atualizar uma contagem pode requerer passagem por referência.
+# TODO: adicionar exemplos com tipos dos campos diferentes
 ---
 
 # Introdução
@@ -1525,12 +1526,18 @@ Modifique a especificação e implementação da função anterior para que o pl
 
 # Exemplo - Loteria
 
-Em um jogo de loteria os apostadores fazem apostas escolhendo 6 números distintos entre 1 e 60. No sorteio são sorteados 6 números de forma aleatória. Os apostadores que acertam 4, 5 ou 6 números são contemplados com prêmios. Projete uma função que determine quantos números uma determinada aposta acertou.
+Em um jogo de loteria os apostadores fazem apostas escolhendo 6 números distintos entre 1 e 60. No sorteio são sorteados 6 números de forma aleatória. Os apostadores que acertam 4, 5 ou 6 números são contemplados com prêmios.
+
+a) Projete uma função que verifique se um número está entre os sorteados.
+
+b) Projete uma função que determine quantos números uma determinada aposta acertou.
 
 
 # Exemplo - Loteria
 
 Análise \pause
+
+- Determinar se um número está entre 6 números sorteados.
 
 - Determinar o número de acertos de uma aposta de 6 números sendo que 6 números foram sorteados; \pause
 
@@ -1540,7 +1547,7 @@ Análise \pause
 
 Definição de tipos de dados \pause
 
-- Quais são as informações? \pause A aposta de 6 números e os 6 números sorteados. \pause
+- Quais são as informações? \pause A aposta e os sorteados, as duas informações são compostas de 6 números. \pause
 
 - Como representar a aposta de 6 números? E os 6 número sorteados? \pause Com um dado composto.
 
@@ -1567,10 +1574,277 @@ class SeisNumeros:
 
 \normalsize
 
-As apostas e os números sorteados serão representados pela estrutura `SeisNumeros`.
+As apostas e os números sorteados serão representados pela estrutura `SeisNumeros`. \pause
+
+Vamos fazer a especificação da primeira função.
 
 
-# Especificação
+# Exemplo - Loteria - Especificação `sorteado`
+
+\scriptsize
+
+```python
+def sorteado(n: int, sorteados: SeisNumeros) -> bool:
+    '''
+    Produz True se *n* é um dos números
+    em *sorteados*. False caso contrário.
+    '''
+    return False
+```
+
+\pause
+
+\normalsize
+
+Quantos exemplos precisamos? \pause 7, `n` igual a cada um dos sorteados e `n` diferentes de todos.
+
+
+# Exemplo - Loteria - Especificação `sorteado`
+
+<div class="columns">
+<div class="column" width="60%">
+\scriptsize
+
+```python
+def sorteado(n: int, sorteados: SeisNumeros) -> bool:
+    '''
+    >>> sorteados = SeisNumeros(1, 7, 10, 40, 41, 60)
+    >>> sorteado(1, sorteados)
+    True
+    >>> sorteado(7, sorteados)
+    True
+    >>> sorteado(10, sorteados)
+    True)
+    >>> sorteado(40, sorteados)
+    True
+    >>> sorteado(41, sorteados)
+    True
+    >>> sorteado(60, sorteados)
+    True
+    >>> sorteado(2, sorteados)
+    False
+    '''
+    return False
+```
+
+</div>
+<div class="column" width="40%">
+\pause
+Quantas formas de respostas nós temos? \pause Duas, ou a resposta é `True`{.python} ou a resposta é `False`{.python}. \pause
+
+Então precisamos usar seleção. Qual a condição para a resposta `True`{.python}? \pause
+
+\scriptsize
+
+```python
+n == sorteados.a or \
+    n == sorteados.b or \
+    n == sorteados.c or \
+    n == sorteados.d or \
+    n == sorteados.e or \
+    n == sorteados.f
+```
+
+\pause
+
+\normalsize
+
+Agora podemos fazer a implementação.
+</div>
+</div>
+
+
+# Exemplo - Loteria - implementação `sorteado`
+
+<div class="columns">
+<div class="column" width="60%">
+\scriptsize
+
+```python
+def sorteado(n: int, sorteados: SeisNumeros) -> bool:
+    if n == sorteados.a or \
+        n == sorteados.b or \
+        n == sorteados.c or \
+        n == sorteados.d or \
+        n == sorteados.e or \
+        n == sorteados.f:
+        em_sorteados = True
+    else:
+        em_sorteados = False
+    return em_sorteados
+```
+
+</div>
+<div class="column" width="40%">
+\pause
+Verificação: ok \pause
+
+Revisão: podemos melhorar o código? \pause Sim! \pause
+
+O código de `sorteado` tem forma:
+
+\scriptsize
+
+```python
+if condição:
+    r = True
+else:
+    r = False
+return r
+```
+
+\normalsize
+
+\pause
+
+que pode ser simplificada para
+
+\scriptsize
+
+```python
+return condição
+```
+</div>
+</div>
+
+
+# Exemplo - Loteria - implementação `sorteado`
+
+<div class="columns">
+<div class="column" width="48%">
+\scriptsize
+
+```python
+def sorteado(n: int,
+             sorteados: SeisNumeros)
+             -> bool:
+    return n == sorteados.a or \
+        n == sorteados.b or \
+        n == sorteados.c or \
+        n == sorteados.d or \
+        n == sorteados.e or \
+        n == sorteados.f
+```
+
+</div>
+<div class="column" width="48%">
+\pause
+Podemos fazer uma implementação alternativa? \pause Sim, fazendo seleções aninhadas uma condição por vez: \pause
+
+Se `n == a`{.python}, então a resposta é `True`{.python}; \pause
+
+Senão, quais podem ser as respostas? \pause `True`{.python} ou `False`{.python} \pause, então precisamos de outra seleção: \pause
+
+- Se `n == b`{.python}, então a resposta é `True`{.python}; \pause
+- Senão, quais podem ser as respostas? \pause `True`{.python} ou `False`{.python}...
+
+</div>
+</div>
+
+
+# Exemplo - Loteria - implementação `sorteado`
+
+<div class="columns">
+<div class="column" width="48%">
+\scriptsize
+
+```python
+def sorteado(n: int,
+             sorteados: SeisNumeros)
+             -> bool:
+    if n == sorteados.a:
+        em_sorteados = True
+    elif n == sorteados.b:
+        em_sorteados = True
+    elif n == sorteados.c:
+        em_sorteados = True
+    elif n == sorteados.d:
+        em_sorteados = True
+    elif n == sorteados.e:
+        em_sorteados = True
+    elif n == sorteados.f:
+        em_sorteados = True
+    else:
+        em_sorteados = False
+    return em_sorteados
+```
+
+</div>
+<div class="column" width="48%">
+\pause
+Podemos fazer outra implementação? \pause Sim!
+</div>
+</div>
+
+
+# Forma de implementação de função
+
+Até agora vimos três formas de implementar uma função: \pause
+
+- Direta, uma única expressão (ou sequência de expressões): `custo_viagem`, `massa_tubo_ferro`, `segundos_para_tempo`, `sorteado` - uma versão, etc. \pause
+
+- Seleção direta, seleção com uma condição para cada forma de reposta: `maximo`, `ajusta_numero`, `indica_combustivel`, `maximo3` - uma versão, `sorteado` - uma versão, etc. \pause
+
+- Seleção aninhada, seleção aninhada até determinar a forma da resposta: `maximo3` - uma versão, `tempo_para_string`, `sorteado` - uma versão, etc. \pause
+
+Agora veremos uma nova forma de implementação: a forma incremental.
+
+
+# Abordagem incremental
+
+Na abordagem incremental, iniciamos a resposta com um valor, e vamos atualizando a reposta conforme processamos os dados de entrada, no final, temos a resposta da função. \pause
+
+Vamos aplicar esse abordagem para implementar a função `sorteado`. \pause
+
+A resposta que queremos é se o número `n` está entre os `sorteados`. \pause O que precisamos? \pause
+
+- Um valor inicial para a resposta; \pause
+
+- Uma forma de atualizar a resposta conforme analisamos a entrada. \pause
+
+Começamos a resposta com `False`{.python}, \pause se `n == a`{.python} mudamos a resposta pra `True`{.python}, \pause se `n == b`{.python} mudamos a resposta pra `True`{.python}, \pause e assim por diante.
+
+
+# Exemplo - Loteria - implementação `sorteado`
+
+<div class="columns">
+<div class="column" width="48%">
+\scriptsize
+
+```python
+def sorteado(n: int,
+             sorteados: SeisNumeros)
+             -> bool:
+    em_sorteado = False
+    if n == sorteados.a:
+        em_sorteados = True
+    if n == sorteados.b:
+        em_sorteados = True
+    if n == sorteados.c:
+        em_sorteados = True
+    if n == sorteados.d:
+        em_sorteados = True
+    if n == sorteados.e:
+        em_sorteados = True
+    if n == sorteados.f:
+        em_sorteados = True
+    return em_sorteados
+```
+
+</div>
+<div class="column" width="48%">
+\pause
+Observe que, apesar do código ser semelhante ao da implementação anterior, o processo pelo qual escrevemos esse código foi diferente. \pause
+
+Além disso, essa forma vai nos permitir um tipo de simplificação que veremos em breve. \pause
+
+Agora podemos ir para a segunda função do problema da loteria: determinar o número de acertos de uma aposta.
+
+</div>
+</div>
+
+
+# Exemplo - Loteria - Especificação `num_acertos`
 
 \scriptsize
 
@@ -1597,14 +1871,19 @@ def numero_acertos(aposta: SeisNumeros, sorteados: SeisNumeros) -> int:
     return 0
 ```
 
-\normalsize
 
-\pause
+# Exemplo - Loteria - Especificação `num_acertos`
 
-Qual o processo que utilizamos para determinar a resposta?
+Que estratégia utilizamos para determinar as respostas? \pause A estratégia incremental! \pause
+
+O que precisamos para implementar a função usando a estratégia? \pause
+
+- Um valor inicial para a resposta; \pause
+
+- Uma forma de atualizar a resposta conforme analisamos a entrada.
 
 
-# Especificação
+# Exemplo - Loteria - Especificação `num_acertos`
 
 Começamos o número de acertos com zero. \pause
 
@@ -1612,23 +1891,17 @@ Depois verificamos se o primeiro número está entre os sorteados, se sim, aumen
 
 Depois verificamos se o segundo número está entre os sorteados, se sim, aumentamentos os acertos em 1. \pause
 
-E assim com o restante dos números. No final, temos a quantidade de acertos. \pause
+E assim com o restante dos números. \pause
 
-Este processo não parece muito detalhado... \pause como verificamos se um número está entre os sorteados? \pause Vamos deixar esse problema para depois. \pause
-
-Como expressar esse processo? \pause Com uma sequência de instruções, como em muitos exercícios anteriores.
+No final, temos a quantidade de acertos.
 
 
 # Implementação
 
-<div class="columns">
-<div class="column" width="48%">
 \scriptsize
 
 ```python
-def numero_acertos(
-        aposta: SeisNumeros,
-        sorteados: SeisNumeros) -> int:
+def numero_acertos(aposta: SeisNumeros, sorteados: SeisNumeros) -> int:
     acertos = 0
     if sorteado(aposta.a, sorteados):
         acertos = acertos + 1
@@ -1644,114 +1917,12 @@ def numero_acertos(
         acertos = acertos + 1
     return acertos
 ```
-</div>
-<div class="column" width="48%">
-\pause
-
-\small
-
-Aqui utilizamos o pensamento desejoso e desejamos que a função `sorteado`{.python} exista e funcione de acordo com a seguinte especificação:
-
-\scriptsize
-
-```python
-def sorteado(n: int, sorteados: SeisNumeros) -> bool:
-    '''
-    Produz True se *n* é um dos números
-    em *sorteados*. False caso contrário.
-    '''
-    return False
-```
-
-\small
-
-\pause
-
-Todas as funções que desejamos durante o projeto de outra função são colocas em uma lista de pendências. Após o término da implementação da função em questão, precisamos implementar as funções da lista de pendências.
-
-\pause
-
-Agora precisamos terminar o projeto da função `sorteado`{.python}.
-
-</div>
-</div>
-
-
-# Lista de pendências
-
-\scriptsize
-
-```python
-def sorteado(n: int, sorteados: SeisNumeros) -> bool:
-    '''
-    Produz True se *n* é um dos números
-    em *sorteados*. False caso contrário.
-    Exemplos
-    >>> sorteados = SeisNumeros(1, 7, 10, 40, 41, 60)
-    >>> sorteado(1, sorteados)
-    True
-    >>> sorteado(7, sorteados)
-    True
-    >>> sorteado(10, sorteados)
-    True)
-    >>> sorteado(40, sorteados)
-    True
-    >>> sorteado(41, sorteados)
-    True
-    >>> sorteado(60, sorteados)
-    True
-    >>> sorteado(2, sorteados)
-    False
-    ```
-    return False
-```
-
-\pause
-
-\normalsize
-
-Qual o processo que utilizamos para determinar as respostas?
-
-
-# Implementação
-
-Verificamos se `n` é igual ao primeiro valor sorteado, se sim, guardamos a resposta `True`{.python}. \pause
-
-Senão, verificamos se `n` é igual ao segundo valor sorteado, se sim, guardamos a resposta `True`{.python}. \pause
-
-Senão, verificamos se `n` é igual ao terceiro valor... Senão guardamos a resposta `False`{.python}. \pause
-
-Vamos escrever esse processo!
-
-
-# Implementação
-
-\small
-
-```python
-def sorteado(n: int, sorteados: SeisNumeros) -> bool:
-    if n == sorteados.a:
-        sorteado = True
-    elif n == sorteados.b:
-        sorteado = True
-    elif n == sorteados.c:
-        sorteado = True
-    elif n == sorteados.d:
-        sorteado = True
-    elif n == sorteados.e:
-        sorteado = True
-    elif n == sorteados.f:
-        sorteado = True
-    else:
-        sorteado = False
-    return sorteado
-```
 
 
 # Verificação e Revisão
 
 Verificação: \pause ok \pause
 
-Revisão: \pause o código parece repetitivo... \pause Como resolver essa questão? \pause
+Revisão: \pause assim como para a função `sorteado`, o código parece repetitivo... \pause Como resolver essa questão? \pause
 
 Usando instrução de repetição! \pause Vamos continuar na próxima aula.
