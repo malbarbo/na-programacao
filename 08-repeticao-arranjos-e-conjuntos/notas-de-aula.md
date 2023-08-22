@@ -29,9 +29,136 @@ Vamos ver como fazer essas coisas!
 
 Quando precisamos representar uma coleção de valores da mesma natureza (todos os itens são notas, nomes, pontos, janelas, etc), utilizamos arranjos. \pause
 
-Os arranjos em Python são dinâmicos, isto é, podem mudar de tamanho. \pause
+Os arranjos em Python são dinâmicos, isto é, podem mudar de tamanho, e são representados pelo tipo `list`{.python}. \pause
 
-Usamos o tipo `list`{.python} para arranjos dinâmicos.
+Vamos ver algumas operações com listas.
+
+
+# Listas - inicialização e indexação
+
+<div class="columns">
+<div class="column" width="48%">
+
+\footnotesize
+
+```python
+>>> # Inicialização
+>>> x: list[int] = [9 + 1, 1, 7, 2]
+>>> x
+[10, 1, 7, 2]
+```
+
+\pause
+
+```python
+>>> # Lista vazia
+>>> y = [] # ou list()
+>>> y
+[]
+```
+
+\pause
+
+```python
+>>> # Número de elementos
+>>> len(x)
+4
+>>> len(y)
+0
+```
+
+\pause
+
+</div>
+<div class="column" width="48%">
+
+\footnotesize
+
+```python
+>>> # Indexação
+>>> nomes = ['Maria', 'João', 'Paulo']
+>>> nomes[1]
+'João'
+>>> # Acesso fora da faixa
+>>> nomes[3]
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+IndexError: list index out of range
+```
+
+\pause
+
+```python
+>>> # Sublistas
+>>> x = [4, 1, 5, 7, 3]
+>>> x[:2]
+[4, 1]
+>>> x[2:]
+[5, 7, 3]
+```
+
+</div>
+</div>
+
+
+# Listas - alteração, acréscimo e concatenação
+
+<div class="columns">
+<div class="column" width="45%">
+
+\footnotesize
+
+```python
+>>> y = [4, 2]
+>>> # Alteração
+>>> y[1] = 7
+>>> y
+[4, 7]
+```
+
+\pause
+
+```python
+>>> # Acrésimo de um elemento
+>>> y.append(5) # list.append(y, 5)
+>>> y
+[4, 7, 5]
+>>> y.append(3)
+>>> y
+[4, 7, 5, 3]
+```
+
+\pause
+
+```python
+>>> # Concatenação
+>>> [1, 2, 3] + [4, 5]
+[1, 2, 3, 4, 5]
+```
+
+\pause
+
+</div>
+<div class="column" width="55%">
+
+Note que as função (método) `append` não produz valor de saída. \pause
+
+Mas qual é a utilidade de uma função que não produz valor de saída!? \pause
+
+Além de produzir uma saída, as funções podem ter efeitos colaterais, como por exemplo, modificar algum dos seus argumentos (função `append`), exibir algo na tela (função `print`{.python}), etc. \pause Uma função que produz uma saída também pode ter um efeito colateral, que o caso da função `input`{.python}. \pause
+
+Então, utilizamos funções sem saída pelo efeito colateral que elas produzem.
+</div>
+</div>
+
+
+# Valores mutáveis e imutáveis
+
+Como vimos, os valores do tipo lista e de tipos estruturas podem ser alterados depois que são criados, por isso são chamados de valores **mutáveis**. \pause
+
+Já alguns valores não podem ser alterados, que é o caso dos valores dos tipos `int`{.python}, `float`{.python}, `bool`{.python} e `str`{.python}. \pause Chamamos esses valores de **imutáveis**. \pause
+
+Essa diferenciação é importante na prática. Vamos discutir mais sobre isso em breve.
 
 
 # Estruturas vs Arranjos
@@ -44,14 +171,14 @@ Tanto as estruturas quanto os arranjos são utilizados para representar informa�
 
 \pause
 
-No exemplo da loteria, os itens da aposta e dos resultados têm a mesma natureza, são todos números, então devemos utilizar arranjos ao invés de estruturas. \pause Vamos alterar o código!
+No exemplo da loteria, os itens da aposta e dos sorteios têm a mesma natureza, são todos números, então devemos utilizar arranjos ao invés de estruturas. \pause Vamos alterar o código!
 
 
 # Loteria
 
 <div class="columns">
 <div class="column" width="48%">
-\scriptsize
+\footnotesize
 
 ```python
 def sorteado(n: int,
@@ -76,7 +203,7 @@ def sorteado(n: int,
 </div>
 <div class="column" width="48%">
 \pause
-\scriptsize
+\footnotesize
 
 ```python
 def sorteado(n: int,
@@ -105,7 +232,7 @@ def sorteado(n: int,
 
 <div class="columns">
 <div class="column" width="48%">
-\scriptsize
+\footnotesize
 
 ```python
 def numero_acertos(aposta: SeisNumeros,
@@ -119,7 +246,7 @@ def numero_acertos(aposta: SeisNumeros,
     if sorteado(aposta.c, sorteados):
         acertos = acertos + 1
     if sorteado(aposta.d, sorteados):
-        acertos = acertos + 1;
+        acertos = acertos + 1
     if sorteado(aposta.e, sorteados):
         acertos = acertos + 1
     if sorteado(aposta.f, sorteados):
@@ -131,7 +258,7 @@ def numero_acertos(aposta: SeisNumeros,
 <div class="column" width="48%">
 \pause
 
-\scriptsize
+\footnotesize
 
 ```python
 def numero_acertos(aposta: list[int],
@@ -145,7 +272,7 @@ def numero_acertos(aposta: list[int],
     if sorteado(aposta[2], sorteados):
         acertos = acertos + 1
     if sorteado(aposta[3], sorteados):
-        acertos = acertos + 1;
+        acertos = acertos + 1
     if sorteado(aposta[4], sorteados):
         acertos = acertos + 1
     if sorteado(aposta[5], sorteados):
@@ -167,10 +294,10 @@ Agora vamos trocar a repetição física do código por uma repetição lógica,
 
 Em Python, uma das construções de repetição é o "para cada", que tem a seguinte forma geral \pause
 
-\scriptsize
+\small
 
 ```python
-for nome in lista:
+for var in lista:
     instruções
 ```
 
@@ -180,19 +307,19 @@ for nome in lista:
 
 O "para cada" funciona da seguinte maneira: \pause
 
-- O primeiro valor de `lista` é atribuído para `nome` e as `instruções` são executadas; \pause
-- O segundo valor de `lista` é atribuído para `nome` e as `instruções` são executadas; \pause
+- O primeiro valor de `lista` é atribuído para `var` e as `instruções` são executadas; \pause
+- O segundo valor de `lista` é atribuído para `var` e as `instruções` são executadas; \pause
 - ... \pause
-- E assim por diante até que todos os valores de `lista` tenham sidos atribuídos para `nome`. \pause
+- E assim por diante até que todos os valores de `lista` tenham sidos atribuídos para `var`. \pause
 
-Ou seja, o "para cada" executa as mesmas instruções atribuindo cada valor de `lista` para `nome`, por isso ele chama "para cada"!
+Ou seja, o "para cada" executa as mesmas instruções atribuindo cada valor de `lista` para `var`, por isso ele chama "para cada"!
 
 
 # Para cada
 
 <div class="columns">
 <div class="column" width="48%">
-\scriptsize
+\footnotesize
 
 ```python
 def sorteado(n: int,
@@ -222,7 +349,7 @@ Nesse código, queremos executar as mesmas instruções, uma vez para cada valor
 
 \pause
 
-\scriptsize
+\footnotesize
 
 ```python
 def sorteado(n: int,
@@ -243,7 +370,7 @@ def sorteado(n: int,
 
 <div class="columns">
 <div class="column" width="48%">
-\scriptsize
+\footnotesize
 
 ```python
 def numero_acertos(aposta: list[int],
@@ -257,7 +384,7 @@ def numero_acertos(aposta: list[int],
     if sorteado(aposta[2], sorteados):
         acertos = acertos + 1
     if sorteado(aposta[3], sorteados):
-        acertos = acertos + 1;
+        acertos = acertos + 1
     if sorteado(aposta[4], sorteados):
         acertos = acertos + 1
     if sorteado(aposta[5], sorteados):
@@ -272,7 +399,7 @@ Nesse código, queremos executar as mesmas instruções, uma vez para cada valor
 
 \pause
 
-\scriptsize
+\footnotesize
 
 ```python
 def numero_acertos(aposta: list[int],
@@ -280,10 +407,60 @@ def numero_acertos(aposta: list[int],
                    -> int:
     acertos = 0
     for n in aposta:
-        if sorteado(aposta[0], sorteados):
+        if sorteado(n, sorteados):
             acertos = acertos + 1
     return acertos
 ```
+</div>
+</div>
+
+
+# Execução passo a passo do "para cada"
+
+<div class="columns">
+<div class="column" width="48%">
+
+\footnotesize
+
+```{.python .number-lines}
+def sorteado(n: int,
+             sorteados: list[int])
+             -> bool:
+    em_sorteados = False
+    for x in sorteados:
+        if n == x:
+            em_sorteados = True
+    return em_sorteados
+
+sorteado(35, [1, 7, 32, 35, 50, 51])
+```
+
+\pause
+
+</div>
+<div class="column" width="48%">
+
+Vamos ver como a execução passo a passo funciona para o "para cada". \pause
+
+Qual é a ordem que as linhas são executadas para o código ao lado? \pause
+
+\small
+
+10, 4 \pause
+
+5 (`x = 1`{.python}), 6, \pause
+
+5 (`x = 7`{.python}), 6, \pause
+
+5 (`x = 32`{.python}), 6, \pause
+
+5 (`x = 35`{.python}), 6, 7, \pause
+
+5 (`x = 50`{.python}), 6, \pause
+
+5 (`x = 51`{.python}), 6, \pause
+
+5 (a lista terminada), 8, 10.
 </div>
 </div>
 
@@ -295,6 +472,22 @@ No exemplo da loteria, vimos como uma repetição física de código pode ser su
 Em geral, não precisamos ter uma repetição física de código para depois trocarmos por uma repetição lógica, podemos projetar a função usando uma repetição lógica diretamente. \pause
 
 Vamos ver como fazer isso!
+
+
+# Exemplo - Soma
+
+Projete uma função que some os números de uma lista.
+
+
+# Exemplo - Strings que começam com A
+
+Projete uma função que encontre as strings que começam com `'A'`{.python} em uma lista de strings.
+
+
+# Exemplo - Máximo
+
+Projete uma função que encontre o valor máximo em uma lista não vazia de inteiros.
+
 
 <!--
 
