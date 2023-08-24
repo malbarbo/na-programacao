@@ -16,7 +16,7 @@ Vimos anteriormente que devemos definir uma estrutura para representar uma infor
 
 # Introdução
 
-O `Tempo` era composto de três "itens", que foram representados pelos campos horas, minutos e segundos. \pause
+O `Tempo` era composto de três "itens" que foram representados pelos campos horas, minutos e segundos. \pause
 
 Já para `SeisNumeros` cada item não tinha uma interpretação particular, então não usamos nomes significativos, tivemos que "inventar" os nomes de `a`, ..., `f`. \pause
 
@@ -109,8 +109,8 @@ IndexError: list index out of range
 \footnotesize
 
 ```python
+>>> # Substituição de um elemento
 >>> y = [4, 2]
->>> # Alteração
 >>> y[1] = 7
 >>> y
 [4, 7]
@@ -141,7 +141,7 @@ IndexError: list index out of range
 </div>
 <div class="column" width="55%">
 
-Note que as função (método) `append` não produz valor de saída. \pause
+Note que a função (método) `append` não produz valor de saída. \pause
 
 Mas qual é a utilidade de uma função que não produz valor de saída!? \pause
 
@@ -442,25 +442,25 @@ sorteado(35, [1, 7, 32, 35, 50, 51])
 
 Vamos ver como a execução passo a passo funciona para o "para cada". \pause
 
-Qual é a ordem que as linhas são executadas para o código ao lado? \pause
+Qual é a ordem que as linhas são executadas? \pause
 
 \small
 
-10, 4 \pause
+10, \pause 4 (`em_sorteados = False`{.python}) \pause
 
-5 (`x = 1`{.python}), 6, \pause
+5 (`x = 1`{.python}), \pause 6, \pause
 
-5 (`x = 7`{.python}), 6, \pause
+5 (`x = 7`{.python}), \pause 6, \pause
 
-5 (`x = 32`{.python}), 6, \pause
+5 (`x = 32`{.python}), \pause 6, \pause
 
-5 (`x = 35`{.python}), 6, 7, \pause
+5 (`x = 35`{.python}), \pause 6, \pause 7 (`em_sorteados = True`{.python}), \pause
 
-5 (`x = 50`{.python}), 6, \pause
+5 (`x = 50`{.python}), \pause 6, \pause
 
-5 (`x = 51`{.python}), 6, \pause
+5 (`x = 51`{.python}), \pause 6, \pause
 
-5 (a lista terminada), 8, 10.
+5 (identifica que não tem mais elementos), \pause 8 (devolve `True`{.python}), \pause 10.
 </div>
 </div>
 
@@ -479,14 +479,216 @@ Vamos ver como fazer isso!
 Projete uma função que some os números de uma lista.
 
 
+# Exemplo - Soma - Especificação
+
+<div class="columns">
+<div class="column" width="48%">
+\footnotesize
+
+```python
+def soma(lst: list[int]) -> int:
+    '''
+    Soma os elementos de *lst*.
+    Exemplos
+    >>> soma([])
+    0
+    >>> soma([3])
+    3
+    >>> soma([5, 1, 4])
+    10
+    '''
+    return 0
+```
+
+\pause
+
+\normalsize
+
+Qual abordagem podemos utilizar para implementar essa função? \pause A incremental. \pause
+</div>
+<div class="column" width="48%">
+
+Na abordagem incremental, iniciamos o resultado com um valor, e vamos atualizando o resultado conforme processamos os dados de entrada, no final, temos o resultado da função. \pause
+
+Qual é o resultado que queremos calcular? \pause A `soma` dos elementos de `lst`. \pause
+
+Com qual valor iniciamos `soma`? \pause `0`{.python}. \pause
+
+Se estamos analisando um número `n` de `lst`, como atualizamos `soma`? \pause Adicionando `n` em `soma`,  isto é, `soma = soma + x`{.python}.
+</div>
+</div>
+
+
+# Exemplo - Soma - Implementação
+
+<div class="columns">
+<div class="column" width="48%">
+\footnotesize
+
+```{.python .number-lines}
+def soma(lst: list[int]) -> int:
+    soma = 0
+    for n in lst:
+        soma = soma + n
+    return soma
+
+soma([5, 1, 4])
+```
+
+</div>
+<div class="column" width="48%">
+Vamos exercitar mais uma vez a execução passo a passo. \pause
+
+Qual é a ordem que as linhas são executadas? \pause
+
+\footnotesize
+
+7, \pause 2 (`soma = 0`{.python}), \pause
+
+3 (`x = 5`{.python}), \pause 4 (`soma = 5`{.python}), \pause
+
+3 (`x = 1`{.python}), \pause 4 (`soma = 6`{.python}), \pause
+
+3 (`x = 4`{.python}), \pause 4 (`soma = 10`{.python}), \pause
+
+3 (identifica que não tem mais elementos), \pause 5 (devolve `10`{.python}), \pause
+
+7
+</div>
+</div>
+
+
 # Exemplo - Strings que começam com A
 
-Projete uma função que encontre as strings que começam com `'A'`{.python} em uma lista de strings.
+Projete uma função que encontre as strings que começam com `'A'`{.python} de uma lista de strings.
+
+
+# Exemplo - Strings que começam com A - Especificação
+
+<div class="columns">
+<div class="column" width="55%">
+\scriptsize
+
+```python
+def encontra_comeca_a(lst: list[str]) -> list[str]:
+    '''
+    Encontra os elementos de *lst* que começam com 'A'.
+    Exemplos
+    >>> encontra_comeca_a([])
+    []
+    >>> encontra_comeca_a(['ali', 'tele'])
+    []
+    >>> encontra_comeca_a(['Aba', '', 'Alto', 'car'])
+    ['Aba', 'Alto']
+    '''
+    return []
+```
+
+\pause
+
+\normalsize
+
+Qual abordagem podemos utilizar para implementar essa função? \pause A incremental. \pause
+</div>
+<div class="column" width="41%">
+
+Qual é o resultado que queremos calcular? \pause A lista `comeca_a` com os elementos de `lst` que começam com `'A'`{.python}. \pause
+
+Com qual valor iniciamos `comeca_a`? \pause `[]`{.python}. \pause
+
+Se estamos analisando uma string `s` de `lst`, como atualizamos `comeca_a`? \pause Adicionando `s` em `comeca_a` (`comeca_a.append(s)`) se `s` começa com `'A'`{.python}, isto é, `s != '' and s[0] == 'A'`{.python}.
+</div>
+</div>
+
+
+# Exemplo - Strings que começam com A - Implementação
+
+\footnotesize
+
+```python
+def encontra_comeca_a(lst: list[str]) -> list[str]:
+    '''
+    Encontra os elementos de *lst* que começam com 'A'.
+    Exemplos
+    >>> encontra_comeca_a([])
+    []
+    >>> encontra_comeca_a(['ali', 'tele'])
+    []
+    >>> encontra_comeca_a(['Aba', '', 'Alto', 'car'])
+    ['Aba', 'Alto']
+    '''
+    comeca_a = []
+    for s in lst:
+        if s != '' and s[0] == 'A':
+            comeca_a.append(s)
+    return comeca_a
+```
 
 
 # Exemplo - Máximo
 
 Projete uma função que encontre o valor máximo em uma lista não vazia de inteiros.
+
+
+# Exemplo - Máximo - Especificação
+
+<div class="columns">
+<div class="column" width="48%">
+\scriptsize
+
+```python
+def maximo(lst: list[int]) -> int:
+    '''
+    Encontra o valor máximo de *lst*.
+    Requer que lst seja não vazia.
+    Exemplos
+    >>> maximo([7])
+    7
+    >>> maximo([-1, -4, 0])
+    0
+    '''
+    return 0
+```
+
+\pause
+
+\normalsize
+
+Qual abordagem podemos utilizar para implementar essa função? \pause A incremental. \pause
+</div>
+<div class="column" width="48%">
+
+Qual é o resultado que queremos calcular? \pause O valor `maximo` de `lst`. \pause
+
+Com qual valor iniciamos `maximo`? \pause `lst[0]`{.python}. \pause
+
+Se estamos analisando um número `n` de `lst`, como atualizamos `maximo`? \pause Atribuindo `n` para máximo se `n > maximo`{.python}.
+</div>
+</div>
+
+
+# Exemplo - Máximo - Implementação
+
+\footnotesize
+
+```python
+def maximo(lst: list[int]) -> int:
+    '''
+    Encontra o valor máximo de *lst*.
+    Requer que *lst* seja não vazia.
+    Exemplos
+    >>> maximo([7])
+    7
+    >>> maximo([-1, -4, 0])
+    0
+    '''
+    assert len(lst) != 0
+    maximo = lst[0]
+    for n in lst:
+        if n > maximo:
+            maximo = n
+    return n
+```
 
 
 <!--
