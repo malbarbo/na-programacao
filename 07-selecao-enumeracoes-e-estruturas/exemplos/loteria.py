@@ -2,12 +2,13 @@ from dataclasses import dataclass
 
 # Análise
 #
-# Determinar o número de acertos de uma aposta de 6 números sendo que 6 números
-# foram sorteados. Os números estão entre 1 e 60.
+# Determinar se um número está entre 6 números sorteados.
+# Determinar o número de acertos de uma aposta de 6 números sendo que 6 números foram sorteados;
+# Os números estão entre 1 e 60;
 
 # Definição de tipos de dados
 #
-# A aposta e os números sorteado serão representador pela estrutura SeisNumeros
+# A aposta e os sorteados, são composta de seis número, então vamos definir uma estrutura.
 
 @dataclass
 class SeisNumeros:
