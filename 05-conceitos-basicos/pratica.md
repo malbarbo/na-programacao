@@ -5,6 +5,44 @@ urlcolor: Blue
 
 #. Reveja o material de [conceitos básicos](https://malbarbo.pro.br/arquivos/2023/6879/05-conceitos-basicos-notas-de-aula.pdf) e responda [esse](https://forms.gle/Hrnhg5oCinaAhydn7) quiz (não vale nota).
 
+#. Indique o valor de cada resultado oculto nessa seção de interações. Use a janela de interações após calcular as respostas manualmente para conferir se elas estão corretas.
+
+    ```python
+    >>> 2 * 19 // 3
+    ?
+    >>> 64 ** 1 / 4
+    ?
+    >>> 15 % 6 * 8 / 4
+    ?
+    >>> a: int = len('palavra') + 11
+    >>> a // 2 * 2
+    ?
+    >>> b: int = a + a // 3
+    >>> a = 12
+    >>> b
+    ?
+    >>> b = 2 * b
+    >>> b
+    ?
+    >>> nome: str = 'José da Silva'
+    >>> nome[:4].upper()
+    ?
+    >>> nome[5:].lower()
+    ?
+    >>> nome[3:7]
+    ?
+    >>> nome[3:7][1]
+    ?
+    >>> str(len(nome))
+    ?
+    >>> int('1' * len(nome)) % 100
+    ?
+    >>> nome = nome + ' e Almeida'
+    >>> nome
+    ?
+    ```
+
+
 #. Faça uma função chamada `area_retangulo` que recebe dois argumentos, a `largura` e a `altura` de um retângulo, e calcula a sua área. Confira na janela de interações se a função funciona de acordo com os exemplos a seguir
 
     ```python
