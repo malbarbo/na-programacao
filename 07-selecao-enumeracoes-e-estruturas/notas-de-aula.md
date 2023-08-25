@@ -9,6 +9,7 @@ title: Seleção, enumerações e estruturas
 # TODO: adicionar mais exemplos (juntando estruturas e enumerações, contagem de tipos de sorvertes?)
 #       a questão é que atualizar uma contagem pode requerer passagem por referência.
 # TODO: adicionar exemplos com tipos dos campos diferentes
+# TODO: deixar claro que valores dos tipos estruturas são mutáveis por padrão?
 ---
 
 # Introdução
@@ -1783,7 +1784,7 @@ Até agora vimos três formas de implementar uma função: \pause
 
 - Direta, uma única expressão (ou sequência de expressões): `custo_viagem`, `massa_tubo_ferro`, `segundos_para_tempo`, `sorteado` - uma versão, etc. \pause
 
-- Seleção direta, seleção com uma condição para cada forma de reposta: `maximo`, `ajusta_numero`, `indica_combustivel`, `maximo3` - uma versão, `sorteado` - uma versão, etc. \pause
+- Seleção direta, seleção com uma condição para cada forma de resposta: `maximo`, `ajusta_numero`, `indica_combustivel`, `maximo3` - uma versão, `sorteado` - uma versão, etc. \pause
 
 - Seleção aninhada, seleção aninhada até determinar a forma da resposta: `maximo3` - uma versão, `tempo_para_string`, `sorteado` - uma versão, etc. \pause
 
@@ -1792,7 +1793,7 @@ Agora veremos uma nova forma de implementação: a forma incremental.
 
 # Abordagem incremental
 
-Na abordagem incremental, iniciamos a resposta com um valor, e vamos atualizando a reposta conforme processamos os dados de entrada, no final, temos a resposta da função. \pause
+Na abordagem incremental, iniciamos a resposta com um valor, e vamos atualizando a resposta conforme processamos os dados de entrada, no final, temos a resposta da função. \pause
 
 Vamos aplicar esse abordagem para implementar a função `sorteado`. \pause
 
