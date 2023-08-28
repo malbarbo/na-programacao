@@ -1,7 +1,9 @@
 ---
 # vim: set spell spelllang=pt_br:
 # TODO: separar em diversos arquivos
-# TODO: colocara definiçãode arranjo?
+# TODO: adicionar definição de arranjo?
+# TODO: apresentar de forma mais detalhada como identificar a forma da atualização
+#       mostrar o arranjo, a resposta até então e a "chegada" do novo elemento
 title: Repetição, arranjos e conjuntos
 ---
 
@@ -145,7 +147,7 @@ Note que a função (método) `append` não produz valor de saída. \pause
 
 Mas qual é a utilidade de uma função que não produz valor de saída!? \pause
 
-Além de produzir uma saída, as funções podem ter efeitos colaterais, como por exemplo, modificar algum dos seus argumentos (função `append`), exibir algo na tela (função `print`{.python}), etc. \pause Uma função que produz uma saída também pode ter um efeito colateral, que o caso da função `input`{.python}. \pause
+Além de produzir uma saída, as funções podem ter **efeitos colaterais**, como por exemplo, modificar algum dos seus argumentos (função `append`), exibir algo na tela (função `print`{.python}), etc. \pause Uma função que produz uma saída também pode ter um efeito colateral, que o caso da função `input`{.python}. \pause
 
 Então, utilizamos funções sem saída pelo efeito colateral que elas produzem.
 </div>
@@ -154,7 +156,7 @@ Então, utilizamos funções sem saída pelo efeito colateral que elas produzem.
 
 # Valores mutáveis e imutáveis
 
-Como vimos, os valores do tipo lista e de tipos estruturas podem ser alterados depois que são criados, por isso são chamados de valores **mutáveis**. \pause
+Nós vimos que os valores do tipo lista e de tipos estruturas podem ser alterados depois que são criados, por isso são chamados de valores **mutáveis**. \pause
 
 Já alguns valores não podem ser alterados, que é o caso dos valores dos tipos `int`{.python}, `float`{.python}, `bool`{.python} e `str`{.python}. \pause Chamamos esses valores de **imutáveis**. \pause
 
@@ -469,7 +471,7 @@ Qual é a ordem que as linhas são executadas? \pause
 
 No exemplo da loteria, vimos como uma repetição física de código pode ser substituída por uma repetição lógica. \pause
 
-Em geral, não precisamos ter uma repetição física de código para depois trocarmos por uma repetição lógica, podemos projetar a função usando uma repetição lógica diretamente. \pause
+Em geral, não precisamos ter uma repetição física de código para depois trocarmos por uma repetição lógica, podemos projetar uma função usando uma repetição lógica diretamente. \pause
 
 Vamos ver como fazer isso!
 
@@ -482,7 +484,7 @@ Projete uma função que some os números de uma lista.
 # Exemplo - Soma - Especificação
 
 <div class="columns">
-<div class="column" width="48%">
+<div class="column" width="45%">
 \footnotesize
 
 ```python
@@ -494,19 +496,19 @@ def soma(lst: list[int]) -> int:
     0
     >>> soma([3])
     3
-    >>> soma([5, 1, 4])
+    >>> soma([3, 7])
     10
+    >>> soma([3, 7, 2])
+    12
     '''
     return 0
 ```
 
 \pause
 
-\normalsize
-
-Qual abordagem podemos utilizar para implementar essa função? \pause A incremental. \pause
 </div>
-<div class="column" width="48%">
+<div class="column" width="50%">
+Qual abordagem podemos utilizar para implementar essa função? \pause A incremental. \pause
 
 Na abordagem incremental, iniciamos o resultado com um valor, e vamos atualizando o resultado conforme processamos os dados de entrada, no final, temos o resultado da função. \pause
 
@@ -640,7 +642,7 @@ Projete uma função que encontre o valor máximo em uma lista não vazia de int
 def maximo(lst: list[int]) -> int:
     '''
     Encontra o valor máximo de *lst*.
-    Requer que lst seja não vazia.
+    Requer que *lst* seja não vazia.
     Exemplos
     >>> maximo([7])
     7
@@ -669,7 +671,7 @@ Se estamos analisando um número `n` de `lst`, como atualizamos `maximo`? \pause
 
 # Exemplo - Máximo - Implementação
 
-\footnotesize
+\scriptsize
 
 ```python
 def maximo(lst: list[int]) -> int:
@@ -687,8 +689,182 @@ def maximo(lst: list[int]) -> int:
     for n in lst:
         if n > maximo:
             maximo = n
-    return n
+    return maximo
 ```
+
+
+# Exemplo - Média tamanho strings
+
+Projete uma função que calcule a média dos tamanhos das strings de uma lista não vazia de strings.
+
+
+# Exemplo - Média tamanho strings - Especificação
+
+<div class="columns">
+<div class="column" width="48%">
+\scriptsize
+
+```python
+def media_tamanho(lst: list[str]) -> float:
+    '''
+    Calcula a média dos tamanhos das
+    strings de *lst*.
+    Requer que *lst* seja não vazia.
+    Exemplos
+    >>> media_tamanho(['coisa'])
+    2.5
+    >>> media_tamanho(['casa', 'da'])
+    3.0
+    >>> media_tamanho(['casa', 'da', ''])
+    2.0
+    '''
+    return 0.0
+```
+
+\pause
+
+\normalsize
+
+Qual abordagem podemos utilizar para implementar essa função? \pause A incremental? \pause
+</div>
+<div class="column" width="48%">
+
+Qual é o resultado que queremos calcular? \pause A média dos tamanhos das strings de `lst`. \pause Podemos calcular esse valor de forma incremental com o "para cada"? \pause Não! (pelo menos ainda). \pause
+
+Porque não!? \pause Porque não dá para atualizar a média dos tamanhos quando uma nova string é processada. \pause
+
+Como procedemos então? \pause Como calculamos as respostas dos exemplos? \pause Primeiro calculamos a soma dos tamanhos das strings e depois a média.
+
+</div>
+</div>
+
+
+# Emboço de solução
+
+Quando a solução de um problema não pode ser expressa apenas com uma das formas que vimos até agora (direta, seleção direta, seleção aninhada e incremental), então podemos tentar uma combinação dessas formas. \pause
+
+Para isso, primeiro criamos um **esboço de solução**, que é uma descrição em alto nível das etapas do processamento da função, e depois implementamos cada etapa usando a forma apropriada.
+
+
+# Exemplo - Média tamanho strings - Implementação
+
+<div class="columns">
+<div class="column" width="48%">
+\scriptsize
+
+```python
+def media_tamanho(lst: list[str]) -> float:
+    '''
+    Calcula a média dos tamanhos das
+    strings de *lst*.
+    Requer que *lst* seja não vazia.
+    Exemplos
+    >>> media_tamanho(['coisa'])
+    2.5
+    >>> media_tamanho(['casa', 'da'])
+    3.0
+    >>> media_tamanho(['casa', 'da', ''])
+    2.0
+    '''
+    # Calcular a soma dos tamanhos
+    # Calcular a média
+    return 0.0
+```
+
+</div>
+<div class="column" width="48%">
+
+\pause
+
+**Soma dos tamanhos** \pause
+
+Qual estratégia podemos utilizar? \pause A incremental. \pause Qual é o resultado que queremos calcular? \pause A `soma` dos tamanhos. \pause Com qual valor iniciamos `soma`? \pause `0`{.python}. \pause Se estamos analisando o elemento `s` de `lst`, como atualizamos `soma`? \pause `soma = soma + len(s)`{.python}. \pause
+
+**Média** \pause
+
+Como calculamos a média? \pause `soma / len(lst)`{.python}.
+
+</div>
+</div>
+
+
+# Exemplo - Média tamanho strings - Implementação
+
+\scriptsize
+
+```python
+def media_tamanho(lst: list[str]) -> float:
+    assert len(lst) != 0
+
+    # Soma dos tamanhos
+    soma = 0
+    for s in lst:
+        soma = soma + len(lst)
+
+    # Média
+    return soma / len(lst)
+```
+
+
+# Exemplo - Índice máximo
+
+Projete uma função que encontre o índice (posição) da primeira ocorrência do valor máximo de uma lista não vazia de números.
+
+
+# Exemplo - Índice máximo - Especificação
+
+<div class="columns">
+<div class="column" width="48%">
+\scriptsize
+
+```python
+def indice_maximo(lst: list[int]) -> int:
+    '''
+    Encontra o índice da primeira ocorrência
+    do valor máximo de *lst*.
+    Requer que *lst* seja não vazia.
+    Exemplos
+    >>> indice_maximo([5])
+    0
+    >>> indice_maximo([4, 5, 5])
+    1
+    >>> indice_maximo([4, 5, 5, 8])
+    3
+    '''
+    return 0
+```
+
+\pause
+
+</div>
+<div class="column" width="48%">
+
+Queremos calcular o índice do máximo, mas o "para cada" nós dá apenas o elemento, não o índice. \pause Como proceder? \pause
+
+Vamos calcular duas coisas simultaneamente, o índice do `imax` do máximo e o índice `i` do elemento atual. \pause
+
+Como `imax` e `i` são inicializados? \pause Com `0`{.python} \pause
+
+Se estamos analisando um número `n` de `lst`, como atualizamos `imax` e `i`? \pause `imax` é atualizado para `i` se `n > lst[imax]` \pause e `i` é incrementado de `1`{.python}.
+</div>
+</div>
+
+
+# Exemplo - Índice máximo - Implementação
+
+\scriptsize
+
+```python
+def indice_maximo(lst: list[int]) -> int:
+    i = 0
+    imax = 0
+    for n in lst:
+        if n > lst[imax]:
+            imax = i
+        i = i + 1
+    return imax
+```
+
 
 
 <!--
