@@ -7,13 +7,11 @@ title: Repetição, arranjos e conjuntos - Prática
 
 @. Projete uma função que concatene todos os elementos de uma lista de strings.
 
-@. Projete uma função que calcule o produto de todos os elementos de uma lista de inteiros.
-
-@. Projete uma função que verifique se todos os elementos de uma lista de booleanos são falsos.
+@. Projete uma função que crie uma lista de números a partir de uma lista de strings convertendo cada string para um número. Assuma que todas as strings representam números válidos.
 
 @. Projete uma função que crie uma nova lista somando um valor $x$ especificado a cada elemento de uma lista de inteiros.
 
-@. Projete uma função que verifique se algum dos elementos de uma lista de booleanos é verdadeiro.
+@. Projete uma função que calcule o produto de todos os elementos de uma lista de inteiros.
 
 
 <!-- Seleção -->
@@ -22,6 +20,10 @@ title: Repetição, arranjos e conjuntos - Prática
 
 @. Projete uma função que verifique se todos os elementos de uma lista de inteiros são menores que 10.
 
+@. Projete uma função que verifique se todos os elementos de uma lista de booleanos são falsos.
+
+@. Projete uma função que verifique se algum dos elementos de uma lista de booleanos é verdadeiro.
+
 @. Projete uma função que crie uma nova lista removendo todas os valores nulos de uma lista de inteiros.
 
 
@@ -29,9 +31,21 @@ title: Repetição, arranjos e conjuntos - Prática
 
 @. Projete uma função que conte quantas vezes o valor mínimo de uma lista de inteiros não vazia aparece na lista.
 
-@. Projete uma função que indique se uma lista de inteiros tem mais valores positivos ou negativos.
+    a) Esboce uma solução em duas etapas e depois implemente a função.
+
+    a) Faça uma implementação alternativa que use apenas uma repetição.
+
+    a) Avalie as implementações em ordem de simplicidade.
 
 @. Projete uma função que calcule a amplitude dos valores de uma lista não vazia de números, isto é, a diferença entre o maior e menor valor da lista.
+
+    a) Esboce uma solução em três etapas e depois implemente a função.
+
+    a) Faça uma implementação alternativa que use apenas uma repetição.
+
+    a) Avalie qual das implementações é mais simples.
+
+@. Projete uma função que indique se uma lista de inteiros tem mais valores positivos ou negativos.
 
 @. Projete uma função que receba como entrada uma lista `lst` de números e crie uma nova lista colocando os valores negativos de `lst` antes dos positivos.
 
@@ -42,9 +56,68 @@ title: Repetição, arranjos e conjuntos - Prática
 
 @. Projete uma função que receba como entrada uma lista de números e uma posição e devolva uma nova lista sem o elemento da posição especificada.
 
-@. Projete uma função que receba como entrada um arranjo dinâmico de números, uma posição $i$ e um número $n$ e devolva um novo arranjo com $n$ adicionado na posição $i$ do arranjo de entrada.
+    a) Esboce uma solução em duas etapas e depois implemente a função (não use operações de sublista).
+
+    a) Faça uma implementação alternativa que use apenas uma repetição (não use operações de sublista).
+
+    a) Faça uma implementação que use operações de sublista e não use repetição.
+
+    a) Avalia e classifique as implementações em ordem de simples.
+
+@. Projete uma função que receba como entrada uma lista de números, uma posição $i$ e um número $n$ e devolva uma nova lista com $n$ adicionado na posição $i$ da lista de entrada.
+
+    a) Esboce uma solução em duas etapas e depois implemente a função (não use operações de sublista).
+
+    a) Faça uma implementação alternativa que use apenas uma repetição (não use operações de sublista).
+
+    a) Faça uma implementação que use operações de sublista e não use repetição.
+
+    a) Avalia e classifique as implementações em ordem de simples.
 
 
-<!-- Fora de ordem -->
+<!-- Enquanto -->
+
+@. Revise as funções dos exercícios anteriores e verifique quais podem ser implementadas utilizando "enquanto" para deixar o código mais eficiente ou simples. Faça a implementação dessas funções usando o "enquanto".
+
+
+<!-- Generalização a partir de repetição física de código -->
+
+@. Projete uma função que verifique se uma lista de número é dobrada, isto é, pode ser obtida pela concatenação de duas listas iguais (não use operações de sublista).
 
 @. Projete uma função que junte todos os elementos de uma lista de strings (não vazias) separando-os com `','`{.python} ou/e `'e'`{.python}, de acordo com a gramática do Português.
+
+
+<!--
+# Outras funções pré-definidas em Python
+
+```python
+>>> # Máximo de uma lista
+>>> max([3, 1, 4, 2])
+4
+>>> max([])
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+ValueError: max() arg is an empty sequence
+
+>>> # Mínimo de uma lista
+>>> min([3, 1, 4, 2])
+1
+
+>>> # Número de ocorrências em uma lista
+>>> # Quantas vezes 3 aparece na lista
+>>> [3, 1, 3, 0].count(3)
+2
+>>> [3, 1, 3, 0].count(0)
+1
+>>> [3, 1, 3, 0].count(7)
+0
+
+>>> # Verificação de pertinência
+>>> 4 in []
+False
+>>> 4 in [1, 4, 3]
+True
+>>> 5 in [1, 4, 3]
+False
+```
+-->
