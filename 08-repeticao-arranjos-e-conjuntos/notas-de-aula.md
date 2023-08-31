@@ -578,10 +578,14 @@ def encontra_comeca_a(lst: list[str]) -> list[str]:
     Exemplos
     >>> encontra_comeca_a([])
     []
-    >>> encontra_comeca_a(['ali', 'tele'])
-    []
-    >>> encontra_comeca_a(['Aba', '', 'Alto', 'car'])
-    ['Aba', 'Alto']
+    >>> encontra_comeca_a(['Ali'])
+    ['Ali']
+    >>> encontra_comeca_a(['Ali', 'ala'])
+    ['Ali']
+    >>> encontra_comeca_a(['Ali', 'ala', 'Alto'])
+    ['Ali', 'Alto']
+    >>> encontra_comeca_a(['Ali', 'ala', 'Alto', ''])
+    ['Ali', 'Alto']
     '''
     return []
 ```
@@ -605,7 +609,7 @@ Se estamos analisando uma string `s` de `lst`, como atualizamos `comeca_a`? \pau
 
 # Exemplo - Strings que começam com A - Implementação
 
-\footnotesize
+\scriptsize
 
 ```python
 def encontra_comeca_a(lst: list[str]) -> list[str]:
@@ -614,10 +618,14 @@ def encontra_comeca_a(lst: list[str]) -> list[str]:
     Exemplos
     >>> encontra_comeca_a([])
     []
-    >>> encontra_comeca_a(['ali', 'tele'])
-    []
-    >>> encontra_comeca_a(['Aba', '', 'Alto', 'car'])
-    ['Aba', 'Alto']
+    >>> encontra_comeca_a(['Ali'])
+    ['Ali']
+    >>> encontra_comeca_a(['Ali', 'ala'])
+    ['Ali']
+    >>> encontra_comeca_a(['Ali', 'ala', 'Alto'])
+    ['Ali', 'Alto']
+    >>> encontra_comeca_a(['Ali', 'ala', 'Alto', ''])
+    ['Ali', 'Alto']
     '''
     comeca_a = []
     for s in lst:
@@ -644,10 +652,14 @@ def maximo(lst: list[int]) -> int:
     Encontra o valor máximo de *lst*.
     Requer que *lst* seja não vazia.
     Exemplos
-    >>> maximo([7])
+    >>> maximo([2])
+    2
+    >>> maximo([2, 4])
+    4
+    >>> maximo([2, 4, 3])
+    4
+    >>> maximo([2, 4, 3, 7])
     7
-    >>> maximo([-1, -4, 0])
-    0
     '''
     return 0
 ```
@@ -664,7 +676,7 @@ Qual é o resultado que queremos calcular? \pause O valor `maximo` de `lst`. \pa
 
 Com qual valor iniciamos `maximo`? \pause `lst[0]`{.python}. \pause
 
-Se estamos analisando um número `n` de `lst`, como atualizamos `maximo`? \pause Atribuindo `n` para máximo se `n > maximo`{.python}.
+Se estamos analisando um número `n` de `lst`, como atualizamos `maximo`? \pause Atribuindo `n` para `maximo` se `n > maximo`{.python}.
 </div>
 </div>
 
@@ -679,10 +691,14 @@ def maximo(lst: list[int]) -> int:
     Encontra o valor máximo de *lst*.
     Requer que *lst* seja não vazia.
     Exemplos
-    >>> maximo([7])
+    >>> maximo([2])
+    2
+    >>> maximo([2, 4])
+    4
+    >>> maximo([2, 4, 3])
+    4
+    >>> maximo([2, 4, 3, 7])
     7
-    >>> maximo([-1, -4, 0])
-    0
     '''
     assert len(lst) != 0
     maximo = lst[0]
@@ -711,12 +727,14 @@ def media_tamanho(lst: list[str]) -> float:
     strings de *lst*.
     Requer que *lst* seja não vazia.
     Exemplos
-    >>> media_tamanho(['coisa'])
-    2.5
+    >>> media_tamanho(['casa'])
+    4.0
     >>> media_tamanho(['casa', 'da'])
     3.0
     >>> media_tamanho(['casa', 'da', ''])
     2.0
+    >>> media_tamanho(['casa', 'da', '', 'onça'])
+    2.5
     '''
     return 0.0
 ```
@@ -725,16 +743,17 @@ def media_tamanho(lst: list[str]) -> float:
 
 \normalsize
 
-Qual abordagem podemos utilizar para implementar essa função? \pause A incremental? \pause
+Qual abordagem podemos utilizar para implementar essa função? \pause A incremental. \pause
 </div>
 <div class="column" width="48%">
 
-Qual é o resultado que queremos calcular? \pause A média dos tamanhos das strings de `lst`. \pause Podemos calcular esse valor de forma incremental com o "para cada"? \pause Não! (pelo menos ainda). \pause
+Qual é o resultado que queremos calcular? \pause A `media` dos tamanhos das strings de `lst`. \pause
 
-Porque não!? \pause Porque não dá para atualizar a média dos tamanhos quando uma nova string é processada. \pause
+Com qual valor iniciamos a `media`? \pause `len(lst[0])`{.python}. \pause
+
+Se estamos analisando o elemento `s` de `lst`, como atualizamos `media`? \pause Não tem com! \pause Se `media` é `100.0`{.python} e `s` é `'nova'`{.python}, qual é o novo valor de `media`? \pause Não temos informações suficientes para responder essa pergunta! \pause
 
 Como procedemos então? \pause Como calculamos as respostas dos exemplos? \pause Primeiro calculamos a soma dos tamanhos das strings e depois a média.
-
 </div>
 </div>
 
@@ -759,12 +778,14 @@ def media_tamanho(lst: list[str]) -> float:
     strings de *lst*.
     Requer que *lst* seja não vazia.
     Exemplos
-    >>> media_tamanho(['coisa'])
-    2.5
+    >>> media_tamanho(['casa'])
+    4.0
     >>> media_tamanho(['casa', 'da'])
     3.0
     >>> media_tamanho(['casa', 'da', ''])
     2.0
+    >>> media_tamanho(['casa', 'da', '', 'onça'])
+    2.5
     '''
     # Calcular a soma dos tamanhos
     # Calcular a média
@@ -799,7 +820,7 @@ def media_tamanho(lst: list[str]) -> float:
     # Soma dos tamanhos
     soma = 0
     for s in lst:
-        soma = soma + len(lst)
+        soma = soma + len(s)
 
     # Média
     return soma / len(lst)
@@ -826,9 +847,11 @@ def indice_maximo(lst: list[int]) -> int:
     Exemplos
     >>> indice_maximo([5])
     0
-    >>> indice_maximo([4, 5, 5])
+    >>> indice_maximo([5, 6])
     1
-    >>> indice_maximo([4, 5, 5, 8])
+    >>> indice_maximo([5, 6, 6])
+    1
+    >>> indice_maximo([5, 6, 6, 8])
     3
     '''
     return 0
@@ -836,26 +859,75 @@ def indice_maximo(lst: list[int]) -> int:
 
 \pause
 
+\normalsize
+
+Qual estratégia podemos utilizar? \pause A incremental. \pause
+
 </div>
 <div class="column" width="48%">
 
-Queremos calcular o índice do máximo, mas o "para cada" nós dá apenas o elemento, não o índice. \pause Como proceder? \pause
+Qual o resultado queremos calcular? \pause O índice `imax` do máximo de `lst`. \pause
 
-Vamos calcular duas coisas simultaneamente, o índice do `imax` do máximo e o índice `i` do elemento atual. \pause
+Com qual valor iniciamos `imax`? \pause `0`{.python}. \pause
 
-Como `imax` e `i` são inicializados? \pause Com `0`{.python} \pause
+Se estamos analisando um elemento `n` de `lst`, como atualizamos `imax`? \pause Não tem como! \pause Precisamos atualizar `imax`, que é um índice, mas só temos acesso ao elemento `n`. \pause
 
-Se estamos analisando um número `n` de `lst`, como atualizamos `imax` e `i`? \pause `imax` é atualizado para `i` se `n > lst[imax]` \pause e `i` é incrementado de `1`{.python}.
+Como procedemos?
+
+</div>
+</div>
+
+
+# Exemplo - Índice máximo - Especificação
+
+<div class="columns">
+<div class="column" width="48%">
+\scriptsize
+
+```python
+def indice_maximo(lst: list[int]) -> int:
+    '''
+    Encontra o índice da primeira ocorrência
+    do valor máximo de *lst*.
+    Requer que *lst* seja não vazia.
+    Exemplos
+    >>> indice_maximo([5])
+    0
+    >>> indice_maximo([5, 6])
+    1
+    >>> indice_maximo([5, 6, 6])
+    1
+    >>> indice_maximo([5, 6, 6, 8])
+    3
+    '''
+    return 0
+```
+
+\normalsize
+
+Qual estratégia podemos utilizar? A incremental.
+
+</div>
+<div class="column" width="48%">
+
+Vamos calcular duas coisas simultaneamente, o índice `imax` do máximo e o índice `i` do elemento atual. \pause
+
+Com qual valor iniciamos `imax` e `i`? \pause `0`{.python}. \pause
+
+Se estamos analisando um número `n` de `lst`, como atualizamos `imax` e `i`? \pause Atribuímos `i` para `imax` se `n > lst[imax]`{.pause} \pause e `i` é incrementado de `1`{.python}.
 </div>
 </div>
 
 
 # Exemplo - Índice máximo - Implementação
 
+<div class="columns">
+<div class="column" width="48%">
 \scriptsize
 
 ```python
 def indice_maximo(lst: list[int]) -> int:
+    assert len(lst) != 0
     i = 0
     imax = 0
     for n in lst:
@@ -864,6 +936,199 @@ def indice_maximo(lst: list[int]) -> int:
         i = i + 1
     return imax
 ```
+
+\pause
+
+\normalsize
+
+Revisão: \pause não está claro qual é a relação entre `n` e `i`... \pause
+
+Podemos mudar `n` para `lst[i]`{.python}.
+
+\pause
+
+</div>
+<div class="column" width="48%">
+\scriptsize
+
+```python
+def indice_maximo(lst: list[int]) -> int:
+    assert len(lst) != 0
+    i = 0
+    imax = 0
+    for n in lst:
+        if lst[i] > lst[imax]:
+            imax = i
+        i = i + 1
+    return imax
+```
+
+\pause
+
+\normalsize
+
+Revisão: \pause `n` não é mais utilizado... \pause
+
+A questão é que não queremos mais acessar os elementos da lista diretamente, queremos usar um índice para acessar os elementos. Vamos utilizar uma variante do “para cada” que é mais apropriada para essa situação.
+</div>
+</div>
+
+
+# Para cada no intervalo
+
+Podemos escrever o "para cada" com a seguinte forma alternativa: \pause
+
+\small
+
+```python
+for var in range(inicio, fim):
+    instruções
+```
+
+\pause
+
+\normalsize
+
+O funcionamento dessa forma é a seguinte: \pause
+
+- `var` é inicializado com `inicio` \pause
+- Se `var < fim`, as `instruções` são executadas, `var` é incrementado de `1`{.python} e esse processo é executado novamente \pause
+- Senão, o "para cada" é finalizado \pause
+
+O valor `inicio` pode ser omitido, nesse caso, `var` é inicializado com `0`{.python}. \pause
+
+Vamos ver um exemplo.
+
+
+# Para cada no intervalo
+
+<div class="columns">
+<div class="column" width="48%">
+
+\footnotesize
+
+```python
+def soma(lst: list[int]) -> int:
+    soma = 0
+    for n in lst:
+        soma = soma + n
+    return soma
+```
+
+\pause
+
+</div>
+<div class="column" width="48%">
+
+\footnotesize
+
+```python
+def soma(lst: list[int]) -> int:
+    soma = 0
+    for i in range(len(lst)):
+        soma = soma + lst[i]
+    return soma
+```
+
+</div>
+</div>
+
+\ 
+
+\pause
+
+Qual das duas soluções é mais simples? \pause A da direita. \pause
+
+Quando usamos o "para cada no intervalo"? \pause
+
+Quando estamos interessados em um intervalo dos elementos da lista (que pode ser todos) junto com seus índices
+
+
+
+# Exemplo - Índice máximo - Implementação
+
+<div class="columns">
+<div class="column" width="48%">
+\scriptsize
+
+```python
+def indice_maximo(lst: list[int]) -> int:
+    assert len(lst) != 0
+    i = 0
+    imax = 0
+    for n in lst:
+        if lst[i] > lst[imax]:
+            imax = i
+        i = i + 1
+    return imax
+```
+
+\normalsize
+
+\pause
+
+Como nesse caso estamos interessados nos índices dos elementos, então é mais adequado utilizar o "para cada no intervalo". \pause
+
+Além disso, não precisamos analisar o primeiro elemento. \pause
+
+</div>
+<div class="column" width="48%">
+
+\scriptsize
+
+```python
+def indice_maximo(lst: list[int]) -> int:
+    assert len(lst) != 0
+    imax = 0
+    for i in range(1, len(lst)):
+        if lst[i] > lst[imax]:
+            imax = i
+    return imax
+```
+
+\pause
+
+\normalsize
+
+\ 
+
+Qual das duas soluções é mais simples? \pause A da esquerda.
+
+</div>
+</div>
+
+
+# Revisão
+
+Quando utilizamos a abordagem incremental? \pause
+
+Quando precisamos computar algo de forma incremental! \pause Ou seja, quando não é possível usar as estratégias de implementação direta, seleção direta ou seleção aninhada. \pause
+
+O que precisamos definir quando vamos utilizar a abordagem incremental? \pause
+
+- Que valores queremos computar (pode ser mais que um valor) \pause
+- Como inicializamos esses valores \pause
+- Como atualizamos esses valores
+
+
+# Revisão
+
+Por enquanto, vimos duas formas de implementar a abordagem incremental no Python: \pause
+
+- O "para cada", que utilizamos quando estamos interessados em analisar todos os elementos de uma lista \pause
+- O "para cada no intervalo", quando estamos interessados em analisar um intervalo dos elementos de uma lista (que pode ser todos) junto com seus índices
+
+
+# Revisão
+
+O quê pode nos impedir de utilizar a abordagem incremental? \pause
+
+- Se não conseguirmos definir como os valores são inicializados \pause
+- Se não conseguirmos definir como os valores são atualizados, que foi o caso de `media_tamanhos` \pause
+
+Como procedemos nesses casos? \pause
+
+Ao invés de computar a resposta final de forma incremental, definimos um esboço de solução, que calcula valores intermediários que serão utilizados para calcular o valor final. \pause No caso de `media_tamanhos`, primeiro calculamos a soma dos tamanhos de forma incremental, e depois calculamos a média diretamente.
 
 
 
@@ -915,114 +1180,6 @@ c) Como as variáveis são atualizadas? \pause
    Em seguida, considere que o último elemento está sendo processado e determine quais operações são necessárias para modificar os valores das variáveis para que elas fiquem com o valor final esperado. \pause
 
    Generalize e escreva o código para fazer essas operações.
-
-
-# Soma
-
-Projete uma função que some todos os valores de um arranjo de 7 números.
-
-
-# Soma
-
-<div class="columns">
-<div class="column" width="58%">
-\scriptsize
-
-```cpp
-// Soma os valores de numeros.
-int soma(array<int, 7> numeros)
-{
-    return 0;
-}
-
-examples
-{
-    check_expect(soma({1, 0, 1, 0, 5, 0, -7}), 0);
-    check_expect(soma({1, 0, 1, 0, 5, 0, 10}), 17);
-    check_expect(soma({0, -4, 1, 0, -5, -10, 0}), -18);
-}
-```
-
-\small
-
-\pause
-
-1) Quais variáveis (valores) queremos calcular? \pause A soma. \pause
-2) Como as variáveis são inicializadas? \pause A soma é inicializada com 0. \pause
-3) Como as variáveis são atualizadas? \pause A soma é atualizada somando o elemento atual. \pause
-
-</div>
-<div class="column" width="38%">
-\scriptsize
-
-```cpp
-// Soma os valores de numeros.
-int soma(array<int, 7> numeros)
-{
-    int soma = 0;
-    for (int num : numeros) {
-        soma = soma + num;
-    }
-    return soma;
-}
-```
-</div>
-</div>
-
-
-# Máximo
-
-Projete uma função que encontre o valor máximo de um arranjo com 5 números.
-
-
-# Máximo
-
-<div class="columns">
-<div class="column" width="58%">
-\scriptsize
-
-```cpp
-// Encontra o valor máximo de numeros.
-int maximo(array<int, 5> numeros)
-{
-    return 0;
-}
-
-examples
-{
-    check_expect(maximo({5, 4, 1, 0, 7}), 7);
-    check_expect(maximo({1, -5, 8, 1, 2}), 8);
-    check_expect(maximo({-4, -6, -1, -1, -3}), -1);
-}
-```
-
-\small
-
-\pause
-
-1) Quais variáveis (valores) queremos calcular? \pause O máximo. \pause
-2) Como as variáveis são inicializadas? \pause O máximo é inicializado com o primeiro elemento. \pause
-3) Como as variáveis são atualizadas? \pause Se o elemento atual é maior que o máximo, ele passa a ser o máximo. \pause
-
-</div>
-<div class="column" width="38%">
-\scriptsize
-
-```cpp
-// Encontra o valor máximo de numeros.
-int maximo(array<int, 5> numeros)
-{
-    int max = numeros[0];
-    for (int n : numeros) {
-        if (n > max) {
-            max = n;
-        }
-    }
-    return max;
-}
-```
-</div>
-</div>
 
 
 # Positivos ou negativos
@@ -1099,120 +1256,6 @@ Sinal mais_positivos_ou_negativos(array<int, 5> numeros)
         sinal = Negativo;
     }
     return sinal;
-}
-```
-
-
-# Arranjos dinâmicos
-
-O exemplo da loteria requeria arranjos com 6 elementos. \pause
-
-Mas para esses últimos exemplos, o tamanho fixo do arranjo parece uma imposição artificial. \pause
-
-De fato, o mais comum é problemas que precisam de arranjos de tamanho dinâmico. \pause
-
-Em C++ o tipo arranjo de tamanho dinâmico (ou arranjo dinâmico, ou vetor, ou lista, ou ...) é chamado de `vector` e está disponível na biblioteca `vector`. \pause
-
-Vamos ver as operações básicas com arranjos dinâmicos.
-
-
-# Arranjos dinâmicos
-
-\small
-
-A forma de inicializar arranjos dinâmicos é similar a forma de inicializar arranjos de tamanho fixo, com exceção de que não precisamos especificar a quantidade de elementos.
-
-\scriptsize
-
-```cpp
-#include <vector>
-using namespace std;
-examples {
-    vector<int> valores = {10, 4, 9, -1};
-    vector<string> nomes = {"joao", "jose", "maria"};
-```
-
-\pause
-
-\small
-
-Assim como para `array`, também acessamos e modificamos os elementos de um `vector` com índices e/ou com o método `at`
-
-\scriptsize
-
-```cpp
-    check_expect(valores[0], 10);
-    check_expect(nomes[2], "maria");
-
-    check_expect(valores.at(1), 4);
-    valores.at(1) = 25;
-    check_expect(valores[1], 25);
-}
-```
-
-
-# Tamanho e adição no final
-
-Como `vector` tem tamanho dinâmico, podemos consultar o tamanho (quantidade de elementos) com o método `size`
-
-\small
-
-```cpp
-vector<int> idades = {2, 7, 1, 9};
-
-check_expect(idades.size(), 4);
-```
-
-\pause
-
-\normalsize
-
-Para adicionar um novo elemento no final do arranjo, utilizamos o método `push_back`
-
-\small
-
-```cpp
-idades.push_back(4);
-
-check_expect(idades.size(), 5);
-check_expect(idades, (vector<int> {2, 7, 1, 9, 4}));
-```
-
-
-# {.plain}
-
-\Large
-**ATENÇÃO**: quando queremos utilizar um `vector`, um `array` ou uma estrutura como **resultado esperado** em um `check_expect` precisamos colocar o resultado todo entre parênteses e nome do tipo antes de `{`
-
-```cpp
-check_expect(..., (array<string, 2> {"casa", "agua"}));
-check_expect(..., (vector<int> {4, 10}));
-check_expect(..., (Janela {10, 40, 100, 200}));
-```
-
-
-# Soma
-
-Utilizamos o mesmo processo para escrever a implementação de funções que processam arranjos de tamanho fixo e arranjos de tamanho dinâmico. \pause
-
-\scriptsize
-
-```cpp
-// Soma os elementos de valores.
-int soma(vector<int> valores)
-{
-    int soma = 0;
-    for (int num : valores) {
-        soma = soma + num;
-    }
-    return soma;
-}
-
-examples
-{
-    check_expect(soma({}), 0);
-    check_expect(soma({3, 1}), 4);
-    check_expect(soma({4, 6, -2, 0, 1}), 9);
 }
 ```
 

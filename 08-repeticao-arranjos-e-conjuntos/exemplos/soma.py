@@ -6,8 +6,10 @@ def soma(lst: list[int]) -> int:
     0
     >>> soma([3])
     3
-    >>> soma([5, 1, 4])
+    >>> soma([3, 7])
     10
+    >>> soma([3, 7, 2])
+    12
     '''
     soma = 0
     for n in lst:
