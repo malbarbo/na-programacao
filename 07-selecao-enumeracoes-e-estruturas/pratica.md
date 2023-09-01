@@ -1,6 +1,7 @@
 ---
 # vim: set spell spelllang=pt_br sw=4:
 title: Seleção, enumerações e estruturas - Prática
+# TODO: adicionar exemplos que a saída é uma estrutura
 ---
 
 <!-- Seleção -->

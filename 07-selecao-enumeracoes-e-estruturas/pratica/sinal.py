@@ -1,10 +1,3 @@
-# Análise
-#
-# Determinar o sinal de um número inteiro.
-#   -1 para negativos
-#   0 para 0
-#   +1 para positivos
-
 def sinal(n: int) -> int:
     '''
     Determina o sinal de *n*.
