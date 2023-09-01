@@ -1793,7 +1793,7 @@ Agora veremos uma nova forma de implementação: a forma incremental.
 
 # Abordagem incremental
 
-Na abordagem incremental, iniciamos a resposta com um valor, e vamos atualizando a resposta conforme processamos os dados de entrada, no final, temos a resposta da função. \pause
+Na **abordagem incremental**, iniciamos a resposta com um valor e vamos atualizando a resposta conforme o processamento avança, no final, temos a resposta da função. \pause
 
 Vamos aplicar esse abordagem para implementar a função `sorteado`. \pause
 
@@ -1875,9 +1875,9 @@ def numero_acertos(aposta: SeisNumeros, sorteados: SeisNumeros) -> int:
 
 # Exemplo - Loteria - Especificação `num_acertos`
 
-Que estratégia utilizamos para determinar as respostas? \pause A estratégia incremental! \pause
+Que estratégia nós usamos para calcular as respostas dos exemplos? Ou ainda, que estratégia podemos utilizar para implementar a função? \pause A estratégia incremental! \pause
 
-O que precisamos para implementar a função usando a estratégia? \pause
+O que precisamos para implementar a função usando a estratégia incremental? \pause
 
 - Um valor inicial para a resposta; \pause
 
