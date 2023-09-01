@@ -1037,7 +1037,7 @@ def soma(lst: list[int]) -> int:
 
 \pause
 
-Qual das duas soluções é mais simples? \pause A da direita. \pause
+Qual das duas soluções é mais simples? \pause A da esquerda. \pause
 
 Quando usamos o "para cada no intervalo"? \pause
 
@@ -1092,7 +1092,7 @@ def indice_maximo(lst: list[int]) -> int:
 
 \ 
 
-Qual das duas soluções é mais simples? \pause A da esquerda.
+Qual das duas soluções é mais simples? \pause A da direita.
 
 </div>
 </div>
