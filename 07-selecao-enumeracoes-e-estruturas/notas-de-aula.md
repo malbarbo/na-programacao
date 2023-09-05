@@ -66,7 +66,7 @@ Agora veremos a **instrução de seleção** `if else`{.python} (se e senão em 
 
 A forma geral do `if else`{.python} é:
 
-```cpp
+```python
 if condição:
     instruções então
 else:
