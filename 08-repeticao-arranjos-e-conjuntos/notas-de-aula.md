@@ -1128,8 +1128,271 @@ O quê pode nos impedir de utilizar a abordagem incremental? \pause
 
 Como procedemos nesses casos? \pause
 
-Ao invés de computar a resposta final de forma incremental, definimos um esboço de solução, que calcula valores intermediários que serão utilizados para calcular o valor final. \pause No caso de `media_tamanhos`, primeiro calculamos a soma dos tamanhos de forma incremental, e depois calculamos a média diretamente.
+Ao invés de computar a resposta final de forma incremental, definimos um esboço de solução, que calcula valores intermediários que serão utilizados para calcular o valor final. \pause
 
+No caso de `media_tamanhos`, primeiro calculamos a soma dos tamanhos de forma incremental, e depois calculamos a média diretamente.
+
+
+# Exemplo: verificação de ordem
+
+Projete uma que verifique se os elementos de uma lista estão em ordem não decrescente.
+
+
+# Exemplo: verificação de ordem
+
+<div class="columns">
+<div class="column" width="48%">
+
+\scriptsize
+
+```python
+def nao_decrescente(lst: list[int]) -> bool:
+    '''
+    Produz True se os lementos de lst estão em
+    ordem não descrescente, False caso contrário.
+    Exemplos
+    >>> nao_decrescente([])
+    True
+    >>> nao_decrescente([4])
+    True
+    >>> nao_decrescente([4, 6])
+    True
+    >>> nao_decrescente([4, 2])
+    False
+    >>> nao_decrescente([4, 6, 6])
+    True
+    >>> nao_decrescente([4, 6, 5])
+    False
+    >>> nao_decrescente([4, 3, 5])
+    False
+    '''
+```
+
+\pause
+
+</div>
+<div class="column" width="48%">
+
+\small
+
+Como proceder com a implementação dessa função? \pause Usando a estratégia incremental. \pause
+
+Como calculamos manualmente a resposta dos exemplos? \pause Comparando cada elemento com o próximo (ou anterior). \pause
+
+Essa forma parece diferente... \pause Antes era necessário analisar um elemento da lista a cada iteração, agora temos que analisar dois elementos. \pause
+
+Como proceder nesse caso? \pause
+
+Vamos implementar a função (usando a abordagem incremental) para uma lista de 5 elementos usando repetição física de código e depois vamos transformar essa repetição física em uma repetição lógica.
+
+</div>
+</div>
+
+
+# Exemplo: verificação de ordem
+
+<div class="columns">
+<div class="column" width="48%">
+
+\scriptsize
+
+```python
+def nao_decrescente(lst: list[int]) -> bool:
+    assert len(lst) == 5
+    em_ordem = True
+    if lst[0] > lst[1]:
+        em_ordem = False
+    if lst[1] > lst[2]:
+        em_ordem = False
+    if lst[2] > lst[3]:
+        em_ordem = False
+    if lst[3] > lst[4]:
+        em_ordem = False
+    return em_ordem
+```
+
+\pause
+
+\small
+
+Vamos transformar a repetição física de código em uma repetição lógica.
+
+\pause
+
+</div>
+<div class="column" width="48%">
+
+\small
+
+Devemos usar o "para cada" ou o "para cada no intervalo"? \pause Precisamos dos índices, então "para cada no intervalo". \pause
+
+Qual é o intervalo? \pause `range(0, len(lst) - 1)`{.python} ou `range(1, len(lst))`{.python}. \pause
+
+\scriptsize
+
+```python
+def nao_decrescente(lst: list[int]) -> bool:
+    em_ordem = True
+    for i in range(1, len(lst)):
+        if lst[i - 1] > lst[i]:
+            em_ordem = False
+    return em_ordem
+```
+
+\pause
+
+\small
+
+Revisão: \pause mesmo encontrando valores "fora de ordem" a repetição continua e analisa toda a lista...
+
+</div>
+</div>
+
+
+# Enquanto
+
+Usamos o "para cada" e o "para cada no intervalo" quando queremos analisar todos os elementos (de um intervalo) da lista. \pause
+
+Nesse tipo de repetição a condição de parada é analisar todos os elementos (do intervalo) da lista. \pause
+
+Para situações que precisamos de um processo incremental que depende de uma condição mais geral utilizamos o "enquanto".
+
+
+# Enquanto
+
+A forma geral do enquanto é: \pause
+
+```python
+while condição:
+    instruções
+```
+
+\pause
+
+O funcionamento do `while`{.python} é o seguinte: \pause
+
+- A `condição` é avaliada \pause
+
+- Se ela for `True`{.python}, as `instruções` são executadas e o processe se repete \pause
+
+- Senão, o `while`{.python} termina
+
+
+# Enquanto - Exemplo
+
+<div class="columns">
+<div class="column" width="48%">
+
+\footnotesize
+
+```python
+def nao_decrescente(lst: list[int]) -> bool:
+    em_ordem = True
+    for i in range(1, len(lst)):
+        if lst[i - 1] > lst[i]:
+            em_ordem = False
+    return em_ordem
+```
+
+\pause
+
+Vamos reescreve o corpo da função usando o `while`{.python}.
+
+\pause
+
+```python
+def nao_decrescente(lst: list[int]) -> bool:
+    em_ordem = True
+    i = 1
+    while i < len(lst):
+        if lst[i - 1] > lst[i]:
+            em_ordem = False
+        i = i + 1
+    return em_ordem
+```
+
+\pause
+
+</div>
+<div class="column" width="48%">
+
+\small
+
+O código está mais simples? \pause Não... \pause
+
+Resolvemos o problema do processamento continuar após um elemento fora de ordem ser encontrado? \pause Não... \pause
+
+Como podemos resolver esse problema? \pause Alterando a condição do `while`{.python} para prosseguir apenas se `em_ordem` for `True`{.python}. \pause
+
+\footnotesize
+
+```python
+def nao_decrescente(lst: list[int]) -> bool:
+    em_ordem = True
+    i = 1
+    while i < len(lst) and em_ordem:
+        if lst[i - 1] > lst[i]:
+            em_ordem = False
+        i = i + 1
+    return em_ordem
+```
+
+</div>
+</div>
+
+
+# Enquanto - execução passo a passo
+
+
+<div class="columns">
+<div class="column" width="48%">
+
+\footnotesize
+
+```{.python .number-lines}
+def nao_decrescente(lst: list[int]) -> bool:
+    em_ordem = True
+    i = 1
+    while i < len(lst) and em_ordem:
+        if lst[i - 1] > lst[i]:
+            em_ordem = False
+        i = i + 1
+    return em_ordem
+
+nao_decrescente([1, 3, 3, 2, 7, 8])
+```
+
+</div>
+<div class="column" width="48%">
+Qual é a ordem que as linhas são executadas? \pause
+
+\small
+
+10 \pause
+
+2 (`em_ordem = True`{.python}) \pause
+
+3 (`i = 1`{.python}) \pause
+
+4 \pause, 5 \pause, 7 (`i = 2`{.python}) \pause
+
+4 \pause, 5 \pause, 7 (`i = 3`{.python}) \pause
+
+4 \pause, 5 \pause, 6 (`em_ordem = False`{.python}) \pause, 7 (`i = 4`{.python}) \pause
+
+4 \pause
+
+8 \pause
+
+10
+
+</div>
+</div>
+
+
+# Exemplo: palíndromo
+
+Projete uma função que verifique se uma lista de inteiros é palíndromo, isto é, tem os mesmos elementos quanto vistos da direita para esquerda ou da esquerda para a direita.
 
 
 <!--
