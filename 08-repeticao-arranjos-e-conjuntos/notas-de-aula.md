@@ -1,5 +1,6 @@
 ---
 # vim: set spell spelllang=pt_br:
+# TODO: colocar uma revisão do método incremental antes do exemplo da soma
 # TODO: separar em diversos arquivos
 # TODO: adicionar definição de arranjo?
 # TODO: apresentar de forma mais detalhada como identificar a forma da atualização
@@ -1102,13 +1103,13 @@ Qual das duas soluções é mais simples? \pause A da direita.
 
 Quando utilizamos a abordagem incremental? \pause
 
-Quando precisamos computar algo de forma incremental! \pause Ou seja, quando não é possível usar as estratégias de implementação direta, seleção direta ou seleção aninhada. \pause
+Quando precisamos computar algo de forma incremental! \pause Ou seja, quando não é possível calcular a resposta de forma direta ou usando apenas seleção. \pause
 
-O que precisamos definir quando vamos utilizar a abordagem incremental? \pause
+O que precisamos determinar quando vamos utilizar a abordagem incremental? \pause
 
-- Que valores queremos computar (pode ser mais que um valor) \pause
-- Como inicializamos esses valores \pause
-- Como atualizamos esses valores
+- Quais valores queremos calcular; \pause
+- Como os valores são inicializados; \pause
+- Como os valores são atualizados. \pause
 
 
 # Revisão
@@ -1135,7 +1136,7 @@ No caso de `media_tamanhos`, primeiro calculamos a soma dos tamanhos de forma in
 
 # Exemplo: verificação de ordem
 
-Projete uma que verifique se os elementos de uma lista estão em ordem não decrescente.
+Projete uma função que verifique se os elementos de uma lista estão em ordem não decrescente.
 
 
 # Exemplo: verificação de ordem
@@ -1148,8 +1149,8 @@ Projete uma que verifique se os elementos de uma lista estão em ordem não decr
 ```python
 def nao_decrescente(lst: list[int]) -> bool:
     '''
-    Produz True se os lementos de lst estão em
-    ordem não descrescente, False caso contrário.
+    Produz True se os elementos de lst estão em
+    ordem não decrescente, False caso contrário.
     Exemplos
     >>> nao_decrescente([])
     True
@@ -1199,6 +1200,10 @@ Vamos implementar a função (usando a abordagem incremental) para uma lista de 
 ```python
 def nao_decrescente(lst: list[int]) -> bool:
     assert len(lst) == 5
+    # Assumimos com em_ordem = True que lst
+    # está em ordem não decrescente, se
+    # encontramos um elemento "fora de ordem",
+    # mudamos em_ordem para False.
     em_ordem = True
     if lst[0] > lst[1]:
         em_ordem = False
@@ -1255,12 +1260,12 @@ Usamos o "para cada" e o "para cada no intervalo" quando queremos analisar todos
 
 Nesse tipo de repetição a condição de parada é analisar todos os elementos (do intervalo) da lista. \pause
 
-Para situações que precisamos de um processo incremental que depende de uma condição mais geral utilizamos o "enquanto".
+Para situações que precisamos de um processo incremental que depende de uma condição mais geral utilizamos o `while`{.python} (enquanto em inglês).
 
 
 # Enquanto
 
-A forma geral do enquanto é: \pause
+A forma geral do `while`{.python} é: \pause
 
 ```python
 while condição:
@@ -1273,7 +1278,7 @@ O funcionamento do `while`{.python} é o seguinte: \pause
 
 - A `condição` é avaliada \pause
 
-- Se ela for `True`{.python}, as `instruções` são executadas e o processe se repete \pause
+- Se ela for `True`{.python}, as `instruções` são executadas e o processo se repete \pause
 
 - Senão, o `while`{.python} termina
 
@@ -1296,7 +1301,14 @@ def nao_decrescente(lst: list[int]) -> bool:
 
 \pause
 
-Vamos reescreve o corpo da função usando o `while`{.python}.
+\small
+
+Vamos reescrever o corpo da função usando o `while`{.python}.
+
+</div>
+<div class="column" width="48%">
+
+\footnotesize
 
 \pause
 
@@ -1314,19 +1326,65 @@ def nao_decrescente(lst: list[int]) -> bool:
 \pause
 
 </div>
-<div class="column" width="48%">
+</div>
+
+\ 
+
 
 \small
 
-O código está mais simples? \pause Não... \pause
+O código está mais simples? \pause Não, \pause o controle do índice `i` que era automático, agora é feito explicitamente. \pause
 
-Resolvemos o problema do processamento continuar após um elemento fora de ordem ser encontrado? \pause Não... \pause
+Resolvemos o problema do processamento continuar após um elemento fora de ordem ser encontrado? \pause Não... \pause Como podemos resolver esse problema? \pause Alterando a condição do `while`{.python} para prosseguir apenas se `em_ordem` for `True`{.python}.
 
-Como podemos resolver esse problema? \pause Alterando a condição do `while`{.python} para prosseguir apenas se `em_ordem` for `True`{.python}. \pause
+
+# Enquanto - Exemplo
+
+<div class="columns">
+<div class="column" width="48%">
+
+\footnotesize
+
+
+```python
+# Versão com for
+def nao_decrescente(lst: list[int]) -> bool:
+    em_ordem = True
+    for i in range(1, len(lst)):
+        if lst[i - 1] > lst[i]:
+            em_ordem = False
+    return em_ordem
+```
+
+</div>
+<div class="column" width="48%">
 
 \footnotesize
 
 ```python
+# Versão com enquanto
+def nao_decrescente(lst: list[int]) -> bool:
+    em_ordem = True
+    i = 1
+    while i < len(lst):
+        if lst[i - 1] > lst[i]:
+            em_ordem = False
+        i = i + 1
+    return em_ordem
+```
+
+\pause
+
+</div>
+</div>
+
+\footnotesize
+
+\vspace{-0.7cm}
+
+
+```python
+# Versão com enquanto e ajuste da condição
 def nao_decrescente(lst: list[int]) -> bool:
     em_ordem = True
     i = 1
@@ -1337,12 +1395,8 @@ def nao_decrescente(lst: list[int]) -> bool:
     return em_ordem
 ```
 
-</div>
-</div>
-
 
 # Enquanto - execução passo a passo
-
 
 <div class="columns">
 <div class="column" width="48%">
@@ -1382,7 +1436,7 @@ Qual é a ordem que as linhas são executadas? \pause
 
 4 \pause
 
-8 \pause
+8 (produz `False`{.python})\pause
 
 10
 
@@ -1390,9 +1444,411 @@ Qual é a ordem que as linhas são executadas? \pause
 </div>
 
 
+# Implementação de funções com `while`{.python}
+
+Para implementar uma função com o método incremental usando o `while`{.python} precisamos determinar as mesmas três coisas \pause
+
+- Quais valores queremos calcular; \pause
+- Como os valores são inicializados; \pause
+- Como os valores são atualizados; \pause
+
+e mais \pause
+
+- Qual é a condição da repetição.
+
+
 # Exemplo: palíndromo
 
 Projete uma função que verifique se uma lista de inteiros é palíndromo, isto é, tem os mesmos elementos quanto vistos da direita para esquerda ou da esquerda para a direita.
+
+
+# Exemplo: palíndromo
+
+<div class="columns">
+<div class="column" width="48%">
+
+\scriptsize
+
+```python
+def palindromo(lst: list[int]) -> bool:
+    '''Produz True se *lst* é palíndromo, isto
+    é, tem os mesmos elementos quando vistos
+    da direira para esquerda e da esquerda
+    para direita. Produz False caso contrário.
+    >>> palindromo([])
+    True
+    >>> palindromo([4])
+    True
+    >>> palindromo([1, 1])
+    True
+    >>> palindromo([1, 2])
+    False
+    >>> palindromo([1, 2, 1])
+    True
+    >>> palindromo([1, 5, 5, 1])
+    True
+    >>> palindromo([1, 5, 1, 5])
+    False
+    '''
+```
+
+\pause
+
+</div>
+<div class="column" width="48%">
+
+\small
+
+Como proceder com a implementação dessa função? \pause Usando a estratégia incremental. \pause
+
+Como calculamos manualmente as respostas dos exemplos? \pause Comparando o primeiro com o último, o segundo com o penúltimo, etc. \pause
+
+Vamos implementar a função (usando a abordagem incremental) para uma lista de 7 elementos usando repetição física de código e depois vamos transformar essa repetição física em uma repetição lógica.
+
+</div>
+</div>
+
+
+# Exemplo: palíndromo
+
+<div class="columns">
+<div class="column" width="48%">
+
+\scriptsize
+
+```python
+def palindromo(lst: list[int]) -> bool:
+    '''
+    >>> palindromo([3, 2, 1, 7, 5, 2, 3])
+    False
+    '''
+    assert len(lst) == 7
+    eh_palindromo = True
+    if lst[0] != lst[6]:
+        eh_palindromo = False
+    if lst[1] != lst[5]:
+        eh_palindromo = False
+    if lst[2] != lst[4]:
+        eh_palindromo = False
+    return eh_palindromo
+```
+
+\pause
+
+</div>
+<div class="column" width="48%">
+
+\small
+
+Como transformar essa repetição física de código em uma repetição lógica? \pause
+
+Nas transformações que fizemos em `sorteado`, `numero_acertos` e `nao_decrescente` introduzimos uma repetição diretamente. \pause
+
+Nesse exemplo parece que isso é mais complicado pois o código que se repete é menos parecido. \pause
+
+Vamos deixar os trechos que se repetem mais parecidos introduzindo variáveis para os índices.
+
+</div>
+</div>
+
+
+# Exemplo: palíndromo
+
+<div class="columns">
+<div class="column" width="48%">
+
+\scriptsize
+
+```python
+def palindromo(lst: list[int]) -> bool:
+    '''
+    >>> palindromo([3, 2, 1, 7, 5, 2, 3])
+    False
+    '''
+    assert len(lst) == 7
+    eh_palindromo = True
+    if lst[0] != lst[6]:
+        eh_palindromo = False
+    if lst[1] != lst[5]:
+        eh_palindromo = False
+    if lst[2] != lst[4]:
+        eh_palindromo = False
+    return eh_palindromo
+```
+
+</div>
+<div class="column" width="48%">
+
+\scriptsize
+
+```python
+def palindromo(lst: list[int]) -> bool:
+    assert len(lst) == 7
+    eh_palindromo = True
+    i = 0
+    j = 6
+    if lst[i] != lst[j]:
+        eh_palindromo = False
+
+
+    if lst[i] != lst[j]:
+        eh_palindromo = False
+
+
+    if lst[i] != lst[j]:
+        eh_palindromo = False
+
+
+    return eh_palindromo
+```
+
+</div>
+</div>
+
+\pause
+
+Como os índice `i` e `j` devem ser atualizados?
+
+
+# Exemplo: palíndromo
+
+<div class="columns">
+<div class="column" width="48%">
+
+\scriptsize
+
+```python
+def palindromo(lst: list[int]) -> bool:
+    '''
+    >>> palindromo([3, 2, 1, 7, 5, 2, 3])
+    False
+    '''
+    assert len(lst) == 7
+    eh_palindromo = True
+    if lst[0] != lst[6]:
+        eh_palindromo = False
+    if lst[1] != lst[5]:
+        eh_palindromo = False
+    if lst[2] != lst[4]:
+        eh_palindromo = False
+    return eh_palindromo
+```
+
+</div>
+<div class="column" width="48%">
+
+\scriptsize
+
+```python
+def palindromo(lst: list[int]) -> bool:
+    assert len(lst) == 7
+    eh_palindromo = True
+    i = 0
+    j = 6
+    if lst[i] != lst[j]:
+        eh_palindromo = False
+    i = i + 1
+    j = j - 1
+    if lst[i] != lst[j]:
+        eh_palindromo = False
+    i = i + 1
+    j = j - 1
+    if lst[i] != lst[j]:
+        eh_palindromo = False
+    i = i + 1
+    j = j - 1
+    return eh_palindromo
+```
+
+</div>
+</div>
+
+Como os índice `i` e `j` devem ser atualizados? Somando e subtraindo 1.
+
+
+# Exemplo: palíndromo
+
+<div class="columns">
+<div class="column" width="40%">
+
+\scriptsize
+
+```python
+def palindromo(lst: list[int]) -> bool:
+    assert len(lst) == 7
+    eh_palindromo = True
+    i = 0
+    j = 6
+    if lst[i] != lst[j]:
+        eh_palindromo = False
+    i = i + 1
+    j = j - 1
+    if lst[i] != lst[j]:
+        eh_palindromo = False
+    i = i + 1
+    j = j - 1
+    if lst[i] != lst[j]:
+        eh_palindromo = False
+    i = i + 1
+    j = j - 1
+    return eh_palindromo
+```
+
+\pause
+
+</div>
+<div class="column" width="56%">
+
+\footnotesize
+
+Agora podemos transformar a repetição física de código para lógica. \pause
+
+O que é calculado de forma incremental? \pause `eh_palindromo`, `i` e `j`. \pause
+
+Como esses valores são inicializados? \pause `True`{.python}, `0`{.python} e `len(lst) - 1`{.python}. \pause
+
+Qual é a condição da repetição? \pause `i < j`{.python} ` and eh_palindromo`{.python}. \pause
+
+\scriptsize
+
+```python
+def palindromo(lst: list[int]) -> bool:
+    eh_palindromo = True
+    # começa dos extremos
+    i = 0
+    j = len(lst) - 1
+    while i < j and eh_palindromo:
+        if lst[i] != lst[j]:
+            eh_palindromo = False
+        # vai para o centro
+        i = i + 1
+        j = j - 1
+    return eh_palindromo
+```
+
+</div>
+</div>
+
+
+# Repetição sem arranjos
+
+Até agora todos os problemas que utilizamos a abordagem incremental (repetição) envolviam uma lista de valores. \pause
+
+Agora veremos o uso da abordagem incremental em problemas que não envolvem uma lista de valores.
+
+
+# Exemplo: fatorial
+
+O fatorial de um número natural $n$ é como o produto de todos os números naturais de $1$ até $n$, isto é, $1 \times ... \times (n - 1) \times n$. Projete uma função que determine o fatorial de um número $n$.
+
+
+# Exemplo: fatorial
+
+<div class="columns">
+<div class="column" width="48%">
+
+\scriptsize
+
+```python
+def fatorial(n: int) -> int:
+    '''
+    Calcula o produto de todos os naturais
+    entre 1 e n, isto é, 1 * ... * (n - 1) * n.
+    Exemplos
+    >>> fatorial(0)
+    1
+    >>> fatorial(1)
+    1
+    >>> fatorial(2)
+    2
+    >>> fatorial(3)
+    6
+    >>> fatorial(4)
+    24
+    '''
+    return 0
+```
+
+\pause
+
+
+</div>
+<div class="column" width="48%">
+
+Vamos escrever o código usando repetição física de código para $n = 5$.
+
+\pause
+
+\scriptsize
+
+```python
+def fatorial(n: int) -> int:
+    assert n == 5
+    fat = 1
+    fat = fat * 2
+    fat = fat * 3
+    fat = fat * 4
+    fat = fat * 5
+    return fat
+```
+
+\pause
+
+\normalsize
+
+Que construção de repetição podemos utilizar para transformar essa repetição física de código em uma repetição lógica? \pause
+
+O "para cada no intervalo". \pause
+
+E qual é o intervalo? \pause `range(2, n + 1)`{.python}
+
+</div>
+</div>
+
+
+# Exemplo: fatorial
+
+
+<div class="columns">
+<div class="column" width="40%">
+
+\scriptsize
+
+```python
+def fatorial(n: int) -> int:
+    assert n == 5
+    fat = 1
+    fat = fat * 2
+    fat = fat * 3
+    fat = fat * 4
+    fat = fat * 5
+    return fat
+```
+
+\pause
+
+</div>
+<div class="column" width="58%">
+
+O que é calculado de forma incremental? \pause `fat`{.python} e `i`{.python} (variável do `for`{.python}, inicializada e atualizada automaticamente). \pause
+
+Como esses valores são inicializados? \pause `fat = 1`{.python}. \pause
+
+Como esses valores são atualizados? \pause `fat = fat * i`{.python}. \pause
+
+
+\scriptsize
+
+```python
+def fatorial(n: int) -> int:
+    assert n > 0
+    fat = 1
+    for i in range(2, n + 1):
+        fat = fat * i
+    return fat
+```
+</div>
+</div>
 
 
 <!--

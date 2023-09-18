@@ -1,6 +1,6 @@
 def ordem_nao_decrescente(lst: list[int]) -> bool:
     '''
-    Produz True se os lementos de lst estão em ordem não descrescente,
+    Produz True se os elementos de lst estão em ordem não decrescente,
     False caso contrário.
 
     Exemplos
@@ -30,7 +30,7 @@ def ordem_nao_decrescente(lst: list[int]) -> bool:
 
 def ordem_nao_decrescente2(lst: list[int]) -> bool:
     '''
-    Produz True se os lementos de lst estão em ordem não descrescente,
+    Produz True se os elementos de lst estão em ordem não decrescente,
     False caso contrário.
 
     Exemplos
