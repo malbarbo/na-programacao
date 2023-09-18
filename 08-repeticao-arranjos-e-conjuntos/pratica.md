@@ -35,7 +35,7 @@ title: Repetição, arranjos e conjuntos - Prática
 
     a) Faça uma implementação alternativa que use apenas uma repetição.
 
-    a) Avalie as implementações em ordem de simplicidade.
+    a) Avalie qual das implementações é mais simples.
 
 @. Projete uma função que calcule a amplitude dos valores de uma lista não vazia de números, isto é, a diferença entre o maior e menor valor da lista.
 
@@ -62,11 +62,11 @@ title: Repetição, arranjos e conjuntos - Prática
 
     a) Faça uma implementação que use operações de sublista e não use repetição.
 
-    a) Avalia e classifique as implementações em ordem de simples.
+    a) Avalia e classifique as implementações em ordem de simplicidade.
 
 @. Projete uma função que receba como entrada uma lista de números, uma posição $i$ e um número $n$ e devolva uma nova lista com $n$ adicionado na posição $i$ da lista de entrada.
 
-    a) Esboce uma solução em duas etapas e depois implemente a função (não use operações de sublista).
+    a) Esboce uma solução em três etapas e depois implemente a função (não use operações de sublista).
 
     a) Faça uma implementação alternativa que use apenas uma repetição (não use operações de sublista).
 
@@ -75,49 +75,25 @@ title: Repetição, arranjos e conjuntos - Prática
     a) Avalia e classifique as implementações em ordem de simples.
 
 
-<!-- Enquanto -->
+<!-- Enquanto e generalização a partir de repetição física de código -->
 
-@. Revise as funções dos exercícios anteriores e verifique quais podem ser implementadas utilizando "enquanto" para deixar o código mais eficiente ou simples. Faça a implementação dessas funções usando o "enquanto".
-
-
-<!-- Generalização a partir de repetição física de código -->
+@. Revise as funções dos exercícios anteriores e verifique quais podem ser implementadas utilizando o "enquanto" para deixar o código mais eficiente ou simples. Faça a implementação dessas funções usando o "enquanto".
 
 @. Projete uma função que verifique se uma lista de número é dobrada, isto é, pode ser obtida pela concatenação de duas listas iguais (não use operações de sublista).
 
+@. Projete uma função que determine qual é a menor quantidade de elementos de uma lista que precisam ser somados (a partir do início da lista) para que a soma seja maior que um dado valor. Se não for possível atingir a soma desejada, a função deve devolver -1.
+
+
+<!-- Repetição sem listas -->
+
+@. Um número inteiro positivo $n$ é primo se ele tem exatamente dois divisores distintos, $1$ e $n$. Projete uma função que verifique se um número inteiro positivo é primo. Dica: Faça exemplos de código (sem repetição lógica) para verificar se alguns números específicos ($5$, $8$, $11$) são primos e tente generalizar o código com repetição lógica usando o "enquanto".
+
+@. Defina uma função que receba como parâmetro um valor $n$ e calcule o valor aproximado de $\pi$ usando os primeiros $n$ termos da série
+
+   $$\pi = 4 \sum_{k=0}^{\infty} \frac{(-1)^k}{2 k + 1}
+       = 4 \left ( \frac{1}{1} - \frac{1}{3} + \frac{1}{5} - \frac{1}{7} + \frac{1}{9} - \cdots  \right)$$
+
+
+<!-- Outros -->
+
 @. Projete uma função que junte todos os elementos de uma lista de strings (não vazias) separando-os com `','`{.python} ou/e `'e'`{.python}, de acordo com a gramática do Português.
-
-
-<!--
-# Outras funções pré-definidas em Python
-
-```python
->>> # Máximo de uma lista
->>> max([3, 1, 4, 2])
-4
->>> max([])
-Traceback (most recent call last):
-  File "<stdin>", line 1, in <module>
-ValueError: max() arg is an empty sequence
-
->>> # Mínimo de uma lista
->>> min([3, 1, 4, 2])
-1
-
->>> # Número de ocorrências em uma lista
->>> # Quantas vezes 3 aparece na lista
->>> [3, 1, 3, 0].count(3)
-2
->>> [3, 1, 3, 0].count(0)
-1
->>> [3, 1, 3, 0].count(7)
-0
-
->>> # Verificação de pertinência
->>> 4 in []
-False
->>> 4 in [1, 4, 3]
-True
->>> 5 in [1, 4, 3]
-False
-```
--->
