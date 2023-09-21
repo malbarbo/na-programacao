@@ -86,7 +86,7 @@ title: Repetição, arranjos e conjuntos - Prática
 
 <!-- Repetição sem listas -->
 
-@. Um número inteiro positivo $n$ é primo se ele tem exatamente dois divisores distintos, $1$ e $n$. Projete uma função que verifique se um número inteiro positivo é primo. Dica: Faça exemplos de código (sem repetição lógica) para verificar se alguns números específicos ($5$, $8$, $11$) são primos e tente generalizar o código com repetição lógica usando o "enquanto".
+@. A sequência de Fibonacci começa com 1, 1, e cada número seguinte é obtido pela soma dos dois anteiros, dessa forma a sequência é 1, 1, 2, 3, 5, 8, 13, 21, ... Projete uma função que receba como parâmetro um número natural $n > 0$ e determine o $n$-ésimo número da sequência de Fibonacci.
 
 @. Defina uma função que receba como parâmetro um valor $n$ e calcule o valor aproximado de $\pi$ usando os primeiros $n$ termos da série
 

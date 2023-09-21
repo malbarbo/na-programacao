@@ -1109,7 +1109,7 @@ O que precisamos determinar quando vamos utilizar a abordagem incremental? \paus
 
 - Quais valores queremos calcular; \pause
 - Como os valores são inicializados; \pause
-- Como os valores são atualizados. \pause
+- Como os valores são atualizados.
 
 
 # Revisão
@@ -1184,7 +1184,7 @@ Essa forma parece diferente... \pause Antes era necessário analisar um elemento
 
 Como proceder nesse caso? \pause
 
-Vamos implementar a função (usando a abordagem incremental) para uma lista de 5 elementos usando repetição física de código e depois vamos transformar essa repetição física em uma repetição lógica.
+Vamos implementar a função para uma lista de 5 elementos usando repetição física de código e depois vamos transformar a repetição física em repetição lógica.
 
 </div>
 </div>
@@ -1218,20 +1218,59 @@ def nao_decrescente(lst: list[int]) -> bool:
 
 \pause
 
-\small
-
-Vamos transformar a repetição física de código em uma repetição lógica.
-
-\pause
 
 </div>
 <div class="column" width="48%">
 
 \small
 
+Vamos transformar essa repetição física de código em uma repetição lógica. \pause
+
 Devemos usar o "para cada" ou o "para cada no intervalo"? \pause Precisamos dos índices, então "para cada no intervalo". \pause
 
-Qual é o intervalo? \pause `range(0, len(lst) - 1)`{.python} ou `range(1, len(lst))`{.python}. \pause
+Qual é o intervalo? \pause `range(0, 4)`{.python} ou `range(1, 5)`{.python}. \pause
+
+\scriptsize
+
+```python
+def nao_decrescente(lst: list[int]) -> bool:
+    assert len(lst) == 5
+    em_ordem = True
+    for i in range(1, 5):
+        if lst[i - 1] > lst[i]:
+            em_ordem = False
+    return em_ordem
+```
+</div>
+</div>
+
+
+# Exemplo: verificação de ordem
+
+<div class="columns">
+<div class="column" width="48%">
+
+\scriptsize
+
+```python
+def nao_decrescente(lst: list[int]) -> bool:
+    assert len(lst) == 5
+    em_ordem = True
+    for i in range(1, 5):
+        if lst[i - 1] > lst[i]:
+            em_ordem = False
+    return em_ordem
+```
+
+\pause
+
+\normalsize
+
+Como **generalizar** esse código para que ele funcione para listas de qualquer tamanho? \pause Modificando o limite do intervalo de `5`{.python} para `len(lst)`{.python}. \pause
+
+
+</div>
+<div class="column" width="48%">
 
 \scriptsize
 
@@ -1246,7 +1285,7 @@ def nao_decrescente(lst: list[int]) -> bool:
 
 \pause
 
-\small
+\normalsize
 
 Revisão: \pause mesmo encontrando valores "fora de ordem" a repetição continua e analisa toda a lista...
 
@@ -1333,7 +1372,7 @@ def nao_decrescente(lst: list[int]) -> bool:
 
 \small
 
-O código está mais simples? \pause Não, \pause o controle do índice `i` que era automático, agora é feito explicitamente. \pause
+O código está mais simples? \pause Não, \pause o controle do índice `i`, que era automático, agora é feito explicitamente. \pause
 
 Resolvemos o problema do processamento continuar após um elemento fora de ordem ser encontrado? \pause Não... \pause Como podemos resolver esse problema? \pause Alterando a condição do `while`{.python} para prosseguir apenas se `em_ordem` for `True`{.python}.
 
@@ -1503,7 +1542,7 @@ Como proceder com a implementação dessa função? \pause Usando a estratégia 
 
 Como calculamos manualmente as respostas dos exemplos? \pause Comparando o primeiro com o último, o segundo com o penúltimo, etc. \pause
 
-Vamos implementar a função (usando a abordagem incremental) para uma lista de 7 elementos usando repetição física de código e depois vamos transformar essa repetição física em uma repetição lógica.
+Vamos implementar a função para uma lista de 7 elementos usando repetição física de código e depois vamos transformar a repetição física em repetição lógica.
 
 </div>
 </div>
@@ -1701,13 +1740,63 @@ def palindromo(lst: list[int]) -> bool:
 
 \footnotesize
 
-Agora podemos transformar a repetição física de código para lógica. \pause
+Agora podemos transformar essa repetição física de código para repetição lógica. \pause
 
-O que é calculado de forma incremental? \pause `eh_palindromo`, `i` e `j`. \pause
+Os valores que são calculados, a inicialização e a atualização já estão claras no código. O que precisamos determinar? \pause A condição de repetição\pause, que é `i < j`{.python} ` and eh_palindromo`{.python}. \pause
 
-Como esses valores são inicializados? \pause `True`{.python}, `0`{.python} e `len(lst) - 1`{.python}. \pause
+\scriptsize
 
-Qual é a condição da repetição? \pause `i < j`{.python} ` and eh_palindromo`{.python}. \pause
+```python
+def palindromo(lst: list[int]) -> bool:
+    assert len(lst) == 7
+    eh_palindromo = True
+    # começa dos extremos
+    i = 0
+    j = 6
+    while i < j and eh_palindromo:
+        if lst[i] != lst[j]:
+            eh_palindromo = False
+        # vai para o centro
+        i = i + 1
+        j = j - 1
+    return eh_palindromo
+```
+
+</div>
+</div>
+
+
+# Exemplo: palíndromo
+
+<div class="columns">
+<div class="column" width="48%">
+
+\scriptsize
+
+```python
+def palindromo(lst: list[int]) -> bool:
+    assert len(lst) == 7
+    eh_palindromo = True
+    # começa dos extremos
+    i = 0
+    j = 6
+    while i < j and eh_palindromo:
+        if lst[i] != lst[j]:
+            eh_palindromo = False
+        # vai para o centro
+        i = i + 1
+        j = j - 1
+    return eh_palindromo
+```
+
+\pause
+
+\small
+
+Como **generalizar** esse código para que ele funcione para listas de qualquer tamanho? \pause Modificando a inicialização `j = 6`{.python} para `j = len(lst) - 1`{.python}. \pause
+
+</div>
+<div class="column" width="48%">
 
 \scriptsize
 
@@ -1739,7 +1828,7 @@ Agora veremos o uso da abordagem incremental em problemas que não envolvem uma 
 
 # Exemplo: fatorial
 
-O fatorial de um número natural $n$ é como o produto de todos os números naturais de $1$ até $n$, isto é, $1 \times ... \times (n - 1) \times n$. Projete uma função que determine o fatorial de um número $n$.
+O fatorial de um número natural $n$ é o produto de todos os números naturais de $1$ até $n$, isto é, $1 \times \cdots \times (n - 1) \times n$. Projete uma função que determine o fatorial de um número $n$.
 
 
 # Exemplo: fatorial
@@ -1775,9 +1864,31 @@ def fatorial(n: int) -> int:
 </div>
 <div class="column" width="48%">
 
-Vamos escrever o código usando repetição física de código para $n = 5$.
+Como fazer a implementação? \pause Generalizando soluções específicas! \pause
 
-\pause
+Como determinar de forma incremental o fatorial de 5? \pause
+
+\scriptsize
+
+```python
+def fatorial(n: int) -> int:
+    assert n == 5
+    fat = 1
+    fat = fat * 2
+    fat = fat * 3
+    fat = fat * 4
+    fat = fat * 5
+    return fat
+```
+
+</div>
+</div>
+
+
+# Exemplo: fatorial
+
+<div class="columns">
+<div class="column" width="48%">
 
 \scriptsize
 
@@ -1798,19 +1909,12 @@ def fatorial(n: int) -> int:
 
 Que construção de repetição podemos utilizar para transformar essa repetição física de código em uma repetição lógica? \pause
 
-O "para cada no intervalo". \pause
+O "para cada no intervalo". \pause E qual é o intervalo? \pause `range(2, 6)`{.python}
 
-E qual é o intervalo? \pause `range(2, n + 1)`{.python}
+\pause
 
 </div>
-</div>
-
-
-# Exemplo: fatorial
-
-
-<div class="columns">
-<div class="column" width="40%">
+<div class="column" width="48%">
 
 \scriptsize
 
@@ -1818,35 +1922,285 @@ E qual é o intervalo? \pause `range(2, n + 1)`{.python}
 def fatorial(n: int) -> int:
     assert n == 5
     fat = 1
-    fat = fat * 2
-    fat = fat * 3
-    fat = fat * 4
-    fat = fat * 5
+    for i in range(2, 6):
+        fat = fat * i
     return fat
 ```
 
 \pause
 
-</div>
-<div class="column" width="58%">
+\normalsize
 
-O que é calculado de forma incremental? \pause `fat`{.python} e `i`{.python} (variável do `for`{.python}, inicializada e atualizada automaticamente). \pause
-
-Como esses valores são inicializados? \pause `fat = 1`{.python}. \pause
-
-Como esses valores são atualizados? \pause `fat = fat * i`{.python}. \pause
-
+Como **generalizar** esse código para que ele funcione para qualquer valor de `n`? \pause Alterando o limite do intervalo de `6`{.python} para `n + 1`{.python}. \pause
 
 \scriptsize
 
 ```python
 def fatorial(n: int) -> int:
-    assert n > 0
     fat = 1
     for i in range(2, n + 1):
         fat = fat * i
     return fat
 ```
+
+</div>
+</div>
+
+
+# Exemplo: número primo
+
+Um número inteiro positivo $n$ é primo se ele tem exatamente dois divisores distintos, $1$ e $n$. Projete uma função que verifique se um número inteiro positivo é primo.
+
+
+# Exemplo: número primo
+
+<div class="columns">
+<div class="column" width="48%">
+
+\scriptsize
+
+```python
+def primo(n: int) -> bool:
+    '''
+    Produz True se *n* é um número primo,
+    isto é, tem exatamente dois divisores
+    distintos, 1 e ele mesmo. Produz False
+    se *n* não é primo.
+    Exemplos
+    >>> primo(1) # 1
+    False
+    >>> primo(2) # 1 2
+    True
+    >>> primo(3) # 1 3
+    True
+    >>> primo(5) # 1 5
+    True
+    >>> primo(8) # 1 2 4 8
+    False
+    >>> primo(11) # 1 11
+    True
+    '''
+```
+
+</div>
+<div class="column" width="48%">
+\pause
+
+Como fazer a implementação? \pause Generalizando soluções específicas! \pause
+
+Como determinar de forma incremental se o número 5 é primo? \pause
+
+\scriptsize
+
+```python
+def primo(n: int) -> bool:
+    assert n = 5
+    num_divisores = 0
+    if n % 1 == 0:
+        num_divisores = num_divisores + 1
+    if n % 2 == 0:
+        num_divisores = num_divisores + 1
+    if n % 3 == 0:
+        num_divisores = num_divisores + 1
+    if n % 4 == 0:
+        num_divisores = num_divisores + 1
+    if n % 5 == 0:
+        num_divisores = num_divisores + 1
+    return num_divisores == 2
+```
+
+</div>
+</div>
+
+
+# Exemplo: número primo
+
+<div class="columns">
+<div class="column" width="48%">
+
+\scriptsize
+
+```python
+def primo(n: int) -> bool:
+    assert n = 5
+    num_divisores = 0
+    if n % 1 == 0:
+        num_divisores = num_divisores + 1
+    if n % 2 == 0:
+        num_divisores = num_divisores + 1
+    if n % 3 == 0:
+        num_divisores = num_divisores + 1
+    if n % 4 == 0:
+        num_divisores = num_divisores + 1
+    if n % 5 == 0:
+        num_divisores = num_divisores + 1
+    return num_divisores == 2
+```
+
+\small
+
+\pause
+
+Que construção de repetição podemos utilizar para transformar essa repetição física de código em uma repetição lógica? \pause
+
+</div>
+<div class="column" width="48%">
+
+\small
+
+O "para cada no intervalo". \pause E qual é o intervalo? \pause `range(1, 6)`{.python} \pause
+
+\scriptsize
+
+```python
+def primo(n: int) -> bool:
+    assert n = 5
+    num_divisores = 0
+    for i in range(1, 6):
+        if n % i == 0:
+            num_divisores = num_divisores + 1
+    return num_divisores == 2
+```
+
+\small
+
+Como **generalizar** esse código para que ele funcione para qualquer valor de `n`? \pause Alterando o limite do intervalo de `6`{.python} para `n + 1`{.python}.
+
+</div>
+</div>
+
+
+# Exemplo: número primo
+
+<div class="columns">
+<div class="column" width="48%">
+
+\scriptsize
+
+```python
+def primo(n: int) -> bool:
+    num_divisores = 0
+    for i in range(1, n + 1):
+        if n % i == 0:
+            num_divisores = num_divisores + 1
+    return num_divisores == 2
+```
+
+\pause
+
+\small
+
+Revisão: \pause quando `num_divisores` fica maior que 2 a repetição pode ser interrompida.
+
+\pause
+
+\scriptsize
+
+```python
+def primo(n: int) -> bool:
+    num_divisores = 0
+    i = 1
+    while i < n + 1 and num_divisores <= 2:
+        if n % i == 0:
+            num_divisores = num_divisores + 1
+        i = i + 1
+    return num_divisores == 2
+```
+
+\pause
+
+</div>
+<div class="column" width="48%">
+
+\small
+
+Revisão: \pause `1`{.python} e `n`{.python} são sempre divisores de `n`, além disso, nenhum divisor de `n` (exceto `n`), é maior que `n // 2`{.python}. \pause Vamos verificar se não existe nenhum divisor de `n` no intervalo de `2`{.python} a `n // 2`{.python}. \pause
+
+\scriptsize
+
+```python
+def primo(n: int) -> bool:
+    num_divisores = 0
+    i = 2
+    while i < n // 2 and num_divisores == 0:
+        if n % i == 0:
+            num_divisores = num_divisores + 1
+        i = i + 1
+    return num_divisores == 0
+```
+
+\pause
+
+\small
+
+Verificação: \pause a função falha para `n = 1`{.python}... \pause
+
+Vamos alterar o `return`{.python} para `n != 1 and num_divisores == 0`{.python}.
+</div>
+</div>
+
+
+# Exemplo: número primo
+
+<div class="columns">
+<div class="column" width="48%">
+
+\scriptsize
+
+```python
+def primo(n: int) -> bool:
+    num_divisores = 0
+    i = 2
+    while i < n // 2 and num_divisores == 0:
+        if n % i == 0:
+            num_divisores = num_divisores + 1
+        i = i + 1
+    return n != 1 and num_divisores == 0
+```
+
+\pause
+
+\footnotesize
+
+Revisão: \pause `num_divisores` só pode assumir dois valores: `0`{.python} ou `1`{.python}. \pause Então vamos mudar para `bool`{.python}.
+
+\pause
+
+\scriptsize
+
+```python
+def primo(n: int) -> bool:
+    eh_primo = True
+    i = 2
+    while i < n // 2 and eh_primo:
+        if n % i == 0:
+            eh_primo = False
+        i = i + 1
+    return n != 1 and eh_primo
+```
+
+</div>
+<div class="column" width="48%">
+
+\pause
+
+\small
+
+Revisão: \pause `eh_primo` não diz de fato se é primo pois ainda depende da condição `n != 1`{.python}. \pause
+
+\scriptsize
+
+```python
+def primo(n: int) -> bool:
+    eh_primo = n != 1
+    i = 2
+    while i < n // 2 and eh_primo:
+        if n % i == 0:
+            eh_primo = False
+        i = i + 1
+    return eh_primo
+```
+
 </div>
 </div>
 
@@ -1900,83 +2254,6 @@ c) Como as variáveis são atualizadas? \pause
 
    Generalize e escreva o código para fazer essas operações.
 
-
-# Positivos ou negativos
-
-Projete uma função que verifique se um arranjo com 5 números inteiros existem mais positivos ou mais negativos.
-
-
-# Positivos ou negativos
-
-Definição dos tipos de dados
-
-\scriptsize
-
-```cpp
-// O sinal de um número.
-enum Sinal {
-    Positivo,
-    Negativo,
-    Nenhum,
-}
-```
-
-
-# Positivos ou negativos
-
-\scriptsize
-
-```cpp
-// Verifica se existem mais números positivos ou negativos no arranjo numeros.
-// Devolve Positivo se existem mais positivos do que negativos.
-// Devolve Negativo se existem mais negativos do que positivos.
-// Devolve Nenhum se a quantidade de positivos é igual a de negativos.
-Sinal mais_positivos_ou_negativos(array<int, 5> numeros) {
-    return Nenhum;
-}
-
-examples {
-    check_expect(mais_positivos_ou_negativos({1, 2, 3, -1, 0}), Positivo);
-    check_expect(mais_positivos_ou_negativos({1, 2, 3, -1, -2}), Positivo);
-    check_expect(mais_positivos_ou_negativos({-4, 2, 3, -1, -2}), Negativo);
-    check_expect(mais_positivos_ou_negativos({-4, 2, 3, 0, -2}), Nenhum);
-}
-```
-
-\pause
-
-\small
-
-1) Quais variáveis (valores) queremos calcular? \pause A quantidade de positivos e negativos. \pause
-2) Como as variáveis são inicializadas? \pause Com zero. \pause
-3) Como as variáveis são atualizadas? \pause Se o elemento atual é positivo, incrementa o número de positivos, se o elemento atual é negativo, incrementa o número de negativos.
-
-
-# Positivos ou negativos
-
-\scriptsize
-
-```cpp
-Sinal mais_positivos_ou_negativos(array<int, 5> numeros)
-{
-    int num_positivos = 0;
-    int num_negativos = 0;
-    for (int num : numeros) {
-        if (num > 0) {
-            num_positivos = num_positivos + 1;
-        } else if (num < 0) {
-            num_negativos = num_negativos + 1;
-        }
-    }
-    Sinal sinal = Nenhum;
-    if (num_positivos > num_negativos) {
-        sinal = Positivo;
-    } else if (num_negativos > num_positivos) {
-        sinal = Negativo;
-    }
-    return sinal;
-}
-```
 
 
 # Eleições
@@ -2129,1007 +2406,6 @@ Verificação: \pause Ok. \pause
 Revisão: \pause Ok.
 
 
-# Índice do máximo
-
-Projete uma função que encontre o índice (posição) da primeira ocorrência do valor máximo de um arranjo dinâmico não vazio.
-
-
-# Especificação
-
-\small
-
-```cpp
-// Encontra o índice da primeira ocorrência do valor máximo de valores.
-// Requer que valores não seja vazio.
-int indice_maximo(vector<int> valores)
-{
-    return 0;
-}
-
-examples
-{
-    check_expect(indice_maximo({5}), 0);
-    check_expect(indice_maximo({5, 5}), 0);
-    check_expect(indice_maximo({5, 7, 5}), 1);
-    check_expect(indice_maximo({5, 7, 5, 8}), 3);
-}
-```
-
-
-# Implementação
-
-1) Quais variáveis (valores) queremos calcular? \pause O índice da primeira ocorrência do máximo (`imax`) e o índice o elemento atual (`i`). \pause
-2) Como as variáveis são inicializadas? \pause Os dois valores são inicializados com 0. \pause
-3) Como as variáveis são atualizadas? \pause `imax` é atualizado para `i` se o elemento atual for maior que o elemento na posição `imax`. `i` é incrementado com 1.
-
-
-# Implementação
-
-\scriptsize
-
-```cpp
-int indice_maximo(vector<int> valores)
-{
-    int i = 0;
-    int imax = 0;
-    for (int valor : valores) {
-        if (valor > valores[imax]) {
-            imax = i;
-        }
-        i = i + 1;
-    }
-    return imax;
-}
-```
-
-\pause
-
-\normalsize
-
-Verificação: \pause Ok.
-
-Revisão: \pause Não está claro a relação de `i` com `valor`... \pause podemos mudar `valor` para `valores[i]`.
-
-
-# Implementação
-
-\scriptsize
-
-```cpp
-int indice_maximo(vector<int> valores)
-{
-    int i = 0;
-    int imax = 0;
-    for (int valor : valores) {
-        if (valores[i] > valores[imax]) {
-            imax = i;
-        }
-        i = i + 1;
-    }
-    return imax;
-}
-```
-
-
-\pause
-
-\normalsize
-
-E agora? \pause `valor` não é mais utilizado. \pause
-
-A questão é que não queremos mais acessar os elementos do arranjo diretamente, queremos usar um índice para acessar os elementos. \pause Vamos utilizar o laço "para", que é mais apropriado para essa situação.
-
-
-# Laço "para"
-
-O laço "para" tem a seguinte forma geral
-
-\small
-
-```cpp
-for(inicialização; condição; atualização) {
-   instruções;
-}
-```
-
-O funcionamento do "para" é o seguinte \pause
-
-- A inicialização é executada \pause
-- Em seguida a condição é verificada, se ela for `true`{.cpp} as instruções são executadas, senão o laço termina \pause
-- Depois a atualização é executada e a condição é verificada novamente, se ele for `true`{.cpp}...
-
-
-# Exemplo - soma
-
-<div class="columns">
-<div class="column" width="48%">
-
-\scriptsize
-
-```cpp
-// Soma os elementos de valores.
-int soma(vector<int> valores)
-{
-    int soma = 0;
-    for (int num : valores) {
-        soma = soma + num;
-    }
-    return soma;
-}
-```
-</div>
-<div class="column" width="48%">
-
-\pause
-
-\scriptsize
-
-```cpp
-// Soma os elementos de valores.
-int soma(vector<int> valores)
-{
-    int soma = 0;
-    for (int i = 0; i < valores.size(); i = i + 1) {
-        soma = soma + valores[i];
-    }
-    return soma;
-}
-```
-</div>
-</div>
-
-\pause
-
-Qual das duas implementações é mais simples? \pause A que usa o "para cada"! \pause Por quê? \pause
-
-Porque a variável do laço (`num`) é controlada implicitamente, já no caso do "para" a variável do laço (`i`) é controlado explicitamente.
-
-
-# "para" vs "para cada"
-
-Mas então, quando usamos o "para" ao invés do "para cada"? \pause Quando queremos mais controle sobre o laço! \pause
-
-Abrimos mão da simplicidade pela flexibilidade. \pause
-
-"para cada": quando queremos analisar os elementos na sequência. \pause
-
-"para": para os demais casos (queremos os índices, queremos analisar mais que um elemento de uma vez, não precisamos analisar todos os elementos, etc).
-
-
-# Como projetar funções que processam arranjos usando o "para"
-
-Assim como no "para cada", precisamos responder as três perguntas \pause
-
-1) Quais variáveis (valores) queremos calcular?
-2) Como as variáveis são inicializadas?
-3) Como as variáveis são atualizadas?
-
-\pause
-
-Mais alguma coisa? \pause Sim! \pause Também precisamos definir os itens do laço \pause
-
-1) Quais são as variáveis do laço e como elas são inicializadas? \pause
-2) Qual a condição do laço? \pause
-3) Como as variáveis do laço são atualizadas?
-
-\pause
-
-Em algumas situações as variáveis do laço são as que queremos calcular.
-
-
-# Índice do máximo
-
-<div class="columns">
-<div class="column" width="48%">
-\scriptsize
-
-```cpp
-int indice_maximo(vector<int> valores)
-{
-    int i = 0;
-    int imax = 0;
-    for (int valor : valores) {
-        if (valores[i] > valores[imax]) {
-            imax = i;
-        }
-        i = i + 1;
-    }
-    return imax;
-}
-```
-</div>
-
-<div class="column" width="48%">
-
-\pause
-
-Fazendo uma "tradução" direta obtemos \pause
-
-\scriptsize
-
-```cpp
-int indice_maximo(vector<int> valores)
-{
-    int imax = 0;
-    for (int i = 0; i < valores.size(); i = i + 1) {
-        if (valores[i] > valores[imax]) {
-            imax = i;
-        }
-    }
-    return imax;
-}
-```
-</div>
-</div>
-
-\pause
-
-Qual é mais adequada? \pause A que usa o "para". \pause
-
-Podemos melhorar? \pause Sim, `i` pode começar com `1`, dessa forma não comparamos `valores[0]` com ele mesmo na primeira iteração.
-
-
-# Inserção
-
-Projete uma função que receba como entrada um arranjo dinâmico de números, uma posição $i$ e um número $n$ e devolva um novo arranjo com $n$ adicionado na posição $i$ do arranjo de entrada.
-
-
-# Especificação
-
-\scriptsize
-
-```cpp
-// Cria um novo arranjo inserindo o valor no índice pos de valores.
-// Requer que 0 <= pos <= valores.size().
-vector<int> insere_posicao(vector<int> valores, int pos, int valor)
-{
-    return {};
-}
-
-examples {
-    check_expect(insere_posicao({}, 0, 10), (vector<int> {10}));
-    check_expect(insere_posicao({8}, 0, 10), (vector<int> {10, 8}));
-    check_expect(insere_posicao({8}, 1, 10), (vector<int> {8, 10}));
-    check_expect(insere_posicao({2, 8}, 0, 3), (vector<int> {3, 2, 8}));
-    check_expect(insere_posicao({2, 8}, 1, 3), (vector<int> {2, 3, 8}));
-    check_expect(insere_posicao({2, 8}, 2, 3), (vector<int> {2, 8, 3}));
-}
-```
-
-
-# Implementação
-
-<div class="columns">
-<div class="column" width="48%">
-\scriptsize
-
-```cpp
-vector<int> insere_posicao(
-     vector<int> valores,
-     int pos,
-     int valor)
-{
-    vector<int> resultado = {};
-    for (int i = 0; i < valores.size(); i = i + 1) {
-        if (i == pos) {
-            resultado.push_back(valor);
-        }
-        resultado.push_back(valores[i]);
-    }
-
-    return resultado;
-}
-```
-</div>
-<div class="column" width="48%">
-\pause
-
-Verificação \pause
-
-\scriptsize
-
-```
-Ran 6 tests.
-3 of the 6 tests passed.
-Failures
-  insere_posicao.cpp at line 35:
-    left : std::vector<int> {}
-    right: std::vector<int> {10}
-
-  insere_posicao.cpp at line 37:
-    left : std::vector<int> {8}
-    right: std::vector<int> {8, 10}
-
-  insere_posicao.cpp at line 40:
-    left : std::vector<int> {2, 8}
-    right: std::vector<int> {2, 8, 3}
-```
-</div>
-</div>
-
-
-# Implementação
-
-\scriptsize
-
-```cpp
-vector<int> insere_posicao(vector<int> valores, int pos, int valor) {
-    vector<int> resultado = {};
-    for (int i = 0; i < valores.size(); i = i + 1) {
-        if (i == pos) {
-            resultado.push_back(valor);
-        }
-        resultado.push_back(valores[i]);
-    }
-    if (pos == valores.size()) {
-        resultado.push_back(valor);
-    }
-    return resultado;
-}
-```
-
-\pause
-
-\normalsize
-
-Verificação: \pause Ok. \pause
-
-Revisão: o código tem um caso especial... \pause O que podemos fazer? \pause Separar em três etapas, inserir os elementos antes de `pos`, inserir o `valor` em `pos`, inserir os elementos de `pos` até o final.
-
-
-# Implementação
-
-\scriptsize
-
-```cpp
-vector<int> insere_posicao(vector<int> valores, int pos, int valor)
-{
-    vector<int> resultado = {};
-
-    for (int i = 0; i < pos; i = i + 1) {
-        resultado.push_back(valores[i]);
-    }
-
-    resultado.push_back(valor);
-
-    for (int i = pos; i < valores.size(); i = i + 1) {
-        resultado.push_back(valores[i]);
-    }
-
-    return resultado;
-}
-```
-
-
-# Remoção
-
-Projete uma função que receba como entrada um arranjo dinâmico de números e uma posição e devolva um novo arranjo sem o elemento da posição especificada.
-
-
-# Especificação
-
-\scriptsize
-
-```cpp
-// Cria um novo arranjo removendo o elemento da posição pos de valores.
-// Requer que 0 <= pos < valores.size().
-vector<int> remove_posicao(vector<int> valores, int pos)
-{
-    return {};
-}
-
-examples {
-    check_expect(remove_posicao({8}, 0), (vector<int> {}));
-    check_expect(remove_posicao({2, 8}, 0), (vector<int> {8}));
-    check_expect(remove_posicao({2, 8}, 1), (vector<int> {2}));
-    check_expect(remove_posicao({7, 2, 8}, 0), (vector<int> {2, 8}));
-    check_expect(remove_posicao({7, 2, 8}, 1), (vector<int> {7, 8}));
-    check_expect(remove_posicao({7, 2, 8}, 2), (vector<int> {7, 2}));
-}
-```
-
-
-# Implementação
-
-\scriptsize
-
-```cpp
-// Cria um novo arranjo removendo o elemento da posição pos de valores.
-// Requer que 0 <= pos < valores.size().
-vector<int> remove_posicao(vector<int> valores, int pos)
-{
-    vector<int> resultado = {};
-
-    for (int i = 0; i < pos; i = i + 1) {
-        resultado.push_back(valores[i]);
-    }
-
-    for (int i = pos + 1; i < valores.size(); i = i + 1) {
-        resultado.push_back(valores[i]);
-    }
-
-    return resultado;
-}
-```
-
-
-# Verificação de ordem
-
-Projete uma função que verifique se um arranjo de valores está em ordem não decrescente.
-
-
-# Especificação
-
-\scriptsize
-
-```cpp
-// Produz true se os elementos de valores estão em ordem não decrescente, false
-// caso contrário.
-bool ordem_nao_decrescente(vector<int> valores)
-{
-    return false;
-}
-
-examples {
-    check_expect(ordem_nao_decrescente({}), true);
-    check_expect(ordem_nao_decrescente({3}), true);
-    check_expect(ordem_nao_decrescente({1, 3}), true);
-    check_expect(ordem_nao_decrescente({3, 1}), false);
-    check_expect(ordem_nao_decrescente({1, 3, 3}), true);
-    check_expect(ordem_nao_decrescente({3, 3, 3}), true);
-    check_expect(ordem_nao_decrescente({3, 2, 3}), false);
-    check_expect(ordem_nao_decrescente({3, 4, 2}), false);
-    check_expect(ordem_nao_decrescente({1, 2, 3, 4, 5, 6}), true);
-    check_expect(ordem_nao_decrescente({1, 2, 3, 2, 5, 6}), false);
-}
-```
-
-
-# Implementação
-
-A implementação dessa função parece ser diferente das anteriores. \pause
-
-Antes só precisávamos analisar um único elemento do arranjo a cada iteração, agora temos que analisar dois elementos. \pause
-
-Como podemos proceder nesse caso? \pause
-
-Vamos resolver o problema para arranjos com 5 elementos usando repetição física de código e depois vamos tentar transformar essa repetição física em uma repetição lógica.
-
-
-# Implementação
-
-<div class="columns">
-<div class="column" width="48%">
-\scriptsize
-
-```cpp
-bool ordem_nao_decrescente(array<int, 5> valores)
-{
-    bool em_ordem = true;
-    if (valores[0] > valores[1]) {
-        em_ordem = false;
-    }
-    if (valores[1] > valores[2]) {
-        em_ordem = false;
-    }
-    if (valores[2] > valores[3]) {
-        em_ordem = false;
-    }
-    if (valores[3] > valores[4]) {
-        em_ordem = false;
-    }
-    return em_ordem;
-}
-```
-</div>
-<div class="column" width="48%">
-\pause
-
-1) Quais são as variáveis do laço e como elas são inicializadas? \pause `int i = 1`{.cpp} \pause
-2) Qual a condição do laço? \pause `i < valores.size()`{.cpp} \pause
-3) Como as variáveis do laço são atualizadas? \pause `i = i + 1`{.cpp}
-</div>
-</div>
-
-
-# Implementação
-
-\scriptsize
-
-```cpp
-// Produz true se os elementos de valores estão em ordem não decrescente, false
-// caso contrário.
-bool ordem_nao_decrescente(vector<int> valores)
-{
-    bool em_ordem = true;
-    for (int i = 1; i < valores.size(); i = i + 1) {
-        if (valores[i - 1] > valores[i]) {
-            em_ordem = false;
-        }
-    }
-    return em_ordem;
-}
-```
-
-\pause
-
-\normalsize
-
-Verificação: \pause Ok. \pause
-
-Revisão: \pause mesmo encontrando valores "fora de ordem" a repetição continua e analisa todos os elementos de `valores`... \pause A repetição só precisa continuar enquanto `em_ordem` for `true`{.cpp}.
-
-
-# Implementação
-
-\scriptsize
-
-```cpp
-// Produz true se os elementos de valores estão em ordem não decrescente, false
-// caso contrário.
-bool ordem_nao_decrescente(vector<int> valores)
-{
-    bool em_ordem = true;
-    for (int i = 1; i < valores.size() && em_ordem; i = i + 1) {
-        if (valores[i - 1] > valores[i]) {
-            em_ordem = false;
-        }
-    }
-    return em_ordem;
-}
-```
-
-
-# Verificação de palíndromo
-
-Projete uma função que verifique se um arranjo de valores é palíndromo.
-
-
-# Especificação
-
-\scriptsize
-
-```cpp
-// Produz true se valores é palíndromo, isto é, os elementos de valores vistos
-// da esquerda para direita e da direita para esquerda são os mesmos. Produz
-// false se valores não é palíndromo.
-bool palindromo(vector<int> valores)
-{
-    return false;
-}
-
-examples {
-    check_expect(palindromo({}), true);
-    check_expect(palindromo({1}), true);
-    check_expect(palindromo({2, 1}), false);
-    check_expect(palindromo({1, 2}), false);
-    check_expect(palindromo({2, 2}), true);
-    check_expect(palindromo({2, 1, 2}), true);
-    check_expect(palindromo({4, 4, 2}), false);
-    check_expect(palindromo({2, 1, 1, 2}), true);
-    check_expect(palindromo({2, 0, 1, 2}), false);
-    check_expect(palindromo({2, 0, 1, 0, 2}), true);
-}
-```
-
-
-# Implementação
-
-Assim como para a função `ordem_nao_decrescente`, vamos resolver o problema para 5 elementos usando repetição física de código.
-
-
-# Implementação
-
-<div class="columns">
-<div class="column" width="40%">
-\scriptsize
-
-```cpp
-bool palindromo(array<int, 5> valores)
-{
-    bool palindromo = true;
-    if (valores[0] != valores[4]) {
-        palindromo = false;
-    }
-    if (valores[1] != valores[3]) {
-        palindromo = false;
-    }
-    return palindromo;
-}
-```
-</div>
-<div class="column" width="55%">
-\pause
-
-1) Quais são as variáveis do laço e como elas são inicializadas? \pause
-
-   `int i = 0, j = valores.size() - 1`{.cpp} \pause
-2) Qual a condição do laço? \pause
-
-   `i < j`{.cpp} \pause
-3) Como as variáveis do laço são atualizadas? \pause
-
-   `i = i + 1, j = j - 1`{.cpp}
-</div>
-</div>
-
-
-# Implementação
-
-\scriptsize
-
-```cpp
-// Produz true se valores é palíndromo, isto é, os elementos de valores vistos
-// da esquerda para direita e da direita para esquerda são os mesmos. Produz
-// false se valores não é palíndromo.
-bool palindromo(vector<int> valores)
-{
-    bool palindromo = true;
-    for (int i = 0, j = valores.size() - 1; i < j && palindromo; i = i + 1, j = j - 1) {
-        if (valores[i] != valores[j]) {
-            palindromo = false;
-        }
-    }
-    return palindromo;
-}
-```
-
-
-# Exercício
-
-A escola do seu irmão mais novo está fazendo uma coletânea de ditos populares. Cada aluno da escola escolheu um dito popular e a escola agregou todos eles em um arquivo texto (um dito por linha). Agora a escola precisa eliminar os ditos repetidos e classificá-los em ordem, mas ela não sabe como fazer isso. Você pode ajudar?
-
-
-# Análise
-
-Classificar uma coleção de ditos em ordem e eliminar ditos repetidos. \pause
-
-- Os ditos devem ser obtidos de um arquivo texto onde cada linha tem um dito.
-
-\pause
-
-Devemos fazer um programa completo e não apenas uma função!
-
-\pause
-
-Por onde começamos?
-
-\pause
-
-Assumimos que temos os dados de entrada e prosseguimos com o projeto de uma função! \pause Depois fazemos a parte de entrada e saída dos dados. \pause
-
-Mas antes, vamos ver um tipo que irá nos ajudar a resolver o problema: conjuntos.
-
-
-# Conjuntos
-
-Um conjunto em C++ podem ser representado pelo tipo `set`, definido na biblioteca `set`.
-
-\pause
-
-Um conjunto é semelhante a um arranjo dinâmico, mas não contém elementos repetidos, os elementos são mantidos em ordem e não são indexados.
-
-
-# Conjuntos
-
-<div class="columns">
-<div class="column" width="48%">
-\scriptsize
-
-```cpp
-set<int> s = {3, 1, 4};
-
-check_expect(s, (set<int> {1, 4, 3}));
-
-s.insert(5);
-s.insert(4);
-s.insert(1);
-
-check_expect(s.size(), 4);
-check_expect(s, (set<int> {1, 5, 4, 3}));
-
-s.erase(10);
-s.erase(1);
-s.erase(3);
-
-check_expect(s, (set<int> {4, 5}));
-
-check_expect(s.count(4), 1);
-check_expect(s.count(3), 0);
-```
-
-</div>
-<div class="column" width="48%">
-
-\pause
-
-Inserir um elemento existente ou remover um elemento inexistente não altera o conjunto.
-
-\pause
-
-Podemos verificar se um conjunto contém um elemento utilizando o método `count`.
-
-</div>
-</div>
-
-
-# Conjuntos
-
-Para analisar todos os elementos de um conjunto, usamos o "para cada" \pause
-
-\footnotesize
-
-```cpp
-set<int> valores = {7, 10, 2};
-
-int soma = 0;
-
-for (int valor : valores) {
-    soma = soma + valor;
-}
-
-check_expect(soma, 19);
-```
-
-\pause
-
-\normalsize
-
-É isso! \pause Agora vamos voltar para o problema dos ditos.
-
-
-# Definição dos tipos de dados
-
-Os ditos de entrada serão representados por um arranjo de strings. \pause
-
-Vamos usar um conjunto na implementação...
-
-
-# Especificação
-
-\scriptsize
-
-```cpp
-// Seleciona uma ocorrência de cada dito do arranjo ditos e classifica o
-// resultado em ordem alfabética.
-vector<string> classifica_ditos_unicos_em_ordem(vector<string> ditos) {
-    return {};
-}
-
-examples
-{
-    string dito1 = "Esmola demais até santo desconfia";
-    string dito2 = "Diga com quem andas que lhe direi quem és";
-    string dito3 = "Saco vazio não para em pé";
-    check_expect(classifica_ditos_unicos_em_ordem({}),
-                 (vector<string> {}));
-
-    check_expect(classifica_ditos_unicos_em_ordem({dito1, dito2, dito1}),
-                 (vector<string> {dito2, dito1}));
-
-    check_expect(classifica_ditos_unicos_em_ordem({dito3, dito1, dito2, dito1, dito3, dito2}),
-                 (vector<string> {dito2, dito1, dito3}));
-}
-```
-
-
-# Implementação
-
-Precisamos analisar todos os elementos da entrada e podemos fazer isso na ordem que eles aparecem, então pode usar o "para cada". \pause
-
-O que queremos calcular com o "para cada"? \pause
-
-Calcular a resposta diretamente parece complicado pois teríamos que evitar as repetições de ditos e ainda classificar o arranjo de saída. \pause
-
-Podemos computar um resultado intermediário mais facilmente que nos ajude a computar o resultado da função? \pause Sim! \pause Vamos criar um conjunto com os ditos, eles serão únicos e estarão em ordem! \pause E depois? \pause
-
-Criamos o arranjo de resposta com os elementos do conjunto.
-
-
-# Implementação
-
-\scriptsize
-
-```cpp
-// Seleciona uma ocorrência de cada dito do arranjo ditos e classifica o
-// resultado em ordem alfabética.
-vector<string> classifica_ditos_unicos_em_ordem(vector<string> ditos)
-{
-    // Usamos um conjunto para selecionar apenas uma ocorrência de cada dito e
-    // também classificá-los em ordem.
-    set<string> unicos = {};
-    for (string dito : ditos) {
-        unicos.insert(dito);
-    }
-
-    vector<string> result = {};
-
-    for (string dito : unicos) {
-        result.push_back(dito);
-    }
-
-    return result;
-}
-```
-
-
-# Programa
-
-Temos a função que calcula o que queremos, e agora, o que precisamos fazer para ter um programa? \pause
-
-Escrever o código que faz a entrada e saída. \pause Vamos desejar por funções auxiliares e escrever a função principal. \pause
-
-\scriptsize
-
-```cpp
-int main()
-{
-    // Entrada
-    vector<string> ditos = le_ditos();
-
-    // Processamento
-    vector<string> ditos_unicos = classifica_ditos_unicos_em_ordem(ditos);
-
-    // Saída
-    exibe_ditos(ditos_unicos);
-}
-```
-
-
-# Pendências
-
-\scriptsize
-
-```cpp
-// Produz um arranjo de ditos lendo um dito por linha da entrada padrão.
-vector<string> le_ditos()
-{
-    return {};
-}
-
-// Exibe na saída padrão os ditos.
-void exibe_ditos(vector<string> ditos)
-{
-}
-```
-
-\pause
-
-\normalsize
-
-O que essas funções têm de diferente das funções que temos escrito até agora? \pause
-
-A função `le_ditos` não tem argumentos de entrada e a função `exibe_ditos` não tem resposta (usamos o tipo `void`{.cpp} para representar isso). \pause
-
-Por isso não temos como escrever os exemplos para essas funções!
-
-
-# Implementação
-
-A implementação da função `exibe_ditos` é direta: \pause
-
-\scriptsize
-
-```cpp
-// Escreve na saída padrão os ditos.
-void exibe_ditos(vector<string> ditos)
-{
-    for (string dito: ditos) {
-        cout << dito << endl;
-    }
-}
-```
-
-
-# Implementação
-
-Mas e a implementação da função `le_ditos`? \pause Ler um dito parece simples \pause
-
-\scriptsize
-
-```cpp
-vector<string> le_ditos()
-{
-    vector<string> ditos = {};
-    string dito;
-
-    getline(cin, dito);
-    ditos.push_back(dito);
-
-    return ditos;
-}
-```
-
-\pause
-
-\normalsize
-
-Mas como ler uma quantidade indeterminada de ditos? \pause Precisamos de uma nova forma de repetição!
-
-
-# Enquanto
-
-A forma geral do "enquanto" é:
-
-\scriptsize
-
-```cpp
-while (condição) {
-    instruções;
-}
-```
-
-\pause
-
-\normalsize
-
-O funcionamento do "enquanto" é o seguinte \pause
-
-- A condição é verificada; \pause
-- Se a condição for `true`{.cpp}, as instruções são executadas e processo começa novamente.\pause
-- Se a condição for `false`{.cpp}, o laço é finalizado. \pause
-
-Ou seja, o "enquanto" executa as mesmas instruções enquanto a condição for verdadeira.
-
-
-# Exemplo
-
-\scriptsize
-
-```cpp
-vector<int> valores = {1, 2, 4};
-
-int i = 0;
-int soma = 0;
-while (i < valores.size()) {
-    soma = soma + valores[i];
-    i = i + 1;
-}
-
-check_expect(soma, 7).
-```
-
-
-# Quando usar o "enquanto"?
-
-Claro, não precisamos do "enquanto" para fazer a soma dos valores de um arranjo, podemos usar o "para cada". \pause
-
-Então, quando usamos o "enquanto"? \pause
-
-Em geral, quando precisamos de uma repetição que não dependa de uma coleção de valores. \pause Mas também podemos usar o "enquanto" quando precisamos analisar os elementos de um arranjo e o "para" e o "para cada" não são adequados (deixam o código mais complicado).
-
-
-# Implementação
-
-Agora podemos voltar para a implementação de `le_ditos`. \pause
-
-A função `getline` produz um valor que pode ser usado com uma condição. Se `getline` conseguir ler uma linha da entrada, o valor produzido corresponde a `true`{.cpp}, caso contrário, o valor corresponde a `false`{.cpp}. \pause
-
-Então, a ideia para implementar a função `le_ditos` é: \pause
-
-- Enquanto conseguiu ler uma linha, adiciona a linha no arranjo.
-
-
-# Implementação
-
-\scriptsize
-
-```cpp
-// Produz um arranjo de ditos lendo um dito por linha da entrada padrão.
-vector<string> le_ditos()
-{
-    vector<string> ditos = {};
-    string dito;
-
-    while (getline(cin, dito)) {
-        ditos.push_back(dito);
-    }
-
-    return ditos;
-}
-```
-
-
 # Execução do programa
 
 O programa está pronto! Agora podemos compilar e testar. \pause
@@ -3178,6 +2454,7 @@ O símbolo `>` é interpretado pelo shell como redirecionamento da saída.
 \pause
 
 Aprecie esse momento. \pause Temos um programa completo que pode ser utilizado por um usuário final para realizar uma tarefa útil!
+
 
 # Exercício
 
@@ -3312,115 +2589,6 @@ Modifique a função `separa` de maneira que a string seja separada por um ou ma
 
 ```cpp
 check_expect(separa("mais   de  um "), (vector<string> { "mais", "de", "um" }));
-```
-
-
-
-# Exercício
-
-Um número inteiro positivo $n$ é primo se ele tem exatamente dois divisores distintos, $1$ e $n$. Projete uma função que verifique se um número inteiro positivo é primo. Dica: Faça exemplos de código (sem repetição lógica) para verificar se alguns números específicos (5, 8, 11) são primos e tente generalizar o código com repetição lógica usando o "enquanto". Leia com cuidado a definição e faça o código mais simples e direto possível!
-
-
-# Especificação
-
-\scriptsize
-
-```cpp
-// Produz true se n é um número primo, isto é, se n tem exatamente dois
-// divisores distintos, 1 e ele mesmo. Produz false se n não é primo.
-//
-// Requer que n seja maior que 0.
-bool primo(int n)
-{
-    return false;
-}
-
-examples
-{
-    check_expect(primo(1), false);
-    check_expect(primo(2), true);
-    check_expect(primo(3), true);
-    check_expect(primo(4), false);
-    check_expect(primo(5), true);
-    check_expect(primo(8), false);
-    check_expect(primo(11), true);
-}
-```
-
-
-# Implementação
-
-Como fazer a implementação? \pause Generalizando soluções específicas!
-
-
-# Implementação
-
-\scriptsize
-
-```cpp
-int n = 5;
-int num_divisores = 0;
-
-if (n % 1 == 0) {
-    num_divisores = num_divisores + 1;
-}
-if (n % 2 == 0) {
-    num_divisores = num_divisores + 1;
-}
-if (n % 3 == 0) {
-    num_divisores = num_divisores + 1;
-}
-if (n % 4 == 0) {
-    num_divisores = num_divisores + 1;
-}
-if (n % 5 == 0) {
-    num_divisores = num_divisores + 1;
-}
-return num_divisores == 2; // 2 == 2 -> true
-```
-
-
-# Implementação
-
-\scriptsize
-
-```cpp
-bool primo(int n)
-{
-    int num_divisores = 0;
-    int i = 1;
-    while (i <= n) {
-        if (n % i == 0) {
-            num_divisores = num_divisores + 1;
-        }
-        i += 1;
-    }
-    return num_divisores == 2;
-}
-```
-
-\pause
-
-\normalsize
-
-Podemos melhorar! \pause Sim! (Discussão em sala)
-
-
-# Implementação
-
-\scriptsize
-
-```cpp
-bool primo(int n)
-{
-    bool primo = n > 1;
-    for (int i = 2; i <= n / 2 && primo; i = i + 1) {
-        if (n % i == 0) {
-            primo = false;
-        }
-    }
-    return primo;
-}
 ```
 
 -->
