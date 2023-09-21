@@ -2205,6 +2205,133 @@ def primo(n: int) -> bool:
 </div>
 
 
+# Matrizes
+
+O tipo `list`{.python} (arranjo) que vimos é unidimensional. Algumas linguagens suportam arranjos com mais dimensões. Os arranjos bidimensionais são chamados de matrizes. \pause
+
+O Python não suporta nativamente matrizes, mas podemos usar lista de listas como matrizes.
+
+
+# Matrizes
+
+Por exemplo, para representar matriz
+
+$$
+A = \left [
+  \begin{array}{cccc}
+  1 & 4 & 2 & 8 \\
+  -1 & 0 & 9 & 1 \\
+  4 & 7 & -2 & 0
+  \end{array}
+  \right ]
+$$
+
+em Python fazemos \pause
+
+\small
+
+```python
+>>> m: list[list[int]] = [[1, 4, 2, 8], [-1, 0, 9, 1], [4, 7, -2, 0]]
+```
+
+
+# Matrizes
+
+Usamos as operações que já conhecemos para acessar e modificar a matriz
+
+\small
+
+```python
+>>> m: list[list[int]] = [[1, 4, 2, 8], [-1, 0, 9, 1], [4, 7, -2, 0]]
+>>> m[1]
+[-1, 0, 9, 1]
+>>> m[1][2]
+9
+>>> len(m)
+3
+>>> len(m[0])
+4
+>>> m[2, 1] = 0
+>>> m
+[[1, 4, 2, 8], [-1, 0, 9, 1], [4, 0, -2, 0]]
+```
+
+
+# Exemplo: matriz nula
+
+Projete uma função que receba dois números inteiros positivos, $m$ e $n$, e crie uma matriz $A_{m \times n}$, com $m$ linhas e $n$ colunas, com todos os elementos zeros.
+
+
+# Exemplo: matriz nula
+
+<div class="columns">
+<div class="column" width="56%">
+\scriptsize
+
+```{.python .number-lines}
+def cria_matriz_nula(m: int, n: int) -> list[list[int]]:
+    '''
+    Cria uma matriz nula com *m* linhas e *n* colunas.
+
+    Requer que m > 0 e n > 0.
+
+    Exemplos
+    >>> cria_matriz_nula(2, 3)
+    [[0, 0, 0], [0, 0, 0]]
+    '''
+    m = []
+    for i in range(m):
+        linha = []
+        for j in range(n):
+            linha.append(0)
+        m.append(linha)
+    return m
+```
+
+\pause
+
+\footnotesize
+
+Para a chamada `cria_matriz_nula(2, 3)`{.python}, qual é a ordem que as linhas são executas?
+
+\pause
+
+</div>
+<div class="column" width="42%">
+
+\small
+
+11 (`m = []`{.python}) \pause
+
+12 (`i = 0`{.python}) \pause
+
+13 (`linha = []`{.python}) \pause
+
+14 (`j = 0`{.python}), \pause 15 (`linha = [0]`{.python}), \pause 14 (`j = 1`{.python}), \pause 15 (`linha = [0, 0]`{.python}), \pause 14 (`j = 2`{.python}), \pause 15 (`linha = [0, 0, 0]`{.python}), \pause 14 (`j = 3`{.python}) \pause
+
+16 (`m = [[0, 0, 0]]`), \pause 12 (`i = 1`{.python}) \pause
+
+13 (`linha = []`{.python}) \pause
+
+14 (`j = 0`{.python}), \pause 15 (`linha = [0]`{.python}), \pause 14 (`j = 1`{.python}), \pause 15 (`linha = [0, 0]`{.python}), \pause 14 (`j = 2`{.python}), \pause 15 (`linha = [0, 0, 0]`{.python}), \pause 14 (`j = 3`{.python}) \pause
+
+
+16 (`m = [[0, 0, 0], [0, 0, 0]]`), \pause 12 (`i = 2`{.python}), \pause 17
+
+</div>
+</div>
+
+
+# Exemplos: matriz regular
+
+Uma matriz é regular quando todos as linhas têm a mesma quantidade de elementos. Projete uma função que verifique se uma matriz é regular.
+
+
+# Exemplos: matriz transposta
+
+Projete uma função que cria a matriz transposta de uma data matriz (regular).
+
+
 <!--
 
 # Como projetar funções que processam arranjos usando o "para cada"
