@@ -2279,13 +2279,13 @@ def cria_matriz_nula(m: int, n: int) -> list[list[int]]:
     >>> cria_matriz_nula(2, 3)
     [[0, 0, 0], [0, 0, 0]]
     '''
-    m = []
+    a = []
     for i in range(m):
         linha = []
         for j in range(n):
             linha.append(0)
-        m.append(linha)
-    return m
+        a.append(linha)
+    return a
 ```
 
 \pause
@@ -2326,11 +2326,18 @@ Para a chamada `cria_matriz_nula(2, 3)`{.python}, qual é a ordem que as linhas 
 
 Uma matriz é regular quando todos as linhas têm a mesma quantidade de elementos. Projete uma função que verifique se uma matriz é regular.
 
+\pause
+
+Feito em sala.
+
 
 # Exemplos: matriz transposta
 
 Projete uma função que cria a matriz transposta de uma data matriz (regular).
 
+\pause
+
+Feito em sala.
 
 <!--
 
