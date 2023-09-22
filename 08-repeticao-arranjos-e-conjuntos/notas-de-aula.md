@@ -2330,14 +2330,28 @@ Uma matriz é regular quando todos as linhas têm a mesma quantidade de elemento
 
 Feito em sala.
 
+\pause
 
-# Exemplos: matriz transposta
+Daqui para frente só vamos utilizar matrizes regulares.
 
-Projete uma função que cria a matriz transposta de uma data matriz (regular).
+
+# Exemplos: posições zero
+
+Projete uma função que encontre as posições de todos os elementos nulos de uma matriz.
 
 \pause
 
 Feito em sala.
+
+
+# Exemplos: matriz transposta
+
+Projete uma função que crie a matriz transposta de uma data matriz.
+
+\pause
+
+Feito em sala.
+
 
 <!--
 
