@@ -1994,7 +1994,7 @@ Como determinar de forma incremental se o número 5 é primo? \pause
 
 ```python
 def primo(n: int) -> bool:
-    assert n = 5
+    assert n == 5
     num_divisores = 0
     if n % 1 == 0:
         num_divisores = num_divisores + 1
@@ -2022,7 +2022,7 @@ def primo(n: int) -> bool:
 
 ```python
 def primo(n: int) -> bool:
-    assert n = 5
+    assert n == 5
     num_divisores = 0
     if n % 1 == 0:
         num_divisores = num_divisores + 1
@@ -2054,7 +2054,7 @@ O "para cada no intervalo". \pause E qual é o intervalo? \pause `range(1, 6)`{.
 
 ```python
 def primo(n: int) -> bool:
-    assert n = 5
+    assert n == 5
     num_divisores = 0
     for i in range(1, 6):
         if n % i == 0:
@@ -2335,9 +2335,9 @@ Feito em sala.
 Daqui para frente só vamos utilizar matrizes regulares.
 
 
-# Exemplos: posições zero
+# Exemplos: quantidade de zeros
 
-Projete uma função que encontre as posições de todos os elementos nulos de uma matriz.
+Projete uma função que conte a quantidade de elementos nulos de uma matriz.
 
 \pause
 
@@ -2351,6 +2351,85 @@ Projete uma função que crie a matriz transposta de uma data matriz.
 \pause
 
 Feito em sala.
+
+
+# Conjuntos
+
+Vimos o tipo `list`{.python}, pré-definido em Python, que serve para representar uma sequência de valores.
+
+\pause
+
+Um conjunto em Python é semelhante a uma lista, mas não contém elementos repetidos, a ordem dos elementos não é definida, os elementos não são indexados e os elementos precisam ser imutáveis.
+
+
+# Conjuntos
+
+<div class="columns">
+<div class="column" width="48%">
+\footnotesize
+
+```python
+>>> # conjunto vazio
+>>> a: set[int] = set()
+>>> a
+{}
+```
+
+\pause
+
+```python
+>>> # inicialização com elementos
+>>> a = {10, 4}
+>>> a
+{10, 4}
+```
+
+\pause
+
+```python
+>>> # adição de elementos
+>>> a.add(3)
+>>> a.add(4)
+>>> a
+{10, 3, 4}
+```
+
+\pause
+
+</div>
+<div class="column" width="48%">
+\footnotesize
+
+```python
+>>> # pertinência
+>>> 4 in a
+True
+>>> 20 in a
+False
+```
+
+\pause
+
+```python
+>>> # tamanho
+>>> len(a)
+3
+```
+
+\pause
+
+```python
+>>> # iteração
+>>> soma = 0
+>>> for e in a:
+...     soma = soma + e
+...
+>>> soma
+17
+```
+
+</div>
+</div>
 
 
 <!--
