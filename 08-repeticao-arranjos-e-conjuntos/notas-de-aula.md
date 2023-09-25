@@ -2251,7 +2251,7 @@ Usamos as operações que já conhecemos para acessar e modificar a matriz
 3
 >>> len(m[0])
 4
->>> m[2, 1] = 0
+>>> m[2][1] = 0
 >>> m
 [[1, 4, 2, 8], [-1, 0, 9, 1], [4, 0, -2, 0]]
 ```
