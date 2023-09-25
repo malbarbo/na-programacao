@@ -99,3 +99,9 @@ title: Repetição, arranjos e conjuntos - Prática
 @. Projete uma função que junte todos os elementos de uma lista de strings (não vazias) separando-os com `','`{.python} ou/e `'e'`{.python}, de acordo com a gramática do Português.
 
 @. Projete uma função que receba um número inteiro positivo $n$, e crie a matriz identidade $I_n$, com $n$ linhas e $n$ colunas, com todos os elementos da diagonal principal (elementos com o mesmo índice) iguais a 1 e os demais elementos iguais a 0.
+
+@. Projete uma função que encontre os índices de todas as linhas de uma matriz cuja a soma dos elementos é zero.
+
+@. Projete uma função que encontre os índices de todas as colunas de uma matriz cuja a soma dos elementos é zero.
+
+@. Projete uma função que verifique se uma matriz $A$ é simétrica, isto é, para cada elemento $a_{ij}$ da matriz, $a_{ij} = a_{ji}$.
