@@ -1,6 +1,6 @@
 ---
 # vim: set spell spelllang=pt_br:
-# TODO: modificação no for each
+# TODO: adicionar imagens mostrando a modificação da memória
 title: Memória e passagem de parâmetros
 ---
 
@@ -20,7 +20,7 @@ A memória é um recurso compartilhado entre os diversos programas que estão em
 
 Cada processo também precisa gerenciar a sua própria memória. \pause
 
-Algumas linguagens como Python, Java e Go, fazem a gerência automática da memória. \pause Algumas outras linguagens, como C, requerem que o programador faça a gerência da memória de forma explícita (manual).
+Algumas linguagens como Python, Java e Go, fazem a gerência automática da memória. \pause Outras linguagens, como C, requerem que o programador faça a gerência da memória de forma explícita (manual).
 
 
 # Gerência de memória
@@ -52,7 +52,7 @@ Nos programas que fizemos, em que momento o Python desaloca memória? \pause
 
 Vimos anteriormente que uma variável em Python é uma referência para uma célula de memória que armazena um valor. \pause
 
-Agora vamos explorar esse fato com mais detalhes e alguns resultados que podem parecer surpreendente.
+Agora vamos explorar esse fato com mais detalhes e alguns resultados que podem parecer surpreendentes.
 
 
 # Variáveis
@@ -128,8 +128,20 @@ Quando uma variável é passada como parâmetro para uma função, um apelido é
 >>> a = 20
 >>> soma1(a)
 >>> a
-20
 ```
+
+\pause
+
+`20`{.python}
+
+\pause
+
+\small
+
+Quando `soma1` inicia a execução, `a` e `x` referenciam a mesma célula de memória. A instrução `x = x + 1`{.python} gera um novo valor (`21`{.python}) que é armazenado em uma nova célula de memória e `x` passa a referenciar essa nova célula. `a` continua referenciado a mesma célula de memória.
+
+\pause
+
 </div>
 <div class="column" width="48%">
 \footnotesize
@@ -140,32 +152,162 @@ Quando uma variável é passada como parâmetro para uma função, um apelido é
 >>> a = [5, 4]
 >>> concatena1(a)
 >>> a
-[5, 4, 1]
 ```
 
+\pause
+
+`[5, 4, 1]`{.python}
+
+\small
+
+\pause
+
+Quando `concatena1` inicia a execução, `a` e `x` referenciam a mesma célula de memória. A instrução `x.append(1)`{.python} altera a célula de memória referenciada por `x` adicionando o valor `1`. `a` continua referenciado a mesma célula de memória (que foi alterada).
+
 </div>
 </div>
 
 
-# Parâmetros
+# Parâmetro e apelidos
 
 Os apelidos podem deixar o código mais difícil de ler, mas em algumas situações eles são necessários. \pause
 
-Por exemplo, suponha que queremos projetar uma função que inverta a ordem dos elementos de uma lista, isto é, coloque o último em primeiro, o penúltimo em segundo, etc. \pause
+Suponha que queremos projetar uma função que inverta a ordem dos elementos de uma lista, isto é, coloque o último em primeiro, o penúltimo em segundo, e assim por diante. \pause
 
-Como proceder?
+Como podemos proceder?
+
+
+# Parâmetro e apelidos
+
+Temos duas opções: \pause
+
+1) Fazer uma função que crie uma nova lista com os elementos em ordem invertida \pause
+
+2) Modificar a própria lista alterando a ordem dos elementos \pause
+
+Em geral, criar uma nova lista é mais fácil, mas acarreta no uso extra de memória. Esta pode ser a única opção se tanto a lista inicial quando a lista invertida são utilizadas posteriormente. \pause
+
+Se a lista na ordem inicial não é necessária após a chamada da função, então podemos modificar a própria lista, o que pode ser mais complicado, mas evita o uso de memória extra.
 
 
 # Projeto de funções
 
 Como projetar funções que modificam os seu argumentos? \pause
 
-Generalizando exemplos concretos.
+Generalizando exemplos concretos. \pause
+
+O exemplo a seguir foi desenvolvido em sala.
 
 
-# Exemplo insere ordenado
+# Exemplo: inverte
 
-Dado um arranjo ordenado em ordem não decrescente e um valor `v`, projete uma função que modifique o arranjo inserindo o valor `v` de maneira que o arranjo continue em ordem.
+<div class="columns">
+<div class="column" width="48%">
+\scriptsize
+
+```python
+def inverte(lst: list[int]) -> list[int]:
+    '''
+    Cria uma nova lista invertendo os elementos
+    de *lst*, isto é, o último aparece como
+    primeiro, o penúltimo com segundo, e assim
+    por diante.
+    Exemplos
+    >>> inverte([8, 6, 1, 4, 5])
+    [5, 4, 1, 5, 8]
+    '''
+    r = []
+    for i in range(len(lst)):
+        r.append(lst[len(lst) - i - 1])
+    return r
+```
+
+</div>
+<div class="column" width="48%">
+
+\scriptsize
+
+```python
+def invertem(lst: list[int]):
+    '''
+    Modifica *lst* invertendo a ordem dos
+    elementos, isto é, colocando o último
+    elemento na segunda posição, ...
+    Exemplos
+    >>> x = [8, 6, 1, 4, 5]
+    >>> invertem(x)
+    >>> x
+    [5, 4, 1, 5, 8]
+    '''
+    i = 0
+    j = len(lst) - 1
+    while i < j:
+        t = lst[i]
+        lst[i] = lst[j]
+        lst[j] = t
+        i = i + 1
+        j = j - 1
+```
+
+</div>
+</div>
+
+
+# Exemplo: insere ordenado
+
+Dado uma lista ordenado em ordem não decrescente e um valor `v`, projete uma função que modifique a lista inserindo o valor `v` de maneira que o arranjo continue em ordem. \pause
+
+Exemplo feito em sala.
+
+
+# Exemplo: insere ordenado
+
+<div class="columns">
+<div class="column" width="48%">
+\scriptsize
+
+```python
+def insere_ordenado(lst: list[int], v: int):
+    '''
+    Insere *v* em *lst* de maneira que *lst*
+    permaneça em ordem não decrescente. Requer
+    que *lst* esteja em ordem não decrescente.
+    Exemplos
+    >>> lst = []
+    >>> insere_ordenado(lst, 5)
+    >>> lst
+    [5]
+    >>> insere_ordenado(lst, 3)
+    >>> lst
+    [3, 5]
+    >>> insere_ordenado(lst, 4)
+    >>> lst
+    [3, 4, 5]
+    >>> insere_ordenado(lst, 1)
+    >>> lst
+    [1, 3, 4, 5]
+    '''
+```
+
+\pause
+
+</div>
+<div class="column" width="48%">
+\scriptsize
+
+```python
+def insere_ordenado(lst: list[int], v: int):
+    lst.append(v)
+    i = len(lst) - 1
+    while i > 0 and lst[i - 1] > lst[i]:
+        # troca lst[i] com lst[i - 1]
+        t = lst[i]
+        lst[i] = lst[i - 1]
+        lst[i - 1] = t
+        i = i - 1
+```
+</div>
+</div>
 
 
 <!--

@@ -43,6 +43,7 @@ def invertem(lst: list[int]):
     i = 0
     j = len(lst) - 1
     while i < j:
+        # troca lst[i] com lst[j]
         t = lst[i]
         lst[i] = lst[j]
         lst[j] = t
