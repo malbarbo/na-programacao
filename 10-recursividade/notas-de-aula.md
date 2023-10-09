@@ -33,14 +33,27 @@ Para ser válida, uma definição recursiva precisa de\pause
 - Pelo menos um caso base (que não depende da própria definição) \pause
 - Pelo menos um caso com autorreferência (que depende da própria definição para elementos "menores") \pause
 
-A partir dos casos base, os outros elementos são definidos de forma indutiva pelos casos com autorreferência.
+A partir do(s) caso(s) base, os outros elementos são definidos de forma indutiva pelos casos com autorreferência.
 
 
 # Definições recursivas
 
-O número 4 é natural? \pause
+<div class="columns">
+<div class="column" width="45%">
 
-Vamos verificar \pause
+\small
+
+Definição de número natural:
+
+- $0$ é um número natural; \pause
+- Se $n$ é um número natural, então $n + 1$ é um número natural. \pause
+
+</div>
+<div class="column" width="48%">
+
+\small
+
+O número 4 é natural? \pause Vamos verificar \pause
 
 - Como 4 não é zero, para ele ser natural, o 3 tem que ser natural \pause
 - Como 3 não é zero, para ele ser natural, o 2 tem que ser natural \pause
@@ -51,6 +64,9 @@ Vamos verificar \pause
 Portanto, o 4 é natural. \pause
 
 Note que foi preciso decompor o 4 até chegar no caso base.
+
+</div>
+</div>
 
 
 # Funções
@@ -71,56 +87,56 @@ Como projetar funções recursivas? \pause
 
 Existem várias técnicas de projeto de funções recursivas, nós vamos explorar uma delas, chamada de diminuição e conquista. \pause
 
-A ideia é diminuir o tamanho do problema original, conquistar o problema menor, e estender a solução do problema menor para o problema original. \pause
+A ideia é diminuir o tamanho do problema original, conquistar o problema menor -- diretamente ou recursivamente, e estender a solução do problema menor para o problema original. \pause
 
 No início, para diminuir o problema original, nós vamos explorar a relação entre autorreferência na definição do tipo de dado e a chamada recursiva na função que processa o tipo de dado.
 
 
-# Exercício - soma
+# Exemplo: soma naturais
 
 Projete uma função recursiva que some todos os números naturais menores ou iguais que um determinado $n$.
 
 
-# Especificação
+# Exemplo: soma naturais
 
 <div class="columns">
 <div class="column" width="45%">
 \scriptsize
 
-```cpp
-// Soma todos os número naturais menores
-// ou iguais que n.
-//
-// Requer que n >= 0.
-int soma_naturais(int n)
-{
-    return 0;
-}
-
-examples
-{
-    check_expect(soma_naturais(0), 0);
-    check_expect(soma_naturais(1), 1);
-    check_expect(soma_naturais(2), 3);
-    check_expect(soma_naturais(3), 6);
-    check_expect(soma_naturais(4), 10);
-}
+```python
+def soma_naturais(n: int) -> int:
+    '''
+    Soma todos os número naturais menores
+    ou iguais que *n*.
+    Requer que n >= 0.
+    Exemplos
+    >>> soma_naturais(0)
+    0
+    >>> soma_naturais(1)
+    1
+    >>> soma_naturais(2)
+    3
+    >>> soma_naturais(3)
+    6
+    >>> soma_naturais(4)
+    10
+    '''
+    return 0
 ```
 </div>
-<div class="column" width="52%">
+<div class="column" width="55%">
 \pause
 
 \small
-Como a definição de número natural tem dois casos, vamos começar a nossa função com dois casos. \pause
+Como a definição de número natural tem dois casos, vamos começar a implementação da função com dois casos. \pause
 
 \scriptsize
 
-```cpp
-if (n == 0) {
+```python
+if n == 0:
     ...
-} else {
+else:
     n ...
-}
 ```
 
 \pause
@@ -129,146 +145,161 @@ Como o segundo caso da definição de número natural tem uma autorreferência, 
 
 \scriptsize
 
-```cpp
-if (n == 0) {
+```python
+if n == 0:
     ...
-} else {
-    n ... soma_naturais(n - 1);
-}
+else:
+    n ... soma_naturais(n - 1)
 ```
 
 </div>
 </div>
 
 
-# Implementação
+# Exemplo: soma naturais
 
 <div class="columns">
-<div class="column" width="38%">
+<div class="column" width="48%">
 \scriptsize
 
-```cpp
-examples
-{
-    check_expect(soma_naturais(0), 0);
-    check_expect(soma_naturais(1), 1);
-    check_expect(soma_naturais(2), 3);
-    check_expect(soma_naturais(3), 6);
-    check_expect(soma_naturais(4), 10);
-}
+```python
+def soma_naturais(n: int) -> int:
+    '''
+    Soma todos os número naturais menores
+    ou iguais que *n*.
+    Requer que n >= 0.
+    Exemplos
+    >>> soma_naturais(0)
+    0
+    >>> soma_naturais(1)
+    1
+    >>> soma_naturais(2)
+    3
+    >>> soma_naturais(3)
+    6
+    >>> soma_naturais(4)
+    10
+    '''
 ```
 
 </div>
-<div class="column" width="58%">
+<div class="column" width="48%">
 \scriptsize
 
-```cpp
-// Soma todos os número naturais menores
-// ou iguais que n.
-int soma_naturais(int n)
-{
-    int soma;
-    if (n == 0) {
-        // Qual é a soma dos naturais até n == 0?
-        soma = ...;
-    } else {
-        // Tendo a soma dos naturais até n - 1 e o natural n,
-        // como obter a soma para os naturais até n?
-        soma = n ... soma_naturais(n - 1);
-    }
-    return soma;
-}
+```python
+def soma_naturais(n: int) -> int:
+    if n == 0:
+        # Qual é a soma dos naturais
+        # até n == 0?
+        soma = ...
+    else:
+        # Tendo a soma dos naturais
+        # até n - 1 e o natural n,
+        # como obter a soma para os
+        # naturais até n?
+        soma = n ... soma_naturais(n - 1)
+    return soma
 ```
 </div>
 </div>
 
 
-# Implementação
+# Exemplo: soma naturais
 
 <div class="columns">
-<div class="column" width="38%">
+<div class="column" width="48%">
 \scriptsize
 
-```cpp
-examples
-{
-    check_expect(soma_naturais(0), 0);
-    check_expect(soma_naturais(1), 1);
-    check_expect(soma_naturais(2), 3);
-    check_expect(soma_naturais(3), 6);
-    check_expect(soma_naturais(4), 10);
-}
+```python
+def soma_naturais(n: int) -> int:
+    '''
+    Soma todos os número naturais menores
+    ou iguais que *n*.
+    Requer que n >= 0.
+    Exemplos
+    >>> soma_naturais(0)
+    0
+    >>> soma_naturais(1)
+    1
+    >>> soma_naturais(2)
+    3
+    >>> soma_naturais(3)
+    6
+    >>> soma_naturais(4)
+    10
+    '''
 ```
 
 </div>
-<div class="column" width="58%">
+<div class="column" width="48%">
 \scriptsize
 
-```cpp
-// Soma todos os número naturais menores
-// ou iguais que n.
-int soma_naturais(int n)
-{
-    int soma;
-    if (n == 0) {
-        soma = 0;
-    } else {
-        soma = n + soma_naturais(n - 1);
-    }
-    return soma;
-}
+```python
+def soma_naturais(n: int) -> int:
+    if n == 0:
+        # Qual é a soma dos naturais
+        # até n == 0?
+        soma = 0
+    else:
+        # Tendo a soma dos naturais
+        # até n - 1 e o natural n,
+        # como obter a soma para os
+        # naturais até n?
+        soma = n + soma_naturais(n - 1)
+    return soma
 ```
 </div>
 </div>
 
 
-# Exercício - exponencial
+# Exemplo: exponencial
 
 Projete uma função recursiva que receba como entrada um número $a \not = 0$ e um número natural $n$ e calcule o valor $a^n$.
 
 
-# Especificação
+# Exemplo: exponencial
 
 <div class="columns">
 <div class="column" width="45%">
 \scriptsize
 
-```cpp
-// Calcula a elevado a n.
-// Requer que a != 0 e n >= 0.
-double potencia(double a, int n)
-{
-    return 0.0;
-}
-
-examples
-{
-    check_expect(potencia(2, 0), 1);
-    check_expect(potencia(2, 1), 2);
-    check_expect(potencia(2, 2), 4);
-    check_expect(potencia(2, 3), 8);
-
-    check_expect(potencia(3, 0), 1);
-    check_expect(potencia(3, 1), 3);
-    check_expect(potencia(3, 2), 9);
-    check_expect(potencia(3, 3), 27);
-}
+```python
+def potencia(a: float, n: int) -> float:
+    '''
+    Calcula *a* elevado a *n*.
+    Requer que a != 0 e n >= 0.
+    Exemplos
+    >>> potencia(2.0, 0)
+    1.0
+    >>> potencia(2.0, 1)
+    2.0
+    >>> potencia(2.0, 2)
+    4.0
+    >>> potencia(2.0, 3)
+    8.0
+    >>> potencia(3.0, 3)
+    27.0
+    >>> potencia(3.0, 4)
+    81.0
+    '''
+    return 0.0
 ```
+
 </div>
 <div class="column" width="52%">
 \pause
 
 \small
-Como a definição de número natural tem dois casos, vamos começar a nossa função com dois casos. \pause
+Como a definição de número natural tem dois casos, vamos começar a implementação da função com dois casos. \pause
 
 \scriptsize
 
-```cpp
-if (n == 0) {
+```python
+if n == 0:
     a ...
-} else {
+else:
     a ... n ...
-}
+
 ```
 
 \pause
@@ -277,152 +308,160 @@ Como o segundo caso da definição de número natural tem uma autorreferência, 
 
 \scriptsize
 
-```cpp
-if (n == 0) {
+```python
+if n == 0:
     a ...
-} else {
-    a ... n ... potencia(a, n - 1);
-}
+else:
+    a ... n ... potencia(a, n - 1)
 ```
 
 </div>
 </div>
 
 
-# Especificação
+# Exemplo: exponencial
 
 <div class="columns">
-<div class="column" width="45%">
+<div class="column" width="48%">
 \scriptsize
 
-```cpp
-examples
-{
-    check_expect(potencia(2, 0), 1);
-    check_expect(potencia(2, 1), 2);
-    check_expect(potencia(2, 2), 4);
-    check_expect(potencia(2, 3), 8);
-
-    check_expect(potencia(3, 0), 1);
-    check_expect(potencia(3, 1), 3);
-    check_expect(potencia(3, 2), 9);
-    check_expect(potencia(3, 3), 27);
-}
+```python
+def potencia(a: float, n: int) -> float:
+    '''
+    Calcula *a* elevado a *n*.
+    Requer que a != 0 e n >= 0.
+    Exemplos
+    >>> potencia(2.0, 0)
+    1.0
+    >>> potencia(2.0, 1)
+    2.0
+    >>> potencia(2.0, 2)
+    4.0
+    >>> potencia(2.0, 3)
+    8.0
+    >>> potencia(3.0, 3)
+    27.0
+    >>> potencia(3.0, 4)
+    81.0
+    '''
 ```
+
 </div>
-<div class="column" width="52%">
+<div class="column" width="48%">
 \scriptsize
 
-```cpp
-// Calcula a elevado a n.
-// Requer que a != 0 e n >= 0.
-double potencia(double a, int n)
-{
-    double pot;
-    if (n == 0) {
-        // Qual o valor de a^n quando n == 0?
-        pot = a ...;
-    } else {
-        // Tendo a potência a^(n - 1), o valor
-        // de a e n, como calulcar a^n?
-        pot = a ... n ... potencia(a, n - 1);
-    }
-    return pot;
-}
+```python
+def potencia(a: float, n: int) -> float:
+    if n == 0:
+        # Qual é o valor de a^n
+        # quando n == 0?
+        an = a ...
+    else:
+        # Tendo a potência a^(n - 1),
+        # o valor de a e n, como
+        # calcular a^n?
+        an = a ... n ... potencia(a, n - 1)
+    return an
 ```
 </div>
 </div>
 
 
-# Especificação
+# Exemplo: exponencial
 
 <div class="columns">
-<div class="column" width="45%">
+<div class="column" width="48%">
 \scriptsize
 
-```cpp
-examples
-{
-    check_expect(potencia(2, 0), 1);
-    check_expect(potencia(2, 1), 2);
-    check_expect(potencia(2, 2), 4);
-    check_expect(potencia(2, 3), 8);
-
-    check_expect(potencia(3, 0), 1);
-    check_expect(potencia(3, 1), 3);
-    check_expect(potencia(3, 2), 9);
-    check_expect(potencia(3, 3), 27);
-}
+```python
+def potencia(a: float, n: int) -> float:
+    '''
+    Calcula *a* elevado a *n*.
+    Requer que a != 0 e n >= 0.
+    Exemplos
+    >>> potencia(2.0, 0)
+    1.0
+    >>> potencia(2.0, 1)
+    2.0
+    >>> potencia(2.0, 2)
+    4.0
+    >>> potencia(2.0, 3)
+    8.0
+    >>> potencia(3.0, 3)
+    27.0
+    >>> potencia(3.0, 4)
+    81.0
+    '''
 ```
+
 </div>
-<div class="column" width="52%">
+<div class="column" width="48%">
 \scriptsize
 
-```cpp
-// Calcula a elevado a n.
-// Requer que a != 0 e n >= 0.
-double potencia(double a, int n)
-{
-    double pot;
-    if (n == 0) {
-        pot = 1;
-    } else {
-        pot = a * potencia(a, n - 1);
-    }
-    return pot;
-}
+```python
+def potencia(a: float, n: int) -> float:
+    if n == 0:
+        # Qual é o valor de a^n
+        # quando n == 0?
+        an = 1.0
+    else:
+        # Tendo a potência a^(n - 1),
+        # o valor de a e n, como
+        # calcular a^n?
+        an = a * potencia(a, n - 1)
+    return an
 ```
 </div>
 </div>
 
 
-
-# Exercício - fatorial
+# Exemplo: fatorial
 
 Projete uma função recursiva que calcule o fatorial de $n$, isto é, o produto dos $n$ primeiros números naturais maiores que $0$.
 
 
-# Especificação
+# Exemplo: fatorial
 
 <div class="columns">
 <div class="column" width="45%">
 \scriptsize
 
-```cpp
-// Calcula o fatorial de n, isto é,
-// o produto dos n primeiros números
-// naturais maiores que 0.
-//
-// Requer que n >= 0.
-int fatorial(int n)
-{
-    return 0;
-}
-
-examples
-{
-    check_expect(fatorial(0), 1);
-    check_expect(fatorial(1), 1);
-    check_expect(fatorial(2), 2);
-    check_expect(fatorial(3), 6);
-    check_expect(fatorial(4), 24);
-}
+```python
+def fatorial(n: int) -> int:
+    '''
+    Calcula o fatorial de *n*, isto é,
+    o produto dos *n* primeiros números
+    naturais maiores que 0.
+    Requer que n >= 0.
+    Exemplos
+    >>> fatorial(0)
+    1
+    >>> fatorial(1)
+    1
+    >>> fatorial(2)
+    2
+    >>> fatorial(3)
+    6
+    >>> fatorial(4)
+    24
+    '''
+    return 0
 ```
+
 </div>
 <div class="column" width="52%">
 \pause
 
 \small
-Como a definição de número natural tem dois casos, vamos começar a nossa função com dois casos. \pause
+Como a definição de número natural tem dois casos, vamos começar a implementação da função com dois casos. \pause
 
 \scriptsize
 
-```cpp
-if (n == 0) {
+```python
+if n == 0:
     ...
-} else {
+else:
     n ...
-}
 ```
 
 \pause
@@ -431,645 +470,459 @@ Como o segundo caso da definição de número natural tem uma autorreferência, 
 
 \scriptsize
 
-```cpp
-if (n == 0) {
+```python
+if n == 0:
     ...
-} else {
-    n ... fatorial(n - 1);
-}
+else:
+    n ... fatorial(n - 1)
 ```
 
 </div>
 </div>
 
 
-# Especificação
+# Exemplo: fatorial
 
 <div class="columns">
-<div class="column" width="45%">
+<div class="column" width="48%">
 \scriptsize
 
-```cpp
-examples
-{
-    check_expect(fatorial(0), 1);
-    check_expect(fatorial(1), 1);
-    check_expect(fatorial(2), 2);
-    check_expect(fatorial(3), 6);
-    check_expect(fatorial(4), 24);
-}
+```python
+def fatorial(n: int) -> int:
+    '''
+    Calcula o fatorial de *n*, isto é,
+    o produto dos *n* primeiros números
+    naturais maiores que 0.
+    Requer que n >= 0.
+    Exemplos
+    >>> fatorial(0)
+    1
+    >>> fatorial(1)
+    1
+    >>> fatorial(2)
+    2
+    >>> fatorial(3)
+    6
+    >>> fatorial(4)
+    24
+    '''
 ```
+
 </div>
-<div class="column" width="52%">
-\pause
+<div class="column" width="48%">
 
 \scriptsize
 
-```cpp
-// Calcula o fatorial de n, isto é,
-// o produto dos n primeiros números
-// naturais maiores que 0.
-//
-// Requer que n >= 0.
-int fatorial(int n)
-{
-    int fat;
-    if (n == 0) {
-        // Qual é o produto dos primeiros n == 0
-        // naturais maiores que 0?
-        fat = ...;
-    } else {
-        // Tendo o fatorial de n - 1 e o natural n,
-        // como obter o fatorial de n?
-        fat = n ... fatorial(n - 1);
-    }
-    return fat;
-}
+```python
+def fatorial(n: int) -> int:
+    if n == 0:
+        # Qual é o fatorial de 0,
+        # isto é, o produto dos
+        # primeiros n == 0
+        # naturais maiores que 0?
+        fat = ...
+    else:
+        # Tendo o fatorial de n - 1
+        # e o natural n, como obter
+        # o fatorial de n?
+        fat = n ... fatorial(n - 1)
+    return fat
 ```
+
 </div>
 </div>
 
 
-# Especificação
+# Exemplo: fatorial
 
 <div class="columns">
-<div class="column" width="45%">
+<div class="column" width="48%">
 \scriptsize
 
-```cpp
-examples
-{
-    check_expect(fatorial(0), 1);
-    check_expect(fatorial(1), 1);
-    check_expect(fatorial(2), 2);
-    check_expect(fatorial(3), 6);
-    check_expect(fatorial(4), 24);
-}
+```python
+def fatorial(n: int) -> int:
+    '''
+    Calcula o fatorial de *n*, isto é,
+    o produto dos *n* primeiros números
+    naturais maiores que 0.
+    Requer que n >= 0.
+    Exemplos
+    >>> fatorial(0)
+    1
+    >>> fatorial(1)
+    1
+    >>> fatorial(2)
+    2
+    >>> fatorial(3)
+    6
+    >>> fatorial(4)
+    24
+    '''
 ```
+
 </div>
-<div class="column" width="52%">
+<div class="column" width="48%">
+
 \scriptsize
 
-```cpp
-// Calcula o fatorial de n, isto é,
-// o produto dos n primeiros números
-// naturais maiores que 0.
-//
-// Requer que n >= 0.
-int fatorial(int n)
-{
-    int fat;
-    if (n == 0) {
-        fat = 1;
-    } else {
-        fat = n * fatorial(n - 1);
-    }
-    return fat;
-}
+```python
+def fatorial(n: int) -> int:
+    if n == 0:
+        # Qual é o fatorial de 0,
+        # isto é, o produto dos
+        # primeiros n == 0
+        # naturais maiores que 0?
+        fat = 1
+    else:
+        # Tendo o fatorial de n - 1
+        # e o natural n, como obter
+        # o fatorial de n?
+        fat = n * fatorial(n - 1)
+    return fat
 ```
+
 </div>
 </div>
+
 
 
 # Aspectos importantes no projeto de funções recursivas
 
-Quando estamos projetando funções recursivas, temos que considerar alguns aspectos: \pause
+Quando estamos projetando funções recursivas, temos que considerar dois aspectos: \pause
 
-- A chamada recursiva deve ser feita para um entrada "menor", dessa forma, temos a certeza que o caso base será alcançado e a função está bem definida. \pause
+- A chamada recursiva deve ser feita para uma **entrada "menor"**, dessa forma temos a certeza que o caso base será alcançado e a função terminará. \pause
 
-- Devemos confiar que a chamada recursiva produz a resposta correta e nos preocuparmos apenas em como utilizar essa resposta para calcular o resultado da função.
+- Devemos **confiar na chamada recursiva**, isto é, que ela produz a resposta correta, e nos preocuparmos apenas em como utilizar essa resposta para calcular o resultado da função.
 
 
 # Funções recursivas com arranjos
 
-Podemos projetar funções recursivas que operam em arranjos de forma similar a funções que operam com números naturais. \pause
+Podemos projetar funções recursivas que operam em listas de forma similar a funções que operam com números naturais. \pause Considere a seguinte definição de lista: \pause
 
-A ideia é associar um número natural com o arranjo que determina o seu tamanho. Com isso podemos criar funções recursivas que funcionam de forma indutiva no tamanho do arranjo. \pause
+Uma lista é:
+
+- Vazia; ou
+
+- Um elemento seguido de uma lista (resto da lista)
+
+\pause
+
+Assim como a definição de número natural, essa definição de lista também tem autorreferência (é indutiva). \pause
+
+Portanto, para implementar uma função que processa uma lista, podemos usar a mesma estratégia que usamos para implementar funções recursivas que processam números naturais. \pause
 
 Vamos ver alguns exemplos.
 
 
-# Exercício - soma
+# Exemplo: soma
 
-Projete uma função recursiva que some os elementos de um arranjo.
+Projete uma função recursiva que some os elementos de uma lista.
 
 
-# Especificação
+# Exemplo: soma
 
 <div class="columns">
 <div class="column" width="48%">
 \scriptsize
 
-```cpp
-// Soma os primeiros n elementos de valores.
-// Requer que 0 <= n <= valores.size()
-int soma(const vector<int> &valores, int n)
-{
-    return 0;
-}
+```python
+def soma(lst: list[int]) -> int:
+    '''
+    Soma os elementos de *lst*.
+    Exemplos
+    >>> soma([])
+    0
+    >>> soma([6])
+    6
+    >>> soma([3, 6])
+    9
+    >>> soma([7, 3, 6])
+    16
+    '''
+    return 0
 
-examples
-{
-    check_expect(soma({5, 1, 4, 3}, 0), 0);
-    check_expect(soma({5, 1, 4, 3}, 1), 5);
-    check_expect(soma({5, 1, 4, 3}, 2), 6);
-    check_expect(soma({5, 1, 4, 3}, 3), 10);
-    check_expect(soma({5, 1, 4, 3}, 4), 13);
-}
 ```
 </div>
 <div class="column" width="48%">
 \pause
 
 \small
-Como a definição de número natural (tamanho do arranjo) tem dois casos, vamos começar a nossa função com dois casos. \pause
+Como a definição de lista tem dois casos, vamos começar a implementação da função com dois casos. \pause
 
 \scriptsize
 
-```cpp
-if (n == 0) {
+```python
+if lst == []:
     ...
-} else {
-    valores[n - 1] ...
-}
+else:
+    # as partes de lst
+    lst[0] ... lst[1:]
 ```
 
 \pause
 \small
-Como o segundo caso da definição de número natural (tamanho do arranjo) tem uma autorreferência, vamos colocar uma chamada recursiva no segundo caso da função. \pause
+Como o segundo caso da definição de lista tem uma autorreferência, isto é, `lst[1:]`{.python} é uma lista, vamos fazer uma chamada recursiva para `lst[1:]`{.python}. \pause
 
 \scriptsize
 
-```cpp
-else {
-    valores[n - 1] ... soma(valores, n - 1);
-}
+```python
+else:
+    lst[0] ... soma(lst[1:])
 ```
 </div>
 </div>
 
 
-# Implementação
+# Exemplo: soma
 
 <div class="columns">
 <div class="column" width="48%">
 \scriptsize
 
-```cpp
-examples
-{
-    check_expect(soma({5, 1, 4, 3}, 0), 0);
-    check_expect(soma({5, 1, 4, 3}, 1), 5);
-    check_expect(soma({5, 1, 4, 3}, 2), 6);
-    check_expect(soma({5, 1, 4, 3}, 3), 10);
-    check_expect(soma({5, 1, 4, 3}, 4), 13);
-}
+```python
+def soma(lst: list[int]) -> int:
+    '''
+    Soma os elementos de *lst*.
+    Exemplos
+    >>> soma([])
+    0
+    >>> soma([6])
+    6
+    >>> soma([3, 6])
+    9
+    >>> soma([7, 3, 6])
+    16
+    '''
 ```
+
 </div>
 <div class="column" width="48%">
+
 \scriptsize
 
-```cpp
-// Soma os primeiros n elementos de valores.
-// Requere que 0 <= n <= valores.size()
-int soma(const vector<int> &valores, int n)
-{
-    int s;
-    if (n == 0) {
-        // Qual é a soma dos n == 0 primeiros
-        // elementos de valores?
-        s = ...;
-    } else {
-        // Sabendo a soma dos n - 1 primeiros
-        // elementos de valores e valores[n - 1],
-        // como obter a soma dos primeiros n
-        // elementos de valores?
-        s = valores[n - 1] ... soma(valores, n - 1);
-    }
-    return s;
-}
+```python
+def soma(lst: list[int]) -> int:
+    if lst == []:
+        # Qual é a soma dos elementos
+        # de uma lista vazia?
+        s = ...
+    else:
+        # Sabendo a soma do resto da lista
+        # e o valor do primeiro elemento,
+        # como obter a soma da lista?
+        s = lst[0] ... soma(lst[1:])
+    return s
 ```
+
 </div>
 </div>
 
 
-# Implementação
+# Exemplo: soma
 
 <div class="columns">
 <div class="column" width="48%">
 \scriptsize
 
-```cpp
-examples
-{
-    check_expect(soma({5, 1, 4, 3}, 0), 0);
-    check_expect(soma({5, 1, 4, 3}, 1), 5);
-    check_expect(soma({5, 1, 4, 3}, 2), 6);
-    check_expect(soma({5, 1, 4, 3}, 3), 10);
-    check_expect(soma({5, 1, 4, 3}, 4), 13);
-}
+```python
+def soma(lst: list[int]) -> int:
+    '''
+    Soma os elementos de *lst*.
+    Exemplos
+    >>> soma([])
+    0
+    >>> soma([6])
+    6
+    >>> soma([3, 6])
+    9
+    >>> soma([7, 3, 6])
+    16
+    '''
 ```
+
 </div>
 <div class="column" width="48%">
+
 \scriptsize
 
-```cpp
-// Soma os primeiros n elementos de valores.
-// Requere que 0 <= n <= valores.size()
-int soma(const vector<int> &valores, int n)
-{
-    int s;
-    if (n == 0) {
-        s = 0;
-    } else {
-        s = valores[n - 1] + soma(valores, n - 1);
-    }
-    return s;
-}
+```python
+def soma(lst: list[int]) -> int:
+    if lst == []:
+        # Qual é a soma dos elementos
+        # de uma lista vazia?
+        s = 0
+    else:
+        # Sabendo a soma do resto da lista
+        # e o valor do primeiro elemento,
+        # como obter a soma da lista?
+        s = lst[0] + soma(lst[1:])
+    return s
 ```
+
 </div>
 </div>
 
 
-# Exercício - contagem
+# Exemplo: contagem
 
-Projete uma função recursiva que conte quantas vezes um determinado valor aparece em um arranjo.
+Projete uma função recursiva que conte quantas vezes um determinado número aparece em uma lista de números.
 
 
-# Especificação
+# Exemplo: contagem
 
 <div class="columns">
 <div class="column" width="48%">
 \scriptsize
 
-```cpp
-// Conta quantas vezes val aparece nos
-// primeiros n elementos de valores.
-// Requer que 0 <= n <= valores.size()
-int freq(int val,
-         const vector<int> &valores,
-         int n)
-{
-    return 0;
-}
+```python
+def freq(v: int, lst: list[int]) -> int:
+    '''
+    Conta quantas vezes *v* aparece
+    em *lst*.
 
-examples
-{
-    check_expect(freq(1, {5, 1, 4, 1}, 0), 0);
-    check_expect(freq(1, {5, 1, 4, 1}, 1), 0);
-    check_expect(freq(1, {5, 1, 4, 1}, 2), 1);
-    check_expect(freq(1, {5, 1, 4, 1}, 3), 1);
-    check_expect(freq(1, {5, 1, 4, 1}, 4), 2);
-}
-```
-</div>
-<div class="column" width="48%">
-\pause
-
-\small
-Como a definição de número natural (tamanho do arranjo) tem dois casos, vamos começar a nossa função com dois casos. \pause
-
-\scriptsize
-
-```cpp
-if (n == 0) {
-    ...
-} else {
-    valores[n - 1] ...
-}
-```
-
-\pause
-\small
-Como o segundo caso da definição de número natural (tamanho do arranjo) tem uma autorreferência, vamos colocar uma chamada recursiva no segundo caso da função. \pause
-
-\scriptsize
-
-```cpp
-else {
-    valores[n - 1] ... freq(val, valores, n - 1);
-}
-```
-</div>
-</div>
-
-
-# Implementação
-
-<div class="columns">
-<div class="column" width="48%">
-\scriptsize
-
-```cpp
-examples
-{
-    check_expect(freq(1, {5, 1, 4, 1}, 0), 0);
-    check_expect(freq(1, {5, 1, 4, 1}, 1), 0);
-    check_expect(freq(1, {5, 1, 4, 1}, 2), 1);
-    check_expect(freq(1, {5, 1, 4, 1}, 3), 1);
-    check_expect(freq(1, {5, 1, 4, 1}, 4), 2);
-}
-```
-</div>
-<div class="column" width="48%">
-\scriptsize
-
-```cpp
-// Conta quantas vezes val aparece nos
-// primeiros n elementos de valores.
-// Requer que 0 <= n <= valores.size()
-int freq(int val,
-         const vector<int> &valores,
-         int n) {
-    int cont;
-    if (n == 0) {
-        // Quantas vezes val aparece nos n == 0
-        // primeiros elementos de valores?
-        cont = ...;
-    } else {
-        // Sabendo a quantidade de vezes que val
-        // aparece nos n - 1 primeiros elementos
-        // de valores e valores[n - 1], como obter
-        // a quantidade de vezes que val aparece
-        // nos primeiros n elementos de valores?
-        valores[n - 1] ... freq(val, valores, n - 1);
-    }
-    return cont; }
-```
-
-</div>
-</div>
-
-
-# Implementação
-
-<div class="columns">
-<div class="column" width="48%">
-\scriptsize
-
-```cpp
-examples
-{
-    check_expect(freq(1, {5, 1, 4, 1}, 0), 0);
-    check_expect(freq(1, {5, 1, 4, 1}, 1), 0);
-    check_expect(freq(1, {5, 1, 4, 1}, 2), 1);
-    check_expect(freq(1, {5, 1, 4, 1}, 3), 1);
-    check_expect(freq(1, {5, 1, 4, 1}, 4), 2);
-}
-```
-</div>
-<div class="column" width="48%">
-\scriptsize
-
-```cpp
-// Conta quantas vezes val aparece nos
-// primeiros n elementos de valores.
-// Requer que 0 <= n <= valores.size()
-int freq(int val,
-         const vector<int> &valores,
-         int n) {
-    int cont;
-    if (n == 0) {
-        cont = 0;
-    } else {
-        if (valores[n - 1] == val) {
-            cont = 1 + freq(val, valores, n - 1);
-        } else {
-            cont = freq(val, valores, n - 1);
-        }
-    }
-    return cont;
-}
-```
-
-</div>
-</div>
-
-
-# Exercício - ordem
-
-Projete uma função recursiva que verifique se os elementos de um arranjo estão em ordem não decrescente.
-
-
-# Especificação
-
-<div class="columns">
-<div class="column" width="48%">
-\scriptsize
-
-```cpp
-// Verifica se os primeiros n elementos de
-// valores estão em ordem não-decrescente.
-// Requer que 0 <= n <= valores.size()
-int ordenado(const vector<int> &valores, int n)
-{
-    return 0;
-}
-
-examples
-{
-    check_expect(ordenado({1, 2, 3, 2}, 0), true);
-    check_expect(ordenado({1, 2, 3, 2}, 1), true);
-    check_expect(ordenado({1, 2, 3, 2}, 2), true);
-    check_expect(ordenado({1, 2, 3, 2}, 3), true);
-    check_expect(ordenado({1, 2, 3, 2}, 4), false);
-}
+    Exemplos
+    >>> freq(1, [])
+    0
+    >>> freq(1, [7])
+    0
+    >>> freq(1, [1, 7, 1])
+    2
+    >>> freq(4, [4, 1, 7, 4, 4])
+    3
+    '''
+    return 0
 ```
 </div>
 <div class="column" width="48%">
 \pause
 
 \small
-Como a definição de número natural (tamanho do arranjo) tem dois casos, vamos começar a nossa função com dois casos. \pause
+Como a definição de lista tem dois casos, vamos começar a implementação da função com dois casos. \pause
 
 \scriptsize
 
-```cpp
-if (n == 0) {
-    ...
-} else {
-    valores[n - 1] ...
-}
+```python
+if lst == []:
+    v ...
+else:
+    v ... lst[0] ... lst[1:]
 ```
 
 \pause
 \small
-Como o segundo caso da definição de número natural (tamanho do arranjo) tem uma autorreferência, vamos colocar uma chamada recursiva no segundo caso da função. \pause
+Como o segundo caso da definição de lista tem uma autorreferência, isto é, `lst[1:]`{.python} é uma lista, vamos fazer uma chamada recursiva para `lst[1:]`{.python}. \pause
 
 \scriptsize
 
-```cpp
-else {
-    valores[n - 1] ... ordenado(valores, n - 1);
-}
+```python
+else:
+    v ... lst[0] ... freq(v, lst[1:])
 ```
 </div>
 </div>
 
 
-# Implementação
+# Exemplo: contagem
 
 <div class="columns">
 <div class="column" width="48%">
 \scriptsize
 
-```cpp
-examples
-{
-    check_expect(ordenado({1, 2, 3, 2}, 0), true);
-    check_expect(ordenado({1, 2, 3, 2}, 1), true);
-    check_expect(ordenado({1, 2, 3, 2}, 2), true);
-    check_expect(ordenado({1, 2, 3, 2}, 3), true);
-    check_expect(ordenado({1, 2, 3, 2}, 4), false);
-}
+```python
+def freq(v: int, lst: list[int]) -> int:
+    '''
+    Conta quantas vezes *v* aparece
+    em *lst*.
+
+    Exemplos
+    >>> freq(1, [])
+    0
+    >>> freq(1, [7])
+    0
+    >>> freq(1, [1, 7, 1])
+    2
+    >>> freq(4, [4, 1, 7, 4, 4])
+    3
+    '''
 ```
+
 </div>
 <div class="column" width="48%">
 \scriptsize
 
-```cpp
-// Verifica se os primeiros n elementos de
-// valores estão em ordem não-decrescente.
-// Requer que 0 <= n <= valores.size()
-int ordenado(const vector<int> &valores, int n)
-{
-    bool ord;
-    if (n == 0) {
-        // Os primeiros n == 0 elementos de
-        // valores estão em ordem?
-        ord = ...;
-    } else {
-        // Sabendo que os n - 1 primeiros elementos
-        // de valores estão em ordem, como determinar
-        // se os primeiros n elementos de valores
-        // estão em ordem?
-        valores[n - 1] ... ordenado(valores, n - 1);
-        ord = ...;
-    }
-    return ord;
-}
+```python
+def freq(v: int, lst: list[int]) -> int:
+    if lst == []:
+        # Quantas vezes v aparece
+        # na lista vazia?
+        cont = v ...
+    else:
+        # Sabendo a quantidade de vezes
+        # que v aparece em lst[1:],
+        # como determinamos a quantidade
+        # de vezes que v aparece em lst?
+        cont = ...
+        v... lst[0] ... freq(v, lst[1:])
+    return cont
 ```
+
 </div>
 </div>
 
 
-# Implementação
+# Exemplo: contagem
 
 <div class="columns">
 <div class="column" width="48%">
 \scriptsize
 
-```cpp
-examples
-{
-    check_expect(ordenado({1, 2, 3, 2}, 0), true);
-    check_expect(ordenado({1, 2, 3, 2}, 1), true);
-    check_expect(ordenado({1, 2, 3, 2}, 2), true);
-    check_expect(ordenado({1, 2, 3, 2}, 3), true);
-    check_expect(ordenado({1, 2, 3, 2}, 4), false);
-}
+```python
+def freq(v: int, lst: list[int]) -> int:
+    '''
+    Conta quantas vezes *v* aparece
+    em *lst*.
+
+    Exemplos
+    >>> freq(1, [])
+    0
+    >>> freq(1, [7])
+    0
+    >>> freq(1, [1, 7, 1])
+    2
+    >>> freq(4, [4, 1, 7, 4, 4])
+    3
+    '''
 ```
+
 </div>
 <div class="column" width="48%">
 \scriptsize
 
-```cpp
-// Verifica se os primeiros n elementos de
-// valores estão em ordem não-decrescente.
-// Requer que 0 <= n <= valores.size()
-int ordenado(const vector<int> &valores, int n)
-{
-    bool ord;
-    if (n == 0) {
-        ord = true;
-    } else {
-        if (n == 1) {
-            ord = true;
-        } else {
-            ord = valores[n - 2] <= valores[n - 1] &&
-                  ordenado(valores, n - 1);
-        }
-    }
-    return ord;
-}
+```python
+def freq(v: int, lst: list[int]) -> int:
+    if lst == []:
+        # Quantas vezes v aparece
+        # na lista vazia?
+        cont = ...
+    else:
+        # Sabendo a quantidade de vezes
+        # que v aparece em lst[1:],
+        # como determinamos a quantidade
+        # de vezes que v aparece em lst?
+        if v == lst[0]:
+            cont = 1 + freq(v, lst[1:])
+        else:
+            cont = freq(v, lst[1:])
+    return cont
 ```
+
 </div>
 </div>
 
 
-# Implementação
+# Exemplo: ordem
 
-<div class="columns">
-<div class="column" width="48%">
-\scriptsize
-
-```cpp
-examples
-{
-    check_expect(ordenado({1, 2, 3, 2}, 0), true);
-    check_expect(ordenado({1, 2, 3, 2}, 1), true);
-    check_expect(ordenado({1, 2, 3, 2}, 2), true);
-    check_expect(ordenado({1, 2, 3, 2}, 3), true);
-    check_expect(ordenado({1, 2, 3, 2}, 5), false);
-}
-```
-</div>
-<div class="column" width="48%">
-\scriptsize
-
-```cpp
-// Verifica se os primeiros n elementos de
-// valores estão em ordem não-decrescente.
-// Requer que 0 <= n <= valores.size()
-int ordenado(const vector<int> &valores, int n)
-{
-    bool ord;
-    if (n <= 1) {
-        ord = true;
-    } else {
-        ord = valores[n - 2] <= valores[n - 1] &&
-              ordenado(valores, n - 1);
-    }
-    return ord;
-}
-```
-</div>
-</div>
-
-
-# Implementação
-
-<div class="columns">
-<div class="column" width="48%">
-\scriptsize
-
-```cpp
-examples
-{
-    check_expect(ordenado({1, 2, 3, 2}, 0), true);
-    check_expect(ordenado({1, 2, 3, 2}, 1), true);
-    check_expect(ordenado({1, 2, 3, 2}, 2), true);
-    check_expect(ordenado({1, 2, 3, 2}, 3), true);
-    check_expect(ordenado({1, 2, 3, 2}, 4), false);
-}
-```
-</div>
-<div class="column" width="48%">
-\scriptsize
-
-```cpp
-// Verifica se os primeiros n elementos de
-// valores estão em ordem não-decrescente.
-// Requer que 0 <= n <= valores.size()
-int ordenado(const vector<int> &valores, int n)
-{
-    return n <= 1 ||
-               valores[n - 2] <= valores[n - 1] &&
-                   ordenado(valores, n - 1);
-}
-```
-</div>
-</div>
+Projete uma função recursiva que verifique se os elementos de uma lista estão em ordem não decrescente.
 
 
 # Diminuição e conquista
@@ -1091,15 +944,15 @@ Se quisermos encontrar todos os divisores de um número $n$, podemos aplicar ess
 
 Conseguimos resolver o caso base? \pause Sim. \pause
 
-Tendo os divisores de $n - 1$, podemos encontrar os divisores de $n$? \pause Sabendo os divisores de $9 (1, 3, 9)$, podemos determinar os divisores de $10 (1, 5, 10)$? \pause Não! \pause
+Tendo os divisores de $n - 1$, podemos encontrar os divisores de $n$? \pause Sabendo os divisores de $9 (1, 3, 9)$, podemos determinar os divisores de $10 (1, 2, 5, 10)$? \pause Não! \pause
 
 Então essa técnica não é adequada para esse problema.
 
 
 # Variantes
 
-Podemos diminuir os arranjos de outra forma que não seja pelo seu tamanho (fim)? \pause
+Podemos diminuir as listas de outra forma que não seja "removendo" o primeiro? \pause
 
-Sim, podemos avançar o seu início. \pause
+Sim, podemos "remover" o último. \pause
 
-Também podemos aumentar o início e diminuir o final simultaneamente.
+Também podemos remover qualquer quantidade do início e/ou do fim.
