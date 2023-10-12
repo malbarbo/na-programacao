@@ -1,5 +1,7 @@
 # Geral
 
+- Separar o conteúdo até linguagens em outro material
+
 - Adicionar um resumo da linguem e do processo
 
 - Distinguir exemplos feito em aula de exercícios
@@ -10,6 +12,7 @@
 
 - Seguir um processo na apresentação do material (ver vídeo do Ricard Feldman, https://www.youtube.com/watch?v=G-GhUxeYc1U, o que os alunos já sabem, motivação, menor caminho...)
 
+- Apresentar as funções max/min e a forma de atualização x = max(x, y)
 
 # Projeto de programas
 
