@@ -16,3 +16,45 @@ def soma(lst: list[int]) -> int:
     else:
         s = lst[0] + soma(lst[1:])
     return s
+
+
+def soma_inc(lst: list[int], i: int) -> int:
+    '''
+    Soma os elementos de *lst* a partir de *i*, isto é,
+    soma os elementos de *lst[i:]*.
+    Requer que 0 <= i <= len(lst)
+    >>> soma_inc([7, 3, 6], 0)
+    16
+    >>> soma_inc([7, 3, 6], 1)
+    9
+    >>> soma_inc([7, 3, 6], 2)
+    6
+    >>> soma_inc([7, 3, 6], 3)
+    0
+    '''
+    if i >= len(lst):
+        s = 0
+    else:
+        s = lst[i] + soma_inc(lst, i + 1)
+    return s
+
+
+def soma_dec(lst: list[int], i: int) -> int:
+    '''
+    Soma os primeiro *i* elementos de *lst*, isto é,
+    soma os elementos de *lst[:i]*.
+    Requer que 0 <= i <= len(lst)
+    >>> soma_dec([7, 3, 6], 0)
+    0
+    >>> soma_dec([7, 3, 6], 1)
+    7
+    >>> soma_dec([7, 3, 6], 2)
+    10
+    >>> soma_dec([7, 3, 6], 3)
+    16
+    '''
+    if i <= 0:
+        s = 0
+    else:
+        s = lst[i - 1] + soma_dec(lst, i - 1)
+    return s

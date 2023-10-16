@@ -925,6 +925,123 @@ def freq(v: int, lst: list[int]) -> int:
 Projete uma função recursiva que verifique se os elementos de uma lista estão em ordem não decrescente.
 
 
+# Diminuição lógica
+
+Apesar das funções `soma`, `freq` e `em_ordem` funcionarem corretamente, elas não são eficientes. \pause
+
+Isto porque a operação de slice `lst[1:]`{.python} cria uma nova lista copiando todos os elementos de `lst` a partir do índice 1. \pause
+
+Para resolver esse problema, podemos diminuir `lst` de **forma lógica ao invés de forma física** (com o slice). \pause
+
+A ideia é usar um parâmetro extra `i` que indica de onde a soma deve começar. Na primeira chamada `i = 0`{.python} e na chamada recursiva `i + 1`{.python}. O caso base é atingindo quando `i == len(lst)`{.python}.
+
+
+# Exemplo: soma com índice incrementando
+
+<div class="columns">
+<div class="column" width="48%">
+\scriptsize
+
+```python
+def soma_inc(lst: list[int], i: int) -> int:
+    '''
+    Soma os elementos de *lst* a partir
+    de *i*, isto é, soma os elementos
+    de *lst[i:]*.
+    Requer que 0 <= i <= len(lst).
+    >>> soma_inc([7, 3, 6], 0)
+    16
+    >>> soma_inc([7, 3, 6], 1)
+    9
+    >>> soma_inc([7, 3, 6], 2)
+    6
+    >>> soma_inc([7, 3, 6], 3)
+    0
+    '''
+```
+
+\pause
+
+</div>
+<div class="column" width="48%">
+\scriptsize
+
+```python
+def soma_inc(lst: list[int], i: int) -> int:
+    if i >= len(lst):
+        # Qual é a soma dos elementos
+        # de lst a partir de i?
+        s = 0
+    else:
+        # Tendo a soma dos elementos de
+        # lst a partir de i + 1 (chamada
+        # recursiva) e lst[i], como
+        # obter a soma dos elementos
+        # de lst a partir de i?
+        s = lst[i] + soma_inc(lst, i + 1)
+    return s
+```
+</div>
+</div>
+
+
+# Exemplo: soma com índice decrementando
+
+Ao invés de começar o índice com 0 e incrementar na chamada recursiva, podemos começar o índice com `len(lst)`{.python} e decrementar o índice na chamada recursiva. \pause
+
+Desse forma, o índice funciona como um **tamanho lógico** para `lst` e podemos pensar em recursão com lista como pensamos para recursão com número natural. \pause
+
+Vamos chamar o argumento de `n` ao invés de `i` para destacar a relação com o tamanho.
+
+
+# Exemplo: soma com índice decrementando
+
+<div class="columns">
+<div class="column" width="48%">
+\scriptsize
+
+```python
+def soma_dec(lst: list[int], n: int) -> int:
+    '''
+    Soma os primeiro *n* elementos de *lst*,
+    isto é, soma os elementos de *lst[:n]*.
+    Requer que 0 <= n <= len(lst)
+    >>> soma_dec([7, 3, 6], 0)
+    0
+    >>> soma_dec([7, 3, 6], 1)
+    7
+    >>> soma_dec([7, 3, 6], 2)
+    10
+    >>> soma_dec([7, 3, 6], 3)
+    16
+    '''
+```
+
+\pause
+
+</div>
+<div class="column" width="48%">
+\scriptsize
+
+```python
+def soma_dec(lst: list[int], n: int) -> int:
+    if n == 0:
+        # Qual é a soma de lst, sendo
+        # que o "tamanho" (n) de lst é 0?
+        s = 0
+    else:
+        # Tendo a soma dos elementos
+        # de lst sem o "último" elemento
+        # de lst (chamada recursiva)
+        # e o último elemento (lst[n-1]),
+        # como obtemos a soma de todos os
+        # elementos de lst[:n]?
+        s = lst[n - 1] + soma_dec(lst, n - 1)
+    return s
+```
+</div>
+</div>
+
 # Diminuição e conquista
 
 Esta técnica sempre funciona? Ou seja, se eu aplicar a ideia de diminuir e conquistar eu consigo projetar um algoritmo para resolver qualquer problema? \pause
@@ -947,12 +1064,3 @@ Conseguimos resolver o caso base? \pause Sim. \pause
 Tendo os divisores de $n - 1$, podemos encontrar os divisores de $n$? \pause Sabendo os divisores de $9 (1, 3, 9)$, podemos determinar os divisores de $10 (1, 2, 5, 10)$? \pause Não! \pause
 
 Então essa técnica não é adequada para esse problema.
-
-
-# Variantes
-
-Podemos diminuir as listas de outra forma que não seja "removendo" o primeiro? \pause
-
-Sim, podemos "remover" o último. \pause
-
-Também podemos remover qualquer quantidade do início e/ou do fim.
