@@ -169,7 +169,7 @@ Podemos usar as quatro operações aritméticas básicas com esses tipos numéri
 >>> # Resto da divisão
 >>> 14 % 3
 2
->>> # Experávamos obter exatamente
+>>> # Esperávamos obter exatamente
 >>> # 1.1, mas float é apenas
 >>> # uma aproximação dos reais...
 >>> 5 % 1.3
@@ -355,7 +355,7 @@ Outro tipo de dado pré-definido em Python é a cadeia de caracteres (`str`{.pyt
 
 Geralmente usamos strings para armazenar informações simbólicas, como por exemplo palavras e textos. \pause
 
-Uma string em Python é escrita entre apóstrofo (`'`) ou aspas (`"`) \pause
+Uma string em Python é escrita entre apóstrofo (`'`{.python}) ou aspas (`"`{.python}) \pause
 
 ```python
 >>> 'casa'
@@ -730,8 +730,8 @@ False
 </div>
 <div class="column" width="50%">
 ```python
->>> 'André' < 'Paulo'
-True
+>>> 'Abacaxi' < 'Abacate'
+False
 >>> 'André' < 'paulo'
 True
 >>> 'casa' == 'Casa'
@@ -916,17 +916,24 @@ Quem tem maior prioridade, o `and`{.python} ou o `or`{.python}? \pause O `and`{.
 \small
 
 ```python
->>> # A expressão é equivalente a
->>> # (False and False) or True
->>> # que produz True
->>> False and False or True
+>>> True or False and False
 True
->>> # Se o or tivesse prioridade
->>> # sobre o and, então a expressão
->>> # seria equivalente a
->>> # False and (False or True)
->>> # que produz False
->>> False and (False or True)
+```
+
+\pause
+
+
+```python
+>>> # É equivalente a expressão anterior
+>>> True or (False and False)
+True
+```
+
+\pause
+
+```python
+>>> # Se o or tivesse prioridade...
+>>> (True or False) and False
 False
 ```
 
