@@ -1,7 +1,9 @@
 def remove_indice(lst: list[int], i: int) -> list[int]:
     '''
     Produz uma nova lista removendo o elemento que está na posição *i* de *lst*.
+
     Requer que 0 <= i < len(lst).
+
     Exemplos
     >>> remove_indice([3], 0)
     []
