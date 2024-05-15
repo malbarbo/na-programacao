@@ -18,8 +18,12 @@ def numero_azulejos(comprimento: float, altura: float) -> int:
     nenhum azulejo é perdido e que recortes são descartados.
 
     Exemplos
+    >>> # sem recortes
+    >>> # 10 (2.0 / 0.2) x 12 (2.4 / 0.2)
     >>> numero_azulejos(2.0, 2.4)
     120
+    >>> # com recortes
+    >>> # 8 (ceil(1.5 / 0.2)) x 12 (ceil(2.3 / 0.2))
     >>> numero_azulejos(1.5, 2.3)
     96
 
