@@ -1,5 +1,3 @@
-from dataclasses import dataclass
-
 # Análise
 #
 # Determinar se um número está entre 6 números sorteados.
