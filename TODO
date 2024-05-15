@@ -34,3 +34,5 @@
 - Adicionar um seção explicando como projetar funções com seleção
 
 - Expressar melhor as condições nos exemplos
+
+- Fala que enum pode ser usado em uma repetição "for cor in Cor"
