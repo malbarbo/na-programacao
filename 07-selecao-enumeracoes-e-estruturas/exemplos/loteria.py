@@ -50,7 +50,7 @@ def numero_acertos(aposta: SeisNumeros, sorteados: SeisNumeros) -> int:
     if sorteado(aposta.c, sorteados):
         acertos = acertos + 1
     if sorteado(aposta.d, sorteados):
-        acertos = acertos + 1;
+        acertos = acertos + 1
     if sorteado(aposta.e, sorteados):
         acertos = acertos + 1
     if sorteado(aposta.f, sorteados):

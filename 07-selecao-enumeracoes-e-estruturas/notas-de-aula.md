@@ -94,7 +94,7 @@ Como a instrução `if else`{.python} é executada? \pause O Python avalia a con
 
 ```{.python .number-lines}
 a = 10
-b = 20;
+b = 20
 if a > b:
     m = a
 else:
@@ -112,7 +112,7 @@ Em que ordem as linhas são executas para gerar esse resultado? \pause 1, 2, 3, 
 
 ```{.python .number-lines}
 a = 15
-b = 8;
+b = 8
 if a > b:
     m = a
 else:
@@ -1911,7 +1911,7 @@ def numero_acertos(aposta: SeisNumeros, sorteados: SeisNumeros) -> int:
     if sorteado(aposta.c, sorteados):
         acertos = acertos + 1
     if sorteado(aposta.d, sorteados):
-        acertos = acertos + 1;
+        acertos = acertos + 1
     if sorteado(aposta.e, sorteados):
         acertos = acertos + 1
     if sorteado(aposta.f, sorteados):
