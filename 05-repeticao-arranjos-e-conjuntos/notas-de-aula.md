@@ -548,11 +548,11 @@ Qual é a ordem que as linhas são executadas? \pause
 
 7, \pause 2 (`soma = 0`{.python}), \pause
 
-3 (`x = 5`{.python}), \pause 4 (`soma = 5`{.python}), \pause
+3 (`n = 5`{.python}), \pause 4 (`soma = 5`{.python}), \pause
 
-3 (`x = 1`{.python}), \pause 4 (`soma = 6`{.python}), \pause
+3 (`n = 1`{.python}), \pause 4 (`soma = 6`{.python}), \pause
 
-3 (`x = 4`{.python}), \pause 4 (`soma = 10`{.python}), \pause
+3 (`n = 4`{.python}), \pause 4 (`soma = 10`{.python}), \pause
 
 3 (identifica que não tem mais elementos), \pause 5 (devolve `10`{.python}), \pause
 
