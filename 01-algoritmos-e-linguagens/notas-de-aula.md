@@ -443,6 +443,15 @@ Vamos começar?
 
 # Atividades
 
+@. Aja como um computador humano e execute o algoritmo (fluxograma) para calcular a raiz quadrada de 9.
+
+@. Aja como um computador humano e execute o algoritmo (pseudocódigo) para calcular o MDC de 18 e 60.
+
+@. Aja como um computador humano e execute o algoritmo (função matemática) para calcular a soma dos valores da lista $[6, 1, 4, 2]$.
+
+
+# Atividades
+
 @. Tente relacionar as construções do fluxograma do algoritmo que calcula a raiz quadrada com as construções do código em C++.
 
 @. Tente relacionar as construções do pseudo código que calcula o MDC com as construções do código em Python.
