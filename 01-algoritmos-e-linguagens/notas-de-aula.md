@@ -32,9 +32,15 @@ O que é um algoritmo?
 
 > Uma sequência de passos que visam atingir um objetivo bem definido.
 
+# Definições de algoritmo
+
+## Thomas Cormen
+
+> Uma sequência bem definida de passos que toma uma conjunto de valores como entrada e produz um conjunto de valores como saída com o objetivo de resolver um problema.
+
 \pause
 
-## Knuth
+## Donald Knuth
 
 > Um conjunto finito de regras que fornece uma sequência de operações para resolver um tipo específico de problema.
 
