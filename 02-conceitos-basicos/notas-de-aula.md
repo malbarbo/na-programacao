@@ -34,7 +34,7 @@ Ao iniciar o IDLE a janela a seguir é exibida \pause
 
 Utilizamos essa janela, chamada de janela de **interações** (ou REPL), para testar pequenos trechos de código. \pause
 
-O símbolo `>>>` é chamado de _prompt_ e indica que o interpretador está pronto.
+O símbolo `>>>` é chamado de _prompt_ e indica que o interpretador está pronto. \pause
 
 
 # Janela de interações (REPL)
@@ -88,6 +88,8 @@ O Python tem diversos **tipos numéricos**, os dois principais são \pause
 
 Inteiros (`int`{.python}) \pause
 
+\small
+
 ```python
 >>> 102
 102
@@ -101,6 +103,8 @@ Inteiros (`int`{.python}) \pause
 <div class="column" width="50%">
 
 Ponto flutuante (`float`{.python}), representação aproximada de números reais \pause
+
+\small
 
 ```python
 >>> 1.3
@@ -125,6 +129,8 @@ Podemos usar as quatro operações aritméticas básicas com esses tipos numéri
 
 <div class="columns">
 <div class="column" width="50%">
+
+\small
 
 ```python
 >>> # Soma e subtração
@@ -155,6 +161,8 @@ Podemos usar as quatro operações aritméticas básicas com esses tipos numéri
 <div class="column" width="50%">
 \pause
 
+\small
+
 ```python
 >>> # Piso da divisão
 >>> 7 // 2
@@ -166,12 +174,17 @@ Podemos usar as quatro operações aritméticas básicas com esses tipos numéri
 \pause
 
 ```python
->>> # Resto da divisão
+>>> # Módulo
 >>> 14 % 3
 2
->>> # Esperávamos obter exatamente
->>> # 1.1, mas float é apenas
->>> # uma aproximação dos reais...
+>>> -14 % 3
+1
+```
+
+\pause
+
+```python
+>>> # float é uma aproximação dos reais
 >>> 5 % 1.3
 1.0999999999999999
 ```
@@ -182,10 +195,11 @@ Podemos usar as quatro operações aritméticas básicas com esses tipos numéri
 
 # Comentários
 
-O símbolo `#`{.python} (cerquilha), é utilizado para indicar um **comentário**. O comentário incia em `#`{.python} e vai até o final da linha. Os comentários são ignorados pelo interpretador do Python, mas são utilizados para adicionar informações relevantes para os leitores do código.
+O símbolo `#`{.python} (cerquilha), é utilizado para indicar um **comentário**. O comentário inicia na `#`{.python} e vai até o final da linha. Os comentários são ignorados pelo interpretador do Python, mas são utilizados para adicionar informações relevantes para os leitores do código.
 
 
 # Exponenciação
+\small
 
 ```python
 >>> # Exponenciação e radiciação
@@ -193,7 +207,8 @@ O símbolo `#`{.python} (cerquilha), é utilizado para indicar um **comentário*
 81
 >>> 2 ** 80
 1208925819614629174706176
->>> 16 ** 0.5 # raiz quadrada, o mesmo que 16 ** (1 / 2)
+>>> # raiz quadrada, o mesmo que 16 ** (1 / 2)
+>>> 16 ** 0.5
 4.0
 ```
 
@@ -201,10 +216,11 @@ O símbolo `#`{.python} (cerquilha), é utilizado para indicar um **comentário*
 
 ```python
 >>> # A exponenciação tem prioridade sobre a divisão
->>> 27 ** 1 / 3 # o mesmo que (27 ** 1) / 3
+>>> # O mesmo que (27 ** 1) / 3
+>>> 27 ** 1 / 3
 9.0
 >>> # Usamos parênteses para mudar a prioridade
->>> 27 ** (1 / 3) # raiz cúbica
+>>> 27 ** (1 / 3) # raiz cubica
 3.0
 ```
 
@@ -273,6 +289,7 @@ Qual é o resultado da avaliação de cada expressão a seguir?
 
 <div class="columns">
 <div class="column" width="50%">
+\small
 
 ```python
 >>> # Arredondamento
@@ -288,6 +305,8 @@ Qual é o resultado da avaliação de cada expressão a seguir?
 
 </div>
 <div class="column" width="50%">
+
+\small
 
 ```python
 >>> # Conversão entre int e float
@@ -314,11 +333,21 @@ Por hora, vamos ver apenas algumas funções do módulo [`math`](https://docs.py
 
 # Piso e teto
 
+\small
+
+```python
+>>> # Importação do módulo
+>>> import math
+```
+
+\pause
+
 <div class="columns">
 <div class="column" width="50%">
 
+\small
+
 ```python
->>> import math
 >>> # Piso
 >>> # maior inteiro <= ao número
 >>> math.floor(4.2)
