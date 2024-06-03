@@ -44,10 +44,6 @@ O que é um algoritmo?
 
 > Um conjunto finito de regras que fornece uma sequência de operações para resolver um tipo específico de problema.
 
-\pause
-
-O que estas definições tem em comum?
-
 
 # Definição de Algoritmo
 
@@ -206,17 +202,31 @@ O que esses algoritmos têm em comum? \pause
 
 # Limite dos algoritmos
 
+Vamos fazer um breve discussão sobre o que é possível fazer com algoritmos. \pause
+
+ATENÇÃO: sequência de perguntas a segui!
+
+
+# Limite dos algoritmos
+
 Todos os problemas podem ser resolvidos com algoritmos? \pause
 
 O que é um problema? \pause
 
 Vamos considerar apenas problemas bem definidos, que especificam com precisão quais são as possíveis entradas e como as saídas estão relacionados com as entradas. \pause
 
-Todos os problemas bem especificados podem ser resolvidos com algoritmos? \pause
+Todos os problemas bem definidos podem ser resolvidos com algoritmos? \pause
 
-O que significa dizer que um algoritmo resolve um problema? \pause Que para todas as entradas possíveis, o algoritmo produz a saída correta. \pause
+O que significa dizer que um algoritmo resolve um problema? \pause
 
-E então, todos os problemas bem especificados podem ser resolvidos com algoritmos? \pause Não... \pause
+Que para todas as entradas possíveis, o algoritmo produz a saída correta.
+
+
+# Limite dos algoritmos
+
+E então, todos os problemas bem especificados podem ser resolvidos com algoritmos? \pause
+
+Não... \pause
 
 Os problemas que podem ser resolvidos com algoritmos são chamados de problemas computáveis.
 
@@ -237,6 +247,8 @@ O que considerar na escolha ou no projeto de algoritmos? \pause
 # Algoritmos e computadores
 
 Qual representação utilizar para escrever algoritmos que possam ser executados por um computador? \pause
+
+Nenhuma das que vimos, precisamos de uma linguagem. \pause
 
 
 Mas o que é uma linguagem e qual a sua função? \pause
@@ -286,7 +298,8 @@ A **sintaxe** de uma linguagem é o conjunto de regras que define como os símbo
 Por exemplo, a instrução para soma de dois número é expressa: \pause
 
 - Na maioria das linguagens: `20 + 17`{.python} \pause
-- Em Lisp: `(+ 20 17)`{.scheme}
+- Em Lisp: `(+ 20 17)`{.scheme} \pause
+- Em Forth: `20 17 +`{.scheme}
 
 
 # Semântica
