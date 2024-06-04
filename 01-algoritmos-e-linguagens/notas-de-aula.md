@@ -204,7 +204,7 @@ O que esses algoritmos têm em comum? \pause
 
 Vamos fazer um breve discussão sobre o que é possível fazer com algoritmos. \pause
 
-ATENÇÃO: sequência de perguntas a segui!
+ATENÇÃO: sequência longa de perguntas a seguir!
 
 
 # Limite dos algoritmos
@@ -224,7 +224,7 @@ Que para todas as entradas possíveis, o algoritmo produz a saída correta.
 
 # Limite dos algoritmos
 
-E então, todos os problemas bem especificados podem ser resolvidos com algoritmos? \pause
+E então, todos os problemas bem definidos podem ser resolvidos com algoritmos? \pause
 
 Não... \pause
 
@@ -277,11 +277,15 @@ Hoje em dia não, mas os primeiros computadores eram programados usando linguage
 
 # Tradução
 
-Se não queremos utilizar linguagem de máquina, como podemos programar os computadores? \pause Como duas entidades que usam linguagens diferentes podem se comunicar? \pause
+Se não queremos utilizar linguagem de máquina, como podemos programar os computadores? \pause
+
+Como duas entidades que usam linguagens diferentes podem se comunicar? \pause
 
 Usando um tradutor.\pause
 
-Se a linguagem fonte e a linguagem alvo forem bem definidas, podemos escrever um programa que faça a tradução de forma automática. \pause A linguagem alvo (de máquina) é bem definida, precisamos de uma linguagem fonte (de programação) que também seja bem definida.
+Se a linguagem fonte e a linguagem alvo forem bem definidas, podemos escrever um programa que faça a tradução de forma automática. \pause
+
+A linguagem alvo (de máquina) é bem definida, precisamos de uma linguagem fonte que também seja bem definida.
 
 
 # Linguagem de programação
@@ -298,7 +302,9 @@ A **sintaxe** de uma linguagem é o conjunto de regras que define como os símbo
 Por exemplo, a instrução para soma de dois número é expressa: \pause
 
 - Na maioria das linguagens: `20 + 17`{.python} \pause
+
 - Em Lisp: `(+ 20 17)`{.scheme} \pause
+
 - Em Forth: `20 17 +`{.scheme}
 
 
@@ -308,8 +314,10 @@ A **semântica** de uma linguagem define o significado das construções da ling
 
 A expressão `12 + "3"`{.python} é valida sintaticamente em muitas linguagens, mas o significado é diferente entre elas. \pause
 
-- Lua: o texto `"3"`{.python} deve ser convertido para um número e depois somado com `12`{.python}. \pause
-- Javascrip: o número `12`{.python} deve ser transformado para um texto e depois juntado com `"3"`{.python}. \pause
+- Lua: o texto `"3"`{.python} deve ser convertido para um número e depois somado com `12`{.python}, resultado em `15`{.ptyhon}. \pause
+
+- Javascript: o número `12`{.python} deve ser transformado para um texto e depois juntado com `"3"`{.python}, resultando em `"123"`{.python}. \pause
+
 - Na maioria linguagens: é um erro semântico.
 
 
@@ -440,14 +448,18 @@ Interpretação
 
 Existem centenas de linguagens de programação, cada uma com suas próprias características e usos, então, qual delas aprender? \pause
 
-Nenhuma em particular. \pause O mais importante não são as linguagens em si, mas os princípios que são utilizados para criar os programas nas linguagens. \pause
+Nenhuma em particular. \pause
+
+O mais importante não são as linguagens em si, mas os princípios que são utilizados para criar os programas nas linguagens. \pause
 
 Dominando os fundamentos de algoritmos e paradigmas de programação, aprender uma nova linguagem não é uma tarefa difícil!
 
 
 # Escolhendo uma linguagem
 
-Mas precisamos de uma linguagem para começar. \pause Nessa disciplina vamos utilizar a linguagem Python! \pause
+Mas precisamos de uma linguagem para começar. \pause
+
+Nessa disciplina vamos utilizar a linguagem Python! \pause
 
 Python é uma linguagem bastante utilizada e versátil, \pause mas também é uma linguagem extensa! \pause Mas não se preocupe, vamos utilizar apenas construções básicas! \pause
 
