@@ -25,6 +25,22 @@ O Python é um software livre e pode ser baixado e instalado de <https://python.
 
 Além do interpretador, a instalação do Python vem com um ambiente de desenvolvimento e aprendizagem chamado IDLE. \pause
 
+Em um sistema Linux, é provável que o Python já venha instalador por padrão. Nesse caso é preciso instalar apenas o IDLE. \pause Em um sistema baseado no Debian, use o comando
+
+```bash
+$ sudo apt install idle
+```
+
+
+# Instalação
+
+Durante a instalação no Windows é importante marcar a opção "Add python.exe to PATH".
+
+![](imagens/python-install-win.png){width=10cm}
+
+
+# IDLE
+
 Ao iniciar o IDLE a janela a seguir é exibida \pause
 
 ![](imagens/idle.png){width=10cm}
@@ -34,7 +50,7 @@ Ao iniciar o IDLE a janela a seguir é exibida \pause
 
 Utilizamos essa janela, chamada de janela de **interações** (ou REPL), para testar pequenos trechos de código. \pause
 
-O símbolo `>>>` é chamado de _prompt_ e indica que o interpretador está pronto. \pause
+O símbolo `>>>` é chamado de _prompt_ e indica que o interpretador está pronto.
 
 
 # Janela de interações (REPL)
@@ -119,10 +135,9 @@ Ponto flutuante (`float`{.python}), representação aproximada de números reais
 </div>
 </div>
 
+\pause
 
-# Operações básicas
-
-Podemos usar as quatro operações aritméticas básicas com esses tipos numéricos e algumas outras operações, conforme veremos a seguir.
+Podemos usar as quatro operações aritméticas básicas com esses tipos numéricos e algumas outras operações.
 
 
 # Operações básicas
@@ -297,6 +312,8 @@ Qual é o resultado da avaliação de cada expressão a seguir?
 3
 >>> round(3.5)
 4
+>>> round(-1.6)
+-2
 >>> round(3.5134, 2)
 3.51
 ```
@@ -363,6 +380,8 @@ Por hora, vamos ver apenas algumas funções do módulo [`math`](https://docs.py
 </div>
 <div class="column" width="50%">
 
+\small
+
 ```python
 >>> # Teto
 >>> # menor inteiro >= ao númeo
@@ -386,6 +405,8 @@ Geralmente usamos strings para armazenar informações simbólicas, como por exe
 
 Uma string em Python é escrita entre apóstrofo (`'`{.python}) ou aspas (`"`{.python}) \pause
 
+\small
+
 ```python
 >>> 'casa'
 'casa'
@@ -402,6 +423,8 @@ Assim como existem operações pré-definidas para números, também existem ope
 
 <div class="columns">
 <div class="column" width="50%">
+
+\small
 
 ```python
 >>> # Concatenação
@@ -431,6 +454,8 @@ Assim como existem operações pré-definidas para números, também existem ope
 </div>
 <div class="column" width="50%">
 
+\small
+
 ```python
 >>> # Quantidade de caracteres
 >>> len('ciência da computação')
@@ -443,6 +468,11 @@ Assim como existem operações pré-definidas para números, também existem ope
 >>> # Conversão maiúscula
 >>> 'José'.upper() # ou str.upper('José')
 'JOSÉ'
+```
+
+\pause
+
+```python
 >>> # Conversão minúscula
 >>> 'José'.lower() # ou str.lower('José')
 'josé'
@@ -453,6 +483,8 @@ Assim como existem operações pré-definidas para números, também existem ope
 
 
 # Substrings
+
+\small
 
 ```python
 >>> # Indexação de caractere
@@ -481,6 +513,8 @@ IndexError: string index out of range
 
 # Substrings
 
+\small
+
 ```python
 >>> # Substring do início até 3 - 1
 >>> 'veja isso'[:3] # ou str.__getitem__('veja isso', slice(None, 3))
@@ -499,7 +533,7 @@ IndexError: string index out of range
 
 ```python
 >>> # Substring de 2 até 6 - 1
->>> 'veja isso'[2:6] # ou str.__getitem__('veja isso', slice(7, 9))
+>>> 'veja isso'[2:6] # ou str.__getitem__('veja isso', slice(2, 6))
 'ja i'
 ```
 
@@ -508,6 +542,8 @@ IndexError: string index out of range
 
 <div class="columns">
 <div class="column" width="50%">
+
+\small
 
 ```python
 >>> # Conversão de int para str
@@ -530,6 +566,8 @@ IndexError: string index out of range
 
 </div>
 <div class="column" width="50%">
+
+\small
 
 ```python
 >>> # Conversão de str para int
@@ -592,24 +630,22 @@ Embora a forma de utilizar operadores, funções, métodos e indexação seja di
 # Formas de expressões
 
 <div class="columns">
-<div class="column" width="50%">
-![](imagens/operacoes-entrada-saida.pdf){width=6cm}
-\pause
+<div class="column" width="40%">
+\includegraphics[trim=20pt 0pt 20pt 0pt,clip]{imagens/operacoes-entrada-saida.pdf}
 </div>
-<div class="column" width="50%">
+<div class="column" width="60%">
 \small
 Se o propósito é o mesmo, por que não usar a mesma forma? \pause
 
 Por conveniência! \pause
 
-Por exemplo, se não tivéssemos a forma de operadores e apenas a forma de chamada de funções, então deveríamos escrever
+Por exemplo, se não tivéssemos a forma de operadores e apenas a forma de chamada de funções, então, para escrever a expressão `30 * 2 + 3`{.python} teríamos que escrever \pause
 
 ```python
-from operator import add, mull
-add(mul(30, 2), 3)
+int.__add__(int.__mul__(30, 2), 3)
 ```
 
-ao invés de `30 * 2 + 3`{.python}, o que seria inconveniente. \pause
+\pause
 
 Além da conveniência de escrita, a forma de chamada métodos e indexação tem outras vantagens, que não vamos discutir nessa disciplina.
 </div>
@@ -668,6 +704,8 @@ Que resposta você espera para a comparação `3 > 4`{.python}? \pause E para `3
 
 Em Python a resposta da primeira comparação é `False`{.python} (falso) e da segunda `True`{.python} (verdadeiro). \pause
 
+\small
+
 ```python
 >>> 3 > 4
 False
@@ -677,6 +715,8 @@ True
 
 \pause
 
+\normalsize
+
 Na computação os valores verdadeiro e falso são chamados de booleanos. Em Python, o tipo dos valores booleanos é `bool`{.python}. As operações relacionais produzem como resposta um valor booleano.
 
 
@@ -684,6 +724,8 @@ Na computação os valores verdadeiro e falso são chamados de booleanos. Em Pyt
 
 <div class="columns">
 <div class="column" width="50%">
+
+\small
 
 ```python
 >>> # Maior e maior ou igual
@@ -707,6 +749,8 @@ True
 
 </div>
 <div class="column" width="50%">
+
+\small
 
 ```python
 >>> # Igual
@@ -743,6 +787,8 @@ As operações relacionais podem ser utilizadas com outros tipos, incluindo stri
 <div class="columns">
 <div class="column" width="50%">
 
+\small
+
 ```python
 >>> # As strings são comparadas
 >>> # lexicograficamente, o
@@ -758,6 +804,9 @@ False
 
 </div>
 <div class="column" width="50%">
+
+\small
+
 ```python
 >>> 'Abacaxi' < 'Abacate'
 False
@@ -777,6 +826,8 @@ True
 <div class="columns">
 <div class="column" width="50%">
 
+\small
+
 ```python
 >>> # O valor False é considerado
 >>> # menor que o valor True
@@ -790,6 +841,8 @@ True
 
 </div>
 <div class="column" width="50%">
+
+\small
 
 ```Python
 >>> False == False
@@ -812,10 +865,10 @@ Assim como existem operações com números e strings, também existem operaçõ
 
 As três operações mais comuns com booleanos são: `not`{.python} (negação), `or`{.python} (ou) e `and`{.python} (e). \pause
 
-\small
-
 <div class="columns">
 <div class="column" width="50%">
+
+\small
 
 ```python
 >>> # O not é um operator unário.
@@ -832,10 +885,9 @@ True
 </div>
 <div class="column" width="50%">
 
+\small
+
 ```Python
->>> # O not tem menor precedência
->>> # do que os operadores relacionais
->>> # e aritméticos.
 >>> # 4 > 4.0 é False
 >>> not 3 + 1 > 2 + 2.0
 True
@@ -844,14 +896,22 @@ True
 False
 ```
 
+\pause
+
 </div>
 </div>
+
+\ 
+
+Note que o `not`{.python} tem menor precedência do que os operadores relacionais e aritméticos.
 
 
 # Operadores booleanos
 
 <div class="columns">
 <div class="column" width="50%">
+
+\small
 
 ```python
 >>> # O and é um operador binário
@@ -873,6 +933,8 @@ True
 
 </div>
 <div class="column" width="50%">
+
+\small
 
 ```Python
 >>> # O and tem menor precedência
@@ -898,6 +960,8 @@ True
 <div class="columns">
 <div class="column" width="50%">
 
+\small
+
 ```python
 >>> # O or é um operador binário
 >>> # que produz True se pelo menos
@@ -918,6 +982,8 @@ True
 
 </div>
 <div class="column" width="50%">
+
+\small
 
 ```Python
 >>> # O or tem menor precedência
@@ -996,6 +1062,8 @@ O que precisamos para definir essa função? \pause
 
 Com essas informações, definimos a função usando a forma
 
+\small
+
 ```python
 def nome(entrada1: tipo, entrada2: tipo, ...) -> tipo:
     return exp
@@ -1005,14 +1073,14 @@ def nome(entrada1: tipo, entrada2: tipo, ...) -> tipo:
 # Definindo novas funções
 
 <div class="columns">
-<div class="column" width="50%">
+<div class="column" width="48%">
 Escrevemos o código da função na janela de edição de código e salvamos o arquivo (File $\rightarrow$ Save - crtl\ +\ s).
 
 ![](imagens/dobro.png){width=6.5cm}
 
 \pause
 </div>
-<div class="column" width="50%">
+<div class="column" width="48%">
 
 Para testarmos a função executamos o arquivo (Run $\rightarrow$ Run Module - F5) e chamamos a função na janela de interações. \pause
 
@@ -1025,6 +1093,8 @@ Para testarmos a função executamos o arquivo (Run $\rightarrow$ Run Module - F
 
 O que acontece se escrevermos uma chamada função `dobro` após a sua definição e executarmos o arquivo (Run Module)?
 
+\small
+
 ```python
 def dobro(x: int) -> int:
     return 2 * x
@@ -1033,6 +1103,8 @@ dobro(4)
 ```
 
 \pause
+
+\normalsize
 
 A função `dobro` será executada para o valor `4`{.python} mais nenhum resultado será exibido na tela. \pause
 
@@ -1045,6 +1117,8 @@ Por que no modo de interação a exibição é feita automaticamente (o P -- _pr
 
 A forma mais comum de exibir um valor em Python é utilizando a função `print`{.python}. \pause
 
+\small
+
 ```python
 def dobro(x: int) -> int:
     return 2 * x
@@ -1053,6 +1127,8 @@ print(dobro(4))
 ```
 
 \pause
+
+\normalsize
 
 Ao executar o código, o valor `8` será exibido na tela. \pause
 
@@ -1063,6 +1139,8 @@ Note que o `print`{.python} posiciona o cursor no início da próxima linha, des
 
 A função `print`{.python} pode ser utilizada com mais de um argumento e os argumentos podem ser de tipos diferentes \pause
 
+\small
+
 ```python
 def dobro(x: int) -> int:
     return 2 * x
@@ -1070,7 +1148,11 @@ def dobro(x: int) -> int:
 print('O dobro de 4 é:', dobro(4))
 ```
 
+\normalsize
+
 Saída
+
+\small
 
 ```
 O dobro de 4 é: 8
@@ -1078,7 +1160,10 @@ O dobro de 4 é: 8
 
 \pause
 
+\normalsize
+
 Note que não colocamos espaço após `'é:'`{.python} na chamada do `print`{.python}, mas um espaço aparece na saída. Isto porque o `print`{.python} adiciona um espaço automaticamente entre cada argumento antes de exibir na tela.
+
 
 # Instrução de saída
 
