@@ -1,6 +1,6 @@
 ---
 # vim: set spell spelllang=pt_br:
-title: Conceitos básicos
+subtitle: Conceitos básicos
 # TODO: and e or tem avaliação em curto circuito
 # TODO: exercícios de operações relacionais e lógicas
 # TODO: adicionar referências
@@ -140,7 +140,7 @@ Ponto flutuante (`float`{.python}), representação aproximada de números reais
 Podemos usar as quatro operações aritméticas básicas com esses tipos numéricos e algumas outras operações.
 
 
-# Operações básicas
+# Operadores básicas
 
 <div class="columns">
 <div class="column" width="50%">
@@ -696,9 +696,169 @@ Qual é o resultado de cada expressão a seguir?
 ```
 
 
-# Operações relacionais
+# Definição de funções
+
+Além de podermos usar as operações e funções pré-definidas no Python, também podemos definir as nossas próprias funções.
+
+\pause
+
+Apesar de ser possível definir uma nova função na janela de interações, nós vamos fazer isso na janela de edição de código. Isso permite salvar o código para uso/edição posterior.
+
+
+# Definição de funções
+
+Para abrir a janela de edição de código selecionamos o menu File $\rightarrow$ New File (crtl + n). \pause
+
+![](imagens/editor.png){width=9cm}
+
+
+# Definição de funções
+
+Funções na programação são semelhantes as funções na matemática, discutiremos as diferenças ao longo da disciplina. \pause Por ora, vamos ver uma função matemática e tentar escrever "a mesma" função em Python. \pause
+
+Considere a função $f: \mathbb{Z} \rightarrow \mathbb{Z}$, dada por $f(x) = 2x$. \pause
+
+Quais são as partes que podemos identificar nessa definição? \pause
+
+- O nome da função ($f$) \pause
+- O nome do argumento de entrada ($x$) e seu domínio ($\mathbb{Z}$) \pause (conjunto dos valores da entrada) \pause
+- O contradomínio ($\mathbb{Z}$) \pause (conjunto dos valores da saída) \pause
+- A expressão que define a função ($2x$) \pause
+
+Vamos definir essa mesma função em Python.
+
+
+# Definição de funções
+
+O que precisamos para definir a função? \pause
+
+- O nome da função (`dobro`) \pause
+- O nome e tipo da entrada (`x: int`{.python}) \pause
+- O tipo da saída (`int`{.python}) \pause
+- O corpo da função, isto é, as instruções que calculam o valor da saída a partir da entrada (`2 * x`{.python}) \pause
+
+Para definir a função, usamos uma forma (sintaxe) específica: \pause
+
+\small
+
+```python
+def dobro(x: int) -> int:
+    return 2 * x
+```
+
+
+# Definição de funções
+
+<div class="columns">
+<div class="column" width="48%">
+Escrevemos o código da função na janela de edição de código e salvamos o arquivo (File $\rightarrow$ Save - crtl\ +\ s).
+
+![](imagens/dobro.png){width=6.5cm}
+
+\pause
+</div>
+<div class="column" width="48%">
+
+Para testarmos a função executamos o arquivo (Run $\rightarrow$ Run Module - F5) e chamamos a função na janela de interações. \pause
+
+![](imagens/dobro-ex.png){width=6.5cm}
+</div>
+</div>
+
+
+# Definição de funções
+
+A forma geral para definição de funções:
+
+\small
+
+```python
+def nome(entrada1: tipo, entrada2: tipo, ...) -> tipo:
+    return exp
+```
+
+\pause
+
+<div class="columns">
+<div class="column" width="48%">
+
+`def`{.python} e `return`{.python} são **palavras chaves** (reservadas) e têm um significado pré-definido: \pause `def`{.python} indica a definição de uma função; \pause e `return`{.python} indica qual é a saída da função. \pause
+
+Os quadro espaços em branco antes do `return`{.python} é chamado de **indentação** (ou recuo). Em algumas linguagens a indentação é opcional, mas em Python é obrigatória.
+
+Os símbolos `(`{.python}, `)`{.python}, `:`{.python} e `->`{.python}, entre outros, são os **delimitadores**.
+
+\pause
+
+</div>
+<div class="column" width="48%">
+
+Uma função pode ter zero ou mais parâmetros, mas conceitualmente só tem um valor de retorno. \pause
+
+O **identificador** (nome) da função, dos parâmetros e dos tipos deve começar com uma letra ou `_` e pode ser seguido de letras, números e `_`. \pause
+
+Espaços não podem ser usados em nomes. \pause
+
+As letras diacríticas (com acentos, cedilha, etc) podem ser usados nos identificados, mas não é uma boa prática, por isso não vamos utilizar.
+
+</div>
+</div>
+
+
+# Exercício
+
+Escreva uma função chamada `in_para_mm` que converte uma medida `x` em polegadas para milímetros com até duas casas de precisão. Uma polegada equivale a 2,54 cm. Veja se a função funciona corretamente para os seguintes exemplos:
+
+\small
+
+```python
+>>> in_para_cm(10)
+254.0
+>>> in_para_cm(1/2)
+12.7
+>>> in_para_cm(5/8)
+15.88
+```
+
+\pause
+
+```python
+def in_para_cm(x: float) -> float:
+    return round(x * 25.4, 2)
+```
+
+
+<!--
+# Diferenças entre a janela de interações e a de edição de código
+
+O que acontece se escrevermos uma chamada função `dobro` após a sua definição e executarmos o arquivo (Run Module)?
+
+\small
+
+```python
+def dobro(x: int) -> int:
+    return 2 * x
+
+dobro(4)
+```
+
+\pause
+
+\normalsize
+
+A função `dobro` será executada para o valor `4`{.python} mais nenhum resultado será exibido na tela. \pause
+
+Por que na execução do exemplo na janela de interações o resultado é exibido e aqui não? \pause
+
+Por que no modo de interação a exibição é feita automaticamente (o P -- _print_ -- de REPL) para facilitar a interação com o Python. \pause No arquivo de código, precisamos indicar explicitamente que queremos que o resultado seja exibido.
+-->
+
+
+# Operadores relacionais
 
 Outro tipo de operação que podemos fazer com números e strings são as operações relacionais. \pause
+
+Os **operadores relacionais** determinam se uma relação entre dois valores é verdadeira ou falsa. \pause
 
 Que resposta você espera para a comparação `3 > 4`{.python}? \pause E para `3 < 4`{.python}? \pause
 
@@ -713,14 +873,13 @@ False
 True
 ```
 
-\pause
 
-\normalsize
+# Operadores relacionais
 
-Na computação os valores verdadeiro e falso são chamados de booleanos. Em Python, o tipo dos valores booleanos é `bool`{.python}. As operações relacionais produzem como resposta um valor booleano.
+Na computação os valores verdadeiro e falso são chamados de **booleanos**. Em Python, o tipo dos valores booleanos é `bool`{.python}. As operações relacionais produzem como resposta um valor booleano.
 
 
-# Operações relacionais
+# Operadores relacionais
 
 <div class="columns">
 <div class="column" width="50%">
@@ -777,12 +936,14 @@ False
 
 \ 
 
-Observe que as operações relacionais tem prioridade menor do que as operações aritméticas.
+Quem tem maior prioridade, os operadores relacionais ou aritméticas? \pause Os aritméticos.
 
 
-# Operações relacionais
+# Operadores relacionais
 
 As operações relacionais podem ser utilizadas com outros tipos, incluindo strings e booleanos. \pause
+
+As strings são comparadas lexicograficamente, o que pode gerar algumas surpresas. \pause
 
 <div class="columns">
 <div class="column" width="50%">
@@ -790,14 +951,12 @@ As operações relacionais podem ser utilizadas com outros tipos, incluindo stri
 \small
 
 ```python
->>> # As strings são comparadas
->>> # lexicograficamente, o
->>> # que pode gerar algumas
->>> # supressas
 >>> 'a' < 'b'
 True
 >>> 'á' < 'b'
 False
+>>> 'Paulo' < 'andré'
+True
 ```
 
 \pause
@@ -814,14 +973,16 @@ False
 True
 >>> 'casa' == 'Casa'
 False
->>> 'á' != 'a'
+>>> 'A' != 'a'
 True
 ```
 </div>
 </div>
 
 
-# Operações relacionais
+# Operadores relacionais
+
+O valor `False`{.python} é considerado menor que o valor `True`{.python}, isso porque o `False`{.python} quando convertido para `int`{.python} é `0`{.python} e o `True`{.python} é `1`{.python}. \pause
 
 <div class="columns">
 <div class="column" width="50%">
@@ -829,8 +990,10 @@ True
 \small
 
 ```python
->>> # O valor False é considerado
->>> # menor que o valor True
+>>> int(False)
+0
+>>> int(True)
+1
 >>> False < True
 True
 >>> True > False
@@ -859,11 +1022,16 @@ True
 </div>
 
 
-# Operadores booleanos
+# Operadores lógicos
 
-Assim como existem operações com números e strings, também existem operações com booleanos. \pause
+Assim como existem operações com números e strings, também existem operações com booleanos, que são chamadas de **operações lógicas**. \pause
 
-As três operações mais comuns com booleanos são: `not`{.python} (negação), `or`{.python} (ou) e `and`{.python} (e). \pause
+As operações mais comuns com booleanos são: `not`{.python} (negação), `or`{.python} (ou) e `and`{.python} (e).
+
+
+# Operadores lógicos
+
+O `not`{.python} é um operador unário, que produz o valor contrário do seu argumento. \pause
 
 <div class="columns">
 <div class="column" width="50%">
@@ -871,7 +1039,6 @@ As três operações mais comuns com booleanos são: `not`{.python} (negação),
 \small
 
 ```python
->>> # O not é um operator unário.
 >>> not True
 False
 >>> not False
@@ -903,20 +1070,21 @@ False
 
 \ 
 
-Note que o `not`{.python} tem menor precedência do que os operadores relacionais e aritméticos.
+Qual é precedência do `not`{.python} em relação aos operadores relacionais e aritméticos? \pause É menor.
 
 
-# Operadores booleanos
+# Operadores lógicos
 
 <div class="columns">
-<div class="column" width="50%">
+<div class="column" width="48%">
+
+O `and`{.python} é um operador binário que só produz `True`{.python} se os dois operandos forem `True`{.python}.
 
 \small
 
+\pause
+
 ```python
->>> # O and é um operador binário
->>> # que só produz True se os
->>> # dois operandos forem True.
 
 >>> # Tabela verdade do and
 >>> False and False
@@ -932,15 +1100,14 @@ True
 \pause
 
 </div>
-<div class="column" width="50%">
+<div class="column" width="48%">
+
+Qual é a precedência do `and`{.python} em relação aos operadores relacionais e aritméticos? \pause É menor. \pause
+
 
 \small
 
 ```Python
->>> # O and tem menor precedência
->>> # do que os operadores relacionais
->>> # e aritméticos.
-
 >>> # 15 > 8 é True
 >>> # 4 == 3 é False
 >>> 15 > 2 ** 3 and 4 == 1 + 2
@@ -955,18 +1122,16 @@ True
 </div>
 
 
-# Operadores booleanos
+# Operadores lógicos
 
 <div class="columns">
-<div class="column" width="50%">
+<div class="column" width="48%">
+
+O `or`{.python} é um operador binário que produz `True`{.python} se pelo menos um dos operandos for `True`{.python}. \pause
 
 \small
 
 ```python
->>> # O or é um operador binário
->>> # que produz True se pelo menos
->>> # um dos operandos for True.
-
 >>> # Tabela verdade do or
 >>> False or False
 False
@@ -981,14 +1146,13 @@ True
 \pause
 
 </div>
-<div class="column" width="50%">
+<div class="column" width="48%">
+
+Qual é a precedência do `or`{.python} em relação aos operadores relacionais e aritméticos? \pause É menor. \pause
 
 \small
 
 ```Python
->>> # O or tem menor precedência
->>> # do que os operadores relacionais
->>> # e aritméticos.
 
 >>> # 15 > 8 é True
 >>> # 4 == 3 é False
@@ -1033,85 +1197,7 @@ False
 ```
 
 
-# Definindo novas funções
-
-Além de podermos usar as operações e funções pré-definidas no Python, também podemos definir as nossas próprias funções.
-
-\pause
-
-Apesar de ser possível definir uma nova função na janela de interações, nós vamos fazer isso na janela de edição de código. Isso nos permite salvar o código para uso/edição posterior.
-
-
-# Definindo novas funções
-
-Para abrir a janela de edição de código selecionamos o menu File $\rightarrow$ New File (crtl + n). \pause
-
-![](imagens/editor.png){width=9cm}
-
-
-# Definindo novas funções
-
-Vamos criar uma função que calcula o dobro de um dado número. \pause
-
-O que precisamos para definir essa função? \pause
-
-- O nome da função (`dobro`) \pause
-- O nome e tipo da entrada (`x: int`{.python}) \pause
-- O tipo da saída (`int`{.python}) \pause
-- As instruções que calculam o valor da saída a partir da entrada (`2 * x`{.python}) \pause
-
-Com essas informações, definimos a função usando a forma
-
-\small
-
-```python
-def nome(entrada1: tipo, entrada2: tipo, ...) -> tipo:
-    return exp
-```
-
-
-# Definindo novas funções
-
-<div class="columns">
-<div class="column" width="48%">
-Escrevemos o código da função na janela de edição de código e salvamos o arquivo (File $\rightarrow$ Save - crtl\ +\ s).
-
-![](imagens/dobro.png){width=6.5cm}
-
-\pause
-</div>
-<div class="column" width="48%">
-
-Para testarmos a função executamos o arquivo (Run $\rightarrow$ Run Module - F5) e chamamos a função na janela de interações. \pause
-
-![](imagens/dobro-ex.png){width=6.5cm}
-</div>
-</div>
-
-
-# Diferenças entre a janela de interações e a de edição de código
-
-O que acontece se escrevermos uma chamada função `dobro` após a sua definição e executarmos o arquivo (Run Module)?
-
-\small
-
-```python
-def dobro(x: int) -> int:
-    return 2 * x
-
-dobro(4)
-```
-
-\pause
-
-\normalsize
-
-A função `dobro` será executada para o valor `4`{.python} mais nenhum resultado será exibido na tela. \pause
-
-Por que na execução do exemplo na janela de interações o resultado é exibido e aqui não? \pause
-
-Por que no modo de interação a exibição é feita automaticamente (o P -- _print_ -- de REPL) para facilitar a interação com o Python. \pause No arquivo de código, precisamos indicar explicitamente que queremos que o resultado seja exibido.
-
+<!--
 
 # Instrução de saída
 
@@ -1420,6 +1506,8 @@ Em qual ordem as linhas do programa são executadas pelo Python? \pause
 14 (retorna para onde `main` foi chamada)
 </div>
 </div>
+
+-->
 
 
 # Erros
