@@ -1,9 +1,11 @@
 ---
 # vim: set spell spelllang=pt_br:
 subtitle: Conceitos básicos
-# TODO: and e or tem avaliação em curto circuito
-# TODO: exercícios de operações relacionais e lógicas
+toc: true
 # TODO: adicionar referências
+# TODO: adicionar definição de tipo de dado
+# TODO: adicionar definição de expressão e avaliação de expressão
+# TODO: adicionar execução passo a passo
 ---
 
 # Introdução
@@ -716,7 +718,7 @@ Para abrir a janela de edição de código selecionamos o menu File $\rightarrow
 
 Funções na programação são semelhantes as funções na matemática, discutiremos as diferenças ao longo da disciplina. \pause Por ora, vamos ver uma função matemática e tentar escrever "a mesma" função em Python. \pause
 
-Considere a função $f: \mathbb{Z} \rightarrow \mathbb{Z}$, dada por $f(x) = 2x$. \pause
+Considere a função $f: \mathbb{Z} \rightarrow \mathbb{Z}$, que associa cada número inteiro ao dobro do seu valor, isto é, $f(x) = 2x$. \pause
 
 Quais são as partes que podemos identificar nessa definição? \pause
 
@@ -751,7 +753,7 @@ def dobro(x: int) -> int:
 
 <div class="columns">
 <div class="column" width="48%">
-Escrevemos o código da função na janela de edição de código e salvamos o arquivo (File $\rightarrow$ Save - crtl\ +\ s).
+Escrevemos o código na janela de edição de código e salvamos o arquivo (File $\rightarrow$ Save - crtl\ +\ s).
 
 ![](imagens/dobro.png){width=6.5cm}
 
@@ -784,9 +786,9 @@ def nome(entrada1: tipo, entrada2: tipo, ...) -> tipo:
 
 `def`{.python} e `return`{.python} são **palavras chaves** (reservadas) e têm um significado pré-definido: \pause `def`{.python} indica a definição de uma função; \pause e `return`{.python} indica qual é a saída da função. \pause
 
-Os quadro espaços em branco antes do `return`{.python} é chamado de **indentação** (ou recuo). Em algumas linguagens a indentação é opcional, mas em Python é obrigatória.
+Os quatros espaços em branco antes do `return`{.python} é chamado de **indentação** (ou recuo). Em algumas linguagens a indentação é opcional, mas em Python é obrigatória. \pause
 
-Os símbolos `(`{.python}, `)`{.python}, `:`{.python} e `->`{.python}, entre outros, são os **delimitadores**.
+Os símbolos `(`, `)`, `:`, `,` e `->`, entre outros, são os **delimitadores**.
 
 \pause
 
@@ -799,7 +801,7 @@ O **identificador** (nome) da função, dos parâmetros e dos tipos deve começa
 
 Espaços não podem ser usados em nomes. \pause
 
-As letras diacríticas (com acentos, cedilha, etc) podem ser usados nos identificados, mas não é uma boa prática, por isso não vamos utilizar.
+As letras diacríticas (acentos, cedilha, etc) podem ser usados nos identificados, mas não é uma boa prática, por isso não vamos utilizar.
 
 </div>
 </div>
@@ -807,25 +809,49 @@ As letras diacríticas (com acentos, cedilha, etc) podem ser usados nos identifi
 
 # Exercício
 
-Escreva uma função chamada `in_para_mm` que converte uma medida `x` em polegadas para milímetros com até duas casas de precisão. Uma polegada equivale a 2,54 cm. Veja se a função funciona corretamente para os seguintes exemplos:
+Escreva uma função chamada `polegadas_em_mm` que converte uma medida `x` em polegadas para milímetros com até duas casas de precisão. Uma polegada equivale a 2,54 cm. Veja se a função funciona corretamente para os seguintes exemplos:
+
+<div class="columns">
+<div class="column" width="48%">
 
 \small
 
 ```python
->>> in_para_cm(10)
+>>> polegadas_em_mm(10)
 254.0
->>> in_para_cm(1/2)
+>>> polegadas_em_mm(1/2)
 12.7
->>> in_para_cm(5/8)
+>>> polegadas_em_mm(5/8)
 15.88
 ```
 
 \pause
+</div>
+<div class="column" width="48%">
+
+\small
 
 ```python
-def in_para_cm(x: float) -> float:
+def polegadas_em_mm(x: float) -> float:
+    return x * 2.54
+```
+
+A função está correta? \pause Não!. \pause
+
+```python
+def polegadas_em_mm(x: float) -> float:
+    return x * 25.4
+```
+
+E esta? \pause Não, o último exemplo falha. \pause
+
+```python
+def polegadas_em_mm(x: float) -> float:
     return round(x * 25.4, 2)
 ```
+
+</div>
+</div>
 
 
 <!--
@@ -1168,7 +1194,7 @@ False
 </div>
 
 
-# Operadores relacionais
+# Operadores lógicos
 
 Quem tem maior prioridade, o `and`{.python} ou o `or`{.python}? \pause O `and`{.python}. \pause Vamos criar uma expressão que mostre que isso é verdade. \pause
 
@@ -1195,6 +1221,78 @@ True
 >>> (True or False) and False
 False
 ```
+
+
+# Avaliação em curto circuito
+
+Considere a expressão `x != 0 and 20 // x == 4`{.python} \pause
+
+Qual é o resultado da expressões se `x == 5`{.python}? \pause `True`{.python}. \pause
+
+E se `x == 0`{.python}? \pause `False`{.python}. \pause
+
+Por que? A avaliação não deveria falhar já que 20 está sendo dividido por 0? \pause
+
+O Python, assim como a maioria das linguagens, faz uma avaliação mínima (também chamada de avaliação em **curto circuito**) de expressões booleanas, isto é, ele calcula apenas o mínimo para conseguir dar a reposta. \pause
+
+No caso, quando `x == 0`{.python}, a expressão `x != 0` produz `False`{.python}, então, o resultado do `and`{.python} só pode ser `False`{.python}, independe do resultado da expressão `20 // x == 4`{.python}, por isso o Python não avalia essa segunda expressão.
+
+
+# Avaliação em curto circuito
+
+Para expressões com `or`{.python} a ideia de avaliação mínima também é utilizada. Em um `or`{.python} com duas expressões, se a primeira for `True`{.python}, então o resultado do `or`{.python} só pode ser `True`{.python}, não sendo necessário avaliar a segunda expressão. \pause
+
+Dê um exemplo de uma expressão com `or`{.python} que falharia caso o Python não utilizasse avaliação mínima.
+
+
+# Exercício
+
+Escreva uma função chamada `comace_a` que recebe como parâmetro uma string `s` e determina se `s` começa com `'a'`. Veja se a função funciona corretamente para os seguintes exemplos:
+
+<div class="columns">
+<div class="column" width="48%">
+
+\small
+
+```python
+>>> comeca_a('casa')
+False
+>>> comeca_a('abacate')
+True
+>>> comeca_a('Ana')
+False
+>>> comeca_a('')
+False
+```
+
+\pause
+
+</div>
+<div class="column" width="48%">
+
+\small
+
+```python
+def comeca_a(s: str) -> bool:
+    return s[0] == 'a'
+```
+
+Está função está correta? \pause Não, o último exemplo gera uma falha de execução. \pause
+
+```python
+def comeca_a(s: str) -> bool:
+    return s != '' and s[0] == 'a'
+```
+
+\pause
+
+```python
+def comeca_a(s: str) -> bool:
+    return s[:1] == 'a'
+```
+
+</div>
+</div>
 
 
 <!--
@@ -1514,11 +1612,9 @@ Em qual ordem as linhas do programa são executadas pelo Python? \pause
 
 Vamos parar um pouco e pensar sobre erros. \pause
 
-Você já encontrou algum tipo de erro enquanto fazia os programas? \pause Sim! \pause
+Já encontramos alguns tipos de erros enquanto fazíamos os nosso exemplos> \pause
 
-Que tipo de erro? \pause
-
-- O programa nem inicia a execução \pause
+- O programa não inicia a execução \pause
 
 - O programa executa mas é interrompido por um erro \pause
 
@@ -1668,7 +1764,7 @@ IndentationError: unindent does not match any outer indentation level
 \small
 
 ```python
-a: int = 10 + "3"
+a: int = 10 + '3'
 ```
 
 Qual é o erro nesse código? \pause
@@ -1676,7 +1772,7 @@ Qual é o erro nesse código? \pause
 Uso de operandos de tipos inválidos para o operador `+`{.python}. \pause
 
 ```
-    10 + "a"
+    10 + 'a'
 TypeError: unsupported operand type(s) for +: 'int' and 'str'
 ```
 
@@ -1781,7 +1877,7 @@ Se um programa foi verificado pelo `mypy`, isto é, não tem erros de sintaxe ou
 
 Um erro de execução pode fazer o programa \pause
 
-- Ser interrompido e exibir uma mensagem de erro (crashar) \pause
+- Ser interrompido e exibir uma mensagem de erro (falhar) \pause
 - Entrar em um laço infinito e nunca terminar (travar) \pause
 - Continuar a execução e produzir a resposta errada \pause
 
