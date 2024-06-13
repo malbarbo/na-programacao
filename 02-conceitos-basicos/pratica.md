@@ -1,11 +1,10 @@
 ---
 title: Conceitos básicos - Prática
 urlcolor: Blue
+# TODO: adicionar avaliação de expressões relacionais e booleanas
 ---
 
-#. Reveja o material de [conceitos básicos](https://malbarbo.pro.br/arquivos/2023/6879/05-conceitos-basicos-notas-de-aula.pdf) e responda [esse](https://forms.gle/Hrnhg5oCinaAhydn7) quiz (não vale nota).
-
-#. Indique o valor de cada resultado oculto nessa seção de interações. Use a janela de interações após calcular as respostas manualmente para conferir se elas estão corretas.
+@) Indique o valor de cada resultado oculto nessa seção de interações. Use a janela de interações após calcular as respostas manualmente para conferir se elas estão corretas.
 
     ```python
     >>> 2 * 19 // 3
@@ -43,7 +42,7 @@ urlcolor: Blue
     ```
 
 
-#. Faça uma função chamada `area_retangulo` que recebe dois argumentos, a `largura` e a `altura` de um retângulo, e calcula a sua área. Confira na janela de interações se a função funciona de acordo com os exemplos a seguir
+@) Faça uma função chamada `area_retangulo` que recebe dois argumentos, a `largura` e a `altura` de um retângulo, e calcula a sua área. Confira na janela de interações se a função funciona de acordo com os exemplos a seguir
 
     ```python
     >>> area_retangulo(3.0, 5.0)
@@ -53,7 +52,7 @@ urlcolor: Blue
     ```
 
 
-#. Faça uma função chamada `produto_anterior_posterior` que recebe um número inteiro `n` e calcula o produto de `n`, `n + 1` e `n - 1`. Confira na janela de interações se a função funciona de acordo com os exemplos a seguir
+@) Faça uma função chamada `produto_anterior_posterior` que recebe um número inteiro `n` e calcula o produto de `n`, `n + 1` e `n - 1`. Confira na janela de interações se a função funciona de acordo com os exemplos a seguir
 
     ```python
     >>> produto_anterior_posterior(3)
@@ -65,7 +64,7 @@ urlcolor: Blue
     ```
 
 
-#. Faça uma função chamada `aumenta` que recebe dois número positivos, um `valor` e uma `porcentagem`, e calcula o resultado de aumentar a `porcetagem` ao `valor`. Confira na janela de interações se a função funciona de acordo com os exemplos a seguir
+@) Faça uma função chamada `aumenta` que recebe dois número positivos, um `valor` e uma `porcentagem`, e calcula o resultado de aumentar a `porcetagem` ao `valor`. Confira na janela de interações se a função funciona de acordo com os exemplos a seguir
 
     ```python
     >>> aumenta(100.0, 3.0)
@@ -77,7 +76,7 @@ urlcolor: Blue
     ```
 
 
-#. Faça uma função chamada `zera_dezena_e_unidade` que recebe um número natural `n` e devolve um novo número que é como `n` mas tem o valor da dezena e unidade zero. Dica: use piso da divisão. Confira na janela de interações se a função funciona de acordo com os exemplos a seguir
+@) Faça uma função chamada `zera_dezena_e_unidade` que recebe um número natural `n` e devolve um novo número que é como `n` mas tem o valor da dezena e unidade zero. Dica: use piso da divisão. Confira na janela de interações se a função funciona de acordo com os exemplos a seguir
 
     ```python
     >>> zera_dezena_e_unidade(19)
@@ -89,7 +88,7 @@ urlcolor: Blue
     ```
 
 
-#. Faça uma função chamada `exclamacao` que recebe dois argumento, uma string `frase` e um número natural `n`, e produz a mesma frase adicionando `n` pontos de exclamação no final da frase. Confira na janela de interações se a função funciona de acordo com os exemplos a seguir
+@) Faça uma função chamada `exclamacao` que recebe dois argumento, uma string `frase` e um número natural `n`, e produz a mesma frase adicionando `n` pontos de exclamação no final da frase. Confira na janela de interações se a função funciona de acordo com os exemplos a seguir
 
     ```python
     >>> exclamacao('Nossa', 3)
@@ -101,7 +100,7 @@ urlcolor: Blue
     ```
 
 
-#. Faça uma função chamada `primeira_maiuscula` que recebe uma string `frase` e produz a mesma frase mas com a primeira letra em maiúscula. Confira na janela de interações se a função funciona de acordo com os exemplos a seguir
+@) Faça uma função chamada `primeira_maiuscula` que recebe uma string `frase` e produz a mesma frase mas com a primeira letra em maiúscula. Confira na janela de interações se a função funciona de acordo com os exemplos a seguir
 
     ```python
     >>> primeira_maiuscula('joao venceu.')
@@ -111,7 +110,7 @@ urlcolor: Blue
     ```
 
 
-#. Faça uma função chamada `censura` que recebe dois argumento, uma string `frase` e um número natural `n`, e produz uma nova frase trocando as as primeiras `n` letras da frase de entrada por `n` `'x'`. Confira na janela de interações se a função funciona de acordo com os exemplos a seguir
+@) Faça uma função chamada `censura` que recebe dois argumento, uma string `frase` e um número natural `n`, e produz uma nova frase trocando as as primeiras `n` letras da frase de entrada por `n` `'x'`. Confira na janela de interações se a função funciona de acordo com os exemplos a seguir
 
     ```python
     >>> censura('droga de lanche!', 5)
@@ -120,4 +119,42 @@ urlcolor: Blue
     'xxxxxx geral!'
     ```
 
-#. Para cada exercício anterior, faça um programa com uma função `main` com entrada, processamento e saída.
+
+@) Faça uma função chamada `par` que recebe um número natural `n` e indica se `n` é par. Um número é par se o resto da divisão dele por 2 é igual a zero. Confira na janela de interações se a função funciona de acordo com os exemplos a seguir
+
+    ```python
+    >>> par(3)
+    False
+    >>> par(6)
+    True
+    ```
+
+
+@) Faça uma função chamada `tres_digitos` que recebe um número natural `n` e verifica se `n` tem exatamente 3 dígitos. Confira na janela de interações se a função funciona de acordo com os exemplos a seguir
+
+    ```scheme
+    >>> tres_digitos(99)
+    False
+    >>> tres_digitos(100)
+    False
+    >>> tres_digitos(999)
+    True
+    >>> tres_digitos(1000)
+    False
+    ```
+
+
+@) Faça uma função chamada `termina_z` que recebe uma string `s` e indica se `s` termina com a letra `'z'`. Confira na janela de interações se a função funciona de acordo com os exemplos a seguir
+
+    ```python
+    >>> termina_z('arroz')
+    True
+    >>> termina_z('')
+    False
+    >>> termina_z('Z')
+    True
+    >>> termina_z('casa')
+    False
+    ```
+
+
