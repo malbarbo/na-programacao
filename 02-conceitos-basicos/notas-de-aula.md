@@ -797,7 +797,7 @@ Os símbolos `(`, `)`, `:`, `,` e `->`, entre outros, são os **delimitadores**.
 
 Uma função pode ter zero ou mais parâmetros, mas conceitualmente só tem um valor de retorno. \pause
 
-O **identificador** (nome) da função, dos parâmetros e dos tipos deve começar com uma letra ou `_` e pode ser seguido de letras, números e `_`. \pause
+O **identificador** (nome) da função, dos parâmetros e dos tipos deve começar com uma letra ou `_` e pode ser seguido de letras, números e `_`, e não pode ser uma palavra reservada. \pause
 
 Espaços não podem ser usados em nomes. \pause
 
@@ -1231,11 +1231,11 @@ Qual é o resultado da expressões se `x == 5`{.python}? \pause `True`{.python}.
 
 E se `x == 0`{.python}? \pause `False`{.python}. \pause
 
-Por que? A avaliação não deveria falhar já que 20 está sendo dividido por 0? \pause
+Por que? A avaliação não deveria falhar já que `20`{.python} está sendo dividido por `0`{.python}? \pause
 
-O Python, assim como a maioria das linguagens, faz uma avaliação mínima (também chamada de avaliação em **curto circuito**) de expressões booleanas, isto é, ele calcula apenas o mínimo para conseguir dar a reposta. \pause
+O Python, assim como a maioria das linguagens, faz uma avaliação mínima (também chamada de avaliação em **curto circuito**) de expressões booleanas, isto é, ele calcula apenas o mínimo para conseguir dar a resposta. \pause
 
-No caso, quando `x == 0`{.python}, a expressão `x != 0` produz `False`{.python}, então, o resultado do `and`{.python} só pode ser `False`{.python}, independe do resultado da expressão `20 // x == 4`{.python}, por isso o Python não avalia essa segunda expressão.
+No caso, quando `x == 0`{.python}, a expressão `x != 0`{.python} produz `False`{.python}, então, o resultado do `and`{.python} só pode ser `False`{.python}, independe do resultado da expressão `20 // x == 4`{.python}, por isso o Python não avalia essa segunda expressão.
 
 
 # Avaliação em curto circuito
@@ -1247,7 +1247,7 @@ Dê um exemplo de uma expressão com `or`{.python} que falharia caso o Python n�
 
 # Exercício
 
-Escreva uma função chamada `comace_a` que recebe como parâmetro uma string `s` e determina se `s` começa com `'a'`. Veja se a função funciona corretamente para os seguintes exemplos:
+Escreva uma função chamada `comaca_a` que recebe como parâmetro uma string `s` e determina se `s` começa com `'a'`. Veja se a função funciona corretamente para os seguintes exemplos:
 
 <div class="columns">
 <div class="column" width="48%">
