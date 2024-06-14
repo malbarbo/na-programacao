@@ -1,8 +1,12 @@
 ---
-title: Conceitos básicos - Prática
+title: |
+       | Fundamentos de Algoritmos
+       | Conceitos básicos
 urlcolor: Blue
 # TODO: adicionar avaliação de expressões relacionais e booleanas
 ---
+
+# Começando
 
 @) Indique o valor de cada resultado oculto nessa seção de interações. Use a janela de interações após calcular as respostas manualmente para conferir se elas estão corretas.
 
@@ -41,6 +45,8 @@ urlcolor: Blue
     ?
     ```
 
+
+# Praticando
 
 @) Faça uma função chamada `area_retangulo` que recebe dois argumentos, a `largura` e a `altura` de um retângulo, e calcula a sua área. Confira na janela de interações se a função funciona de acordo com os exemplos a seguir
 
@@ -132,11 +138,11 @@ urlcolor: Blue
 
 @) Faça uma função chamada `tres_digitos` que recebe um número natural `n` e verifica se `n` tem exatamente 3 dígitos. Confira na janela de interações se a função funciona de acordo com os exemplos a seguir
 
-    ```scheme
+    ```python
     >>> tres_digitos(99)
     False
     >>> tres_digitos(100)
-    False
+    True
     >>> tres_digitos(999)
     True
     >>> tres_digitos(1000)
@@ -158,3 +164,32 @@ urlcolor: Blue
     ```
 
 
+# Avançando
+
+Para os próximos exercícios, escreva primeiro os exemplos (e deixe como comentários) e depois faça a função.
+
+@) Projete uma função que verifique se o caractere do meio de uma string é `'-'`.
+
+@) Projete uma função que calcule o valor da hipotenusa a partir dos valores dos catetos.
+
+@) Quando escrevemos uma data no Brasil em geral usamos a ordem dia/mês/ano. Já em outros países a ordem usada é mês/dia/ano. Uma outra forma mais recente de escrever a data é ano/mês/dia. Projete uma função que receba como entrada o dia o mês e o ano e gere uma string representando a data na forma ano/mês/dia.
+
+@) Dizemos que o nome de uma pessoal é curto se tem no máximo três letras e longo se tem mais que 8 letras. Um nome que não é nem curto e nem longo é mediano. Projete uma função que verifique se um dado nome é mediano.
+
+@) As operações de módulo e divisão inteira são bastantes comuns na computação, mas muitos ainda não estão acostumados com essas operações, por isso é importante fazermos alguns exemplos para nos familiarizarmos com elas.
+
+    a. Projete uma função que calcule a unidade de um número inteiro positivo, por exemplo, para o número 152, a unidade é 2.
+
+    a. Projete uma função que calcule a dezena de um número inteiro positivo, por exemplo, para o número 152, a dezena é 5.
+
+    a. Projete uma função que calcule a centena de um número inteiro positivo, por exemplo, para o número 152, a centena é 1.
+
+    a. Projete uma função que verifique se os dois últimos dígitos de um número são 00.
+
+@) Projete uma função que verifique se o primeiro nome de uma pessoa é "Paula". Você pode assumir que a string de entrada não tem espaços no início e no final e que contém pelo menos um espaço em branco.
+
+@) Projete uma função que determine se três medidas podem formar um triângulo.
+
+@) Projete uma função que verifique se o último nome (sobrenome) de uma pessoa é "Silva". Você pode assumir que a string de entrada não tem espaços no início e no final e que contém pelo menos um espaço em branco.
+
+@) (Desafio) Projete uma função que encontre o maior valor entre dois números dados.
