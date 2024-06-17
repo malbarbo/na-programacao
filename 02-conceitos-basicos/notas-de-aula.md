@@ -1227,15 +1227,15 @@ False
 
 Considere a expressão `x != 0 and 20 // x == 4`{.python} \pause
 
-Qual é o resultado da expressões se `x == 5`{.python}? \pause `True`{.python}. \pause
+Qual é o resultado da expressões quando `x`{.python} é `5`{.python}? \pause `True`{.python}. \pause
 
-E se `x == 0`{.python}? \pause `False`{.python}. \pause
+E quando `x`{.python} é  `0`{.python}? \pause `False`{.python}. \pause
 
 Por que? A avaliação não deveria falhar já que `20`{.python} está sendo dividido por `0`{.python}? \pause
 
 O Python, assim como a maioria das linguagens, faz uma avaliação mínima (também chamada de avaliação em **curto circuito**) de expressões booleanas, isto é, ele calcula apenas o mínimo para conseguir dar a resposta. \pause
 
-No caso, quando `x == 0`{.python}, a expressão `x != 0`{.python} produz `False`{.python}, então, o resultado do `and`{.python} só pode ser `False`{.python}, independe do resultado da expressão `20 // x == 4`{.python}, por isso o Python não avalia essa segunda expressão.
+No caso, quando `x`{.python} é `0`{.python}, a expressão `x != 0`{.python} produz `False`{.python}, então, o resultado do `and`{.python} só pode ser `False`{.python}, independe do resultado da expressão `20 // x == 4`{.python}, por isso o Python não avalia essa segunda expressão.
 
 
 # Avaliação em curto circuito
@@ -1277,7 +1277,7 @@ def comeca_a(s: str) -> bool:
     return s[0] == 'a'
 ```
 
-Está função está correta? \pause Não, o último exemplo gera uma falha de execução. \pause
+Esta função está correta? \pause Não, o último exemplo gera uma falha de execução. \pause
 
 ```python
 def comeca_a(s: str) -> bool:
@@ -1293,6 +1293,236 @@ def comeca_a(s: str) -> bool:
 
 </div>
 </div>
+
+
+# Exercício
+
+Escreva uma função chamada `novo_seculo` que recebe como parâmetro uma string `data` no formato `dd/mm/aaaa` e indica se a data representa o primeiro dia de um novo século.
+
+<div class="columns">
+<div class="column" width="43%">
+
+\small
+
+```python
+>>> novo_seculo('01/01/1900')
+True
+>>> novo_seculo('01/01/2000')
+True
+>>> novo_seculo('03/01/2100')
+False
+>>> novo_seculo('01/02/2000')
+False
+>>> novo_seculo('01/01/1230')
+False
+```
+
+\pause
+
+</div>
+<div class="column" width="52%">
+
+\small
+
+```python
+def novo_seculo(data: str) -> bool:
+    return data[:2] == '01' and \
+           data[3:5] == '01' and \
+           data[8:] == '00'
+```
+\pause
+
+Esta função está correta? \pause Sim! \pause
+
+O código da função está claro? \pause Talvez nem tanto... \pause Por que? \pause O propósito de algumas expressões, como `data[3:5]`{.python}, não está evidente. \pause
+
+Como podemos melhorar? \pause Podemos usar variáveis locais!
+
+</div>
+</div>
+
+
+# Variáveis
+
+Uma **variável** é um nome para uma região da memória (célula) que é utilizada para armazenar valores. \pause
+
+Cada variável tem um tipo, que determina o conjunto de valores que podem ser armazenados na memória associada com ela. \pause
+
+Já usamos variáveis para armazenar os valores dos argumentos das funções, mas podemos usar variáveis para armazenar valores que não são argumentos. \pause
+
+Uma variável pode ser primeiro declarada e depois inicializa ou pode ser declarada e inicializada de uma vez só. \pause
+
+As variáveis que são usadas como parâmetros para as funções são declaradas na assinatura da função e são inicializadas a cada chamada da função com os argumentos especificados na chamada.
+
+
+# Variáveis
+
+<div class="columns">
+<div class="column" width="48%">
+
+A forma geral para declaração de variável é
+
+\small
+
+```python
+nome: tipo = valor
+```
+
+\pause
+
+onde `tipo` e `valor` são opcionais, mas pelos menos um deve ser especificado. \pause
+
+```python
+>>> a: int = 10
+>>> b: int = 2 * a
+>>> b
+20
+```
+
+\pause
+
+</div>
+<div class="column" width="48%">
+
+As variáveis `a` e `b` foram declaradas com tipo `int`{.python} e inicializadas na declaração. A variável `a` foi inicializada com o valor `10`{.python} e a variável `b` com o valor `2 * a`{.python}. \pause
+
+O símbolo `=` representa **atribuição**. Para executar uma atribuição o Python primeiro **avalia** a expressão do lado direito para obter um valor, e depois associa a memória que armazena esse valor com o nome da variável.
+
+</div>
+</div>
+
+
+# Sequenciação de instruções
+
+O Python executa essas instruções de **forma sequencial**, uma linha após a outra, por isso, a ordem das é importante. \pause
+
+Qual o resultado da execução das instruções abaixo?
+
+\small
+
+```python
+>>> x: int = 2 * y
+>>> y: int = 10
+>>> x
+?
+```
+
+\pause
+
+\normalsize
+
+Um erro de execução! Quando o Python avalia a expressão `2 * y`{.python} a variável `y` ainda não foi definida, então não é possível calcular o valor da expressão.
+
+
+# Sequenciação de instruções
+
+Qual o resultado de `b` no seguinte trecho de código?
+
+\small
+
+```python
+>>> a: int = 10
+>>> b: int = 2 * a
+>>> a = 30
+>>> b
+?
+```
+
+\pause
+
+\normalsize
+
+`20`{.python}. \pause O Python executar uma linha por vez, na primeira linha a variável `a` é criada referenciando uma célula de memória com o valor `10`{.python}. \pause Depois a expressão `2 * a`{.python} é avaliada com resultado `20`{.python} e a variável `b` é criada referenciado a célula de memória que armazena esse valor. \pause Depois a variável `a` é alterada, passando a referenciar a célula de memória com o valor `30`{.python}. \pause Por vim, o valor armazenado na célula de memória associada com `b`, que é `20`{.python}, é exibido.
+
+
+# Variáveis locais
+
+Uma **variável local** é declarada no escopo ("dentro") de uma função. Elas são criadas quando a linha que estão declaradas são executadas e deixam de existir quando a função devolve a resposta. \pause
+
+As variáveis locais são usadas para armazenar valores intermediários durante a execução da função. \pause
+
+Vamos usar variáveis locais para deixar o código da função `novo_seculo` mais legível
+
+
+# Revisão `novo_seculo`
+
+<div class="columns">
+<div class="column" width="48%">
+
+\footnotesize
+
+```python
+def novo_seculo(data: str) -> bool:
+    return data[:2] == '01' and \
+           data[3:5] == '01' and \
+           data[8:] == '00'
+```
+
+\pause
+
+</div>
+<div class="column" width="48%">
+
+\footnotesize
+
+```python
+def novo_seculo(data: str) -> bool:
+    dia: str = data[:2]
+    mes: str = data[3:5]
+    decada: str = data[8:]
+    return dia == '01' and \
+           mes == '01' and \
+           decada == '00'
+```
+
+</div>
+</div>
+
+\small
+
+Qual código deixar a intenção mais clara? \pause O que usa variáveis locais auxiliares.
+
+\pause
+
+Podemos simplificar? \pause Sim, podemos omitir o tipo das variáveis. \pause
+
+\footnotesize
+
+```python
+def novo_seculo(data: str) -> bool:
+    dia = data[:2]
+    mes = data[3:5]
+    decada = data[8:]
+    return dia == '01' and mes == '01' and decada == '00'
+```
+
+
+# Execução passo a passo
+
+Nós vimos anteriormente que o Python executa as instruções de forma sequencial, uma linha após a outra. \pause No entanto, quando uma função é chamada a execução é desviada para o início da função, e quando a função finaliza o execução volta para onde estava antes da chamada da função.
+
+# Execução passo a passo
+
+\small
+
+```{.python .number-lines}
+def quadrado(a: float) -> float:
+    return a * a
+
+def raiz(a: float) -> float:
+    return a ** 0.5
+
+def hipotenusa(a: float, b: float) -> float:
+    a2 = quadrado(a)
+    b2 = quadrado(b)
+    return raiz(a2 + b2)
+
+hipotenusa(3.0, 4.0)
+```
+
+\pause
+
+Em qual ordem as linhas do programa são executadas pelo Python? \pause Qual é o resultado exibido?
 
 
 <!--
@@ -1369,71 +1599,6 @@ Para isso, vamos precisar de mais duas coisas \pause
 
 - Instrução de entrada \pause
 - Variáveis
-
-
-# Variáveis
-
-Uma **variável** é um nome para uma região da memória (célula) que é utilizada para armazenar valores. \pause
-
-Cada variável tem um tipo, que determina o conjunto de valores que podem ser armazenados na memória associada com ela. \pause
-
-Uma variável pode ser primeiro declarada e depois inicializa ou pode ser declarada e inicializada de uma vez só. \pause
-
-A forma geral para declaração de variável é (o `valor inicial` é opcional)
-
-```python
-nome: tipo [= valor inicial]
-```
-
-# Variáveis
-
-```python
->>> a: int = 10
->>> b: int = 2 * a
->>> b
-20
-```
-
-\pause
-
-As variáveis `a` e `b` foram declaradas com tipo `int`{.python} e inicializadas na declaração. A variável `a` foi inicializada com o valor `10`{.python} e a variável `b` com o valor `2 * a`{.python}. \pause
-
-O símbolo `=` representa **atribuição**. Para executar uma atribuição o Python primeiro avalia a expressão do lado direito para obter um valor, e depois associa a memória que armazena esse valor com o nome da variável.
-
-
-# Sequenciação de instruções
-
-O Python executa as instruções de forma sequencial, uma linha após a outra, por isso, a ordem das instruções é importante. \pause
-
-Qual o resultado da execução das instruções abaixo?
-
-```python
->>> x: int = 2 * y
->>> y: int = 10
->>> x
-?
-```
-
-\pause
-
-Um erro de execução! Quando o Python avalia a expressão `2 * y`{.python} a variável `y` ainda não foi definida, então não é possível calcular o valor da expressão.
-
-
-# Sequenciação de instruções
-
-Qual o resultado de `b` no seguinte trecho de código?
-
-```python
->>> a: int = 10
->>> b: int = 2 * a
->>> a = 30
->>> b
-?
-```
-
-\pause
-
-`20`{.python}. \pause O Python executar uma linha por vez, na primeira linha a variável `a` é criada referenciando uma célula de memória com o valor `10`{.python}. \pause Depois a expressão `2 * a`{.python} é avaliada com resultado `20`{.python} e a variável `b` é criada referenciado a célula de memória que armazena esse valor. \pause Depois a variável `a` é alterada, passando a referenciar a célula de memória com o valor `30`{.python}. \pause Por vim, o valor armazenado na célula de memória associada com `b`, que é `20`{.python}, é exibido.
 
 
 # Instrução de entrada
@@ -1612,7 +1777,7 @@ Em qual ordem as linhas do programa são executadas pelo Python? \pause
 
 Vamos parar um pouco e pensar sobre erros. \pause
 
-Já encontramos alguns tipos de erros enquanto fazíamos os nosso exemplos> \pause
+Já encontramos alguns tipos de erros enquanto fazíamos os nosso exemplos: \pause
 
 - O programa não inicia a execução \pause
 
