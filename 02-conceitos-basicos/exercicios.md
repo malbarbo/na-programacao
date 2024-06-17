@@ -4,6 +4,7 @@ title: |
        | Conceitos básicos
 urlcolor: Blue
 # TODO: adicionar avaliação de expressões relacionais e booleanas
+# TODO: adicionar questão teóricas (tipos e operações primitivas, prioridades, erros, avaliação passo a passo
 ---
 
 # Começando
