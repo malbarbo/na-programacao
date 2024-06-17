@@ -854,32 +854,6 @@ def polegadas_em_mm(x: float) -> float:
 </div>
 
 
-<!--
-# Diferenças entre a janela de interações e a de edição de código
-
-O que acontece se escrevermos uma chamada função `dobro` após a sua definição e executarmos o arquivo (Run Module)?
-
-\small
-
-```python
-def dobro(x: int) -> int:
-    return 2 * x
-
-dobro(4)
-```
-
-\pause
-
-\normalsize
-
-A função `dobro` será executada para o valor `4`{.python} mais nenhum resultado será exibido na tela. \pause
-
-Por que na execução do exemplo na janela de interações o resultado é exibido e aqui não? \pause
-
-Por que no modo de interação a exibição é feita automaticamente (o P -- _print_ -- de REPL) para facilitar a interação com o Python. \pause No arquivo de código, precisamos indicar explicitamente que queremos que o resultado seja exibido.
--->
-
-
 # Operadores relacionais
 
 Outro tipo de operação que podemos fazer com números e strings são as operações relacionais. \pause
@@ -1501,8 +1475,11 @@ def novo_seculo(data: str) -> bool:
 
 Nós vimos anteriormente que o Python executa as instruções de forma sequencial, uma linha após a outra. \pause No entanto, quando uma função é chamada a execução é desviada para o início da função, e quando a função finaliza o execução volta para onde estava antes da chamada da função.
 
+
 # Execução passo a passo
 
+<div class="columns">
+<div class="column" width="58%">
 \small
 
 ```{.python .number-lines}
@@ -1520,12 +1497,42 @@ def hipotenusa(a: float, b: float) -> float:
 hipotenusa(3.0, 4.0)
 ```
 
+</div>
+
+\pause
+<div class="column" width="38%">
+
+Em qual ordem as linhas do programa são executadas pelo Python? \pause 12, 8, 2, 8, 9, 2, 9,10, 5, 10, 12. (Feito em sala) \pause
+
+O que é exibido na tela? \pause Nada!
+
+</div>
+</div>
+
+
+# Diferenças entre a janela de interações e a de edição de código
+
+O que acontece se escrevermos uma chamada função `dobro` após a sua definição e executarmos o arquivo (Run Module)?
+
+\small
+
+```python
+def dobro(x: int) -> int:
+    return 2 * x
+
+dobro(4)
+```
+
 \pause
 
-Em qual ordem as linhas do programa são executadas pelo Python? \pause Qual é o resultado exibido?
+\normalsize
 
+A função `dobro` será executada para o valor `4`{.python} mais nenhum resultado será exibido na tela. \pause
 
-<!--
+Por que na execução do exemplo na janela de interações o resultado é exibido e aqui não? \pause
+
+Por que no modo de interação a exibição é feita automaticamente (o P -- _print_ -- de REPL) para facilitar a interação com o Python. \pause No arquivo de código, precisamos indicar explicitamente que queremos que o resultado seja exibido.
+
 
 # Instrução de saída
 
@@ -1546,231 +1553,9 @@ print(dobro(4))
 
 Ao executar o código, o valor `8` será exibido na tela. \pause
 
-Note que o `print`{.python} posiciona o cursor no início da próxima linha, dessa forma, a próxima informação começara a ser exibida no início da próxima linha.
+Note que o `print`{.python} posiciona o cursor no início da próxima linha, dessa forma, a próxima informação começara a ser exibida no início da próxima linha. \pause
 
-
-# Instrução de saída
-
-A função `print`{.python} pode ser utilizada com mais de um argumento e os argumentos podem ser de tipos diferentes \pause
-
-\small
-
-```python
-def dobro(x: int) -> int:
-    return 2 * x
-
-print('O dobro de 4 é:', dobro(4))
-```
-
-\normalsize
-
-Saída
-
-\small
-
-```
-O dobro de 4 é: 8
-```
-
-\pause
-
-\normalsize
-
-Note que não colocamos espaço após `'é:'`{.python} na chamada do `print`{.python}, mas um espaço aparece na saída. Isto porque o `print`{.python} adiciona um espaço automaticamente entre cada argumento antes de exibir na tela.
-
-
-# Instrução de saída
-
-Esse comportamento do `print`{.python} pode ser indesejável em algumas situações, como por exemplo, se quiséssemos colocar um ponto final após o valor calculado do dobro. \pause Nesse caso, podemos instruir o `print`{.python} a não fazer a separação automática (especificando `sep=''`{.python}) e fazermos a separação manualmente \pause
-
-```python
-def dobro(x: int) -> int:
-    return 2 * x
-
-print('O dobro de 4 é: ', dobro(4), '.', sep='')
-```
-
-
-# Programas
-
-Agora que aprendemos algumas das construções básicas do Python, podemos avançar e ver como fazer um programa completo. \pause
-
-Para isso, vamos precisar de mais duas coisas \pause
-
-- Instrução de entrada \pause
-- Variáveis
-
-
-# Instrução de entrada
-
-A forma mais comum de ler um valor digitado pelo usuário em Python é utilizando a função `input`{.python}. \pause
-
-A função `input`{.python} exibi uma mensagem e aguarda o usuário digitar a entrada e pressionar enter. Em seguida o valor digitado pelo usuário é retornado como uma string.
-
-
-# Instrução de entrada
-
-Se escrevermos o seguinte código em um arquivo `ola.py`,
-
-```python
-nome: str = input('Qual o seu nome?: ')
-print('Olá', nome)
-```
-
-executarmos com F5, e fizermos a entrada do nome `João`, obtemos o seguinte resultado
-
-![](imagens/ola.png){width=10cm}
-
-
-# Instrução de entrada
-
-Também podemos executar o programa no terminal de comando
-
-![](imagens/ola-terminal.png){width=11cm}
-
-Note que é preciso estar no diretório onde o arquivo está salvo (no caso `projetos/na-programacao/`) ou utilizar o caminho completo para o arquivo.
-
-
-# Instrução de entrada vs modo interativo
-
-Apesar de ser possível utilizar as funções de entrada e saída na janela de interações, isso não é muito comum, afinal, podemos executar diretamente as funções com os argumentos que queremos e ver o resultado automaticamente, não é necessário perguntar nada para o usuário! \pause
-
-Por exemplo, se estamos testando a função `len`{.python}, ao invés de fazermos a entrada
-
-```python
->>> palavra: str = input('Digite uma palavra: ')
-Digite uma palavra: casa
->>> len(palavra)
-4
-```
-
-podemos fazer diretamente
-
-```python
->>> len('casa')
-4
-```
-
-
-# Programa para calcular o dobro de um número
-
-Agora já podemos criar um programa completo com entrada, processamento e saída! \pause
-
-Vamos fazer um programa que utiliza a função `dobro` para fazer o processamento.
-
-
-# Programa para calcular o dobro de um número
-
-\small
-
-```python
-def dobro(x: int) -> int:
-    return 2 * x
-
-# Entrada
-numero: int = int(input('Digite um número inteiro: '))
-
-# Processamento
-d: int = dobro(numero)
-
-# Saída
-print('O dobro de', numero, 'é', d)
-```
-
-\pause
-
-\normalsize
-
-Note que a função `input`{.python} produz como resultado uma string, como queremos um inteiro, usamos a função `int`{.python} para converter a entrada do usuário para um inteiro.
-
-
-# Programa para calcular o dobro de um número
-
-![](imagens/dobro-terminal.png)
-
-
-# Organizando o código
-
-Apesar do programa funcionar corretamente, podemos melhorar a organização agrupando as instruções de entrada, processamento e saída em uma função, que convencionalmente chamaremos de `main`. \pause
-
-Além disso, colocamos a função `main` no início do arquivo.
-
-
-# Organizando o código
-
-\small
-
-```python
-def main():
-    # Entrada
-    numero: int = int(input('Digite um número inteiro: '))
-
-    # Processamento
-    d: int = dobro(numero)
-
-    # Saída
-    print('O dobro de', numero, 'é', d)
-
-def dobro(x: int) -> int:
-    return 2 * x
-
-main()
-```
-
-
-# Organizando o código
-
-Note que precisamos chamar explicitamente a função `main` no final do arquivo. \pause
-
-O que aconteceria se removêssemos a chamada da função `main` e executássemos o arquivo? \pause Nada, sem a chamada da função `main`, nenhuma instrução é executada.
-
-
-# Execução passo a passo
-
-Nós vimos anteriormente que o Python executa as instruções de forma sequencial, uma linha após a outra. Mas isso nem sempre é verdade, vamos ver como o Python executa o programa dobro.
-
-
-# Execução passo a passo
-
-<div class="columns">
-<div class="column" width="50%">
-
-\footnotesize
-
-```{.python .number-lines}
-def main():
-    # Entrada
-    numero: int = int(input('Número: '))
-
-    # Processamento
-    d: int = dobro(numero)
-
-    # Saída
-    print('O dobro de', numero, 'é', d)
-
-def dobro(x: int) -> int:
-    return 2 * x
-
-main()
-```
-</div>
-<div class="column" width="50%">
-\pause
-Em qual ordem as linhas do programa são executadas pelo Python? \pause
-
-14, \pause e depois? \pause
-
-3 (primeira linha de código da função `main`), \pause 6, \pause e depois? \pause
-
-12 (primeira linha de código da função `dobro`), \pause e depois? \pause
-
-6 (retorna com o resultado para onde `dobro` foi chamada), \pause 9, \pause e depois? \pause
-
-14 (retorna para onde `main` foi chamada)
-</div>
-</div>
-
--->
+Veremos mais detalhes em outro momento.
 
 
 # Erros
