@@ -1,20 +1,3 @@
-def main():
-    print('Mostra a unidade, dezena e centena de um número.')
-
-    # Entrada
-    n: int = int(input('Digite um número inteiro positivo: '))
-
-    # Processamento
-    u: int = unidade(n)
-    d: int = dezena(n)
-    c: int = centena(n)
-
-    # Saída
-    print('Unidade:', u)
-    print('Dezena:', d)
-    print('Centena:', c)
-
-
 def unidade(n: int) -> int:
     '''
     Devolve a unidade de *n*.
@@ -46,7 +29,3 @@ def centena(n: int) -> int:
     1
     '''
     return n // 100 % 10
-
-
-if __name__ == '__main__':
-    main()

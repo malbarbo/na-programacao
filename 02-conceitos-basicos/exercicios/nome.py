@@ -1,18 +1,3 @@
-def main():
-    print('Este programa verifica se o primeiro nome de uma pessoa é Paula e se o sobrenome é Silva.')
-
-    # Entrada
-    nome: str = input('Digite um nome composto (sem espaço no início e fim): ')
-
-    # Processamento
-    eh_paula = nome_eh_paula(nome)
-    eh_silva = sobrenome_eh_silva(nome)
-
-    # Saída
-    print('O primeiro nome é Paula?', eh_paula)
-    print('O primeiro sobrenome é Silva?', eh_silva)
-
-
 def nome_eh_paula(nome_completo: str) -> bool:
     '''
     Produz True se o primeiro nome de *nome_completo* é Paula, False caso contrário.
@@ -28,7 +13,7 @@ def nome_eh_paula(nome_completo: str) -> bool:
     >>> nome_eh_paula('J B')
     False
     '''
-    return len(nome_completo) > 6 and nome_completo[:6] == 'Paula '
+    return nome_completo[:6] == 'Paula '
 
 
 def sobrenome_eh_silva(nome_completo: str) -> bool:
@@ -47,8 +32,4 @@ def sobrenome_eh_silva(nome_completo: str) -> bool:
     >>> nome_eh_paula('J B')
     False
     '''
-    return len(nome_completo) > 6 and nome_completo[-6:] == ' Silva'
-
-
-if __name__ == '__main__':
-    main()
+    return nome_completo[-6:] == ' Silva'
