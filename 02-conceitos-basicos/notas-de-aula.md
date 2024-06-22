@@ -1,7 +1,6 @@
 ---
 # vim: set spell spelllang=pt_br:
-subtitle: Conceitos básicos
-toc: true
+title: Conceitos básicos
 # TODO: adicionar referências
 # TODO: adicionar definição de tipo de dado
 # TODO: adicionar definição de expressão e avaliação de expressão
