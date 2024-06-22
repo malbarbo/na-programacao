@@ -1,6 +1,6 @@
 .PHONY: check
 
-SOURCES := $(shell fd -e py )
+SOURCES := $(shell fdfind -e py )
 
 check:
 	mypy --check-untyped-defs ${SOURCES}
