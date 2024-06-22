@@ -144,13 +144,30 @@ Todos os valores serão representados por números positivos.
 
 # Especificação
 
-**Assinatura e propósito da função** \pause
+**Assinatura** \pause
 
-O propósito descreve **o quê** a função faz (deve fazer). Devemos usar o nome dos parâmetros na descrição do propósito para que a relação da entrada e da saída fique clara.
+\footnotesize
+
+```python
+def custo_viagem(distancia: float, rendimento: float, preco: float) -> float:
+    return 0.0
+```
+
+\pause
+
+Note que colocamos o `return`{.python} com um valor padrão para que a função fique bem formada.
 
 \pause
 
 \small
+
+**Propósito da função** \pause
+
+O propósito descreve **o quê** a função deve fazer (faz, depois de implementada). Devemos usar o nome dos parâmetros na descrição do propósito para que a relação da entrada e da saída fique clara.
+
+\pause
+
+\footnotesize
 
 ```python
 def custo_viagem(distancia: float, rendimento: float, preco: float) -> float:
@@ -176,7 +193,7 @@ Número par \pause
 
 **Exemplos**
 
-Ilustrar com exemplos de entrada e saída o funcionamento da função. Os exemplos auxiliam o projetista a entender melhor como a função deve funcionar e como ela pode ser implementada. \pause
+Ilustrar com exemplos de entrada e saída o funcionamento da função. \pause O primeiro objetivo dos exemplos é ajudar o projetista a entender melhor como a função deve funcionar e como ela pode ser implementada. \pause
 
 <div class="columns">
 <div class="column" width="48%">
@@ -188,6 +205,8 @@ Como escolher bons exemplos? \pause
 
 </div>
 <div class="column" width="48%">
+
+\small
 
 ```python
 >>> # (120.0 / 10.0) * 5.0
@@ -201,12 +220,14 @@ Como escolher bons exemplos? \pause
 >>> # (300.0 / 15.0) * 6.0
 >>> custo_viagem(300.0, 15.0, 6.0)
 120.0
+
 ```
+</div>
+</div>
+
+\pause
 
 Note que podemos deixar como comentário a expressão utilizada para calcular a resposta.
-
-</div>
-</div>
 
 
 # Especificação
@@ -255,7 +276,7 @@ Observando a especificação, em particular os **exemplos**, generalizamos a for
 
 **Objetivo**: verificar se a implementação está de acordo com a especificação. \pause
 
-Usamos os exemplos para fazer uma verificação inicial. \pause
+Usamos os exemplos para fazer a **verificação**. \pause
 
 No modo interativo, digitamos cada e exemplo e conferimos se a resposta é a esperada: \pause
 
@@ -273,25 +294,31 @@ No modo interativo, digitamos cada e exemplo e conferimos se a resposta é a esp
 120.0
 ```
 
+\pause
+
+\normalsize
+
+Ok, as respostas são as esperadas.
+
 
 # Verificação
 
-Se o programa produzir a resposta errada para algum exemplo, onde está o erro? \pause
+Se na verificação um exemplos produzir uma resposta diferente da esperada, onde está o erro? \pause
 
 - No exemplo \pause
 - No código da função \pause
 - Em ambos \pause
 
-Primeiro conferimos os exemplos, se algum estiver errado, corrigimos o exemplo e fazemos a verificação novamente. \pause
+Primeiro conferimos os exemplos, se algum estiver errado, corrigimos o exemplo e fazemos a **verificação novamente**. \pause
 
-Se os exemplos estiverem corretos, então analisamos o corpo da função para tentar identificar e corrigir o erro. \pause Após a alteração do código, fazemos a verificação novamente.
+Se os exemplos estiverem corretos, então analisamos o corpo da função para tentar identificar e corrigir o erro. \pause Após a alteração do código, fazemos a **verificação novamente**.
 
 
 # Revisão
 
 **Objetivo**: alterar a organização do programa para que fique mais fácil de ser lido, entendido e alterado. \pause
 
-Se modificarmos o código, precisamos fazer a verificação novamente!
+Se modificarmos o código, precisamos fazer a **verificação novamente**!
 
 
 # Melhorias
@@ -315,7 +342,9 @@ $ python -m doctest -v a.py
 
 \pause
 
-Como o Python identifica os exemplos que devem ser executados? \pause Ele procura trechos de comentários semelhantes a uma seção do modo interativo, por isso escrevemos os exemplos com `>>>`!
+Como o Python identifica os exemplos que devem ser executados? \pause
+
+Ele procura trechos de comentários semelhantes a uma seção do modo interativo, por isso escrevemos os exemplos com `>>>`!
 
 
 # Verificação automatizada
@@ -491,17 +520,21 @@ Vamos resolver esse problema, por onde começamos?
 
 # Exemplo - massa tudo de ferro
 
+\small
+
 **Análise** \pause
 
 - Calcular a massa de um tubo de ferro a partir das suas dimensões. \pause Como as dimensões de um tubo de ferro está relacionada com a massa do tubo? \pause
 
 - Dimensões $\rightarrow$ Volume $\rightarrow$ Massa \pause
 
-- Como determinamos o volume de um tubo de ferro a partir das suas dimensões? \pause O volume de um tubo é dado por $\pi ((diametro\_externo - diametro\_interno)/2)^2 \times altura$ \pause
+- Como determinamos o volume de um tubo de ferro a partir das suas dimensões? \pause
 
-- Como obtemos a massa a partir do volume? \pause A massa é dado por $volume \times densidade$. \pause
+    $$\pi \times \left ( \frac{diametro\_externo - diametro\_interno}{2} \right )^2 \times altura$$ \pause
 
-- Qual a densidade do ferro? \pause A densidade do ferro é 7874 $kg/m^3$.
+- Como obtemos a massa a partir do volume? \pause $volume \times densidade$. \pause
+
+- Qual é a densidade do ferro? \pause 7874 $kg/m^3$.
 
 
 # Exemplo - massa tudo de ferro
@@ -514,14 +547,14 @@ Vamos resolver esse problema, por onde começamos?
 
 # Exemplo - massa tudo de ferro
 
-\small
+**Especificação**
+
+\pause
+
+\footnotesize
 
 ```python
-def massa_tubo_ferro(
-        diametro_externo: float,
-        diametro_interno: float,
-        altura: float)
-        -> float:
+def massa_tubo_ferro(diametro_externo: float, diametro_interno: float, altura: float) -> float:
     '''
     Calcula a massa de um tubo de ferro a partir das suas dimensões.
 
@@ -541,14 +574,10 @@ def massa_tubo_ferro(
 
 Direto a partir da especificação (do exemplo). \pause
 
-\small
+\footnotesize
 
 ```python
-def massa_tubo_ferro(
-        diametro_externo: float,
-        diametro_interno: float,
-        altura: float)
-        -> float:
+def massa_tubo_ferro(diametro_externo: float, diametro_interno: float, altura: float) -> float:
     return 3.14 * ((diametro_externo - diametro_interno) / 2) ** 2 * altura * 7874
 ```
 
@@ -573,6 +602,8 @@ Got:
 
 Comparação de igualdade de números de ponto flutuante quase não dá certo! \pause Nesses casos, podemos arredondar o resultado. \pause
 
+\small
+
 ```python
     >>> # 3.14 * ((0.05 - 0.03) / 2) ** 2 * 0.1 * 7874
     >>> round(massa_tubo_ferro(0.05, 0.03, 0.1), 7)
@@ -584,14 +615,10 @@ Comparação de igualdade de números de ponto flutuante quase não dá certo! \
 
 **Revisão**
 
-\small
+\footnotesize
 
 ```python
-def massa_tubo_ferro(
-        diametro_externo: float,
-        diametro_interno: float,
-        altura: float)
-        -> float:
+def massa_tubo_ferro(diametro_externo: float, diametro_interno: float, altura: float) -> float:
     return 3.14 * ((diametro_externo - diametro_interno) / 2) ** 2 * altura * 7874
 ```
 
@@ -606,28 +633,23 @@ O que podemos melhorar? \pause
 
 # Exemplo - massa tudo de ferro
 
-\small
+\footnotesize
 
 ```python
 PI: float = 3.14
 DENSIDADE_FERRO: float = 7874
 
-def massa_tubo_ferro(
-        diametro_externo: float,
-        diametro_interno: float,
-        altura: float)
-        -> float:
+def massa_tubo_ferro(diametro_externo: float, diametro_interno: float, altura: float) -> float:
     area = PI * ((diametro_externo - diametro_interno) / 2) ** 2
     volume = area * altura
     return volume * DENSIDADE_FERRO
 ```
 
+\pause
 
-# Observações
+\normalsize
 
-Podemos ter uma sequência de instruções dentro de uma função. \pause
-
-Não é preciso indicar o tipo das variáveis locais. O `mypy` considera que o tipo da variável é o mesmo do valor utilizado para inicializar a variável.
+Constantes são geralmente definidas fora das funções (escopo global) e nomeadas com letras maiúsculas.
 
 
 # Exemplo - Ajuste número telefone
@@ -635,7 +657,7 @@ Não é preciso indicar o tipo das variáveis locais. O `mypy` considera que o t
 No período de 2015 à 2016 todos os números de telefones celulares no Brasil passaram a ter nove dígitos. Na época, os números de telefones que tinham apenas oito dígitos foram alterados adicionando-se o 9 na frete do número. Embora oficialmente todos os número de celulares tenham nove dígitos, na agenda de muitas pessoas ainda é comum encontrar números registrados com apenas oito dígitos. Projete uma função que adicione o nono dígito em um dado número de telefone celular caso ele ainda não tenha o nono dígito. Considere que os números de entrada são dados com o DDD entre parênteses e com um hífen separando os últimos quatro dígitos. Exemplos de entradas: (44) 9787-1241, (51) 95872-9989, (41) 8876-1562. A saída deve ter o mesmo formato, mas garantindo que o número do telefone tenha 9 dígitos.
 
 
-# Análise e definição de tipos de dados
+# Exemplo - Ajuste número telefone
 
 **Análise** \pause
 
@@ -647,8 +669,14 @@ Ajustar o número de um telefone adicionando 9 como o nono dígito se necessári
 
 O número de telefone é uma string no formato (XX) XXXX-XXXX ou (XX) XXXXX-XXXX, onde X pode ser qualquer dígito.
 
+\pause
 
-# Especificação
+**Especificação** \pause
+
+A seguir.
+
+
+# Exemplo - Ajuste número telefone
 
 \footnotesize
 
