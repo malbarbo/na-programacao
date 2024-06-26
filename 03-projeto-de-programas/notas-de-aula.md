@@ -530,7 +530,7 @@ Vamos resolver esse problema, por onde começamos?
 
 - Como determinamos o volume de um tubo de ferro a partir das suas dimensões? \pause
 
-    $$\pi \times \left ( \frac{diametro\_externo - diametro\_interno}{2} \right )^2 \times altura$$ \pause
+    $$\pi \times \left ( \left ( \frac{diametro\_externo}{2} \right ) ^2 - \left ( \frac{diametro\_interno}{2} \right ) ^2 \right ) \times altura$$ \pause
 
 - Como obtemos a massa a partir do volume? \pause $volume \times densidade$. \pause
 
@@ -561,9 +561,9 @@ def massa_tubo_ferro(diametro_externo: float, diametro_interno: float, altura: f
     Requer diametro_externo > diametro-interno.
 
     Exemplos
-    >>> # 3.14 * ((0.05 - 0.03) / 2) ** 2 * 0.1 * 7874
+    >>> # 3.14 * ((0.05 / 2) ** 2 - (0.03 / 2) ** 2) * 0.1 * 7874
     >>> massa_tubo_ferro(0.05, 0.03, 0.1)
-    0.2472436
+    0.9889744
     '''
 ```
 
@@ -578,7 +578,7 @@ Direto a partir da especificação (do exemplo). \pause
 
 ```python
 def massa_tubo_ferro(diametro_externo: float, diametro_interno: float, altura: float) -> float:
-    return 3.14 * ((diametro_externo - diametro_interno) / 2) ** 2 * altura * 7874
+    return 3.14 * ((diametro_externo / 2) ** 2 - (diametro_interno / 2) ** 2) * altura * 7874
 ```
 
 
@@ -592,9 +592,9 @@ def massa_tubo_ferro(diametro_externo: float, diametro_interno: float, altura: f
 Failed example:
     massa_tubo_ferro(0.05, 0.03, 0.1)
 Expected:
-    0.2472436
+    0.9889744
 Got:
-    0.24724360000000015
+    0.9889744000000004
 ```
 
 
@@ -605,9 +605,8 @@ Comparação de igualdade de números de ponto flutuante quase não dá certo! \
 \small
 
 ```python
-    >>> # 3.14 * ((0.05 - 0.03) / 2) ** 2 * 0.1 * 7874
     >>> round(massa_tubo_ferro(0.05, 0.03, 0.1), 7)
-    0.2472436
+    0.9889744
 ```
 
 
@@ -619,7 +618,7 @@ Comparação de igualdade de números de ponto flutuante quase não dá certo! \
 
 ```python
 def massa_tubo_ferro(diametro_externo: float, diametro_interno: float, altura: float) -> float:
-    return 3.14 * ((diametro_externo - diametro_interno) / 2) ** 2 * altura * 7874
+    return 3.14 * ((diametro_externo / 2) ** 2 - (diametro_interno / 2) ** 2) * altura * 7874
 ```
 
 \normalsize
@@ -640,8 +639,9 @@ PI: float = 3.14
 DENSIDADE_FERRO: float = 7874
 
 def massa_tubo_ferro(diametro_externo: float, diametro_interno: float, altura: float) -> float:
-    area = PI * ((diametro_externo - diametro_interno) / 2) ** 2
-    volume = area * altura
+    area_externa = PI * (diametro_externo / 2) ** 2
+    area_interna = PI * (diametro_interno / 2) ** 2
+    volume = (area_externa - area_interna) * altura
     return volume * DENSIDADE_FERRO
 ```
 
