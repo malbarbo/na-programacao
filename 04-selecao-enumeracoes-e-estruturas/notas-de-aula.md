@@ -66,6 +66,8 @@ Agora veremos a **instrução de seleção** `if else`{.python} (se e senão em 
 
 A forma geral do `if else`{.python} é:
 
+\small
+
 ```python
 if condição:
     instruções então
@@ -92,6 +94,8 @@ Como a instrução `if else`{.python} é executada? \pause O Python avalia a con
 <div class="columns">
 <div class="column" width="48%">
 
+\small
+
 ```{.python .number-lines}
 a = 10
 b = 20
@@ -104,11 +108,15 @@ print(m)
 
 \pause
 
+\normalsize
+
 Qual o valor exibido pelo programa? \pause 20. \pause
 
 Em que ordem as linhas são executas para gerar esse resultado? \pause 1, 2, 3, 6, 7. \pause
 </div>
 <div class="column" width="48%">
+
+\small
 
 ```{.python .number-lines}
 a = 15
@@ -122,6 +130,8 @@ print(m)
 
 \pause
 
+\normalsize
+
 Qual o valor exibido pelo programa? \pause 15. \pause
 
 Em que ordem as linhas são executas para gerar esse resultado? \pause 1, 2, 3, 4, 7 \pause
@@ -133,7 +143,7 @@ Em que ordem as linhas são executas para gerar esse resultado? \pause 1, 2, 3, 
 Qual é o propósito do `if else`{.python} nesses exemplos? \pause Determinar o valor máximo entre `a` e `b`.
 
 
-# Máximo
+# Exemplo - máximo
 
 Vamos projetar uma função para encontrar o máximo entre dois números. \pause
 
@@ -178,16 +188,63 @@ Qual é a ordem que as linhas são executadas para o exemplo `maximo(-2, -1)`{.p
 </div>
 
 
-# Atualização número de telefone
+# Exemplo - atualização número de telefone
 
 Como "descobrimos" que precisamos utilizar uma instrução de seleção? \pause
 
 Vamos voltar ao exemplo da atualização do número do telefone. \pause
 
+
+# Exemplo - atualização número de telefone
+
 No período de 2015 à 2016 todos os números de telefones celulares no Brasil passaram a ter nove dígitos. Na época, os números de telefones que tinham apenas oito dígitos foram alterados adicionando-se o 9 na frete do número. Embora oficialmente todos os número de celulares tenham nove dígitos, na agenda de muitas pessoas ainda é comum encontrar números registrados com apenas oito dígitos. Projete uma função que adicione o nono dígito em um dado número de telefone celular caso ele ainda não tenha o nono dígito. Considere que os números de entrada são dados com o DDD entre parênteses e com um hífen separando os últimos quatro dígitos. Exemplos de entradas: (44) 9787-1241, (51) 95872-9989, (41) 8876-1562. A saída deve ter o mesmo formato, mas garantindo que o número do telefone tenha 9 dígitos.
 
 
-# Especificação
+# Exemplo - atualização número de telefone
+
+**Análise** \pause
+
+Ajustar o número de um telefone adicionando 9 como o nono dígito se necessário.
+
+\pause
+
+**Definição de tipo de dados** \pause
+
+O número de telefone é uma string no formato (XX) XXXX-XXXX ou (XX) XXXXX-XXXX, onde X pode ser qualquer dígito.
+
+\pause
+
+**Especificação** \pause
+
+A seguir.
+
+
+# Exemplo - atualização número de telefone
+
+\footnotesize
+
+```python
+def ajusta_numero(numero: str) -> str:
+    '''
+    Ajusta *numero* adicionando o 9 como nono dígito se necessário, ou seja, se
+    *numero* tem apenas 8 dígitos (sem contar o DDD).
+
+    Requer que numero esteja no formato (XX) XXXX-XXXX ou (XX) XXXXX-XXXX, onde
+    X pode ser qualquer dígito.
+
+    Exemplos
+    >>>
+    >>> ajusta_numero('(51) 95872-9989')
+    '(51) 95872-9989'
+    >>>
+    >>> ajusta_numero('(44) 9787-1241')
+    '(44) 99787-1241'
+    '''
+    return numero
+```
+
+
+# Exemplo - atualização número de telefone
 
 \footnotesize
 
@@ -212,7 +269,9 @@ def ajusta_numero(numero: str) -> str:
 ```
 
 
-# Implementação
+# Exemplo - atualização número de telefone
+
+Como "descobrimos" que precisamos utilizar uma instrução de seleção? \pause
 
 Até agora, todas as funções que projetamos tinham apenas uma "forma" de gerar o resultado. \pause
 
@@ -227,7 +286,7 @@ Como escolher quando cada forma deve ser utilizada na resposta da função? \pau
 Quando a resposta depende de uma ou mais condições, usamos uma instrução de seleção!
 
 
-# Implementação
+# Exemplo - atualização número de telefone
 
 \small
 
@@ -241,12 +300,12 @@ def ajusta_numero(numero: str) -> str:
 ```
 
 
-# Máximo de 3
+# Exemplo - máximo de 3
 
 Projete uma função que encontre o valor máximo entre três números.
 
 
-# Análise e definição de tipos de dados
+# Exemplo - máximo de 3
 
 Análise \pause
 
@@ -268,7 +327,7 @@ def maximo3(a: int, b: int, c: int) -> int:
 ```
 
 
-# Exemplos e implementação
+# Exemplo - máximo de 3
 
 <div class="columns">
 <div class="column" width="48%">
@@ -560,6 +619,8 @@ Qual o propósito da seleção da linha 2? \pause Encontrar o máximo entre `a` 
 
 # Revisão
 
+\small
+
 ```python
 def maximo3(a: int, b: int, c: int) -> int:
     return maximo(maximo(a, b), c)
@@ -568,6 +629,8 @@ def maximo3(a: int, b: int, c: int) -> int:
 \ 
 
 \pause
+
+\normalsize
 
 Poderíamos ter chegado nessa implementação na primeira vez? \pause
 
