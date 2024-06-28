@@ -1,11 +1,11 @@
 author: |
     Marco A L Barbosa
     \newline
-    \href{http://malbarbo.pro.br}{malbarbo.pro.br}
+    \href{https://malbarbo.pro.br}{\color{black}{malbarbo.pro.br}}
 institute: |
-    \href{http://din.uem.br}{Departamento de Informática}
+    \href{http://din.uem.br}{\color{black}{Departamento de Informática}}
     \newline
-    \href{http://www.uem.br}{Universidade Estadual de Maringá}
+    \href{http://www.uem.br}{\color{black}{Universidade Estadual de Maringá}}
 lang: pt-BR
 # Usa as fontes disponíveis no tectonic
 # Evita warnings no slide de título (devido a informação da licensa)
@@ -86,13 +86,14 @@ license: |
   \begin{tikzpicture}[overlay, remember picture]
     \linespread{0.75}
     \node[above =0cm of current page.south, align=center] {
-        \href{http://creativecommons.org/licenses/by-sa/4.0/}{\ccbysa}\\
+        \href{http://creativecommons.org/licenses/by-sa/4.0/}{\color{black}{\ccbysa}}\\
         \vspace{-1mm}
         \tiny Este trabalho está licenciado com uma Licença Creative Commons - Atribuição-CompartilhaIgual 4.0 Internacional.\\
-        \tiny \url{http://github.com/malbarbo/na-programacao}
+        \tiny \href{http://github.com/malbarbo/na-programacao}{\color{black}{http://github.com/malbarbo/na-programacao}}
     };
   \end{tikzpicture}
 toc-title: Conteúdo
 theme: metropolis
+urlcolor: Magenta
 themeoptions: numbering=fraction,sectionpage=simple
 aspectratio: 169
