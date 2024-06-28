@@ -2,7 +2,7 @@
 # vim: set spell spelllang=pt_br sw=4:
 title: |
        | Fundamentos de Algoritmos
-       | Seleção, enumerações e estruturas
+       | Tipos de dados
 urlcolor: Blue
 # TODO: adicionar exemplos que a saída é uma estrutura
 ---
