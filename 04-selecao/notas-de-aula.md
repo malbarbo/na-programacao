@@ -2,7 +2,6 @@
 # vim: set spell spelllang=pt_br:
 title: Seleção
 # TODO: falar mais sobre quando pensar em alto nível na execução do código e quando fazer o passo a passo
-# TODO: deixar claro que cada bloco pode ter mais de uma instrução
 # TODO: dar nome ao processo de criar a implementação analisando as formas de resposta
 # TODO: falar do contrato de função, entre o fornecedor e o usuário da função
 ---
@@ -875,6 +874,142 @@ def ponto_final(texto: str) -> str:
         com_ponto = texto + '.'
     return com_ponto
 ```
+</div>
+</div>
+
+
+# Exemplo - centralizar string
+
+Em uma determinada aplicação as strings precisam ser exibidas com pelo menos $n$ caracteres, onde $n$ pode variar dependendo da situação. Se uma string não tem $n$ caracteres, é necessário adicionar espaços em branco no início e fim da string, deixando ela centralizada entre os espaços, para que ela seja exibida corretamente. Projete uma função que ajuste uma string dessa forma. Assuma que a string de entrada não tenha espaços o início e no final.
+
+
+# Exemplo - centralizar string
+
+Análise
+
+- Deixar uma string que não tem $n$ caracteres com $n$ caracteres adicionando espaços no início e no final da string.
+
+\pause
+
+Especificação
+
+- A seguir
+
+
+# Exemplo - centralizar string
+
+<div class="columns">
+<div class="column" width="55%">
+\small
+
+```python
+def centraliza(s: str, n: int) -> str:
+    '''
+    Produz uma string adicionando espaços
+    no início e fim de *s*, se necessário,
+    de modo que ela fique com *n* caracteres.
+
+    Se *s* tem mais que *n* caracteres,
+    devolve *s*.
+
+    Exemplos
+    >>> centraliza('casa', 3)
+    'casa'
+    >>> centraliza('', 0)
+    ''
+    '''
+```
+
+</div>
+<div class="column" width="41%">
+\pause
+
+Qual deve ser a resposta para `centraliza('casa', 5)`{.python}? \pause `' casa'`{.python} ou `'casa '`{.python}? \pause
+
+Não está claro no propósito da função, então vamos voltar e esclarecer esse ponto.
+
+</div>
+</div>
+
+
+# Exemplo - centralizar string
+
+<div class="columns">
+<div class="column" width="55%">
+\small
+
+```python
+def centraliza(s: str, n: int) -> str:
+    '''
+    Produz uma string adicionando espaços
+    no início e fim de *s*, se necessário,
+    de modo que ela fique com *n* caracteres.
+
+    Se *s* tem mais que *n* caracteres,
+    devolve *s*.
+
+    A quantidade de espaços adicionado no
+    início é igual ou um a mais do que a
+    quantidade adicionada no fim.
+    '''
+```
+
+
+</div>
+<div class="column" width="41%">
+\pause
+
+\small
+
+```python
+    >>> centraliza('casa', 3)
+    'casa'
+    >>> centraliza('', 0)
+    ''
+    >>> centraliza('casa', 10)
+    '   casa   '
+    >>> centraliza('casa', 9)
+    '   casa  '
+    >>> centraliza('apenas', 10)
+    '  apenas  '
+    >>> centraliza('apenas', 9)
+    '  apenas '
+```
+
+</div>
+</div>
+
+
+# Exemplo - centralizar string
+
+<div class="columns">
+<div class="column" width="48%">
+Temos dois casos: adiciona ou não os espaços. \pause
+
+Qual é a condição para não adicionar espaços? \pause `len(s) >= n`{.python}.
+
+Qual é o processo para adicionar os espaços?
+
+\pause Descobrir a quantidade de espaços, dividir em duas quantidades, a do início e a do fim, adicionar os espaços.
+
+</div>
+<div class="column" width="48%">
+\pause
+
+\small
+
+```python
+def centraliza(s: str, n: int) -> str:
+    if len(s) >= n:
+        r = s
+    else:
+        faltando = n - len(s)
+        fim = faltando // 2
+        inicio = faltando - fim
+        r = ' ' * inicio + s + ' ' * fim
+    return r
+```
+
 </div>
 </div>
 
