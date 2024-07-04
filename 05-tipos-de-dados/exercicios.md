@@ -7,6 +7,23 @@ urlcolor: Blue
 # TODO: adicionar exemplos que a saída é uma estrutura
 ---
 
+# Começando
+
+@) O que é um tipo de dado?
+
+@) Qual é o propósito da etapa de definição de tipos de dados no processo de projeto de funções?
+
+@) Quais são os princípios que podemos utilizar para determinar se um tipo de dado é adequado para
+representar uma informação?
+
+@) Quando devemos utilizar enumerações para representar informações?
+
+@) De que forma enumerações como entrada para funções guiam a criação dos exemplos e a implementação da função?
+<!--TODO: colocar no material essa informação! -->
+
+@) Quando devemos utilizar estruturas para representar informações?
+
+
 # Praticando
 
 @) Projete uma enumeração para representar as direções norte, leste, sul e oeste. Em seguida,
