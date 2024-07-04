@@ -4,6 +4,7 @@ title: |
        | Fundamentos de Algoritmos
        | Seleção
 urlcolor: Blue
+# TODO: fazer exercícios para diferenciar seleção direta e de árvores de seleção
 ---
 
 **\color{red}Lembre-se** de usar o `mypy` e o `doctest` na etapa de verificação.

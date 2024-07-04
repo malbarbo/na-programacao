@@ -4,6 +4,7 @@ title: Seleção
 # TODO: falar mais sobre quando pensar em alto nível na execução do código e quando fazer o passo a passo
 # TODO: dar nome ao processo de criar a implementação analisando as formas de resposta
 # TODO: falar do contrato de função, entre o fornecedor e o usuário da função
+# TODO: mudar o nome de seleção para análise de casos?
 ---
 
 # Introdução
