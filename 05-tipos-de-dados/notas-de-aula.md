@@ -166,7 +166,7 @@ Assim como uma variável do tipo `bool`{.python} só pode armazenar os valores `
 \small
 
 ```python
-c: Combustivel = "Alcool"
+c: Combustivel = 'Alcool'
 ```
 
 \pause
@@ -561,11 +561,11 @@ Quantas formas de resposta nós temos? \pause Podemos generalizar para apenas um
 ```python
 def segundos_para_tempo(segundos: int) -> Tempo:
     assert segundos >= 0
-    h = segundos / 3600
+    h = segundos // 3600
     # segundos que não foram
     # convertidos para hora
     restantes = segundos % 3600
-    m = restantes / 60
+    m = restantes // 60
     s = restantes % 60
     return Tempo(h, m, s)
 ```
