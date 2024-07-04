@@ -2,11 +2,13 @@
 # vim: set spell spelllang=pt_br:
 title: Tipos de dados
 # TODO: explicar diretamente como escrever os exemplos para funções que retornam enum
+# TODO: Colocar primeiro o exemplo e depois a forma geral da sintáxe?
 # TODO: apresentar match/case?
 # TODO: adicionar mais exemplos (juntando estruturas e enumerações, contagem de tipos de sorvertes?)
 #       a questão é que atualizar uma contagem pode requerer passagem por referência.
 # TODO: adicionar exemplos com tipos dos campos diferentes
 # TODO: deixar claro que valores dos tipos estruturas são mutáveis por padrão?
+# TODO: adicionar o exemplo do campo minado
 ---
 
 # Definição de tipos de dados
@@ -32,17 +34,6 @@ Exemplos \pause
 - `str`{.python} = $\{$ `''`{.python}, `'a'`{.python}, `'b'`{.python}, $\dots \}$
 
 
-<!--
-# Tipos de dados
-
-Para uma variável do tipo `bool`{.python}, apenas dois valores são válidos. \pause
-
-Para uma variável do do tipo `int`{.python}, qualquer número inteiro é válido (na prática existe um limite). \pause Em outras linguagens, como C/C+++, um `int`{.c} só pode armazenar inteiros no intervalo de $-2.147.483.648$ a $2.147.483.647$. \pause
-
-Uma variável do tipo `float`{.python} pode assumir um de pouco menos do que $2^{64}$ valores (esses valores estão distribuídos no intervalo de $2.2250738585072014 \times 10^{-308}$ a $1.7976931348623157 \times 10^{308}$).
--->
-
-
 # Requisitos de um tipo de dado
 
 Um inteiro é adequado para representar a quantidade de pessoas em um planeta? \pause
@@ -53,22 +44,33 @@ O ideal seria um número natural, mas o Python não tem um tipo de dado específ
 
 `u32`{.rust} seria adequado para representar a quantidade de pessoas em um planeta? \pause
 
-- Não pois o número pessoas no planeta terra não está no intervalo de valores válidos para o tipo, ou seja, nem todos os valores válidos poder ser representados.
+- Não pois o número de pessoas no planeta terra não está no intervalo de valores válidos para o tipo, ou seja, nem todos os valores válidos poder ser representados.
 
 
 # Requisitos de um tipo de dado
 
-Durante a etapa de definição de tipos de dados temos que levar em consideração as seguintes diretrizes:
+Durante a etapa de definição de tipos de dados temos que levar em consideração as seguintes diretrizes: \pause
 
-- Faça os valores válidos representáveis.
+- Faça os valores válidos representáveis. \pause
 
 - Faça os valores inválidos irrepresentáveis.
 
-\pause
 
-Quando fizemos o projeto da função `indica_combustivel` escolhemos o tipo `str`{.python} para representar a informação do tipo de combustível. Essa escolha é adequada? \pause
+# Avaliação indica combustivel
 
-Não! Muitos valores válidos para `str`{.python} não correspondem a nenhum valor válido para a informação do tipo de combustível. \pause
+Quando fizemos o projeto da função `indica_combustivel` escolhemos o tipo `str`{.python} para representar a informação do tipo de combustível. \pause
+
+\small
+
+```python
+def indica_combustivel(preco_alcool: float, preco_combustivel: float) -> str
+```
+
+\normalsize
+
+Essa escolha é adequada? \pause
+
+Não! Muitos valores válidos para `str`{.python} não correspondem a nenhum valor válido para a informação do tipo de combustível. \pause Além disso, para o leito do código, a saída do tipo `str`{.python} sugere que qualquer string é possível como resposta, o que não é verdade. \pause
 
 Como proceder nesse caso? \pause Vamos definir um novo tipo onde apenas os valores para álcool e gasolina são válidos.
 
@@ -127,7 +129,7 @@ Cada valor da enumeração tem dois atributos: `name` e `value`. \pause
 \small
 
 ```python
->>> c = Combustivel.ALCOOL
+>>> c: Combustivel = Combustivel.ALCOOL
 >>> c
 <Combustivel.ALCOOL: 1>
 >>> c.value
@@ -319,7 +321,7 @@ Análise \pause
 
 Definição de tipos de dados \pause
 
-- Os segundos da entrada serão representados com números inteiros positivos \pause
+- O segundos da entrada será representado com um número inteiro positivo \pause
 
 - A saída são três números inteiros positivos... \pause As funções em Python só podem produzir um valor de saída, como proceder? \pause Vamos criar um novo tipo de dado que agrupa esses três valores.
 
@@ -371,19 +373,40 @@ Podemos definir um novo tipo para representar um tempo da seguinte forma
 ```python
 @dataclass
 class Tempo:
+    horas: int
+    minutos: int
+    segundos: int
+
+
+
+
+
+```
+
+\pause
+
+O que está faltando nessa definição? \pause Um comentário sobre o propósito do tipo.
+
+
+# Tipos compostos
+
+\small
+
+Podemos definir um novo tipo para representar um tempo da seguinte forma
+
+```python
+@dataclass
+class Tempo:
     '''
     Representa o tempo de duração de um evento.
     horas, minutos e segundos devem ser positivos.
-    minutos e segundos devem ser menores que 60.
     '''
     horas: int
     minutos: int
     segundos: int
 ```
 
-\pause
-
-Assim como para definição de tipos enumerados, sempre vamos adicionar um comentário sobre o propósito do tipo.
+O que está faltando nessa definição? Um comentário sobre o propósito do tipo.
 
 
 # Tipos compostos
@@ -447,7 +470,59 @@ Tempo(horas=3, minutos=20, segundos=70)
 </div>
 
 
-# Especificação e implementação
+# Exemplo - tempo - parte a
+
+Vamos voltar para o problema. \pause
+
+Análise
+
+- Converter uma quantidade de segundos em horas, minutos e segundos.
+
+Definição de tipos de dados
+
+- O segundos da entrada será representado com um número inteiro positivo
+- As horas, minutos e segundos serão representadas por um dado composto `Tempo`.
+
+\pause
+
+Como fica a assinatura da função? \pause
+
+\small
+
+```python
+def segundos_para_tempo(segundos: int) -> Tempo
+```
+
+\pause
+
+Agora vamos concluir o projeto da função.
+
+
+# Exemplo - tempo - parte a
+
+\small
+
+```python
+def segundos_para_tempo(segundos: int) -> Tempo:
+    '''
+    Converte a quantidade *segundos* para o tempo equivalente
+    em horas, minutos e segundos.
+    '''
+    return Tempo(0, 0, 0)
+```
+
+\normalsize
+
+Qual deve ser a resposta para `segundos_para_tempo(3760)`{.python}? \pause
+
+Pelo propósito, pode ser `Tempo(0, 0, 3760)`{.python}? \pause Pode! \pause Então precisamos corrigir o propósito! \pause
+
+Qual de fato é a resposta que esperamos? \pause `Tempo(1, 2, 40)`{.python}. \pause
+
+Qual é o processo que usamos para encontrar a reposta?
+
+
+# Exemplo - tempo - parte a
 
 <div class="columns">
 <div class="column" width="55%">
@@ -484,7 +559,8 @@ Quantas formas de resposta nós temos? \pause Podemos generalizar para apenas um
 \scriptsize
 
 ```python
-def segundos_para_tempo(int segundos) -> Tempo:
+def segundos_para_tempo(segundos: int) -> Tempo:
+    assert segundos >= 0
     h = segundos / 3600
     # segundos que não foram
     # convertidos para hora
@@ -505,9 +581,9 @@ Revisão: ok
 </div>
 
 
-# Dados compostos
+# Quando usar dados compostos?
 
-Quando utilizamos dados compostos? \pause
+Quando usar dados compostos? \pause
 
 Quando a informação consiste de dois ou mais itens que juntos descrevem uma entidade.
 
@@ -525,7 +601,20 @@ b) Projete uma função que converta uma quantidade de horas, minutos e segundos
 Agora vamos fazer o item b.
 
 
-# Especificação
+# Exemplo - tempo - parte b
+
+Análise \pause
+
+- Converter um tempo (horas, minutos, segundos) para uma string amigável para o usuário, sem escrever os componentes que sejam 0. \pause
+
+Definição de tipos de dados
+
+- Já fizemos
+
+
+# Exemplo - tempo - parte b
+
+Especificação
 
 \scriptsize
 
@@ -540,7 +629,18 @@ def tempo_para_string(t: Tempo) -> str:
     return ''
 ```
 
-# Especificação
+\pause
+
+\normalsize
+
+Quantos exemplos precisamos? \pause
+
+Cada componente pode ser 0 ou não, como são três componentes teríamos $2 \times 2 \times 2 = 8$ casos distintos. \pause
+
+De fato só precisamos de 7, pois o valor dos segundos não importa no caso em que horas e minutos são zero.
+
+
+# Exemplo - tempo - parte b
 
 <div class="columns">
 <div class="column" width="48%">
@@ -731,7 +831,7 @@ As apostas e os números sorteados serão representados pela estrutura `SeisNume
 Vamos fazer a especificação da primeira função.
 
 
-# Exemplo - Loteria - Especificação `sorteado`
+# Exemplo - Loteria - especificação `sorteado`
 
 \scriptsize
 
@@ -751,7 +851,7 @@ def sorteado(n: int, sorteados: SeisNumeros) -> bool:
 Quantos exemplos precisamos? \pause 7, `n` igual a cada um dos sorteados e `n` diferentes de todos.
 
 
-# Exemplo - Loteria - Especificação `sorteado`
+# Exemplo - Loteria - especificação `sorteado`
 
 <div class="columns">
 <div class="column" width="60%">
@@ -996,7 +1096,7 @@ Agora podemos ir para a segunda função do problema da loteria: determinar o n�
 </div>
 
 
-# Exemplo - Loteria - Especificação `num_acertos`
+# Exemplo - Loteria - especificação `num_acertos`
 
 \scriptsize
 
@@ -1024,7 +1124,7 @@ def numero_acertos(aposta: SeisNumeros, sorteados: SeisNumeros) -> int:
 ```
 
 
-# Exemplo - Loteria - Especificação `num_acertos`
+# Exemplo - Loteria - especificação `num_acertos`
 
 Que estratégia nós usamos para calcular as respostas dos exemplos? Ou ainda, que estratégia podemos utilizar para implementar a função? \pause A estratégia incremental! \pause
 
@@ -1035,7 +1135,7 @@ O que precisamos para implementar a função usando a estratégia incremental? \
 - Uma forma de atualizar a resposta conforme analisamos a entrada.
 
 
-# Exemplo - Loteria - Especificação `num_acertos`
+# Exemplo - Loteria - especificação `num_acertos`
 
 Começamos o número de acertos com zero. \pause
 
