@@ -1,11 +1,3 @@
-# Análise
-#
-# Colocar um ponto final em um texto caso ele não termine com um.
-
-# Definição de tipos de dados
-#
-# O texto é representado por uma string
-
 def ponto_final(texto: str) -> str:
     '''
     Produz *texto* se *texto* é vazio ou termina com ponto final, caso

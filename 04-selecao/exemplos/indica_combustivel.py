@@ -15,7 +15,7 @@ def indica_combustivel(preco_alcool: float, preco_gasolina: float) -> str:
     'gasolina'
     '''
     if preco_alcool <= 0.7 * preco_gasolina:
-        combustivel = "alcool"
+        combustivel = 'alcool'
     else:
-        combustivel = "gasolina"
+        combustivel = 'gasolina'
     return combustivel
