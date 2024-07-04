@@ -14,7 +14,11 @@ urlcolor: Blue
 
 @) Qual é a forma geral da instrução `if`{.python} (incluindo `elif`{.python} e `else`{.python}) e como ela é executada pelo Python?
 
-@) Quando "descobrimos" que precisamos utilizar seleção na implementação de uma função? Quais são as duas estratégias que podemos utilizar para implementar uma função usando seleção?
+@) Quando "descobrimos" que precisamos utilizar seleção na implementação de uma função?
+
+@) Quais são as duas estratégias que podemos utilizar para implementar uma função usando seleção?
+
+@) Quando usamos o `assert`{.python}?
 
 
 # Praticando

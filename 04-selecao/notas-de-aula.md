@@ -804,7 +804,7 @@ Como temos duas formas de resposta, adiciona ou não o ponto, usamos seleção. 
 
 ```python
 def ponto_final(texto: str) -> str:
-    assert texto != ''
+    assert texto != '', 'texto não pode ser vazio'
     if texto[len(texto) - 1] == '.':
         com_ponto = texto
     else:
@@ -815,7 +815,7 @@ def ponto_final(texto: str) -> str:
 </div>
 
 
-# `assert`{.python}
+# Assert
 
 Usamos o `assert`{.python} quando queremos expressar uma condição que precisa ser verdadeira para que o código continue executando. Caso a condição não seja verdadeira, o programa é interrompido (falha) com uma mensagem de erro. \pause
 
@@ -824,6 +824,45 @@ O que acontece na função `ponto_final` se não utilizarmos o `assert`{.python}
 Vai falhar na expressão `texto[len(texto) - 1]`{.python}, pois estamos querendo acessar o último caractere de uma string vazia. \pause
 
 Se usando ou não o `assert`{.python} o programa falha, porque utilizar o `assert`{.python}? \pause Para que a falha tenha uma causa mais precisa, facilitando a depuração do programa.
+
+
+# Assert
+
+<div class="columns">
+<div class="column" width="48%">
+\footnotesize
+
+```
+>>> # sem assert
+>>> ponto_final('')
+Traceback (most recent call last):
+    ...
+    if texto[len(texto) - 1] == '.':
+       ~~~~~^^^^^^^^^^^^^^^^
+IndexError: string index out of range
+>>> # Reação do usuário da função:
+>>> # Que erro é esse?
+```
+
+</div>
+<div class="column" width="48%">
+
+\footnotesize
+
+```
+>>> # com assert
+>>> ponot_final('')
+Traceback (most recent call last):
+    ...
+    ...
+    ...
+AssertionError: texto não pode ser vazio
+>>> # Reação do usuário da função:
+>>> # Entendi.
+```
+
+</div>
+</div>
 
 
 # Ponto final - especificação - vazio válido
@@ -900,15 +939,16 @@ Especificação
 # Exemplo - centralizar string
 
 <div class="columns">
-<div class="column" width="55%">
-\small
+<div class="column" width="48%">
+\footnotesize
 
 ```python
 def centraliza(s: str, n: int) -> str:
     '''
     Produz uma string adicionando espaços
     no início e fim de *s*, se necessário,
-    de modo que ela fique com *n* caracteres.
+    de modo que ela fique com *n*
+    caracteres.
 
     Se *s* tem mais que *n* caracteres,
     devolve *s*.
@@ -922,7 +962,7 @@ def centraliza(s: str, n: int) -> str:
 ```
 
 </div>
-<div class="column" width="41%">
+<div class="column" width="48%">
 \pause
 
 Qual deve ser a resposta para `centraliza('casa', 5)`{.python}? \pause `' casa'`{.python} ou `'casa '`{.python}? \pause
@@ -936,15 +976,16 @@ Não está claro no propósito da função, então vamos voltar e esclarecer ess
 # Exemplo - centralizar string
 
 <div class="columns">
-<div class="column" width="55%">
-\small
+<div class="column" width="48%">
+\footnotesize
 
 ```python
 def centraliza(s: str, n: int) -> str:
     '''
     Produz uma string adicionando espaços
     no início e fim de *s*, se necessário,
-    de modo que ela fique com *n* caracteres.
+    de modo que ela fique com *n*
+    caracteres.
 
     Se *s* tem mais que *n* caracteres,
     devolve *s*.
@@ -957,10 +998,10 @@ def centraliza(s: str, n: int) -> str:
 
 
 </div>
-<div class="column" width="41%">
+<div class="column" width="48%">
 \pause
 
-\small
+\footnotesize
 
 ```python
     >>> centraliza('casa', 3)
@@ -987,7 +1028,7 @@ def centraliza(s: str, n: int) -> str:
 <div class="column" width="48%">
 Temos dois casos: adiciona ou não os espaços. \pause
 
-Qual é a condição para não adicionar espaços? \pause `len(s) >= n`{.python}.
+Qual é a condição para não adicionar espaços? \pause `len(s) >= n`{.python}. \pause
 
 Qual é o processo para adicionar os espaços?
 
@@ -997,7 +1038,7 @@ Qual é o processo para adicionar os espaços?
 <div class="column" width="48%">
 \pause
 
-\small
+\footnotesize
 
 ```python
 def centraliza(s: str, n: int) -> str:
@@ -1071,9 +1112,9 @@ Quantas formas para a resposta existem? \pause Duas: `'alcool'`{.python} e `'gas
 ```python
 def indica_combustivel(preco_alcool: float, preco_gasolina: float) -> str:
     if preco_alcool <= 0.7 * preco_gasolina:
-        combustivel = "alcool"
+        combustivel = 'alcool'
     else:
-        combustivel = "gasolina"
+        combustivel = 'gasolina'
     return combustivel
 ```
 
@@ -1084,17 +1125,4 @@ Verificação: \pause ok. \pause
 
 Revisão: \pause string não parece ser um tipo de dado apropriado... \pause
 
-Vamos parar um momento e conversar sobre a etapa de definição de tipos de dados.
-
-
-# Tipos de dados
-
-Durante a etapa de definição de tipos de dados identificamos as informações e definimos como elas são representadas no programa. \pause
-
-Essa etapa pode ter parecido, até então, muito simples ou talvez até desnecessária, isto porque as informações que precisávamos representar eram "simples". \pause
-
-No entanto, essa etapa é muito importante no projeto de programas, de fato, uma representação adequada pode facilitar a escrita do programa e diminuir as possibilidades de erros, aumentando a confiabilidade do programa. \pause
-
-Mas o que exatamente é um tipo de dado e como projetar um tipo de dado adequado para representar uma informação? \pause
-
-Vamos continuar essa conversa na próxima aula.
+Vamos continuar na próxima aula...
