@@ -38,18 +38,18 @@ Exemplos \pause
 
 Um inteiro é adequado para representar a quantidade de pessoas em um planeta? \pause
 
-- Não é adequado pois um número inteiro pode ser negativo mas a quantidade de pessoas em um planeta não pode, ou seja, o tipo de dado permite a representação de valores inválidos. \pause
+- Não é adequado pois um número inteiro pode ser negativo mas a quantidade de pessoas em um planeta não pode, ou seja, o tipo de dado _permite a representação de valores inválidos_. \pause
 
 O ideal seria um número natural, mas o Python não tem um tipo de dado específico para representar apenas números naturais. \pause Outras linguagens oferecem outras opções. Por exemplo, em Rust temos `u32`{.rust} ($0$ a $4.294.967.296$) e `u64`{.rust} ($0$ a $18.446.744.073.709.551.616$). \pause
 
 `u32`{.rust} seria adequado para representar a quantidade de pessoas em um planeta? \pause
 
-- Não pois o número de pessoas no planeta terra não está no intervalo de valores válidos para o tipo, ou seja, nem todos os valores válidos poder ser representados.
+- Não pois o número de pessoas no planeta terra não está no intervalo de valores válidos para o tipo, ou seja, _nem todos os valores válidos poder ser representados_.
 
 
 # Requisitos de um tipo de dado
 
-Durante a etapa de definição de tipos de dados temos que levar em consideração as seguintes diretrizes: \pause
+Durante a etapa de definição de tipos de dados devemos levar em consideração as seguintes diretrizes: \pause
 
 - Faça os valores válidos representáveis. \pause
 
@@ -66,18 +66,21 @@ Quando fizemos o projeto da função `indica_combustivel` escolhemos o tipo `str
 def indica_combustivel(preco_alcool: float, preco_combustivel: float) -> str
 ```
 
+\pause
+
 \normalsize
 
 Essa escolha é adequada? \pause
 
-Não! Muitos valores válidos para `str`{.python} não correspondem a nenhum valor válido para a informação do tipo de combustível. \pause Além disso, para o leito do código, a saída do tipo `str`{.python} sugere que qualquer string é possível como resposta, o que não é verdade. \pause
+Não! Muitos valores de `str`{.python} não correspondem a nenhum valor válido para a informação do tipo de combustível. \pause Além disso, para o leito do código, a saída do tipo `str`{.python} sugere que qualquer string é possível como resposta, o que não é verdade. \pause
+
 
 Como proceder nesse caso? \pause Vamos definir um novo tipo onde apenas os valores para álcool e gasolina são válidos.
 
 
 # Tipos enumerados
 
-Em um **tipo enumerado** todos os valores válidos para o tipo são enumerados explicitamente. \pause
+Em um **tipo enumerado** todos os valores do tipo são enumerados explicitamente. \pause
 
 A forma geral para definir tipos enumerados é
 
@@ -225,20 +228,18 @@ Projete uma função que receba como entrada a cor atual de um semáforo de trâ
 
 Análise \pause
 
-- Determinar a próxima cor de um semáforo dado a cor atual \pause
+- Determinar a próxima cor de um semáforo dado a cor atual
+
+
+# Exemplo - Semáforo
 
 Projeto de tipos de dados \pause
 
 - Quais são as informações? \pause A cor do semáforo. \pause
 
-- Como representar essa informação? \pause Com um tipo enumerado.
+- Como representar essa informação? \pause Com um tipo enumerado. \pause
 
-
-# Exemplo - Semáforo
-
-<div class="columns">
-<div class="column" width="48%">
-\scriptsize
+\footnotesize
 
 ```python
 from enum import Enum, auto
@@ -250,22 +251,41 @@ class Cor(Enum):
     AMARELO = auto()
 ```
 
-\pause
+
+# Exemplo - Semáforo
+
+<div class="columns">
+<div class="column" width="48%">
+
+Especificação
+
+\footnotesize
 
 ```python
 def proxima_cor(atual: Cor) -> Cor:
     '''
-    Produz a próxima cor de uma semáfaro que
-    está na cor *atual*.
-    Exemplos
+    Produz a próxima cor de uma semáfaro
+    que está na cor *atual*.
+    '''
+```
+
+\pause
+
+\small
+
+Quantos exemplos precisamos? \pause Pelo menos 3, um para cada valor da enumeração. \pause
+
+\footnotesize
+
+```python
     >>> proxima_cor(Cor.VERDE).name
     'AMARELO'
     >>> proxima_cor(Cor.AMARELO).name
     'VERMELHO'
     >>> proxima_cor(Cor.VERMELHO).name
     'VERDE'
-    '''
 ```
+
 </div>
 <div class="column" width="48%">
 
@@ -275,30 +295,80 @@ Implementação
 
 \pause
 
-São três formas de resposta, então usamos seleção com uma condição para cada forma.
+\small
 
-\pause
+Para a implementação podemos olhar ou para as formas de respostas ou para a entrada que é uma enumeração. \pause Nesse caso, vamos olhar para entrada. \pause Como são três valores de entrada, então podemos começar o código com uma condição para cada valor. \pause
 
-\scriptsize
+\footnotesize
 
 ```python
 def proxima_cor(atual: Cor) -> Cor:
     if atual == Cor.VERDE:
-        proxima = Cor.AMARELO
+        ...
     elif atual == Cor.AMARELO:
-        proxima = Cor.VERMELHO
+        ...
     elif atual == Cor.VERMELHO:
-        proxima = Cor.VERDE
-    return proxima
+        ...
+    return ...
 ```
 
-\pause
+</div>
+</div>
+
+
+# Exemplo - Semáforo
+
+<div class="columns">
+<div class="column" width="48%">
+
+Especificação
+
+\footnotesize
+
+```python
+def proxima_cor(atual: Cor) -> Cor:
+    '''
+    Produz a próxima cor de uma semáfaro
+    que está na cor *atual*.
+    '''
+```
 
 \small
 
-Verificação: \pause Ok. \pause
+Quantos exemplos precisamos? Pelo menos 3, um para cada valor da enumeração.
 
-Revisão: \pause Ok.
+\footnotesize
+
+```python
+    >>> proxima_cor(Cor.VERDE).name
+    'AMARELO'
+    >>> proxima_cor(Cor.AMARELO).name
+    'VERMELHO'
+    >>> proxima_cor(Cor.VERMELHO).name
+    'VERDE'
+```
+
+</div>
+<div class="column" width="48%">
+
+Implementação
+
+\small
+
+Para a implementação podemos olhar ou para as formas de respostas ou para a entrada que é uma enumeração. Nesse caso, vamos olhar para entrada. Como são três valores de entrada, então podemos começar o código com uma condição para cada valor.
+
+\footnotesize
+
+```python
+def proxima_cor(atual: Cor) -> Cor:
+    if atual == Cor.VERDE:
+        proximo = Cor.AMARELO
+    elif atual == Cor.AMARELO:
+        proximo = CoR.VERMELHO
+    elif atual == Cor.VERMELHO:
+        proximo = Cor.VERDE
+    return ...
+```
 
 </div>
 </div>
@@ -345,7 +415,7 @@ Uma forma de fazer isso é através de tipos compostos (estruturas).
 
 # Tipos compostos
 
-Um **tipo composto** é um tipo de dado composto por um conjunto fixo de campos com nome e tipo.
+Um **tipo composto** é um tipo de dado composto por um conjunto fixo de campos cada um com nome e tipo.
 
 \pause
 
@@ -411,7 +481,7 @@ O que está faltando nessa definição? Um comentário sobre o propósito do tip
 
 # Tipos compostos
 
-Para inicializar uma variável de um tipo composto, chamamos o construtor (função) para o tipo e especificamos os valores dos campos na ordem que eles foram declarados. \pause
+Para criar um valor de um tipo composto, chamamos o **construtor** (função que é criada automaticamente pelo Python) para o tipo e especificamos os valores dos campos na ordem que eles foram declarados. \pause
 
 \small
 
@@ -519,7 +589,7 @@ Pelo propósito, pode ser `Tempo(0, 0, 3760)`{.python}? \pause Pode! \pause Ent�
 
 Qual de fato é a resposta que esperamos? \pause `Tempo(1, 2, 40)`{.python}. \pause
 
-Qual é o processo que usamos para encontrar a reposta?
+Qual é o processo que usamos para encontrar a resposta?
 
 
 # Exemplo - tempo - parte a
@@ -554,13 +624,13 @@ def segundos_para_tempo(segundos: int) -> Tempo:
 <div class="column" width="45%">
 \pause
 
-Quantas formas de resposta nós temos? \pause Podemos generalizar para apenas uma forma que utiliza uma sequência de instruções. \pause
+Quantas formas de respostas nós temos? \pause Podemos generalizar para apenas uma forma que utiliza uma sequência de instruções. \pause
 
 \scriptsize
 
 ```python
 def segundos_para_tempo(segundos: int) -> Tempo:
-    assert segundos >= 0
+    assert segundos >= 0, 'segundos precisa ser >= 0'
     h = segundos // 3600
     # segundos que não foram
     # convertidos para hora
@@ -570,13 +640,6 @@ def segundos_para_tempo(segundos: int) -> Tempo:
     return Tempo(h, m, s)
 ```
 
-\pause
-
-\normalsize
-
-Verificação: ok \pause
-
-Revisão: ok
 </div>
 </div>
 
@@ -693,19 +756,19 @@ De fato só precisamos de 7, pois o valor dos segundos não importa no caso em q
 </div>
 
 
-# Implementação
+# Exemplo - tempo - parte b
 
-Quantas formas de resposta existem? \pause 7! \pause Então temos que usar seleção. \pause
+Quantas formas de respostas existem? \pause 7! \pause Então temos que usar seleção. \pause
 
 A implementação direta usando as condições de cada forma fica com exercício. \pause
 
 A implementação a seguir usa condições aninhadas.
 
-#
+
+# Exemplo - tempo - parte b
 
 <div class="columns">
 <div class="column" width="48%">
-Implementação
 
 \tiny
 
@@ -714,7 +777,6 @@ def tempo_para_string(Tempo t) -> str:
     h = str(t.horas) + ' hora(s)'
     m = str(t.minutos) + ' minuto(s)'
     s = str(t.segundos) + ' segundo(s)'
-    # Temos 7 formas distintas
     if t.horas > 0:
         if t.minutos > 0:
             if t.segundos > 0:
@@ -737,36 +799,7 @@ def tempo_para_string(Tempo t) -> str:
 
 </div>
 <div class="column" width="48%">
-\pause
-
-Implementação alternativa
-
-\tiny
-
-```python
-def tempo_para_string(Tempo t) -> str:
-    # usado para separar cada componente de t
-    sep = ''
-    msg = ''
-    if t.segundos > 0:
-        sep = ' e '
-        msg = str(t.segundos) + ' segundo(s)'
-
-    if t.minutos > 0:
-        msg = str(t.minutos) + ' minuto(s)' + sep + msg
-        if t.segundos > 0:
-            sep = ', '
-        else:
-            sep = ' e '
-
-    if t.horas > 0:
-        msg = str(t.horas) + ' hora(s)' + sep + msg
-
-    if msg == '':
-        msg = '0 segundo(s)'
-
-    return msg
-```
+Compare com a sua implementação direta. Qual das duas é mais simples e fácil de entender?
 </div>
 </div>
 
