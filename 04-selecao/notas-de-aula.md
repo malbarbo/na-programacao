@@ -755,7 +755,6 @@ Está faltando considerar um caso extremo, quando `texto` é vazio. \pause
 Como proceder nesse caso? \pause Temos duas opções: \pause
 
 - Definimos que vazio não é uma entrada válida; ou \pause
-
 - Definimos uma saída para a entrada vazia. \pause
 
 Vamos explorar as duas possibilidades.
@@ -804,7 +803,7 @@ Como temos duas formas de resposta, adiciona ou não o ponto, usamos seleção. 
 
 ```python
 def ponto_final(texto: str) -> str:
-    assert texto != '', 'texto não pode ser vazio'
+    assert texto != '', "texto não pode ser ''"
     if texto[len(texto) - 1] == '.':
         com_ponto = texto
     else:
@@ -856,7 +855,7 @@ Traceback (most recent call last):
     ...
     ...
     ...
-AssertionError: texto não pode ser vazio
+AssertionError: texto não pode ser ''
 >>> # Reação do usuário da função:
 >>> # Entendi.
 ```
