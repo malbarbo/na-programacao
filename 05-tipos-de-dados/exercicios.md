@@ -15,22 +15,21 @@ urlcolor: Blue
 
 @) Quais são os princípios que podemos utilizar para determinar se um tipo de dado é adequado para representar uma informação?
 
-@) Qual é a convenção que devemos seguir para nomear os valores de uma enumeração?
+@) Qual é a convenção que devemos seguir para nomear os tipos de dados?
 
 @) Quando devemos utilizar enumerações para representar informações?
 
+@) Qual é a convenção que devemos seguir para nomear os valores de uma enumeração?
+
 @) De que forma enumerações como entrada para funções guiam a criação dos exemplos e a implementação da função?
-
-@) Qual é a convenção que devemos seguir para nomear os tipos de dados?
-
-@) Qual é a convenção que devemos seguir para nomear os campos de um dado composto?
 
 @) Quando devemos utilizar dados compostos para representar informações?
 
 @) O que é um construtor?
 
-@) Porque não é preciso um construtor para tipos enumerados?
+@) Qual é a convenção que devemos seguir para nomear os campos de um dado composto?
 
+@) Porque não é preciso um construtor para tipos enumerados?
 
 
 # Praticando
