@@ -23,6 +23,8 @@ urlcolor: Blue
 
 @) Qual é a convenção que devemos seguir para nomear os tipos de dados?
 
+@) Qual é a convenção que devemos seguir para nomear os campos de um dado composto?
+
 @) Quando devemos utilizar dados compostos para representar informações?
 
 @) O que é um construtor?
