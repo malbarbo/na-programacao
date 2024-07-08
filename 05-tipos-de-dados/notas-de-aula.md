@@ -63,7 +63,7 @@ Quando fizemos o projeto da função `indica_combustivel` escolhemos o tipo `str
 \small
 
 ```python
-def indica_combustivel(preco_alcool: float, preco_combustivel: float) -> str
+def indica_combustivel(preco_alcool: float, preco_gasolina: float) -> str
 ```
 
 \pause

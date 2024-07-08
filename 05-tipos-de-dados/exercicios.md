@@ -20,7 +20,7 @@ representar uma informação?
 
 @) De que forma enumerações como entrada para funções guiam a criação dos exemplos e a implementação da função?
 
-@) Quando devemos utilizar estruturas para representar informações?
+@) Quando devemos utilizar dados compostos para representar informações?
 
 @) O que é um construtor?
 
