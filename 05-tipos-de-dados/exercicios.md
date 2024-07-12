@@ -5,7 +5,11 @@ title: |
        | Tipos de dados
 urlcolor: Blue
 # TODO: fazer exercícios mais interessantes (reais).
+# TODO: explorar mais as diretrizes para projeto de tipos de dados. Ex do exercício da reserva inicio-fim ou inicio-duracao.
+# TODO: adicionar exercícios de avaliação de expressões e execução passo a passo?
 ---
+
+**\color{red}Lembre-se** de seguir o processo de projeto de funções e de usar o `mypy` e o `doctest` na etapa de verificação.
 
 # Começando
 

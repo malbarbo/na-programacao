@@ -4,15 +4,15 @@ title: |
        | Fundamentos de Algoritmos
        | Seleção
 urlcolor: Blue
-# TODO: fazer exercícios para diferenciar seleção direta e de árvores de seleção
+# TODO: fazer exercícios para diferenciar seleção direta e seleção aninhada
+# TODO: adicionar exercícios de avaliação de expressões e execução passo a passo
 ---
 
-**\color{red}Lembre-se** de usar o `mypy` e o `doctest` na etapa de verificação.
-
+**\color{red}Lembre-se** de seguir o processo de projeto de funções e de usar o `mypy` e o `doctest` na etapa de verificação.
 
 # Começando
 
-@) Qual é a forma geral da instrução `if`{.python} (incluindo `elif`{.python} e `else`{.python}) e como ela é executada pelo Python?
+@) Qual é a forma geral da instrução `if`{.python} (incluindo `elif`{.python} e `else`{.python}) e como ela é executada?
 
 @) Quando "descobrimos" que precisamos utilizar seleção na implementação de uma função?
 
@@ -27,7 +27,7 @@ urlcolor: Blue
 
 @) Projete uma função que determine o sinal de um número, produzindo `-1`{.python} para valores negativos, `1`{.python} para valores positivos e `0`{.python} para o `0`{.python}.
 
-@) Projete uma função que restrinja um valor a um determinado intervalo, isto é, devolve o valor se ele está no intervalo, senão "força" o valor para dentro do intervalo devolvendo o extremo do intervalo mais próximo do valor. A sua implementação usa seleção? Você consegue fazer uma implementação usando as funções pré-definidas `min`{.python} e `max`{.python} do Python?
+@) Projete uma função que restrinja um valor a um determinado intervalo, isto é, devolve o valor se ele está no intervalo, senão "força" o valor para dentro do intervalo devolvendo o extremo do intervalo mais próximo do valor. A sua implementação usa seleção? Você consegue fazer uma implementação usando as funções pré-definidas `min`{.python} e `max`{.python}?
 
 @) Escolha um exemplo de cada exercício anterior e mostre a ordem que as linhas são executadas. Use o Python Tutor para verificar se as respostas estão corretas.
 
