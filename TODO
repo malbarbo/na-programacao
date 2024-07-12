@@ -7,17 +7,15 @@
 
 # Geral
 
+- Achar uma alternativa para python no repl (pycon com pygments?)
+
 - Adicionar um resumo da linguem e do processo
-
-- Distinguir exemplos feito em aula de exercícios
-
-- Introduzir o processo de execução passo a passo deste o início e colocar exemplos para cada construção da linguagem
 
 - A cada nova construção, mostrar a execução passo a passo
 
 - Seguir um processo na apresentação do material (ver vídeo do Ricard Feldman, https://www.youtube.com/watch?v=G-GhUxeYc1U, o que os alunos já sabem, motivação, menor caminho...)
 
-- Apresentar as funções max/min e a forma de atualização x = max(x, y)
+- Apresentar as funções max/min e a forma de atualização x = max(x, y)?
 
 
 # Projeto de programas

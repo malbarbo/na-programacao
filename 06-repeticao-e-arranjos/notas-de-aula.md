@@ -4,6 +4,7 @@
 # TODO: colocar uma revisão do método incremental antes do exemplo da soma
 # TODO: apresentar de forma mais detalhada como identificar a forma da atualização
 #       mostrar o arranjo, a resposta até então e a "chegada" do novo elemento
+# TODO: adicionar exemplo de lista com enumerações, lista com estruturas
 title: Repetição e arranjos
 ---
 

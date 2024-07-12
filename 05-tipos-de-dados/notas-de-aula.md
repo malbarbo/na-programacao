@@ -9,6 +9,7 @@ title: Tipos de dados
 # TODO: adicionar exemplos com tipos dos campos diferentes
 # TODO: deixar claro que valores dos tipos estruturas são mutáveis por padrão?
 # TODO: adicionar o exemplo do campo minado
+# TODO: adicionar exemplo de estrutura com enumeração, estrutura com estrutura
 ---
 
 # Definição de tipos de dados
