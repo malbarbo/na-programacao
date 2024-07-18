@@ -290,7 +290,7 @@ def numero_acertos(aposta: list[int],
 
 E então, o código melhorou? \pause Ainda não! Ele continua repetitivo! \pause
 
-Agora vamos trocar a repetição física do código por uma repetição lógica, usando uma nova estrutura de controle. Isso é possível porque os elementos de um arranjo têm a mesma natureza.
+Agora vamos trocar a repetição física do código por uma repetição lógica usando uma nova estrutura de controle. Isso é possível porque os elementos de um arranjo têm a mesma natureza.
 
 
 # Para cada
@@ -490,8 +490,7 @@ Projete uma função que some os números de uma lista.
 
 ```python
 def soma(lst: list[int]) -> int:
-    '''
-    Soma os elementos de *lst*.
+    '''Soma os elementos de *lst*.
     Exemplos
     >>> soma([])
     0
@@ -513,16 +512,56 @@ Qual abordagem podemos utilizar para implementar essa função? \pause A increme
 
 Na abordagem incremental, iniciamos o resultado com um valor, e vamos atualizando o resultado conforme processamos os dados de entrada, no final, temos o resultado da função. \pause
 
-Qual é o resultado que queremos calcular? \pause A `soma` dos elementos de `lst`. \pause
+Qual é o resultado que queremos computar? \pause A `soma` dos elementos de `lst`. \pause
 
 Com qual valor iniciamos `soma`? \pause `0`{.python}. \pause
 
-Se estamos analisando um número `n` de `lst`, como atualizamos `soma`? \pause Adicionando `n` em `soma`,  isto é, `soma = soma + n`{.python}.
+Se estamos analisando um elemento `n` de `lst`, como atualizamos `soma`? \pause Adicionando `n` em `soma`,  isto é, `soma = soma + n`{.python}.
 </div>
 </div>
 
 
 # Exemplo - Soma - Implementação
+
+<div class="columns">
+<div class="column" width="45%">
+\footnotesize
+
+```python
+def soma(lst: list[int]) -> int:
+    '''Soma os elementos de *lst*.
+    Exemplos
+    >>> soma([])
+    0
+    >>> soma([3])
+    3
+    >>> soma([3, 7])
+    10
+    >>> soma([3, 7, 2])
+    12
+    '''
+    soma = 0
+    for n in lst:
+        soma = soma + n
+    return soma
+```
+
+</div>
+<div class="column" width="50%">
+Qual abordagem podemos utilizar para implementar essa função? A incremental.
+
+Na abordagem incremental, iniciamos o resultado com um valor, e vamos atualizando o resultado conforme processamos os dados de entrada, no final, temos o resultado da função.
+
+Qual é o resultado que queremos computar? A `soma` dos elementos de `lst`.
+
+Com qual valor iniciamos `soma`? `0`{.python}.
+
+Se estamos analisando um elemento `n` de `lst`, como atualizamos `soma`? Adicionando `n` em `soma`,  isto é, `soma = soma + n`{.python}.
+</div>
+</div>
+
+
+# Exemplo - Soma - Execução passo a passo
 
 <div class="columns">
 <div class="column" width="48%">
@@ -599,11 +638,11 @@ Qual abordagem podemos utilizar para implementar essa função? \pause A increme
 </div>
 <div class="column" width="41%">
 
-Qual é o resultado que queremos calcular? \pause A lista `comeca_a` com os elementos de `lst` que começam com `'A'`{.python}. \pause
+Qual é o resultado que queremos computar? \pause A lista `comeca_a` com os elementos de `lst` que começam com `'A'`{.python}. \pause
 
 Com qual valor iniciamos `comeca_a`? \pause `[]`{.python}. \pause
 
-Se estamos analisando uma string `s` de `lst`, como atualizamos `comeca_a`? \pause Adicionando `s` em `comeca_a` (`comeca_a.append(s)`) se `s` começa com `'A'`{.python}, isto é, `s != '' and s[0] == 'A'`{.python}.
+Se estamos analisando um elemento `s` de `lst`, como atualizamos `comeca_a`? \pause Adicionando `s` em `comeca_a` (`comeca_a.append(s)`) se `s` começa com `'A'`{.python}, isto é, `s != '' and s[0] == 'A'`{.python}.
 </div>
 </div>
 
@@ -667,23 +706,24 @@ def maximo(lst: list[int]) -> int:
 
 \pause
 
-\normalsize
-
-Qual abordagem podemos utilizar para implementar essa função? \pause A incremental. \pause
 </div>
 <div class="column" width="48%">
 
-Qual é o resultado que queremos calcular? \pause O valor `maximo` de `lst`. \pause
+Qual abordagem podemos utilizar para implementar essa função? \pause A incremental. \pause
+
+Qual é o resultado que queremos computar? \pause O valor `maximo` de `lst`. \pause
 
 Com qual valor iniciamos `maximo`? \pause `lst[0]`{.python}. \pause
 
-Se estamos analisando um número `n` de `lst`, como atualizamos `maximo`? \pause Atribuindo `n` para `maximo` se `n > maximo`{.python}.
+Se estamos analisando um elemento `n` de `lst`, como atualizamos `maximo`? \pause Atribuindo `n` para `maximo` se `n > maximo`{.python}.
 </div>
 </div>
 
 
 # Exemplo - Máximo - Implementação
 
+<div class="columns">
+<div class="column" width="48%">
 \scriptsize
 
 ```python
@@ -708,6 +748,21 @@ def maximo(lst: list[int]) -> int:
             maximo = n
     return maximo
 ```
+
+
+
+</div>
+<div class="column" width="48%">
+
+Qual abordagem podemos utilizar para implementar essa função? A incremental.
+
+Qual é o resultado que queremos computar? O valor `maximo` de `lst`.
+
+Com qual valor iniciamos `maximo`? `lst[0]`{.python}.
+
+Se estamos analisando um elemento `n` de `lst`, como atualizamos `maximo`?  Atribuindo `n` para `maximo` se `n > maximo`{.python}.
+</div>
+</div>
 
 
 # Exemplo - Média tamanho strings
@@ -748,63 +803,109 @@ Qual abordagem podemos utilizar para implementar essa função? \pause A increme
 </div>
 <div class="column" width="48%">
 
-Qual é o resultado que queremos calcular? \pause A `media` dos tamanhos das strings de `lst`. \pause
+Qual é o resultado que queremos computar? \pause A `media` dos tamanhos das strings de `lst`. \pause
 
-Com qual valor iniciamos a `media`? \pause `len(lst[0])`{.python}. \pause
+Com qual valor iniciamos a `media`? \pause Não está claro. \pause
 
 Se estamos analisando o elemento `s` de `lst`, como atualizamos `media`? \pause Não tem com! \pause Se `media` é `100.0`{.python} e `s` é `'nova'`{.python}, qual é o novo valor de `media`? \pause Não temos informações suficientes para responder essa pergunta! \pause
 
-Como procedemos então? \pause Como calculamos as respostas dos exemplos? \pause Primeiro calculamos a soma dos tamanhos das strings e depois a média.
+Como procedemos então? \pause Vamos discutir duas possibilidades: ajustar o processo incremental e separar o processo.
+
 </div>
 </div>
+
+
+# Exemplo - Média tamanho strings
+
+Ajustando o processo incremental. \pause
+
+Não conseguimos aplicar o processo incremental na primeira tentativa porque não conseguimos definir como atualizar `media` quando o próximo elemento `s` de `lst` é processado. \pause
+
+O que precisamos saber além da `media` para conseguir atualizar a `media`? \pause A quantidade de elementos `quant` que já foram considerados no cálculo da `media`. \pause
+
+Nós temos essa informação? \pause Não. \pause Como fazer então? \pause Computar `quant` de forma incremental junto com a `media`.
+
+
+# Exemplo - Média tamanho strings
+
+Como inicializar `media` e `quant`? \pause Não está claro ainda. \pause
+
+Como atualizar `media` e `quant`? \pause Considere por exemplo `media = 4`{.media} e `quant = 3`{.media} e o próximo elemento `s = 'processo'`{.python} de `lst`, quais devem ser os novos valores de `media` e `quant`? \pause `5`{.python} e `4`{.python}. \pause
+
+Como atualizar a `media`? \pause `(quant * media + len(s)) / (quant + 1)`{.python} \pause
+
+Como atualizar a `quant`? \pause `quant + 1`{.python} \pause
+
+Como inicializar `media` e `quant`? \pause Com `0`{.python} (verifique que com esses valores iniciais o processo de atualização funciona quando o primeiro elemento da lista é processado).
+
+
+# Exemplo - Média tamanho strings
+
+\small
+
+```python
+def media_tamanho(lst: list[str]) -> float:
+    assert len(lst) != 0
+    # quantidade de elementos que já
+    # foram incluídos na media
+    quant = 0
+    media = 0.0
+    for s in lst:
+        media = (quant * media + len(s)) / (quant + 1)
+        quant = quant + 1
+    return media
+```
+
+\pause
+
+\normalsize
+
+A implementação está boa? \pause Parece confusa... \pause
+
+Podemos melhorar? \pause Sim!
 
 
 # Emboço de solução
 
-Quando a solução de um problema não pode ser expressa apenas com uma das formas que vimos até agora (direta, seleção direta, seleção aninhada e incremental), então podemos tentar uma combinação dessas formas. \pause
+Como determinamos manualmente as repostas dos exemplos? \pause Primeiro computamos a soma dos tamanhos e depois fizemos a média dividindo a soma pela quantidade de elementos. \pause
 
-Para isso, primeiro criamos um **esboço de solução**, que é uma descrição em alto nível das etapas do processamento da função, e depois implementamos cada etapa usando a forma apropriada.
+Podemos utilizar essa estratégia? \pause Sim! \pause
+
+Isso é o que chamamos de **plano** ou **esboço de solução**, isto é, uma descrição em alto nível das etapas do processamento da função. \pause
+
+Depois que temos um esboço, implementamos cada uma das etapas utilizando uma estratégias, ou seja, a implementação final é uma combinação de estratégias.
 
 
 # Exemplo - Média tamanho strings - Implementação
 
 <div class="columns">
-<div class="column" width="48%">
+<div class="column" width="45%">
 \scriptsize
 
 ```python
 def media_tamanho(lst: list[str]) -> float:
-    '''
-    Calcula a média dos tamanhos das
-    strings de *lst*.
-    Requer que *lst* seja não vazia.
-    Exemplos
-    >>> media_tamanho(['casa'])
-    4.0
-    >>> media_tamanho(['casa', 'da'])
-    3.0
-    >>> media_tamanho(['casa', 'da', ''])
-    2.0
-    >>> media_tamanho(['casa', 'da', '', 'onça'])
-    2.5
-    '''
+    assert len(lst) != 0
     # Calcular a soma dos tamanhos
     # Calcular a média
     return 0.0
 ```
 
 </div>
-<div class="column" width="48%">
+<div class="column" width="52%">
 
 \pause
 
 **Soma dos tamanhos** \pause
 
-Qual estratégia podemos utilizar? \pause A incremental. \pause Qual é o resultado que queremos calcular? \pause A `soma` dos tamanhos. \pause Com qual valor iniciamos `soma`? \pause `0`{.python}. \pause Se estamos analisando o elemento `s` de `lst`, como atualizamos `soma`? \pause `soma = soma + len(s)`{.python}. \pause
+Qual estratégia podemos utilizar? \pause A incremental. \pause Qual é o resultado que queremos computar? \pause A `soma` dos tamanhos. \pause Com qual valor iniciamos `soma`? \pause `0`{.python}. \pause Se estamos analisando o elemento `s` de `lst`, como atualizamos `soma`? \pause
+
+`soma = soma + len(s)`{.python}. \pause
 
 **Média** \pause
 
-Como calculamos a média? \pause `soma / len(lst)`{.python}.
+Como computamos a média? \pause Diretamente. \pause
+
+`soma / len(lst)`{.python}.
 
 </div>
 </div>
@@ -812,6 +913,8 @@ Como calculamos a média? \pause `soma / len(lst)`{.python}.
 
 # Exemplo - Média tamanho strings - Implementação
 
+<div class="columns">
+<div class="column" width="45%">
 \scriptsize
 
 ```python
@@ -827,16 +930,34 @@ def media_tamanho(lst: list[str]) -> float:
     return soma / len(lst)
 ```
 
+</div>
+<div class="column" width="52%">
+
+**Soma dos tamanhos**
+
+Qual estratégia podemos utilizar? A incremental. Qual é o resultado que queremos computar? A `soma` dos tamanhos. Com qual valor iniciamos `soma`?  `0`{.python}. Se estamos analisando o elemento `s` de `lst`, como atualizamos `soma`?
+
+`soma = soma + len(s)`{.python}.
+
+**Média**
+
+Como computamos a média? Diretamente.
+
+`soma / len(lst)`{.python}.
+
+</div>
+</div>
+
 
 # Revisão
 
 Quando utilizamos a abordagem incremental? \pause
 
-Quando precisamos computar algo de forma incremental! \pause Ou seja, quando não é possível calcular a resposta de forma direta ou usando apenas seleção. \pause
+Quando precisamos computar algo de forma incremental! \pause Ou seja, quando não é possível computar a resposta de forma direta ou usando apenas seleção. \pause
 
 O que precisamos determinar quando vamos utilizar a abordagem incremental? \pause
 
-- Quais valores queremos calcular; \pause
+- Quais valores queremos computar; \pause
 - Como os valores são inicializados; \pause
 - Como os valores são atualizados.
 
@@ -850,18 +971,20 @@ O quê pode nos impedir de utilizar a abordagem incremental? \pause
 
 Como procedemos nesses casos? \pause
 
-Ao invés de computar a resposta final de forma incremental, definimos um esboço de solução, que calcula valores intermediários que serão utilizados para calcular o valor final. \pause
+Ao invés de computar a resposta final de forma incremental, definimos um esboço de solução, que computa valores intermediários que serão utilizados para computar o valor final. \pause
 
-No caso de `media_tamanhos`, primeiro calculamos a soma dos tamanhos de forma incremental, e depois calculamos a média diretamente.
+No caso de `media_tamanhos`, primeiro computamos a soma dos tamanhos de forma incremental, e depois computamos a média diretamente.
 
 
 # Revisão
 
-Por enquanto, vimos uma forma de implementar a abordagem incremental no Python, \pause o "para cada", que utilizamos quando estamos interessados em analisar todos os elementos de uma lista.
+Por enquanto, vimos uma forma de implementar a abordagem incremental no Python, \pause o "para cada", \pause que utilizamos quando estamos interessados em analisar todos os elementos de uma lista.
 
 \pause
 
 Essa forma pode não ser adequada ou suficiente para resolver alguns problemas.
+
+\pause
 
 Veremos a seguir outras possibilidades.
 
