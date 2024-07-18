@@ -46,7 +46,7 @@ urlcolor: Blue
 
 @) Projete uma função que verifique se todos os elementos de uma lista de booleanos são falsos.
 
-@) Projete uma função que crie uma nova lista removendo todas os valores nulos de uma lista de inteiros.
+@) Projete uma função que crie uma nova lista removendo todas os valores zeros de uma lista de inteiros.
 
 
 <!-- Esboço e calculo de mais de um valor-->

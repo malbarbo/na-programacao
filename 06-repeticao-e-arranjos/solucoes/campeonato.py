@@ -53,7 +53,6 @@ def calcula_desempenho(time: str, resultados: list[Resultado]) -> Desempenho:
     return d
 
 
-# Essa função faz parte da resolução do exercício 12.
 def atualiza_desempenho(d: Desempenho, gols_marcados: int, gols_sofridos: int) -> Desempenho:
     '''
     Devolve um novo desempenho atualizado a partir de *d* considerando que o
