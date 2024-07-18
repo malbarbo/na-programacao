@@ -4,7 +4,7 @@
 # TODO: colocar uma revisão do método incremental antes do exemplo da soma
 # TODO: apresentar de forma mais detalhada como identificar a forma da atualização
 #       mostrar o arranjo, a resposta até então e a "chegada" do novo elemento
-# TODO: adicionar exemplo de lista com enumerações, lista com estruturas
+# TODO: adicionar exemplo de teste para respostas que são listas com enumerações e/ou estruturas
 title: Repetição e arranjos
 ---
 
@@ -841,7 +841,7 @@ Como inicializar `media` e `quant`? \pause Com `0`{.python} (verifique que com e
 
 # Exemplo - Média tamanho strings
 
-\small
+\footnotesize
 
 ```python
 def media_tamanho(lst: list[str]) -> float:
@@ -865,7 +865,7 @@ A implementação está boa? \pause Parece confusa... \pause
 Podemos melhorar? \pause Sim!
 
 
-# Emboço de solução
+# Esboço de solução
 
 Como determinamos manualmente as repostas dos exemplos? \pause Primeiro computamos a soma dos tamanhos e depois fizemos a média dividindo a soma pela quantidade de elementos. \pause
 
@@ -945,6 +945,83 @@ Como computamos a média? Diretamente.
 
 `soma / len(lst)`{.python}.
 
+</div>
+</div>
+
+
+# Exemplo - aprovados
+
+O professor Alberto tem uma lista com os nomes dos alunos junto com a média final e a frequência de cada um. Agora ele precisa da sua ajuda para determinar os alunos que foram aprovados. Para ser aprovado um aluno deve ter média final maior ou igual a 6 e pelo menos 75% de frequência. \pause
+
+a) Projete um tipo de dado para representar um aluno na lista do professor
+
+a) Projete uma função que determine os nomes dos alunos aprovados na lista do professor
+
+
+# Exemplo - aprovados
+
+<div class="columns">
+<div class="column" width="48%">
+\scriptsize
+
+```python
+@dataclass
+class Aluno:
+    '''
+    Representa um aluno e o resultado que ele
+    obteve em uma disciplina.
+
+    Requer que media esteja entre 0 e 10.
+    Requer que frequencia esteja entre 0 e 100.
+    '''
+    nome: str
+    media: float
+    frequencia: float
+```
+
+\pause
+
+```python
+def aprovados(alunos: list[Aluno]) -> list[str]:
+    '''
+    Determina o nome dos *alunos* que foram
+    aprovados, isto é, obteveram
+    média >= 6 e frequência >= 75.
+    '''
+```
+
+\pause
+
+</div>
+<div class="column" width="48%">
+
+\scriptsize
+
+```python
+def aprovados(alunos: list[Aluno]) -> list[str]:
+    '''
+    >>> aprovados([])
+    []
+    >>> aprovados([
+    ...     Aluno('Alfredo', 6.0, 74.0),
+    ...     Aluno('Bianca', 5.9, 75.0),
+    ...     Aluno('Jorge', 6.0, 75.0),
+    ...     Aluno('Leonidas', 5.9, 74.0),
+    ...     Aluno('Maria', 8.0, 90.0)])
+    ['Jorge', 'Maria']
+    '''
+```
+
+\pause
+
+```python
+    aprovados = []
+    for aluno in alunos:
+        if aluno.media >= 6 and \
+                aluno.frequencia >= 75:
+            aprovados.append(aluno.nome)
+    return aprovados
+```
 </div>
 </div>
 
