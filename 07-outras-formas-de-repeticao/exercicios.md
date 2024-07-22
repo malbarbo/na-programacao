@@ -12,10 +12,23 @@ urlcolor: Blue
 
 # Começando
 
+@) Qual é a forma geral da instrução "para cada no intervalo" e como ela é executada?
+
+@) Quando devemos utilizar o "para cada no intervalo"?
+
+@) Qual é a forma geral da instrução "enquanto" e como ela é executada?
+
+@) Quando devemos utilizar o "enquanto"?
+
+@) Quais são as quatro perguntas que precisamos responder para implementar uma função utilizando a abordagem incremental com o "enquanto"?
+
+<!--
+@) Como funciona a estratégia de transformar uma repetição física de código em uma repetição lógica?
+-->
 
 # Praticando
 
-<!-- Indíce e range -->
+<!-- Indíce e para cada no intervalo -->
 
 @) Projete uma função que encontre as posições de todas as ocorrências de um nome em uma lista de nomes.
 
@@ -42,16 +55,21 @@ urlcolor: Blue
 
 <!-- Enquanto e generalização a partir de repetição física de código -->
 
-@) Revise as funções dos exercícios anteriores e verifique quais podem ser implementadas utilizando o "enquanto" para deixar o código mais eficiente ou simples. Faça a implementação dessas funções usando o "enquanto".
+@) Revise os exercícios da lista "Repetição e arranjos" e verifique quais podem ser implementadas utilizando o "enquanto" para deixar o código mais eficiente ou simples. Faça a implementação usando o "enquanto".
 
 @) Projete uma função que verifique se uma lista de número é dobrada, isto é, pode ser obtida pela concatenação de duas listas iguais (não use operações de sublista).
 
 @) Projete uma função que determine qual é a menor quantidade de elementos de uma lista que precisam ser somados (a partir do início da lista) para que a soma seja maior que um dado valor. Se não for possível atingir a soma desejada, a função deve devolver -1.
 
-
 <!-- Repetição sem listas -->
 
-@) A sequência de Fibonacci começa com 1, 1, e cada número seguinte é obtido pela soma dos dois anteiros, dessa forma a sequência é 1, 1, 2, 3, 5, 8, 13, 21, ... Projete uma função que receba como parâmetro um número natural $n > 0$ e determine o $n$-ésimo número da sequência de Fibonacci.
+@) Projete uma função que receba como entrada uma string e um número natural $n$ e crie uma nova string repetindo a string de entrada $n$ vezes (suponha que o operador `*` não esteja disponível).
+
+@) Projete uma função que converta um número natural para uma string. Por exemplo, para o número 4561 a saída deve ser a string '4561' (suponha que a função `str` não esteja disponível). Dica: faça divisões sucessivas por 10.
+
+@) Projete uma função que converta uma string para um número natural. Por exemplo, para a string '4561' a saída deve ser o número 4561 (suponha que a função `int` não esteja disponível).
+
+@) Um número inteiro positivo $n$ é perfeito se a soma dos seus divisores, exceto ele mesmo, é igual a $n$. Por exemplo, $6$ é perfeito pois os divisores de $6$ (exceto ele mesmo) são $1, 2$ e $3$ e a soma $1 + 2 + 3$ é igual a $6$. O número $28$ também é perfeito, verifique você mesmo! Projete uma função que verifique se um número inteiro positivo é perfeito.
 
 @) Defina uma função que receba como parâmetro um valor $n$ e calcule o valor aproximado de $\pi$ usando os primeiros $n$ termos da série
 
@@ -59,9 +77,7 @@ urlcolor: Blue
        = 4 \left ( \frac{1}{1} - \frac{1}{3} + \frac{1}{5} - \frac{1}{7} + \frac{1}{9} - \cdots  \right)$$
 
 
-<!-- Outros -->
-
-@) Projete uma função que junte todos os elementos de uma lista de strings (não vazias) separando-os com `','`{.python} ou/e `'e'`{.python}, de acordo com a gramática do Português.
+<!-- Matrices -->
 
 @) Projete uma função que receba um número inteiro positivo $n$, e crie a matriz identidade $I_n$, com $n$ linhas e $n$ colunas, com todos os elementos da diagonal principal (elementos com o mesmo índice) iguais a 1 e os demais elementos iguais a 0.
 
@@ -76,7 +92,7 @@ urlcolor: Blue
 
 <!-- Enquanto e generalização -->
 
-@) Um número inteiro positivo $n$ é perfeito se a soma dos seus divisores, exceto ele mesmo, é igual a $n$. Por exemplo, $6$ é perfeito pois os divisores de $6$ (exceto ele mesmo) são $1, 2$ e $3$ e a soma $1 + 2 + 3$ é igual a $6$. O número $28$ também é perfeito, verifique você mesmo! Projete uma função que verifique se um número inteiro positivo é perfeito.
+@) Projete uma função que junte todos os elementos de uma lista de strings (não vazias) separando-os com `','`{.python} ou/e `'e'`{.python}, de acordo com a gramática do Português.
 
 @) A empresa que você trabalha sofreu um falta de energia e agora é preciso recuperar os dados do backup. O primeiro passo é determinar o código dos clientes afetados. Em um primeiro momento foi obtido um arquivo (string) com o código de todos os clientes separados por vírgula. O seu trabalho agora é projetar uma função que gere uma lista dos códigos a partir dessa string. Por exemplo, para a string `"512,12,145"`{.python} a sua função deve gerar como resposta a lista `[512, 12, 145]`{.python}. Dica: você pode usar a expressão `c in s`{.python} para verificar se a string `c` está em `s` e o método `s.index(c)`{.python} para encontrar o índice da primeira ocorrência da string `c` em `s`.
 
@@ -91,9 +107,5 @@ urlcolor: Blue
 
 @) Ordenação por inserção é uma algoritmo para ordenar uma lista de valores. A ideia do algoritmo é analisar cada elemento da lista de entrada e colocá-lo em ordem na lista de saída. Usando a função do exercício anterior, projete uma função que receba como entrada uma lista e devolva uma nova lista com os valores da entrada em ordem não decrescente.
 
-@) A escola do seu irmão mais novo está fazendo um coletânea de ditos populares. Cada aluno da escola escolheu um dito popular e a escola agregou todos eles em um arquivo texto (um dito por linha). Agora a escola precisa eliminar os ditos repetidos e classificá-los em ordem, mas ela não sabe como fazer isso. Você pode ajudar?
-
 @) Rotacionar um arranjo $n$ posições a esquerda significa mover os primeiros $n$ elementos do arranjo para as últimas $n$ posições do arranjo. Por exemplo, rotacionar o arranjo `{5, 3, 4, 1, 7}`{.cpp} duas posições a esquerda produz o arranjo `{4, 1, 7, 5, 3}`{.cpp}. Projete uma função que rotacione um arranjo $n$ posições a esquerda.
-
-@) Projete uma função que separe as "partes" de uma string usando um espaço como delimitador.
 -->
