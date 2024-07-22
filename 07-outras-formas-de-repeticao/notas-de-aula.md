@@ -1,20 +1,26 @@
 ---
 # vim: set spell spelllang=pt_br:
 title: Outras formas de repetição
+# TODO: adicionar revisão
+# TODO: exemplo mais interessante que fatorial
+# TODO: trocar exemplo primo?
+# TODO: adicionar exemplos de matrizes
+# TODO: adicionar outros exemplos
 ---
-
 
 # Introdução
 
-Agora veremos outras formas de repetição diferente do "para cada".
+Existem situações em que a repetição com o "para cada" não é adequada ou suficiente. \pause
+
+Veremos agora outras formas de repetição.
 
 
-# Exemplo - Índice máximo
+# Exemplo - índice máximo
 
 Projete uma função que encontre o índice (posição) da primeira ocorrência do valor máximo de uma lista não vazia de números.
 
 
-# Exemplo - Índice máximo - Especificação
+# Exemplo - índice máximo - especificação
 
 <div class="columns">
 <div class="column" width="48%">
@@ -52,7 +58,7 @@ Qual o resultado queremos calcular? \pause O índice `imax` do máximo de `lst`.
 
 Com qual valor iniciamos `imax`? \pause `0`{.python}. \pause
 
-Se estamos analisando um elemento `n` de `lst`, como atualizamos `imax`? \pause Não tem como! \pause Precisamos atualizar `imax`, que é um índice, mas só temos acesso ao elemento `n`. \pause
+Se estamos analisando um elemento `n` de `lst`, como atualizamos `imax`? \pause Não tem como! \pause Precisamos atualizar `imax`, que é um índice, mas só temos o elemento `n`. \pause
 
 Como procedemos?
 
@@ -60,7 +66,7 @@ Como procedemos?
 </div>
 
 
-# Exemplo - Índice máximo - Especificação
+# Exemplo - índice máximo - especificação
 
 <div class="columns">
 <div class="column" width="48%">
@@ -101,7 +107,7 @@ Se estamos analisando um número `n` de `lst`, como atualizamos `imax` e `i`? \p
 </div>
 
 
-# Exemplo - Índice máximo - Implementação
+# Exemplo - índice máximo - implementação
 
 <div class="columns">
 <div class="column" width="48%">
@@ -215,7 +221,7 @@ def soma(lst: list[int]) -> int:
 </div>
 </div>
 
-\ 
+\ \
 
 \pause
 
@@ -223,11 +229,10 @@ Qual das duas soluções é mais simples? \pause A da esquerda. \pause
 
 Quando usamos o "para cada no intervalo"? \pause
 
-Quando estamos interessados em um intervalo dos elementos da lista (que pode ser todos) junto com seus índices
+Quando estamos interessados em um intervalo dos elementos da lista (que pode ser todos) junto com seus índices.
 
 
-
-# Exemplo - Índice máximo - Implementação
+# Exemplo - índice máximo - implementação
 
 <div class="columns">
 <div class="column" width="48%">
@@ -272,7 +277,7 @@ def indice_maximo(lst: list[int]) -> int:
 
 \normalsize
 
-\ 
+\ \
 
 Qual das duas soluções é mais simples? \pause A da direita.
 
@@ -281,12 +286,12 @@ Qual das duas soluções é mais simples? \pause A da direita.
 
 
 
-# Exemplo: verificação de ordem
+# Exemplo - verificação de ordem
 
 Projete uma função que verifique se os elementos de uma lista estão em ordem não decrescente.
 
 
-# Exemplo: verificação de ordem
+# Exemplo - verificação de ordem - especificação
 
 <div class="columns">
 <div class="column" width="48%">
@@ -327,7 +332,7 @@ Como proceder com a implementação dessa função? \pause Usando a estratégia 
 
 Como calculamos manualmente a resposta dos exemplos? \pause Comparando cada elemento com o próximo (ou anterior). \pause
 
-Essa forma parece diferente... \pause Antes era necessário analisar um elemento da lista a cada iteração, agora temos que analisar dois elementos. \pause
+Essa forma parece diferente... \pause Antes era necessário analisar um único elemento da lista a cada iteração, agora temos que analisar dois elementos. \pause
 
 Como proceder nesse caso? \pause
 
@@ -337,7 +342,7 @@ Vamos implementar a função para uma lista de 5 elementos usando repetição f�
 </div>
 
 
-# Exemplo: verificação de ordem
+# Exemplo - verificação de ordem - implementação
 
 <div class="columns">
 <div class="column" width="48%">
@@ -392,7 +397,7 @@ def nao_decrescente(lst: list[int]) -> bool:
 </div>
 
 
-# Exemplo: verificação de ordem
+# Exemplo - verificação de ordem - implementação
 
 <div class="columns">
 <div class="column" width="48%">
@@ -444,9 +449,9 @@ Revisão: \pause mesmo encontrando valores "fora de ordem" a repetição continu
 
 Usamos o "para cada" e o "para cada no intervalo" quando queremos analisar todos os elementos (de um intervalo) da lista. \pause
 
-Nesse tipo de repetição a condição de parada é analisar todos os elementos (do intervalo) da lista. \pause
+Nesse tipo de repetição a condição da repetição, que está implícita, é a existência de elementos (do intervalo) na lista ainda não processados. \pause
 
-Para situações que precisamos de um processo incremental que depende de uma condição mais geral utilizamos o `while`{.python} (enquanto em inglês).
+Para situações que precisamos de um processo incremental que depende de uma condição mais geral utilizamos a instrução "enquanto" (`while`{.python} em inglês).
 
 
 # Enquanto
@@ -514,8 +519,7 @@ def nao_decrescente(lst: list[int]) -> bool:
 </div>
 </div>
 
-\ 
-
+\ \
 
 \small
 
@@ -632,7 +636,7 @@ Qual é a ordem que as linhas são executadas? \pause
 
 # Implementação de funções com `while`{.python}
 
-Para implementar uma função com o método incremental usando o `while`{.python} precisamos determinar as mesmas três coisas \pause
+Para implementar uma função com o método incremental usando o `while`{.python} precisamos determina: \pause
 
 - Quais valores queremos calcular; \pause
 - Como os valores são inicializados; \pause
@@ -643,12 +647,13 @@ e mais \pause
 - Qual é a condição da repetição.
 
 
-# Exemplo: palíndromo
+<!--
+# Exemplo - palíndromo
 
-Projete uma função que verifique se uma lista de inteiros é palíndromo, isto é, tem os mesmos elementos quanto vistos da direita para esquerda ou da esquerda para a direita.
+Projete uma função que verifique se uma lista de inteiros é palíndromo, isto é, tem os mesmos elementos quando vistos da direita para esquerda ou da esquerda para a direita.
 
 
-# Exemplo: palíndromo
+# Exemplo - palíndromo - especificação
 
 <div class="columns">
 <div class="column" width="48%">
@@ -695,7 +700,7 @@ Vamos implementar a função para uma lista de 7 elementos usando repetição f�
 </div>
 
 
-# Exemplo: palíndromo
+# Exemplo - palíndromo - implementação
 
 <div class="columns">
 <div class="column" width="48%">
@@ -738,7 +743,7 @@ Vamos deixar os trechos que se repetem mais parecidos introduzindo variáveis pa
 </div>
 
 
-# Exemplo: palíndromo
+# Exemplo - palíndromo - implementação
 
 <div class="columns">
 <div class="column" width="48%">
@@ -796,7 +801,7 @@ def palindromo(lst: list[int]) -> bool:
 Como os índice `i` e `j` devem ser atualizados?
 
 
-# Exemplo: palíndromo
+# Exemplo - palíndromo - implementação
 
 <div class="columns">
 <div class="column" width="48%">
@@ -852,7 +857,7 @@ def palindromo(lst: list[int]) -> bool:
 Como os índice `i` e `j` devem ser atualizados? Somando e subtraindo 1.
 
 
-# Exemplo: palíndromo
+# Exemplo - palíndromo - implementação
 
 <div class="columns">
 <div class="column" width="40%">
@@ -913,7 +918,7 @@ def palindromo(lst: list[int]) -> bool:
 </div>
 
 
-# Exemplo: palíndromo
+# Exemplo - palíndromo - implementação
 
 <div class="columns">
 <div class="column" width="48%">
@@ -968,17 +973,17 @@ def palindromo(lst: list[int]) -> bool:
 
 # Repetição sem arranjos
 
-Até agora todos os problemas que utilizamos a abordagem incremental (repetição) envolviam uma lista de valores. \pause
+Até agora todos os problemas que resolvemos utilizamos a abordagem incremental (repetição) envolviam uma lista de valores. \pause
 
 Agora veremos o uso da abordagem incremental em problemas que não envolvem uma lista de valores.
 
 
-# Exemplo: fatorial
+# Exemplo - fatorial
 
 O fatorial de um número natural $n$ é o produto de todos os números naturais de $1$ até $n$, isto é, $1 \times \cdots \times (n - 1) \times n$. Projete uma função que determine o fatorial de um número $n$.
 
 
-# Exemplo: fatorial
+# Exemplo - fatorial - especificação
 
 <div class="columns">
 <div class="column" width="48%">
@@ -1032,7 +1037,7 @@ def fatorial(n: int) -> int:
 </div>
 
 
-# Exemplo: fatorial
+# Exemplo - fatorial - implementação
 
 <div class="columns">
 <div class="column" width="48%">
@@ -1094,12 +1099,12 @@ def fatorial(n: int) -> int:
 </div>
 
 
-# Exemplo: número primo
+# Exemplo - número primo
 
 Um número inteiro positivo $n$ é primo se ele tem exatamente dois divisores distintos, $1$ e $n$. Projete uma função que verifique se um número inteiro positivo é primo.
 
 
-# Exemplo: número primo
+# Exemplo - número primo - especificação
 
 <div class="columns">
 <div class="column" width="48%">
@@ -1160,7 +1165,7 @@ def primo(n: int) -> bool:
 </div>
 
 
-# Exemplo: número primo
+# Exemplo - número primo - implementação
 
 <div class="columns">
 <div class="column" width="48%">
@@ -1217,7 +1222,7 @@ Como **generalizar** esse código para que ele funcione para qualquer valor de `
 </div>
 
 
-# Exemplo: número primo
+# Exemplo - número primo - revisão
 
 <div class="columns">
 <div class="column" width="48%">
@@ -1287,7 +1292,7 @@ Vamos alterar o `return`{.python} para `n != 1 and num_divisores == 0`{.python}.
 </div>
 
 
-# Exemplo: número primo
+# Exemplo - número primo - revisão
 
 <div class="columns">
 <div class="column" width="48%">
@@ -1404,12 +1409,12 @@ Usamos as operações que já conhecemos para acessar e modificar a matriz
 ```
 
 
-# Exemplo: matriz nula
+# Exemplo - matriz nula
 
 Projete uma função que receba dois números inteiros positivos, $m$ e $n$, e crie uma matriz $A_{m \times n}$, com $m$ linhas e $n$ colunas, com todos os elementos zeros.
 
 
-# Exemplo: matriz nula
+# Exemplo - matriz nula
 
 <div class="columns">
 <div class="column" width="56%">
@@ -1456,20 +1461,20 @@ Para a chamada `cria_matriz_nula(2, 3)`{.python}, qual é a ordem que as linhas 
 
 14 (`j = 0`{.python}), \pause 15 (`linha = [0]`{.python}), \pause 14 (`j = 1`{.python}), \pause 15 (`linha = [0, 0]`{.python}), \pause 14 (`j = 2`{.python}), \pause 15 (`linha = [0, 0, 0]`{.python}), \pause 14 (`j = 3`{.python}) \pause
 
-16 (`m = [[0, 0, 0]]`), \pause 12 (`i = 1`{.python}) \pause
+16 (`m = [[0, 0, 0]]`{.python}), \pause 12 (`i = 1`{.python}) \pause
 
 13 (`linha = []`{.python}) \pause
 
 14 (`j = 0`{.python}), \pause 15 (`linha = [0]`{.python}), \pause 14 (`j = 1`{.python}), \pause 15 (`linha = [0, 0]`{.python}), \pause 14 (`j = 2`{.python}), \pause 15 (`linha = [0, 0, 0]`{.python}), \pause 14 (`j = 3`{.python}) \pause
 
 
-16 (`m = [[0, 0, 0], [0, 0, 0]]`), \pause 12 (`i = 2`{.python}), \pause 17
+16 (`m = [[0, 0, 0], [0, 0, 0]]`{.python}), \pause 12 (`i = 2`{.python}), \pause 17
 
 </div>
 </div>
 
 
-# Exemplos: matriz regular
+# Exemplo - matriz regular
 
 Uma matriz é regular quando todos as linhas têm a mesma quantidade de elementos. Projete uma função que verifique se uma matriz é regular.
 
@@ -1482,7 +1487,7 @@ Feito em sala.
 Daqui para frente só vamos utilizar matrizes regulares.
 
 
-# Exemplos: quantidade de zeros
+# Exemplo - quantidade de zeros
 
 Projete uma função que conte a quantidade de elementos nulos de uma matriz.
 
@@ -1491,7 +1496,7 @@ Projete uma função que conte a quantidade de elementos nulos de uma matriz.
 Feito em sala.
 
 
-# Exemplos: matriz transposta
+# Exemplo - matriz transposta
 
 Projete uma função que crie a matriz transposta de uma data matriz.
 
