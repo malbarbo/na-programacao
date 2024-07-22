@@ -58,7 +58,7 @@ Confira a [execução](https://pythontutor.com/render.html#code=def%20dobro_mais
 O fluxo "normal" de execução de um programa é sequencial, isto é, as linhas são executadas uma após a outra. \pause Algumas instruções alteram esse fluxo, como por exemplo, as chamadas e retornos de funções. \pause
 
 
-Agora veremos a **instrução de seleção** `if else`{.python} (se e senão em inglês), que permite, a partir de uma condição, escolher qual conjunto de instruções executar.
+Agora veremos a instrução de seleção "se senão" (`if else`{.python} em inglês), que permite, a partir de uma condição, escolher qual conjunto de instruções executar.
 
 
 # Seleção

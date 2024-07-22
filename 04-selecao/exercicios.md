@@ -12,7 +12,7 @@ urlcolor: Blue
 
 # Começando
 
-@) Qual é a forma geral da instrução `if`{.python} (incluindo `elif`{.python} e `else`{.python}) e como ela é executada?
+@) Qual é a forma geral da instrução "se senão" e como ela é executada?
 
 @) Quando "descobrimos" que precisamos utilizar seleção na implementação de uma função?
 

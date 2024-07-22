@@ -26,7 +26,7 @@ urlcolor: Blue
 
 @) Quando devemos utilizar a abordagem incremental?
 
-@) Quais são as três perguntas que precisamos responder quando estamos implementando uma função utilizando a abordagem incremental?
+@) Quais são as três perguntas que precisamos responder para implementar uma função utilizando a abordagem incremental com o "para cada"?
 
 
 # Praticando
