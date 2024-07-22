@@ -477,12 +477,12 @@ Em geral, não precisamos ter uma repetição física de código para depois tro
 Vamos ver como fazer isso!
 
 
-# Exemplo - Soma
+# Exemplo - soma
 
 Projete uma função que some os números de uma lista.
 
 
-# Exemplo - Soma - Especificação
+# Exemplo - soma - especificação
 
 <div class="columns">
 <div class="column" width="45%">
@@ -521,7 +521,7 @@ Se estamos analisando um elemento `n` de `lst`, como atualizamos `soma`? \pause 
 </div>
 
 
-# Exemplo - Soma - Implementação
+# Exemplo - soma - implementação
 
 <div class="columns">
 <div class="column" width="45%">
@@ -561,7 +561,7 @@ Se estamos analisando um elemento `n` de `lst`, como atualizamos `soma`? Adicion
 </div>
 
 
-# Exemplo - Soma - Execução passo a passo
+# Exemplo - soma - execução passo a passo
 
 <div class="columns">
 <div class="column" width="48%">
@@ -600,12 +600,12 @@ Qual é a ordem que as linhas são executadas? \pause
 </div>
 
 
-# Exemplo - Strings que começam com A
+# Exemplo - strings que começam com A
 
 Projete uma função que encontre as strings que começam com `'A'`{.python} de uma lista de strings.
 
 
-# Exemplo - Strings que começam com A - Especificação
+# Exemplo - strings que começam com A - especificação
 
 <div class="columns">
 <div class="column" width="55%">
@@ -647,7 +647,7 @@ Se estamos analisando um elemento `s` de `lst`, como atualizamos `comeca_a`? \pa
 </div>
 
 
-# Exemplo - Strings que começam com A - Implementação
+# Exemplo - strings que começam com A - implementação
 
 \scriptsize
 
@@ -675,12 +675,12 @@ def encontra_comeca_a(lst: list[str]) -> list[str]:
 ```
 
 
-# Exemplo - Máximo
+# Exemplo - máximo
 
 Projete uma função que encontre o valor máximo em uma lista não vazia de inteiros.
 
 
-# Exemplo - Máximo - Especificação
+# Exemplo - máximo - Especificação
 
 <div class="columns">
 <div class="column" width="48%">
@@ -720,7 +720,7 @@ Se estamos analisando um elemento `n` de `lst`, como atualizamos `maximo`? \paus
 </div>
 
 
-# Exemplo - Máximo - Implementação
+# Exemplo - máximo - implementação
 
 <div class="columns">
 <div class="column" width="48%">
@@ -765,12 +765,12 @@ Se estamos analisando um elemento `n` de `lst`, como atualizamos `maximo`?  Atri
 </div>
 
 
-# Exemplo - Média tamanho strings
+# Exemplo - média tamanho strings
 
 Projete uma função que calcule a média dos tamanhos das strings de uma lista não vazia de strings.
 
 
-# Exemplo - Média tamanho strings - Especificação
+# Exemplo - média tamanho strings - especificação
 
 <div class="columns">
 <div class="column" width="48%">
@@ -815,7 +815,7 @@ Como procedemos então? \pause Vamos discutir duas possibilidades: ajustar o pro
 </div>
 
 
-# Exemplo - Média tamanho strings
+# Exemplo - média tamanho strings
 
 Ajustando o processo incremental. \pause
 
@@ -826,7 +826,7 @@ O que precisamos saber além da `media` para conseguir atualizar a `media`? \pau
 Nós temos essa informação? \pause Não. \pause Como fazer então? \pause Computar `quant` de forma incremental junto com a `media`.
 
 
-# Exemplo - Média tamanho strings
+# Exemplo - média tamanho strings
 
 Como inicializar `media` e `quant`? \pause Não está claro ainda. \pause
 
@@ -839,7 +839,7 @@ Como atualizar a `quant`? \pause `quant + 1`{.python} \pause
 Como inicializar `media` e `quant`? \pause Com `0`{.python} (verifique que com esses valores iniciais o processo de atualização funciona quando o primeiro elemento da lista é processado).
 
 
-# Exemplo - Média tamanho strings
+# Exemplo - média tamanho strings
 
 \footnotesize
 
@@ -876,7 +876,7 @@ Isso é o que chamamos de **plano** ou **esboço de solução**, isto é, uma de
 Depois que temos um esboço, implementamos cada uma das etapas utilizando uma estratégias, ou seja, a implementação final é uma combinação de estratégias.
 
 
-# Exemplo - Média tamanho strings - Implementação
+# Exemplo - média tamanho strings - implementação
 
 <div class="columns">
 <div class="column" width="45%">
@@ -911,7 +911,7 @@ Como computamos a média? \pause Diretamente. \pause
 </div>
 
 
-# Exemplo - Média tamanho strings - Implementação
+# Exemplo - média tamanho strings - implementação
 
 <div class="columns">
 <div class="column" width="45%">

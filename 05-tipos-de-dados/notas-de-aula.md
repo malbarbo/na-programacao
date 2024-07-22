@@ -221,7 +221,7 @@ def indica_combustivel(preco_alcool: float, preco_gasolina: float) -> Combustive
 ```
 
 
-# Exemplo - Semáforo
+# Exemplo - semáforo
 
 Projete uma função que receba como entrada a cor atual de um semáforo de trânsito e devolva a próxima cor que será exibida (considere um semáforo com três cores: verde, amarelo e vermelho).
 
@@ -232,7 +232,7 @@ Análise \pause
 - Determinar a próxima cor de um semáforo dado a cor atual
 
 
-# Exemplo - Semáforo
+# Exemplo - semáforo
 
 Projeto de tipos de dados \pause
 
@@ -253,7 +253,7 @@ class Cor(Enum):
 ```
 
 
-# Exemplo - Semáforo
+# Exemplo - semáforo
 
 <div class="columns">
 <div class="column" width="48%">
@@ -317,7 +317,7 @@ def proxima_cor(atual: Cor) -> Cor:
 </div>
 
 
-# Exemplo - Semáforo
+# Exemplo - semáforo
 
 <div class="columns">
 <div class="column" width="48%">
@@ -810,7 +810,7 @@ Compare com a sua implementação direta. Qual das duas é mais simples e fácil
 Modifique a especificação e implementação da função anterior para que o plural dos componentes fique de acordo com o Português.
 
 
-# Exemplo - Loteria
+# Exemplo - loteria
 
 Em um jogo de loteria os apostadores fazem apostas escolhendo 6 números distintos entre 1 e 60. No sorteio são sorteados 6 números de forma aleatória. Os apostadores que acertam 4, 5 ou 6 números são contemplados com prêmios.
 
@@ -819,7 +819,7 @@ a) Projete uma função que verifique se um número está entre os sorteados.
 b) Projete uma função que determine quantos números uma determinada aposta acertou.
 
 
-# Exemplo - Loteria
+# Exemplo - loteria
 
 Análise \pause
 
@@ -865,7 +865,7 @@ As apostas e os números sorteados serão representados pela estrutura `SeisNume
 Vamos fazer a especificação da primeira função.
 
 
-# Exemplo - Loteria - especificação `sorteado`
+# Exemplo - loteria - especificação `sorteado`
 
 \scriptsize
 
@@ -885,7 +885,7 @@ def sorteado(n: int, sorteados: SeisNumeros) -> bool:
 Quantos exemplos precisamos? \pause 7, `n` igual a cada um dos sorteados e `n` diferentes de todos.
 
 
-# Exemplo - Loteria - especificação `sorteado`
+# Exemplo - loteria - especificação `sorteado`
 
 <div class="columns">
 <div class="column" width="60%">
@@ -940,7 +940,7 @@ Agora podemos fazer a implementação.
 </div>
 
 
-# Exemplo - Loteria - implementação `sorteado`
+# Exemplo - loteria - implementação `sorteado`
 
 <div class="columns">
 <div class="column" width="60%">
@@ -994,7 +994,7 @@ return condição
 </div>
 
 
-# Exemplo - Loteria - implementação `sorteado`
+# Exemplo - loteria - implementação `sorteado`
 
 <div class="columns">
 <div class="column" width="48%">
@@ -1028,7 +1028,7 @@ Senão, quais podem ser as respostas? \pause `True`{.python} ou `False`{.python}
 </div>
 
 
-# Exemplo - Loteria - implementação `sorteado`
+# Exemplo - loteria - implementação `sorteado`
 
 <div class="columns">
 <div class="column" width="48%">
@@ -1091,7 +1091,7 @@ A resposta que queremos é se o número `n` está entre os `sorteados`. \pause O
 Começamos a resposta com `False`{.python}, \pause se `n == a`{.python} mudamos a resposta pra `True`{.python}, \pause se `n == b`{.python} mudamos a resposta pra `True`{.python}, \pause e assim por diante.
 
 
-# Exemplo - Loteria - implementação `sorteado`
+# Exemplo - loteria - implementação `sorteado`
 
 <div class="columns">
 <div class="column" width="48%">
@@ -1130,7 +1130,7 @@ Agora podemos ir para a segunda função do problema da loteria: determinar o n�
 </div>
 
 
-# Exemplo - Loteria - especificação `num_acertos`
+# Exemplo - loteria - especificação `num_acertos`
 
 \scriptsize
 
@@ -1158,7 +1158,7 @@ def numero_acertos(aposta: SeisNumeros, sorteados: SeisNumeros) -> int:
 ```
 
 
-# Exemplo - Loteria - especificação `num_acertos`
+# Exemplo - loteria - especificação `num_acertos`
 
 Que estratégia nós usamos para calcular as respostas dos exemplos? Ou ainda, que estratégia podemos utilizar para implementar a função? \pause A estratégia incremental! \pause
 
@@ -1169,7 +1169,7 @@ O que precisamos para implementar a função usando a estratégia incremental? \
 - Uma forma de atualizar a resposta conforme analisamos a entrada.
 
 
-# Exemplo - Loteria - especificação `num_acertos`
+# Exemplo - loteria - especificação `num_acertos`
 
 Começamos o número de acertos com zero. \pause
 

@@ -1055,7 +1055,7 @@ def centraliza(s: str, n: int) -> str:
 </div>
 
 
-# Exemplo - Álcool ou Gasolina?
+# Exemplo - álcool ou gasolina
 
 <div class="columns">
 <div class="column" width="48%">
@@ -1078,7 +1078,7 @@ Definição de tipos de dados \pause
 </div>
 
 
-# Especificação
+# Exemplo - álcool ou gasolina - especificação
 
 \footnotesize
 
@@ -1102,7 +1102,7 @@ def indica_combustivel(preco_alcool: float, preco_gasolina: float) -> str:
 ```
 
 
-# Implementação
+# Exemplo - álcool ou gasolina - implementação
 
 Quantas formas para a resposta existem? \pause Duas: `'alcool'`{.python} e `'gasolina'`{.python}. \pause Então precisamos usar seleção. \pause Qual é a condição para que a resposta seja `'alcool'`{.python}? \pause `preco_alcool <= 0.7 * preco_gasolina`{.python} \pause
 
@@ -1118,7 +1118,7 @@ def indica_combustivel(preco_alcool: float, preco_gasolina: float) -> str:
 ```
 
 
-# Verificação e revisão
+# Exemplo - álcool ou gasolina - verificação e revisão
 
 Verificação: \pause ok. \pause
 
