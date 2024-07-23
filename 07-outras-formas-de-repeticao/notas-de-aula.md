@@ -6,6 +6,8 @@ title: Outras formas de repetição
 # TODO: trocar exemplo primo?
 # TODO: adicionar exemplos de matrizes
 # TODO: adicionar outros exemplos
+# TODO: analisar o termo transformar repetição física para lógica
+# TODO: analisar o termo generalizar para lista de qualquer tamanho
 ---
 
 # Introdução
@@ -647,7 +649,6 @@ e mais \pause
 - Qual é a condição da repetição.
 
 
-<!--
 # Exemplo - palíndromo
 
 Projete uma função que verifique se uma lista de inteiros é palíndromo, isto é, tem os mesmos elementos quando vistos da direita para esquerda ou da esquerda para a direita.
@@ -971,13 +972,21 @@ def palindromo(lst: list[int]) -> bool:
 </div>
 
 
+# Matrizes
+
+Em breve...
+
+
 # Repetição sem arranjos
 
 Até agora todos os problemas que resolvemos utilizamos a abordagem incremental (repetição) envolviam uma lista de valores. \pause
 
-Agora veremos o uso da abordagem incremental em problemas que não envolvem uma lista de valores.
+Agora veremos o uso da abordagem incremental em problemas que não envolvem uma lista de valores. \pause
+
+Em breve...
 
 
+<!--
 # Exemplo - fatorial
 
 O fatorial de um número natural $n$ é o produto de todos os números naturais de $1$ até $n$, isto é, $1 \times \cdots \times (n - 1) \times n$. Projete uma função que determine o fatorial de um número $n$.
@@ -1584,8 +1593,6 @@ False
 </div>
 
 
-<!--
-
 # Como projetar funções que processam arranjos usando o "para cada"
 
 Quando precisamos processar um arranjo, geralmente queremos calcular valores de forma incremental, analisando um por um os elementos do arranjo. \pause
@@ -1632,342 +1639,4 @@ c) Como as variáveis são atualizadas? \pause
    Em seguida, considere que o último elemento está sendo processado e determine quais operações são necessárias para modificar os valores das variáveis para que elas fiquem com o valor final esperado. \pause
 
    Generalize e escreva o código para fazer essas operações.
-
-
-
-# Eleições
-
-Uma eleição é realizada com apenas dois candidatos. Cada eleitor pode votar ou no primeiro candidato, ou no segundo candidato, ou ainda, votar em branco. O candidato que tiver mais votos ganha a eleição. Se os votos em branco forem mais do que 50% do total de votos, novas eleições devem ser convocadas. Projete uma função que receba como entrada uma lista não vazia de votos e determine qual foi o resultado da eleição. Dica: deseje uma função auxilar que conte votos de um tipo especificado por parâmetro.
-
-
-# Análise
-
-Determinar o resultado de uma eleição. \pause
-
-- O voto pode ser em um de dois candidatos ou em branco; \pause
-- Se mais que 50% dos votos forem brancos ou se os candidatos tiverem o mesmo número de votos, é necessário uma nova eleição; \pause
-- Se não for necessário uma nova eleição, ganha quem tiver mais votos.
-
-
-# Definição dos tipos de dados
-
-\footnotesize
-
-```cpp
-
-// Os votos serão representados por vector<Voto>.
-
-// Um voto em uma eleição.
-enum Voto {
-    Candidato1,
-    Candidato2,
-    Branco,
-};
-
-// O resultado de uma eleição.
-enum ResultadoEleicao {
-    Venceu1,
-    Venceu2,
-    NovasEleicoes,
-};
-```
-
-
-# Especificação
-
-\scriptsize
-
-```cpp
-// Apura o resultado da eleicao considerando os votos no arranjo votos.
-// - Produz NovasEleicoes se mais do que 50% do total de votos for branco ou se a
-// quantidade de votos do Candidato1 for igual ao do Candidato2.
-// - Senão, produz Venceu1 se o Candidato1 teve mais votos ou Venceu2 se o
-// Candidato2 teve mais votos.
-ResultadoEleicao apura_eleicao(vector<Voto> votos)
-{
-    return NovasEleicoes;
-}
-
-examples
-{
-    check_expect(apura_eleicao({Candidato1, Candidato2, Candidato1, Branco}), Venceu1);
-    check_expect(apura_eleicao({Candidato2, Candidato2, Candidato1, Branco}), Venceu2);
-    check_expect(apura_eleicao({Candidato2, Candidato1, Candidato1, Candidato2}), NovasEleicoes);
-    check_expect(apura_eleicao({Candidato1, Candidato1, Branco, Branco}), Venceu1);
-    check_expect(apura_eleicao({Candidato2, Candidato2, Branco, Branco}), Venceu2);
-    check_expect(apura_eleicao({Candidato1, Candidato2, Branco, Branco}), NovasEleicoes);
-    check_expect(apura_eleicao({Candidato2, Candidato2, Branco, Branco, Branco}), NovasEleicoes);
-}
-```
-
-
-# Implementação
-
-Vamos seguir a dica do enunciado e desejar a função `conta_votos`, que conta um determinado tipo de voto.
-
-\scriptsize
-
-```cpp
-ResultadoEleicao apura_eleicao(vector<Voto> votos) {
-    int num_votos1 = conta_votos(votos, Candidato1);
-    int num_votos2 = conta_votos(votos, Candidato2);
-    int num_brancos = conta_votos(votos, Branco);
-
-    ResultadoEleicao resultado;
-    if (num_brancos > votos.size() / 2) {
-        resultado = NovasEleicoes;
-    } else if (num_votos1 > num_votos2) {
-        resultado = Venceu1;
-    } else if (num_votos2 > num_votos1) {
-        resultado = Venceu2;
-    } else {
-        resultado = NovasEleicoes;
-    }
-    return resultado;
-}
-```
-
-
-# Lista de pendências
-
-Adicionamos `conta_votos` na lista de pendências e fazemos o projeto da função.
-
-\pause
-
-\scriptsize
-
-```cpp
-// Conta quantos votos no arranjo votos é igual ao alvo.
-int conta_votos(vector<Voto> votos, Voto alvo)
-{
-    return 0;
-}
-
-examples
-{
-    vector<Voto> votos = {Candidato2, Candidato1, Branco, Candidato1, Candidato2, Candidato1};
-    check_expect(conta_votos(votos, Candidato1), 3);
-    check_expect(conta_votos(votos, Candidato2), 2);
-    check_expect(conta_votos(votos, Branco), 1);
-}
-```
-
-
-# Implementação
-
-<div class="columns">
-<div class="column" width="48%">
-1) Quais variáveis (valores) queremos calcular? \pause A quantidade de votos iguais ao alvo. \pause
-2) Como as variáveis são inicializadas? \pause A quantidade é inicializada com 0. \pause
-3) Como as variáveis são atualizadas? \pause A quantidade é atualizada em 1 quanto o elemento atual for igual ao alvo. \pause
-</div>
-<div class="column" width="48%">
-\scriptsize
-```cpp
-int conta_votos(vector<Voto> votos, Voto alvo)
-{
-    int num = 0;
-    for (Voto voto : votos) {
-        if (voto == alvo) {
-            num = num + 1;
-        }
-    }
-    return num;
-}
-```
-</div>
-</div>
-
-\pause
-
-Verificação: \pause Ok. \pause
-
-Revisão: \pause Ok.
-
-
-# Execução do programa
-
-O programa está pronto! Agora podemos compilar e testar. \pause
-
-Quando o programa é executado ele fica esperando os ditos serem digitados, um por linha. Para sinalizar que não serão digitados mais ditos, pressionamos "crtl + d". \pause
-
-Compile e teste o programa dessa forma. \pause Qual a sua impressão sobre a "facilidade" de uso do programa?
-
-
-# Redirecionamento de entrada
-
-Parece repetitivo ter que digitar os ditos, afinal, estes ditos já foram coletados e estão salvos em algum arquivo. \pause
-
-Quando temos um arquivo `.txt`, podemos utilizar o seu conteúdo como entrada do nosso programa. Nesse caso, tudo o que está no arquivo aparece para o programa como se tivesse sido digitado pelo usuário. \pause
-
-Se o arquivo com os ditos chama `"ditos.txt"`, podemos utilizar o conteúdo do arquivo como entrada para o programa da seguinte forma \pause
-
-```
-./ditos < ditos.txt
-```
-
-\pause
-
-O símbolo `<` é interpretado pelo shell como redirecionamento da entrada, então, ao invés de esperar o usuário digitar a entrada para o programa, o shell utiliza o conteúdo do arquivo como entrada do programa.
-
-
-# Redirecionamento de saída
-
-Da mesma forma que existe redirecionamento de entrada, também existe redirecionamento de saída. \pause
-
-Quando utilizamos redirecionamento de saída, ao invés do resultado do programa ser exibido na tela, ele é salvo em um arquivo. \pause
-
-Para ler a entrada do arquivo `"ditos.txt"` e salvar o resultado no arquivo `"ditos-unicos.txt"`, executamos \pause
-
-```
-./ditos < ditos.txt > ditos-unicos.txt
-```
-
-\pause
-
-O símbolo `>` é interpretado pelo shell como redirecionamento da saída.
-
-
-# Momento de apreciação
-
-\pause
-
-Aprecie esse momento. \pause Temos um programa completo que pode ser utilizado por um usuário final para realizar uma tarefa útil!
-
-
-# Exercício
-
-Projete uma função que separe as "partes" de uma string usando um espaço como delimitador.
-
-
-# Especificação
-
-\scriptsize
-
-```cpp
-// Produz uma lista das "partes" de s usando um espaço como delimitador.
-vector<string> separa(string s)
-{
-    return {};
-}
-
-examples
-{
-    check_expect(separa(""), (vector<string> {}));
-    check_expect(separa("casa"), (vector<string> {"casa"}));
-    check_expect(separa("Seu Jorge cantou a musica."),
-                 (vector<string> {"Seu", "Jorge", "cantou", "a", "musica."}));
-}
-```
-
-
-# Implementação
-
-Como fazer a implementação? \pause Vamos precisar de uma repetição, \pause mas qual tipo? \pause Diferente das repetições que fizemos anteriormente, esta não depende de uma "coleção" de valores, então vamos usar o "enquanto". \pause
-
-E como fazer a repetição? \pause Vamos tentar generalizar a solução de alguns exemplos específicos.
-
-
-# Implementação
-
-\scriptsize
-
-```cpp
-string s = "Seu Jorge cantou a musica.";
-vector<string> palavras = {};
-```
-
-\pause
-
-```cpp
-s.find(" ", 0); // a partir do indice 0 ("S"), encontra o indice do primeiro " ", que é 3
-palavras.push_back(s.substr(0, 3 - 0)); // "Seu"
-```
-
-\pause
-
-```cpp
-s.find(" ", 3 + 1); // a partir do indice 4 ("J"), encontra o indice do primeiro " ", que é 9
-palavras.push_back(s.substr(4, 9 - 4)); // "Jorge"
-```
-
-\pause
-
-```cpp
-s.find(" ", 9 + 1); // a partir do indice 10 ("c"), encontra o indice do primeiro " ", que é 16
-palavras.push_back(s.substr(10, 16 - 10)); // "cantou"
-```
-
-\pause
-
-```cpp
-s.find(" ", 16 + 1); // a partir do indice 17 ("a"), encontra o indice do primeiro " ", que é 18
-palavras.push_back(s.substr(17, 18 - 17)); // "a"
-```
-
-\pause
-
-```cpp
-s.find(" ", 18 + 1); // a partir do indice 18 ("m"), não tem mais " ", produz -1.
-palavras.push_back(s.substr(17, 26 - 19)); // "musica." 26 é o tamanho de s
-```
-
-
-# Implementação
-
-Quais informações (variáveis) são necessárias a cada iteração? \pause O índice de início (`inicio`{.cpp}) e o valor produzido pela busca do espaço (`fim`{.cpp}). \pause
-
-Como as variáveis são inicializadas? \pause `inicio = 0`{.cpp}. \pause
-
-O que precisa ser feito a cada iteração? \pause Calcular `fim`, extrair e adicionar a substring em `palavras`. \pause O que mais? \pause Atualizar o `inicio` para a próxima iteração! \pause
-
-Todas as iterações são iguais? \pause Não, a última iteração é diferente. \pause Como identificar se estamos na última iteração? \pause `find` produz `-1`{.cpp}. \pause
-
-Como o `inicio` é atualizado? \pause No caso geral, `inicio = fim + 1`{.cpp}. \pause E no último caso? \pause `inicio = s.length()`{.cpp}. \pause
-
-Qual a condição para o laço continuar a execução? \pause `inicio < s.length()`{.cpp}
-
-
-# Implementação
-
-\scriptsize
-
-```cpp
-// Separa uma string usando um espaço como delimitador.
-vector<string> separa(string s)
-{
-    vector<string> palavras = {};
-    int inicio = 0;
-    int fim;
-    while (inicio < s.length()) {
-        fim = s.find(" ", inicio);
-        if (fim != -1) {
-            palavras.push_back(s.substr(inicio, fim - inicio));
-            inicio = fim + 1;
-        } else {
-            palavras.push_back(s.substr(inicio, s.length() - inicio));
-            inicio = s.length();
-        }
-    }
-    return palavras;
-}
-```
-
-\pause
-
-\small
-
-Podemos melhorar? \pause Sim! \pause Como `fim` é usado apenas dentro do laço, mudamos o local da declaração.
-
-
-# Exercício
-
-Modifique a função `separa` de maneira que a string seja separada por um ou mais espaços:
-
-\scriptsize
-
-```cpp
-check_expect(separa("mais   de  um "), (vector<string> { "mais", "de", "um" }));
-```
-
 -->
