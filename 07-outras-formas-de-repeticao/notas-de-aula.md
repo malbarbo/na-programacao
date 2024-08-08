@@ -1,7 +1,7 @@
 ---
 # vim: set spell spelllang=pt_br:
 title: Outras formas de repetição
-# TODO: adicionar revisão
+# TODO: adicionar revisão no final
 # TODO: exemplo mais interessante que fatorial
 # TODO: trocar exemplo primo?
 # TODO: adicionar exemplos de matrizes
@@ -527,7 +527,7 @@ def nao_decrescente(lst: list[int]) -> bool:
 
 O código está mais simples? \pause Não, \pause o controle do índice `i`, que era automático, agora é feito explicitamente. \pause
 
-Resolvemos o problema do processamento continuar após um elemento fora de ordem ser encontrado? \pause Não... \pause Como podemos resolver esse problema? \pause Alterando a condição do `while`{.python} para prosseguir apenas se `em_ordem` for `True`{.python}.
+O que estamos ganhando se não é a simplicidade? \pause Por enquanto nada, o que queremos é ganhar desempenho fazendo a repetição parar assim que um elemento fora de ordem for encontrado. \pause Como fazemos isso? \pause Alterando a condição do `while`{.python} para prosseguir apenas se `em_ordem` for `True`{.python}.
 
 
 # Enquanto - Exemplo
@@ -636,9 +636,9 @@ Qual é a ordem que as linhas são executadas? \pause
 </div>
 
 
-# Implementação de funções com `while`{.python}
+# Implementação de funções com "enquanto"
 
-Para implementar uma função com o método incremental usando o `while`{.python} precisamos determina: \pause
+Para implementar uma função com o método incremental usando o `while`{.python} precisamos determinar: \pause
 
 - Quais valores queremos calcular; \pause
 - Como os valores são inicializados; \pause
@@ -974,19 +974,254 @@ def palindromo(lst: list[int]) -> bool:
 
 # Matrizes
 
-Em breve...
+O tipo `list`{.python} (arranjo) que vimos é unidimensional. Algumas linguagens suportam arranjos com mais dimensões. Os arranjos bidimensionais são chamados de matrizes. \pause
+
+O Python não suporta nativamente matrizes, mas podemos usar lista de listas como matrizes.
+
+
+# Matrizes
+
+Por exemplo, para representar a matriz
+
+$$
+A = \left [
+  \begin{array}{cccc}
+  1 & 4 & 2 & 8 \\
+  -1 & 0 & 9 & 1 \\
+  4 & 7 & -2 & 0
+  \end{array}
+  \right ]
+$$
+
+em Python fazemos \pause
+
+\small
+
+```python
+>>> m: list[list[int]] = [[1, 4, 2, 8], [-1, 0, 9, 1], [4, 7, -2, 0]]
+```
+
+
+# Matrizes
+
+Usamos as operações que já conhecemos para acessar e modificar os elementos de uma matriz
+
+\small
+
+```python
+>>> m: list[list[int]] = [[1, 4, 2, 8], [-1, 0, 9, 1], [4, 7, -2, 0]]
+>>> m[1]
+[-1, 0, 9, 1]
+>>> m[1][2]
+9
+>>> len(m)
+3
+>>> len(m[0])
+4
+>>> m[2][1] = 0
+>>> m
+[[1, 4, 2, 8], [-1, 0, 9, 1], [4, 0, -2, 0]]
+```
+
+
+# Exemplo - matriz nula
+
+Projete uma função que receba dois números inteiros positivos, $m$ e $n$, e crie uma matriz $A_{m \times n}$, com $m$ linhas e $n$ colunas, com todos os elementos zeros.
+
+
+# Exemplo - matriz nula
+
+<div class="columns">
+<div class="column" width="56%">
+\scriptsize
+
+```python
+def cria_matriz_nula(m: int, n: int) -> list[list[int]]:
+    '''
+    Cria uma matriz nula com *m* linhas e *n* colunas.
+
+    Requer que m > 0 e n > 0.
+
+    Exemplos
+    >>> cria_matriz_nula(2, 3)
+    [[0, 0, 0], [0, 0, 0]]
+    '''
+```
+
+\pause
+
+```python
+    a = []
+    for i in range(m):
+        linha = []
+        for j in range(n):
+            linha.append(0)
+        a.append(linha)
+    return a
+```
+
+</div>
+<div class="column" width="42%">
+</div>
+</div>
+
+
+# Exemplo - matriz nula
+
+<div class="columns">
+<div class="column" width="56%">
+\scriptsize
+
+```{.python .number-lines}
+def cria_matriz_nula(m: int, n: int) -> list[list[int]]:
+    '''
+    Cria uma matriz nula com *m* linhas e *n* colunas.
+
+    Requer que m > 0 e n > 0.
+
+    Exemplos
+    >>> cria_matriz_nula(2, 3)
+    [[0, 0, 0], [0, 0, 0]]
+    '''
+    a = []
+    for i in range(m):
+        linha = []
+        for j in range(n):
+            linha.append(0)
+        a.append(linha)
+    return a
+```
+
+\pause
+
+\footnotesize
+
+Para a chamada `cria_matriz_nula(2, 3)`{.python}, qual é a ordem que as linhas são executas?
+
+\pause
+
+</div>
+<div class="column" width="42%">
+
+\footnotesize
+
+11 (`m = []`{.python}) \pause
+
+12 (`i = 0`{.python}) \pause
+
+13 (`linha = []`{.python}) \pause
+
+14 (`j = 0`{.python}), \pause 15 (`linha = [0]`{.python}), \pause 14 (`j = 1`{.python}), \pause 15 (`linha = [0, 0]`{.python}), \pause 14 (`j = 2`{.python}), \pause 15 (`linha = [0, 0, 0]`{.python}), \pause 14 (`j = 3`{.python}) \pause
+
+16 (`m = [[0, 0, 0]]`{.python}), \pause 12 (`i = 1`{.python}) \pause
+
+13 (`linha = []`{.python}) \pause
+
+14 (`j = 0`{.python}), \pause 15 (`linha = [0]`{.python}), \pause 14 (`j = 1`{.python}), \pause 15 (`linha = [0, 0]`{.python}), \pause 14 (`j = 2`{.python}), \pause 15 (`linha = [0, 0, 0]`{.python}), \pause 14 (`j = 3`{.python}) \pause
+
+
+16 (`m = [[0, 0, 0], [0, 0, 0]]`{.python}), \pause 12 (`i = 2`{.python}), \pause 17
+
+</div>
+</div>
+
+
+# Exemplo - matriz regular
+
+Uma matriz é regular quando todos as linhas têm a mesma quantidade de elementos. Projete uma função que verifique se uma matriz é regular.
+
+
+# Exemplo - matriz regular
+
+<div class="columns">
+<div class="column" width="48%">
+\scriptsize
+
+```python
+def eh_regular(a: list[list[int]]) -> bool:
+    '''Produz True se *a* é uma matriz
+    regular, isto é, todas as linhas tem a
+    mesma quantidade de elementos.
+    Exemplos
+    >>> eh_regular([])
+    True
+    >>> eh_regular([[2]])
+    True
+    >>> eh_regular([[2], [4]])
+    True
+    >>> eh_regular([[2], [4, 1]])
+    False
+    >>> eh_regular([[2, 1, 6], [4, 0, 1]])
+    True
+    >>> eh_regular([[2, 1], [4, 0, 1]])
+    False
+    >>> eh_regular([[2], [4], [7]])
+    True
+    '''
+```
+
+\pause
+</div>
+<div class="column" width="48%">
+
+\scriptsize
+
+```python
+def eh_regular(a: list[list[int]]) -> bool:
+    regular = True
+    for linha in a:
+        if len(linha) != len(a[0])
+            regular = False
+    return regular
+```
+
+\pause
+
+\small
+
+Revisão: \pause Podemos parar antes.
+
+\scriptsize
+
+\pause
+
+```python
+def eh_regular(a: list[list[int]]) -> bool:
+    regular = True
+    i = 1
+    while i < len(a) and regular:
+        if len(a[0]) != len(a[i]):
+            regular = False
+        i = i + 1
+    return regular
+```
+
+\pause
+
+\small
+
+Vamos utilizar apenas matrizes regulares.
+</div>
+</div>
+
+
+# Exemplo - quantidade de zeros
+
+Projete uma função que conte a quantidade de elementos nulos de uma matriz.
+
+
+# Exemplo - matriz transposta
+
+Projete uma função que crie a matriz transposta de uma data matriz.
 
 
 # Repetição sem arranjos
 
 Até agora todos os problemas que resolvemos utilizamos a abordagem incremental (repetição) envolviam uma lista de valores. \pause
 
-Agora veremos o uso da abordagem incremental em problemas que não envolvem uma lista de valores. \pause
-
-Em breve...
+Agora veremos o uso da abordagem incremental em problemas que não envolvem uma lista de valores.
 
 
-<!--
 # Exemplo - fatorial
 
 O fatorial de um número natural $n$ é o produto de todos os números naturais de $1$ até $n$, isto é, $1 \times \cdots \times (n - 1) \times n$. Projete uma função que determine o fatorial de um número $n$.
@@ -1366,153 +1601,7 @@ def primo(n: int) -> bool:
 </div>
 
 
-# Matrizes
-
-O tipo `list`{.python} (arranjo) que vimos é unidimensional. Algumas linguagens suportam arranjos com mais dimensões. Os arranjos bidimensionais são chamados de matrizes. \pause
-
-O Python não suporta nativamente matrizes, mas podemos usar lista de listas como matrizes.
-
-
-# Matrizes
-
-Por exemplo, para representar matriz
-
-$$
-A = \left [
-  \begin{array}{cccc}
-  1 & 4 & 2 & 8 \\
-  -1 & 0 & 9 & 1 \\
-  4 & 7 & -2 & 0
-  \end{array}
-  \right ]
-$$
-
-em Python fazemos \pause
-
-\small
-
-```python
->>> m: list[list[int]] = [[1, 4, 2, 8], [-1, 0, 9, 1], [4, 7, -2, 0]]
-```
-
-
-# Matrizes
-
-Usamos as operações que já conhecemos para acessar e modificar a matriz
-
-\small
-
-```python
->>> m: list[list[int]] = [[1, 4, 2, 8], [-1, 0, 9, 1], [4, 7, -2, 0]]
->>> m[1]
-[-1, 0, 9, 1]
->>> m[1][2]
-9
->>> len(m)
-3
->>> len(m[0])
-4
->>> m[2][1] = 0
->>> m
-[[1, 4, 2, 8], [-1, 0, 9, 1], [4, 0, -2, 0]]
-```
-
-
-# Exemplo - matriz nula
-
-Projete uma função que receba dois números inteiros positivos, $m$ e $n$, e crie uma matriz $A_{m \times n}$, com $m$ linhas e $n$ colunas, com todos os elementos zeros.
-
-
-# Exemplo - matriz nula
-
-<div class="columns">
-<div class="column" width="56%">
-\scriptsize
-
-```{.python .number-lines}
-def cria_matriz_nula(m: int, n: int) -> list[list[int]]:
-    '''
-    Cria uma matriz nula com *m* linhas e *n* colunas.
-
-    Requer que m > 0 e n > 0.
-
-    Exemplos
-    >>> cria_matriz_nula(2, 3)
-    [[0, 0, 0], [0, 0, 0]]
-    '''
-    a = []
-    for i in range(m):
-        linha = []
-        for j in range(n):
-            linha.append(0)
-        a.append(linha)
-    return a
-```
-
-\pause
-
-\footnotesize
-
-Para a chamada `cria_matriz_nula(2, 3)`{.python}, qual é a ordem que as linhas são executas?
-
-\pause
-
-</div>
-<div class="column" width="42%">
-
-\small
-
-11 (`m = []`{.python}) \pause
-
-12 (`i = 0`{.python}) \pause
-
-13 (`linha = []`{.python}) \pause
-
-14 (`j = 0`{.python}), \pause 15 (`linha = [0]`{.python}), \pause 14 (`j = 1`{.python}), \pause 15 (`linha = [0, 0]`{.python}), \pause 14 (`j = 2`{.python}), \pause 15 (`linha = [0, 0, 0]`{.python}), \pause 14 (`j = 3`{.python}) \pause
-
-16 (`m = [[0, 0, 0]]`{.python}), \pause 12 (`i = 1`{.python}) \pause
-
-13 (`linha = []`{.python}) \pause
-
-14 (`j = 0`{.python}), \pause 15 (`linha = [0]`{.python}), \pause 14 (`j = 1`{.python}), \pause 15 (`linha = [0, 0]`{.python}), \pause 14 (`j = 2`{.python}), \pause 15 (`linha = [0, 0, 0]`{.python}), \pause 14 (`j = 3`{.python}) \pause
-
-
-16 (`m = [[0, 0, 0], [0, 0, 0]]`{.python}), \pause 12 (`i = 2`{.python}), \pause 17
-
-</div>
-</div>
-
-
-# Exemplo - matriz regular
-
-Uma matriz é regular quando todos as linhas têm a mesma quantidade de elementos. Projete uma função que verifique se uma matriz é regular.
-
-\pause
-
-Feito em sala.
-
-\pause
-
-Daqui para frente só vamos utilizar matrizes regulares.
-
-
-# Exemplo - quantidade de zeros
-
-Projete uma função que conte a quantidade de elementos nulos de uma matriz.
-
-\pause
-
-Feito em sala.
-
-
-# Exemplo - matriz transposta
-
-Projete uma função que crie a matriz transposta de uma data matriz.
-
-\pause
-
-Feito em sala.
-
+<!--
 
 # Conjuntos
 

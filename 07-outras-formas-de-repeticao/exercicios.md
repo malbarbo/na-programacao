@@ -68,9 +68,9 @@ urlcolor: Blue
 
 @) Projete uma função que receba como entrada uma string e um número natural $n$ e crie uma nova string repetindo a string de entrada $n$ vezes (suponha que o operador `*` não está disponível).
 
-@) Projete uma função que converta um número natural para uma string. Por exemplo, para o número 4561 a saída deve ser a string '4561' (suponha que a função `str` não está disponível). Dica: faça divisões sucessivas por 10.
+@) Projete uma função que converta um número natural para uma string. Por exemplo, para o número 4561 a saída deve ser a string `'4561'` (suponha que a função `str` não está disponível). Dica: faça divisões sucessivas por 10.
 
-@) Projete uma função que converta uma string para um número natural. Por exemplo, para a string '4561' a saída deve ser o número 4561 (suponha que a função `int` não está disponível).
+@) Projete uma função que converta uma string para um número natural. Por exemplo, para a string `'4561'` a saída deve ser o número 4561 (suponha que a função `int` não está disponível).
 
 @) Um número inteiro positivo $n$ é perfeito se a soma dos seus divisores, exceto ele mesmo, é igual a $n$. Por exemplo, $6$ é perfeito pois os divisores de $6$ (exceto ele mesmo) são $1, 2$ e $3$ e a soma $1 + 2 + 3$ é igual a $6$. O número $28$ também é perfeito, verifique você mesmo! Projete uma função que verifique se um número inteiro positivo é perfeito.
 

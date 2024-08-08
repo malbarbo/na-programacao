@@ -3,9 +3,9 @@ def eh_regular(a: list[list[int]]) -> bool:
     Produz True se *a* é uma matriz regular, isso é, todas as linhas tem a
     mesma quantidade de elementos.
 
-    Requer que len(a) > 0.
-
-    Exemplo
+    Exemplos
+    >>> eh_regular([])
+    True
     >>> eh_regular([[2]])
     True
     >>> eh_regular([[2], [4]])
@@ -25,7 +25,6 @@ def eh_regular(a: list[list[int]]) -> bool:
     >>> eh_regular([[2], [4], [7, 2]])
     False
     '''
-    assert len(a) > 0
     regular = True
     i = 1
     while i < len(a) and regular:
@@ -33,6 +32,3 @@ def eh_regular(a: list[list[int]]) -> bool:
             regular = False
         i = i + 1
     return regular
-
-
-
