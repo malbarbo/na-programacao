@@ -1010,7 +1010,7 @@ Usamos as operações que já conhecemos para acessar e modificar os elementos d
 
 ```python
 >>> a: list[list[int]] = [[1, 4, 2, 8], [-1, 0, 9, 1], [4, 7, -2, 0]]
->>> m[1]
+>>> a[1]
 [-1, 0, 9, 1]
 >>> a[1][2]
 9
