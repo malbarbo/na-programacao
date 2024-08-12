@@ -1207,13 +1207,115 @@ Vamos utilizar apenas matrizes regulares.
 
 # Exemplo - quantidade de zeros
 
-Projete uma função que conte a quantidade de elementos nulos de uma matriz.
+Projete uma função que conte a quantidade de elementos zeros de uma matriz.
+
+
+# Exemplo - quantidade de zeros
+
+<div class="columns">
+<div class="column" width="48%">
+\scriptsize
+
+```python
+def conta_zeros(m: list[list[int]]) -> int:
+    '''
+    Conta a quantidade de zeros da matriz *m*.
+
+    Exemplos
+    >>> conta_zeros([[1, 0, 7], [0, 1, 0]])
+    3
+    >>> conta_zeros([[1, 0], [1, 2], [0, 2]])
+    2
+    '''
+```
+
+\pause
+
+```python
+    num_zeros = 0
+    for linha in m:
+        for elem in linha:
+            if elem == 0:
+                num_zeros = num_zeros + 1
+    return num_zeros
+```
+
+\pause
+</div>
+<div class="column" width="48%">
+
+\scriptsize
+
+```python
+def conta_zeros(m: list[list[int]]) -> int:
+    '''
+    Conta a quantidade de zeros da matriz *m*.
+
+    Exemplos
+    >>> conta_zeros([[1, 0, 7], [0, 1, 0]])
+    3
+    >>> conta_zeros([[1, 0], [1, 2], [0, 2]])
+    2
+    '''
+```
+
+\pause
+
+```python
+    num_zeros = 0
+    for i in range(len(m)):
+        for j in range(len(m[i])):
+            if m[i][j] == 0:
+                num_zeros = num_zeros + 1
+    return num_zeros
+```
+
+</div>
+</div>
 
 
 # Exemplo - matriz transposta
 
 Projete uma função que crie a matriz transposta de uma data matriz.
 
+
+# Exemplo - matriz transposta
+
+<div class="columns">
+<div class="column" width="48%">
+\scriptsize
+
+```python
+def transposta(m: list[list[int]]) -> list[list[int]]:
+    '''
+    Cria a matriz transposta de *m*.
+
+    Requer que *m* seja regular.
+
+    Exemplos
+    >>> transposta([[4, 5, 1], [7, 8, 9]])
+    [[4, 7], [5, 8], [1, 9]]
+    >>> transposta([[4, 1], [7, 8], [2, 6], [5, 3]])
+    [[4, 7, 2, 5], [1, 8, 6, 3]]
+    '''
+```
+
+\pause
+
+```python
+    t = []
+    for j in range(len(m[0])):
+        coluna = []
+        for i in range(len(m)):
+            coluna.append(m[i][j])
+        t.append(coluna)
+    return t
+```
+
+</div>
+<div class="column" width="48%">
+</div>
+</div>
 
 # Repetição sem arranjos
 
@@ -1600,6 +1702,29 @@ def primo(n: int) -> bool:
 </div>
 </div>
 
+
+# Revisão
+
+Usamos instruções de repetição quando queremos computar algo de forma incremental. \pause
+
+Vimos as seguintes formas de repetição: \pause
+
+- Para cada \pause
+- Para cada no intervalo \pause
+- Enquanto \pause
+
+O para cada é mais restrito mas é mais simples de utilizar, o enquanto é mais genéricos mas é mais complicado, por isso, quando possível, preferimos utilizar o para cada. \pause
+
+Em algumas situações fazemos uma implementação inicial usando o para cada e depois, na revisão, mudamos para o enquanto se tivermos algum benefício, como a simplificação do código ou ganho de desempenho.
+
+
+# Revisão
+
+Durante a implementação de uma função usando a abordagem incremental, pode ser difícil responder as perguntas: como os valores são atualizados e qual é a condição de repetição. Nesses casos, podemos utilizar a estratégia de generalização. \pause
+
+Começamos com uma repetição física de código para entradas restritas (tamanho ou valores fixos) e depois transformamos a repetição física de código em uma repetição lógica. \pause
+
+Algumas funções, como a função `primo`, requerem diversas revisões. Nesses casos é importante balancear o tempo gasto nas revisões com o benefício que elas trazem.
 
 <!--
 
