@@ -138,7 +138,7 @@ Quando uma variável é passada como parâmetro para uma função, um apelido é
 
 \small
 
-Quando `soma1` inicia a execução, `a` e `x` referenciam a mesma célula de memória. A instrução `x = x + 1`{.python} gera um novo valor (`21`{.python}) que é armazenado em uma nova célula de memória e `x` passa a referenciar essa nova célula. `a` continua referenciado a mesma célula de memória.
+Quando `soma1` inicia a execução, `a` e `x` referenciam a mesma célula de memória. A instrução `x = x + 1`{.python} gera um **novo valor** (`21`{.python}) que é armazenado em uma **nova célula** de memória e `x` passa a referenciar essa nova célula. `a` continua referenciado a mesma célula de memória.
 
 \pause
 
@@ -162,7 +162,7 @@ Quando `soma1` inicia a execução, `a` e `x` referenciam a mesma célula de mem
 
 \pause
 
-Quando `concatena1` inicia a execução, `a` e `x` referenciam a mesma célula de memória. A instrução `x.append(1)`{.python} altera a célula de memória referenciada por `x` adicionando o valor `1`. `a` continua referenciado a mesma célula de memória (que foi alterada).
+Quando `concatena1` inicia a execução, `a` e `x` referenciam a mesma célula de memória. A instrução `x.append(1)`{.python} **altera a célula** de memória referenciada por `x` adicionando o valor `1`. `a` continua referenciado a mesma célula de memória (que foi alterada).
 
 </div>
 </div>
@@ -255,7 +255,7 @@ def invertem(lst: list[int]):
 
 # Exemplo: insere ordenado
 
-Dado uma lista ordenado em ordem não decrescente e um valor `v`, projete uma função que modifique a lista inserindo o valor `v` de maneira que o arranjo continue em ordem. \pause
+Dado uma lista de números em em ordem não decrescente e um valor `v`, projete uma função que modifique a lista inserindo o valor `v` de maneira que o arranjo continue em ordem. \pause
 
 Exemplo feito em sala.
 
