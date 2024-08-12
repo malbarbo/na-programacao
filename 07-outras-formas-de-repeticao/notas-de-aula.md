@@ -998,7 +998,7 @@ em Python fazemos \pause
 \small
 
 ```python
->>> m: list[list[int]] = [[1, 4, 2, 8], [-1, 0, 9, 1], [4, 7, -2, 0]]
+>>> a: list[list[int]] = [[1, 4, 2, 8], [-1, 0, 9, 1], [4, 7, -2, 0]]
 ```
 
 
@@ -1009,17 +1009,17 @@ Usamos as operações que já conhecemos para acessar e modificar os elementos d
 \small
 
 ```python
->>> m: list[list[int]] = [[1, 4, 2, 8], [-1, 0, 9, 1], [4, 7, -2, 0]]
+>>> a: list[list[int]] = [[1, 4, 2, 8], [-1, 0, 9, 1], [4, 7, -2, 0]]
 >>> m[1]
 [-1, 0, 9, 1]
->>> m[1][2]
+>>> a[1][2]
 9
->>> len(m)
+>>> len(a)
 3
->>> len(m[0])
+>>> len(a[0])
 4
->>> m[2][1] = 0
->>> m
+>>> a[2][1] = 0
+>>> a
 [[1, 4, 2, 8], [-1, 0, 9, 1], [4, 0, -2, 0]]
 ```
 
@@ -1105,7 +1105,7 @@ Para a chamada `cria_matriz_nula(2, 3)`{.python}, qual é a ordem que as linhas 
 
 \footnotesize
 
-11 (`m = []`{.python}) \pause
+11 (`a = []`{.python}) \pause
 
 12 (`i = 0`{.python}) \pause
 
@@ -1113,14 +1113,14 @@ Para a chamada `cria_matriz_nula(2, 3)`{.python}, qual é a ordem que as linhas 
 
 14 (`j = 0`{.python}), \pause 15 (`linha = [0]`{.python}), \pause 14 (`j = 1`{.python}), \pause 15 (`linha = [0, 0]`{.python}), \pause 14 (`j = 2`{.python}), \pause 15 (`linha = [0, 0, 0]`{.python}), \pause 14 (`j = 3`{.python}) \pause
 
-16 (`m = [[0, 0, 0]]`{.python}), \pause 12 (`i = 1`{.python}) \pause
+16 (`a = [[0, 0, 0]]`{.python}), \pause 12 (`i = 1`{.python}) \pause
 
 13 (`linha = []`{.python}) \pause
 
 14 (`j = 0`{.python}), \pause 15 (`linha = [0]`{.python}), \pause 14 (`j = 1`{.python}), \pause 15 (`linha = [0, 0]`{.python}), \pause 14 (`j = 2`{.python}), \pause 15 (`linha = [0, 0, 0]`{.python}), \pause 14 (`j = 3`{.python}) \pause
 
 
-16 (`m = [[0, 0, 0], [0, 0, 0]]`{.python}), \pause 12 (`i = 2`{.python}), \pause 17
+16 (`a = [[0, 0, 0], [0, 0, 0]]`{.python}), \pause 12 (`i = 2`{.python}), \pause 17
 
 </div>
 </div>
@@ -1217,7 +1217,7 @@ Projete uma função que conte a quantidade de elementos zeros de uma matriz.
 \scriptsize
 
 ```python
-def conta_zeros(m: list[list[int]]) -> int:
+def conta_zeros(a: list[list[int]]) -> int:
     '''
     Conta a quantidade de zeros da matriz *m*.
 
@@ -1233,7 +1233,7 @@ def conta_zeros(m: list[list[int]]) -> int:
 
 ```python
     num_zeros = 0
-    for linha in m:
+    for linha in a:
         for elem in linha:
             if elem == 0:
                 num_zeros = num_zeros + 1
@@ -1247,7 +1247,7 @@ def conta_zeros(m: list[list[int]]) -> int:
 \scriptsize
 
 ```python
-def conta_zeros(m: list[list[int]]) -> int:
+def conta_zeros(a: list[list[int]]) -> int:
     '''
     Conta a quantidade de zeros da matriz *m*.
 
@@ -1263,9 +1263,9 @@ def conta_zeros(m: list[list[int]]) -> int:
 
 ```python
     num_zeros = 0
-    for i in range(len(m)):
-        for j in range(len(m[i])):
-            if m[i][j] == 0:
+    for i in range(len(a)):
+        for j in range(len(a[i])):
+            if a[i][j] == 0:
                 num_zeros = num_zeros + 1
     return num_zeros
 ```
@@ -1286,7 +1286,7 @@ Projete uma função que crie a matriz transposta de uma data matriz.
 \scriptsize
 
 ```python
-def transposta(m: list[list[int]]) -> list[list[int]]:
+def transposta(a: list[list[int]]) -> list[list[int]]:
     '''
     Cria a matriz transposta de *m*.
 
@@ -1304,10 +1304,10 @@ def transposta(m: list[list[int]]) -> list[list[int]]:
 
 ```python
     t = []
-    for j in range(len(m[0])):
+    for j in range(len(a[0])):
         coluna = []
-        for i in range(len(m)):
-            coluna.append(m[i][j])
+        for i in range(len(a)):
+            coluna.append(a[i][j])
         t.append(coluna)
     return t
 ```

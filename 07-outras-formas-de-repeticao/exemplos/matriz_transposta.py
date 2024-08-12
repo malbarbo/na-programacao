@@ -1,4 +1,4 @@
-def transposta(m: list[list[int]]) -> list[list[int]]:
+def transposta(a: list[list[int]]) -> list[list[int]]:
     '''
     Cria a matriz transposta de *m*.
 
@@ -11,9 +11,9 @@ def transposta(m: list[list[int]]) -> list[list[int]]:
     [[4, 7, 2, 5], [1, 8, 6, 3]]
     '''
     t = []
-    for j in range(len(m[0])):
+    for j in range(len(a[0])):
         coluna = []
-        for i in range(len(m)):
-            coluna.append(m[i][j])
+        for i in range(len(a)):
+            coluna.append(a[i][j])
         t.append(coluna)
     return t
