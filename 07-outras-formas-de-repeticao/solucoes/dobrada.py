@@ -19,10 +19,10 @@ def dobrada(lst: list[int]) -> bool:
     False
     '''
     dobrada = len(lst) % 2 == 0
-    metade = len(lst) // 2
+    meio = len(lst) // 2
     i = 0
     while i < metade and dobrada:
-        if lst[i] != lst[i + metade]:
+        if lst[i] != lst[meio + i]:
             dobrada = False
         i = i + 1
     return dobrada
