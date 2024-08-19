@@ -1,17 +1,17 @@
-def remove_indice(lst: list[int], i: int) -> list[int]:
+def remove_pos(lst: list[int], i: int) -> list[int]:
     '''
     Produz uma nova lista removendo o elemento que está na posição *i* de *lst*.
 
     Requer que 0 <= i < len(lst).
 
     Exemplos
-    >>> remove_indice([3], 0)
+    >>> remove_pos([3], 0)
     []
-    >>> remove_indice([3, 5, 1], 0)
+    >>> remove_pos([3, 5, 1], 0)
     [5, 1]
-    >>> remove_indice([3, 5, 1], 1)
+    >>> remove_pos([3, 5, 1], 1)
     [3, 1]
-    >>> remove_indice([3, 5, 1], 2)
+    >>> remove_pos([3, 5, 1], 2)
     [3, 5]
     '''
     assert 0 <= i < len(lst)
