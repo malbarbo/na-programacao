@@ -1,7 +1,11 @@
 ---
 # vim: set spell spelllang=pt_br:
-# TODO: adicionar imagens mostrando a modificação da memória
 title: Memória e passagem de parâmetros
+# TODO: adicionar imagens mostrando a modificação da memória
+# TODO: mostrar como as funções foram projetadas
+# TODO: adicionar mais exemplos
+# TODO: falar mais uma vez de valores mutáveis e imutáveis
+# TODO: exemplos com estruturas
 ---
 
 # Introdução
@@ -52,7 +56,7 @@ Nos programas que fizemos, em que momento o Python desaloca memória? \pause
 
 Vimos anteriormente que uma variável em Python é uma referência para uma célula de memória que armazena um valor. \pause
 
-Agora vamos explorar esse fato com mais detalhes e alguns resultados que podem parecer surpreendentes.
+Agora vamos explorar esse fato com mais detalhes e observar alguns resultados que podem parecer surpreendentes.
 
 
 # Variáveis
@@ -109,7 +113,15 @@ Qual é o valor de `x` e `y` após a execução do seguinte trecho de código?
 
 No exemplo da esquerda, após a execução de `y = x`, `x` e `y` referenciam a mesma célula de memória (que armazena o valor `10`{.python}). \pause A operação `y + 3`{.python} **cria um novo** valor que é armazenado em uma nova célula, que passa a ser referencia por `y` após `y = y + 3`. \pause
 
+Veja [esse](https://pythontutor.com/render.html#code=x%20%3D%2010%0Ay%20%3D%20x%0Ay%20%3D%20y%20%2B%203&cumulative=false&curInstr=0&heapPrimitives=true&mode=display&origin=opt-frontend.js&py=311&rawInputLstJSON=%5B%5D&textReferences=false) processo no Python Tutor.
+
+\pause
+
 No exemplo da direita, após a execução de `y = x`, `x` e `y` referenciam a mesma célula de memória (que armazena o valor `[5, 1]`{.python}). \pause A operação `y[1] = 3`{.python} **altera** o valor armazenado na célula de memória para `[5, 3]`{.python}. \pause
+
+Veja [esse](https://pythontutor.com/render.html#code=x%20%3D%20%5B5,%207%5D%0Ay%20%3D%20x%0Ay%5B1%5D%20%3D%203&cumulative=false&curInstr=0&heapPrimitives=true&mode=display&origin=opt-frontend.js&py=311&rawInputLstJSON=%5B%5D&textReferences=false) processo no Python Tutor.
+
+\pause
 
 Quando uma célula de memória pode ser acessada usando mais que uma variável (nome), dizemos que existem **apelidos** para a célula de memória.
 
@@ -138,7 +150,7 @@ Quando uma variável é passada como parâmetro para uma função, um apelido é
 
 \small
 
-Quando `soma1` inicia a execução, `a` e `x` referenciam a mesma célula de memória. A instrução `x = x + 1`{.python} gera um **novo valor** (`21`{.python}) que é armazenado em uma **nova célula** de memória e `x` passa a referenciar essa nova célula. `a` continua referenciado a mesma célula de memória.
+Quando `soma1` [inicia](https://pythontutor.com/render.html#code=def%20soma1%28x%3A%20int%29%3A%0A%20%20%20%20x%20%3D%20x%20%2B%201%0A%0Aa%20%3D%2020%0Asoma1%28a%29%0Aprint%28a%29&cumulative=false&curInstr=3&heapPrimitives=true&mode=display&origin=opt-frontend.js&py=311&rawInputLstJSON=%5B%5D&textReferences=false) a execução, `a` e `x` referenciam a mesma célula de memória. A instrução `x = x + 1`{.python} gera um **novo valor** (`21`{.python}) que é armazenado em uma **nova célula** de memória e `x` passa a referenciar essa nova célula. `a` continua referenciado a mesma célula de memória.
 
 \pause
 
@@ -162,7 +174,7 @@ Quando `soma1` inicia a execução, `a` e `x` referenciam a mesma célula de mem
 
 \pause
 
-Quando `concatena1` inicia a execução, `a` e `x` referenciam a mesma célula de memória. A instrução `x.append(1)`{.python} **altera a célula** de memória referenciada por `x` adicionando o valor `1`. `a` continua referenciado a mesma célula de memória (que foi alterada).
+Quando `concatena1` [inicia](https://pythontutor.com/render.html#code=def%20concatena1%28x%3A%20list%5Bint%5D%29%3A%0A%20%20%20%20x.append%281%29%0A%0Aa%20%3D%20%5B5,%204%5D%0Aconcatena1%28a%29%0Aprint%28a%29&cumulative=false&curInstr=4&heapPrimitives=true&mode=display&origin=opt-frontend.js&py=311&rawInputLstJSON=%5B%5D&textReferences=false) a execução, `a` e `x` referenciam a mesma célula de memória. A instrução `x.append(1)`{.python} **altera a célula** de memória referenciada por `x` adicionando o valor `1`. `a` continua referenciado a mesma célula de memória (que foi alterada).
 
 </div>
 </div>
@@ -190,13 +202,9 @@ Em geral, criar uma nova lista é mais fácil, mas acarreta no uso extra de mem�
 Se a lista na ordem inicial não é necessária após a chamada da função, então podemos modificar a própria lista, o que pode ser mais complicado, mas evita o uso de memória extra.
 
 
-# Projeto de funções
+# Exemplo: inverte
 
-Como projetar funções que modificam os seu argumentos? \pause
-
-Generalizando exemplos concretos. \pause
-
-O exemplo a seguir foi desenvolvido em sala.
+Vamos ver primeiro projeto da função que cria uma nova lista.
 
 
 # Exemplo: inverte
@@ -208,19 +216,28 @@ O exemplo a seguir foi desenvolvido em sala.
 ```python
 def inverte(lst: list[int]) -> list[int]:
     '''
-    Cria uma nova lista invertendo os elementos
-    de *lst*, isto é, o último aparece como
-    primeiro, o penúltimo com segundo, e assim
-    por diante.
+    Cria uma nova lista com os elementos de
+    *lst* em ordem inversa, isto é, o último
+    aparece como primeiro, o penúltimo com
+    segundo, e assim por diante.
+
     Exemplos
+    >>> inverte([])
+    []
+    >>> inverte([8])
+    [8]
     >>> inverte([8, 6, 1, 4, 5])
     [5, 4, 1, 5, 8]
     '''
-    r = []
-    for i in range(len(lst)):
-        r.append(lst[len(lst) - i - 1])
-    return r
 ```
+
+\pause
+
+\small
+
+Como implementar a função? \pause Fazendo o código para uma lista de tamanho fixo e depois generalizando.
+
+\pause
 
 </div>
 <div class="column" width="48%">
@@ -228,26 +245,158 @@ def inverte(lst: list[int]) -> list[int]:
 \scriptsize
 
 ```python
+    r = []
+    r.append(lst[3])
+    r.append(lst[2])
+    r.append(lst[1])
+    r.append(lst[0])
+    return 0
+```
+
+\pause
+
+\footnotesize
+
+Transformando em repetição lógica: \pause
+
+\scriptsize
+
+```python
+    r = []
+    for i in range(4):
+        r.append(lst[4 - i - 1])
+    return r
+```
+
+\pause
+
+\footnotesize
+
+Generalizando para qualquer tamanho: \pause
+
+\scriptsize
+
+```python
+    r = []
+    for i in range(len(lst)):
+        r.append(lst[len(lst) - i - 1])
+    return r
+```
+
+</div>
+</div>
+
+
+# Exemplo: inverte
+
+Agora vamos projetar uma função que altera uma lista invertendo a ordem dos elementos.
+
+
+# Exemplo: inverte
+
+<div class="columns">
+<div class="column" width="48%">
+\scriptsize
+
+```python
 def invertem(lst: list[int]):
     '''
-    Modifica *lst* invertendo a ordem dos
-    elementos, isto é, colocando o último
-    elemento na segunda posição, ...
+    Inverte a ordem dos elementos de *lst*,
+    isto é, colocando o último elemento na
+    primeira posção, o penúltimo na segunda
+    posição, e assim por diante.
+
+    Exemplos
+    >>> x = []
+    >>> invertem(x)
+    >>> x
+    []
+    >>> x = [8, 6, 1, 4, 5]
+    >>> invertem(x)
+    >>> x
+    [5, 4, 1, 5, 8]
+    '''
+```
+
+\pause
+
+
+</div>
+<div class="column" width="48%">
+
+\small
+
+De que forma a especificação dessa função é diferente das demais? \pause
+
+Não tem tipo de saída. \pause Por que? \pause A função não vai produzir uma saída e sim o efeito colateral de modificar a lista. \pause
+
+O propósito enfatiza que a lista é modificada. \pause
+
+Os exemplos são especificados em três partes: inicialização dos parâmetros, chamada da função e verificação do efeito.
+</div>
+</div>
+
+
+# Exemplo: inverte
+
+<div class="columns">
+<div class="column" width="48%">
+\scriptsize
+
+```python
+def invertem(lst: list[int]):
+    '''
+    Inverte a ordem dos elementos de *lst*,
+    isto é, colocando o último elemento na
+    primeira posção, o penúltimo na segunda
+    posição, e assim por diante.
+
     Exemplos
     >>> x = [8, 6, 1, 4, 5]
     >>> invertem(x)
     >>> x
     [5, 4, 1, 5, 8]
     '''
-    i = 0
-    j = len(lst) - 1
-    while i < j:
-        t = lst[i]
-        lst[i] = lst[j]
-        lst[j] = t
-        i = i + 1
-        j = j - 1
 ```
+
+\small
+
+Como implementar a função? \pause Fazendo o código para uma lista de tamanho fixo e depois generalizando.
+
+\pause
+
+</div>
+<div class="column" width="48%">
+
+\scriptsize
+
+```python
+    assert len(lst) == 4
+    # troca lst[0] <-> lst[3]
+    t = lst[0]
+    lst[0] = lst[3]
+    lst[3] = t
+    # troca lst[1] <-> lst[2]
+    t = lst[1]
+    lst[1] = lst[2]
+    lst[2] = t
+```
+
+\small
+
+\pause
+
+Repetição lógica e generalização:
+
+\scriptsize
+
+```python
+    for i in range(len(lst) // 2):
+        t = lst[i]
+        lst[i] = lst[len(lst) - i - 1]
+        lst[len(lst) - i - 1] = t
+```
+
 
 </div>
 </div>
@@ -293,6 +442,11 @@ def insere_ordenado(lst: list[int], v: int):
 
 </div>
 <div class="column" width="48%">
+
+Ideia: colocar `v` no final e ir trocando de lugar com o antecessor até chegar no "lugar certo".
+
+\pause
+
 \scriptsize
 
 ```python
@@ -300,7 +454,7 @@ def insere_ordenado(lst: list[int], v: int):
     lst.append(v)
     i = len(lst) - 1
     while i > 0 and lst[i - 1] > lst[i]:
-        # troca lst[i] com lst[i - 1]
+        # troca lst[i] <-> lst[i - 1]
         t = lst[i]
         lst[i] = lst[i - 1]
         lst[i - 1] = t
@@ -310,111 +464,16 @@ def insere_ordenado(lst: list[int], v: int):
 </div>
 
 
-<!--
+# Revisão
 
-# Especificação
+Em Python as variáveis são referências para células de memória que armazenam valores. \pause
 
-\scriptsize
+Apelidos são variáveis que referenciam a mesma célula de memória. \pause
 
-```cpp
-// Insere v em valores de maneira que valores continue em ordem.
-// Requer que valores esteja ordenado em ordem não decrescente.
-void insere_ordenado(vector<int> &valores, int v) { }
+Quando atribuímos uma variável para outra e quando passamos uma variável como parâmetro para uma função, estamos criando um apelido. \pause
 
-examples {
-    vector<int> valores = {};
-    insere_ordenado(valores, 10);
-    check_expect(valores, (vector<int> {10}));
+Usamos apelidos (passagem de parâmetro por referência) no projeto de funções que alteram os argumentos (efeito colateral). \pause
 
-    insere_ordenado(valores, 1);
-    check_expect(valores, (vector<int> {1, 10}));
+Escrevemos o propósito das funções destacando que os argumentos são alterados. \pause
 
-    insere_ordenado(valores, 2);
-    check_expect(valores, (vector<int> {1, 2, 10}));
-
-    insere_ordenado(valores, 12);
-    check_expect(valores, (vector<int> {1, 2, 10, 12}));
-
-    insere_ordenado(valores, 10);
-    check_expect(valores, (vector<int> {1, 2, 10, 10, 12})); }
-```
-
-
-# Exemplo
-
-<div class="columns">
-<div class="column" width="48%">
-\scriptsize
-
-```cpp
-vector<int> valores = {1, 2, 10, 12};
-int v = 9;
-
-valores.push_back(v);
-// valores = {1, 2, 10, 12, 9}
-```
-
-\pause
-
-```cpp
-int t = valores[4];
-valores[4] = valores[3];
-valores[3] = t;
-// valores = {1, 2, 10, 9, 12}
-```
-
-\pause
-
-```cpp
-int t = valores[3];
-valores[3] = valores[2];
-valores[2] = t;
-// valores = {1, 2, 9, 10, 12}
-```
-</div>
-<div class="column" width="48%">
-\pause
-Quais variáveis vamos precisar para o laço? \pause O índice `i`{.cpp} do elemento que está fora de ordem. \pause
-
-Como as variáveis são inicializadas? \pause `i = valores.size() - 1`{.cpp}. \pause
-
-Qual a condição para o laço continuar a execução? \pause `i > 0`{.cpp} e `valores[i - 1] > valores[i]`{.cpp}. \pause
-
-O que é feito a cada iteração? O elemento na posição `i`{.cpp} é trocado de lugar com o elemento na posição `i - 1`{.cpp} e `i`{.cpp} é decrementado.
-</div>
-</div>
-
-
-# Implementação
-
-\scriptsize
-
-```cpp
-void insere_ordenado(vector<int> &valores, int v) {
-    valores.push_back(v);
-    int i = valores.size() - 1;
-    while (i > 0 && valores[i - 1] > valores[i]) {
-        int t = valores[i];
-        valores[i] = valores[i - 1];
-        valores[i - 1] = t;
-        i = i - 1;
-    }
-}
-```
-
-\pause
-
-Podemos melhorar? \pause
-
-```cpp
-void insere_ordenado(vector<int> &valores, int v) {
-    valores.push_back(v);
-    for (int i = valores.size() - 1; i > 0 && valores[i - 1] > valores[i]; i = i - 1) {
-        int t = valores[i];
-        valores[i] = valores[i - 1];
-        valores[i - 1] = t;
-    }
-}
-```
-
--->
+Os exemplos são especificados em três partes: inicialização dos parâmetros, chamada da função e verificação do efeito.

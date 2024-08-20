@@ -40,12 +40,16 @@ def invertem(lst: list[int]):
     >>> x
     [8, 6, 1, 4, 5]
     '''
-    i = 0
-    j = len(lst) - 1
-    while i < j:
-        # troca lst[i] com lst[j]
+    for i in range(len(lst) // 2):
         t = lst[i]
-        lst[i] = lst[j]
-        lst[j] = t
-        i = i + 1
-        j = j - 1
+        lst[i] = lst[len(lst) - i - 1]
+        lst[len(lst) - i - 1] = t
+    # ou
+    # i = 0
+    # j = len(lst) - 1
+    # while i < j:
+    #     t = lst[i]
+    #     lst[i] = lst[j]
+    #     lst[j] = t
+    #     i = i + 1
+    #     j = j - 1

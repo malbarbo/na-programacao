@@ -10,6 +10,12 @@ urlcolor: Blue
 
 # Começando
 
+#) Quais são as duas principais estratégias de gerência de memória? Quais as vantagens e desvantagens de cada uma?
+
+#) Quais são as duas operações básicas de gerência de memória?
+
+
+
 # Praticando
 
 #) Projete uma função que some um valor `n` a cada elemento de uma lista de números.

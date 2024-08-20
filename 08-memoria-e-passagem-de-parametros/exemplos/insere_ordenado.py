@@ -26,7 +26,7 @@ def insere_ordenado(lst: list[int], v: int):
     lst.append(v)
     i = len(lst) - 1
     while i > 0 and lst[i - 1] > lst[i]:
-        # troca lst[i] com lst[i - 1]
+        # troca lst[i] <-> lst[i - 1]
         t = lst[i]
         lst[i] = lst[i - 1]
         lst[i - 1] = t
