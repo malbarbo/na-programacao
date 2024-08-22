@@ -4,6 +4,7 @@ title: |
        | Fundamentos de Algoritmos
        | Memória e passagem de parâmetros
 urlcolor: Blue
+# TODO: adicionar problemas
 ---
 
 **\color{red}Lembre-se** de seguir o processo de projeto de funções e de usar o `mypy` e o `doctest` na etapa de verificação.

@@ -4,7 +4,12 @@ title: |
        | Fundamentos de Algoritmos
        | Recursividade
 urlcolor: Blue
+# TODO: adicionar exercícios para modificar a lista
+# TODO: adicionar problemas
+# TODO: adicionar mais soluções
 ---
+
+**\color{red}Lembre-se** de seguir o processo de projeto de funções e de usar o `mypy` e o `doctest` na etapa de verificação.
 
 # Começando
 
