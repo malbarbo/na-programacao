@@ -5,7 +5,7 @@ title: Recursividade
 
 # Introdução
 
-Nós vimos como a definição de tipos de dados adequadas é importante no projeto de programas. \pause
+Nós vimos como a definição adequada de tipos de dados é importante no projeto de programas. \pause
 
 Agora vamos explorar como a forma da definição do tipo de dado pode nos ajudar a escrever o corpo das funções.
 
@@ -28,7 +28,7 @@ Como é possível definir uma coisa em termos dela mesmo? \pause
 
 Este tipo de definição é chamada de **definição recursiva** (ou definição indutiva) e é muito utilizada na computação e matemática. \pause
 
-Para ser válida, uma definição recursiva precisa de\pause
+Para estar bem formada, uma definição recursiva precisa de\pause
 
 - Pelo menos um caso base (que não depende da própria definição) \pause
 - Pelo menos um caso com autorreferência (que depende da própria definição para elementos "menores") \pause
@@ -38,20 +38,10 @@ A partir do(s) caso(s) base, os outros elementos são definidos de forma indutiv
 
 # Definições recursivas
 
-<div class="columns">
-<div class="column" width="45%">
-
-\small
-
 Definição de número natural:
 
 - $0$ é um número natural; \pause
 - Se $n$ é um número natural, então $n + 1$ é um número natural. \pause
-
-</div>
-<div class="column" width="48%">
-
-\small
 
 O número 4 é natural? \pause Vamos verificar \pause
 
@@ -61,24 +51,19 @@ O número 4 é natural? \pause Vamos verificar \pause
 - Como 1 não é zero, pare ele ser natural, o 0 tem que ser natural \pause
 - Por definição, 0 é natural \pause
 
-Portanto, o 4 é natural. \pause
-
-Note que foi preciso decompor o 4 até chegar no caso base.
-
-</div>
-</div>
+Portanto, o 4 é natural. \pause Note que foi preciso decompor o 4 até chegar no caso base.
 
 
-# Funções
+# Funções recursivas
 
 Assim como temos definições recursivas, também podemos ter funções recursivas. \pause
 
-Uma **função recursiva** é aquela que chama a si mesmo. \pause
+Uma **função recursiva** é aquela que chama a si mesmo de forma direta ou indireta. \pause
 
 Assim como para definições recursivas, para estar bem formada uma função recursiva precisa de \pause
 
 - Pelo menos um caso base (o valor da função é calculado diretamente) \pause
-- Pelo menos um caso com chamada recursiva (depende do valor da função para entradas menores)
+- Pelo menos um caso com chamada recursiva (depende do valor da função para outras entradas)
 
 
 # Projeto de funções recursivas
@@ -87,7 +72,7 @@ Como projetar funções recursivas? \pause
 
 Existem várias técnicas de projeto de funções recursivas, nós vamos explorar uma delas, chamada de diminuição e conquista. \pause
 
-A ideia é diminuir o tamanho do problema original, conquistar o problema menor -- diretamente ou recursivamente, e estender a solução do problema menor para o problema original. \pause
+A ideia é diminuir o tamanho do problema original, conquistar o problema menor -- diretamente ou recursivamente -- e estender a solução do problema menor para o problema original. \pause
 
 No início, para diminuir o problema original, nós vamos explorar a relação entre autorreferência na definição do tipo de dado e a chamada recursiva na função que processa o tipo de dado.
 
@@ -415,177 +400,6 @@ def potencia(a: float, n: int) -> float:
 </div>
 
 
-# Exemplo: fatorial
-
-Projete uma função recursiva que calcule o fatorial de $n$, isto é, o produto dos $n$ primeiros números naturais maiores que $0$.
-
-
-# Exemplo: fatorial
-
-<div class="columns">
-<div class="column" width="45%">
-\scriptsize
-
-```python
-def fatorial(n: int) -> int:
-    '''
-    Calcula o fatorial de *n*, isto é,
-    o produto dos *n* primeiros números
-    naturais maiores que 0.
-    Requer que n >= 0.
-    Exemplos
-    >>> fatorial(0)
-    1
-    >>> fatorial(1)
-    1
-    >>> fatorial(2)
-    2
-    >>> fatorial(3)
-    6
-    >>> fatorial(4)
-    24
-    '''
-    return 0
-```
-
-</div>
-<div class="column" width="52%">
-\pause
-
-\small
-Como a definição de número natural tem dois casos, vamos começar a implementação da função com dois casos. \pause
-
-\scriptsize
-
-```python
-if n == 0:
-    ...
-else:
-    n ...
-```
-
-\pause
-\small
-Como o segundo caso da definição de número natural tem uma autorreferência, vamos colocar uma chamada recursiva no segundo caso da função. \pause
-
-\scriptsize
-
-```python
-if n == 0:
-    ...
-else:
-    n ... fatorial(n - 1)
-```
-
-</div>
-</div>
-
-
-# Exemplo: fatorial
-
-<div class="columns">
-<div class="column" width="48%">
-\scriptsize
-
-```python
-def fatorial(n: int) -> int:
-    '''
-    Calcula o fatorial de *n*, isto é,
-    o produto dos *n* primeiros números
-    naturais maiores que 0.
-    Requer que n >= 0.
-    Exemplos
-    >>> fatorial(0)
-    1
-    >>> fatorial(1)
-    1
-    >>> fatorial(2)
-    2
-    >>> fatorial(3)
-    6
-    >>> fatorial(4)
-    24
-    '''
-```
-
-</div>
-<div class="column" width="48%">
-
-\scriptsize
-
-```python
-def fatorial(n: int) -> int:
-    if n == 0:
-        # Qual é o fatorial de 0,
-        # isto é, o produto dos
-        # primeiros n == 0
-        # naturais maiores que 0?
-        fat = ...
-    else:
-        # Tendo o fatorial de n - 1
-        # e o natural n, como obter
-        # o fatorial de n?
-        fat = n ... fatorial(n - 1)
-    return fat
-```
-
-</div>
-</div>
-
-
-# Exemplo: fatorial
-
-<div class="columns">
-<div class="column" width="48%">
-\scriptsize
-
-```python
-def fatorial(n: int) -> int:
-    '''
-    Calcula o fatorial de *n*, isto é,
-    o produto dos *n* primeiros números
-    naturais maiores que 0.
-    Requer que n >= 0.
-    Exemplos
-    >>> fatorial(0)
-    1
-    >>> fatorial(1)
-    1
-    >>> fatorial(2)
-    2
-    >>> fatorial(3)
-    6
-    >>> fatorial(4)
-    24
-    '''
-```
-
-</div>
-<div class="column" width="48%">
-
-\scriptsize
-
-```python
-def fatorial(n: int) -> int:
-    if n == 0:
-        # Qual é o fatorial de 0,
-        # isto é, o produto dos
-        # primeiros n == 0
-        # naturais maiores que 0?
-        fat = 1
-    else:
-        # Tendo o fatorial de n - 1
-        # e o natural n, como obter
-        # o fatorial de n?
-        fat = n * fatorial(n - 1)
-    return fat
-```
-
-</div>
-</div>
-
-
-
 # Aspectos importantes no projeto de funções recursivas
 
 Quando estamos projetando funções recursivas, temos que considerar dois aspectos: \pause
@@ -609,9 +423,7 @@ Uma lista é:
 
 Assim como a definição de número natural, essa definição de lista também tem autorreferência (é indutiva). \pause
 
-Portanto, para implementar uma função que processa uma lista, podemos usar a mesma estratégia que usamos para implementar funções recursivas que processam números naturais. \pause
-
-Vamos ver alguns exemplos.
+Portanto, para implementar uma função que processa uma lista, podemos usar a mesma estratégia que usamos para implementar funções recursivas que processam números naturais.
 
 
 # Exemplo: soma
@@ -859,10 +671,10 @@ def freq(v: int, lst: list[int]) -> int:
     else:
         # Sabendo a quantidade de vezes
         # que v aparece em lst[1:],
-        # como determinamos a quantidade
+        # como determinar a quantidade
         # de vezes que v aparece em lst?
         cont = ...
-        v... lst[0] ... freq(v, lst[1:])
+        v ... lst[0] ... freq(v, lst[1:])
     return cont
 ```
 
@@ -903,11 +715,11 @@ def freq(v: int, lst: list[int]) -> int:
     if lst == []:
         # Quantas vezes v aparece
         # na lista vazia?
-        cont = ...
+        cont = 0
     else:
         # Sabendo a quantidade de vezes
         # que v aparece em lst[1:],
-        # como determinamos a quantidade
+        # como determinar a quantidade
         # de vezes que v aparece em lst?
         if v == lst[0]:
             cont = 1 + freq(v, lst[1:])
@@ -923,6 +735,179 @@ def freq(v: int, lst: list[int]) -> int:
 # Exemplo: ordem
 
 Projete uma função recursiva que verifique se os elementos de uma lista estão em ordem não decrescente.
+
+
+# Exemplo: ordem
+
+<div class="columns">
+<div class="column" width="48%">
+\scriptsize
+
+```python
+def em_ordem(lst: list[int]) -> bool:
+    '''
+    Produz True se os elementos de *lst* estão
+    em ordem não decrescente, False caso
+    contrário.
+    Exemplos
+    >>> em_ordem([])
+    True
+    >>> em_ordem([3])
+    True
+    >>> em_ordem([3, 4])
+    True
+    >>> em_ordem([4, 3])
+    False
+    >>> em_ordem([3, 3, 5, 6, 6])
+    True
+    >>> em_ordem([3, 3, 5, 4, 6])
+    False
+    '''
+    return False
+```
+</div>
+<div class="column" width="48%">
+\pause
+
+\small
+Como a definição de lista tem dois casos, vamos começar a implementação da função com dois casos. \pause
+
+\scriptsize
+
+```python
+if lst == []:
+    ...
+else:
+    # as partes de lst
+    lst[0] ... lst[1:]
+```
+
+\pause
+\small
+Como o segundo caso da definição de lista tem uma autorreferência, isto é, `lst[1:]`{.python} é uma lista, vamos fazer uma chamada recursiva para `lst[1:]`{.python}. \pause
+
+\scriptsize
+
+```python
+else:
+    lst[0] ... em_ordem(lst[1:])
+```
+</div>
+</div>
+
+
+# Exemplo: ordem
+
+<div class="columns">
+<div class="column" width="48%">
+\scriptsize
+
+```python
+def em_ordem(lst: list[int]) -> bool:
+    '''
+    Produz True se os elementos de *lst* estão
+    em ordem não decrescente, False caso
+    contrário.
+    Exemplos
+    >>> em_ordem([])
+    True
+    >>> em_ordem([3])
+    True
+    >>> em_ordem([3, 4])
+    True
+    >>> em_ordem([4, 3])
+    False
+    >>> em_ordem([3, 3, 5, 6, 6])
+    True
+    >>> em_ordem([3, 3, 5, 4, 6])
+    False
+    '''
+```
+</div>
+<div class="column" width="48%">
+
+\scriptsize
+
+```python
+if lst == []:
+    # Os elementos de uma lista
+    # vazia estão em ordem?
+    ordem = ...
+else:
+    # Sabendo se os elementos de lst[1:]
+    # estão em ordem, como determinar
+    # se lst está em ordem?
+    ordem = ...
+    lst[0] ... em_ordem(lst[1:])
+return ordem
+```
+</div>
+</div>
+
+
+# Exemplo: ordem
+
+<div class="columns">
+<div class="column" width="48%">
+\scriptsize
+
+```python
+def em_ordem(lst: list[int]) -> bool:
+    '''
+    Produz True se os elementos de *lst* estão
+    em ordem não decrescente, False caso
+    contrário.
+    Exemplos
+    >>> em_ordem([])
+    True
+    >>> em_ordem([3])
+    True
+    >>> em_ordem([3, 4])
+    True
+    >>> em_ordem([4, 3])
+    False
+    >>> em_ordem([3, 3, 5, 6, 6])
+    True
+    >>> em_ordem([3, 3, 5, 4, 6])
+    False
+    '''
+```
+</div>
+<div class="column" width="48%">
+
+\scriptsize
+
+```python
+if lst == []:
+    # Os elementos de uma lista
+    # vazia estão em ordem?
+    ordem = True
+else:
+    # Sabendo se os elementos de lst[1:]
+    # estão em ordem, como determinar
+    # se lst está em ordem?
+    if len(lst) == 1:
+        ordem = True
+    else:
+        ordem = lst[0] <= lst[1] and em_ordem(lst[1:])
+return ordem
+```
+
+\pause
+
+\normalsize
+
+Podemo simplificar? \pause Sim! \pause
+
+\scriptsize
+
+```python
+return len(lst) < 2 or \
+           lst[0] <= lst[1] and em_ordem(lst[1:])
+```
+
+</div>
+</div>
 
 
 # Diminuição lógica
@@ -1044,7 +1029,7 @@ def soma_dec(lst: list[int], n: int) -> int:
 
 # Diminuição e conquista
 
-Esta técnica sempre funciona? Ou seja, se eu aplicar a ideia de diminuir e conquistar eu consigo projetar um algoritmo para resolver qualquer problema? \pause
+A técnica de diminuição e conquista sempre funciona? \pause Ou seja, se aplicarmos a ideia de diminuir e conquistar eu consigo projetar um algoritmo para resolver qualquer problema? \pause
 
 Não! \pause
 
@@ -1061,6 +1046,6 @@ Se quisermos encontrar todos os divisores de um número $n$, podemos aplicar ess
 
 Conseguimos resolver o caso base? \pause Sim. \pause
 
-Tendo os divisores de $n - 1$, podemos encontrar os divisores de $n$? \pause Sabendo os divisores de $9 (1, 3, 9)$, podemos determinar os divisores de $10 (1, 2, 5, 10)$? \pause Não! \pause
+Tendo os divisores de $n - 1$, podemos encontrar os divisores de $n$? \pause Sabendo os divisores de $9\ (1, 3, 9)$, podemos determinar os divisores de $10\ (1, 2, 5, 10)$? \pause Não! \pause
 
 Então essa técnica não é adequada para esse problema.
