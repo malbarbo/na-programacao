@@ -3,22 +3,47 @@
 title: |
        | Fundamentos de Algoritmos
        | Recursividade
+urlcolor: Blue
 ---
 
-#) Projete uma função recursiva que concatene todas as strings de uma lista.
+# Começando
 
-#) Projete uma função recursiva que determine se um número está em uma lista de números.
+@) O que é uma definição recursiva? O que é preciso para que uma definição recursiva seja bem formada?
 
-#) Projete uma função recursiva que crie uma lista de números a partir de uma lista de strings convertendo cada string para um número. Assuma que todas as strings representam números válidos.
+@) O que é uma função recursiva? O que é preciso para que uma função recursiva seja bem formada?
 
-#) Uma lista de números é chamada de lista binária se todos os seus elementos são 0 ou 1. Projete uma função recursiva que verifique se uma lista é binária.
+@) Qual é relação entre definição de tipo de dado com autorreferência e função recursiva que processa o tipo dado?
 
-#) Projete uma função recursiva que encontre o valor máximo de uma lista não vazia. Dica: mude o caso base para uma lista com um elemento.
+@) Quais os dois aspectos que precisamos considerar no projeto de funções recursivas?
 
-#) Projete uma função recursiva que encontre o tamanho máximo entre todas as strings de uma lista de strings.
 
-#) Projete uma função recursiva que crie uma nova lista com todos os valores positivos de uma lista de números.
+# Praticando
 
-#) (Desafio) Projete uma função recursiva que verifique se uma lista é palíndromo. Dica: diminua do início e um do final.
+<!-- Números Naturais -->
 
-#) (Desafio) Projete uma função recursiva que encontre o tamanho da maior sublista de zeros consecutivos de uma dada lista de inteiros. Por exemplo, para a lista `[0, 0, 2, 1, 0, 0, 0, 7]`{.python}, a resposta é `3`{.python}, e para a lista `[0, 0, 1, 0, 4]`{.python} a resposta é `2`{.python}.
+@) Projete uma função recursiva que receba como parâmetro um número natural $n$ e um valor $v$ e crie uma nova lista com $n$ repetições do valor $v$.
+
+@) Projete uma função recursiva que receba como parâmetro um número natural $n$ e calcule o produto dos números $1, 2, \cdots, n$.
+
+@) Projete uma função recursiva que receba como parâmetro um número natural $n$ e gere uma string com os números de 1 até $n$ separados por vírgula. Por exemplo, para $n = 3$, a função deve gerar `"1,2,3"`.
+
+@) Recursão indireta é quando duas ou mais funções chamam uma a outra. Defina duas funções `impar` e `par`, uma em termos da outra, isto é, a função `impar` deve chamar a função `par` e a função `par` deve chama a função `impar` (a recursão para no caso base).
+
+
+<!-- Arranjos -->
+
+@) Projete uma função recursiva que concatene todas as strings de uma lista.
+
+@) Projete uma função recursiva que determine se um número está em uma lista de números.
+
+@) Uma lista de números é chamada de lista binária se todos os seus elementos são 0 ou 1. Projete uma função recursiva que verifique se uma lista é binária.
+
+@) Projete uma função recursiva que encontre o valor máximo de uma lista não vazia. Dica: mude o caso base para uma lista com um elemento.
+
+@) Projete uma função recursiva que encontre o tamanho máximo entre todas as strings de uma lista de strings.
+
+@) Projete uma função recursiva que crie uma nova lista com todos os valores positivos de uma lista de números.
+
+@) (Desafio) Projete uma função recursiva que verifique se uma lista é palíndromo. Dica: diminua do início e do final.
+
+@) (Desafio) Projete uma função recursiva que encontre o tamanho da maior sublista de zeros consecutivos de uma dada lista de inteiros. Por exemplo, para a lista `[0, 0, 2, 1, 0, 0, 0, 7]`{.python}, a resposta é `3`{.python}, e para a lista `[0, 0, 1, 0, 4]`{.python} a resposta é `2`{.python}.
