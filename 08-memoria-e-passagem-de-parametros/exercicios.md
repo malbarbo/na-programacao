@@ -17,6 +17,8 @@ urlcolor: Blue
 
 @) Para que usamos apelidos?
 
+@) De que maneira a especificação das funções que alteram os seus argumentos é diferente das funções que não alteram os argumentos?
+
 @) O que é exibido na tela após a execução do código abaixo (confira a sua resposta usando o Python Tutor).
 
     ```python
