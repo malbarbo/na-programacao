@@ -1,6 +1,8 @@
 ---
 # vim: set spell spelllang=pt_br:
 title: Recursividade
+# TODO: mostrar em linguagem natural um procedimento para somar os números
+#       naturais, semelhante a verificação se 4 é natural.
 ---
 
 # Introdução
@@ -24,7 +26,7 @@ No segundo caso, um número natural é definido em termos de outro número natur
 
 # Definições recursivas
 
-Como é possível definir uma coisa em termos dela mesmo? \pause
+Como é possível definir uma coisa em termos de si mesmo? \pause
 
 Este tipo de definição é chamada de **definição recursiva** (ou definição indutiva) e é muito utilizada na computação e matemática. \pause
 
@@ -70,7 +72,7 @@ Assim como para definições recursivas, para estar bem formada uma função rec
 
 Como projetar funções recursivas? \pause
 
-Existem várias técnicas de projeto de funções recursivas, nós vamos explorar uma delas, chamada de diminuição e conquista. \pause
+Existem várias técnicas de projeto de funções recursivas, nós vamos explorar uma delas, chamada de **diminuição e conquista**. \pause
 
 A ideia é diminuir o tamanho do problema original, conquistar o problema menor -- diretamente ou recursivamente -- e estender a solução do problema menor para o problema original. \pause
 
@@ -1027,7 +1029,8 @@ def soma_dec(lst: list[int], n: int) -> int:
 </div>
 </div>
 
-# Diminuição e conquista
+
+# Limitações
 
 A técnica de diminuição e conquista sempre funciona? \pause Ou seja, se aplicarmos a ideia de diminuir e conquistar eu consigo projetar um algoritmo para resolver qualquer problema? \pause
 
@@ -1035,17 +1038,50 @@ Não! \pause
 
 Mas então, quando podemos aplicar a técnica de projeto diminuição e conquista? \pause
 
-- Quando conseguimos resolver o caso base \pause
+- Quando conseguimos resolver o caso base; \pause
 
-- Quando a solução do problema menor pode ser estendida para a solução do problema original
+- Quando a solução do problema menor pode ser estendida para a solução do problema original.
 
 
-# Diminuição e conquista
+# Limitações
 
-Se quisermos encontrar todos os divisores de um número $n$, podemos aplicar essa técnica? \pause
+Podemos aplicar a técnica de diminuição e conquista para projetar uma função que encontre todos os divisores de um número natural $n$? \pause
 
 Conseguimos resolver o caso base? \pause Sim. \pause
 
 Tendo os divisores de $n - 1$, podemos encontrar os divisores de $n$? \pause Sabendo os divisores de $9\ (1, 3, 9)$, podemos determinar os divisores de $10\ (1, 2, 5, 10)$? \pause Não! \pause
 
-Então essa técnica não é adequada para esse problema.
+Ou seja, a solução do problema menor não pode ser estendida para o problema original. \pause
+
+Vocês verão em outras disciplinas outras estratégias que permitirão superar essa limitação.
+
+
+# Revisão
+
+Definições recursivas são aquelas feitas em termos de si mesmas. Para ser bem formada uma definição recursiva precisa de: \pause
+
+- Pelo menos um caso base (que não depende da própria definição). \pause
+- Pelo menos um caso com autorreferência (que depende da própria definição para elementos “menores”) \pause
+
+Funções recursivas são aquelas que chamam a si mesmas. Para ser bem formada uma função recursiva precisa de: \pause
+
+- Pelo menos um caso base (o valor da função é calculado diretamente) \pause
+- Pelo menos um caso com chamada recursiva (depende do valor da função para outras entradas)
+
+
+# Revisão
+
+Vimos como empregar definições e funções recursivas para projetar funções utilizando a técnica de diminuição e conquista. \pause
+
+A ideia é diminuir o tamanho do problema original, conquistar o problema menor -- diretamente ou recursivamente -- e estender a solução do problema menor para o problema original. \pause
+
+A forma mais direta de diminuir um problema é explorar a relação entre autorreferência na definição do tipo de dado e recursão na função: onde tem autorreferência tem recursão.
+
+
+# Revisão
+
+Aplicamos essa forma de diminuir o problema tanto para números naturais quanto para arranjos. \pause
+
+Para arranjos usamos diminuição lógica para para evitar que arranjos sejam criados com a operação de subarranjo (`[1:]`) nas chamadas recursivas. \pause Fizemos a diminuição a partir do início e do fim. \pause
+
+A estratégia de diminuição e conquista não pode ser usada para resolver qualquer problema. \pause Se não conseguimos definir como diminuir o problema ou estender a solução do problema reduzido para o problema original, então não podemos utilizar a técnica de diminuição e conquista.
