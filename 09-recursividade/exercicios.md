@@ -4,9 +4,7 @@ title: |
        | Fundamentos de Algoritmos
        | Recursividade
 urlcolor: Blue
-# TODO: adicionar exercícios para modificar a lista
 # TODO: adicionar problemas
-# TODO: adicionar mais soluções
 ---
 
 **\color{red}Lembre-se** de seguir o processo de projeto de funções e de usar o `mypy` e o `doctest` na etapa de verificação.
@@ -20,6 +18,10 @@ urlcolor: Blue
 @) Qual é relação entre definição de tipo de dado com autorreferência e função recursiva que processa o tipo dado?
 
 @) Quais os dois aspectos que precisamos considerar no projeto de funções recursivas?
+
+@) Qual é a ideia da estratégia de diminuição e conquista?
+
+@) Quando não podemos utilizar a estratégia de diminuição e conquista?
 
 
 # Praticando
@@ -35,6 +37,8 @@ urlcolor: Blue
 @) Recursão indireta é quando duas ou mais funções chamam uma a outra. Defina duas funções `impar` e `par`, uma em termos da outra, isto é, a função `impar` deve chamar a função `par` e a função `par` deve chama a função `impar` (a recursão para no caso base).
 
 
+Para os exercícios a seguir, use diminuição física do arranjo.
+
 <!-- Arranjos -->
 
 @) Projete uma função recursiva que concatene todas as strings de uma lista.
@@ -45,10 +49,20 @@ urlcolor: Blue
 
 @) Projete uma função recursiva que encontre o valor máximo de uma lista não vazia. Dica: mude o caso base para uma lista com um elemento.
 
+
+Para os exercícios a seguir, use diminuição lógica do arranjo decrementando o tamanho a partir do final.
+
 @) Projete uma função recursiva que encontre o tamanho máximo entre todas as strings de uma lista de strings.
 
 @) Projete uma função recursiva que crie uma nova lista com todos os valores positivos de uma lista de números.
 
+@) Projete uma função recursiva que altere uma lista somando 1 em cada um dos seus elementos.
+
+
+Para os exercícios a seguir, use a estratégia de diminuição que for mais adequada.
+
 @) (Desafio) Projete uma função recursiva que verifique se uma lista é palíndromo. Dica: diminua do início e do final.
+
+@) (Desafio) Projete uma função recursiva que altere uma lista invertendo a ordem dos seus elementos
 
 @) (Desafio) Projete uma função recursiva que encontre o tamanho da maior sublista de zeros consecutivos de uma dada lista de inteiros. Por exemplo, para a lista `[0, 0, 2, 1, 0, 0, 0, 7]`{.python}, a resposta é `3`{.python}, e para a lista `[0, 0, 1, 0, 4]`{.python} a resposta é `2`{.python}.
