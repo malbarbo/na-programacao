@@ -5,6 +5,7 @@ title: |
        | Recursividade
 urlcolor: Blue
 # TODO: adicionar problemas
+# TODO: adicionar pergunta sobre relação entre autorreferência e recursividade
 ---
 
 **\color{red}Lembre-se** de seguir o processo de projeto de funções e de usar o `mypy` e o `doctest` na etapa de verificação.
@@ -14,8 +15,6 @@ urlcolor: Blue
 @) O que é uma definição recursiva? O que é preciso para que uma definição recursiva seja bem formada?
 
 @) O que é uma função recursiva? O que é preciso para que uma função recursiva seja bem formada?
-
-@) Qual é relação entre definição de tipo de dado com autorreferência e função recursiva que processa o tipo dado?
 
 @) Quais os dois aspectos que precisamos considerar no projeto de funções recursivas?
 
