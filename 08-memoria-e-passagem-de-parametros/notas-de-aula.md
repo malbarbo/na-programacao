@@ -224,20 +224,19 @@ def inverte(lst: list[int]) -> list[int]:
     Exemplos
     >>> inverte([])
     []
-    >>> inverte([8])
-    [8]
-    >>> inverte([8, 6, 1, 4, 5])
-    [5, 4, 1, 5, 8]
+    >>> inverte([8, 6, 1, 4])
+    [4, 1, 6, 8]
     '''
 ```
 
 \pause
 
-\small
+\footnotesize
 
-Como implementar a função? \pause Fazendo o código para uma lista de tamanho fixo e depois generalizando.
+Qual é a ideia para implementar a função? \pause Percorrer os elementos de `lst` a partir do último e adicionar em uma nova lista. \pause
 
-\pause
+Vamos escrever o código para uma lista de tamanho fixo e depois generalizar. \pause
+
 
 </div>
 <div class="column" width="48%">
@@ -245,21 +244,18 @@ Como implementar a função? \pause Fazendo o código para uma lista de tamanho 
 \scriptsize
 
 ```python
+    # Solução para uma lista de tamanho 4
     r = []
     r.append(lst[3])
     r.append(lst[2])
     r.append(lst[1])
     r.append(lst[0])
-    return 0
+    return r
 ```
 
 \pause
 
-\footnotesize
-
 Transformando em repetição lógica: \pause
-
-\scriptsize
 
 ```python
     r = []
@@ -270,11 +266,7 @@ Transformando em repetição lógica: \pause
 
 \pause
 
-\footnotesize
-
 Generalizando para qualquer tamanho: \pause
-
-\scriptsize
 
 ```python
     r = []
@@ -314,7 +306,7 @@ def invertem(lst: list[int]):
     >>> x = [8, 6, 1, 4, 5]
     >>> invertem(x)
     >>> x
-    [5, 4, 1, 5, 8]
+    [5, 4, 1, 6, 8]
     '''
 ```
 
@@ -355,15 +347,15 @@ def invertem(lst: list[int]):
     >>> x = [8, 6, 1, 4, 5]
     >>> invertem(x)
     >>> x
-    [5, 4, 1, 5, 8]
+    [5, 4, 1, 6, 8]
     '''
 ```
 
-\small
+\footnotesize
 
-Como implementar a função? \pause Fazendo o código para uma lista de tamanho fixo e depois generalizando.
+Qual é a ideia para implementar a função? \pause Troca o primeiro com o último, o segundo com o penúltimo e assim por diante. \pause
 
-\pause
+Vamos escrever o código para uma lista de tamanho fixo e depois generalizar. \pause
 
 </div>
 <div class="column" width="48%">
@@ -371,32 +363,120 @@ Como implementar a função? \pause Fazendo o código para uma lista de tamanho 
 \scriptsize
 
 ```python
-    assert len(lst) == 4
-    # troca lst[0] <-> lst[3]
-    t = lst[0]
-    lst[0] = lst[3]
-    lst[3] = t
-    # troca lst[1] <-> lst[2]
-    t = lst[1]
-    lst[1] = lst[2]
-    lst[2] = t
+    # Vamos escrever a solução para
+    # uma lista de tamanho 5
 ```
-
-\small
 
 \pause
 
-Repetição lógica e generalização:
+```python
+    # troca lst[0] <-> lst[4]
+    # lst = [8, 6, 1, 4, 5] -> [5, 6, 1, 4, 8]
+```
+
+\pause
+
+```python
+    t = lst[0]
+    lst[0] = lst[4]
+    lst[4] = t
+```
+
+\pause
+
+```python
+    # troca lst[1] <-> lst[3]
+    # [5, 6, 1, 4, 8] -> [5, 4, 1, 6, 8]
+```
+
+\pause
+
+```python
+    t = lst[1]
+    lst[1] = lst[3]
+    lst[3] = t
+```
+
+\pause
+
+Transformando em repetição lógica:
+
+\scriptsize
+
+```python
+    for i in range(2):
+        # troca lst[i] <-> lst[5 - i - 1]
+```
+
+</div>
+</div>
+
+
+# Exemplo: inverte
+
+<div class="columns">
+<div class="column" width="48%">
+\scriptsize
+
+```python
+def invertem(lst: list[int]):
+    '''
+    Inverte a ordem dos elementos de *lst*,
+    isto é, colocando o último elemento na
+    primeira posção, o penúltimo na segunda
+    posição, e assim por diante.
+
+    Exemplos
+    >>> x = [8, 6, 1, 4, 5]
+    >>> invertem(x)
+    >>> x
+    [5, 4, 1, 6, 8]
+    '''
+```
+
+\footnotesize
+
+Qual é a ideia para implementar a função? Troca o primeiro com o último, o segundo com o penúltimo e assim por diante.
+
+Vamos escrever o código para uma lista de tamanho fixo e depois generalizar.
+
+</div>
+<div class="column" width="48%">
+
+\small
+
+Transformando em repetição lógica:
+
+\scriptsize
+
+```python
+    for i in range(2):
+        # troca lst[i] <-> lst[5 - i - 1]
+```
+
+\pause
+
+```python
+        t = lst[i]
+        lst[i] = lst[5 - i - 1]
+        lst[5 - i - 1] = t
+```
+
+\pause
+
+\small
+
+Generalizando para qualquer tamanho: \pause
 
 \scriptsize
 
 ```python
     for i in range(len(lst) // 2):
+        # troca lst[i] <-> lst[len(lst) - i - 1]
         t = lst[i]
         lst[i] = lst[len(lst) - i - 1]
         lst[len(lst) - i - 1] = t
 ```
-
 
 </div>
 </div>
@@ -404,9 +484,7 @@ Repetição lógica e generalização:
 
 # Exemplo: insere ordenado
 
-Dado uma lista de números em em ordem não decrescente e um valor `v`, projete uma função que modifique a lista inserindo o valor `v` de maneira que o arranjo continue em ordem. \pause
-
-Exemplo feito em sala.
+Dado uma lista de números em em ordem não decrescente e um valor `v`, projete uma função que modifique a lista inserindo o valor `v` de maneira que o arranjo continue em ordem.
 
 
 # Exemplo: insere ordenado
@@ -423,18 +501,18 @@ def insere_ordenado(lst: list[int], v: int):
     que *lst* esteja em ordem não decrescente.
     Exemplos
     >>> lst = []
-    >>> insere_ordenado(lst, 5)
+    >>> insere_ordenado(lst, 7)
     >>> lst
-    [5]
+    [7]
     >>> insere_ordenado(lst, 3)
     >>> lst
-    [3, 5]
+    [3, 7]
+    >>> insere_ordenado(lst, 5)
+    >>> lst
+    [3, 5, 7]
     >>> insere_ordenado(lst, 4)
     >>> lst
-    [3, 4, 5]
-    >>> insere_ordenado(lst, 1)
-    >>> lst
-    [1, 3, 4, 5]
+    [3, 4, 5, 7]
     '''
 ```
 
@@ -443,9 +521,202 @@ def insere_ordenado(lst: list[int], v: int):
 </div>
 <div class="column" width="48%">
 
-Ideia: colocar `v` no final e ir trocando de lugar com o antecessor até chegar no "lugar certo".
+Qual é a ideia para implementar a função? \pause Colocar `v` no final de `lst` e ir trocando ele de lugar com o antecessor até chegar no "lugar certo". \pause
+
+Vamos escrever o código para uma lista de tamanho fixo e depois generalizar.
+
+</div>
+</div>
+
+
+# Exemplo: insere ordenado
+
+<div class="columns">
+<div class="column" width="48%">
+\scriptsize
+
+```python
+def insere_ordenado(lst: list[int], v: int):
+    '''
+    Insere *v* em *lst* de maneira que *lst*
+    permaneça em ordem não decrescente. Requer
+    que *lst* esteja em ordem não decrescente.
+    Exemplos
+    >>> lst = []
+    >>> insere_ordenado(lst, 7)
+    >>> lst
+    [7]
+    >>> insere_ordenado(lst, 3)
+    >>> lst
+    [3, 7]
+    >>> insere_ordenado(lst, 5)
+    >>> lst
+    [3, 5, 7]
+    >>> insere_ordenado(lst, 4)
+    >>> lst
+    [3, 4, 5, 7]
+    '''
+```
+
+</div>
+<div class="column" width="48%">
+
+\scriptsize
+
+```python
+    # v = 4
+    # lst = [3, 5, 7] -> [3, 5, 7, 4]
+```
 
 \pause
+
+```python
+    lst.append(v)
+```
+
+\pause
+
+```python
+    # lst[2] > lst[3], então troca lst[3] <-> lst[2]
+    # [3, 5, 7, 4] -> [3, 5, 4, 7]
+```
+
+\pause
+
+```python
+    t = lst[3]
+    lst[3] = lst[2]
+    lst[2] = t
+```
+
+\pause
+
+```python
+    # lst[1] > lst[2], então troca lst[2] <-> lst[1]
+    # [3, 5, 4, 7] -> [3, 4, 5, 7]
+```
+
+\pause
+
+```python
+    t = lst[2]
+    lst[2] = lst[1]
+    lst[1] = t
+```
+
+\pause
+
+```python
+    # lst[0] < lst[1], ou seja,
+    # v está na posição "certa", então para
+    # [3, 4, 5, 7]
+```
+
+</div>
+</div>
+
+
+# Exemplo: insere ordenado
+
+<div class="columns">
+<div class="column" width="48%">
+\scriptsize
+
+```python
+def insere_ordenado(lst: list[int], v: int):
+    '''
+    Insere *v* em *lst* de maneira que *lst*
+    permaneça em ordem não decrescente. Requer
+    que *lst* esteja em ordem não decrescente.
+    Exemplos
+    >>> lst = []
+    >>> insere_ordenado(lst, 7)
+    >>> lst
+    [7]
+    >>> insere_ordenado(lst, 3)
+    >>> lst
+    [3, 7]
+    >>> insere_ordenado(lst, 5)
+    >>> lst
+    [3, 5, 7]
+    >>> insere_ordenado(lst, 4)
+    >>> lst
+    [3, 4, 5, 7]
+    '''
+```
+
+</div>
+<div class="column" width="48%">
+
+Transformando em repetição lógica:
+
+\scriptsize
+
+```python
+    lst.append(v)
+    i = 3
+    while ...:
+        # troca lst[i] <-> lst[i - 1]
+        ...
+        i = i - 1
+```
+
+\pause
+
+\normalsize
+
+Completando
+
+\scriptsize
+
+```python
+    lst.append(v)
+    i = 3
+    while i > 0 and lst[i - 1] > lst[i]:
+        # troca lst[i] <-> lst[i - 1]
+        t = lst[i]
+        lst[i] = lst[i - 1]
+        lst[i - 1] = t
+        i = i - 1
+```
+
+</div>
+</div>
+
+
+# Exemplo: insere ordenado
+
+<div class="columns">
+<div class="column" width="48%">
+\scriptsize
+
+```python
+def insere_ordenado(lst: list[int], v: int):
+    '''
+    Insere *v* em *lst* de maneira que *lst*
+    permaneça em ordem não decrescente. Requer
+    que *lst* esteja em ordem não decrescente.
+    Exemplos
+    >>> lst = []
+    >>> insere_ordenado(lst, 7)
+    >>> lst
+    [7]
+    >>> insere_ordenado(lst, 3)
+    >>> lst
+    [3, 7]
+    >>> insere_ordenado(lst, 5)
+    >>> lst
+    [3, 5, 7]
+    >>> insere_ordenado(lst, 4)
+    >>> lst
+    [3, 4, 5, 7]
+    '''
+```
+
+</div>
+<div class="column" width="48%">
+
+Generalizando para qualquer tamanho:
 
 \scriptsize
 
@@ -472,8 +743,13 @@ Apelidos são variáveis que referenciam a mesma célula de memória. \pause
 
 Quando atribuímos uma variável para outra e quando passamos uma variável como parâmetro para uma função, estamos criando um apelido. \pause
 
-Usamos apelidos (passagem de parâmetro por referência) no projeto de funções que alteram os argumentos (efeito colateral). \pause
+Usamos apelidos (passagem de parâmetro por referência) no projeto de funções que alteram os argumentos (efeito colateral).
 
-Escrevemos o propósito das funções destacando que os argumentos são alterados. \pause
 
-Os exemplos são especificados em três partes: inicialização dos parâmetros, chamada da função e verificação do efeito.
+# Revisão
+
+Escrevemos o propósito das funções que alteram os argumentos destacando que os argumentos são alterados. \pause
+
+Os exemplos são especificados em três partes: inicialização dos parâmetros, chamada da função e verificação da modificação (efeito colateral). \pause
+
+Na implementação começamos com uma ideia, depois iniciamos a implementação com repetição física de código que concretiza a ideia para uma lista de tamanho fixo, depois transformamos a repetição física em repetição lógica e por fim generalizamos a implementação para listas de qualquer tamanho.
