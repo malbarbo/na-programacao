@@ -19,6 +19,8 @@ urlcolor: Blue
 
 @) De que maneira a especificação das funções que alteram os seus argumentos é diferente das funções que não alteram os argumentos?
 
+@) Quais são os passos para implementar funções que alteram os seus argumentos?
+
 @) O que é exibido na tela após a execução do código abaixo (confira a sua resposta usando o Python Tutor).
 
     ```python
@@ -69,7 +71,11 @@ urlcolor: Blue
 
 # Praticando
 
-@) Projete uma função que some um valor `n` a cada elemento de uma lista de números.
+@) Projete uma função que modifique uma lista de números somando um valor `n` a cada um dos seus elementos.
+
+@) Projete uma função que modifique uma lista de strings deixando todas com o mesmo tamanho. Adiciona espaços em branco ao final das strings se necessário.
+
+@) Projete uma função que receba duas listas como parâmetro e modifique a primeira lista adicionando todos os elementos da segunda lista no final da primeira.
 
 @) Projete uma função que receba como parâmetros uma lista, um índice `i` e um valor `v`, e modifique a lista inserindo o valor `v` no índice `i`. Dica: veja o exemplo `insere_ordenado`.
 
@@ -93,9 +99,12 @@ urlcolor: Blue
     [3, 9, 1]
     ```
 
-@) Projete uma função que remova todas as strings vazias de uma lista de strings.
 
-@) Projete uma função que modifique uma lista colocando os menores ou iguais a zero antes dos valores maiores que zero.
+@) Projete uma função que modifique uma lista removendo todos os elementos que estão em índices pares.
+
+@) Projete uma função que modifique uma lista de strings removendo todas as strings vazias.
+
+@) Projete uma função que modifique uma lista colocando os valores menores ou iguais a zero antes dos valores maiores que zero.
 
 @) Ordenação por seleção é um algoritmo para ordenar uma lista de valores. A ideia do algoritmo é selecionar um valor mínimo da lista a partir da posição 0 e colocá-lo na posição 0, depois encontrar um valor mínimo da lista a partir da posição 1 e colocá-lo na posição 1, depois encontrar um valor mínimo da lista a partir da posição 2 ... e assim por diante. Por exemplo, vamos considerar a lista `[8, 5, 4, 1, 2]`{.python}.
 
