@@ -33,9 +33,9 @@ Cada estratégia de gerência de memória tem vantagens e desvantagem, mas o pon
 
 A gerência de memória requer basicamente duas operações: a alocação e a desalocação de memória. \pause
 
-O que significa alocar memória? \pause É reservar um espaço de memória para ser usada de uma determinada forma. \pause
+O que significa alocar memória? \pause É reservar um espaço de memória para ser usado de uma determinada forma. \pause
 
-O que significa desalocar memória? \pause É devolver para o sistema um espaço de memória que havia sido alocada previamente para que ela possa ser usada de outra forma.
+O que significa desalocar memória? \pause É devolver para o sistema um espaço de memória que havia sido alocado previamente para que ele possa ser usada de outra forma.
 
 
 # Gerência de memória em Python
@@ -56,7 +56,7 @@ Nos programas que fizemos, em que momento o Python desaloca memória? \pause
 
 Vimos anteriormente que uma variável em Python é uma referência para uma célula de memória que armazena um valor. \pause
 
-Agora vamos explorar esse fato com mais detalhes e observar alguns resultados que podem parecer surpreendentes.
+Agora vamos explorar esse fato com mais detalhes e observar alguns resultados que podem ser surpreendentes.
 
 
 # Variáveis
@@ -123,7 +123,7 @@ Veja [esse](https://pythontutor.com/render.html#code=x%20%3D%20%5B5,%207%5D%0Ay%
 
 \pause
 
-Quando uma célula de memória pode ser acessada usando mais que uma variável (nome), dizemos que existem **apelidos** para a célula de memória.
+Quando uma célula de memória pode ser acessada usando mais do que uma variável (nome), dizemos que existem **apelidos** para a célula de memória.
 
 
 # Parâmetro e apelidos
@@ -204,7 +204,7 @@ Se a lista na ordem inicial não é necessária após a chamada da função, ent
 
 # Exemplo: inverte
 
-Vamos ver primeiro projeto da função que cria uma nova lista.
+Vamos primeiro projetar a função que cria uma nova lista.
 
 
 # Exemplo: inverte
@@ -295,7 +295,7 @@ def invertem(lst: list[int]):
     '''
     Inverte a ordem dos elementos de *lst*,
     isto é, colocando o último elemento na
-    primeira posção, o penúltimo na segunda
+    primeira posição, o penúltimo na segunda
     posição, e assim por diante.
 
     Exemplos
@@ -340,7 +340,7 @@ def invertem(lst: list[int]):
     '''
     Inverte a ordem dos elementos de *lst*,
     isto é, colocando o último elemento na
-    primeira posção, o penúltimo na segunda
+    primeira posição, o penúltimo na segunda
     posição, e assim por diante.
 
     Exemplos
@@ -353,7 +353,7 @@ def invertem(lst: list[int]):
 
 \footnotesize
 
-Qual é a ideia para implementar a função? \pause Troca o primeiro com o último, o segundo com o penúltimo e assim por diante. \pause
+Qual é a ideia para implementar a função? \pause Trocar o primeiro com o último, o segundo com o penúltimo e assim por diante. \pause
 
 Vamos escrever o código para uma lista de tamanho fixo e depois generalizar. \pause
 
@@ -423,7 +423,7 @@ def invertem(lst: list[int]):
     '''
     Inverte a ordem dos elementos de *lst*,
     isto é, colocando o último elemento na
-    primeira posção, o penúltimo na segunda
+    primeira posição, o penúltimo na segunda
     posição, e assim por diante.
 
     Exemplos
@@ -436,7 +436,7 @@ def invertem(lst: list[int]):
 
 \footnotesize
 
-Qual é a ideia para implementar a função? Troca o primeiro com o último, o segundo com o penúltimo e assim por diante.
+Qual é a ideia para implementar a função? Trocar o primeiro com o último, o segundo com o penúltimo e assim por diante.
 
 Vamos escrever o código para uma lista de tamanho fixo e depois generalizar.
 
@@ -484,7 +484,7 @@ Generalizando para qualquer tamanho: \pause
 
 # Exemplo: insere ordenado
 
-Dado uma lista de números em em ordem não decrescente e um valor `v`, projete uma função que modifique a lista inserindo o valor `v` de maneira que o arranjo continue em ordem.
+Dado uma lista de números em ordem não decrescente e um valor `v`, projete uma função que modifique a lista inserindo o valor `v` de maneira que o arranjo continue em ordem.
 
 
 # Exemplo: insere ordenado
