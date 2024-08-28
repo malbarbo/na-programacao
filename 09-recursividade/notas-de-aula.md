@@ -3,6 +3,7 @@
 title: Recursividade
 # TODO: mostrar em linguagem natural um procedimento para somar os números
 #       naturais, semelhante a verificação se 4 é natural.
+# TODO: quando falar de diminuição e conquista já dar um exemplo.
 ---
 
 # Introdução
@@ -26,14 +27,21 @@ No segundo caso, um número natural é definido em termos de outro número natur
 
 # Definições recursivas
 
-Como é possível definir uma coisa em termos de si mesmo? \pause
+Como é possível algo ser definido em termos de si mesmo? \pause
 
-Este tipo de definição é chamada de **definição recursiva** (ou definição indutiva) e é muito utilizada na computação e matemática. \pause
+É possível porque um algo maior está sendo definido em termos do mesmo tipo de algo, mas menor. \pause Como não é possível diminuir algo infinitamente, em algum momento teremos um algo básico, que não é composto de outro algo. \pause
 
-Para estar bem formada, uma definição recursiva precisa de\pause
+Esse tipo de definição é muito utilizado na computação e matemática.
 
-- Pelo menos um caso base (que não depende da própria definição) \pause
-- Pelo menos um caso com autorreferência (que depende da própria definição para elementos "menores") \pause
+
+# Definições recursivas
+
+Uma **definição recursiva** (ou definição indutiva) e uma definição que é feita em termos de si mesma. \pause
+
+Para estar bem formada, uma definição recursiva precisa de:\pause
+
+- Pelo menos um caso base (que não depende da própria definição); \pause
+- Pelo menos um caso com autorreferência (que depende da própria definição para elementos "menores"). \pause
 
 A partir do(s) caso(s) base, os outros elementos são definidos de forma indutiva pelos casos com autorreferência.
 
@@ -42,30 +50,30 @@ A partir do(s) caso(s) base, os outros elementos são definidos de forma indutiv
 
 Definição de número natural:
 
-- $0$ é um número natural; \pause
-- Se $n$ é um número natural, então $n + 1$ é um número natural. \pause
+- $0$ é um número natural;
+- Se $n$ é um número natural, então $n + 1$ é um número natural.
 
 O número 4 é natural? \pause Vamos verificar \pause
 
-- Como 4 não é zero, para ele ser natural, o 3 tem que ser natural \pause
-- Como 3 não é zero, para ele ser natural, o 2 tem que ser natural \pause
-- Como 2 não é zero, pare ele ser natural, o 1 tem que ser natural \pause
-- Como 1 não é zero, pare ele ser natural, o 0 tem que ser natural \pause
-- Por definição, 0 é natural \pause
+- Como 4 não é zero, para ele ser natural, o 3 tem que ser natural; \pause
+- Como 3 não é zero, para ele ser natural, o 2 tem que ser natural; \pause
+- Como 2 não é zero, pare ele ser natural, o 1 tem que ser natural; \pause
+- Como 1 não é zero, pare ele ser natural, o 0 tem que ser natural; \pause
+- Por definição, 0 é natural. \pause
 
 Portanto, o 4 é natural. \pause Note que foi preciso decompor o 4 até chegar no caso base.
 
 
 # Funções recursivas
 
-Assim como temos definições recursivas, também podemos ter funções recursivas. \pause
+Assim como temos definições recursivas, também temos funções recursivas. \pause
 
-Uma **função recursiva** é aquela que chama a si mesmo de forma direta ou indireta. \pause
+Uma **função recursiva** é aquela que chama a si mesmo. \pause
 
-Assim como para definições recursivas, para estar bem formada uma função recursiva precisa de \pause
+Assim como para definições recursivas, para estar bem formada, uma função recursiva precisa de: \pause
 
-- Pelo menos um caso base (o valor da função é calculado diretamente) \pause
-- Pelo menos um caso com chamada recursiva (depende do valor da função para outras entradas)
+- Pelo menos um caso base (o valor da função é calculado diretamente); \pause
+- Pelo menos um caso com chamada recursiva (depende do valor da função para entradas menores).
 
 
 # Projeto de funções recursivas
@@ -74,9 +82,9 @@ Como projetar funções recursivas? \pause
 
 Existem várias técnicas de projeto de funções recursivas, nós vamos explorar uma delas, chamada de **diminuição e conquista**. \pause
 
-A ideia é diminuir o tamanho do problema original, conquistar o problema menor -- diretamente ou recursivamente -- e estender a solução do problema menor para o problema original. \pause
+A ideia é diminuir o problema inicial gerando um novo problema, conquistar o novo problema -- diretamente ou recursivamente -- e estender a solução do novo problema para o problema inicial. \pause
 
-No início, para diminuir o problema original, nós vamos explorar a relação entre autorreferência na definição do tipo de dado e a chamada recursiva na função que processa o tipo de dado.
+No início, para diminuir o problema inicial, nós vamos explorar a relação entre autorreferência na definição do tipo de dado e a chamada recursiva na função que processa o tipo de dado.
 
 
 # Exemplo: soma naturais
@@ -182,7 +190,7 @@ def soma_naturais(n: int) -> int:
     else:
         # Tendo a soma dos naturais
         # até n - 1 e o natural n,
-        # como obter a soma para os
+        # como obter a soma dos
         # naturais até n?
         soma = n ... soma_naturais(n - 1)
     return soma
@@ -230,7 +238,7 @@ def soma_naturais(n: int) -> int:
     else:
         # Tendo a soma dos naturais
         # até n - 1 e o natural n,
-        # como obter a soma para os
+        # como obter a soma dos
         # naturais até n?
         soma = n + soma_naturais(n - 1)
     return soma
@@ -406,26 +414,26 @@ def potencia(a: float, n: int) -> float:
 
 Quando estamos projetando funções recursivas, temos que considerar dois aspectos: \pause
 
-- A chamada recursiva deve ser feita para uma **entrada "menor"**, dessa forma temos a certeza que o caso base será alcançado e a função terminará. \pause
+- A chamada recursiva deve ser feita para uma **entrada "menor"**, dessa forma, temos a certeza que o caso base será alcançado e a função terminará; \pause
 
 - Devemos **confiar na chamada recursiva**, isto é, que ela produz a resposta correta, e nos preocuparmos apenas em como utilizar essa resposta para calcular o resultado da função.
 
 
 # Funções recursivas com arranjos
 
-Podemos projetar funções recursivas que operam em listas de forma similar a funções que operam com números naturais. \pause Considere a seguinte definição de lista: \pause
+Podemos projetar funções recursivas que operam em arranjos de forma similar a funções que operam com números naturais. \pause Considere a seguinte definição de lista: \pause
 
-Uma lista é:
+Um arranjo é:
 
-- Vazia; ou
+- Vazio; ou
 
-- Um elemento seguido de uma lista (resto da lista)
+- Um elemento seguido de um arranjo (resto do arranjo)
 
 \pause
 
-Assim como a definição de número natural, essa definição de lista também tem autorreferência (é indutiva). \pause
+Assim como a definição de número natural, essa definição de arranjo também tem autorreferência (é indutiva). \pause
 
-Portanto, para implementar uma função que processa uma lista, podemos usar a mesma estratégia que usamos para implementar funções recursivas que processam números naturais.
+Portanto, para implementar uma função que processa um arranjo, podemos usar a mesma estratégia que usamos para implementar funções recursivas que processam números naturais.
 
 
 # Exemplo: soma
@@ -619,6 +627,7 @@ Como a definição de lista tem dois casos, vamos começar a implementação da 
 if lst == []:
     v ...
 else:
+    # v e as partes de lst
     v ... lst[0] ... lst[1:]
 ```
 
@@ -916,11 +925,11 @@ return len(lst) < 2 or \
 
 Apesar das funções `soma`, `freq` e `em_ordem` funcionarem corretamente, elas não são eficientes. \pause
 
-Isto porque a operação de slice `lst[1:]`{.python} cria uma nova lista copiando todos os elementos de `lst` a partir do índice 1. \pause
+Isto porque a operação de slice (`lst[1:]`{.python}) cria uma nova lista copiando todos os elementos da lista a partir do índice 1, ou seja, estamos diminuindo a lista (problema) fisicamente. \pause
 
-Para resolver esse problema, podemos diminuir `lst` de **forma lógica ao invés de forma física** (com o slice). \pause
+Para resolver esse problema, podemos diminuir a lista de **forma lógica ao invés de forma física**. \pause
 
-A ideia é usar um parâmetro extra `i` que indica de onde a soma deve começar. Na primeira chamada `i = 0`{.python} e na chamada recursiva `i + 1`{.python}. O caso base é atingindo quando `i == len(lst)`{.python}.
+A ideia é usar um parâmetro extra `i` que indica de onde a soma deve começar. Na primeira chamada `i = 0`{.python}, na chamada recursiva usamos `i + 1`{.python}. O caso base é atingindo quando `i == len(lst)`{.python}.
 
 
 # Exemplo: soma com índice incrementando
@@ -974,11 +983,11 @@ def soma_inc(lst: list[int], i: int) -> int:
 
 # Exemplo: soma com índice decrementando
 
-Ao invés de começar o índice com 0 e incrementar na chamada recursiva, podemos começar o índice com `len(lst)`{.python} e decrementar o índice na chamada recursiva. \pause
+Ao invés de começar o parâmetro extra com 0 e incrementar na chamada recursiva, podemos começar com `len(lst)`{.python} e decrementar na chamada recursiva. \pause
 
-Desse forma, o índice funciona como um **tamanho lógico** para `lst` e podemos pensar em recursão com lista como pensamos para recursão com número natural. \pause
+Desse forma, o parâmetro extra funciona como um **tamanho lógico** para `lst` e podemos pensar em recursão com lista da mesma forma que pensamos em recursão com número natural. \pause
 
-Vamos chamar o argumento de `n` ao invés de `i` para destacar a relação com o tamanho.
+Vamos chamar o parâmetro de `n` ao invés de `i` para destacar a relação com o tamanho.
 
 
 # Exemplo: soma com índice decrementando
@@ -1032,15 +1041,15 @@ def soma_dec(lst: list[int], n: int) -> int:
 
 # Limitações
 
-A técnica de diminuição e conquista sempre funciona? \pause Ou seja, se aplicarmos a ideia de diminuir e conquistar eu consigo projetar um algoritmo para resolver qualquer problema? \pause
+A técnica de diminuição e conquista sempre funciona? \pause Ou seja, se aplicarmos a ideia de diminuir e conquistar conseguimos projetar um algoritmo para resolver qualquer problema? \pause
 
 Não! \pause
 
-Mas então, quando podemos aplicar a técnica de projeto diminuição e conquista? \pause
+Mas então, quando podemos aplicar a técnica de projeto de diminuição e conquista? \pause
 
 - Quando conseguimos resolver o caso base; \pause
 
-- Quando a solução do problema menor pode ser estendida para a solução do problema original.
+- Quando a solução do problema menor pode ser estendida para a solução do problema inicial.
 
 
 # Limitações
@@ -1051,7 +1060,7 @@ Conseguimos resolver o caso base? \pause Sim. \pause
 
 Tendo os divisores de $n - 1$, podemos encontrar os divisores de $n$? \pause Sabendo os divisores de $9\ (1, 3, 9)$, podemos determinar os divisores de $10\ (1, 2, 5, 10)$? \pause Não! \pause
 
-Ou seja, a solução do problema menor não pode ser estendida para o problema original. \pause
+Ou seja, a solução do problema menor não pode ser estendida para o problema inicial. \pause
 
 Vocês verão em outras disciplinas outras estratégias que permitirão superar essa limitação.
 
@@ -1060,20 +1069,20 @@ Vocês verão em outras disciplinas outras estratégias que permitirão superar 
 
 Definições recursivas são aquelas feitas em termos de si mesmas. Para ser bem formada uma definição recursiva precisa de: \pause
 
-- Pelo menos um caso base (que não depende da própria definição). \pause
-- Pelo menos um caso com autorreferência (que depende da própria definição para elementos “menores”) \pause
+- Pelo menos um caso base; \pause
+- Pelo menos um caso com autorreferência. \pause
 
 Funções recursivas são aquelas que chamam a si mesmas. Para ser bem formada uma função recursiva precisa de: \pause
 
-- Pelo menos um caso base (o valor da função é calculado diretamente) \pause
-- Pelo menos um caso com chamada recursiva (depende do valor da função para outras entradas)
+- Pelo menos um caso base; \pause
+- Pelo menos um caso com chamada recursiva.
 
 
 # Revisão
 
 Vimos como empregar definições e funções recursivas para projetar funções utilizando a técnica de diminuição e conquista. \pause
 
-A ideia é diminuir o tamanho do problema original, conquistar o problema menor -- diretamente ou recursivamente -- e estender a solução do problema menor para o problema original. \pause
+A ideia é diminuir o problema inicial, conquistar o problema menor -- diretamente ou recursivamente -- e estender a solução do problema menor para o problema inicial. \pause
 
 A forma mais direta de diminuir um problema é explorar a relação entre autorreferência na definição do tipo de dado e recursão na função: onde tem autorreferência tem recursão.
 
@@ -1084,4 +1093,4 @@ Aplicamos essa forma de diminuir o problema tanto para números naturais quanto 
 
 Para arranjos usamos diminuição lógica para para evitar que arranjos sejam criados com a operação de subarranjo (`[1:]`) nas chamadas recursivas. \pause Fizemos a diminuição a partir do início e do fim. \pause
 
-A estratégia de diminuição e conquista não pode ser usada para resolver qualquer problema. \pause Se não conseguimos definir como diminuir o problema ou estender a solução do problema reduzido para o problema original, então não podemos utilizar a técnica de diminuição e conquista.
+A estratégia de diminuição e conquista não pode ser usada para resolver qualquer problema. \pause Se não conseguimos definir como diminuir o problema ou estender a solução do problema menor para o problema inicial, então não podemos utilizar a técnica de diminuição e conquista.
