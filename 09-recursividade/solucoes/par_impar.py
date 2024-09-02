@@ -15,13 +15,14 @@ def par(n: int) -> bool:
     >>> par(4)
     True
     '''
+    assert n >= 0
     if n == 0:
         p = True
     else:
         p = impar(n - 1)
     return p
     # ou
-    # return n == 0 or not impar(n - 1)
+    # return n == 0 or impar(n - 1)
 
 def impar(n: int) -> bool:
     '''
@@ -40,10 +41,11 @@ def impar(n: int) -> bool:
     >>> impar(4)
     False
     '''
+    assert n >= 0
     if n == 0:
         p = False
     else:
         p = par(n - 1)
     return p
     # ou
-    # return not n == 0 and not par(n - 1)
+    # return n != 0 and par(n - 1)

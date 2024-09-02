@@ -17,6 +17,7 @@ def fatorial(n: int) -> int:
     >>> fatorial(4)
     24
     '''
+    assert n >= 0
     if n == 0:
         fat = 1
     else:
