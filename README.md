@@ -2,8 +2,9 @@
 
 Para gerar os pdfs execute o comando `make pdf`. Os arquivos pdfs serão gerados no diretório `target/`.
 
-Este comando irá baixar e executar os programas [pandoc](https://pandoc.org/)
-e [tectonic](http://tectonic-typesetting.github.io/).
+Este comando irá baixar e executar os programas [pandoc](https://pandoc.org/) e [tectonic](http://tectonic-typesetting.github.io/).
+
+Se preferir, faça o download dos [pdfs](http://malbarbo.pro.br/ensino/2023/6879/).
 
 Este material utilizava inicialmente a linguagem C++, mas foi atualizado para utilizar a linguagem Python. O material em C++ está no ramo [cpp](../../tree/cpp).
 
