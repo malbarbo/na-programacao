@@ -1,11 +1,11 @@
 # Notas de aula de introdução a programação
 
-Para gerar os pdfs execute o comando `make pdf`. Os arquivos pdfs serão gerados no diretório `target/pdfs`.
+Para gerar os pdfs execute o comando `make pdf`. Os arquivos pdfs serão gerados no diretório `target/`.
 
 Este comando irá baixar e executar os programas [pandoc](https://pandoc.org/)
 e [tectonic](http://tectonic-typesetting.github.io/).
 
-Este material utilizava inicialmente a linguagem C++, mas está sendo atualizado para utilizar a linguagem Python. O material em C++ está no ramo [cpp](../../tree/cpp).
+Este material utilizava inicialmente a linguagem C++, mas foi atualizado para utilizar a linguagem Python. O material em C++ está no ramo [cpp](../../tree/cpp).
 
 
 # Licença
