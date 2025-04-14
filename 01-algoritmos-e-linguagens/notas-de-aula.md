@@ -1,6 +1,8 @@
 ---
 # vim: set spell spelllang=pt_br:
 title: Algoritmos e linguagens
+# TODO: relacionar melhor como sistemas computacionais
+# TODO: deixar claro a relação entre algoritmos e programas
 ---
 
 # Introdução
@@ -464,21 +466,3 @@ Nessa disciplina vamos utilizar a linguagem Python! \pause
 Python é uma linguagem bastante utilizada e versátil, \pause mas também é uma linguagem extensa! \pause Mas não se preocupe, vamos utilizar apenas construções básicas! \pause
 
 Vamos começar?
-
-
-# Atividades
-
-@. Aja como um computador humano e execute o algoritmo (fluxograma) para calcular a raiz quadrada de 9.
-
-@. Aja como um computador humano e execute o algoritmo (pseudocódigo) para calcular o MDC de 18 e 60.
-
-@. Aja como um computador humano e execute o algoritmo (função matemática) para calcular a soma dos valores da lista $[6, 1, 4, 2]$.
-
-
-# Atividades
-
-@. Tente relacionar as construções do fluxograma do algoritmo que calcula a raiz quadrada com as construções do código em C++.
-
-@. Tente relacionar as construções do pseudo código que calcula o MDC com as construções do código em Python.
-
-@. Uma linguagem pode surgir a partir de processos naturais?
