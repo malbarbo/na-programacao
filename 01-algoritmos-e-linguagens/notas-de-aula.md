@@ -117,11 +117,41 @@ _     |A       | B
 </div>
 
 
+# Algoritmo 1 - Descrição textual
+
+Qual propósito do algoritmo? \pause
+
+Organizar os nomes em ordem decrescente de pontos. \pause
+
+Características \pause
+
+- Linguagem natural \pause
+
+- Fácil entendimento \pause
+
+- Falta de precisão
+
+
 # Algoritmo 2 - Fluxograma
 
 Usando $N = 4$ e $C = 1$, faça
 
 ![](imagens/fluxograma.pdf){width=7cm}
+
+
+# Algoritmo 2 - Fluxograma
+
+Qual propósito do algoritmo? \pause
+
+Calcular a raiz quadrada (método de Newton). \pause
+
+Características \pause
+
+- Representação gráfica com símbolos padronizados \pause
+
+- Intuitivo e fácil de entender o fluxo \pause
+
+- Restrito a algoritmos curtos
 
 
 # Algoritmo 3 - Pseudocódigo
@@ -144,6 +174,21 @@ Passo 2:
     - Repita o passo 1
 
 
+# Algoritmo 3 - Pseudocódigo
+
+Qual propósito do algoritmo? \pause
+
+Encontrar o MDC de dois números (algoritmo de Euclides). \pause
+
+Características \pause
+
+- Linguagem natural mais estruturada \pause
+
+- Mais preciso que descrição textual \pause
+
+- Não é muito padronizado
+
+
 # Algoritmo 4 - Função matemática
 
 Calcule o valor de $f([2, 1, 4, 1, 2])$
@@ -154,17 +199,19 @@ primeiro(x) + f(sem\_primeiro(x)) & \text{caso contrário}
 \end{cases}$$
 
 
-# Propósitos
+# Algoritmo 4 - Função matemática
 
-Qual o propósito de cada algoritmo? \pause
+Qual propósito do algoritmo? \pause
 
-1) Organizar os nomes em ordem decrescente de pontos \pause
+Somar os valores de uma lista. \pause
 
-2) Calcular a raiz quadrada (método de Newton) \pause
+Características \pause
 
-3) Encontrar o MDC de dois números (algoritmo de Euclides) \pause
+- Baseado em formalismo matemático \pause
 
-4) Somar os valores de uma lista
+- Precisa e concisa \pause
+
+- Difícil para iniciantes
 
 
 # Algoritmos
