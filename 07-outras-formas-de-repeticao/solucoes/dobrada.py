@@ -21,7 +21,7 @@ def dobrada(lst: list[int]) -> bool:
     dobrada = len(lst) % 2 == 0
     meio = len(lst) // 2
     i = 0
-    while i < metade and dobrada:
+    while i < meio and dobrada:
         if lst[i] != lst[meio + i]:
             dobrada = False
         i = i + 1
