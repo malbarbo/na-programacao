@@ -119,7 +119,7 @@ _     |A       | B
 
 # Algoritmo 1 - Descrição textual
 
-Qual propósito do algoritmo? \pause
+Qual é o propósito do algoritmo? \pause
 
 Organizar os nomes em ordem decrescente de pontos. \pause
 
@@ -141,7 +141,7 @@ Usando $N = 4$ e $C = 1$, faça
 
 # Algoritmo 2 - Fluxograma
 
-Qual propósito do algoritmo? \pause
+Qual é o propósito do algoritmo? \pause
 
 Calcular a raiz quadrada (método de Newton). \pause
 
@@ -176,7 +176,7 @@ Passo 2:
 
 # Algoritmo 3 - Pseudocódigo
 
-Qual propósito do algoritmo? \pause
+Qual é o propósito do algoritmo? \pause
 
 Encontrar o MDC de dois números (algoritmo de Euclides). \pause
 
@@ -201,7 +201,7 @@ primeiro(x) + f(sem\_primeiro(x)) & \text{caso contrário}
 
 # Algoritmo 4 - Função matemática
 
-Qual propósito do algoritmo? \pause
+Qual é o propósito do algoritmo? \pause
 
 Somar os valores de uma lista. \pause
 
@@ -221,8 +221,6 @@ O que foi necessário para entender/executar esses algoritmos? \pause
 - Entender a notação \pause
 
 - Entender a semântica \pause
-
-- Entender o modelo de execução
 
 
 # Algoritmos
@@ -298,7 +296,6 @@ O que considerar na escolha ou no projeto de algoritmos? \pause
 Qual representação utilizar para escrever algoritmos que possam ser executados por um computador? \pause
 
 Nenhuma das que vimos, precisamos de uma linguagem. \pause
-
 
 Mas o que é uma linguagem e qual a sua função? \pause
 

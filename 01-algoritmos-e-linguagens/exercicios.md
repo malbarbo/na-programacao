@@ -4,13 +4,14 @@ title: |
        | Fundamentos de Algoritmos
        | Algoritmos e linguagens
 urlcolor: Blue
+# TODO: adicionar algoritmo em pseudo código para converter um número para binário
 ---
 
 # Começando
 
 @) O que é um algoritmo?
 
-@) Qual é a relação entre algoritmos e programas de computadores (software)?
+@) Qual é a relação entre algoritmos e programas de computadores?
 
 @) Podemos utilizar o português para programar? Explique
 
