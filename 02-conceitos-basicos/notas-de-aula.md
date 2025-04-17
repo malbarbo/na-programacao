@@ -236,7 +236,7 @@ O símbolo `#`{.python} (cerquilha), é utilizado para indicar um **comentário*
 >>> 27 ** 1 / 3
 9.0
 >>> # Usamos parênteses para mudar a prioridade
->>> 27 ** (1 / 3) # raiz cubica
+>>> 27 ** (1 / 3) # raiz cúbica
 3.0
 ```
 
@@ -1077,7 +1077,7 @@ Qual é precedência do `not`{.python} em relação aos operadores relacionais e
 <div class="columns">
 <div class="column" width="48%">
 
-O `and`{.python} é um operador binário que só produz `True`{.python} se os dois operandos forem `True`{.python}.
+O `and`{.python} é um operador binário que produz `True`{.python} somente se os dois operandos forem `True`{.python}.
 
 \small
 
@@ -1472,7 +1472,7 @@ def novo_seculo(data: str) -> bool:
 
 # Execução passo a passo
 
-Nós vimos anteriormente que o Python executa as instruções de forma sequencial, uma linha após a outra. \pause No entanto, quando uma função é chamada a execução é desviada para o início da função, e quando a função finaliza o execução volta para onde estava antes da chamada da função.
+Nós vimos anteriormente que o Python executa as instruções de forma sequencial, uma linha após a outra. \pause No entanto, quando uma função é chamada, a execução é desviada para o início da função, e quando a função finaliza, a execução volta para onde estava antes da chamada da função.
 
 
 # Execução passo a passo

@@ -1,4 +1,5 @@
 ---
+# vim: set spell spelllang=pt_br sw=4:
 title: |
        | Fundamentos de Algoritmos
        | Conceitos básicos
