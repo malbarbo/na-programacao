@@ -5,7 +5,6 @@ header-includes: |
     \usepackage[super]{nth}
 # Substitui a licença do arquivo metadata-ex.yml
 license:
-numbersections: true
 lang: pt-BR
 toc-title: Conteúdo
 fontsize: 11pt
