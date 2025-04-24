@@ -1220,7 +1220,7 @@ Dê um exemplo de uma expressão com `or`{.python} que falharia caso o Python n�
 
 # Exercício
 
-Escreva uma função chamada `comaca_a` que recebe como parâmetro uma string `s` e determina se `s` começa com `'a'`. Veja se a função funciona corretamente para os seguintes exemplos:
+Escreva uma função chamada `comeca_a`{.python} que recebe como parâmetro uma string `s`{.python} e determina se `s`{.python} começa com `'a'`{.python}. Veja se a função funciona corretamente para os seguintes exemplos:
 
 <div class="columns">
 <div class="column" width="48%">
@@ -1249,6 +1249,8 @@ False
 def comeca_a(s: str) -> bool:
     return s[0] == 'a'
 ```
+
+\pause
 
 Esta função está correta? \pause Não, o último exemplo gera uma falha de execução. \pause
 
@@ -1367,7 +1369,7 @@ O símbolo `=` representa **atribuição**. Para executar uma atribuição o Pyt
 
 # Sequenciação de instruções
 
-O Python executa essas instruções de **forma sequencial**, uma linha após a outra, por isso, a ordem das é importante. \pause
+Essas instruções são executadas de **forma sequencial**, uma linha após a outra, por isso, a ordem é importante. \pause
 
 Qual o resultado da execução das instruções abaixo?
 
@@ -1414,7 +1416,7 @@ Uma **variável local** é declarada no escopo ("dentro") de uma função. Elas 
 
 As variáveis locais são usadas para armazenar valores intermediários durante a execução da função. \pause
 
-Vamos usar variáveis locais para deixar o código da função `novo_seculo` mais legível
+Vamos usar variáveis locais para deixar o código da função `novo_seculo` mais legível.
 
 
 # Revisão `novo_seculo`
@@ -1452,6 +1454,8 @@ def novo_seculo(data: str) -> bool:
 </div>
 
 \small
+
+\pause
 
 Qual código deixar a intenção mais clara? \pause O que usa variáveis locais auxiliares.
 
@@ -1511,7 +1515,7 @@ O que é exibido na tela? \pause Nada!
 
 # Diferenças entre a janela de interações e a de edição de código
 
-O que acontece se escrevermos uma chamada função `dobro` após a sua definição e executarmos o arquivo (Run Module)?
+O que acontece se adicionarmos uma chamada a função `dobro` após a sua definição e executarmos o arquivo (Run Module)?
 
 \small
 
@@ -1530,7 +1534,7 @@ A função `dobro` será executada para o valor `4`{.python} mais nenhum resulta
 
 Por que na execução do exemplo na janela de interações o resultado é exibido e aqui não? \pause
 
-Por que no modo de interação a exibição é feita automaticamente (o P -- _print_ -- de REPL) para facilitar a interação com o Python. \pause No arquivo de código, precisamos indicar explicitamente que queremos que o resultado seja exibido.
+Por que no modo interativo exibição é feita automaticamente (o P -- _print_ -- de REPL) para facilitar a interação com o Python. \pause No arquivo de código, precisamos indicar explicitamente que queremos que o resultado seja exibido.
 
 
 # Instrução de saída
@@ -1580,7 +1584,7 @@ Os **erros dinâmicos** são detectados durante a execução do programa. \pause
 
 Por padrão, o único tipo de erro estático detectado pelo Python é o erro sintático. \pause
 
-Um **erro sintático** ocorre quando o programa não segue as regras sintáticas da linguagem e o interpretador não consegue "entender" a estrutura do programa, por isso o o interpretador nem inicia a execução do programa.
+Um **erro sintático** ocorre quando o programa não segue as regras sintáticas da linguagem e o interpretador não consegue "entender" a estrutura do programa, por isso o interpretador nem inicia a execução do programa.
 
 
 # Erros sintáticos
@@ -1627,7 +1631,7 @@ Identificador com espaço no nome
 SyntaxError: invalid syntax
 ```
 
-Use da palavra chave `def`{.python} como identificador
+Uso da palavra chave `def`{.python} como identificador
 
 \pause
 
@@ -1761,11 +1765,11 @@ Esse exemplo executa até o termino ou é interrompido por um erro? \pause Execu
 
 # Erros semânticos
 
-Quando `dobro` é chamada com o valor `10`{.python} a expressão `2 * x`{.python} produz `20` e esse valor é exibido na tela. \pause
+Quando `dobro` é chamada com o valor `10`{.python} a expressão `2 * x`{.python} produz `20`{.python} e esse valor é exibido na tela. \pause
 
-Em seguida `dobro` é chamada com o valor `10.0`{.python} e a expressão `2 * x`{.python} produz `20.0` e esse valor é exibido na tela. \pause
+Em seguida `dobro` é chamada com o valor `10.0`{.python} e a expressão `2 * x`{.python} produz `20.0`{.python} e esse valor é exibido na tela. \pause
 
-Por fim, `dobro` é chamada com o valor `'10'`{.python} e a expressão `2 * x`{.python} produz `1010` e esse valor é exibido na tela.
+Por fim, `dobro` é chamada com o valor `'10'`{.python} e a expressão `2 * x`{.python} produz `'1010'`{.python} e esse valor é exibido na tela.
 
 
 # Tipagem dinâmica vs estática
