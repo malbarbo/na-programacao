@@ -50,8 +50,8 @@ $(TECTONIC):
 		| tar xz -C $(DEST)/bin/
 
 clean:
-	@echo Removendo $(DEST)/*.pdf
-	@rm -rf $(DEST)/*.pdf
+	@echo Removendo $(DEST)/??-* $(DEST)/handout/
+	@rm -rf $(DEST)/??-* $(DEST)/handout/
 
 clean-all:
 	@echo Removendo $(DEST)
