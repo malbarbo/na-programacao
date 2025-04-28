@@ -1769,7 +1769,7 @@ Quando `dobro` é chamada com o valor `10`{.python} a expressão `2 * x`{.python
 
 Em seguida `dobro` é chamada com o valor `10.0`{.python} e a expressão `2 * x`{.python} produz `20.0`{.python} e esse valor é exibido na tela. \pause
 
-Por fim, `dobro` é chamada com o valor `'10'`{.python} e a expressão `2 * x`{.python} produz `'1010'`{.python} e esse valor é exibido na tela.
+Por fim, `dobro` é chamada com o valor `'10'`{.python} e a expressão `2 * x`{.python} produz `'1010'`{} e esse valor é exibido na tela.
 
 
 # Tipagem dinâmica vs estática
@@ -1796,6 +1796,25 @@ O `mypy` é um analisador estático, que além de fazer uma análise estática d
 
 # `mypy`
 
+O `mypy` precisa ser instalado no terminal com o comando
+
+```
+pip install mypy
+```
+
+\pause
+
+Para executar o `mypy` informamos o nome do arquivo na linha de comando
+
+```
+mypy arquivo.py
+```
+
+
+# `mypy`
+
+Considerando o arquivo `dobro.py`
+
 \small
 
 ```python
@@ -1807,13 +1826,9 @@ print(dobro(10.0))
 print(dobro('10'))
 ```
 
-Ao executar o `mypy` para o arquivo `dobro.py` com o comando
+\pause
 
-```
-mypy dobro.py
-```
-
-obtemos o seguinte resultado
+Ao executar o `mypy` com o comando `mypy dobro.py` obtemos o seguinte resultado
 
 \scriptsize
 
