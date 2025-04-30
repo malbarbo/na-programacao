@@ -1507,6 +1507,10 @@ hipotenusa(3.0, 4.0)
 
 Em qual ordem as linhas do programa são executadas pelo Python? \pause 12, 8, 2, 8, 9, 2, 9,10, 5, 10, 12. (Feito em sala) \pause
 
+[Veja](https://pythontutor.com/render.html#code=def%20quadrado%28a%3A%20float%29%20-%3E%20float%3A%0A%20%20%20%20return%20a%20*%20a%0A%0Adef%20raiz%28a%3A%20float%29%20-%3E%20float%3A%0A%20%20%20%20return%20a%20**%200.5%0A%0Adef%20hipotenusa%28a%3A%20float,%20b%3A%20float%29%20-%3E%20float%3A%0A%20%20%20%20a2%20%3D%20quadrado%28a%29%0A%20%20%20%20b2%20%3D%20quadrado%28b%29%0A%20%20%20%20return%20raiz%28a2%20%2B%20b2%29%0A%0Aprint%28hipotenusa%283.0,%204.0%29%29&cumulative=false&curInstr=0&heapPrimitives=true&mode=display&origin=opt-frontend.js&py=311&rawInputLstJSON=%5B%5D&textReferences=false) a execução no pythontutor (um pouco diferente do que fizemos em sala).
+
+\pause
+
 O que é exibido na tela? \pause Nada!
 
 </div>
