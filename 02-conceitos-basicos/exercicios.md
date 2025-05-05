@@ -6,6 +6,7 @@ title: |
 urlcolor: Blue
 # TODO: adicionar avaliação de expressões relacionais e booleanas
 # TODO: adicionar questão teóricas (tipos e operações primitivas, prioridades, erros, avaliação passo a passo
+# TODO: adicionar questões de execução passo a passo
 ---
 
 # Começando
@@ -174,7 +175,7 @@ Para os próximos exercícios, escreva primeiro os exemplos (e deixe como coment
 
 @) Projete uma função que calcule o valor da hipotenusa a partir dos valores dos catetos.
 
-@) Quando escrevemos uma data no Brasil em geral usamos a ordem dia/mês/ano. Já em outros países a ordem usada é mês/dia/ano. Uma outra forma mais recente de escrever a data é ano/mês/dia. Projete uma função que receba como entrada o dia o mês e o ano e gere uma string representando a data na forma ano/mês/dia.
+@) Quando escrevemos uma data no Brasil em geral usamos a ordem dia/mês/ano. Já em outros países a ordem usada é mês/dia/ano. Uma outra forma mais recente de escrever a data é ano/mês/dia. Projete uma função que receba como entrada o dia, o mês e o ano e gere uma string representando a data na forma ano/mês/dia.
 
 @) Dizemos que o nome de uma pessoal é curto se tem no máximo três letras e longo se tem mais que 8 letras. Um nome que não é nem curto e nem longo é mediano. Projete uma função que verifique se um dado nome é mediano.
 

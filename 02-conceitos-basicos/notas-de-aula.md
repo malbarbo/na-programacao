@@ -4,7 +4,7 @@ title: Conceitos básicos
 # TODO: adicionar referências
 # TODO: adicionar definição de tipo de dado
 # TODO: adicionar definição de expressão e avaliação de expressão
-# TODO: adicionar execução passo a passo
+# TODO: adicionar um revisão no final
 ---
 
 # Introdução
