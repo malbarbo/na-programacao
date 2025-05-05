@@ -3,6 +3,7 @@
 title: Projeto de programas
 # TODO: mais um exemplo (verdadeiro / falso)
 # TODO: fazer um quiz
+# TODO: adicionar revisão
 ---
 
 # Introdução
@@ -186,7 +187,7 @@ No propósito da função descrevemos **o quê** a função faz, e não **como**
 Número par \pause
 
 - O quê: verifica se um número é par \pause
-- Como: faz o resto da divisão do número por 2 e compara com 0; ou; faz a divisão inteira do número e multiplica por 2 e compara com o número
+- Como: faz o resto da divisão do número por 2 e compara com 0; \pause ou; faz a divisão inteira do número e multiplica por 2 e compara com o número
 
 
 # Especificação
@@ -278,7 +279,7 @@ Observando a especificação, em particular os **exemplos**, generalizamos a for
 
 Usamos os exemplos para fazer a **verificação**. \pause
 
-No modo interativo, digitamos cada e exemplo e conferimos se a resposta é a esperada: \pause
+No modo interativo, digitamos cada exemplo e conferimos se a resposta é a esperada: \pause
 
 \small
 
@@ -509,7 +510,7 @@ Alguma coisa parece complicada nesse exercício?
 
 # Exemplo - massa tudo de ferro
 
-Nesse exercício precisamos de conhecimento de um domínio (área), que talvez ainda não tenhamos, isso pode fazer o problema parecer mais difícil do que realmente é. \pause Mas então, como proceder nesses casos? \pause
+Nesse exercício precisamos de conhecimento de um domínio (área de conhecimento), que talvez ainda não tenhamos, isso pode fazer o problema parecer mais difícil do que realmente é. \pause Mas então, como proceder nesses casos? \pause
 
 Precisamos de uma pessoa (ou livros) que possam nos instruir sobre o conhecimento do domínio, geralmente os interessados no software podem indicar tais pessoas. \pause
 

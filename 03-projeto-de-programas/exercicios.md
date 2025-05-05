@@ -5,7 +5,7 @@ title: |
        | Projeto de funções
 urlcolor: Blue
 # TODO: fazer mais exercícios sobre cada etapa individual
-# TODO: adicionar exercícios de avaliação de expressões e execução passo a passo
+# TODO: melhorar os exercícios de avançando (remover do paralelepipido)
 ---
 
 **\color{red}Lembre-se** de seguir o processo de projeto de funções e de usar o `mypy` e o `doctest` na etapa de verificação.
