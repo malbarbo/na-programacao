@@ -6,6 +6,7 @@ title: |
 urlcolor: Blue
 # TODO: fazer mais exercícios sobre cada etapa individual
 # TODO: melhorar os exercícios de avançando (remover do paralelepipido)
+# TODO: adicionar desafios
 ---
 
 **\color{red}Lembre-se** de seguir o processo de projeto de funções e de usar o `mypy` e o `doctest` na etapa de verificação.
