@@ -195,4 +195,7 @@ Para os próximos exercícios, escreva primeiro os exemplos (e deixe como coment
 
 @) Projete uma função que verifique se o último nome (sobrenome) de uma pessoa é "Silva". Você pode assumir que a string de entrada não tem espaços no início e no final e que contém pelo menos um espaço em branco.
 
-@) (Desafio) Projete uma função que encontre o maior valor entre dois números dados.
+
+# Desafios
+
+@) Projete uma função que encontre o maior valor entre dois números dados.
