@@ -73,7 +73,7 @@ def indica_combustivel(preco_alcool: float, preco_gasolina: float) -> str
 
 Essa escolha é adequada? \pause
 
-Não! Muitos valores de `str`{.python} não correspondem a nenhum valor válido para a informação do tipo de combustível. \pause Além disso, para o leito do código, a saída do tipo `str`{.python} sugere que qualquer string é possível como resposta, o que não é verdade. \pause
+Não! Muitos valores de `str`{.python} não correspondem a nenhum valor válido para a informação do tipo de combustível. \pause Além disso, para o leitor do código, a saída do tipo `str`{.python} sugere que qualquer string é possível como resposta, o que não é verdade. \pause
 
 
 Como proceder nesse caso? \pause Vamos definir um novo tipo onde apenas os valores para álcool e gasolina são válidos.
@@ -165,7 +165,7 @@ Cada valor da enumeração tem dois atributos: `name` e `value`. \pause
 
 # Tipos enumerados
 
-Assim como uma variável do tipo `bool`{.python} só pode armazenar os valores `True`{.python} e `False`{.python}, uma variável do tipo `Combustivel` só pode armazenar o valor `Combustivel.ALCOOL` ou `Combustivel.GASOLINA`, se tentarmos atribuir um valor diferente, o `mypy` indicará um erro. \pause
+Assim como uma variável do tipo `bool`{.python} só pode armazenar os valores `True`{.python} e `False`{.python}, uma variável do tipo `Combustivel` só pode armazenar os valores `Combustivel.ALCOOL` ou `Combustivel.GASOLINA`, se tentarmos atribuir um valor diferente, o `mypy` indicará um erro. \pause
 
 \small
 
@@ -673,7 +673,7 @@ Análise \pause
 
 Definição de tipos de dados
 
-- Já fizemos
+- Já fizemos.
 
 
 # Exemplo - tempo - parte b
@@ -714,8 +714,6 @@ De fato só precisamos de 7, pois o valor dos segundos não importa no caso em q
 >>> # horas == 0 and minutos == 0
 >>> tempo_para_string(Tempo(0, 0, 0))
 '0 segundo(s)'
->>> tempo_para_string(Tempo(0, 0, 1))
-'1 segundo(s)'
 >>> tempo_para_string(Tempo(0, 0, 10))
 '10 segundo(s)'
 
@@ -759,7 +757,7 @@ De fato só precisamos de 7, pois o valor dos segundos não importa no caso em q
 
 # Exemplo - tempo - parte b
 
-Quantas formas de respostas existem? \pause 7! \pause Então temos que usar seleção. \pause
+Quantas formas de resposta existem? \pause 7! \pause Então temos que usar seleção. \pause
 
 A implementação direta usando as condições de cada forma fica com exercício. \pause
 
