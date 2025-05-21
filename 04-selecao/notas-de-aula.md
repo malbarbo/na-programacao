@@ -47,7 +47,7 @@ Qual é a ordem que as linhas são executadas? \pause
 
 10, \pause 6, \pause 7, \pause 2, \pause 3, \pause 7, \pause 8, \pause 10. \pause
 
-Confira a [execução](https://pythontutor.com/render.html#code=def%20dobro_mais_um%28n%3A%20int%29%20-%3E%20int%3A%0A%20%20%20%20a%20%3D%202%20*%20n%0A%20%20%20%20return%20a%20%2B%201%0A%0Adef%20main%28%29%3A%0A%20%20%20a%20%3D%205%0A%20%20%20n%20%3D%20dobro_mais_um%28a%20%2B%204%29%20%2B%201%0A%20%20%20print%28n%29%0A%0Amain%28%29&cumulative=false&curInstr=0&heapPrimitives=nevernest&mode=display&origin=opt-frontend.js&py=311&rawInputLstJSON=%5B%5D&textReferences=false) desse código no Python Tutor (note que, diferente do fizemos em sala, as linhas do `def` são mostradas como sendo executadas).
+Confira a [execução](https://pythontutor.com/render.html#code=def%20dobro_mais_um%28n%3A%20int%29%20-%3E%20int%3A%0A%20%20%20%20a%20%3D%202%20*%20n%0A%20%20%20%20return%20a%20%2B%201%0A%0Adef%20main%28%29%3A%0A%20%20%20a%20%3D%205%0A%20%20%20n%20%3D%20dobro_mais_um%28a%20%2B%204%29%20%2B%201%0A%20%20%20print%28n%29%0A%0Amain%28%29&cumulative=false&curInstr=0&heapPrimitives=nevernest&mode=display&origin=opt-frontend.js&py=311&rawInputLstJSON=%5B%5D&textReferences=false) desse código no Python Tutor (note que, diferente do fizemos em sala, as linhas do `def`{.python} são mostradas como sendo executadas).
 
 </div>
 </div>
@@ -462,7 +462,7 @@ Verificação: \pause ok. \pause
 
 Revisão \pause
 
-Podemos modificar o código para torná-lo mais fácil de ler e entender? \pause Sim!
+Podemos modificar o código para torná-lo mais fácil de ler e entender? \pause Sim! \pause
 
 O Python permite "juntar" um `else`{.python} seguido de um `if`{.python} em um `elif`{.python}. Isto ajuda a diminuir os níveis de indentação, facilitando a escrita e leitura do código.
 </div>
@@ -497,14 +497,14 @@ Olhamos para a especificação, com atenção especial para os exemplos, e pergu
 
 - Se existe apenas uma forma de resposta, isto é, a resposta dos exemplos são sempre calculadas da mesma forma, então usamos essa forma para implementar a função. \pause
 
-- Se existe mais de uma forma, isto é, a resposta para pelo menos dois exemplos tem a forma distinta, então precisamos usar seleção. \pause Para cada forma de resposta identificamos uma condição e usamos as condições e as formas de resposta para implementar a função (o que fizemos na implementação da função `maximo3`).
+- Se existe mais de uma forma, isto é, a resposta para pelo menos dois exemplos tem forma distinta, então precisamos usar seleção. \pause Para cada forma de resposta identificamos uma condição e usamos as condições e as formas de resposta para implementar a função (o que fizemos na implementação da função `maximo3`).
 
 
 # Exemplo - máximo de 3
 
 No caso de mais de uma forma de resposta, a condição de cada forma pode ser composta, como no exemplo `maximo3`, onde a condição para a resposta ser `a`{.python} era `a >= b and a >= c`{.python} (a condição é composta por duas partes). \pause
 
-Nesses casos, podemos verificar cada parte da condição de forma separada. A cada verificação, dividimos as formas de resposta em dois grupos, as que precisam que a condição seja verdadeira e as que precisam que a condição seja falsa. Usando verificação subsequentes, vamos restringindo as formas de resposta até chegar em apenas uma forma. \pause
+Nesses casos, podemos verificar cada parte da condição de forma separada. A cada verificação, dividimos as formas de resposta em dois grupos, as que precisam que a condição seja verdadeira e as que precisam que a condição seja falsa. Usando verificações subsequentes, vamos restringindo as formas de resposta até chegar em apenas uma forma. \pause
 
 Vamos tentar utilizar essa abordagem para fazer um implementação alternativa da função `maximo3`.
 
@@ -658,7 +658,7 @@ def maximo3(a: int, b: int, c: int) -> int:
 
 \normalsize
 
-Poderíamos ter chegado nessa implementação na primeira vez? \pause
+Poderíamos ter construído essa implementação na primeira vez? \pause
 
 Sim, mas nesse caso, deveríamos ter visto que as três formas de resposta distintas poderiam ter sido generalizadas em uma única forma, que é `maximo(maximo(a, b), c)`{.python}. Essa generalização direta requer prática, por enquanto, podemos fazer os casos distintos e tentar, durante a revisão, simplificar o código.
 
@@ -677,7 +677,7 @@ def maximo(a: int, b: int) -> int:
         m = a
     else:
         m = b
-    return a
+    return m
 
 def maximo3(a: int, b: int, c: int) -> int:
     return maximo(maximo(a, b), c)
@@ -850,7 +850,7 @@ IndexError: string index out of range
 
 ```
 >>> # com assert
->>> ponot_final('')
+>>> ponto_final('')
 Traceback (most recent call last):
     ...
     ...
@@ -926,7 +926,7 @@ Em uma determinada aplicação as strings precisam ser exibidas com pelo menos $
 
 Análise
 
-- Deixar uma string que não tem $n$ caracteres com $n$ caracteres adicionando espaços no início e no final da string.
+- Deixar uma string que tem menos de $n$ caracteres com $n$ caracteres adicionando espaços no início e no final da string.
 
 \pause
 

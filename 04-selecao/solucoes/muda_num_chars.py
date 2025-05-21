@@ -15,6 +15,7 @@ def muda_num_chars(s: str, n: int) -> str:
     >>> muda_num_chars('python', 6)
     'python'
     '''
+    assert n >= 0
     if len(s) < n:
         r = s + ' ' * (n - len(s))
     elif len(s) > n:
