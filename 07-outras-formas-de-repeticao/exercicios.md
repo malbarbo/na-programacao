@@ -62,7 +62,7 @@ urlcolor: Blue
 
 @) Projete uma função que verifique se uma lista de números é dobrada, isto é, pode ser obtida pela concatenação de duas listas iguais (suponha que as operações de sublista não estão disponíveis).
 
-@) Projete uma função que determine qual é a menor quantidade de elementos de uma lista que precisam ser somados (a partir do início da lista) para que a soma seja maior que um dado valor. Se não for possível atingir a soma desejada, a função deve devolver -1.
+@) Projete uma função que determine qual é a menor quantidade de elementos de uma lista que precisam ser somados (a partir do início da lista) para que a soma seja maior que um dado valor. Se a lista for vazia ou não for possível atingir a soma desejada, a função deve devolver -1.
 
 <!-- Repetição sem listas -->
 
