@@ -5,6 +5,7 @@ title: |
        | Memória e passagem de parâmetros
 urlcolor: Blue
 # TODO: adicionar problemas
+# TODO: adicionar outros métodos de ordenação?
 ---
 
 **\color{red}Lembre-se** de seguir o processo de projeto de funções e de usar o `mypy` e o `doctest` na etapa de verificação.
@@ -100,13 +101,13 @@ urlcolor: Blue
     ```
 
 
-@) Projete uma função que modifique uma lista removendo todos os elementos que estão em índices pares.
+@) Projete uma função que modifique uma lista removendo todos os elementos que estão em índices pares (não utilize uma lista auxiliar).
 
-@) Projete uma função que modifique uma lista de strings removendo todas as strings vazias.
+@) Projete uma função que modifique uma lista de strings removendo todas as strings vazias (não utilize uma lista auxiliar).
 
-@) Projete uma função que modifique uma lista colocando os valores menores ou iguais a zero antes dos valores maiores que zero.
+@) Projete uma função que modifique uma lista colocando os valores menores ou iguais a zero antes dos valores maiores que zero (não utilize uma lista auxiliar).
 
-@) Ordenação por seleção é um algoritmo para ordenar uma lista de valores. A ideia do algoritmo é selecionar um valor mínimo da lista a partir da posição 0 e colocá-lo na posição 0, depois encontrar um valor mínimo da lista a partir da posição 1 e colocá-lo na posição 1, depois encontrar um valor mínimo da lista a partir da posição 2 ... e assim por diante. Por exemplo, vamos considerar a lista `[8, 5, 4, 1, 2]`{.python}.
+@) Ordenação por seleção é um algoritmo para ordenar uma lista de valores. A ideia do algoritmo é selecionar um valor mínimo da lista a partir da posição 0 e colocá-lo na posição 0, depois encontrar um valor mínimo da lista a partir da posição 1 e colocá-lo na posição 1, depois encontrar um valor mínimo da lista a partir da posição 2 ... e assim por diante. Por exemplo, vamos considerar a lista `[8, 5, 4, 1, 2]`{.python} (não utilize uma lista auxiliar).
 
     O valor mínimo a partir da posição 0 é 1 (que está no índice 3), colocando 1 na posição 0, obtemos `[1, 5, 4, 8, 2]`{.python}.
 
