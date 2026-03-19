@@ -997,7 +997,7 @@ em Python fazemos \pause
 
 \small
 
-```python
+```python-repl
 >>> a: list[list[int]] = [[1, 4, 2, 8], [-1, 0, 9, 1], [4, 7, -2, 0]]
 ```
 
@@ -1008,7 +1008,7 @@ Usamos as operações que já conhecemos para acessar e modificar os elementos d
 
 \small
 
-```python
+```python-repl
 >>> a: list[list[int]] = [[1, 4, 2, 8], [-1, 0, 9, 1], [4, 7, -2, 0]]
 >>> a[1]
 [-1, 0, 9, 1]
@@ -1743,7 +1743,7 @@ Um conjunto em Python é semelhante a uma lista, mas não contém elementos repe
 <div class="column" width="48%">
 \footnotesize
 
-```python
+```python-repl
 >>> # conjunto vazio
 >>> a: set[int] = set()
 >>> a
@@ -1752,7 +1752,7 @@ Um conjunto em Python é semelhante a uma lista, mas não contém elementos repe
 
 \pause
 
-```python
+```python-repl
 >>> # inicialização com elementos
 >>> a = {10, 4}
 >>> a
@@ -1761,7 +1761,7 @@ Um conjunto em Python é semelhante a uma lista, mas não contém elementos repe
 
 \pause
 
-```python
+```python-repl
 >>> # adição de elementos
 >>> a.add(3)
 >>> a.add(4)
@@ -1775,7 +1775,7 @@ Um conjunto em Python é semelhante a uma lista, mas não contém elementos repe
 <div class="column" width="48%">
 \footnotesize
 
-```python
+```python-repl
 >>> # pertinência
 >>> 4 in a
 True
@@ -1785,7 +1785,7 @@ False
 
 \pause
 
-```python
+```python-repl
 >>> # tamanho
 >>> len(a)
 3
@@ -1793,7 +1793,7 @@ False
 
 \pause
 
-```python
+```python-repl
 >>> # iteração
 >>> soma = 0
 >>> for e in a:

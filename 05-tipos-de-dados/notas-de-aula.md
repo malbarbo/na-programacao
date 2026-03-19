@@ -132,7 +132,7 @@ Cada valor da enumeração tem dois atributos: `name` e `value`. \pause
 
 \small
 
-```python
+```python-repl
 >>> c: Combustivel = Combustivel.ALCOOL
 >>> c
 <Combustivel.ALCOOL: 1>
@@ -149,7 +149,7 @@ Cada valor da enumeração tem dois atributos: `name` e `value`. \pause
 
 \small
 
-```python
+```python-repl
 >>> c = Combustivel.GASOLINA
 >>> c
 <Combustivel.GASOLINA: 2>
@@ -278,7 +278,7 @@ Quantos exemplos precisamos? \pause Pelo menos 3, um para cada valor da enumera�
 
 \footnotesize
 
-```python
+```python-repl
     >>> proxima_cor(Cor.VERDE).name
     'AMARELO'
     >>> proxima_cor(Cor.AMARELO).name
@@ -340,7 +340,7 @@ Quantos exemplos precisamos? Pelo menos 3, um para cada valor da enumeração.
 
 \footnotesize
 
-```python
+```python-repl
     >>> proxima_cor(Cor.VERDE).name
     'AMARELO'
     >>> proxima_cor(Cor.AMARELO).name
@@ -486,7 +486,7 @@ Para criar um valor de um tipo composto, chamamos o **construtor** (função que
 
 \small
 
-```python
+```python-repl
 >>> t1: Tempo = Tempo(0, 20, 10)
 >>> t1
 Tempo(horas=0, minutos=20, segundos=10)
@@ -494,7 +494,7 @@ Tempo(horas=0, minutos=20, segundos=10)
 
 \pause
 
-```python
+```python-repl
 >>> # A anotação do tipo é opcional
 >>> t2 = Tempo(4, 0, 20)
 >>> t2
@@ -510,7 +510,7 @@ Como valores do tipo `Tempo` são compostos de outros valores (campos), podemos 
 <div class="column" width="48%">
 \small
 
-```python
+```python-repl
 >>> t1 = Tempo(0, 20, 10)
 >>> t1.segundos
 10
@@ -527,7 +527,7 @@ Como valores do tipo `Tempo` são compostos de outros valores (campos), podemos 
 
 \small
 
-```python
+```python-repl
 >>> t1.horas = 3
 >>> t1
 Tempo(horas=3, minutos=20, segundos=10)
@@ -710,7 +710,7 @@ De fato só precisamos de 7, pois o valor dos segundos não importa no caso em q
 <div class="column" width="48%">
 \scriptsize
 
-```python
+```python-repl
 >>> # horas == 0 and minutos == 0
 >>> tempo_para_string(Tempo(0, 0, 0))
 '0 segundo(s)'
@@ -733,7 +733,7 @@ De fato só precisamos de 7, pois o valor dos segundos não importa no caso em q
 
 \scriptsize
 
-```python
+```python-repl
 >>> # horas != 0 and minutos != 0 and segundos != 0
 >>> tempo_para_string(Tempo(1, 2, 1))
 '1 hora(s), 2 minuto(s) e 1 segundo(s)'

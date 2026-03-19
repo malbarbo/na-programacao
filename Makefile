@@ -14,6 +14,8 @@ PANDOC_NOTAS_CMD=$(PANDOC) \
 		--pdf-engine=$(CURDIR)/$(TECTONIC) \
 		--metadata-file ../metadata.yml \
 		--template ../templates/default.latex \
+		--syntax-definition ../templates/python-repl.xml \
+		--highlight-style ../templates/spython.theme \
 		--to beamer \
 		--standalone
 

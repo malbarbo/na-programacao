@@ -340,7 +340,7 @@ def maximo3(a: int, b: int, c: int) -> int:
 <div class="column" width="48%">
 \scriptsize
 
-```python
+```python-repl
 >>> maximo3(20, 10, 12) # a é o máximo
 20
 >>> maximo3(20, 12, 10)
@@ -1002,7 +1002,7 @@ def centraliza(s: str, n: int) -> str:
 
 \footnotesize
 
-```python
+```python-repl
     >>> centraliza('casa', 3)
     'casa'
     >>> centraliza('', 0)

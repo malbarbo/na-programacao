@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE language>
+<language name="Python-REPL"
+          alternativeNames="python-repl;pycon"
+          version="1"
+          kateversion="5.0"
+          section="Scripts"
+          extensions="*.pycon"
+          mimetype=""
+          priority="0"
+          license="MIT">
+  <highlighting>
+    <contexts>
+      <context attribute="Output" lineEndContext="#stay" name="Normal">
+        <RegExpr attribute="Prompt" context="PromptCode"
+                 String="^\s*&gt;&gt;&gt; ?" column="0" />
+        <RegExpr attribute="Prompt" context="ContinuationCode"
+                 String="^\s*\.\.\. ?" column="0" />
+      </context>
+      <context attribute="Code" lineEndContext="#pop" name="PromptCode">
+        <IncludeRules context="##Python" />
+      </context>
+      <context attribute="Code" lineEndContext="#pop" name="ContinuationCode">
+        <IncludeRules context="##Python" />
+      </context>
+    </contexts>
+    <itemDatas>
+      <itemData name="Output" defStyleNum="dsNormal" />
+      <itemData name="Prompt" defStyleNum="dsSpecialChar" />
+      <itemData name="Code" defStyleNum="dsNormal" />
+    </itemDatas>
+  </highlighting>
+  <general>
+    <keywords casesensitive="true" />
+  </general>
+</language>

@@ -44,7 +44,7 @@ Vamos ver algumas operações com listas.
 
 \footnotesize
 
-```python
+```python-repl
 >>> # Inicialização
 >>> x: list[int] = [9 + 1, 1, 7, 2]
 >>> x
@@ -53,7 +53,7 @@ Vamos ver algumas operações com listas.
 
 \pause
 
-```python
+```python-repl
 >>> # Lista vazia
 >>> y = [] # ou list()
 >>> y
@@ -62,7 +62,7 @@ Vamos ver algumas operações com listas.
 
 \pause
 
-```python
+```python-repl
 >>> # Número de elementos
 >>> len(x)
 4
@@ -77,7 +77,7 @@ Vamos ver algumas operações com listas.
 
 \footnotesize
 
-```python
+```python-repl
 >>> # Indexação
 >>> nomes = ['Maria', 'João', 'Paulo']
 >>> nomes[1]
@@ -91,7 +91,7 @@ IndexError: list index out of range
 
 \pause
 
-```python
+```python-repl
 >>> # Sublistas
 >>> x = [4, 1, 5, 7, 3]
 >>> x[:2]
@@ -111,7 +111,7 @@ IndexError: list index out of range
 
 \footnotesize
 
-```python
+```python-repl
 >>> # Substituição de um elemento
 >>> y = [4, 2]
 >>> y[1] = 7
@@ -121,7 +121,7 @@ IndexError: list index out of range
 
 \pause
 
-```python
+```python-repl
 >>> # Acrésimo de um elemento
 >>> y.append(5) # list.append(y, 5)
 >>> y
@@ -133,7 +133,7 @@ IndexError: list index out of range
 
 \pause
 
-```python
+```python-repl
 >>> # Concatenação
 >>> [1, 2, 3] + [4, 5]
 [1, 2, 3, 4, 5]

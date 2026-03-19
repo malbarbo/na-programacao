@@ -67,7 +67,7 @@ As interações acontecem da seguinte forma
 
 Exemplo de interação
 
-```python
+```python-repl
 >>> 3 * 4
 12
 ```
@@ -107,7 +107,7 @@ Inteiros (`int`{.python}) \pause
 
 \small
 
-```python
+```python-repl
 >>> 102
 102
 >>> -18
@@ -123,7 +123,7 @@ Ponto flutuante (`float`{.python}), representação aproximada de números reais
 
 \small
 
-```python
+```python-repl
 >>> 1.3
 1.3
 >>> 0.345
@@ -148,7 +148,7 @@ Podemos usar as quatro operações aritméticas básicas com esses tipos numéri
 
 \small
 
-```python
+```python-repl
 >>> # Soma e subtração
 >>> 4 + 2
 6
@@ -158,7 +158,7 @@ Podemos usar as quatro operações aritméticas básicas com esses tipos numéri
 
 \pause
 
-```python
+```python-repl
 >>> # Multiplicação e divisão
 >>> 3 * 5.0
 15.0
@@ -168,7 +168,7 @@ Podemos usar as quatro operações aritméticas básicas com esses tipos numéri
 
 \pause
 
-```python
+```python-repl
 >>> # Divisão sempre produz float
 >>> 8 / 4
 2.0
@@ -179,7 +179,7 @@ Podemos usar as quatro operações aritméticas básicas com esses tipos numéri
 
 \small
 
-```python
+```python-repl
 >>> # Piso da divisão
 >>> 7 // 2
 3
@@ -189,7 +189,7 @@ Podemos usar as quatro operações aritméticas básicas com esses tipos numéri
 
 \pause
 
-```python
+```python-repl
 >>> # Módulo
 >>> 14 % 3
 2
@@ -199,7 +199,7 @@ Podemos usar as quatro operações aritméticas básicas com esses tipos numéri
 
 \pause
 
-```python
+```python-repl
 >>> # float é uma aproximação dos reais
 >>> 5 % 1.3
 1.0999999999999999
@@ -217,7 +217,7 @@ O símbolo `#`{.python} (cerquilha), é utilizado para indicar um **comentário*
 # Exponenciação
 \small
 
-```python
+```python-repl
 >>> # Exponenciação e radiciação
 >>> 3 ** 4 # 3 elevado a 4
 81
@@ -230,7 +230,7 @@ O símbolo `#`{.python} (cerquilha), é utilizado para indicar um **comentário*
 
 \pause
 
-```python
+```python-repl
 >>> # A exponenciação tem prioridade sobre a divisão
 >>> # O mesmo que (27 ** 1) / 3
 >>> 27 ** 1 / 3
@@ -259,7 +259,7 @@ Qual é o resultado da avaliação de cada expressão a seguir?
 
 \small
 
-```python
+```python-repl
 >>> 15 // 7
 
 >>> 15 % 7
@@ -283,7 +283,7 @@ Qual é o resultado da avaliação de cada expressão a seguir?
 
 \small
 
-```python
+```python-repl
 >>> 15 // 7
 2
 >>> 15 % 7
@@ -307,7 +307,7 @@ Qual é o resultado da avaliação de cada expressão a seguir?
 <div class="column" width="50%">
 \small
 
-```python
+```python-repl
 >>> # Arredondamento
 >>> round(3.4)
 3
@@ -326,7 +326,7 @@ Qual é o resultado da avaliação de cada expressão a seguir?
 
 \small
 
-```python
+```python-repl
 >>> # Conversão entre int e float
 >>> int(7.6)
 7
@@ -353,7 +353,7 @@ Por hora, vamos ver apenas algumas funções do módulo [`math`](https://docs.py
 
 \small
 
-```python
+```python-repl
 >>> # Importação do módulo
 >>> import math
 ```
@@ -365,7 +365,7 @@ Por hora, vamos ver apenas algumas funções do módulo [`math`](https://docs.py
 
 \small
 
-```python
+```python-repl
 >>> # Piso
 >>> # maior inteiro <= ao número
 >>> math.floor(4.2)
@@ -383,7 +383,7 @@ Por hora, vamos ver apenas algumas funções do módulo [`math`](https://docs.py
 
 \small
 
-```python
+```python-repl
 >>> # Teto
 >>> # menor inteiro >= ao númeo
 >>> math.ceil(4.2)
@@ -408,7 +408,7 @@ Uma string em Python é escrita entre apóstrofo (`'`{.python}) ou aspas (`"`{.p
 
 \small
 
-```python
+```python-repl
 >>> 'casa'
 'casa'
 >>> "gota d'agua"
@@ -427,7 +427,7 @@ Assim como existem operações pré-definidas para números, também existem ope
 
 \small
 
-```python
+```python-repl
 >>> # Concatenação
 >>> 'casa' + ' da ' + 'sogra'
 'casa da sogra'
@@ -435,7 +435,7 @@ Assim como existem operações pré-definidas para números, também existem ope
 
 \pause
 
-```python
+```python-repl
 >>> # Repetição
 >>> 'abc' * 3
 'abcabcabc'
@@ -443,7 +443,7 @@ Assim como existem operações pré-definidas para números, também existem ope
 
 \pause
 
-```python
+```python-repl
 >>> 'algum' * 0
 ''
 >>> 'algum' * -4
@@ -457,7 +457,7 @@ Assim como existem operações pré-definidas para números, também existem ope
 
 \small
 
-```python
+```python-repl
 >>> # Quantidade de caracteres
 >>> len('ciência da computação')
 21
@@ -465,7 +465,7 @@ Assim como existem operações pré-definidas para números, também existem ope
 
 \pause
 
-```python
+```python-repl
 >>> # Conversão maiúscula
 >>> 'José'.upper() # ou str.upper('José')
 'JOSÉ'
@@ -473,7 +473,7 @@ Assim como existem operações pré-definidas para números, também existem ope
 
 \pause
 
-```python
+```python-repl
 >>> # Conversão minúscula
 >>> 'José'.lower() # ou str.lower('José')
 'josé'
@@ -487,7 +487,7 @@ Assim como existem operações pré-definidas para números, também existem ope
 
 \small
 
-```python
+```python-repl
 >>> # Indexação de caractere
 >>> # O primeiro caractere tem índice 0
 >>> 'casa'[0] # ou str.__getitem__('casa', 0)
@@ -496,14 +496,14 @@ Assim como existem operações pré-definidas para números, também existem ope
 
 \pause
 
-```python
+```python-repl
 >>> 'casa'[1]
 'a'
 ```
 
 \pause
 
-```python
+```python-repl
 >>> # Acesso de índice fora do intervalo
 >>> 'casa'[4]
 Traceback (most recent call last):
@@ -516,7 +516,7 @@ IndexError: string index out of range
 
 \small
 
-```python
+```python-repl
 >>> # Substring do início até 3 - 1
 >>> 'veja isso'[:3] # ou str.__getitem__('veja isso', slice(None, 3))
 'vej'
@@ -524,7 +524,7 @@ IndexError: string index out of range
 
 \pause
 
-```python
+```python-repl
 >>> # Substring de 4 até o final
 >>> 'veja isso'[4:] # ou str.__getitem__('veja isso', slice(4, None))
 ' isso'
@@ -532,7 +532,7 @@ IndexError: string index out of range
 
 \pause
 
-```python
+```python-repl
 >>> # Substring de 2 até 6 - 1
 >>> 'veja isso'[2:6] # ou str.__getitem__('veja isso', slice(2, 6))
 'ja i'
@@ -546,7 +546,7 @@ IndexError: string index out of range
 
 \small
 
-```python
+```python-repl
 >>> # Conversão de int para str
 >>> str(127)
 '127'
@@ -557,7 +557,7 @@ IndexError: string index out of range
 
 \pause
 
-```python
+```python-repl
 >>> # Concatenação de str e int
 >>> 'Idade: ' + str(19)
 'Idade: 19'
@@ -570,7 +570,7 @@ IndexError: string index out of range
 
 \small
 
-```python
+```python-repl
 >>> # Conversão de str para int
 >>> int('127')
 127
@@ -578,7 +578,7 @@ IndexError: string index out of range
 
 \pause
 
-```python
+```python-repl
 >>> # Conversão de str para float
 >>> float('25')
 25.0
@@ -659,7 +659,7 @@ Qual é o resultado de cada expressão a seguir?
 
 \small
 
-```python
+```python-repl
 >>> len('casa') * 'x'
 
 >>> str(10) + 2 * '*' + str(2.0)
@@ -681,7 +681,7 @@ Qual é o resultado de cada expressão a seguir?
 
 \small
 
-```python
+```python-repl
 >>> len('casa') * 'x'
 'xxxx'
 >>> str(10) + 2 * '*' + str(2.0)
@@ -815,7 +815,7 @@ Escreva uma função chamada `polegadas_em_mm` que converte uma medida `x` em po
 
 \small
 
-```python
+```python-repl
 >>> polegadas_em_mm(10)
 254.0
 >>> polegadas_em_mm(1/2)
@@ -865,7 +865,7 @@ Em Python a resposta da primeira comparação é `False`{.python} (falso) e da s
 
 \small
 
-```python
+```python-repl
 >>> 3 > 4
 False
 >>> 3 < 4
@@ -885,7 +885,7 @@ Na computação os valores verdadeiro e falso são chamados de **booleanos**. Em
 
 \small
 
-```python
+```python-repl
 >>> # Maior e maior ou igual
 >>> 4 > 4
 False
@@ -895,7 +895,7 @@ True
 
 \pause
 
-```python
+```python-repl
 >>> # Menor e menor ou igual
 >>> 6.0 < 6.0
 False
@@ -910,7 +910,7 @@ True
 
 \small
 
-```python
+```python-repl
 >>> # Igual
 >>> 5 == 6
 False
@@ -920,7 +920,7 @@ True
 
 \pause
 
-```python
+```python-repl
 >>> # Diferente
 >>> 3 * 2 != 4 + 2 ** 2
 True
@@ -949,7 +949,7 @@ As strings são comparadas lexicograficamente, o que pode gerar algumas surpresa
 
 \small
 
-```python
+```python-repl
 >>> 'a' < 'b'
 True
 >>> 'á' < 'b'
@@ -965,7 +965,7 @@ True
 
 \small
 
-```python
+```python-repl
 >>> 'Abacaxi' < 'Abacate'
 False
 >>> 'André' < 'paulo'
@@ -988,7 +988,7 @@ O valor `False`{.python} é considerado menor que o valor `True`{.python}, isso 
 
 \small
 
-```python
+```python-repl
 >>> int(False)
 0
 >>> int(True)
@@ -1006,7 +1006,7 @@ True
 
 \small
 
-```Python
+```python-repl
 >>> False == False
 True
 >>> False == True
@@ -1037,7 +1037,7 @@ O `not`{.python} é um operador unário, que produz o valor contrário do seu ar
 
 \small
 
-```python
+```python-repl
 >>> not True
 False
 >>> not False
@@ -1053,7 +1053,7 @@ True
 
 \small
 
-```Python
+```python-repl
 >>> # 4 > 4.0 é False
 >>> not 3 + 1 > 2 + 2.0
 True
@@ -1083,7 +1083,7 @@ O `and`{.python} é um operador binário que produz `True`{.python} somente se o
 
 \pause
 
-```python
+```python-repl
 
 >>> # Tabela verdade do and
 >>> False and False
@@ -1106,7 +1106,7 @@ Qual é a precedência do `and`{.python} em relação aos operadores relacionais
 
 \small
 
-```Python
+```python-repl
 >>> # 15 > 8 é True
 >>> # 4 == 3 é False
 >>> 15 > 2 ** 3 and 4 == 1 + 2
@@ -1130,7 +1130,7 @@ O `or`{.python} é um operador binário que produz `True`{.python} se pelo menos
 
 \small
 
-```python
+```python-repl
 >>> # Tabela verdade do or
 >>> False or False
 False
@@ -1151,7 +1151,7 @@ Qual é a precedência do `or`{.python} em relação aos operadores relacionais 
 
 \small
 
-```Python
+```python-repl
 
 >>> # 15 > 8 é True
 >>> # 4 == 3 é False
@@ -1173,7 +1173,7 @@ Quem tem maior prioridade, o `and`{.python} ou o `or`{.python}? \pause O `and`{.
 
 \small
 
-```python
+```python-repl
 >>> True or False and False
 True
 ```
@@ -1181,7 +1181,7 @@ True
 \pause
 
 
-```python
+```python-repl
 >>> # É equivalente a expressão anterior
 >>> True or (False and False)
 True
@@ -1189,7 +1189,7 @@ True
 
 \pause
 
-```python
+```python-repl
 >>> # Se o or tivesse prioridade...
 >>> (True or False) and False
 False
@@ -1227,7 +1227,7 @@ Escreva uma função chamada `comeca_a`{.python} que recebe como parâmetro uma 
 
 \small
 
-```python
+```python-repl
 >>> comeca_a('casa')
 False
 >>> comeca_a('abacate')
@@ -1279,7 +1279,7 @@ Escreva uma função chamada `novo_seculo` que recebe como parâmetro uma string
 
 \small
 
-```python
+```python-repl
 >>> novo_seculo('01/01/1900')
 True
 >>> novo_seculo('01/01/2000')
@@ -1347,7 +1347,7 @@ nome: tipo = valor
 
 onde `tipo` e `valor` são opcionais, mas pelos menos um deve ser especificado. \pause
 
-```python
+```python-repl
 >>> a: int = 10
 >>> b: int = 2 * a
 >>> b
@@ -1375,7 +1375,7 @@ Qual o resultado da execução das instruções abaixo?
 
 \small
 
-```python
+```python-repl
 >>> x: int = 2 * y
 >>> y: int = 10
 >>> x
@@ -1395,7 +1395,7 @@ Qual o resultado de `b` no seguinte trecho de código?
 
 \small
 
-```python
+```python-repl
 >>> a: int = 10
 >>> b: int = 2 * a
 >>> a = 30

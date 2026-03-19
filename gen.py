@@ -12,7 +12,7 @@ handouts = []
 texs = []
 
 def gen_pdf(kind):
-    print(f'{target}: $(PANDOC) $(TECTONIC) {cap}/{item}')
+    print(f'{target}: $(PANDOC) $(TECTONIC) {cap}/{item} templates/default.latex templates/python-repl.xml templates/spython.theme')
     print(f'\t@echo {target}')
     print(f'\t@mkdir -p {DEST}/handout')
     print(f'\t@cd {cap} && ../$(PANDOC_{kind}_CMD) -o ../{target} {item}')

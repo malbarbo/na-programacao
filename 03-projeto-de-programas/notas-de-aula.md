@@ -209,7 +209,7 @@ Como escolher bons exemplos? \pause
 
 \small
 
-```python
+```python-repl
 >>> # (120.0 / 10.0) * 5.0
 >>> custo_viagem(120.0, 10.0, 5.0)
 60.0
@@ -217,7 +217,7 @@ Como escolher bons exemplos? \pause
 
 \pause
 
-```python
+```python-repl
 >>> # (300.0 / 15.0) * 6.0
 >>> custo_viagem(300.0, 15.0, 6.0)
 120.0
@@ -283,14 +283,14 @@ No modo interativo, digitamos cada exemplo e conferimos se a resposta é a esper
 
 \small
 
-```python
+```python-repl
 >>> custo_viagem(120.0, 10.0, 5.0)
 60.0
 ```
 
 \pause
 
-```python
+```python-repl
 >>> custo_viagem(300.0, 15.0, 6.0)
 120.0
 ```
@@ -450,7 +450,7 @@ Qual deve ser o resultado para `numero_azulejos(1.5, 2.3)`{.python}? \pause `96`
 
 \footnotesize
 
-```python
+```python-repl
     >>> # math.ceil(1.5 / 0.2) * math.ceil(2.3 / 0.2)
     >>> numero_azulejos(1.5, 2.3)
     96
@@ -605,7 +605,7 @@ Comparação de igualdade de números de ponto flutuante quase não dá certo! \
 
 \small
 
-```python
+```python-repl
     >>> round(massa_tubo_ferro(0.05, 0.03, 0.1), 7)
     0.9889744
 ```

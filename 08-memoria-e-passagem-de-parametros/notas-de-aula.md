@@ -67,7 +67,7 @@ Qual é o valor de `x` e `y` após a execução do seguinte trecho de código?
 
 \footnotesize
 
-```python
+```python-repl
 >>> x = 10
 >>> y = x
 >>> y = y + 3
@@ -75,7 +75,7 @@ Qual é o valor de `x` e `y` após a execução do seguinte trecho de código?
 
 \pause
 
-```python
+```python-repl
 >>> x
 10
 >>> y
@@ -90,7 +90,7 @@ Qual é o valor de `x` e `y` após a execução do seguinte trecho de código?
 
 \footnotesize
 
-```python
+```python-repl
 >>> x = [5, 7]
 >>> y = x
 >>> y[1] = 3
@@ -98,7 +98,7 @@ Qual é o valor de `x` e `y` após a execução do seguinte trecho de código?
 
 \pause
 
-```python
+```python-repl
 >>> x
 [5, 3]
 >>> y
@@ -134,7 +134,7 @@ Quando uma variável é passada como parâmetro para uma função, um apelido é
 <div class="column" width="48%">
 \footnotesize
 
-```python
+```python-repl
 >>> def soma1(x: int):
 ...     x = x + 1
 >>> a = 20
@@ -158,7 +158,7 @@ Quando `soma1` [inicia](https://pythontutor.com/render.html#code=def%20soma1%28x
 <div class="column" width="48%">
 \footnotesize
 
-```python
+```python-repl
 >>> def concatena1(x: list[int]):
 ...     x.append(1)
 >>> a = [5, 4]
