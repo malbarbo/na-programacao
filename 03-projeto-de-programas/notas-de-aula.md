@@ -1,9 +1,6 @@
 ---
 # vim: set spell spelllang=pt_br:
 title: Projeto de programas
-# TODO: mais um exemplo (verdadeiro / falso)
-# TODO: fazer um quiz
-# TODO: adicionar revisão
 ---
 
 # Introdução
@@ -61,7 +58,7 @@ Mas devemos evitar fazer a implementação diretamente!
 
 # Projeto de programas
 
-Mas esse processe serve para projetar funções, como projetamos programas? \pause
+Mas esse processo serve para projetar funções, como projetamos programas? \pause
 
 Um programa é composto de várias funções, então temos que decompor o programa em funções e aplicar o processo para projetar cada função. \pause
 
@@ -326,7 +323,7 @@ Se modificarmos o código, precisamos fazer a **verificação novamente**!
 
 Alguma parte desse processo parece repetitiva? \pause
 
-Sim, a verificação do exemplos. \pause
+Sim, a verificação dos exemplos. \pause
 
 Ao invés de executarmos cada exemplo manualmente, vamos usar uma biblioteca que executa os exemplos e verifica se as saídas estão corretas automaticamente!
 
@@ -626,7 +623,7 @@ def massa_tubo_ferro(diametro_externo: float, diametro_interno: float, altura: f
 
 O que podemos melhorar? \pause
 
-- Definir constantes para os número "mágicos" \pause
+- Definir constantes para os números "mágicos" \pause
 
 - Separar o cálculo em etapas
 
@@ -655,7 +652,7 @@ Constantes são geralmente definidas fora das funções (escopo global) e nomead
 
 # Exemplo - Ajuste número telefone
 
-No período de 2015 à 2016 todos os números de telefones celulares no Brasil passaram a ter nove dígitos. Na época, os números de telefones que tinham apenas oito dígitos foram alterados adicionando-se o 9 na frete do número. Embora oficialmente todos os número de celulares tenham nove dígitos, na agenda de muitas pessoas ainda é comum encontrar números registrados com apenas oito dígitos. Projete uma função que adicione o nono dígito em um dado número de telefone celular caso ele ainda não tenha o nono dígito. Considere que os números de entrada são dados com o DDD entre parênteses e com um hífen separando os últimos quatro dígitos. Exemplos de entradas: (44) 9787-1241, (51) 95872-9989, (41) 8876-1562. A saída deve ter o mesmo formato, mas garantindo que o número do telefone tenha 9 dígitos.
+No período de 2015 à 2016 todos os números de telefones celulares no Brasil passaram a ter nove dígitos. Na época, os números de telefones que tinham apenas oito dígitos foram alterados adicionando-se o 9 na frente do número. Embora oficialmente todos os número de celulares tenham nove dígitos, na agenda de muitas pessoas ainda é comum encontrar números registrados com apenas oito dígitos. Projete uma função que adicione o nono dígito em um dado número de telefone celular caso ele ainda não tenha o nono dígito. Considere que os números de entrada são dados com o DDD entre parênteses e com um hífen separando os últimos quatro dígitos. Exemplos de entradas: (44) 9787-1241, (51) 95872-9989, (41) 8876-1562. A saída deve ter o mesmo formato, mas garantindo que o número do telefone tenha 9 dígitos.
 
 
 # Exemplo - Ajuste número telefone
@@ -736,3 +733,40 @@ Nos projetos anteriores a resposta tinha apenas uma forma. Nesse projeto existem
 Como escolher entre uma forma de resposta e outra? \pause
 
 Usando instrução de seleção! \pause Vamos continuar na próxima aula.
+
+
+# Revisão
+
+Quais são as etapas do processo de projeto de funções? \pause
+
+- Análise, definição dos tipos de dados, especificação, implementação, verificação e revisão. \pause
+
+Qual é o objetivo da análise? \pause
+
+- Identificar o problema a ser resolvido, descartando informações irrelevantes e esclarecendo ambiguidades. \pause
+
+Qual é o objetivo da definição dos tipos de dados? \pause
+
+- Identificar as informações e como elas serão representadas.
+
+
+# Revisão
+
+O que compõe a especificação de uma função? \pause
+
+- A assinatura (nome, parâmetros com tipos e tipo de retorno), o propósito e os exemplos. \pause
+
+Qual é a principal propriedade de uma boa especificação? \pause
+
+- Ser precisa o suficiente para que um desenvolvedor consiga fazer a implementação apenas a partir dela.
+
+
+# Revisão
+
+Para que servem as ferramentas `mypy` e `doctest`? \pause
+
+- O `mypy` faz a verificação estática de tipos. O `doctest` executa os exemplos automaticamente e verifica se as saídas estão corretas. \pause
+
+Qual é o objetivo da revisão? \pause
+
+- Melhorar a organização do código para que fique mais fácil de ler e entender. Após qualquer modificação, a verificação deve ser feita novamente.

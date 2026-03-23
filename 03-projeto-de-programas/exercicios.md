@@ -4,9 +4,6 @@ title: |
        | Fundamentos de Algoritmos
        | Projeto de funções
 urlcolor: Blue
-# TODO: fazer mais exercícios sobre cada etapa individual
-# TODO: melhorar os exercícios de avançando (remover do paralelepipido)
-# TODO: adicionar desafios
 ---
 
 **\color{red}Lembre-se** de seguir o processo de projeto de funções e de usar o `mypy` e o `doctest` na etapa de verificação.
@@ -29,7 +26,7 @@ urlcolor: Blue
 
     a) Qual é o objetivo inicial dos exemplos no projeto de uma função? E os demais objetivos?
 
-    a) Se não forem encontrados erros na verificação para os exemplos da especificação, é possível afirma que a função está isenta de erros? Explique.
+    a) Se não forem encontrados erros na verificação para os exemplos da especificação, é possível afirmar que a função está isenta de erros? Explique.
 
     a) A implementação é a fase mais importante do projeto de funções, verdadeiro ou falso? Explique.
 
@@ -92,7 +89,7 @@ urlcolor: Blue
         return ''
     ```
 
-@) Escreva a especificação para a seguinte implementação de função. Observe que a especificação sozinha   deve ser suficiente para um desenvolvedor fazer uma nova implementação.
+@) Escreva a especificação para a seguinte implementação de função. Observe que a especificação sozinha deve ser suficiente para um desenvolvedor fazer uma nova implementação.
 
     ```python
     def numero_digitos(n: int) -> int:
@@ -106,6 +103,9 @@ urlcolor: Blue
 
 @) Você está fazendo um programa e precisa verificar se um texto digitado pelo usuário está de acordo com algumas regras. A regra “sem espaços extras” requer que o texto não comece e não termine com espaços. Projete uma função que verifique se um texto qualquer está de acordo com a regra “sem espaços extras”.
 
-@) Pablo é um artesão e precisa pintar uma série de paralelepípedos. Antes de começar a pintura, ele fez um teste inicial e descobriu que ele demora 30 segundos para pintar uma área de 8 cm por 8 cm. Projete uma função que determine quanto tempo Pablo irá demorar para pintar um paralelepípedo.
-
 @) Rotacionar uma string `n` posições a direita significa mover os últimos `n` caracteres da string para as primeiras `n` posições da string. Por exemplo, rotacionar a string `"marcelio"` 5 posições a direita produz a string `"celiomar"`. Projete uma função que receba como entrada uma string e um número `n` e produza uma nova string rotacionando a string de entrada `n` posições a direita.
+
+
+# Desafios
+
+@) O CPF (Cadastro de Pessoa Física) pode ser representado de duas formas: sem formatação, como `'12345678901'`, ou com formatação, como `'123.456.789-01'`. Projete duas funções, uma que receba um CPF sem formatação e produza o CPF formatado, e outra que receba um CPF formatado e produza o CPF sem formatação.
