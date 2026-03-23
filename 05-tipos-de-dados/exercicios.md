@@ -4,9 +4,6 @@ title: |
        | Fundamentos de Algoritmos
        | Tipos de dados
 urlcolor: Blue
-# TODO: fazer exercícios mais interessantes (reais).
-# TODO: explorar mais as diretrizes para projeto de tipos de dados. Ex do exercício da reserva inicio-fim ou inicio-duracao.
-# TODO: adicionar exercícios de avaliação de expressões e execução passo a passo?
 ---
 
 **\color{red}Lembre-se** de seguir o processo de projeto de funções e de usar o `mypy` e o `doctest` na etapa de verificação.
@@ -33,7 +30,50 @@ urlcolor: Blue
 
 @) Qual é a convenção que devemos seguir para nomear os campos de um dado composto?
 
-@) Porque não é preciso um construtor para tipos enumerados?
+@) Por que não é preciso um construtor para tipos enumerados?
+
+@) Considere o código a seguir e responda as questões.
+
+    ```python
+    class Tamanho(Enum):
+        P = auto()
+        M = auto()
+        G = auto()
+
+    @dataclass
+    class Camiseta:
+        '''Uma camiseta com tamanho e preço.'''
+        tamanho: Tamanho
+        preco: float
+
+    def preco_final(c: Camiseta) -> float:
+        '''
+        Calcula o preço final de *c* aplicando um
+        desconto de 10% para tamanho P, 5% para M
+        e sem desconto para G.
+
+        Exemplos
+        >>> preco_final(Camiseta(Tamanho.P, 100.0))
+        90.0
+        >>> preco_final(Camiseta(Tamanho.M, 100.0))
+        95.0
+        >>> preco_final(Camiseta(Tamanho.G, 80.0))
+        80.0
+        '''
+        if c.tamanho == Tamanho.P:
+            desconto = 0.1
+        elif c.tamanho == Tamanho.M:
+            desconto = 0.05
+        else:
+            desconto = 0.0
+        return c.preco - c.preco * desconto
+    ```
+
+    a) Qual é o resultado de `preco_final(Camiseta(Tamanho.P, 100.0))`?
+
+    a) Qual é o resultado de `preco_final(Camiseta(Tamanho.G, 80.0))`?
+
+    a) Indique a ordem em que as linhas são executadas para a chamada do item a.
 
 
 # Praticando
@@ -75,9 +115,9 @@ urlcolor: Blue
 
 # Avançando
 
-@) Dizemos que o nome de uma pessoal é curto se tem no máximo quatro letras e longo se tem mais que 8 letras. Um nome que não é nem curto e nem longo é mediano. Projete uma função que classifique um nome de acordo com seu número de letras.
+@) Dizemos que o nome de uma pessoa é curto se tem no máximo quatro letras e longo se tem mais que 8 letras. Um nome que não é nem curto e nem longo é mediano. Projete uma função que classifique um nome de acordo com seu número de letras.
 
-@) O Brasil institui há algum tempo um sistema de bandeira tarifária para sinalizar ao consumidores os custos reais de geração de energia. Nesse sistema, a bandeira verde indica condições favoráveis de geração de energia e a tarifa não sofre acréscimo. Já a bandeira amarela indica condições menor favoráveis e por isso a tarifa sofre um acréscimo de R$ 0,01874 para cada quilowatt-hora. A bandeira vermelha - patamar 1 indica condições mais custosas de geração e o acréscimo na tarifa é de R$ 0,03971 para cada quilowatt-hora consumido. Por fim, a bandeira vermelha - patamar 2 indica condições ainda mais custosas e o acréscimo na tarifa é de R$ 0,09492 para cada quilowatt-hora consumido. Projete uma função que determine o valor final que o consumidor tem que pagar dado o seu consumo em quilowatt-hora, a tarifa básica do quilowatt-hora e a bandeira tarifária.
+@) O Brasil institui há algum tempo um sistema de bandeira tarifária para sinalizar ao consumidores os custos reais de geração de energia. Nesse sistema, a bandeira verde indica condições favoráveis de geração de energia e a tarifa não sofre acréscimo. Já a bandeira amarela indica condições menos favoráveis e por isso a tarifa sofre um acréscimo de R$ 0,01874 para cada quilowatt-hora. A bandeira vermelha - patamar 1 indica condições mais custosas de geração e o acréscimo na tarifa é de R$ 0,03971 para cada quilowatt-hora consumido. Por fim, a bandeira vermelha - patamar 2 indica condições ainda mais custosas e o acréscimo na tarifa é de R$ 0,09492 para cada quilowatt-hora consumido. Projete uma função que determine o valor final que o consumidor tem que pagar dado o seu consumo em quilowatt-hora, a tarifa básica do quilowatt-hora e a bandeira tarifária.
 
 @) Beatriz gosta muito de jogar cartas com as amigas. Para treinar memória e raciocínio lógico, ela inventou um pequeno passatempo com cartas enumeradas de 1 a 13. Ela retira as três primeiras cartas do topo de um baralho bem embaralhado, e as coloca em sequência, da esquerda para a direita, na mesa, com as faces voltadas para cima. Então ela olha, por um breve instante, cada uma das cartas da sequência e logo as recoloca na mesa, com a face para baixo. Usando apenas a sua memória, Beatriz deve agora dizer se a sequência de cartas está ordenada crescentemente, decrescentemente, ou não está ordenada. De tanto jogar, ela está ficando cansada e não confia em seu próprio julgamento para saber se acertou ou errou. Por isso, ela pediu para você fazer um programa que, dada uma sequência de três cartas, determine se a sequência dada está ordenada crescentemente, decrescentemente, ou não está ordenada.
 
@@ -90,6 +130,13 @@ urlcolor: Blue
     a) Projete uma função que determine qual de dois times tem o melhor desempenho.
 
     b) Considerando que cada jogo ganho pelo time dá 3 pontos e empate 1 ponto, projete uma função que atualize o desempenho de um time dado o resultado de um jogo.
+
+@) Considere duas formas de representar uma reserva de sala:
+
+    - Forma A: horário de início e horário de fim.
+    - Forma B: horário de início e duração.
+
+    Qual representação facilita verificar se duas reservas têm conflito de horário? Qual facilita saber a duração da reserva? Qual permite representar valores inválidos (como horário de fim anterior ao de início)? Escolha a representação mais adequada e projete o tipo.
 
 @) Uma determinada sala de reunião pode ser usada das 8:00h às 18:00h. Cada interessado em utilizar a sala faz uma reserva indicando o intervalo de tempo que gostaria de utilizar a sala. Como parte de um sistema de reservas, você deve projetar uma função que verifique se duas reservas podem ser atendidas, ou seja, não têm conflito de horário.
 

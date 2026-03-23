@@ -1,15 +1,6 @@
 ---
 # vim: set spell spelllang=pt_br:
 title: Tipos de dados
-# TODO: explicar diretamente como escrever os exemplos para funções que retornam enum
-# TODO: Colocar primeiro o exemplo e depois a forma geral da sintáxe?
-# TODO: apresentar match/case?
-# TODO: adicionar mais exemplos (juntando estruturas e enumerações, contagem de tipos de sorvertes?)
-#       a questão é que atualizar uma contagem pode requerer passagem por referência.
-# TODO: adicionar exemplos com tipos dos campos diferentes
-# TODO: deixar claro que valores dos tipos estruturas são mutáveis por padrão?
-# TODO: adicionar o exemplo do campo minado
-# TODO: adicionar exemplo de estrutura com enumeração, estrutura com estrutura
 ---
 
 # Definição de tipos de dados
@@ -83,33 +74,15 @@ Como proceder nesse caso? \pause Vamos definir um novo tipo onde apenas os valor
 
 Em um **tipo enumerado** todos os valores do tipo são enumerados explicitamente. \pause
 
-A forma geral para definir tipos enumerados é
+Vamos definir um tipo enumerado para representar o tipo de combustível.
 
 \small
 
 ```python
 from enum import Enum, auto
 
-class NomeDoTipo(Enum):
-    VALOR1 = auto()
-    ...
-    VALORN = auto()
-```
-
-\pause
-
-\normalsize
-
-Vamos definir um tipo enumerado para representar o tipo de combustível.
-
-
-# Definição do tipo `Combustivel`
-
-\small
-
-```python
 class Combustivel(Enum):
-    '''O tipo do combustivel em um abastecimento'''
+    '''O tipo do combustível em um abastecimento'''
     ALCOOL = auto()
     GASOLINA = auto()
 ```
@@ -121,6 +94,20 @@ class Combustivel(Enum):
 `auto()` é utilizado para associar automaticamente um número com o valor da enumeração. \pause Se quisermos, podemos escolher um número explicitamente. \pause
 
 Sempre vamos adicionar um comentário sobre o propósito do tipo, se necessário, adicionamos comentários para os valores da enumeração.
+
+
+# Tipos enumerados
+
+A forma geral para definir tipos enumerados é
+
+\small
+
+```python
+class NomeDoTipo(Enum):
+    VALOR1 = auto()
+    ...
+    VALORN = auto()
+```
 
 
 # Uso de tipo enumerado
@@ -200,6 +187,8 @@ Para expressar mais claramente o propósito do código e evitar a utilização d
 
 # Revisão do projeto de `indica_combustivel`
 
+Nos exemplos, usamos `.name` para comparar o resultado de funções que retornam enumerações, porque a representação padrão (como `<Combustivel.ALCOOL: 1>`) não é prática para comparação.
+
 \footnotesize
 
 ```python
@@ -246,7 +235,7 @@ Projeto de tipos de dados \pause
 from enum import Enum, auto
 
 class Cor(Enum):
-    '''O cor de um semáforo de trânsito'''
+    '''A cor de um semáforo de trânsito'''
     VERDE = auto()
     VERMELHO = auto()
     AMARELO = auto()
@@ -265,7 +254,7 @@ Especificação
 ```python
 def proxima_cor(atual: Cor) -> Cor:
     '''
-    Produz a próxima cor de uma semáforo
+    Produz a próxima cor de um semáforo
     que está na cor *atual*.
     '''
 ```
@@ -329,7 +318,7 @@ Especificação
 ```python
 def proxima_cor(atual: Cor) -> Cor:
     '''
-    Produz a próxima cor de uma semáforo
+    Produz a próxima cor de um semáforo
     que está na cor *atual*.
     '''
 ```
@@ -416,32 +405,15 @@ Uma forma de fazer isso é através de tipos compostos (estruturas).
 
 # Tipos compostos
 
-Um **tipo composto** é um tipo de dado composto por um conjunto fixo de campos cada um com nome e tipo.
+Um **tipo composto** é um tipo de dado composto por um conjunto fixo de campos cada um com nome e tipo. \pause
 
-\pause
-
-A forma geral para definir um tipo composto é
+Podemos definir um novo tipo para representar um tempo da seguinte forma
 
 \small
 
 ```python
 from dataclasses import dataclass
 
-@dataclass
-class NomeDoTipo:
-    campo1: Tipo1
-    ...
-    campon: TipoN
-```
-
-
-# Tipos compostos
-
-\small
-
-Podemos definir um novo tipo para representar um tempo da seguinte forma
-
-```python
 @dataclass
 class Tempo:
     horas: int
@@ -477,7 +449,20 @@ class Tempo:
     segundos: int
 ```
 
-O que está faltando nessa definição? Um comentário sobre o propósito do tipo.
+
+# Tipos compostos
+
+A forma geral para definir um tipo composto é
+
+\small
+
+```python
+@dataclass
+class NomeDoTipo:
+    campo1: Tipo1
+    ...
+    campon: TipoN
+```
 
 
 # Tipos compostos
@@ -504,7 +489,7 @@ Tempo(horas=4, minutos=0, segundos=20)
 
 # Tipos compostos
 
-Como valores do tipo `Tempo` são compostos de outros valores (campos), podemos acessar e alterar cada campo de forma separada. \pause
+Como valores do tipo `Tempo` são compostos de outros valores (campos), podemos acessar e alterar cada campo de forma separada. Valores de tipos compostos são **mutáveis** por padrão. \pause
 
 <div class="columns">
 <div class="column" width="48%">
@@ -772,7 +757,7 @@ A implementação a seguir usa condições aninhadas.
 \tiny
 
 ```python
-def tempo_para_string(Tempo t) -> str:
+def tempo_para_string(t: Tempo) -> str:
     h = str(t.horas) + ' hora(s)'
     m = str(t.minutos) + ' minuto(s)'
     s = str(t.segundos) + ' segundo(s)'
@@ -806,6 +791,89 @@ Compare com a sua implementação direta. Qual das duas é mais simples e fácil
 # Exercício
 
 Modifique a especificação e implementação da função anterior para que o plural dos componentes fique de acordo com o Português.
+
+
+# Exemplo - evento
+
+Em uma escola, os eventos do dia são registrados com o tipo do evento e a sua duração. As aulas devem ter no mínimo 50 minutos, as reuniões no mínimo 30 minutos e os intervalos no mínimo 15 minutos. Projete os tipos necessários e uma função que verifique se um evento tem a duração mínima para o seu tipo.
+
+
+# Exemplo - evento
+
+Análise \pause
+
+- Verificar se a duração de um evento atende o mínimo para o seu tipo. \pause
+
+Definição de tipos de dados \pause
+
+- O tipo do evento será representado por uma enumeração com os valores AULA, REUNIAO e INTERVALO. \pause
+
+- Um evento será representado por uma estrutura com o tipo do evento e a duração. \pause A duração será representada pelo tipo `Tempo` que já definimos.
+
+
+# Exemplo - evento
+
+\small
+
+```python
+class TipoEvento(Enum):
+    '''O tipo de um evento em uma escola.'''
+    AULA = auto()
+    REUNIAO = auto()
+    INTERVALO = auto()
+
+@dataclass
+class Evento:
+    '''Um evento com tipo e duração.'''
+    tipo: TipoEvento
+    duracao: Tempo
+```
+
+
+# Exemplo - evento - especificação
+
+\footnotesize
+
+```python
+def duracao_minima(e: Evento) -> bool:
+    '''
+    Produz True se *e* tem a duração mínima para o seu tipo:
+    50 minutos para aulas, 30 para reuniões e 15 para intervalos.
+
+    Exemplos
+    >>> duracao_minima(Evento(TipoEvento.AULA, Tempo(0, 50, 0)))
+    True
+    >>> duracao_minima(Evento(TipoEvento.AULA, Tempo(0, 49, 0)))
+    False
+    >>> duracao_minima(Evento(TipoEvento.REUNIAO, Tempo(0, 30, 0)))
+    True
+    >>> duracao_minima(Evento(TipoEvento.REUNIAO, Tempo(0, 20, 0)))
+    False
+    >>> duracao_minima(Evento(TipoEvento.INTERVALO, Tempo(0, 15, 0)))
+    True
+    >>> duracao_minima(Evento(TipoEvento.INTERVALO, Tempo(0, 10, 0)))
+    False
+    '''
+```
+
+
+# Exemplo - evento - implementação
+
+Quantas formas de resposta temos? \pause 3, uma para cada tipo de evento. \pause Para cada forma, precisamos converter a duração para minutos e comparar com o mínimo. \pause
+
+\small
+
+```python
+def duracao_minima(e: Evento) -> bool:
+    minutos = e.duracao.horas * 60 + e.duracao.minutos
+    if e.tipo == TipoEvento.AULA:
+        resultado = minutos >= 50
+    elif e.tipo == TipoEvento.REUNIAO:
+        resultado = minutos >= 30
+    else: # e.tipo == TipoEvento.INTERVALO
+        resultado = minutos >= 15
+    return resultado
+```
 
 
 # Exemplo - loteria
@@ -1210,3 +1278,25 @@ Verificação: \pause ok \pause
 Revisão: \pause assim como para a função `sorteado`, o código parece repetitivo... \pause Como resolver essa questão? \pause
 
 Usando instrução de repetição! \pause Vamos continuar na próxima aula.
+
+
+# Revisão
+
+Quando devemos usar enumerações? \pause
+
+- Quando todos os valores válidos para o tipo podem ser nomeados. \pause
+
+Quando devemos usar tipos compostos (estruturas)? \pause
+
+- Quando uma informação é composta por dois ou mais itens de tipos possivelmente diferentes.
+
+
+# Revisão
+
+Como escrevemos os exemplos para funções que retornam enumerações? \pause
+
+- Usamos `.name` no resultado para comparar com uma string. \pause
+
+Por que valores de tipos compostos são chamados de mutáveis? \pause
+
+- Porque os campos podem ser alterados após a criação do valor.
