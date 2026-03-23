@@ -85,7 +85,7 @@ A interligação entre esses componentes é feita pela placa-mãe.
 
 ## Componentes / Dispositivos de entrada
 
-Fornecem dados para serem processadas e armazenados. \pause Exemplos \pause
+Fornecem dados para serem processados e armazenados. \pause Exemplos \pause
 
 - Teclado
 - Mouse
@@ -101,7 +101,7 @@ Apresentam ou transmitem dados recuperados do armazenamento e resultados do proc
 
 - Monitor
 - Impressora
-- Auto falante
+- Alto-falante
 - Atuadores
 
 
@@ -135,7 +135,7 @@ Retêm dados para recuperação posterior. \pause Exemplos \pause
 
 ## Funcionamentos de um HDD
 
-Vídeos mostrando o funcionamentos de um HDD
+Vídeos mostrando o funcionamento de um HDD
 
 - \url{https://en.wikipedia.org/wiki/File:HardDisk1.ogv}
 
@@ -230,7 +230,7 @@ O que é uma licença de software? \pause
 
 ## Tipos de software
 
-De forma geral, os software podem ser classificadas de acordo com a sua licença em
+De forma geral, os softwares podem ser classificados de acordo com a sua licença em
 
 - Software proprietário
 
@@ -349,7 +349,7 @@ Exemplos de sistemas operacionais livres \pause
 
 ## Shell
 
-A iteração entre o sistema operacional e o usuário final é feita através de um _Shell_ (lançador em dispositivos móveis).
+A interação entre o sistema operacional e o usuário final é feita através de um _Shell_ (lançador em dispositivos móveis).
 
 Um _Shell_ pode oferecer uma interface gráfica ou interface textual. \pause
 

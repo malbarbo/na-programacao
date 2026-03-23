@@ -18,6 +18,8 @@ urlcolor: Blue
 
 @) Quais os principais componentes de um sistema computacional?
 
+@) Por que existem muitos tipos de memória e de dispositivos de armazenamento?
+
 @) Quais as duas principais funções do sistema operacional?
 
 @) O que é software livre?
