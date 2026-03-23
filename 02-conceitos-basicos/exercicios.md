@@ -4,16 +4,17 @@ title: |
        | Fundamentos de Algoritmos
        | Conceitos básicos
 urlcolor: Blue
-# TODO: adicionar avaliação de expressões relacionais e booleanas
-# TODO: adicionar questão teóricas (tipos e operações primitivas, prioridades, erros, avaliação passo a passo
-# TODO: adicionar questões de execução passo a passo
 ---
 
 # Começando
 
+@) Quais são os dois tipos numéricos principais do Python?
+
+@) Qual é a ordem de prioridade entre os operadores aritméticos?
+
 @) Indique o valor de cada resultado oculto nessa seção de interações. Use a janela de interações após calcular as respostas manualmente para conferir se elas estão corretas.
 
-    ```python
+    ```python-repl
     >>> 2 * 19 // 3
     ?
     >>> 64 ** 1 / 4
@@ -48,12 +49,33 @@ urlcolor: Blue
     ?
     ```
 
+@) Indique o valor de cada resultado oculto nessa seção de interações. Use a janela de interações após calcular as respostas manualmente para conferir se elas estão corretas.
+
+    ```python-repl
+    >>> 3 > 4
+    ?
+    >>> 10 != 5 + 5
+    ?
+    >>> not 3 > 2
+    ?
+    >>> 7 > 3 and 2 > 5
+    ?
+    >>> 7 > 3 or 2 > 5
+    ?
+    >>> not (4 == 4 and 3 > 1)
+    ?
+    >>> True or False and False
+    ?
+    ```
+
+@) Qual é a diferença entre um erro sintático e um erro semântico?
+
 
 # Praticando
 
 @) Faça uma função chamada `area_retangulo` que recebe dois argumentos, a `largura` e a `altura` de um retângulo, e calcula a sua área. Confira na janela de interações se a função funciona de acordo com os exemplos a seguir
 
-    ```python
+    ```python-repl
     >>> area_retangulo(3.0, 5.0)
     15.0
     >>> area_retangulo(2.0, 2.5)
@@ -63,7 +85,7 @@ urlcolor: Blue
 
 @) Faça uma função chamada `produto_anterior_posterior` que recebe um número inteiro `n` e calcula o produto de `n`, `n + 1` e `n - 1`. Confira na janela de interações se a função funciona de acordo com os exemplos a seguir
 
-    ```python
+    ```python-repl
     >>> produto_anterior_posterior(3)
     24
     >>> produto_anterior_posterior(1)
@@ -73,9 +95,9 @@ urlcolor: Blue
     ```
 
 
-@) Faça uma função chamada `aumenta` que recebe dois número positivos, um `valor` e uma `porcentagem`, e calcula o resultado de aumentar a `porcetagem` ao `valor`. Confira na janela de interações se a função funciona de acordo com os exemplos a seguir
+@) Faça uma função chamada `aumenta` que recebe dois números positivos, um `valor` e uma `porcentagem`, e calcula o resultado de aumentar a `porcentagem` ao `valor`. Confira na janela de interações se a função funciona de acordo com os exemplos a seguir
 
-    ```python
+    ```python-repl
     >>> aumenta(100.0, 3.0)
     103.0
     >>> aumenta(20.0, 50.0)
@@ -87,7 +109,7 @@ urlcolor: Blue
 
 @) Faça uma função chamada `zera_dezena_e_unidade` que recebe um número natural `n` e devolve um novo número que é como `n` mas tem o valor da dezena e unidade zero. Dica: use piso da divisão. Confira na janela de interações se a função funciona de acordo com os exemplos a seguir
 
-    ```python
+    ```python-repl
     >>> zera_dezena_e_unidade(19)
     0
     >>> zera_dezena_e_unidade(341)
@@ -97,9 +119,9 @@ urlcolor: Blue
     ```
 
 
-@) Faça uma função chamada `exclamacao` que recebe dois argumento, uma string `frase` e um número natural `n`, e produz a mesma frase adicionando `n` pontos de exclamação no final da frase. Confira na janela de interações se a função funciona de acordo com os exemplos a seguir
+@) Faça uma função chamada `exclamacao` que recebe dois argumentos, uma string `frase` e um número natural `n`, e produz a mesma frase adicionando `n` pontos de exclamação no final da frase. Confira na janela de interações se a função funciona de acordo com os exemplos a seguir
 
-    ```python
+    ```python-repl
     >>> exclamacao('Nossa', 3)
     'Nossa!!!'
     >>> exclamacao('Que legal', 1)
@@ -111,7 +133,7 @@ urlcolor: Blue
 
 @) Faça uma função chamada `primeira_maiuscula` que recebe uma string `frase` e produz a mesma frase mas com a primeira letra em maiúscula. Confira na janela de interações se a função funciona de acordo com os exemplos a seguir
 
-    ```python
+    ```python-repl
     >>> primeira_maiuscula('joao venceu.')
     'Joao venceu.'
     >>> primeira_maiuscula('A Paula é um sucesso.')
@@ -119,9 +141,9 @@ urlcolor: Blue
     ```
 
 
-@) Faça uma função chamada `censura` que recebe dois argumento, uma string `frase` e um número natural `n`, e produz uma nova frase trocando as as primeiras `n` letras da frase de entrada por `n` `'x'`. Confira na janela de interações se a função funciona de acordo com os exemplos a seguir
+@) Faça uma função chamada `censura` que recebe dois argumentos, uma string `frase` e um número natural `n`, e produz uma nova frase trocando as primeiras `n` letras da frase de entrada por `n` `'x'`. Confira na janela de interações se a função funciona de acordo com os exemplos a seguir
 
-    ```python
+    ```python-repl
     >>> censura('droga de lanche!', 5)
     'xxxxx de lanche!'
     >>> censura('ferrou geral!', 6)
@@ -129,9 +151,37 @@ urlcolor: Blue
     ```
 
 
+@) Faça uma função chamada `no_intervalo` que recebe um número inteiro `n`, um limite inferior `ini` e um limite superior `fim`, e verifica se `n` está no intervalo fechado [`ini`, `fim`]. Confira na janela de interações se a função funciona de acordo com os exemplos a seguir
+
+    ```python-repl
+    >>> no_intervalo(5, 1, 10)
+    True
+    >>> no_intervalo(1, 1, 10)
+    True
+    >>> no_intervalo(0, 1, 10)
+    False
+    >>> no_intervalo(11, 1, 10)
+    False
+    ```
+
+
+@) Faça uma função chamada `vogal` que recebe um caractere `c` e verifica se `c` é uma vogal minúscula (a, e, i, o, u). Confira na janela de interações se a função funciona de acordo com os exemplos a seguir
+
+    ```python-repl
+    >>> vogal('a')
+    True
+    >>> vogal('b')
+    False
+    >>> vogal('e')
+    True
+    >>> vogal('A')
+    False
+    ```
+
+
 @) Faça uma função chamada `par` que recebe um número natural `n` e indica se `n` é par. Um número é par se o resto da divisão dele por 2 é igual a zero. Confira na janela de interações se a função funciona de acordo com os exemplos a seguir
 
-    ```python
+    ```python-repl
     >>> par(3)
     False
     >>> par(6)
@@ -141,7 +191,7 @@ urlcolor: Blue
 
 @) Faça uma função chamada `tres_digitos` que recebe um número natural `n` e verifica se `n` tem exatamente 3 dígitos. Confira na janela de interações se a função funciona de acordo com os exemplos a seguir
 
-    ```python
+    ```python-repl
     >>> tres_digitos(99)
     False
     >>> tres_digitos(100)
@@ -155,7 +205,7 @@ urlcolor: Blue
 
 @) Faça uma função chamada `termina_z` que recebe uma string `s` e indica se `s` termina com a letra `'z'`. Confira na janela de interações se a função funciona de acordo com os exemplos a seguir
 
-    ```python
+    ```python-repl
     >>> termina_z('arroz')
     True
     >>> termina_z('')
@@ -177,7 +227,7 @@ Para os próximos exercícios, escreva primeiro os exemplos (e deixe como coment
 
 @) Quando escrevemos uma data no Brasil em geral usamos a ordem dia/mês/ano. Já em outros países a ordem usada é mês/dia/ano. Uma outra forma mais recente de escrever a data é ano/mês/dia. Projete uma função que receba como entrada o dia, o mês e o ano e gere uma string representando a data na forma ano/mês/dia.
 
-@) Dizemos que o nome de uma pessoal é curto se tem no máximo três letras e longo se tem mais que 8 letras. Um nome que não é nem curto e nem longo é mediano. Projete uma função que verifique se um dado nome é mediano.
+@) Dizemos que o nome de uma pessoa é curto se tem no máximo três letras e longo se tem mais que 8 letras. Um nome que não é nem curto e nem longo é mediano. Projete uma função que verifique se um dado nome é mediano.
 
 @) As operações de módulo e divisão inteira são bastantes comuns na computação, mas muitos ainda não estão acostumados com essas operações, por isso é importante fazermos alguns exemplos para nos familiarizarmos com elas.
 
@@ -194,6 +244,21 @@ Para os próximos exercícios, escreva primeiro os exemplos (e deixe como coment
 @) Projete uma função que determine se três medidas podem formar um triângulo.
 
 @) Projete uma função que verifique se o último nome (sobrenome) de uma pessoa é "Silva". Você pode assumir que a string de entrada não tem espaços no início e no final e que contém pelo menos um espaço em branco.
+
+
+@) Considere o código a seguir e indique a ordem em que as linhas são executadas. Use o Python Tutor para conferir a sua resposta.
+
+    ```{.python .number-lines}
+    def dobro(x: int) -> int:
+        return 2 * x
+
+    def soma_dobros(a: int, b: int) -> int:
+        da = dobro(a)
+        db = dobro(b)
+        return da + db
+
+    soma_dobros(3, 5)
+    ```
 
 
 # Desafios

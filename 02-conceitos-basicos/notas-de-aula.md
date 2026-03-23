@@ -4,7 +4,6 @@ title: Conceitos básicos
 # TODO: adicionar referências
 # TODO: adicionar definição de tipo de dado
 # TODO: adicionar definição de expressão e avaliação de expressão
-# TODO: adicionar um revisão no final
 ---
 
 # Introdução
@@ -26,7 +25,7 @@ O Python é um software livre e pode ser baixado e instalado de <https://python.
 
 Além do interpretador, a instalação do Python vem com um ambiente de desenvolvimento e aprendizagem chamado IDLE. \pause
 
-Em um sistema Linux, é provável que o Python já venha instalador por padrão. Nesse caso é preciso instalar apenas o IDLE. \pause Em um sistema baseado no Debian, use o comando
+Em um sistema Linux, é provável que o Python já venha instalado por padrão. Nesse caso é preciso instalar apenas o IDLE. \pause Em um sistema baseado no Debian, use o comando
 
 ```bash
 $ sudo apt install idle
@@ -75,7 +74,7 @@ Exemplo de interação
 
 # Janela de interações (REPL)
 
-O modo de interações também pode ser iniciado executado `python` no terminal de comandos. \pause
+O modo de interações também pode ser iniciado executando `python` no terminal de comandos. \pause
 
 ![](imagens/python-terminal.png){width=10cm}
 
@@ -141,7 +140,7 @@ Ponto flutuante (`float`{.python}), representação aproximada de números reais
 Podemos usar as quatro operações aritméticas básicas com esses tipos numéricos e algumas outras operações.
 
 
-# Operadores básicas
+# Operadores básicos
 
 <div class="columns">
 <div class="column" width="50%">
@@ -211,7 +210,7 @@ Podemos usar as quatro operações aritméticas básicas com esses tipos numéri
 
 # Comentários
 
-O símbolo `#`{.python} (cerquilha), é utilizado para indicar um **comentário**. O comentário inicia na `#`{.python} e vai até o final da linha. Os comentários são ignorados pelo interpretador do Python, mas são utilizados para adicionar informações relevantes para os leitores do código.
+O símbolo `#`{.python} (cerquilha) é utilizado para indicar um **comentário**. O comentário inicia na `#`{.python} e vai até o final da linha. Os comentários são ignorados pelo interpretador do Python, mas são utilizados para adicionar informações relevantes para os leitores do código.
 
 
 # Exponenciação
@@ -385,7 +384,7 @@ Por hora, vamos ver apenas algumas funções do módulo [`math`](https://docs.py
 
 ```python-repl
 >>> # Teto
->>> # menor inteiro >= ao númeo
+>>> # menor inteiro >= ao número
 >>> math.ceil(4.2)
 5
 >>> math.ceil(4.0)
@@ -708,7 +707,7 @@ Apesar de ser possível definir uma nova função na janela de interações, nó
 
 # Definição de funções
 
-Para abrir a janela de edição de código selecionamos o menu File $\rightarrow$ New File (crtl + n). \pause
+Para abrir a janela de edição de código selecionamos o menu File $\rightarrow$ New File (ctrl + n). \pause
 
 ![](imagens/editor.png){width=9cm}
 
@@ -752,7 +751,7 @@ def dobro(x: int) -> int:
 
 <div class="columns">
 <div class="column" width="48%">
-Escrevemos o código na janela de edição de código e salvamos o arquivo (File $\rightarrow$ Save - crtl\ +\ s).
+Escrevemos o código na janela de edição de código e salvamos o arquivo (File $\rightarrow$ Save - ctrl\ +\ s).
 
 ![](imagens/dobro.png){width=6.5cm}
 
@@ -800,7 +799,7 @@ O **identificador** (nome) da função, dos parâmetros e dos tipos deve começa
 
 Espaços não podem ser usados em nomes. \pause
 
-As letras diacríticas (acentos, cedilha, etc) podem ser usados nos identificados, mas não é uma boa prática, por isso não vamos utilizar.
+As letras diacríticas (acentos, cedilha, etc) podem ser usadas nos identificadores, mas não é uma boa prática, por isso não vamos utilizar.
 
 </div>
 </div>
@@ -835,7 +834,7 @@ def polegadas_em_mm(x: float) -> float:
     return x * 2.54
 ```
 
-A função está correta? \pause Não!. \pause
+A função está correta? \pause Não! \pause
 
 ```python
 def polegadas_em_mm(x: float) -> float:
@@ -935,7 +934,7 @@ False
 
 \ 
 
-Quem tem maior prioridade, os operadores relacionais ou aritméticas? \pause Os aritméticos.
+Quem tem maior prioridade, os operadores relacionais ou aritméticos? \pause Os aritméticos.
 
 
 # Operadores relacionais
@@ -1069,7 +1068,7 @@ False
 
 \ 
 
-Qual é precedência do `not`{.python} em relação aos operadores relacionais e aritméticos? \pause É menor.
+Qual é a precedência do `not`{.python} em relação aos operadores relacionais e aritméticos? \pause É menor.
 
 
 # Operadores lógicos
@@ -1325,7 +1324,7 @@ Cada variável tem um tipo, que determina o conjunto de valores que podem ser ar
 
 Já usamos variáveis para armazenar os valores dos argumentos das funções, mas podemos usar variáveis para armazenar valores que não são argumentos. \pause
 
-Uma variável pode ser primeiro declarada e depois inicializa ou pode ser declarada e inicializada de uma vez só. \pause
+Uma variável pode ser primeiro declarada e depois inicializada ou pode ser declarada e inicializada de uma vez só. \pause
 
 As variáveis que são usadas como parâmetros para as funções são declaradas na assinatura da função e são inicializadas a cada chamada da função com os argumentos especificados na chamada.
 
@@ -1367,11 +1366,9 @@ O símbolo `=` representa **atribuição**. Para executar uma atribuição o Pyt
 </div>
 
 
-# Sequenciação de instruções
+# Variáveis
 
-Essas instruções são executadas de **forma sequencial**, uma linha após a outra, por isso, a ordem é importante. \pause
-
-Qual o resultado da execução das instruções abaixo?
+Qual é o resultado da execução das instruções abaixo?
 
 \small
 
@@ -1389,9 +1386,27 @@ Qual o resultado da execução das instruções abaixo?
 Um erro de execução! Quando o Python avalia a expressão `2 * y`{.python} a variável `y` ainda não foi definida, então não é possível calcular o valor da expressão.
 
 
+# Como o interpretador executa um programa Python?
+
+O código que escrevemos é estático, mas a execução é dinâmica. \pause O que o programa *faz* está escondido no que *vemos*: variáveis mudam de valor, funções são chamadas e retornam, o fluxo de execução muda. \pause
+
+Para programar, precisamos entender o que acontece durante a execução. \pause
+
+Mas como o interpretador executa um programa Python?
+
+
+# Como o interpretador executa um programa Python?
+
+A forma como um programa é executado é complicada, mas vamos usar um processo mais simples, no qual as instruções são executadas de forma **sequencial** (por enquanto), uma linha após a outra. \pause
+
+Este processo nos ajuda a construir um **modelo mental** de como um programa é executado pelo computador. \pause
+
+Um bom modelo mental é **essencial** para a construção de programas.
+
+
 # Sequenciação de instruções
 
-Qual o resultado de `b` no seguinte trecho de código?
+Qual é o resultado de `b` no seguinte trecho de código?
 
 \small
 
@@ -1407,7 +1422,7 @@ Qual o resultado de `b` no seguinte trecho de código?
 
 \normalsize
 
-`20`{.python}. \pause O Python executar uma linha por vez, na primeira linha a variável `a` é criada referenciando uma célula de memória com o valor `10`{.python}. \pause Depois a expressão `2 * a`{.python} é avaliada com resultado `20`{.python} e a variável `b` é criada referenciado a célula de memória que armazena esse valor. \pause Depois a variável `a` é alterada, passando a referenciar a célula de memória com o valor `30`{.python}. \pause Por vim, o valor armazenado na célula de memória associada com `b`, que é `20`{.python}, é exibido.
+`20`{.python}. \pause O Python executa uma linha por vez, na primeira linha a variável `a` é criada referenciando uma célula de memória com o valor `10`{.python}. \pause Depois a expressão `2 * a`{.python} é avaliada com resultado `20`{.python} e a variável `b` é criada referenciando a célula de memória que armazena esse valor. \pause Depois a variável `a` é alterada, passando a referenciar a célula de memória com o valor `30`{.python}. \pause Por fim, o valor armazenado na célula de memória associada com `b`, que é `20`{.python}, é exibido.
 
 
 # Variáveis locais
@@ -1457,7 +1472,7 @@ def novo_seculo(data: str) -> bool:
 
 \pause
 
-Qual código deixar a intenção mais clara? \pause O que usa variáveis locais auxiliares.
+Qual código deixa a intenção mais clara? \pause O que usa variáveis locais auxiliares.
 
 \pause
 
@@ -1476,7 +1491,7 @@ def novo_seculo(data: str) -> bool:
 
 # Execução passo a passo
 
-Nós vimos anteriormente que o Python executa as instruções de forma sequencial, uma linha após a outra. \pause No entanto, quando uma função é chamada, a execução é desviada para o início da função, e quando a função finaliza, a execução volta para onde estava antes da chamada da função.
+Quando uma função é chamada, a execução é desviada para o início da função, e quando a função finaliza, a execução volta para onde estava antes da chamada da função.
 
 
 # Execução passo a passo
@@ -1505,7 +1520,7 @@ hipotenusa(3.0, 4.0)
 \pause
 <div class="column" width="38%">
 
-Em qual ordem as linhas do programa são executadas pelo Python? \pause 12, 8, 2, 8, 9, 2, 9,10, 5, 10, 12. (Feito em sala) \pause
+Em qual ordem as linhas do programa são executadas pelo Python? \pause 12, 8, 2, 8, 9, 2, 9, 10, 5, 10, 12. (Feito em sala) \pause
 
 [Veja](https://pythontutor.com/render.html#code=def%20quadrado%28a%3A%20float%29%20-%3E%20float%3A%0A%20%20%20%20return%20a%20*%20a%0A%0Adef%20raiz%28a%3A%20float%29%20-%3E%20float%3A%0A%20%20%20%20return%20a%20**%200.5%0A%0Adef%20hipotenusa%28a%3A%20float,%20b%3A%20float%29%20-%3E%20float%3A%0A%20%20%20%20a2%20%3D%20quadrado%28a%29%0A%20%20%20%20b2%20%3D%20quadrado%28b%29%0A%20%20%20%20return%20raiz%28a2%20%2B%20b2%29%0A%0Aprint%28hipotenusa%283.0,%204.0%29%29&cumulative=false&curInstr=0&heapPrimitives=true&mode=display&origin=opt-frontend.js&py=311&rawInputLstJSON=%5B%5D&textReferences=false) a execução no pythontutor (um pouco diferente do que fizemos em sala).
 
@@ -1773,7 +1788,7 @@ Quando `dobro` é chamada com o valor `10`{.python} a expressão `2 * x`{.python
 
 Em seguida `dobro` é chamada com o valor `10.0`{.python} e a expressão `2 * x`{.python} produz `20.0`{.python} e esse valor é exibido na tela. \pause
 
-Por fim, `dobro` é chamada com o valor `'10'`{.python} e a expressão `2 * x`{.python} produz `'1010'`{} e esse valor é exibido na tela.
+Por fim, `dobro` é chamada com o valor `'10'`{.python} e a expressão `2 * x`{.python} produz `'1010'`{.python} e esse valor é exibido na tela.
 
 
 # Tipagem dinâmica vs estática
@@ -1854,6 +1869,43 @@ Um erro de execução pode fazer o programa \pause
 - Continuar a execução e produzir a resposta errada \pause
 
 Como garantir que um programa não terá erros durante a execução? \pause Veremos isso ao longo da disciplina.
+
+
+# Revisão
+
+Quais são os tipos de dados pré-definidos que vimos? \pause
+
+- `int`{.python}, `float`{.python}, `bool`{.python} e `str`{.python}. \pause
+
+Quais são as principais operações com números? \pause
+
+- Soma, subtração, multiplicação, divisão, piso da divisão, módulo e exponenciação. \pause
+
+Quais são as principais operações com strings? \pause
+
+- Concatenação, repetição, tamanho (`len`{.python}), indexação e substring (slicing). \pause
+
+Qual é o tipo do resultado de uma operação entre um `int`{.python} e um `float`{.python}? \pause
+
+- `float`{.python}.
+
+
+# Revisão
+
+Para que servem os operadores lógicos `and`{.python}, `or`{.python} e `not`{.python}? \pause
+
+- Para combinar valores booleanos. O `and`{.python} produz `True`{.python} se ambos os operandos forem `True`{.python}, o `or`{.python} produz `True`{.python} se pelo menos um for `True`{.python} e o `not`{.python} inverte o valor.
+
+
+# Revisão
+
+O que é uma variável local? \pause
+
+- Uma variável declarada dentro de uma função, que é criada quando a linha é executada e deixa de existir quando a função termina. \pause
+
+Qual é a diferença entre um erro sintático e um erro semântico? \pause
+
+- O erro sintático é detectado antes da execução (o programa não segue as regras da linguagem). O erro semântico é detectado durante a execução (a construção é válida sintaticamente mas o interpretador não consegue atribuir significado).
 
 
 # Projeto de funções
