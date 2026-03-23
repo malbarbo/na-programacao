@@ -38,7 +38,7 @@ O que é um algoritmo?
 
 ## Thomas Cormen
 
-> Uma sequência bem definida de passos que toma uma conjunto de valores como entrada e produz um conjunto de valores como saída com o objetivo de resolver um problema.
+> Uma sequência bem definida de passos que toma um conjunto de valores como entrada e produz um conjunto de valores como saída com o objetivo de resolver um problema.
 
 \pause
 
@@ -220,7 +220,7 @@ O que foi necessário para entender/executar esses algoritmos? \pause
 
 - Entender a notação \pause
 
-- Entender a semântica \pause
+- Entender a semântica (significado)
 
 
 # Algoritmos
@@ -260,7 +260,7 @@ Todos os problemas podem ser resolvidos com algoritmos? \pause
 
 O que é um problema? \pause
 
-Vamos considerar apenas problemas bem definidos, que especificam com precisão quais são as possíveis entradas e como as saídas estão relacionados com as entradas. \pause
+Vamos considerar apenas problemas bem definidos, que especificam com precisão quais são as possíveis entradas e como as saídas estão relacionadas com as entradas. \pause
 
 Todos os problemas bem definidos podem ser resolvidos com algoritmos? \pause
 
@@ -306,7 +306,7 @@ Um sistema estruturado para comunicação.
 
 Podemos utilizar o português para programar um computador? \pause
 
-Não, porque o computador não entende o português! \pause Ainda que o computador entendesse o português, ele não seria uma linguagem adequada para programação porque não é preciso o bastante. \pause
+Não, porque o computador não entende o português! \pause Ainda que o computador entendesse o português, ele não seria uma linguagem adequada para programação porque não seria precisa o bastante. \pause
 
 E que linguagem o computador entende? \pause
 
@@ -345,7 +345,7 @@ Uma linguagem de programação é caracterizada por diversos aspectos, entre ele
 
 A **sintaxe** de uma linguagem é o conjunto de regras que define como os símbolos podem ser agrupados para criar as sentenças na linguagem. \pause
 
-Por exemplo, a instrução para soma de dois número é expressa: \pause
+Por exemplo, a instrução para soma de dois números é expressa: \pause
 
 - Na maioria das linguagens: `20 + 17`{.python} \pause
 
@@ -385,7 +385,7 @@ Exemplo em C++ - Raiz quadrada
 
 Parte do arquivo `raiz.cpp`
 
-\small
+\footnotesize
 
 ```cpp
 // Entrada
