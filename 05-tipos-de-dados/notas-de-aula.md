@@ -265,7 +265,7 @@ Especificação
 ```python
 def proxima_cor(atual: Cor) -> Cor:
     '''
-    Produz a próxima cor de uma semáfaro
+    Produz a próxima cor de uma semáforo
     que está na cor *atual*.
     '''
 ```
@@ -329,7 +329,7 @@ Especificação
 ```python
 def proxima_cor(atual: Cor) -> Cor:
     '''
-    Produz a próxima cor de uma semáfaro
+    Produz a próxima cor de uma semáforo
     que está na cor *atual*.
     '''
 ```
@@ -365,7 +365,7 @@ def proxima_cor(atual: Cor) -> Cor:
     if atual == Cor.VERDE:
         proximo = Cor.AMARELO
     elif atual == Cor.AMARELO:
-        proximo = CoR.VERMELHO
+        proximo = Cor.VERMELHO
     elif atual == Cor.VERMELHO:
         proximo = Cor.VERDE
     return ...

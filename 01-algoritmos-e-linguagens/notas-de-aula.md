@@ -360,7 +360,7 @@ A **semântica** de uma linguagem define o significado das construções da ling
 
 A expressão `12 + "3"`{.python} é valida sintaticamente em muitas linguagens, mas o significado é diferente entre elas. \pause
 
-- Lua: o texto `"3"`{.python} deve ser convertido para um número e depois somado com `12`{.python}, resultado em `15`{.ptyhon}. \pause
+- Lua: o texto `"3"`{.python} deve ser convertido para um número e depois somado com `12`{.python}, resultado em `15`{.python}. \pause
 
 - Javascript: o número `12`{.python} deve ser transformado para um texto e depois juntado com `"3"`{.python}, resultando em `"123"`{.python}. \pause
 

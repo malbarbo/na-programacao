@@ -57,8 +57,8 @@ O número 4 é natural? \pause Vamos verificar \pause
 
 - Como 4 não é zero, para ele ser natural, o 3 tem que ser natural; \pause
 - Como 3 não é zero, para ele ser natural, o 2 tem que ser natural; \pause
-- Como 2 não é zero, pare ele ser natural, o 1 tem que ser natural; \pause
-- Como 1 não é zero, pare ele ser natural, o 0 tem que ser natural; \pause
+- Como 2 não é zero, para ele ser natural, o 1 tem que ser natural; \pause
+- Como 1 não é zero, para ele ser natural, o 0 tem que ser natural; \pause
 - Por definição, 0 é natural. \pause
 
 Portanto, o 4 é natural. \pause Note que foi preciso decompor o 4 até chegar no caso base.
@@ -908,7 +908,7 @@ return ordem
 
 \normalsize
 
-Podemo simplificar? \pause Sim! \pause
+Podemos simplificar? \pause Sim! \pause
 
 \scriptsize
 

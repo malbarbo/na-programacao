@@ -665,7 +665,7 @@ Projete uma função que verifique se uma lista de inteiros é palíndromo, isto
 def palindromo(lst: list[int]) -> bool:
     '''Produz True se *lst* é palíndromo, isto
     é, tem os mesmos elementos quando vistos
-    da direira para esquerda e da esquerda
+    da direita para esquerda e da esquerda
     para direita. Produz False caso contrário.
     >>> palindromo([])
     True
@@ -1170,7 +1170,7 @@ def eh_regular(a: list[list[int]]) -> bool:
 def eh_regular(a: list[list[int]]) -> bool:
     regular = True
     for linha in a:
-        if len(linha) != len(a[0])
+        if len(linha) != len(a[0]):
             regular = False
     return regular
 ```

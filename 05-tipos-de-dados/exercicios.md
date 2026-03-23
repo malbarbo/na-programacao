@@ -66,7 +66,7 @@ urlcolor: Blue
 
 @) Projete uma estrutura para representar resoluções (largura e altura em pixels) de telas e imagens. Em seguida,
 
-    a) Projete uma função que determine quantos mega pixels uma imagem tem dada a sua resolução. O número de megapixel pode ser caculado multiplicando-se a altura e largura e dividindo-se por 1 milhão.
+    a) Projete uma função que determine quantos mega pixels uma imagem tem dada a sua resolução. O número de megapixel pode ser calculado multiplicando-se a altura e largura e dividindo-se por 1 milhão.
 
     a) Projete uma função que indique se uma resolução tem aspecto (razão entre largura e altura) de 4:3, 16:9 ou outro (projete um tipo enumerado para representar o aspecto). Por exemplo, a resolução $1920 \times 1080$ tem aspecto 16:9, pois $1920 \times 9 = 1080 \times 16$.
 

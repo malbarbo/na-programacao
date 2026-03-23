@@ -1,15 +1,15 @@
 # Análise
 #
 # Calcular a massa de um tubo de ferro a partir das suas dimensões.
-# O volume de um tudo de ferro é dado por
-# pi * [(diametro_externo - diametro_interno) / 2] ** 2 * altura
-# A massa de um objeto pode ser calculada com massa * densidade
+# O volume de um tubo de ferro é dado por
+# pi * ((diametro_externo / 2) ** 2 - (diametro_interno / 2) ** 2) * altura
+# A massa de um objeto pode ser calculada com volume * densidade
 # A densidade do ferro é 7874 kg/m3
 
 # Tipos de dados
 #
 # As dimensões do tubo são dadas em metros e representadas por números positivos
-# A massa é dada em kilograma e representado por um número positivo
+# A massa é dada em quilograma e representado por um número positivo
 
 PI: float = 3.14
 DENSIDADE_FERRO: float = 7874
@@ -18,7 +18,7 @@ def massa_tubo_ferro(diametro_externo: float, diametro_interno: float, altura: f
     '''
     Calcula a massa de um tubo de ferro a partir das suas dimensões.
 
-    Requer diametro_externo > diametro-interno.
+    Requer diametro_externo > diametro_interno.
 
     Exemplos
     >>> # 3.14 * ((0.05 / 2) ** 2 - (0.03 / 2) ** 2) * 0.1 * 7874

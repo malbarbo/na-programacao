@@ -144,10 +144,10 @@ Projete uma função que implemente o algoritmo de ordenação por seleção. \p
 
 def ordena_selecao(lst: list[int]):
     '''
-    Ordena *lst* em ordem não decrescente usando o algoritmo de ordenação por inserção.
+    Ordena *lst* em ordem não decrescente usando o algoritmo de ordenação por seleção.
     Exemplos
     >>> lst = [5, 2, 4, 6, 1, 3]
-    >>> ordena_insercao(lst)
+    >>> ordena_selecao(lst)
     >>> lst
     [1, 2, 3, 4, 5, 6]
     '''

@@ -12,7 +12,7 @@ urlcolor: Blue
 
 @) O que é um software?
 
-@) O que é um sistema sistema computacional?
+@) O que é um sistema computacional?
 
 @) Qual é a forma básica de funcionamento de um sistema computacional?
 

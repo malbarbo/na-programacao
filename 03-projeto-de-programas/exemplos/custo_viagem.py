@@ -5,7 +5,7 @@
 
 # Tipos de Dados
 #
-# Distância, redimento, preço do litro e custo são representado por números
+# Distância, rendimento, preço do litro e custo são representado por números
 # positivos.
 
 def custo_viagem(distancia: float, rendimento: float, preco: float) -> float:

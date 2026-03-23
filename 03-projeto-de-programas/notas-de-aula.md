@@ -374,7 +374,7 @@ Um construtor precisa calcular a quantidade de azulejos necessários pra azuleja
 
 **Resultado** \pause
 
-Calcular o número de azulejos necessários para azulejar uma parede com determinado comprimento e altura. \pause Cada azulejo mede 0,2,0m x 0,2m. \pause Nenhum azulejo é perdido e recortes são descartados.
+Calcular o número de azulejos necessários para azulejar uma parede com determinado comprimento e altura. \pause Cada azulejo mede 0,2m x 0,2m. \pause Nenhum azulejo é perdido e recortes são descartados.
 </div>
 </div>
 
@@ -480,7 +480,7 @@ Implementação
 import math
 
 def numero_azulejos(comprimento: float, altura: float) -> int:
-    return math.ceil(comprimeto / 0.2) * math.ceil(altura / 0.2)
+    return math.ceil(comprimento / 0.2) * math.ceil(altura / 0.2)
 ```
 
 \pause
@@ -501,14 +501,14 @@ Revisão \pause
 O código está ok.
 
 
-# Exemplo - massa tudo de ferro
+# Exemplo - massa tubo de ferro
 
 O Jorge precisa saber a massa de diversos pequenos tubos de ferro mas está sem uma balança. No entanto, ele possui um paquímetro e pode medir com precisão o diâmetro interno e externo e a altura dos tubos, agora ele só precisa de um programa para fazer os cálculos. Algum voluntário? \pause
 
 Alguma coisa parece complicada nesse exercício?
 
 
-# Exemplo - massa tudo de ferro
+# Exemplo - massa tubo de ferro
 
 Nesse exercício precisamos de conhecimento de um domínio (área de conhecimento), que talvez ainda não tenhamos, isso pode fazer o problema parecer mais difícil do que realmente é. \pause Mas então, como proceder nesses casos? \pause
 
@@ -519,7 +519,7 @@ O importante é entender que o desenvolvedor de software geralmente resolve o pr
 Vamos resolver esse problema, por onde começamos?
 
 
-# Exemplo - massa tudo de ferro
+# Exemplo - massa tubo de ferro
 
 \small
 
@@ -538,7 +538,7 @@ Vamos resolver esse problema, por onde começamos?
 - Qual é a densidade do ferro? \pause 7874 $kg/m^3$.
 
 
-# Exemplo - massa tudo de ferro
+# Exemplo - massa tubo de ferro
 
 **Definição de tipos de dados** \pause
 
@@ -546,7 +546,7 @@ Vamos resolver esse problema, por onde começamos?
 - Massa é um número positivo dado em quilogramas.
 
 
-# Exemplo - massa tudo de ferro
+# Exemplo - massa tubo de ferro
 
 **Especificação**
 
@@ -559,7 +559,7 @@ def massa_tubo_ferro(diametro_externo: float, diametro_interno: float, altura: f
     '''
     Calcula a massa de um tubo de ferro a partir das suas dimensões.
 
-    Requer diametro_externo > diametro-interno.
+    Requer diametro_externo > diametro_interno.
 
     Exemplos
     >>> # 3.14 * ((0.05 / 2) ** 2 - (0.03 / 2) ** 2) * 0.1 * 7874
@@ -569,7 +569,7 @@ def massa_tubo_ferro(diametro_externo: float, diametro_interno: float, altura: f
 ```
 
 
-# Exemplo - massa tudo de ferro
+# Exemplo - massa tubo de ferro
 
 **Implementação** \pause
 
@@ -583,7 +583,7 @@ def massa_tubo_ferro(diametro_externo: float, diametro_interno: float, altura: f
 ```
 
 
-# Exemplo - massa tudo de ferro
+# Exemplo - massa tubo de ferro
 
 **Verificação** \pause
 
@@ -599,7 +599,7 @@ Got:
 ```
 
 
-# Exemplo - massa tudo de ferro
+# Exemplo - massa tubo de ferro
 
 Comparação de igualdade de números de ponto flutuante quase não dá certo! \pause Nesses casos, podemos arredondar o resultado. \pause
 
@@ -611,7 +611,7 @@ Comparação de igualdade de números de ponto flutuante quase não dá certo! \
 ```
 
 
-# Exemplo - massa tudo de ferro
+# Exemplo - massa tubo de ferro
 
 **Revisão**
 
@@ -631,7 +631,7 @@ O que podemos melhorar? \pause
 - Separar o cálculo em etapas
 
 
-# Exemplo - massa tudo de ferro
+# Exemplo - massa tubo de ferro
 
 \footnotesize
 
