@@ -4,8 +4,6 @@ title: |
        | Fundamentos de Algoritmos
        | Seleção
 urlcolor: Blue
-# TODO: fazer exercícios para diferenciar seleção direta e seleção aninhada
-# TODO: adicionar exercícios de avaliação de expressões e execução passo a passo
 ---
 
 **\color{red}Lembre-se** de seguir o processo de projeto de funções e de usar o `mypy` e o `doctest` na etapa de verificação.
@@ -20,6 +18,63 @@ urlcolor: Blue
 
 @) Quando usamos o `assert`{.python}?
 
+@) Considere as duas implementações a seguir da função `quadrante`, que determina o quadrante de um ponto $(x, y)$ no plano cartesiano. Os quadrantes são numerados de 1 a 4: o primeiro tem $x > 0$ e $y > 0$, o segundo tem $x < 0$ e $y > 0$, o terceiro tem $x < 0$ e $y < 0$ e o quarto tem $x > 0$ e $y < 0$. Identifique qual implementação usa seleção direta e qual usa seleção aninhada.
+
+    ```python
+    # Versão A
+    def quadrante(x: int, y: int) -> int:
+        if x > 0:
+            if y > 0:
+                q = 1
+            else:
+                q = 4
+        else:
+            if y > 0:
+                q = 2
+            else:
+                q = 3
+        return q
+
+    # Versão B
+    def quadrante(x: int, y: int) -> int:
+        if x > 0 and y > 0:
+            q = 1
+        elif x < 0 and y > 0:
+            q = 2
+        elif x < 0 and y < 0:
+            q = 3
+        else:
+            q = 4
+        return q
+    ```
+
+@) Considere a função a seguir e indique o resultado para cada chamada.
+
+    ```python
+    def f(a: int, b: int) -> str:
+        if a > b:
+            if a > 2 * b:
+                r = 'A'
+            else:
+                r = 'B'
+        elif a == b:
+            r = 'C'
+        else:
+            if b > 2 * a:
+                r = 'D'
+            else:
+                r = 'E'
+        return r
+    ```
+
+    a) `f(10, 3)`
+
+    a) `f(5, 5)`
+
+    a) `f(3, 10)`
+
+    a) `f(7, 5)`
+
 
 # Praticando
 
@@ -28,6 +83,8 @@ urlcolor: Blue
 @) Projete uma função que determine o sinal de um número, produzindo `-1`{.python} para valores negativos, `1`{.python} para valores positivos e `0`{.python} para o `0`{.python}.
 
 @) Projete uma função que restrinja um valor a um determinado intervalo, isto é, devolve o valor se ele está no intervalo, senão "força" o valor para dentro do intervalo devolvendo o extremo do intervalo mais próximo do valor. A sua implementação usa seleção? Você consegue fazer uma implementação usando as funções pré-definidas `min`{.python} e `max`{.python}?
+
+@) Projete uma função que classifique um triângulo como equilátero (3 lados iguais), isósceles (2 lados iguais) ou escaleno (nenhum lado igual). Você pode assumir que os lados formam um triângulo. Faça duas implementações: uma usando seleção direta (um caso para cada forma de resposta) e outra usando seleção aninhada (dividindo as formas de resposta em grupos). Qual é mais simples?
 
 @) Escolha um exemplo de cada exercício anterior e mostre a ordem que as linhas são executadas. Use o Python Tutor para verificar se as respostas estão corretas.
 
@@ -43,7 +100,7 @@ urlcolor: Blue
 
 @) Uma palavra duplicada é formada pela ocorrência de duas partes iguais, separadas ou não por hífen. Por exemplo, as palavras xixi, mimi, lero-lero e mata-mata são palavras duplicadas. Projete uma função que verifique se uma palavra é duplicada.
 
-@) Em um determinado jogo os jogadores são classificados em níveis de 0 a 25 e este nível é atualizado semanalmente baseado na quantidade de horas que o jogador jogou o jogo. Os jogadores que jogaram entre 4 e 5 horas permanecem no mesmo nível. Os jogadores que jogaram menos que 4 horas diminuem um nível a cada 1 hora que faltou para alcançar as 4 horas. Os jogadores que jogaram mais de 5 horas aumentam um nível a cada hora jogada além das 5 horas respeitando o limite máximo de 7 níveis. Projete uma função que recebe o nível atual do jogador e a quantidade de horas jogadas em uma semana e calcule o novo nível do jogador.
+@) Em um determinado jogo os jogadores são classificados em níveis de 0 a 25 e este nível é atualizado semanalmente baseado na quantidade de horas que o jogador jogou o jogo. Os jogadores que jogaram entre 4 e 5 horas permanecem no mesmo nível. Os jogadores que jogaram menos que 4 horas diminuem um nível a cada hora que faltou para alcançar as 4 horas. Os jogadores que jogaram mais de 5 horas aumentam um nível a cada hora jogada além das 5 horas, respeitando o limite máximo de 7 níveis. Projete uma função que recebe o nível atual do jogador e a quantidade de horas jogadas em uma semana e calcule o novo nível do jogador.
 
 
 # Desafios

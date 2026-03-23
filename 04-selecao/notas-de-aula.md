@@ -2,9 +2,6 @@
 # vim: set spell spelllang=pt_br:
 title: Seleção
 # TODO: falar mais sobre quando pensar em alto nível na execução do código e quando fazer o passo a passo
-# TODO: dar nome ao processo de criar a implementação analisando as formas de resposta
-# TODO: falar do contrato de função, entre o fornecedor e o usuário da função
-# TODO: mudar o nome de seleção para análise de casos?
 ---
 
 # Introdução
@@ -116,7 +113,7 @@ print(m)
 
 Qual o valor exibido pelo programa? \pause 20. \pause
 
-Em que ordem as linhas são executas para gerar esse resultado? \pause 1, 2, 3, 6, 7. \pause
+Em que ordem as linhas são executadas para gerar esse resultado? \pause 1, 2, 3, 6, 7. \pause
 </div>
 <div class="column" width="48%">
 
@@ -138,7 +135,7 @@ print(m)
 
 Qual o valor exibido pelo programa? \pause 15. \pause
 
-Em que ordem as linhas são executas para gerar esse resultado? \pause 1, 2, 3, 4, 7 \pause
+Em que ordem as linhas são executadas para gerar esse resultado? \pause 1, 2, 3, 4, 7 \pause
 </div>
 </div>
 
@@ -204,7 +201,7 @@ Vamos voltar ao exemplo da atualização do número do telefone.
 
 # Exemplo - atualização número de telefone
 
-No período de 2015 à 2016 todos os números de telefones celulares no Brasil passaram a ter nove dígitos. Na época, os números de telefones que tinham apenas oito dígitos foram alterados adicionando-se o 9 na frete do número. Embora oficialmente todos os número de celulares tenham nove dígitos, na agenda de muitas pessoas ainda é comum encontrar números registrados com apenas oito dígitos. Projete uma função que adicione o nono dígito em um dado número de telefone celular caso ele ainda não tenha o nono dígito. Considere que os números de entrada são dados com o DDD entre parênteses e com um hífen separando os últimos quatro dígitos. Exemplos de entradas: (44) 9787-1241, (51) 95872-9989, (41) 8876-1562. A saída deve ter o mesmo formato, mas garantindo que o número do telefone tenha 9 dígitos.
+No período de 2015 à 2016 todos os números de telefones celulares no Brasil passaram a ter nove dígitos. Na época, os números de telefones que tinham apenas oito dígitos foram alterados adicionando-se o 9 na frente do número. Embora oficialmente todos os números de celulares tenham nove dígitos, na agenda de muitas pessoas ainda é comum encontrar números registrados com apenas oito dígitos. Projete uma função que adicione o nono dígito em um dado número de telefone celular caso ele ainda não tenha o nono dígito. Considere que os números de entrada são dados com o DDD entre parênteses e com um hífen separando os últimos quatro dígitos. Exemplos de entradas: (44) 9787-1241, (51) 95872-9989, (41) 8876-1562. A saída deve ter o mesmo formato, mas garantindo que o número do telefone tenha 9 dígitos.
 
 
 # Exemplo - atualização número de telefone
@@ -316,7 +313,7 @@ Projete uma função que encontre o valor máximo entre três números.
 
 Análise \pause
 
-- Encontrar o valor máximo entre três número dados \pause
+- Encontrar o valor máximo entre três números dados \pause
 
 Tipos de dados \pause
 
@@ -489,7 +486,7 @@ def maximo3(a: int, b: int, c: int) -> int:
 ```
 
 
-# Exemplo - máximo de 3
+# Análise de casos
 
 Vamos parar por um momento e relembrar como fazemos a implementação de uma função. \pause
 
@@ -499,8 +496,21 @@ Olhamos para a especificação, com atenção especial para os exemplos, e pergu
 
 - Se existe mais de uma forma, isto é, a resposta para pelo menos dois exemplos tem forma distinta, então precisamos usar seleção. \pause Para cada forma de resposta identificamos uma condição e usamos as condições e as formas de resposta para implementar a função (o que fizemos na implementação da função `maximo3`).
 
+\pause
 
-# Exemplo - máximo de 3
+Chamamos essa estratégia de **análise de casos**: identificar as formas de resposta nos exemplos e, para cada forma, determinar a condição que a distingue das demais.
+
+
+# Análise de casos - implementação
+
+A análise de casos pode ser implementada de duas maneiras: \pause
+
+- **Seleção direta**: criamos um caso para cada forma de resposta, com uma condição (possivelmente composta) para cada uma (como fizemos na implementação da função `maximo3`). \pause
+
+- **Seleção aninhada** (árvore de decisão): dividimos as formas de resposta em grupos verificando partes da condição separadamente.
+
+
+# Seleção aninhada
 
 No caso de mais de uma forma de resposta, a condição de cada forma pode ser composta, como no exemplo `maximo3`, onde a condição para a resposta ser `a`{.python} era `a >= b and a >= c`{.python} (a condição é composta por duas partes). \pause
 
@@ -527,7 +537,7 @@ Se `a >= b`{.python} é `False`{.python}, quais valores podem ser o máximo? \pa
        /          \
     a >= c      b >= c
     /   \        /   \
- True  False  True  Flase
+ True  False  True  False
   /       \    /       \
   a       c    b       c
 ```
@@ -864,6 +874,17 @@ AssertionError: texto não pode ser ''
 </div>
 
 
+# Contrato de função
+
+Podemos pensar na especificação de uma função como um **contrato** entre o fornecedor (quem implementa a função) e o usuário (quem chama a função). \pause
+
+- O **usuário** se compromete a satisfazer as precondições (o `Requer` da especificação); \pause
+
+- O **fornecedor** se compromete a produzir o resultado descrito no propósito. \pause
+
+O `assert`{.python} é o mecanismo que usamos para verificar se o usuário está cumprindo a sua parte no contrato.
+
+
 # Ponto final - especificação - vazio válido
 
 <div class="columns">
@@ -919,7 +940,7 @@ def ponto_final(texto: str) -> str:
 
 # Exemplo - centralizar string
 
-Em uma determinada aplicação as strings precisam ser exibidas com pelo menos $n$ caracteres, onde $n$ pode variar dependendo da situação. Se uma string não tem $n$ caracteres, é necessário adicionar espaços em branco no início e fim da string, deixando ela centralizada entre os espaços, para que ela seja exibida corretamente. Projete uma função que ajuste uma string dessa forma. Assuma que a string de entrada não tenha espaços o início e no final.
+Em uma determinada aplicação as strings precisam ser exibidas com pelo menos $n$ caracteres, onde $n$ pode variar dependendo da situação. Se uma string não tem $n$ caracteres, é necessário adicionar espaços em branco no início e fim da string, deixando ela centralizada entre os espaços, para que ela seja exibida corretamente. Projete uma função que ajuste uma string dessa forma. Assuma que a string de entrada não tenha espaços no início e no final.
 
 
 # Exemplo - centralizar string
@@ -989,7 +1010,7 @@ def centraliza(s: str, n: int) -> str:
     Se *s* tem mais que *n* caracteres,
     devolve *s*.
 
-    A quantidade de espaços adicionado no
+    A quantidade de espaços adicionados no
     início é igual ou um a mais do que a
     quantidade adicionada no fim.
     '''
@@ -1125,3 +1146,26 @@ Verificação: \pause ok. \pause
 Revisão: \pause string não parece ser um tipo de dado apropriado... \pause
 
 Vamos continuar na próxima aula...
+
+
+# Revisão
+
+Quando precisamos usar seleção na implementação de uma função? \pause
+
+- Quando a análise de casos identifica mais de uma forma de resposta nos exemplos. \pause
+
+Quais são as duas formas de implementar a análise de casos? \pause
+
+- Seleção direta: um caso para cada forma de resposta, com condição possivelmente composta. \pause
+- Seleção aninhada (árvore de decisão): divide as formas em grupos verificando partes da condição separadamente.
+
+
+# Revisão
+
+O que é o contrato de uma função? \pause
+
+- O usuário se compromete a satisfazer as precondições e o fornecedor se compromete a produzir o resultado descrito no propósito. \pause
+
+Para que serve o `assert`{.python}? \pause
+
+- Para verificar se o usuário está cumprindo as precondições. Se a condição não for verdadeira, o programa falha com uma mensagem de erro clara.
