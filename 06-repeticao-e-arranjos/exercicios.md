@@ -4,8 +4,6 @@ title: |
        | Fundamentos de Algoritmos
        | Repetição e arranjos
 urlcolor: Blue
-# TODO: fazer exercícios mais interessantes (reais).
-# TODO: adicionar exercícios de avaliação de expressões e execução passo a passo?
 ---
 
 **\color{red}Lembre-se** de seguir o processo de projeto de funções e de usar o `mypy` e o `doctest` na etapa de verificação.
@@ -28,6 +26,17 @@ urlcolor: Blue
 
 @) Quais são as três perguntas que precisamos responder para implementar uma função utilizando a abordagem incremental com o "para cada"?
 
+@) Considere a função a seguir e indique a ordem em que as linhas são executadas para a chamada `f([3, -1, 0, 5, -2])`. Qual é o valor retornado?
+
+    ```{.python .number-lines}
+    def f(lst: list[int]) -> int:
+        resultado = 0
+        for n in lst:
+            if n > 0:
+                resultado = resultado + 1
+        return resultado
+    ```
+
 
 # Praticando
 
@@ -44,9 +53,7 @@ urlcolor: Blue
 
 @) Projete uma função que verifique se todos os elementos de uma lista de inteiros são pares.
 
-@) Projete uma função que verifique se todos os elementos de uma lista de booleanos são falsos.
-
-@) Projete uma função que crie uma nova lista removendo todas os valores zeros de uma lista de inteiros.
+@) Projete uma função que crie uma nova lista removendo todos os valores zeros de uma lista de inteiros.
 
 
 <!-- Esboço e calculo de mais de um valor-->
@@ -74,9 +81,9 @@ urlcolor: Blue
 
 # Resolvendo problemas
 
-<!-- Para cada -->
+<!-- Esboço de solução -->
 
-@) O Miguel é doutorando em física e precisa coletar dados de um experimento, mas ele só tem a sua disposição um equipamento precário que produz algumas leituras incorretas. O equipamento não deveria produzir valores negativos, mas em um teste preliminar o Miguel percebeu que o equipamento está produzindo números negativos. A boa notícia é que todos os números não negativos produzidos pelo equipamento estão corretos. Projete uma função que elimine os valores incorretos de uma sequência de valores produzidas pelo equipamento.
+@) O Miguel é doutorando em física e precisa normalizar os dados de um experimento. A normalização consiste em subtrair de cada valor o menor valor da sequência, de forma que o menor valor fique com 0. Por exemplo, a normalização da sequência $[5, 2, 8, 3]$ produz $[3, 0, 6, 1]$. Projete uma função que normalize uma sequência de valores.
 
 @) Em um jogo de sobrevivência um personagem se move por um mundo aberto tridimensional formado por cubos do mesmo tamanho. Cada posição (cubo) do mapa tem uma coordenada $(X, Y, Z)$ e cada componente da coordenada pode assumir qualquer valor inteiro (o mapa é infinito!). O personagem pode se deslocar um cubo por vez, seja para o norte, sul, leste ou oeste ou para cima ou para baixo. Projete uma função que receba a posição do personagem e uma sequência de deslocamentos e calcule a nova posição do personagem.
 
@@ -85,7 +92,7 @@ urlcolor: Blue
 @) Você acaba de ser contratado por um empresa que está desenvolvendo um sistema de gerenciamento de campeonatos amadores de futebol. A sua primeira tarefa é projetar uma função que calcule o desempenho de um time, que consiste no número de pontos, número de vitórias e saldo de gols (diferenças entre os gols feitos e sofridos) de um time a partir dos resultados das partidas que ele jogou. Cada vitória gera três pontos e cada empate um ponto. Por exemplo, se os resultados para um determinado time foram $5 \times 1$, $0 \times 2$ e $1 \times 1$, onde o primeiro número são os gols feitos e o segundo os gols sofridos, então o time fez 4 pontos, obteve 1 vitória e saldo de gols de 2.
 
 
-<!-- Emboço de solução -->
+<!-- Esboço de solução -->
 
 @) A Láurea Acadêmica é uma homenagem prestada a alunos que tiveram elevado nível de aproveitamento no curso de graduação. Na UEM, todos os alunos que tiveram mais do que 2/3 das notas finais das disciplinas maiores do que 9,0 recebem esta homenagem. Projete um programa que receba as notas finais de um aluno e determine se ele receberá a Láurea Acadêmica.
 

@@ -1,10 +1,5 @@
 ---
 # vim: set spell spelllang=pt_br:
-# TODO: adicionar definição de arranjo?
-# TODO: colocar uma revisão do método incremental antes do exemplo da soma
-# TODO: apresentar de forma mais detalhada como identificar a forma da atualização
-#       mostrar o arranjo, a resposta até então e a "chegada" do novo elemento
-# TODO: adicionar exemplo de teste para respostas que são listas com enumerações e/ou estruturas
 title: Repetição e arranjos
 ---
 
@@ -31,6 +26,8 @@ Vamos ver como fazer essas coisas!
 # Arranjos
 
 Quando precisamos representar uma coleção de valores da mesma natureza (todos os itens são notas, nomes, pontos, janelas, etc), utilizamos arranjos. \pause
+
+Um **arranjo** é uma sequência de valores do mesmo tipo, onde cada valor pode ser acessado pela sua posição (índice). \pause
 
 Os arranjos em Python são dinâmicos, isto é, podem mudar de tamanho, e são representados pelo tipo `list`{.python}. \pause
 
@@ -122,7 +119,7 @@ IndexError: list index out of range
 \pause
 
 ```python-repl
->>> # Acrésimo de um elemento
+>>> # Acréscimo de um elemento
 >>> y.append(5) # list.append(y, 5)
 >>> y
 [4, 7, 5]
@@ -148,7 +145,7 @@ Note que a função (método) `append` não produz valor de saída. \pause
 
 Mas qual é a utilidade de uma função que não produz valor de saída!? \pause
 
-Além de produzir uma saída, as funções podem ter **efeitos colaterais**, como por exemplo, modificar algum dos seus argumentos (função `append`), exibir algo na tela (função `print`{.python}), etc. \pause Uma função que produz uma saída também pode ter um efeito colateral, que o caso da função `input`{.python}. \pause
+Além de produzir uma saída, as funções podem ter **efeitos colaterais**, como por exemplo, modificar algum dos seus argumentos (função `append`), exibir algo na tela (função `print`{.python}), etc. \pause Uma função que produz uma saída também pode ter um efeito colateral, que é o caso da função `input`{.python}. \pause
 
 Então, utilizamos funções sem saída pelo efeito colateral que elas produzem.
 </div>
@@ -157,7 +154,7 @@ Então, utilizamos funções sem saída pelo efeito colateral que elas produzem.
 
 # Valores mutáveis e imutáveis
 
-Nós vimos que os valores do tipo lista e de tipos estruturas podem ser alterados depois que são criados, por isso são chamados de valores **mutáveis**. \pause
+Nós vimos que os valores do tipo lista e de estruturas podem ser alterados depois que são criados, por isso são chamados de valores **mutáveis**. \pause
 
 Já alguns valores não podem ser alterados, que é o caso dos valores dos tipos `int`{.python}, `float`{.python}, `bool`{.python} e `str`{.python}. \pause Chamamos esses valores de **imutáveis**. \pause
 
@@ -313,7 +310,7 @@ O "para cada" funciona da seguinte maneira: \pause
 - O primeiro valor de `lista` é atribuído para `var` e as `instruções` são executadas; \pause
 - O segundo valor de `lista` é atribuído para `var` e as `instruções` são executadas; \pause
 - ... \pause
-- E assim por diante até que todos os valores de `lista` tenham sidos atribuídos para `var`. \pause
+- E assim por diante até que todos os valores de `lista` tenham sido atribuídos para `var`. \pause
 
 Ou seja, o "para cada" executa as mesmas instruções atribuindo cada valor de `lista` para `var`, por isso ele chama "para cada"!
 
@@ -477,6 +474,85 @@ Em geral, não precisamos ter uma repetição física de código para depois tro
 Vamos ver como fazer isso!
 
 
+# Abordagem incremental
+
+A estratégia que vamos utilizar é chamada de **abordagem incremental**. \pause
+
+Na abordagem incremental, iniciamos o resultado com um valor e vamos atualizando o resultado conforme processamos os dados de entrada. No final, temos o resultado que queremos.
+
+
+# Abordagem incremental
+
+Considere o problema de somar os elementos de um arranjo. \pause
+
+Como podemos calcular a soma de forma incremental?
+
+
+# Abordagem incremental {.t}
+
+Arranjo: `[3, 7, 2, ?, ?, ...]`
+
+Já processamos os três primeiros elementos mas não sabemos quais são os próximos. \pause
+
+**Propriedade**: `soma` é igual a soma dos elementos já processados. \pause
+
+`soma = 12` (pois $3 + 7 + 2 = 12$)
+
+
+# Abordagem incremental {.t}
+
+Arranjo: `[3, 7, 2, 5, ?, ...]`
+
+O próximo elemento é `5`.
+
+**Propriedade**: `soma` é igual a soma dos elementos já processados.
+
+`soma = 12`
+
+\pause
+
+Como atualizamos `soma` para manter a propriedade? \pause `soma = soma + 5 = 17`
+
+
+# Abordagem incremental {.t}
+
+Arranjo: `[3, 7, 2, 5, 1]`
+
+O próximo (e último) elemento é `1`.
+
+**Propriedade**: `soma` é igual a soma dos elementos já processados.
+
+`soma = 17`
+
+\pause
+
+Como atualizamos `soma` para manter a propriedade? \pause `soma = soma + 1 = 18` \pause
+
+Resultado final: `soma = 18`.
+
+
+# Abordagem incremental {.t}
+
+E para um elemento `n` qualquer? \pause
+
+**Propriedade**: `soma` é igual a soma dos elementos já processados.
+
+Como atualizamos `soma` para manter a propriedade? \pause `soma = soma + n`{.python}.
+
+
+# Abordagem incremental
+
+Para utilizar essa abordagem, precisamos responder três perguntas: \pause
+
+- Qual é o resultado que queremos computar e qual é a sua propriedade (invariante de laço)? \pause
+- Com qual valor iniciamos o resultado? \pause
+- Como atualizamos o resultado para manter a invariante de laço quando processamos um novo elemento?
+
+\pause
+
+A propriedade é chamada de **invariante de laço** porque a cada iteração, após processar um novo elemento, devemos restaurá-la — ela permanece sempre verdadeira.
+
+
 # Exemplo - soma
 
 Projete uma função que some os números de uma lista.
@@ -510,13 +586,11 @@ def soma(lst: list[int]) -> int:
 <div class="column" width="50%">
 Qual abordagem podemos utilizar para implementar essa função? \pause A incremental. \pause
 
-Na abordagem incremental, iniciamos o resultado com um valor, e vamos atualizando o resultado conforme processamos os dados de entrada, no final, temos o resultado da função. \pause
-
 Qual é o resultado que queremos computar? \pause A `soma` dos elementos de `lst`. \pause
 
 Com qual valor iniciamos `soma`? \pause `0`{.python}. \pause
 
-Se estamos analisando um elemento `n` de `lst`, como atualizamos `soma`? \pause Adicionando `n` em `soma`,  isto é, `soma = soma + n`{.python}.
+Como atualizamos `soma` para manter a propriedade quando processamos o novo elemento `n`? \pause `soma = soma + n`{.python}.
 </div>
 </div>
 
@@ -830,7 +904,7 @@ Nós temos essa informação? \pause Não. \pause Como fazer então? \pause Comp
 
 Como inicializar `media` e `quant`? \pause Não está claro ainda. \pause
 
-Como atualizar `media` e `quant`? \pause Considere por exemplo `media = 4`{.media} e `quant = 3`{.media} e o próximo elemento `s = 'processo'`{.python} de `lst`, quais devem ser os novos valores de `media` e `quant`? \pause `5`{.python} e `4`{.python}. \pause
+Como atualizar `media` e `quant`? \pause Considere por exemplo `media = 4`{.python} e `quant = 3`{.python} e o próximo elemento `s = 'processo'`{.python} de `lst`, quais devem ser os novos valores de `media` e `quant`? \pause `5`{.python} e `4`{.python}. \pause
 
 Como atualizar a `media`? \pause `(quant * media + len(s)) / (quant + 1)`{.python} \pause
 
@@ -985,7 +1059,7 @@ class Aluno:
 def aprovados(alunos: list[Aluno]) -> list[str]:
     '''
     Determina o nome dos *alunos* que foram
-    aprovados, isto é, obteveram
+    aprovados, isto é, obtiveram
     média >= 6 e frequência >= 75.
     '''
 ```
@@ -1026,41 +1100,66 @@ def aprovados(alunos: list[Aluno]) -> list[str]:
 </div>
 
 
+# Exemplos com listas de estruturas e enumerações
+
+Quando uma função produz uma lista de estruturas ou enumerações, como escrevemos os exemplos? \pause
+
+Para listas pequenas, podemos comparar a saída diretamente:
+
+\small
+
+```python-repl
+    >>> filtra([Aluno('Ana', 7.0, 80.0)])
+    [Aluno(nome='Ana', media=7.0, frequencia=80.0)]
+```
+
+\pause
+
+\normalsize
+
+Para listas maiores, verificamos o tamanho e cada elemento separadamente:
+
+\small
+
+```python-repl
+    >>> resultado = filtra([...])
+    >>> len(resultado)
+    2
+    >>> resultado[0]
+    Aluno(nome='Ana', media=7.0, frequencia=80.0)
+    >>> resultado[1]
+    Aluno(nome='Jorge', media=6.0, frequencia=75.0)
+```
+
+
 # Revisão
 
 Quando utilizamos a abordagem incremental? \pause
 
-Quando precisamos computar algo de forma incremental! \pause Ou seja, quando não é possível computar a resposta de forma direta ou usando apenas seleção. \pause
+- Quando não é possível computar a resposta de forma direta ou usando apenas seleção. \pause
 
-O que precisamos determinar quando vamos utilizar a abordagem incremental? \pause
+O que precisamos determinar para utilizar a abordagem incremental? \pause
 
-- Quais valores queremos computar; \pause
-- Como os valores são inicializados; \pause
-- Como os valores são atualizados.
-
-
-# Revisão
-
-O quê pode nos impedir de utilizar a abordagem incremental? \pause
-
-- Se não conseguirmos definir como os valores são inicializados \pause
-- Se não conseguirmos definir como os valores são atualizados, que foi o caso de `media_tamanhos` \pause
-
-Como procedemos nesses casos? \pause
-
-Ao invés de computar a resposta final de forma incremental, definimos um esboço de solução, que computa valores intermediários que serão utilizados para computar o valor final. \pause
-
-No caso de `media_tamanhos`, primeiro computamos a soma dos tamanhos de forma incremental, e depois computamos a média diretamente.
+- Quais valores queremos computar e qual é a sua invariante de laço; \pause
+- Com quais valores iniciamos; \pause
+- Como atualizamos os valores para manter a invariante de laço quando processamos o novo elemento.
 
 
 # Revisão
 
-Por enquanto, vimos uma forma de implementar a abordagem incremental no Python, \pause o "para cada", \pause que utilizamos quando estamos interessados em analisar todos os elementos de uma lista.
+O que fazemos quando não conseguimos definir como inicializar ou atualizar os valores? \pause
 
-\pause
+- Definimos um esboço de solução, que computa valores intermediários que serão utilizados para computar o valor final. \pause
 
-Essa forma pode não ser adequada ou suficiente para resolver alguns problemas.
+No caso de `media_tamanhos`, primeiro computamos a soma dos tamanhos de forma incremental e depois computamos a média diretamente.
 
-\pause
+
+# Revisão
+
+Qual forma de repetição vimos até agora? \pause
+
+- O "para cada", que utilizamos quando estamos interessados em analisar todos os elementos de uma lista. \pause
+
+Essa forma pode não ser adequada ou suficiente para resolver alguns problemas. \pause
 
 Veremos a seguir outras possibilidades.
