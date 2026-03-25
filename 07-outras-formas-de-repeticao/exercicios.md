@@ -4,9 +4,6 @@ title: |
        | Fundamentos de Algoritmos
        | Outras formas de repetição
 urlcolor: Blue
-# TODO: fazer exercícios mais interessantes (reais).
-# TODO: perguntas para usar o para cada no intervalo?
-# TODO: adicionar exercícios de avaliação de expressões e execução passo a passo?
 # TODO: transformar alguns exercícios em problemas
 ---
 
@@ -24,13 +21,32 @@ urlcolor: Blue
 
 @) Quais são as quatro perguntas que precisamos responder para implementar uma função utilizando a abordagem incremental com o "enquanto"?
 
+@) Considere a função a seguir e indique a ordem em que as linhas são executadas para a chamada `f([15, -3, 7, -1, 3])`. Qual é o valor retornado?
+
+    ```{.python .number-lines}
+    def f(lst: list[int]) -> int:
+        a = 0
+        for x in lst:
+            if x > 0:
+                a = a + x
+        b = 0
+        while a > 0:
+            b = b + 1
+            a = a // 10
+        return b
+    ```
+
 <!--
 @) Como funciona a estratégia de transformar uma repetição física de código em uma repetição lógica?
 -->
 
 # Praticando
 
-<!-- Indíce e para cada no intervalo -->
+<!-- Índice e para cada no intervalo -->
+
+@) Projete uma função que crie uma nova lista com os elementos de uma lista que estão em posições pares (0, 2, 4, ...).
+
+@) Projete uma função que verifique se uma lista de números tem dois elementos consecutivos iguais.
 
 @) Projete uma função que encontre as posições de todas as ocorrências de um nome em uma lista de nomes.
 
@@ -42,7 +58,7 @@ urlcolor: Blue
 
     a) Faça uma implementação que use operações de sublista (suponha que as instruções de repetição não estão disponíveis).
 
-    a) Avalia e classifique as implementações em ordem de simplicidade.
+    a) Avalie e classifique as implementações em ordem de simplicidade.
 
 @) Projete uma função que receba como entrada uma lista de números, uma posição $i$ e um número $n$ e devolva uma nova lista com $n$ adicionado na posição $i$ da lista de entrada. Para os itens a e b suponha que as operações de sublista não estão disponíveis.
 
@@ -52,11 +68,13 @@ urlcolor: Blue
 
     a) Faça uma implementação que use operações de sublista (suponha que as instruções de repetição não estão disponíveis).
 
-    a) Avalia e classifique as implementações em ordem de simples.
+    a) Avalie e classifique as implementações em ordem de simplicidade.
 
-@) Rotacionar um arranjo $n$ posições a esquerda significa mover os primeiros $n$ elementos do arranjo para as últimas $n$ posições do arranjo. Por exemplo, rotacionar o arranjo `[5, 3, 4, 1, 7]` duas posições a esquerda produz o arranjo `[4, 1, 7, 5, 3]`. Projete uma função que rotacione um arranjo $n$ posições a esquerda.
+@) Rotacionar um arranjo $n$ posições à esquerda significa mover os primeiros $n$ elementos do arranjo para as últimas $n$ posições do arranjo. Por exemplo, rotacionar o arranjo `[5, 3, 4, 1, 7]` duas posições à esquerda produz o arranjo `[4, 1, 7, 5, 3]`. Projete uma função que rotacione um arranjo $n$ posições à esquerda.
 
 <!-- Enquanto e generalização a partir de repetição física de código -->
+
+@) Projete uma função que determine o comprimento do prefixo comum de duas strings. Por exemplo, `'abacate'`{.python} e `'abacaxi'`{.python} têm prefixo comum `'abaca'`{.python} de comprimento 5.
 
 @) Revise os exercícios da lista "Repetição e arranjos" e verifique quais podem ser implementadas utilizando o "enquanto" para deixar o código mais eficiente ou simples. Faça a implementação usando o "enquanto".
 
@@ -65,6 +83,8 @@ urlcolor: Blue
 @) Projete uma função que determine qual é a menor quantidade de elementos de uma lista que precisam ser somados (a partir do início da lista) para que a soma seja maior que um dado valor. Se a lista for vazia ou não for possível atingir a soma desejada, a função deve devolver -1.
 
 <!-- Repetição sem listas -->
+
+@) Projete uma função que calcule quantas vezes um número inteiro positivo pode ser dividido por 2 até se tornar ímpar. Por exemplo, 24 pode ser dividido 3 vezes ($24 \rightarrow 12 \rightarrow 6 \rightarrow 3$).
 
 @) Projete uma função que receba como entrada uma string e um número natural $n$ e crie uma nova string repetindo a string de entrada $n$ vezes (suponha que o operador `*` não está disponível).
 
@@ -83,9 +103,9 @@ urlcolor: Blue
 
 @) Projete uma função que receba um número inteiro positivo $n$, e crie a matriz identidade $I_n$, com $n$ linhas e $n$ colunas, com todos os elementos da diagonal principal (elementos com o mesmo índice) iguais a 1 e os demais elementos iguais a 0.
 
-@) Projete uma função que encontre os índices de todas as linhas de uma matriz cuja a soma dos elementos é zero.
+@) Projete uma função que encontre os índices de todas as linhas de uma matriz cuja soma dos elementos é zero.
 
-@) Projete uma função que encontre os índices de todas as colunas de uma matriz cuja a soma dos elementos é zero.
+@) Projete uma função que encontre os índices de todas as colunas de uma matriz cuja soma dos elementos é zero.
 
 @) Projete uma função que verifique se uma matriz $A$ é simétrica, isto é, para cada elemento $a_{ij}$ da matriz, $a_{ij} = a_{ji}$.
 
@@ -94,10 +114,10 @@ urlcolor: Blue
 
 <!-- Enquanto e generalização -->
 
-@) A empresa Doce Natureza tem um aplicativo chamado frutamax, que vende frutas online. Você está participando do processo de recrutamento e tem um desafio inicial para fazer. Após um cliente fazer uma comprar é preciso enviar um email com uma lista dos itens que o usuário comprou. A lista de itens deve ser escrita conforme o português, separando os itens com vírgula e usado "e" no final, como por exemplo: banana, maça, morango e abacate. O desafio é projetar uma função que junte os itens de uma lista de strings nessa forma de texto em português.
+@) A empresa Doce Natureza tem um aplicativo chamado frutamax, que vende frutas online. Você está participando do processo de recrutamento e tem um desafio inicial para fazer. Após um cliente fazer uma compra é preciso enviar um email com uma lista dos itens que o usuário comprou. A lista de itens deve ser escrita conforme o português, separando os itens com vírgula e usando "e" no final, como por exemplo: banana, maçã, morango e abacate. O desafio é projetar uma função que junte os itens de uma lista de strings nessa forma de texto em português.
 
 @) O pessoal da Doce Natureza gostou da função que você escreveu, agora eles têm outro desafio para você. Ao final de cada mês eles precisam determinar as frutas que mais geraram receitas, eles têm uma lista com cada fruta e sua respectiva receita e o seu trabalho é fazer uma função que organize essa lista de maneira que as que mais geraram receitas apareçam primeiro. Você pode usar a seguinte estratégia, chamada de ordenação por seleção: encontrar a fruta com maior receita, removê-la da lista de entrada e adicioná-la no final da lista de saída e repetir o processo até que não tenha mais itens na lista de entrada.
 
 @) A empresa que você trabalha sofreu uma falta de energia e agora é preciso recuperar os dados do backup. O primeiro passo é determinar o código dos clientes afetados. Em um primeiro momento foi obtido um arquivo (string) com o código de todos os clientes separados por vírgula. O seu trabalho agora é projetar uma função que gere uma lista dos códigos a partir dessa string. Por exemplo, para a string `"512,12,145"` a sua função deve gerar como resposta a lista `[512, 12, 145]`.
 
-@) Em um determinado jogo de construção de itens, cada item tem uma classe que varia de 1 a 10. Os item de classe 1 surgem conforme o jogador explorar os baús. Um item de classe 2 ou superior precisa ser construídos unindo dois itens da classe anterior. Por exemplo, para construir um item de classe 2 é necessário unir dois item de classe 1. Para construir um item de classe 10 é necessário unir dois item de classe 9. Projete uma função que receba como entrada um número $n$ (de 1 a 10), e determine quantos itens de classe 1 são necessário para construir um item de classe $n$. Suponha que a únicas operações aritméticas disponíveis sejam a soma e a multiplicação.
+@) Em um determinado jogo de construção de itens, cada item tem uma classe que varia de 1 a 10. Os itens de classe 1 surgem conforme o jogador explorar os baús. Um item de classe 2 ou superior precisa ser construído unindo dois itens da classe anterior. Por exemplo, para construir um item de classe 2 é necessário unir dois itens de classe 1. Para construir um item de classe 10 é necessário unir dois itens de classe 9. Projete uma função que receba como entrada um número $n$ (de 1 a 10), e determine quantos itens de classe 1 são necessários para construir um item de classe $n$. Suponha que as únicas operações aritméticas disponíveis sejam a soma e a multiplicação.

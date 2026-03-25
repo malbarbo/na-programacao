@@ -1,11 +1,8 @@
 ---
 # vim: set spell spelllang=pt_br:
 title: Outras formas de repetição
-# TODO: adicionar revisão no final
 # TODO: exemplo mais interessante que fatorial
 # TODO: trocar exemplo primo?
-# TODO: adicionar exemplos de matrizes
-# TODO: adicionar outros exemplos
 # TODO: analisar o termo transformar repetição física para lógica
 # TODO: analisar o termo generalizar para lista de qualquer tamanho
 ---
@@ -665,8 +662,8 @@ Projete uma função que verifique se uma lista de inteiros é palíndromo, isto
 def palindromo(lst: list[int]) -> bool:
     '''Produz True se *lst* é palíndromo, isto
     é, tem os mesmos elementos quando vistos
-    da direita para esquerda e da esquerda
-    para direita. Produz False caso contrário.
+    da direita para a esquerda e da esquerda
+    para a direita. Produz False caso contrário.
     >>> palindromo([])
     True
     >>> palindromo([4])
@@ -799,7 +796,7 @@ def palindromo(lst: list[int]) -> bool:
 
 \pause
 
-Como os índice `i` e `j` devem ser atualizados?
+Como os índices `i` e `j` devem ser atualizados?
 
 
 # Exemplo - palíndromo - implementação
@@ -855,7 +852,7 @@ def palindromo(lst: list[int]) -> bool:
 </div>
 </div>
 
-Como os índice `i` e `j` devem ser atualizados? Somando e subtraindo 1.
+Como os índices `i` e `j` devem ser atualizados? Somando e subtraindo 1.
 
 
 # Exemplo - palíndromo - implementação
@@ -1705,24 +1702,22 @@ def primo(n: int) -> bool:
 
 # Revisão
 
-Usamos instruções de repetição quando queremos computar algo de forma incremental. \pause
+Quais formas de repetição vimos? \pause
 
-Vimos as seguintes formas de repetição: \pause
+- Para cada, para cada no intervalo e enquanto. \pause
 
-- Para cada \pause
-- Para cada no intervalo \pause
-- Enquanto \pause
+Quando usar cada uma? \pause
 
-O para cada é mais restrito mas é mais simples de utilizar, o enquanto é mais genéricos mas é mais complicado, por isso, quando possível, preferimos utilizar o para cada. \pause
+- O para cada é mais restrito mas mais simples. O enquanto é mais genérico mas mais complicado. Quando possível, preferimos o para cada. \pause
 
 Em algumas situações fazemos uma implementação inicial usando o para cada e depois, na revisão, mudamos para o enquanto se tivermos algum benefício, como a simplificação do código ou ganho de desempenho.
 
 
 # Revisão
 
-Durante a implementação de uma função usando a abordagem incremental, pode ser difícil responder as perguntas: como os valores são atualizados e qual é a condição de repetição. Nesses casos, podemos utilizar a estratégia de generalização. \pause
+O que fazer quando é difícil responder como os valores são atualizados ou qual é a condição de repetição? \pause
 
-Começamos com uma repetição física de código para entradas restritas (tamanho ou valores fixos) e depois transformamos a repetição física de código em uma repetição lógica. \pause
+- Utilizar a estratégia de generalização: começamos com uma repetição física de código para entradas restritas (tamanho ou valores fixos) e depois transformamos a repetição física em repetição lógica. \pause
 
 Algumas funções, como a função `primo`, requerem diversas revisões. Nesses casos é importante balancear o tempo gasto nas revisões com o benefício que elas trazem.
 
