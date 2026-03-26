@@ -17,36 +17,27 @@ Até o momento nós estudamos alguns aspectos de
 Agora vamos ver as construções básicas da linguagem Python, para em seguida começarmos a estudar o processo de projeto de programas.
 
 
-# Instalação
+# Spython
 
-O Python é um software livre e pode ser baixado e instalado de <https://python.org>. \pause
+Inicialmente vamos utilizar o Spython, um ambiente de desenvolvimento e aprendizagem para Python disponível em <https://malbarbo.pro.br/spython/>. \pause
 
-Além do interpretador, a instalação do Python vem com um ambiente de desenvolvimento e aprendizagem chamado IDLE. \pause
+O Spython funciona no navegador e não precisa de instalação. \pause
 
-Em um sistema Linux, é provável que o Python já venha instalado por padrão. Nesse caso é preciso instalar apenas o IDLE. \pause Em um sistema baseado no Debian, use o comando
+O Spython organiza as construções do Python em **níveis**. Conforme avançamos na disciplina, vamos desbloqueando novos níveis! \pause
 
-```bash
-$ sudo apt install idle
-```
+Vamos começar no nível **0 - Funções**.
 
 
-# Instalação
+# Spython
 
-Durante a instalação no Windows é importante marcar a opção "Add python.exe to PATH".
+Ao acessar o Spython a seguinte tela é exibida \pause
 
-![](imagens/python-install-win.png){width=10cm}
-
-
-# IDLE
-
-Ao iniciar o IDLE a janela a seguir é exibida \pause
-
-![](imagens/idle.png){width=10cm}
+![](imagens/spython.png){width=10cm}
 
 
 # Janela de interações (REPL)
 
-Utilizamos essa janela, chamada de janela de **interações** (ou REPL), para testar pequenos trechos de código. \pause
+O painel direito do Spython é chamado de janela de **interações** (ou REPL) e é utilizado para testar pequenos trechos de código. \pause
 
 O símbolo `>>>` é chamado de _prompt_ e indica que o interpretador está pronto.
 
@@ -68,13 +59,6 @@ Exemplo de interação
 >>> 3 * 4
 12
 ```
-
-
-# Janela de interações (REPL)
-
-O modo de interações também pode ser iniciado executando `python` no terminal de comandos. \pause
-
-![](imagens/python-terminal.png){width=10cm}
 
 
 # Observação
@@ -704,14 +688,7 @@ Além de podermos usar as operações e funções pré-definidas no Python, tamb
 
 \pause
 
-Apesar de ser possível definir uma nova função na janela de interações, nós vamos fazer isso na janela de edição de código. Isso permite salvar o código para uso/edição posterior.
-
-
-# Definição de funções
-
-Para abrir a janela de edição de código selecionamos o menu File $\rightarrow$ New File (ctrl + n). \pause
-
-![](imagens/editor.png){width=9cm}
+Apesar de ser possível definir uma nova função na janela de interações, nós vamos fazer isso na janela de edição de código (painel esquerdo do Spython).
 
 
 # Definição de funções
@@ -751,21 +728,9 @@ def dobro(x: int) -> int:
 
 # Definição de funções
 
-<div class="columns">
-<div class="column" width="48%">
-Escrevemos o código na janela de edição de código e salvamos o arquivo (File $\rightarrow$ Save - ctrl\ +\ s).
+Escrevemos o código na janela de edição e clicamos em **Run** para executar. Depois chamamos a função na janela de interações. \pause
 
-![](imagens/dobro.png){width=6.5cm}
-
-\pause
-</div>
-<div class="column" width="48%">
-
-Para testarmos a função executamos o arquivo (Run $\rightarrow$ Run Module - F5) e chamamos a função na janela de interações. \pause
-
-![](imagens/dobro-ex.png){width=6.5cm}
-</div>
-</div>
+![](imagens/spython-dobro.png){width=10cm}
 
 
 # Definição de funções
@@ -1536,7 +1501,7 @@ O que é exibido na tela? \pause Nada!
 
 # Diferenças entre a janela de interações e a de edição de código
 
-O que acontece se adicionarmos uma chamada a função `dobro` após a sua definição e executarmos o arquivo (Run Module)?
+O que acontece se adicionarmos uma chamada a função `dobro` após a sua definição e clicarmos em Run?
 
 \small
 
