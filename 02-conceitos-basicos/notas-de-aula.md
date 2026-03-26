@@ -2,8 +2,6 @@
 # vim: set spell spelllang=pt_br:
 title: Conceitos básicos
 # TODO: adicionar referências
-# TODO: adicionar definição de tipo de dado
-# TODO: adicionar definição de expressão e avaliação de expressão
 ---
 
 # Introdução
@@ -90,9 +88,11 @@ Agora vamos explorar o Python!
 
 # Tipos de dados e operações pré-definidas
 
-A primeira coisa que aprendemos de uma linguagem de programação são os tipos de valores (tipos de dados) e operações já disponíveis na linguagem. \pause
+Um **tipo de dado** define um conjunto de valores e as operações que podem ser realizadas sobre eles. \pause
 
-Os primeiros computadores foram criados para fazerem cálculos matemáticos, então vamos começar com isso.
+Vamos começar pelos tipos de dados já disponíveis no Python. \pause
+
+Os primeiros computadores foram criados para fazerem cálculos matemáticos, então vamos começar com os tipos numéricos.
 
 
 # Números
@@ -345,7 +345,7 @@ As operações que vimos até agora estão disponíveis automaticamente, outras 
 
 O Python tem uma [extensa](https://xkcd.com/353/) biblioteca padrão, com muitos módulos, este é um dos motivos pelos quais a linguagem é bastante utilizada. A documentação da biblioteca padrão do Python está disponível em <https://docs.python.org/3/library/index.html>. \pause
 
-Por hora, vamos ver apenas algumas funções do módulo [`math`](https://docs.python.org/3/library/math.html).
+Por ora, vamos ver apenas algumas funções do módulo [`math`](https://docs.python.org/3/library/math.html).
 
 
 # Piso e teto
@@ -591,6 +591,8 @@ IndexError: string index out of range
 
 # Formas de expressões
 
+Uma **expressão** é uma combinação de valores, operadores, chamadas de funções e variáveis que o Python **avalia** para produzir um valor. \pause
+
 Inicialmente as expressões que vimos usavam apenas operadores matemáticos \pause
 
 ```python
@@ -714,7 +716,7 @@ Para abrir a janela de edição de código selecionamos o menu File $\rightarrow
 
 # Definição de funções
 
-Funções na programação são semelhantes as funções na matemática, discutiremos as diferenças ao longo da disciplina. \pause Por ora, vamos ver uma função matemática e tentar escrever "a mesma" função em Python. \pause
+Funções na programação são semelhantes às funções na matemática, discutiremos as diferenças ao longo da disciplina. \pause Por ora, vamos ver uma função matemática e tentar escrever "a mesma" função em Python. \pause
 
 Considere a função $f: \mathbb{Z} \rightarrow \mathbb{Z}$, que associa cada número inteiro ao dobro do seu valor, isto é, $f(x) = 2x$. \pause
 
@@ -784,7 +786,7 @@ def nome(entrada1: tipo, entrada2: tipo, ...) -> tipo:
 
 `def`{.python} e `return`{.python} são **palavras chaves** (reservadas) e têm um significado pré-definido: \pause `def`{.python} indica a definição de uma função; \pause e `return`{.python} indica qual é a saída da função. \pause
 
-Os quatros espaços em branco antes do `return`{.python} é chamado de **indentação** (ou recuo). Em algumas linguagens a indentação é opcional, mas em Python é obrigatória. \pause
+Os quatro espaços em branco antes do `return`{.python} é chamado de **indentação** (ou recuo). Em algumas linguagens a indentação é opcional, mas em Python é obrigatória. \pause
 
 Os símbolos `(`, `)`, `:`, `,` e `->`, entre outros, são os **delimitadores**.
 
@@ -1199,7 +1201,7 @@ False
 
 Considere a expressão `x != 0 and 20 // x == 4`{.python} \pause
 
-Qual é o resultado da expressões quando `x`{.python} é `5`{.python}? \pause `True`{.python}. \pause
+Qual é o resultado da expressão quando `x`{.python} é `5`{.python}? \pause `True`{.python}. \pause
 
 E quando `x`{.python} é  `0`{.python}? \pause `False`{.python}. \pause
 
@@ -1207,7 +1209,7 @@ Por que? A avaliação não deveria falhar já que `20`{.python} está sendo div
 
 O Python, assim como a maioria das linguagens, faz uma avaliação mínima (também chamada de avaliação em **curto circuito**) de expressões booleanas, isto é, ele calcula apenas o mínimo para conseguir dar a resposta. \pause
 
-No caso, quando `x`{.python} é `0`{.python}, a expressão `x != 0`{.python} produz `False`{.python}, então, o resultado do `and`{.python} só pode ser `False`{.python}, independe do resultado da expressão `20 // x == 4`{.python}, por isso o Python não avalia essa segunda expressão.
+No caso, quando `x`{.python} é `0`{.python}, a expressão `x != 0`{.python} produz `False`{.python}, então, o resultado do `and`{.python} só pode ser `False`{.python}, independente do resultado da expressão `20 // x == 4`{.python}, por isso o Python não avalia essa segunda expressão.
 
 
 # Avaliação em curto circuito
@@ -1427,7 +1429,7 @@ Qual é o resultado de `b` no seguinte trecho de código?
 
 # Variáveis locais
 
-Uma **variável local** é declarada no escopo ("dentro") de uma função. Elas são criadas quando a linha que estão declaradas são executadas e deixam de existir quando a função devolve a resposta. \pause
+Uma **variável local** é declarada no escopo ("dentro") de uma função. Elas são criadas quando a linha em que estão declaradas é executada e deixam de existir quando a função devolve a resposta. \pause
 
 As variáveis locais são usadas para armazenar valores intermediários durante a execução da função. \pause
 
@@ -1553,7 +1555,7 @@ A função `dobro` será executada para o valor `4`{.python} mais nenhum resulta
 
 Por que na execução do exemplo na janela de interações o resultado é exibido e aqui não? \pause
 
-Por que no modo interativo exibição é feita automaticamente (o P -- _print_ -- de REPL) para facilitar a interação com o Python. \pause No arquivo de código, precisamos indicar explicitamente que queremos que o resultado seja exibido.
+Porque no modo interativo a exibição é feita automaticamente (o P -- _print_ -- de REPL) para facilitar a interação com o Python. \pause No arquivo de código, precisamos indicar explicitamente que queremos que o resultado seja exibido.
 
 
 # Instrução de saída
@@ -1575,7 +1577,7 @@ print(dobro(4))
 
 Ao executar o código, o valor `8` será exibido na tela. \pause
 
-Note que o `print`{.python} posiciona o cursor no início da próxima linha, dessa forma, a próxima informação começara a ser exibida no início da próxima linha. \pause
+Note que o `print`{.python} posiciona o cursor no início da próxima linha, dessa forma, a próxima informação começará a ser exibida no início da próxima linha. \pause
 
 Veremos mais detalhes em outro momento.
 
@@ -1722,7 +1724,7 @@ def main():
 
 Qual é o erro nesse código? \pause
 
-A indentação está inconsistente. Devemos sempre utilizar 4 espaço para fazer a indentação.
+A indentação está inconsistente. Devemos sempre utilizar 4 espaços para fazer a indentação.
 
 ```
     print('Olá', nome)
@@ -1795,14 +1797,14 @@ Por fim, `dobro` é chamada com o valor `'10'`{.python} e a expressão `2 * x`{.
 
 Embora nesse caso específico seja interessante poder usar a função `dobro` para diversos tipos de dados, mesmo que não projetamos a função com esta intenção, em outros casos essa flexibilidade pode gerar erros de execução, ou pior, resultados inesperados. \pause
 
-Essa característica do Python é chamada de tipagem dinâmica, isso é, os tipos são associados com os valores, e não com as variáveis. Em Python, qualquer valor pode ser atribuído a qualquer variável.\pause
+Essa característica do Python é chamada de tipagem dinâmica, isto é, os tipos são associados com os valores, e não com as variáveis. Em Python, qualquer valor pode ser atribuído a qualquer variável. \pause
 
 Outras linguagens de programação, como C/C++, utilizam tipagem estática, onde os tipos são associados com as variáveis. Nessas linguagens, um valor só pode ser atribuído para uma variável se o tipo do valor é compatível com o tipo da variável.
 
 
 # `mypy`
 
-Existem muitas considerações que podemos fazer sobre as vantagens e as desvantagens de cada modelo, mas nós vamos nos ater à um aspecto: o pedagógico. \pause
+Existem muitas considerações que podemos fazer sobre as vantagens e as desvantagens de cada modelo, mas nós vamos nos ater a um aspecto: o pedagógico. \pause
 
 Considerando a pedagogia que estamos utilizando na disciplina, é importante que os tipos sejam verificados estaticamente. \pause
 
@@ -1906,6 +1908,17 @@ O que é uma variável local? \pause
 Qual é a diferença entre um erro sintático e um erro semântico? \pause
 
 - O erro sintático é detectado antes da execução (o programa não segue as regras da linguagem). O erro semântico é detectado durante a execução (a construção é válida sintaticamente mas o interpretador não consegue atribuir significado).
+
+
+# Revisão
+
+O que é necessário para definir uma função em Python? \pause
+
+- O nome da função, os parâmetros com seus tipos, o tipo de retorno e o corpo da função. \pause
+
+Para que serve o `mypy`? \pause
+
+- Para fazer a verificação estática de tipos e identificar erros que o Python só detectaria durante a execução.
 
 
 # Projeto de funções

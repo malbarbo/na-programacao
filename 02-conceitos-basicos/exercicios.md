@@ -68,7 +68,15 @@ urlcolor: Blue
     ?
     ```
 
-@) Qual é a diferença entre um erro sintático e um erro semântico?
+@) O que é o REPL e para que ele é utilizado?
+
+@) Qual é a diferença entre executar código no REPL e em um arquivo `.py`?
+
+@) O que o `mypy` verifica e por que isso é útil?
+
+@) O que é avaliação em curto circuito?
+
+@) Dê um exemplo de erro sintático e um de erro semântico e explique por que cada um é classificado dessa forma.
 
 
 # Praticando
