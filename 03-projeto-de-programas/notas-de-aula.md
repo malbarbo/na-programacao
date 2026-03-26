@@ -301,7 +301,7 @@ Ok, as respostas são as esperadas.
 
 # Verificação
 
-Se na verificação um exemplos produzir uma resposta diferente da esperada, onde está o erro? \pause
+Se na verificação um exemplo produzir uma resposta diferente da esperada, onde está o erro? \pause
 
 - No exemplo \pause
 - No código da função \pause
@@ -330,24 +330,13 @@ Ao invés de executarmos cada exemplo manualmente, vamos usar uma biblioteca que
 
 # Verificação automatizada
 
-A biblioteca que vamos utilizar já vem com o Python e chama `doctest`. \pause
+O Spython consegue executar os exemplos e verificar se as saídas estão corretas automaticamente! \pause
 
-Para fazer a verificação dos exemplos em uma arquivo `a.py`, executamos no terminal de comandos:
+Para isso, basta clicar em **Run** no Spython. \pause
 
-```
-$ python -m doctest -v a.py
-```
-
-\pause
-
-Como o Python identifica os exemplos que devem ser executados? \pause
+Como o Spython identifica os exemplos que devem ser executados? \pause
 
 Ele procura trechos de comentários semelhantes a uma seção do modo interativo, por isso escrevemos os exemplos com `>>>`!
-
-
-# Verificação automatizada
-
-![](imagens/combustivel.png){width=13cm}
 
 
 # Exemplo - Número de azulejos
@@ -522,7 +511,7 @@ Vamos resolver esse problema, por onde começamos?
 
 **Análise** \pause
 
-- Calcular a massa de um tubo de ferro a partir das suas dimensões. \pause Como as dimensões de um tubo de ferro está relacionada com a massa do tubo? \pause
+- Calcular a massa de um tubo de ferro a partir das suas dimensões. \pause Como as dimensões de um tubo de ferro estão relacionadas com a massa do tubo? \pause
 
 - Dimensões $\rightarrow$ Volume $\rightarrow$ Massa \pause
 
@@ -652,7 +641,7 @@ Constantes são geralmente definidas fora das funções (escopo global) e nomead
 
 # Exemplo - Ajuste número telefone
 
-No período de 2015 à 2016 todos os números de telefones celulares no Brasil passaram a ter nove dígitos. Na época, os números de telefones que tinham apenas oito dígitos foram alterados adicionando-se o 9 na frente do número. Embora oficialmente todos os número de celulares tenham nove dígitos, na agenda de muitas pessoas ainda é comum encontrar números registrados com apenas oito dígitos. Projete uma função que adicione o nono dígito em um dado número de telefone celular caso ele ainda não tenha o nono dígito. Considere que os números de entrada são dados com o DDD entre parênteses e com um hífen separando os últimos quatro dígitos. Exemplos de entradas: (44) 9787-1241, (51) 95872-9989, (41) 8876-1562. A saída deve ter o mesmo formato, mas garantindo que o número do telefone tenha 9 dígitos.
+No período de 2015 a 2016 todos os números de telefones celulares no Brasil passaram a ter nove dígitos. Na época, os números de telefones que tinham apenas oito dígitos foram alterados adicionando-se o 9 na frente do número. Embora oficialmente todos os números de celulares tenham nove dígitos, na agenda de muitas pessoas ainda é comum encontrar números registrados com apenas oito dígitos. Projete uma função que adicione o nono dígito em um dado número de telefone celular caso ele ainda não tenha o nono dígito. Considere que os números de entrada são dados com o DDD entre parênteses e com um hífen separando os últimos quatro dígitos. Exemplos de entradas: (44) 9787-1241, (51) 95872-9989, (41) 8876-1562. A saída deve ter o mesmo formato, mas garantindo que o número do telefone tenha 9 dígitos.
 
 
 # Exemplo - Ajuste número telefone
@@ -713,7 +702,7 @@ def ajusta_numero(numero: str) -> str:
     X pode ser qualquer dígito.
 
     Exemplos
-    >>> # não precisa de ajuste, a saída e a própria entrada
+    >>> # não precisa de ajuste, a saída é a própria entrada
     >>> ajusta_numero('(51) 95872-9989')
     '(51) 95872-9989'
     >>> # '(44) 9787-1241'[:5] + '9' + '(44) 9787-1241'[5:]
@@ -763,9 +752,9 @@ Qual é a principal propriedade de uma boa especificação? \pause
 
 # Revisão
 
-Para que servem as ferramentas `mypy` e `doctest`? \pause
+Como o Spython ajuda na verificação? \pause
 
-- O `mypy` faz a verificação estática de tipos. O `doctest` executa os exemplos automaticamente e verifica se as saídas estão corretas. \pause
+- O `Run` do Spython verifica os tipos e executa os exemplos automaticamente, conferindo se as saídas estão corretas. \pause
 
 Qual é o objetivo da revisão? \pause
 

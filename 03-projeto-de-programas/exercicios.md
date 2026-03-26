@@ -6,19 +6,17 @@ title: |
 urlcolor: Blue
 ---
 
-**\color{red}Lembre-se** de seguir o processo de projeto de funções e de usar o `mypy` e o `doctest` na etapa de verificação.
-
 # Começando
 
 @) Leia o material de projeto de funções e responda:
 
-    a) Quais são as etapas do processo de projeto de funções?
+    a) Descreva com suas palavras o objetivo de cada etapa do processo de projeto de funções.
 
-    a) Qual é o propósito da análise?
+    a) Dê um exemplo de informação irrelevante e de uma ambiguidade que poderiam aparecer em um enunciado de problema.
 
-    a) Qual é o propósito da definição dos tipos de dados?
+    a) Por que é importante definir os tipos de dados antes da especificação?
 
-    a) Quais são as partes que compõem a especificação de uma função?
+    a) Explique o papel de cada parte da especificação (assinatura, propósito e exemplos) no projeto de uma função.
 
     a) Qual é a principal propriedade que uma especificação deve ter para ser considerada adequada?
 
@@ -32,11 +30,9 @@ urlcolor: Blue
 
     a) Como proceder quando um teste falha?
 
-    a) Qual é o objetivo da revisão?
+    a) Por que a verificação deve ser feita novamente após a revisão?
 
     a) Qual é a diferença do resultado da análise e a descrição do propósito da função?
-
-@) Faça a instalação do `mypy` com o comando `pip install mypy`.
 
 @) Faça o download dos exemplos de projeto de programas na página da disciplina e para cada arquivo
 
@@ -46,9 +42,7 @@ urlcolor: Blue
 
     a) Observe como as implementações foram feitas.
 
-    a) Faça a verificação de tipos com o `mypy` usando o comando `mypy arquivo.py`.
-
-    a) Faça a verificação dos exemplos com o `doctest` usando o comando `python -m doctest -v arquivo.py`.
+    a) Faça a verificação clicando em `Run` no Spython (verifica tipos e exemplos).
 
 
 # Praticando
@@ -96,7 +90,7 @@ urlcolor: Blue
         return len(str(abs(n)))
     ```
 
-@) Para cada função da lista de exercícios de conceitos básicos que você implementou, complete o projeto da função adicionando a especificação (propósito e exemplos). Faça a verificação com o `mypy` e com o `doctest`.
+@) Para cada função da lista de exercícios de conceitos básicos que você implementou, complete o projeto da função adicionando a especificação (propósito e exemplos). Faça a verificação com o Spython.
 
 
 # Avançando
