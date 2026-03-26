@@ -36,7 +36,7 @@ O ideal seria um número natural, mas o Python não tem um tipo de dado específ
 
 `u32`{.rust} seria adequado para representar a quantidade de pessoas em um planeta? \pause
 
-- Não pois o número de pessoas no planeta terra não está no intervalo de valores válidos para o tipo, ou seja, _nem todos os valores válidos poder ser representados_.
+- Não pois o número de pessoas no planeta terra não está no intervalo de valores válidos para o tipo, ou seja, _nem todos os valores válidos podem ser representados_.
 
 
 # Requisitos de um tipo de dado
@@ -187,9 +187,9 @@ Para expressar mais claramente o propósito do código e evitar a utilização d
 
 # Revisão do projeto de `indica_combustivel`
 
-Nos exemplos, usamos `.name` para comparar o resultado de funções que retornam enumerações, porque a representação padrão (como `<Combustivel.ALCOOL: 1>`) não é prática para comparação.
+Nos exemplos, usamos `.name` para comparar o resultado, porque a representação padrão (como `<Combustivel.ALCOOL: 1>`) não é prática.
 
-\footnotesize
+\scriptsize
 
 ```python
 def indica_combustivel(preco_alcool: float, preco_gasolina: float) -> Combustivel:
@@ -218,7 +218,7 @@ Projete uma função que receba como entrada a cor atual de um semáforo de trâ
 
 Análise \pause
 
-- Determinar a próxima cor de um semáforo dado a cor atual
+- Determinar a próxima cor de um semáforo dada a cor atual
 
 
 # Exemplo - semáforo
@@ -381,7 +381,7 @@ Análise \pause
 
 Definição de tipos de dados \pause
 
-- O segundos da entrada será representado com um número inteiro positivo \pause
+- Os segundos da entrada será representado com um número inteiro positivo \pause
 
 - A saída são três números inteiros positivos... \pause As funções em Python só podem produzir um valor de saída, como proceder? \pause Vamos criar um novo tipo de dado que agrupa esses três valores.
 
@@ -407,7 +407,12 @@ Uma forma de fazer isso é através de tipos compostos (estruturas).
 
 Um **tipo composto** é um tipo de dado composto por um conjunto fixo de campos cada um com nome e tipo. \pause
 
-Podemos definir um novo tipo para representar um tempo da seguinte forma
+Vamos definir um novo tipo para representar o tempo de duração de um evento em horas, minutos e segundos.
+
+
+# Tipos compostos
+
+Podemos definir um novo tipo para representar um tempo da seguinte forma.
 
 \small
 
@@ -422,22 +427,22 @@ class Tempo:
 
 
 
-
-
 ```
 
 \pause
 
-O que está faltando nessa definição? \pause Um comentário sobre o propósito do tipo.
+Essa definição está completa? \pause Não! Está faltando um comentário sobre o propósito do tipo.
 
 
 # Tipos compostos
 
+Podemos definir um novo tipo para representar um tempo da seguinte forma.
+
 \small
 
-Podemos definir um novo tipo para representar um tempo da seguinte forma
-
 ```python
+from dataclasses import dataclass
+
 @dataclass
 class Tempo:
     '''
@@ -536,7 +541,7 @@ Análise
 
 Definição de tipos de dados
 
-- O segundos da entrada será representado com um número inteiro positivo
+- Os segundos da entrada será representado com um número inteiro positivo
 - As horas, minutos e segundos serão representadas por um dado composto `Tempo`.
 
 \pause
@@ -832,7 +837,7 @@ class Evento:
 
 # Exemplo - evento - especificação
 
-\footnotesize
+\scriptsize
 
 ```python
 def duracao_minima(e: Evento) -> bool:
@@ -966,7 +971,7 @@ def sorteado(n: int, sorteados: SeisNumeros) -> bool:
     >>> sorteado(7, sorteados)
     True
     >>> sorteado(10, sorteados)
-    True)
+    True
     >>> sorteado(40, sorteados)
     True
     >>> sorteado(41, sorteados)
@@ -1239,9 +1244,9 @@ O que precisamos para implementar a função usando a estratégia incremental? \
 
 Começamos o número de acertos com zero. \pause
 
-Depois verificamos se o primeiro número está entre os sorteados, se sim, aumentamentos os acertos em 1. \pause
+Depois verificamos se o primeiro número está entre os sorteados, se sim, aumentamos os acertos em 1. \pause
 
-Depois verificamos se o segundo número está entre os sorteados, se sim, aumentamentos os acertos em 1. \pause
+Depois verificamos se o segundo número está entre os sorteados, se sim, aumentamos os acertos em 1. \pause
 
 E assim com o restante dos números. \pause
 
