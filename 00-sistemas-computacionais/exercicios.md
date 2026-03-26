@@ -16,15 +16,19 @@ urlcolor: Blue
 
 @) Qual é a forma básica de funcionamento de um sistema computacional?
 
-@) Quais os principais componentes de um sistema computacional?
+@) Quais são os principais componentes de um sistema computacional?
 
 @) Por que existem muitos tipos de memória e de dispositivos de armazenamento?
 
-@) Quais as duas principais funções do sistema operacional?
+@) Quais são as duas principais funções do sistema operacional?
 
 @) O que é software livre?
 
-@) Qual a utilidade de um sistema computacional sem dispositivos de entrada? E sem dispositivos de saída?
+@) Qual é a diferença entre memória e dispositivos de armazenamento?
+
+@) Quais são as principais diferenças entre um shell gráfico e um shell textual?
+
+@) Qual é a utilidade de um sistema computacional sem dispositivos de entrada? E sem dispositivos de saída?
 
 
 # Praticando
@@ -36,7 +40,7 @@ urlcolor: Blue
     - Capacidade da memória principal
     - Arquitetura do processador
 
-@) Os vídeo games são dispositivos de propósito geral ou específico? Discuta com a turma.
+@) Os videogames são dispositivos de propósito geral ou específico? Discuta com a turma.
 
 @) Experimente um shell textual no seu computador e relate como foi a sua experiência.
 
@@ -50,4 +54,4 @@ urlcolor: Blue
 
 # Desafio
 
-@) Qual é a resposta para a grande pergunta sobre a vida, o universo e tudo mais? 42? Senão, qual é?
+@) Qual é a resposta para a grande pergunta sobre a vida, o universo e tudo mais? 42? Se não, qual é?

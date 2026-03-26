@@ -12,7 +12,7 @@ O que é um computador? \pause
 
 - No passado: uma pessoa que faz cálculos (computa) \pause
 
-- Atualmente: uma máquina que pode ser programada para executar sequências de instruções (operações lógicas e aritméticas) automaticamente
+- Atualmente: uma máquina que pode ser programada para executar sequências de instruções automaticamente
 
 
 ## Introdução
@@ -64,6 +64,8 @@ Como funciona um sistema computacional? \pause
 
 ## Hardware
 
+Vamos ver os componentes que realizam as funções de entrada, processamento e saída. \pause
+
 Componentes \pause
 
 - Dispositivos de entrada/saída
@@ -85,7 +87,7 @@ A interligação entre esses componentes é feita pela placa-mãe.
 
 ## Componentes / Dispositivos de entrada
 
-Fornecem dados para serem processados e armazenados. \pause Exemplos \pause
+Fornecem dados para serem processados. \pause Exemplos \pause
 
 - Teclado
 - Mouse
@@ -133,7 +135,7 @@ Retêm dados para recuperação posterior. \pause Exemplos \pause
 ![Fonte: \href{https://commons.wikimedia.org/wiki/File:HardDiskAnatomy.jpg}{Wikipedia}](imagens/hdd-anatomia.jpg){ width=10cm }
 
 
-## Funcionamentos de um HDD
+## Funcionamento de um HDD
 
 Vídeos mostrando o funcionamento de um HDD
 
@@ -142,12 +144,12 @@ Vídeos mostrando o funcionamento de um HDD
 - \url{https://en.wikipedia.org/wiki/File:Harddrive-engineerguy.ogv} (Você pode escolher a legenda em português clicando em cc)
 
 
-## HDD vs SDD
+## HDD vs SSD
 
 ![Fonte: \url{https://ibexinc.wordpress.com/2010/02/13/the-death-of-the-disk/}](imagens/hdd-ssd.jpg){ width=10cm }
 
 
-## HDD vs SDD
+## HDD vs SSD
 
 SSD
 
@@ -221,14 +223,14 @@ Cada processador executa um conjunto específico de instruções (descrito por u
 
 ## Licença
 
-Antes de conversarmos sobre diferentes aspectos dos softwares, vamos falar de licença de software. \pause
+Uma questão importante sobre os softwares é a sua licença. \pause
 
 O que é uma licença de software? \pause
 
 É um documento que descreve um contrato entre o fornecedor do software e o usuário do software.
 
 
-## Tipos de software
+## Classificação por licença
 
 De forma geral, os softwares podem ser classificados de acordo com a sua licença em
 
@@ -237,7 +239,7 @@ De forma geral, os softwares podem ser classificados de acordo com a sua licenç
 - Software livre
 
 
-## Tipos de software
+## Classificação por licença
 
 Software proprietário
 
@@ -257,7 +259,7 @@ Exemplos \pause
 - Google Chrome
 
 
-## Tipos de software
+## Classificação por licença
 
 Software livre
 
@@ -316,7 +318,7 @@ Alguns componentes \pause
 
 Exemplos de sistemas operacionais proprietários \pause
 
-- Windows 10 \pause
+- Windows \pause
 
 - macOS, iOS \pause
 
@@ -325,7 +327,7 @@ Exemplos de sistemas operacionais proprietários \pause
 
 Exemplos de sistemas operacionais livres \pause
 
-- Linux (Debian, Ubuntu, Android, ChromeOS, etc) \pause
+- Linux (Debian, Ubuntu, LineageOS, etc) \pause
 
 - FreeBSD, OpenBSD, NetBSD \pause
 
@@ -336,13 +338,13 @@ Exemplos de sistemas operacionais livres \pause
 
 <div class="columns">
 <div class="column" width="33%">
-![](imagens/gates.jpg){height=6cm}
+![Bill Gates (Windows)](imagens/gates.jpg){height=6cm}
 </div>
 <div class="column" width="33%">
-![](imagens/jobs.jpg){height=6cm}
+![Steve Jobs (macOS/iOS)](imagens/jobs.jpg){height=6cm}
 </div>
 <div class="column" width="33%">
-![](imagens/linus.jpg){height=6cm}
+![Linus Torvalds (Linux)](imagens/linus.jpg){height=6cm}
 </div>
 </div>
 
@@ -384,17 +386,56 @@ Shell Texto \pause
 
 ## Shell Texto
 
+O shell textual é acessado através de um programa chamado **emulador de terminal** (ou simplesmente **terminal**). Exemplos: GNOME Terminal, Windows Terminal e Termux.
+
 <div class="columns">
-<div class="column" width="60%">
-![](imagens/terminal.png){ width=7cm }
+<div class="column" width="38%">
+![](imagens/terminal.png){ width=4.5cm }
 </div>
-<div class="column" width="30%">
-![](imagens/termux-python.png){ width=3cm }
+<div class="column" width="38%">
+![](imagens/windows-terminal.png){ width=4.5cm }
+</div>
+<div class="column" width="20%">
+![](imagens/termux-python.png){ width=2.2cm }
 </div>
 </div>
 
 
 ## Terminal
 
-![Fonte: \href{https://commons.wikimedia.org/wiki/File:DEC_VT100_terminal.jpg}{Wikipédia}](imagens/vt100.png){width=7cm}
+O termo "terminal" tem origem nos dispositivos físicos que eram usados para interagir com os computadores.
+
+![Fonte: \href{https://commons.wikimedia.org/wiki/File:DEC_VT100_terminal.jpg}{Wikipédia}](imagens/vt100.png){width=6cm}
+
+
+# Revisão
+
+## Revisão
+
+O que é um sistema computacional? \pause
+
+- Um conjunto de hardware e software que permite o uso do computador. \pause
+
+Qual é o funcionamento básico de um sistema computacional? \pause
+
+- Entrada, processamento e saída. \pause
+
+Quais são os principais componentes de hardware? \pause
+
+- Dispositivos de entrada/saída, dispositivos de armazenamento, memória e processador.
+
+
+## Revisão
+
+Qual é a diferença entre memória e dispositivos de armazenamento? \pause
+
+- A memória é volátil e mais rápida, usada para dados de uso imediato. Os dispositivos de armazenamento retêm dados de forma permanente, mas são mais lentos. \pause
+
+Quais são as duas principais funções do sistema operacional? \pause
+
+- Gerenciar os recursos do sistema computacional e prover serviços para outros softwares. \pause
+
+Qual é a diferença entre software proprietário e software livre? \pause
+
+- O software proprietário restringe a execução, distribuição ou modificação. O software livre permite a execução, redistribuição e modificação do código.
 
