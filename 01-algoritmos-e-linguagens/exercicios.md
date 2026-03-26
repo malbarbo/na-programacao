@@ -16,6 +16,10 @@ urlcolor: Blue
 
 @) O que é uma linguagem de programação?
 
+@) O que são a sintaxe e a semântica de uma linguagem de programação?
+
+@) Qual é a diferença entre compilação e interpretação?
+
 
 # Praticando
 

@@ -1,8 +1,6 @@
 ---
 # vim: set spell spelllang=pt_br:
 title: Algoritmos e linguagens
-# TODO: relacionar melhor como sistemas computacionais
-# TODO: deixar claro a relação entre algoritmos e programas
 ---
 
 # Introdução
@@ -11,7 +9,7 @@ Fundamentos de Algoritmos \pause
 
 - Resolver problemas projetando programas que sejam bem escritos e funcionem corretamente. \pause
 
-O que são algoritmos e qual a relação deles com resolução de problemas e programas de computadores? \pause
+O que são algoritmos e qual é a relação deles com resolução de problemas e programas de computadores? \pause
 
 O que é um algoritmo?
 
@@ -47,15 +45,15 @@ O que é um algoritmo?
 > Um conjunto finito de regras que fornece uma sequência de operações para resolver um tipo específico de problema.
 
 
-# Definição de Algoritmo
+# Definições de algoritmo
 
-O que estas definições tem em comum? \pause
+O que estas definições têm em comum? \pause
 
 - Sequência de etapas/passos/operações \pause
 
 - Resolução de um problema \pause
 
-Então, qual a relação de algoritmo e resolução de problemas e programas de computadores? \pause
+Então, qual é a relação entre algoritmos, resolução de problemas e programas de computadores? \pause
 
 - Processos de resolução de problemas podem ser descritos com algoritmos. \pause
 
@@ -249,9 +247,9 @@ O que esses algoritmos têm em comum? \pause
 
 # Limite dos algoritmos
 
-Vamos fazer um breve discussão sobre o que é possível fazer com algoritmos. \pause
+O que é possível fazer com algoritmos? \pause
 
-ATENÇÃO: sequência longa de perguntas a seguir!
+ATENÇÃO: sequência de perguntas a seguir!
 
 
 # Limite dos algoritmos
@@ -306,7 +304,7 @@ Um sistema estruturado para comunicação.
 
 Podemos utilizar o português para programar um computador? \pause
 
-Não, porque o computador não entende o português! \pause Ainda que o computador entendesse o português, ele não seria uma linguagem adequada para programação porque não seria precisa o bastante. \pause
+Não, porque o computador não entende o português! \pause Ainda que entendesse, o português não seria adequado para programação porque não é preciso o bastante. \pause
 
 E que linguagem o computador entende? \pause
 
@@ -318,7 +316,9 @@ Hoje em dia não, mas os primeiros computadores eram programados usando linguage
 
 # {.plain}
 
-![](imagens/eniac.jpeg)
+O ENIAC (1945), um dos primeiros computadores, era programado reconectando cabos e ajustando interruptores.
+
+![](imagens/eniac.jpeg){height=5.5cm}
 
 
 # Tradução
@@ -327,7 +327,7 @@ Se não queremos utilizar linguagem de máquina, como podemos programar os compu
 
 Como duas entidades que usam linguagens diferentes podem se comunicar? \pause
 
-Usando um tradutor.\pause
+Usando um tradutor. \pause
 
 Se a linguagem fonte e a linguagem alvo forem bem definidas, podemos escrever um programa que faça a tradução de forma automática. \pause
 
@@ -358,13 +358,13 @@ Por exemplo, a instrução para soma de dois números é expressa: \pause
 
 A **semântica** de uma linguagem define o significado das construções da linguagem. \pause
 
-A expressão `12 + "3"`{.python} é valida sintaticamente em muitas linguagens, mas o significado é diferente entre elas. \pause
+A expressão `12 + "3"`{.python} é válida sintaticamente em muitas linguagens, mas o significado é diferente entre elas. \pause
 
-- Lua: o texto `"3"`{.python} deve ser convertido para um número e depois somado com `12`{.python}, resultado em `15`{.python}. \pause
+- Lua: o texto `"3"`{.python} deve ser convertido para um número e depois somado com `12`{.python}, resultando em `15`{.python}. \pause
 
 - Javascript: o número `12`{.python} deve ser transformado para um texto e depois juntado com `"3"`{.python}, resultando em `"123"`{.python}. \pause
 
-- Na maioria linguagens: é um erro semântico.
+- Na maioria das linguagens: é um erro semântico.
 
 
 # Modo de execução
@@ -510,3 +510,33 @@ Nessa disciplina vamos utilizar a linguagem Python! \pause
 Python é uma linguagem bastante utilizada e versátil, \pause mas também é uma linguagem extensa! \pause Mas não se preocupe, vamos utilizar apenas construções básicas! \pause
 
 Vamos começar?
+
+
+# Revisão
+
+O que é um algoritmo? \pause
+
+- Uma sequência de passos que visa resolver um problema bem definido. \pause
+
+De que formas podemos expressar um algoritmo? \pause
+
+- Descrição textual, fluxograma, pseudocódigo, funções matemáticas, entre outras. \pause
+
+Todo problema bem definido pode ser resolvido com um algoritmo? \pause
+
+- Não. Os problemas que podem ser resolvidos com algoritmos são chamados de problemas computáveis.
+
+
+# Revisão
+
+O que é uma linguagem de programação? \pause
+
+- Uma linguagem formal (bem definida) adequada para programar computadores. \pause
+
+O que são sintaxe e semântica? \pause
+
+- A sintaxe define como os símbolos podem ser agrupados para formar sentenças. A semântica define o significado dessas construções. \pause
+
+Qual é a diferença entre compilação e interpretação? \pause
+
+- Na compilação, o código é primeiro traduzido para linguagem de máquina e depois executado. Na interpretação, o código é lido, traduzido e executado diretamente pelo interpretador.
