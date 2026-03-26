@@ -82,7 +82,7 @@ urlcolor: Blue
 
 @) Projete uma função que receba como parâmetros uma lista e um índice `i` e modifique a lista removendo o elemento do índice `i`.
 
-    ```python
+    ```python-repl
     >>> lst = [7, 1, 8, 9]
     >>> remove_indice(lst, 2)
     >>> lst
@@ -92,7 +92,7 @@ urlcolor: Blue
 
     Dica: mova o elemento do índice `i` até o final e depois use `list.pop`{.python} para removê-lo. A função `list.pop`{.python} funciona da seguinte forma
 
-    ```python
+    ```python-repl
     >>> lst = [3, 9, 1, 2]
     >>> lst.pop()
     2

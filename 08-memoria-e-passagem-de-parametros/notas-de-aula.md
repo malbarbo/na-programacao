@@ -29,13 +29,13 @@ Algumas linguagens como Python, Java e Go, fazem a gerência automática da mem�
 
 # Gerência de memória
 
-Cada estratégia de gerência de memória tem vantagens e desvantagem, mas o ponto principal é a facilidade de programação versus o controle. \pause Vocês vão aprender mais sobre isso ao longo do curso! \pause
+Cada estratégia de gerência de memória tem vantagens e desvantagens, mas o ponto principal é a facilidade de programação versus o controle. \pause Vocês vão aprender mais sobre isso ao longo do curso! \pause
 
 A gerência de memória requer basicamente duas operações: a alocação e a desalocação de memória. \pause
 
 O que significa alocar memória? \pause É reservar um espaço de memória para ser usado de uma determinada forma. \pause
 
-O que significa desalocar memória? \pause É devolver para o sistema um espaço de memória que havia sido alocado previamente para que ele possa ser usada de outra forma.
+O que significa desalocar memória? \pause É devolver para o sistema um espaço de memória que havia sido alocado previamente para que ele possa ser usado de outra forma.
 
 
 # Gerência de memória em Python
@@ -111,13 +111,13 @@ Qual é o valor de `x` e `y` após a execução do seguinte trecho de código?
 
 # Variáveis e apelidos
 
-No exemplo da esquerda, após a execução de `y = x`, `x` e `y` referenciam a mesma célula de memória (que armazena o valor `10`{.python}). \pause A operação `y + 3`{.python} **cria um novo** valor que é armazenado em uma nova célula, que passa a ser referencia por `y` após `y = y + 3`. \pause
+No exemplo da esquerda, após a execução de `y = x`, `x` e `y` referenciam a mesma célula de memória (que armazena o valor `10`{.python}). \pause A operação `y + 3`{.python} **cria um novo** valor que é armazenado em uma nova célula, que passa a ser referenciada por `y` após `y = y + 3`. \pause
 
 Veja [esse](https://pythontutor.com/render.html#code=x%20%3D%2010%0Ay%20%3D%20x%0Ay%20%3D%20y%20%2B%203&cumulative=false&curInstr=0&heapPrimitives=true&mode=display&origin=opt-frontend.js&py=311&rawInputLstJSON=%5B%5D&textReferences=false) processo no Python Tutor.
 
 \pause
 
-No exemplo da direita, após a execução de `y = x`, `x` e `y` referenciam a mesma célula de memória (que armazena o valor `[5, 1]`{.python}). \pause A operação `y[1] = 3`{.python} **altera** o valor armazenado na célula de memória para `[5, 3]`{.python}. \pause
+No exemplo da direita, após a execução de `y = x`, `x` e `y` referenciam a mesma célula de memória (que armazena o valor `[5, 7]`{.python}). \pause A operação `y[1] = 3`{.python} **altera** o valor armazenado na célula de memória para `[5, 3]`{.python}. \pause
 
 Veja [esse](https://pythontutor.com/render.html#code=x%20%3D%20%5B5,%207%5D%0Ay%20%3D%20x%0Ay%5B1%5D%20%3D%203&cumulative=false&curInstr=0&heapPrimitives=true&mode=display&origin=opt-frontend.js&py=311&rawInputLstJSON=%5B%5D&textReferences=false) processo no Python Tutor.
 
@@ -150,7 +150,7 @@ Quando uma variável é passada como parâmetro para uma função, um apelido é
 
 \small
 
-Quando `soma1` [inicia](https://pythontutor.com/render.html#code=def%20soma1%28x%3A%20int%29%3A%0A%20%20%20%20x%20%3D%20x%20%2B%201%0A%0Aa%20%3D%2020%0Asoma1%28a%29%0Aprint%28a%29&cumulative=false&curInstr=3&heapPrimitives=true&mode=display&origin=opt-frontend.js&py=311&rawInputLstJSON=%5B%5D&textReferences=false) a execução, `a` e `x` referenciam a mesma célula de memória. A instrução `x = x + 1`{.python} gera um **novo valor** (`21`{.python}) que é armazenado em uma **nova célula** de memória e `x` passa a referenciar essa nova célula. `a` continua referenciado a mesma célula de memória.
+Quando `soma1` [inicia](https://pythontutor.com/render.html#code=def%20soma1%28x%3A%20int%29%3A%0A%20%20%20%20x%20%3D%20x%20%2B%201%0A%0Aa%20%3D%2020%0Asoma1%28a%29%0Aprint%28a%29&cumulative=false&curInstr=3&heapPrimitives=true&mode=display&origin=opt-frontend.js&py=311&rawInputLstJSON=%5B%5D&textReferences=false) a execução, `a` e `x` referenciam a mesma célula de memória. A instrução `x = x + 1`{.python} gera um **novo valor** (`21`{.python}) que é armazenado em uma **nova célula** de memória e `x` passa a referenciar essa nova célula. `a` continua referenciando a mesma célula de memória.
 
 \pause
 
@@ -174,7 +174,7 @@ Quando `soma1` [inicia](https://pythontutor.com/render.html#code=def%20soma1%28x
 
 \pause
 
-Quando `concatena1` [inicia](https://pythontutor.com/render.html#code=def%20concatena1%28x%3A%20list%5Bint%5D%29%3A%0A%20%20%20%20x.append%281%29%0A%0Aa%20%3D%20%5B5,%204%5D%0Aconcatena1%28a%29%0Aprint%28a%29&cumulative=false&curInstr=4&heapPrimitives=true&mode=display&origin=opt-frontend.js&py=311&rawInputLstJSON=%5B%5D&textReferences=false) a execução, `a` e `x` referenciam a mesma célula de memória. A instrução `x.append(1)`{.python} **altera a célula** de memória referenciada por `x` adicionando o valor `1`. `a` continua referenciado a mesma célula de memória (que foi alterada).
+Quando `concatena1` [inicia](https://pythontutor.com/render.html#code=def%20concatena1%28x%3A%20list%5Bint%5D%29%3A%0A%20%20%20%20x.append%281%29%0A%0Aa%20%3D%20%5B5,%204%5D%0Aconcatena1%28a%29%0Aprint%28a%29&cumulative=false&curInstr=4&heapPrimitives=true&mode=display&origin=opt-frontend.js&py=311&rawInputLstJSON=%5B%5D&textReferences=false) a execução, `a` e `x` referenciam a mesma célula de memória. A instrução `x.append(1)`{.python} **altera a célula** de memória referenciada por `x` adicionando o valor `1`. `a` continua referenciando a mesma célula de memória (que foi alterada).
 
 </div>
 </div>
@@ -197,7 +197,7 @@ Temos duas opções: \pause
 
 2) Modificar a própria lista alterando a ordem dos elementos \pause
 
-Em geral, criar uma nova lista é mais fácil, mas acarreta no uso extra de memória. Esta pode ser a única opção se tanto a lista inicial quando a lista invertida são utilizadas posteriormente. \pause
+Em geral, criar uma nova lista é mais fácil, mas acarreta no uso extra de memória. Esta pode ser a única opção se tanto a lista inicial quanto a lista invertida são utilizadas posteriormente. \pause
 
 Se a lista na ordem inicial não é necessária após a chamada da função, então podemos modificar a própria lista, o que pode ser mais complicado, mas evita o uso de memória extra.
 
@@ -218,7 +218,7 @@ def inverte(lst: list[int]) -> list[int]:
     '''
     Cria uma nova lista com os elementos de
     *lst* em ordem inversa, isto é, o último
-    aparece como primeiro, o penúltimo com
+    aparece como primeiro, o penúltimo como
     segundo, e assim por diante.
 
     Exemplos
@@ -320,7 +320,7 @@ def invertem(lst: list[int]):
 
 De que forma a especificação dessa função é diferente das demais? \pause
 
-Não tem tipo de saída. \pause Por que? \pause A função não vai produzir uma saída e sim o efeito colateral de modificar a lista. \pause
+Não tem tipo de saída. \pause Por quê? \pause A função não vai produzir uma saída e sim o efeito colateral de modificar a lista. \pause
 
 O propósito enfatiza que a lista é modificada. \pause
 
@@ -737,19 +737,21 @@ def insere_ordenado(lst: list[int], v: int):
 
 # Revisão
 
-Em Python as variáveis são referências para células de memória que armazenam valores. \pause
+O que são variáveis em Python? \pause
 
-Apelidos são variáveis que referenciam a mesma célula de memória. \pause
+- Referências para células de memória que armazenam valores. \pause
 
-Quando atribuímos uma variável para outra e quando passamos uma variável como parâmetro para uma função, estamos criando um apelido. \pause
+O que são apelidos e quando eles são criados? \pause
 
-Usamos apelidos (passagem de parâmetro por referência) no projeto de funções que alteram os argumentos (efeito colateral).
+- Apelidos são variáveis que referenciam a mesma célula de memória. São criados quando atribuímos uma variável para outra ou quando passamos uma variável como parâmetro para uma função.
 
 
 # Revisão
 
-Escrevemos o propósito das funções que alteram os argumentos destacando que os argumentos são alterados. \pause
+Como especificamos funções que alteram os argumentos? \pause
 
-Os exemplos são especificados em três partes: inicialização dos parâmetros, chamada da função e verificação da modificação (efeito colateral). \pause
+- O propósito destaca que os argumentos são alterados. Os exemplos são especificados em três partes: inicialização dos parâmetros, chamada da função e verificação da modificação (efeito colateral). \pause
 
-Na implementação começamos com uma ideia, depois iniciamos a implementação com repetição física de código que concretiza a ideia para uma lista de tamanho fixo, depois transformamos a repetição física em repetição lógica e por fim generalizamos a implementação para listas de qualquer tamanho.
+Como implementamos funções que alteram listas? \pause
+
+- Começamos com uma ideia, concretizamos com repetição física para uma lista de tamanho fixo, transformamos em repetição lógica e generalizamos para listas de qualquer tamanho.
