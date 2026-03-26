@@ -72,7 +72,7 @@ urlcolor: Blue
 
 @) Qual é a diferença entre executar código no REPL e em um arquivo `.py`?
 
-@) O que o `mypy` verifica e por que isso é útil?
+@) O Python faz verificação estática de tipos? E o Spython? Por que isso é útil?
 
 @) O que é avaliação em curto circuito?
 

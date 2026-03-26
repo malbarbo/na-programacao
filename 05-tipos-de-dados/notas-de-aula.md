@@ -16,7 +16,7 @@ Mas o que exatamente é um tipo de dado e como projetar um tipo de dado adequado
 
 # Tipos de dados
 
-Um **tipo de dado** é o conjunto de valores que uma variável pode assumir. \pause
+Um **tipo de dado** define um conjunto de valores e as operações que podem ser realizadas sobre eles. \pause
 
 Exemplos \pause
 
@@ -542,7 +542,7 @@ Análise
 Definição de tipos de dados
 
 - Os segundos da entrada será representado com um número inteiro positivo
-- As horas, minutos e segundos serão representadas por um dado composto `Tempo`.
+- As horas, minutos e segundos serão representados por um dado composto `Tempo`.
 
 \pause
 
@@ -749,7 +749,7 @@ De fato só precisamos de 7, pois o valor dos segundos não importa no caso em q
 
 Quantas formas de resposta existem? \pause 7! \pause Então temos que usar seleção. \pause
 
-A implementação direta usando as condições de cada forma fica com exercício. \pause
+A implementação direta usando as condições de cada forma fica como exercício. \pause
 
 A implementação a seguir usa condições aninhadas.
 
@@ -906,7 +906,7 @@ Definição de tipos de dados \pause
 
 - Quais são as informações? \pause A aposta e os sorteados, as duas informações são compostas de 6 números. \pause
 
-- Como representar a aposta de 6 números? E os 6 número sorteados? \pause Com um dado composto.
+- Como representar a aposta de 6 números? E os 6 números sorteados? \pause Com um dado composto.
 
 
 # Definição de tipos de dados
@@ -1151,7 +1151,7 @@ Agora veremos uma nova forma de implementação: a forma incremental.
 
 Na **abordagem incremental**, iniciamos a resposta com um valor e vamos atualizando a resposta conforme o processamento avança, no final, temos a resposta da função. \pause
 
-Vamos aplicar esse abordagem para implementar a função `sorteado`. \pause
+Vamos aplicar essa abordagem para implementar a função `sorteado`. \pause
 
 A resposta que queremos é se o número `n` está entre os `sorteados`. \pause O que precisamos? \pause
 

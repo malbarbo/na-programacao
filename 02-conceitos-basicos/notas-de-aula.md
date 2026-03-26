@@ -329,7 +329,9 @@ As operações que vimos até agora estão disponíveis automaticamente, outras 
 
 O Python tem uma [extensa](https://xkcd.com/353/) biblioteca padrão, com muitos módulos, este é um dos motivos pelos quais a linguagem é bastante utilizada. A documentação da biblioteca padrão do Python está disponível em <https://docs.python.org/3/library/index.html>. \pause
 
-Por ora, vamos ver apenas algumas funções do módulo [`math`](https://docs.python.org/3/library/math.html).
+O Spython tem apenas algumas bibliotecas básicas. \pause
+
+Vamos ver apenas algumas funções do módulo [`math`](https://docs.python.org/3/library/math.html).
 
 
 # Piso e teto
@@ -728,7 +730,7 @@ def dobro(x: int) -> int:
 
 # Definição de funções
 
-Escrevemos o código na janela de edição e clicamos em **Run** para executar. Depois chamamos a função na janela de interações. \pause
+Escrevemos o código na janela de edição e clicamos em **Run** para executar (carregar nesse caso). Depois chamamos a função na janela de interações. \pause
 
 ![](imagens/spython-dobro.png){width=10cm}
 
@@ -753,7 +755,7 @@ def nome(entrada1: tipo, entrada2: tipo, ...) -> tipo:
 
 Os quatro espaços em branco antes do `return`{.python} é chamado de **indentação** (ou recuo). Em algumas linguagens a indentação é opcional, mas em Python é obrigatória. \pause
 
-Os símbolos `(`, `)`, `:`, `,` e `->`, entre outros, são os **delimitadores**.
+Os símbolos `(`{.python}, `)`{.python}, `:`{.python}, `,`{.python} e `->`{.python}, entre outros, são os **delimitadores**.
 
 \pause
 
@@ -777,7 +779,7 @@ As letras diacríticas (acentos, cedilha, etc) podem ser usadas nos identificado
 Escreva uma função chamada `polegadas_em_mm` que converte uma medida `x` em polegadas para milímetros com até duas casas de precisão. Uma polegada equivale a 2,54 cm. Veja se a função funciona corretamente para os seguintes exemplos:
 
 <div class="columns">
-<div class="column" width="48%">
+<div class="column" width="38%">
 
 \small
 
@@ -792,7 +794,7 @@ Escreva uma função chamada `polegadas_em_mm` que converte uma medida `x` em po
 
 \pause
 </div>
-<div class="column" width="48%">
+<div class="column" width="58%">
 
 \small
 
@@ -1050,7 +1052,6 @@ O `and`{.python} é um operador binário que produz `True`{.python} somente se o
 \pause
 
 ```python-repl
-
 >>> # Tabela verdade do and
 >>> False and False
 False
@@ -1097,6 +1098,7 @@ O `or`{.python} é um operador binário que produz `True`{.python} se pelo menos
 \small
 
 ```python-repl
+
 >>> # Tabela verdade do or
 >>> False or False
 False
@@ -1118,7 +1120,6 @@ Qual é a precedência do `or`{.python} em relação aos operadores relacionais 
 \small
 
 ```python-repl
-
 >>> # 15 > 8 é True
 >>> # 4 == 3 é False
 >>> 15 > 2 ** 3 or 4 == 1 + 2
@@ -1551,7 +1552,7 @@ Veremos mais detalhes em outro momento.
 
 Vamos parar um pouco e pensar sobre erros. \pause
 
-Já encontramos alguns tipos de erros enquanto fazíamos os nosso exemplos: \pause
+Já encontramos alguns tipos de erros enquanto fazíamos os nossos exemplos: \pause
 
 - O programa não inicia a execução \pause
 
@@ -1568,7 +1569,8 @@ Os **erros estáticos** são aqueles detectados antes da execução do programa.
 
 Os **erros dinâmicos** são detectados durante a execução do programa. \pause
 
-Por padrão, o único tipo de erro estático detectado pelo Python é o erro sintático. \pause
+
+# Erros sintáticos
 
 Um **erro sintático** ocorre quando o programa não segue as regras sintáticas da linguagem e o interpretador não consegue "entender" a estrutura do programa, por isso o interpretador nem inicia a execução do programa.
 
@@ -1589,10 +1591,14 @@ Faltou fechar o parênteses.
 
 \pause
 
+\small
+
 ```
-    x: int = (2 + 4
-             ^
-SyntaxError: '(' was never closed
+error[invalid-syntax]: unexpected EOF while parsing
+ --> arquivo.py:2:1
+  |
+1 | x: int = (2 + 4
+  |                ^
 ```
 
 
@@ -1602,35 +1608,46 @@ SyntaxError: '(' was never closed
 
 ```python
 nota maxima: int = 10
-def: float = 20.3
 ```
 
-Quais os erros nesse código? \pause
+Qual é o erro nesse código? \pause Identificador com espaço no nome. \pause
 
-Identificador com espaço no nome
-
-\pause
+\small
 
 ```
-    nota maxima: int = 10
-         ^^^^^^
-SyntaxError: invalid syntax
-```
-
-Uso da palavra chave `def`{.python} como identificador
-
-\pause
-
-```
-    def: float = 20.3
-       ^
-SyntaxError: invalid syntax
+error[invalid-syntax]: Simple statements must be
+                       separated by newlines or semicolons
+ --> arquivo.py:1:6
+  |
+1 | nota maxima: int = 10
+  |      ^^^^^^
 ```
 
 
 # Erros sintáticos
 
 \small
+
+```python
+def: float = 20.3
+```
+
+Qual é o erro nesse código? \pause Uso da palavra chave `def`{.python} como identificador. \pause
+
+\small
+
+```
+error[invalid-syntax]: Expected an identifier
+ --> arquivo.py:1:4
+  |
+1 | def: float = 20.3
+  |    ^
+```
+
+
+# Erros sintáticos
+
+\scriptsize
 
 ```python
 def soma(a: int b: int) -> int
@@ -1641,20 +1658,30 @@ Quais são os erros nesse código? \pause
 
 Falta a vírgula antes de `b`
 
+\scriptsize
+
 ```
-    def soma(a: int b: int) -> int
-                ^^^^^
-SyntaxError: invalid syntax. Perhaps you forgot a comma?
+error[invalid-syntax]: Expected `,`, found name
+ --> arquivo.py:1:17
+  |
+1 | def soma(a: int b: int) -> int:
+  |                 ^
 ```
 
 \pause
 
+\normalsize
+
 Falta os dois pontos após o tipo de retorno da função
 
+\scriptsize
+
 ```
-    def soma(a: int, b: int) -> int
-                                   ^
-SyntaxError: expected ':'
+error[invalid-syntax]: Expected `:`, found newline
+ --> arquivo.py:1:32
+  |
+1 | def soma(a: int, b: int) -> int
+  |                                ^
 ```
 
 
@@ -1671,10 +1698,16 @@ Qual é o erro nesse código? \pause
 
 Falta a indentação (recuo) do `return`{.python}.
 
+\small
+
 ```
-    return a + b
-    ^
-IndentationError: expected an indented block after function definition
+error[invalid-syntax]: Expected an indented block
+                       after function definition
+ --> arquivo.py:2:1
+  |
+1 | def soma(a: int, b: int) -> int:
+2 | return a + b
+  | ^^^^^^
 ```
 
 # Erros sintáticos
@@ -1691,11 +1724,23 @@ Qual é o erro nesse código? \pause
 
 A indentação está inconsistente. Devemos sempre utilizar 4 espaços para fazer a indentação.
 
+\small
+
 ```
-    print('Olá', nome)
-                       ^
-IndentationError: unindent does not match any outer indentation level
+error[invalid-syntax]: unindent does not match any
+                       outer indentation level
+ --> arquivo.py:3:1
+  |
+1 | def main():
+2 |     nome: str = input('Qual é o seu nome?: ')
+3 |    print('Olá', nome)
+  | ^^^
 ```
+
+
+# Erros semânticos
+
+Um **erro semântico** ocorre quando não é possível atribuir um significado para uma construção mesmo ela sendo válida sintaticamente.
 
 
 # Erros semânticos
@@ -1706,128 +1751,85 @@ IndentationError: unindent does not match any outer indentation level
 a: int = 10 + '3'
 ```
 
-Qual é o erro nesse código? \pause
-
-Uso de operandos de tipos inválidos para o operador `+`{.python}. \pause
-
-```
-    10 + 'a'
-TypeError: unsupported operand type(s) for +: 'int' and 'str'
-```
-
-\pause
-
-Esse é um erro sintático? \pause Não! É um erro semântico. \pause
-
-Um **erro semântico** ocorre quando o interpretador não “consegue” atribuir um significado para
-uma construção mesmo ela sendo válida sintaticamente. \pause
-
-O Python identifica esse erro de forma estática ou dinâmica? \pause De forma dinâmica, lembre-se, os únicos erros identificados de forma estática pelo Python são os erros sintáticos.
-
-
-# Erros semânticos
-
-\small
-
-```python
-def dobro(x: int) -> int:
-    return 2 * x
-
-print(dobro(10))
-print(dobro(10.0))
-print(dobro('10'))
-```
-
-\pause
-
-Quais são os erros nesse código? \pause
-
-Nenhum! \pause Whyyyyy? \pause
-
-O Python ignora todas as anotações de tipo. Se um programa está sintaticamente correto, o Python faz a sua execução e só para quando o programa termina ou um erro semântico é encontrado. \pause
-
-Esse exemplo executa até o termino ou é interrompido por um erro? \pause Executa até o final! \pause Howwww?
-
-
-# Erros semânticos
-
-Quando `dobro` é chamada com o valor `10`{.python} a expressão `2 * x`{.python} produz `20`{.python} e esse valor é exibido na tela. \pause
-
-Em seguida `dobro` é chamada com o valor `10.0`{.python} e a expressão `2 * x`{.python} produz `20.0`{.python} e esse valor é exibido na tela. \pause
-
-Por fim, `dobro` é chamada com o valor `'10'`{.python} e a expressão `2 * x`{.python} produz `'1010'`{.python} e esse valor é exibido na tela.
-
-
-# Tipagem dinâmica vs estática
-
-Embora nesse caso específico seja interessante poder usar a função `dobro` para diversos tipos de dados, mesmo que não projetamos a função com esta intenção, em outros casos essa flexibilidade pode gerar erros de execução, ou pior, resultados inesperados. \pause
-
-Essa característica do Python é chamada de tipagem dinâmica, isto é, os tipos são associados com os valores, e não com as variáveis. Em Python, qualquer valor pode ser atribuído a qualquer variável. \pause
-
-Outras linguagens de programação, como C/C++, utilizam tipagem estática, onde os tipos são associados com as variáveis. Nessas linguagens, um valor só pode ser atribuído para uma variável se o tipo do valor é compatível com o tipo da variável.
-
-
-# `mypy`
-
-Existem muitas considerações que podemos fazer sobre as vantagens e as desvantagens de cada modelo, mas nós vamos nos ater a um aspecto: o pedagógico. \pause
-
-Considerando a pedagogia que estamos utilizando na disciplina, é importante que os tipos sejam verificados estaticamente. \pause
-
-Mas como podemos fazer isso se o Python não funciona dessa forma? \pause
-
-Utilizando uma ferramenta chamada `mypy`. \pause
-
-O `mypy` é um analisador estático, que além de fazer uma análise estática dos tipos, também identifica uma série de erros de forma estática, que só seriam identificados pelo Python durante a execução do programa.
-
-
-# `mypy`
-
-O `mypy` precisa ser instalado no terminal com o comando
-
-```
-pip install mypy
-```
-
-\pause
-
-Para executar o `mypy` informamos o nome do arquivo na linha de comando
-
-```
-mypy arquivo.py
-```
-
-
-# `mypy`
-
-Considerando o arquivo `dobro.py`
-
-\small
-
-```python
-def dobro(x: int) -> int:
-    return 2 * x
-
-print(dobro(10))
-print(dobro(10.0))
-print(dobro('10'))
-```
-
-\pause
-
-Ao executar o `mypy` com o comando `mypy dobro.py` obtemos o seguinte resultado
+Qual é o erro nesse código? \pause Uso de operandos de tipos inválidos para o operador `+`{.python}. \pause
 
 \scriptsize
 
 ```
-x.py:5: error: Argument 1 to "dobro" has incompatible type "float"; expected "int"
-x.py:6: error: Argument 1 to "dobro" has incompatible type "str"; expected "int"
-Found 2 errors in 1 file (checked 1 source file)
+error[unsupported-operator]: Unsupported `+` operation
+ --> arquivo.py:1:10
+  |
+1 | a: int = 10 + '3'
+  |          --^^^---
+  |          |    |
+  |          |    Has type `str`
+  |          Has type `int`
 ```
+
+\normalsize
+
+\pause
+
+O Spython detecta esse erro antes da execução (de forma estática).
+
+
+# Tipagem dinâmica
+
+Estamos utilizando o Spython, mas em breve vamos utilizar o Python (CPython). O Python faz algumas coisas de forma diferente do Spython. \pause
+
+Uma diferença importante é que o Python ignora as anotações de tipo! O único tipo de erro estático detectado pelo Python é o erro sintático. \pause
+
+\footnotesize
+
+```python
+def dobro(x: int) -> int:
+    return 2 * x
+
+print(dobro(10))    # exibe 20
+print(dobro(10.0))  # exibe 20.0
+print(dobro('10'))  # exibe '1010'
+```
+
+\pause
+
+\normalsize
+
+Esse programa executa sem erros no Python, mas `dobro('10')`{.python} produz um resultado possivelmente inesperado. \pause Essa característica é chamada de **tipagem dinâmica**: os tipos são associados com os valores, e não com as variáveis.
+
+
+# Verificação estática de tipos
+
+O Spython detecta os erros de tipo do exemplo anterior antes da execução: \pause
+
+\scriptsize
+
+```
+error[invalid-argument-type]: Argument to function `dobro` is incorrect
+ --> arquivo.py:5:13
+  |
+5 | print(dobro(10.0))
+  |             ^^^^ Expected `int`, found `float`
+
+error[invalid-argument-type]: Argument to function `dobro` is incorrect
+ --> arquivo.py:6:13
+  |
+6 | print(dobro('10'))
+  |             ^^^^ Expected `int`, found `str`
+```
+
+
+# Verificação estática de tipos
+
+A verificação de tipos antes da execução é chamada de **tipagem estática** e é utilizada em diversas linguagens, como C/C++, Java e Rust. \pause
+
+No futuro, vamos utilizar o Python diretamente e uma ferramenta chamada `mypy` para fazer a verificação estática de tipos.
 
 
 # Erros de execução
 
-Se um programa foi verificado pelo `mypy`, isto é, não tem erros de sintaxe ou semântica, significa que ele não tem erros? \pause Não! \pause Ainda podemos ter erros durante a execução do programa. \pause
+Mesmo que um programa não tenha erros sintáticos ou semânticos detectáveis antes da execução, ele ainda pode falhar durante a execução. \pause
+
+Por exemplo, `10 / 0`{.python} é um erro semântico que só é detectado durante a execução. \pause
 
 Um erro de execução pode fazer o programa \pause
 
@@ -1872,7 +1874,7 @@ O que é uma variável local? \pause
 
 Qual é a diferença entre um erro sintático e um erro semântico? \pause
 
-- O erro sintático é detectado antes da execução (o programa não segue as regras da linguagem). O erro semântico é detectado durante a execução (a construção é válida sintaticamente mas o interpretador não consegue atribuir significado).
+- O erro sintático ocorre quando o programa não segue as regras da linguagem. O erro semântico ocorre quando uma construção é sintaticamente válida mas não é possível atribuir significado.
 
 
 # Revisão
@@ -1881,9 +1883,9 @@ O que é necessário para definir uma função em Python? \pause
 
 - O nome da função, os parâmetros com seus tipos, o tipo de retorno e o corpo da função. \pause
 
-Para que serve o `mypy`? \pause
+O Python faz verificação estática de tipos? \pause
 
-- Para fazer a verificação estática de tipos e identificar erros que o Python só detectaria durante a execução.
+- Não. O Spython faz essa verificação. No futuro, usaremos o Python com o `mypy` para o mesmo propósito.
 
 
 # Projeto de funções
