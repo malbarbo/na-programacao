@@ -1,12 +1,11 @@
 ---
 # vim: set spell spelllang=pt_br:
 title: Seleção
-# TODO: falar mais sobre quando pensar em alto nível na execução do código e quando fazer o passo a passo
 ---
 
 # Introdução
 
-Antes de estudarmos instruções de seleção, vamos revisar como o Python executa um programa.
+Vamos revisar como o Python executa um programa.
 
 
 # Execução de funções
@@ -34,26 +33,51 @@ main()
 \small
 
 \pause
-Qual o valor exibido pelo programa? \pause
+Qual é o valor exibido pelo programa? \pause
 
 Não tente "executar" a chamada da função `dobro_mais_um`, pense apenas no seu propósito, sem olhar para o seu corpo. \pause
 
 Então, qual é o valor exibido na tela? \pause 20. \pause
 
-Qual é a ordem que as linhas são executadas? \pause
+Qual é a ordem em que as linhas são executadas? \pause
 
 10, \pause 6, \pause 7, \pause 2, \pause 3, \pause 7, \pause 8, \pause 10. \pause
 
-Confira a [execução](https://pythontutor.com/render.html#code=def%20dobro_mais_um%28n%3A%20int%29%20-%3E%20int%3A%0A%20%20%20%20a%20%3D%202%20*%20n%0A%20%20%20%20return%20a%20%2B%201%0A%0Adef%20main%28%29%3A%0A%20%20%20a%20%3D%205%0A%20%20%20n%20%3D%20dobro_mais_um%28a%20%2B%204%29%20%2B%201%0A%20%20%20print%28n%29%0A%0Amain%28%29&cumulative=false&curInstr=0&heapPrimitives=nevernest&mode=display&origin=opt-frontend.js&py=311&rawInputLstJSON=%5B%5D&textReferences=false) desse código no Python Tutor (note que, diferente do fizemos em sala, as linhas do `def`{.python} são mostradas como sendo executadas).
+Confira a [execução](https://pythontutor.com/render.html#code=def%20dobro_mais_um%28n%3A%20int%29%20-%3E%20int%3A%0A%20%20%20%20a%20%3D%202%20*%20n%0A%20%20%20%20return%20a%20%2B%201%0A%0Adef%20main%28%29%3A%0A%20%20%20a%20%3D%205%0A%20%20%20n%20%3D%20dobro_mais_um%28a%20%2B%204%29%20%2B%201%0A%20%20%20print%28n%29%0A%0Amain%28%29&cumulative=false&curInstr=0&heapPrimitives=nevernest&mode=display&origin=opt-frontend.js&py=311&rawInputLstJSON=%5B%5D&textReferences=false) desse código no Python Tutor (note que, diferente do que fizemos em sala, as linhas do `def`{.python} são mostradas como sendo executadas).
 
 </div>
 </div>
+
+
+# Quando executar passo a passo?
+
+Ao analisar a execução de uma função, temos duas abordagens: \pause
+
+- **Alto nível**: pensar no propósito da função, sem olhar para a implementação. \pause
+- **Passo a passo**: acompanhar a execução linha por linha. \pause
+
+Quando usar cada uma? \pause
+
+- Se conhecemos o propósito de uma função, não precisamos olhar para a implementação — basta pensar no que ela faz (alto nível). \pause
+- Se estamos tentando entender como uma função funciona ou procurando um erro, acompanhamos a execução passo a passo.
+
+
+# Seleção
+
+Depois de muito trabalho aprendendo os conceitos básicos e o processo de projeto de funções, hoje é um dia especial: chegou a hora de subir de nível! \pause
+
+\begin{center}
+\Huge \textbf{Nível 1}
+\end{center}
+
+\begin{center}
+\Huge \textcolor{orange}{$\bigstar$} \textbf{Seleção} \textcolor{orange}{$\bigstar$}
+\end{center}
 
 
 # Seleção
 
 O fluxo "normal" de execução de um programa é sequencial, isto é, as linhas são executadas uma após a outra. \pause Algumas instruções alteram esse fluxo, como por exemplo, as chamadas e retornos de funções. \pause
-
 
 Agora veremos a instrução de seleção "se senão" (`if else`{.python} em inglês), que permite, a partir de uma condição, escolher qual conjunto de instruções executar.
 
@@ -95,7 +119,7 @@ O Python avalia a condição e verifica o resultado \pause
 <div class="columns">
 <div class="column" width="48%">
 
-\small
+\footnotesize
 
 ```{.python .number-lines}
 a = 10
@@ -109,15 +133,13 @@ print(m)
 
 \pause
 
-\normalsize
-
-Qual o valor exibido pelo programa? \pause 20. \pause
+Qual é o valor exibido pelo programa? \pause 20. \pause
 
 Em que ordem as linhas são executadas para gerar esse resultado? \pause 1, 2, 3, 6, 7. \pause
 </div>
 <div class="column" width="48%">
 
-\small
+\footnotesize
 
 ```{.python .number-lines}
 a = 15
@@ -131,9 +153,7 @@ print(m)
 
 \pause
 
-\normalsize
-
-Qual o valor exibido pelo programa? \pause 15. \pause
+Qual é o valor exibido pelo programa? \pause 15. \pause
 
 Em que ordem as linhas são executadas para gerar esse resultado? \pause 1, 2, 3, 4, 7 \pause
 </div>
@@ -180,11 +200,11 @@ def maximo(a: int, b: int) -> int:
 
 Vamos treinar mais uma vez a execução passo a passo. \pause
 
-Qual é a ordem que as linhas são executadas para o exemplo `maximo(10, 8)`{.python}? \pause
+Qual é a ordem em que as linhas são executadas para o exemplo `maximo(10, 8)`{.python}? \pause
 
 11, \pause 12, \pause 15. \pause
 
-Qual é a ordem que as linhas são executadas para o exemplo `maximo(-2, -1)`{.python}? \pause
+Qual é a ordem em que as linhas são executadas para o exemplo `maximo(-2, -1)`{.python}? \pause
 
 11, \pause 14, \pause 15.
 
@@ -201,7 +221,7 @@ Vamos voltar ao exemplo da atualização do número do telefone.
 
 # Exemplo - atualização número de telefone
 
-No período de 2015 à 2016 todos os números de telefones celulares no Brasil passaram a ter nove dígitos. Na época, os números de telefones que tinham apenas oito dígitos foram alterados adicionando-se o 9 na frente do número. Embora oficialmente todos os números de celulares tenham nove dígitos, na agenda de muitas pessoas ainda é comum encontrar números registrados com apenas oito dígitos. Projete uma função que adicione o nono dígito em um dado número de telefone celular caso ele ainda não tenha o nono dígito. Considere que os números de entrada são dados com o DDD entre parênteses e com um hífen separando os últimos quatro dígitos. Exemplos de entradas: (44) 9787-1241, (51) 95872-9989, (41) 8876-1562. A saída deve ter o mesmo formato, mas garantindo que o número do telefone tenha 9 dígitos.
+No período de 2015 a 2016 todos os números de telefones celulares no Brasil passaram a ter nove dígitos. Na época, os números de telefones que tinham apenas oito dígitos foram alterados adicionando-se o 9 na frente do número. Embora oficialmente todos os números de celulares tenham nove dígitos, na agenda de muitas pessoas ainda é comum encontrar números registrados com apenas oito dígitos. Projete uma função que adicione o nono dígito em um dado número de telefone celular caso ele ainda não tenha o nono dígito. Considere que os números de entrada são dados com o DDD entre parênteses e com um hífen separando os últimos quatro dígitos. Exemplos de entradas: (44) 9787-1241, (51) 95872-9989, (41) 8876-1562. A saída deve ter o mesmo formato, mas garantindo que o número do telefone tenha 9 dígitos.
 
 
 # Exemplo - atualização número de telefone
@@ -262,7 +282,7 @@ def ajusta_numero(numero: str) -> str:
     X pode ser qualquer dígito.
 
     Exemplos
-    >>> # não precisa de ajuste, a saída e a própria entrada
+    >>> # não precisa de ajuste, a saída é a própria entrada
     >>> ajusta_numero('(51) 95872-9989')
     '(51) 95872-9989'
     >>> # '(44) 9787-1241'[:5] + '9' + '(44) 9787-1241'[5:]
@@ -413,7 +433,7 @@ def maximo3(a: int, b: int, c: int) -> int:
 
 Vamos treinar mais uma vez a execução passo a passo. \pause
 
-Qual é a ordem que as linhas são executadas para o exemplo a seguir:
+Qual é a ordem em que as linhas são executadas para o exemplo a seguir:
 
 \small
 
@@ -621,9 +641,9 @@ def maximo3(a: int, b: int, c: int) -> int:
 </div>
 <div class="column" width="40%">
 \pause
-Qual o propósito do bloco das linhas de 3 à 6? \pause Encontrar o máximo entre `a` e `c`. \pause
+Qual é o propósito do bloco das linhas 3 a 6? \pause Encontrar o máximo entre `a` e `c`. \pause
 
-Qual o propósito do bloco das linhas de 8 à 11? \pause Encontrar o máximo entre `b` e `c`. \pause
+Qual é o propósito do bloco das linhas 8 a 11? \pause Encontrar o máximo entre `b` e `c`. \pause
 
 Já temos uma função para encontrar o máximo entre dois números? \pause Sim! \pause A função `maximo` que fizemos anteriormente. \pause
 
@@ -650,7 +670,7 @@ def maximo3(a: int, b: int, c: int) -> int:
 </div>
 <div class="column" width="40%">
 \pause
-Qual o propósito da seleção da linha 2? \pause Encontrar o máximo entre `a` e `b`... \pause Nós já temos uma função para fazer isso!
+Qual é o propósito da seleção da linha 2? \pause Encontrar o máximo entre `a` e `b`... \pause Nós já temos uma função para fazer isso!
 </div>
 </div>
 
@@ -700,7 +720,7 @@ maximo3(10, 2, 15)
 
 Vamos treinar mais uma vez a execução passo a passo. \pause
 
-Qual é a ordem que as linhas são executadas para o exemplo ao lado? \pause
+Qual é a ordem em que as linhas são executadas para o exemplo ao lado? \pause
 
 11, 9, 2, 3, 6, 9, 2, 5, 6, 9, 11. \pause
 

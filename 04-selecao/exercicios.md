@@ -6,8 +6,6 @@ title: |
 urlcolor: Blue
 ---
 
-**\color{red}Lembre-se** de seguir o processo de projeto de funções e de usar o `mypy` e o `doctest` na etapa de verificação.
-
 # Começando
 
 @) Qual é a forma geral da instrução "se senão" e como ela é executada?
@@ -105,4 +103,4 @@ urlcolor: Blue
 
 # Desafios
 
-@) Muitos letreiros exibem mensagens que tem mais caracteres do que eles podem exibir, para isso, eles exibem apenas uma porção da mensagem que é alterada com o passar do tempo. Por exemplo, em um letreiro de 20 caracteres, a mensagem `'Promocao de sorvetes, pague 2 leve 3!'` é exibida como `Promocao de sorvetes` no momento 0, como `'romocao de sorvetes,'` no momento 1, `'omocao de sorvetes, '`, no momento 3, e assim por diante até que no momento 17 é exibido `'tes, pague 2 leve 3!'`. O momento sempre aumenta, e após chegar no final da mensagem ela começa a ser exibida novamente, nesse caso, no momento 18 é exibido `'es, pague 2 leve 3! '` e no momento 19 é exibido `'s, pague 2 leve 3! P'`, onde o `P` é o início da mensagem. Projete uma função que determine os caracteres de uma mensagem que devem ser exibidos em um determinado momento em um letreiro que pode exibir um determinado número de caracteres. Você pode assumir que o número de caracteres da mensagem é maior do que o do letreiro. A sua implementação usa seleção? Você consegue fazer uma implementação que não utiliza seleção?
+@) Muitos letreiros exibem mensagens que tem mais caracteres do que eles podem exibir, para isso, eles exibem apenas uma porção da mensagem que é alterada com o passar do tempo. Por exemplo, em um letreiro de 20 caracteres, a mensagem `'Promocao de sorvetes, pague 2 leve 3!'` é exibida como `Promocao de sorvetes` no momento 0, como `'romocao de sorvetes,'` no momento 1, `'omocao de sorvetes, '`, no momento 2, e assim por diante até que no momento 17 é exibido `'tes, pague 2 leve 3!'`. O momento sempre aumenta, e após chegar no final da mensagem ela começa a ser exibida novamente, nesse caso, no momento 18 é exibido `'es, pague 2 leve 3! '` e no momento 19 é exibido `'s, pague 2 leve 3! P'`, onde o `P` é o início da mensagem. Projete uma função que determine os caracteres de uma mensagem que devem ser exibidos em um determinado momento em um letreiro que pode exibir um determinado número de caracteres. Você pode assumir que o número de caracteres da mensagem é maior do que o do letreiro. A sua implementação usa seleção? Você consegue fazer uma implementação que não utiliza seleção?
