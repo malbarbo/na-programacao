@@ -66,8 +66,20 @@ Essa escolha é adequada? \pause
 
 Não! Muitos valores de `str`{.python} não correspondem a nenhum valor válido para a informação do tipo de combustível. \pause Além disso, para o leitor do código, a saída do tipo `str`{.python} sugere que qualquer string é possível como resposta, o que não é verdade. \pause
 
-
 Como proceder nesse caso? \pause Vamos definir um novo tipo onde apenas os valores para álcool e gasolina são válidos.
+
+
+# Tipos enumerados
+
+Vocês já dominam funções e seleção, e hoje é dia de mais uma conquista: chegou a hora de subir de nível! \pause
+
+\begin{center}
+\Huge \textbf{Nível 2}
+\end{center}
+
+\begin{center}
+\Huge \textcolor{orange}{$\bigstar$} \textbf{Tipos do usuário} \textcolor{orange}{$\bigstar$}
+\end{center}
 
 
 # Tipos enumerados
@@ -152,7 +164,7 @@ Cada valor da enumeração tem dois atributos: `name` e `value`. \pause
 
 # Tipos enumerados
 
-Assim como uma variável do tipo `bool`{.python} só pode armazenar os valores `True`{.python} e `False`{.python}, uma variável do tipo `Combustivel` só pode armazenar os valores `Combustivel.ALCOOL` ou `Combustivel.GASOLINA`, se tentarmos atribuir um valor diferente, o `mypy` indicará um erro. \pause
+Assim como uma variável do tipo `bool`{.python} só pode armazenar os valores `True`{.python} e `False`{.python}, uma variável do tipo `Combustivel` só pode armazenar os valores `Combustivel.ALCOOL` ou `Combustivel.GASOLINA`, se tentarmos atribuir um valor diferente, o Spython indicará um erro. \pause
 
 \small
 
@@ -166,11 +178,17 @@ c: Combustivel = 'Alcool'
 
 Erro
 
-\small
+\scriptsize
 
 ```
-error: Incompatible types in assignment (expression has type "str",
-                                         variable has type "Combustivel")
+error[invalid-assignment]: Object of type `str` is not
+                           assignable to `Combustivel`
+ --> arquivo.py:7:4
+  |
+7 | c: Combustivel = 'Alcool'
+  |    -----------   ^^^^^^^^
+  |    |
+  |    Declared type
 ```
 
 
@@ -381,7 +399,7 @@ Análise \pause
 
 Definição de tipos de dados \pause
 
-- Os segundos da entrada será representado com um número inteiro positivo \pause
+- A quantidade de segundos da entrada será representada com um número inteiro positivo \pause
 
 - A saída são três números inteiros positivos... \pause As funções em Python só podem produzir um valor de saída, como proceder? \pause Vamos criar um novo tipo de dado que agrupa esses três valores.
 
@@ -472,7 +490,7 @@ class NomeDoTipo:
 
 # Tipos compostos
 
-Para criar um valor de um tipo composto, chamamos o **construtor** (função que é criada automaticamente pelo Python) para o tipo e especificamos os valores dos campos na ordem que eles foram declarados. \pause
+Para criar um valor de um tipo composto, chamamos o **construtor** (função que é criada automaticamente pelo Python) para o tipo e especificamos os valores dos campos na ordem em que eles foram declarados. \pause
 
 \small
 
@@ -541,7 +559,7 @@ Análise
 
 Definição de tipos de dados
 
-- Os segundos da entrada será representado com um número inteiro positivo
+- A quantidade de segundos da entrada será representada com um número inteiro positivo
 - As horas, minutos e segundos serão representados por um dado composto `Tempo`.
 
 \pause
@@ -1090,7 +1108,7 @@ Podemos fazer uma implementação alternativa? \pause Sim, fazendo seleções an
 
 Se `n == a`{.python}, então a resposta é `True`{.python}; \pause
 
-Senão, quais podem ser as respostas? \pause `True`{.python} ou `False`{.python} \pause, então precisamos de outra seleção: \pause
+Senão, quais podem ser as respostas? \pause `True`{.python} ou `False`{.python}, \pause então precisamos de outra seleção: \pause
 
 - Se `n == b`{.python}, então a resposta é `True`{.python}; \pause
 - Senão, quais podem ser as respostas? \pause `True`{.python} ou `False`{.python}...
@@ -1287,6 +1305,10 @@ Usando instrução de repetição! \pause Vamos continuar na próxima aula.
 
 # Revisão
 
+Quais são as duas diretrizes para escolher um tipo de dado? \pause
+
+- Faça os valores válidos representáveis e faça os valores inválidos irrepresentáveis. \pause
+
 Quando devemos usar enumerações? \pause
 
 - Quando todos os valores válidos para o tipo podem ser nomeados. \pause
@@ -1304,4 +1326,8 @@ Como escrevemos os exemplos para funções que retornam enumerações? \pause
 
 Por que valores de tipos compostos são chamados de mutáveis? \pause
 
-- Porque os campos podem ser alterados após a criação do valor.
+- Porque os campos podem ser alterados após a criação do valor. \pause
+
+O que é a abordagem incremental? \pause
+
+- Iniciamos a resposta com um valor e vamos atualizando conforme o processamento avança.

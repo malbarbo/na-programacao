@@ -6,8 +6,6 @@ title: |
 urlcolor: Blue
 ---
 
-**\color{red}Lembre-se** de seguir o processo de projeto de funções e de usar o `mypy` e o `doctest` na etapa de verificação.
-
 # Começando
 
 @) O que é um tipo de dado?
