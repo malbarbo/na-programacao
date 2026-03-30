@@ -8,8 +8,6 @@ urlcolor: Blue
 # TODO: adicionar outros métodos de ordenação?
 ---
 
-**\color{red}Lembre-se** de seguir o processo de projeto de funções e de usar o `mypy` e o `doctest` na etapa de verificação.
-
 # Começando
 
 @) O que significa dizer que as variáveis em Python são referências?

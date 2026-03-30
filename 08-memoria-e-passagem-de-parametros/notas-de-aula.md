@@ -197,7 +197,7 @@ Temos duas opções: \pause
 
 2) Modificar a própria lista alterando a ordem dos elementos \pause
 
-Em geral, criar uma nova lista é mais fácil, mas acarreta no uso extra de memória. Esta pode ser a única opção se tanto a lista inicial quanto a lista invertida são utilizadas posteriormente. \pause
+Em geral, criar uma nova lista é mais fácil, mas acarreta o uso extra de memória. Esta pode ser a única opção se tanto a lista inicial quanto a lista invertida são utilizadas posteriormente. \pause
 
 Se a lista na ordem inicial não é necessária após a chamada da função, então podemos modificar a própria lista, o que pode ser mais complicado, mas evita o uso de memória extra.
 
@@ -484,7 +484,7 @@ Generalizando para qualquer tamanho: \pause
 
 # Exemplo: insere ordenado
 
-Dado uma lista de números em ordem não decrescente e um valor `v`, projete uma função que modifique a lista inserindo o valor `v` de maneira que o arranjo continue em ordem.
+Dada uma lista de números em ordem não decrescente e um valor `v`, projete uma função que modifique a lista inserindo o valor `v` de maneira que o arranjo continue em ordem.
 
 
 # Exemplo: insere ordenado
