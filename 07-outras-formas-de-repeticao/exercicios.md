@@ -4,10 +4,7 @@ title: |
        | Fundamentos de Algoritmos
        | Outras formas de repetição
 urlcolor: Blue
-# TODO: transformar alguns exercícios em problemas
 ---
-
-**\color{red}Lembre-se** de seguir o processo de projeto de funções e de usar o `mypy` e o `doctest` na etapa de verificação.
 
 # Começando
 
@@ -36,9 +33,7 @@ urlcolor: Blue
         return b
     ```
 
-<!--
-@) Como funciona a estratégia de transformar uma repetição física de código em uma repetição lógica?
--->
+@) Descreva os passos da estratégia que utilizamos quando é difícil determinar diretamente como implementar um laço de repetição.
 
 # Praticando
 
@@ -121,3 +116,15 @@ urlcolor: Blue
 @) A empresa que você trabalha sofreu uma falta de energia e agora é preciso recuperar os dados do backup. O primeiro passo é determinar o código dos clientes afetados. Em um primeiro momento foi obtido um arquivo (string) com o código de todos os clientes separados por vírgula. O seu trabalho agora é projetar uma função que gere uma lista dos códigos a partir dessa string. Por exemplo, para a string `"512,12,145"` a sua função deve gerar como resposta a lista `[512, 12, 145]`.
 
 @) Em um determinado jogo de construção de itens, cada item tem uma classe que varia de 1 a 10. Os itens de classe 1 surgem conforme o jogador explorar os baús. Um item de classe 2 ou superior precisa ser construído unindo dois itens da classe anterior. Por exemplo, para construir um item de classe 2 é necessário unir dois itens de classe 1. Para construir um item de classe 10 é necessário unir dois itens de classe 9. Projete uma função que receba como entrada um número $n$ (de 1 a 10), e determine quantos itens de classe 1 são necessários para construir um item de classe $n$. Suponha que as únicas operações aritméticas disponíveis sejam a soma e a multiplicação.
+
+<!-- Para cada no intervalo -->
+
+@) Em uma competição de corrida, os tempos de cada volta de um corredor são registrados em uma lista. Projete uma função que determine em qual volta o corredor teve a maior melhora, isto é, a maior redução de tempo em relação à volta anterior.
+
+@) Uma loja registra o preço de um produto ao longo dos dias em uma lista. Projete uma função que encontre o maior número de dias consecutivos em que o preço subiu.
+
+<!-- Matrizes -->
+
+@) Uma estação meteorológica registra a temperatura de uma região em uma grade (matriz), onde cada elemento representa a temperatura de um ponto. Projete uma função que encontre a posição (linha e coluna) do ponto com a maior temperatura.
+
+@) Um cinema representa a ocupação de uma sala como uma matriz onde `0`{.python} significa poltrona livre e `1`{.python} significa ocupada. Projete uma função que verifique se existe uma fileira com pelo menos $n$ poltronas livres consecutivas para acomodar um grupo de amigos.

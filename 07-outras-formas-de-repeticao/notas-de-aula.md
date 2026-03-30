@@ -3,8 +3,6 @@
 title: Outras formas de repetição
 # TODO: exemplo mais interessante que fatorial
 # TODO: trocar exemplo primo?
-# TODO: analisar o termo transformar repetição física para lógica
-# TODO: analisar o termo generalizar para lista de qualquer tamanho
 ---
 
 # Introdução
@@ -53,7 +51,7 @@ Qual estratégia podemos utilizar? \pause A incremental. \pause
 </div>
 <div class="column" width="48%">
 
-Qual o resultado queremos calcular? \pause O índice `imax` do máximo de `lst`. \pause
+Qual é o resultado que queremos calcular? \pause O índice `imax` do máximo de `lst`. \pause
 
 Com qual valor iniciamos `imax`? \pause `0`{.python}. \pause
 
@@ -101,7 +99,7 @@ Vamos calcular duas coisas simultaneamente, o índice `imax` do máximo e o índ
 
 Com qual valor iniciamos `imax` e `i`? \pause `0`{.python}. \pause
 
-Se estamos analisando um número `n` de `lst`, como atualizamos `imax` e `i`? \pause Atribuímos `i` para `imax` se `n > lst[imax]`{.pause} \pause e `i` é incrementado de `1`{.python}.
+Se estamos analisando um número `n` de `lst`, como atualizamos `imax` e `i`? \pause Atribuímos `i` para `imax` se `n > lst[imax]`{.python} \pause e `i` é incrementado de `1`{.python}.
 </div>
 </div>
 
@@ -335,7 +333,7 @@ Essa forma parece diferente... \pause Antes era necessário analisar um único e
 
 Como proceder nesse caso? \pause
 
-Vamos implementar a função para uma lista de 5 elementos usando repetição física de código e depois vamos transformar a repetição física em repetição lógica.
+Vamos implementar a função para uma lista de 5 elementos escrevendo o código de cada comparação explicitamente — uma repetição física de código — e depois vamos usar um laço para expressar essa mesma repetição de forma lógica.
 
 </div>
 </div>
@@ -607,7 +605,7 @@ nao_decrescente([1, 3, 3, 2, 7, 8])
 
 </div>
 <div class="column" width="48%">
-Qual é a ordem que as linhas são executadas? \pause
+Qual é a ordem em que as linhas são executadas? \pause
 
 \small
 
@@ -1093,7 +1091,7 @@ def cria_matriz_nula(m: int, n: int) -> list[list[int]]:
 
 \footnotesize
 
-Para a chamada `cria_matriz_nula(2, 3)`{.python}, qual é a ordem que as linhas são executas?
+Para a chamada `cria_matriz_nula(2, 3)`{.python}, qual é a ordem em que as linhas são executadas?
 
 \pause
 
@@ -1216,7 +1214,7 @@ Projete uma função que conte a quantidade de elementos zeros de uma matriz.
 ```python
 def conta_zeros(a: list[list[int]]) -> int:
     '''
-    Conta a quantidade de zeros da matriz *m*.
+    Conta a quantidade de zeros da matriz *a*.
 
     Exemplos
     >>> conta_zeros([[1, 0, 7], [0, 1, 0]])
@@ -1246,7 +1244,7 @@ def conta_zeros(a: list[list[int]]) -> int:
 ```python
 def conta_zeros(a: list[list[int]]) -> int:
     '''
-    Conta a quantidade de zeros da matriz *m*.
+    Conta a quantidade de zeros da matriz *a*.
 
     Exemplos
     >>> conta_zeros([[1, 0, 7], [0, 1, 0]])
@@ -1273,7 +1271,7 @@ def conta_zeros(a: list[list[int]]) -> int:
 
 # Exemplo - matriz transposta
 
-Projete uma função que crie a matriz transposta de uma data matriz.
+Projete uma função que crie a matriz transposta de uma dada matriz.
 
 
 # Exemplo - matriz transposta
@@ -1285,9 +1283,9 @@ Projete uma função que crie a matriz transposta de uma data matriz.
 ```python
 def transposta(a: list[list[int]]) -> list[list[int]]:
     '''
-    Cria a matriz transposta de *m*.
+    Cria a matriz transposta de *a*.
 
-    Requer que *m* seja regular.
+    Requer que *a* seja regular.
 
     Exemplos
     >>> transposta([[4, 5, 1], [7, 8, 9]])
@@ -1710,7 +1708,18 @@ Quando usar cada uma? \pause
 
 - O para cada é mais restrito mas mais simples. O enquanto é mais genérico mas mais complicado. Quando possível, preferimos o para cada. \pause
 
-Em algumas situações fazemos uma implementação inicial usando o para cada e depois, na revisão, mudamos para o enquanto se tivermos algum benefício, como a simplificação do código ou ganho de desempenho.
+Quando usamos o "para cada no intervalo"? \pause
+
+- Quando estamos interessados nos índices dos elementos da lista (ou em um intervalo específico dos elementos).
+
+
+# Revisão
+
+Em algumas situações fazemos uma implementação inicial usando o para cada e depois, na revisão, mudamos para o enquanto se tivermos algum benefício, como a simplificação do código ou ganho de desempenho. \pause
+
+Quais são as quatro perguntas para implementar uma função com o "enquanto"? \pause
+
+- Quais valores queremos calcular? Como são inicializados? Como são atualizados? Qual é a condição de repetição?
 
 
 # Revisão
@@ -1720,6 +1729,17 @@ O que fazer quando é difícil responder como os valores são atualizados ou qua
 - Utilizar a estratégia de generalização: começamos com uma repetição física de código para entradas restritas (tamanho ou valores fixos) e depois transformamos a repetição física em repetição lógica. \pause
 
 Algumas funções, como a função `primo`, requerem diversas revisões. Nesses casos é importante balancear o tempo gasto nas revisões com o benefício que elas trazem.
+
+
+# Revisão
+
+O que são matrizes e como representá-las em Python? \pause
+
+- Matrizes são arranjos bidimensionais. Em Python, usamos lista de listas. \pause
+
+Que tipo de matrizes utilizamos? \pause
+
+- Apenas matrizes regulares, onde todas as linhas têm a mesma quantidade de elementos.
 
 <!--
 
