@@ -292,6 +292,19 @@ Agora vamos trocar a repetição física do código por uma repetição lógica 
 
 # Para cada
 
+Vocês já dominam funções, seleção e tipos do usuário. Agora vamos desbloquear uma nova ferramenta essencial: chegou a hora de subir de nível! \pause
+
+\begin{center}
+\Huge \textbf{Nível 3}
+\end{center}
+
+\begin{center}
+\Huge \textcolor{orange}{$\bigstar$} \textbf{Repetição} \textcolor{orange}{$\bigstar$}
+\end{center}
+
+
+# Para cada
+
 Em Python, uma das construções de repetição é o "para cada", que tem a seguinte forma geral \pause
 
 \small
@@ -312,7 +325,7 @@ O "para cada" funciona da seguinte maneira: \pause
 - ... \pause
 - E assim por diante até que todos os valores de `lista` tenham sido atribuídos para `var`. \pause
 
-Ou seja, o "para cada" executa as mesmas instruções atribuindo cada valor de `lista` para `var`, por isso ele chama "para cada"!
+Ou seja, o "para cada" executa as mesmas instruções atribuindo cada valor de `lista` para `var`, por isso se chama "para cada"!
 
 
 # Para cada
@@ -442,9 +455,9 @@ sorteado(35, [1, 7, 32, 35, 50, 51])
 
 Vamos ver como a execução passo a passo funciona para o "para cada". \pause
 
-Qual é a ordem que as linhas são executadas? \pause
+Qual é a ordem em que as linhas são executadas? \pause
 
-\small
+\footnotesize
 
 10, \pause 4 (`em_sorteados = False`{.python}) \pause
 
@@ -655,7 +668,7 @@ soma([5, 1, 4])
 <div class="column" width="48%">
 Vamos exercitar mais uma vez a execução passo a passo. \pause
 
-Qual é a ordem que as linhas são executadas? \pause
+Qual é a ordem em que as linhas são executadas? \pause
 
 \footnotesize
 
@@ -947,7 +960,7 @@ Podemos utilizar essa estratégia? \pause Sim! \pause
 
 Isso é o que chamamos de **plano** ou **esboço de solução**, isto é, uma descrição em alto nível das etapas do processamento da função. \pause
 
-Depois que temos um esboço, implementamos cada uma das etapas utilizando uma estratégias, ou seja, a implementação final é uma combinação de estratégias.
+Depois que temos um esboço, implementamos cada uma das etapas utilizando estratégias, ou seja, a implementação final é uma combinação de estratégias.
 
 
 # Exemplo - média tamanho strings - implementação
@@ -1113,9 +1126,8 @@ Para listas pequenas, podemos comparar a saída diretamente:
     [Aluno(nome='Ana', media=7.0, frequencia=80.0)]
 ```
 
-\pause
 
-\normalsize
+# Exemplos com listas de estruturas e enumerações
 
 Para listas maiores, verificamos o tamanho e cada elemento separadamente:
 
@@ -1130,6 +1142,17 @@ Para listas maiores, verificamos o tamanho e cada elemento separadamente:
     >>> resultado[1]
     Aluno(nome='Jorge', media=6.0, frequencia=75.0)
 ```
+
+
+# Revisão
+
+Quando devemos usar arranjos e quando devemos usar estruturas? \pause
+
+- Usamos arranjos quando os itens são da mesma natureza (notas, nomes, etc). Usamos estruturas quando cada item tem uma interpretação particular (horas, minutos, segundos). \pause
+
+Qual é a diferença entre valores mutáveis e imutáveis? \pause
+
+- Valores mutáveis (listas, estruturas) podem ser alterados após a criação. Valores imutáveis (`int`{.python}, `float`{.python}, `bool`{.python}, `str`{.python}) não podem.
 
 
 # Revisão
@@ -1151,7 +1174,7 @@ O que fazemos quando não conseguimos definir como inicializar ou atualizar os v
 
 - Definimos um esboço de solução, que computa valores intermediários que serão utilizados para computar o valor final. \pause
 
-No caso de `media_tamanhos`, primeiro computamos a soma dos tamanhos de forma incremental e depois computamos a média diretamente.
+No caso de `media_tamanho`, primeiro computamos a soma dos tamanhos de forma incremental e depois computamos a média diretamente.
 
 
 # Revisão
