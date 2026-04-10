@@ -325,18 +325,25 @@ Alguma parte desse processo parece repetitiva? \pause
 
 Sim, a verificação dos exemplos. \pause
 
-Ao invés de executarmos cada exemplo manualmente, vamos usar uma biblioteca que executa os exemplos e verifica se as saídas estão corretas automaticamente!
+O podemos utilizar para executar tarefas repetitivas? \pause
+
+Um programa de computador. \pause
+
+Usaremos o próprio Spython para isso. \pause
 
 
 # Verificação automatizada
 
-O Spython consegue executar os exemplos e verificar se as saídas estão corretas automaticamente! \pause
-
-Para isso, basta clicar em **Run** no Spython. \pause
+Quando clicamos em **Run** no Spython, ele formata o código, faz a verificação estática de tipos, executa os exemplos e por fim, se não identificou nenhuma falha, executa o programa. \pause
 
 Como o Spython identifica os exemplos que devem ser executados? \pause
 
-Ele procura trechos de comentários semelhantes a uma seção do modo interativo, por isso escrevemos os exemplos com `>>>`!
+Através da biblioteca `doctest`, ele procura trechos de comentários semelhantes a uma seção do modo interativo (por isso escrevemos os exemplos com `>>>`), extrai os códigos de entrada e a saídas, executa cada código de entrada e verifica se a saída produzida é a esperada.
+
+
+# Verificação automatizada
+
+![](imagens/doctest.pdf)
 
 
 # Exemplo - Número de azulejos
