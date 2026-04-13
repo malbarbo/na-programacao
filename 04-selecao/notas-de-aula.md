@@ -1,6 +1,7 @@
 ---
 # vim: set spell spelllang=pt_br:
 title: Seleção
+# TODO: falar de função total e função parcial
 ---
 
 # Introdução
@@ -784,13 +785,18 @@ Está faltando considerar um caso extremo, quando `texto` é vazio. \pause
 
 Como proceder nesse caso? \pause Temos duas opções: \pause
 
-- Definimos que vazio não é uma entrada válida; ou \pause
-- Definimos uma saída para a entrada vazia. \pause
+- Definimos que vazio não é uma entrada válida (função parcial); ou \pause
+- Definimos uma saída para a entrada vazia (função total). \pause
 
 Vamos explorar as duas possibilidades.
 
 </div>
 </div>
+
+
+# Ponto final - especificação
+
+Fazendo `ponto_final`{.python} uma função parcial.
 
 
 # Ponto final - especificação - vazio inválido
@@ -861,7 +867,7 @@ Se usando ou não o `assert`{.python} o programa falha, porque utilizar o `asser
 <div class="column" width="48%">
 \footnotesize
 
-```
+```python-repl
 >>> # sem assert
 >>> ponto_final('')
 Traceback (most recent call last):
@@ -878,7 +884,7 @@ IndexError: string index out of range
 
 \footnotesize
 
-```
+```python-repl
 >>> # com assert
 >>> ponto_final('')
 Traceback (most recent call last):
@@ -903,6 +909,11 @@ Podemos pensar na especificação de uma função como um **contrato** entre o f
 - O **fornecedor** se compromete a produzir o resultado descrito no propósito. \pause
 
 O `assert`{.python} é o mecanismo que usamos para verificar se o usuário está cumprindo a sua parte no contrato.
+
+
+# Ponto final - especificação
+
+Fazendo `ponto_final`{.python} uma função total.
 
 
 # Ponto final - especificação - vazio válido
@@ -941,14 +952,15 @@ Implementação
 
 \pause
 
-Como temos duas formas de resposta, adiciona ou não o ponto, usamos seleção. \pause A condição para não adicionar ponto é que `texto` seja `''`{.python} ou termine com ponto. \pause
+Quantas formas temos? \pause Três formas. \pause Então usamos seleção. \pause
 
 \footnotesize
 
 ```python
 def ponto_final(texto: str) -> str:
-    if texto == '' or \
-                texto[len(texto) - 1] == '.':
+    if texto == ''
+        com_ponto = ''
+    elif text[len(texto) - 1] == '.':
         com_ponto = texto
     else:
         com_ponto = texto + '.'

@@ -4,19 +4,18 @@ def ponto_final(texto: str) -> str:
     contrário, produz *texto* concatenado com '.'.
 
     Exemplos
-
-    Adiciona o ponto
-
-    >>> ponto_final('Sim, eu gostaria')
-    'Sim, eu gostaria.'
-
-    Não adiciona o ponto
+    >>> # Não adiciona o ponto
     >>> ponto_final('')
     ''
     >>> ponto_final('Talvez.')
     'Talvez.'
+    >>> # Adiciona ponto
+    >>> ponto_final('Sim, eu gostaria')
+    'Sim, eu gostaria.'
     '''
-    if texto == '' or texto[-1] == '.':
+    if texto == '':
+        com_ponto = ''
+    elif texto[len(texto) - 1] == '.':
         com_ponto = texto
     else:
         com_ponto = texto + '.'
