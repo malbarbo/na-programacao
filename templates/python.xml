@@ -716,11 +716,67 @@
 				<IncludeRules context="stringescape"/>
 			</context>
 
+			<!-- Doctest highlighting inside docstrings (Triple A/Q strings).
+			     Mimics python-repl.xml: prompt is SpecialChar, code is highlighted, output is Normal. -->
+
+			<!-- Shared Python rules for doctest code lines (inline, no external context pushes) -->
+			<context name="DoctestRules" attribute="Normal Text" lineEndContext="#stay">
+				<DetectSpaces attribute="Normal Text"/>
+
+				<RegExpr attribute="Comment" String="#[^\n]*"/>
+
+				<keyword attribute="Special Variable" String="specialvars" context="#stay"/>
+				<keyword attribute="Flow Control Keyword" String="flow" context="#stay"/>
+				<keyword attribute="Operator Keyword" String="operators" context="#stay"/>
+				<keyword attribute="Builtin Function" String="builtinfuncs" context="#stay"/>
+				<keyword attribute="Definition Keyword" String="defs" context="#stay"/>
+				<keyword attribute="Import" String="import" context="#stay"/>
+				<keyword attribute="Exceptions" String="exceptions" context="#stay"/>
+				<keyword attribute="Overloaders" String="overloaders" context="#stay"/>
+				<keyword attribute="Extensions" String="bindings" context="#stay"/>
+
+				<RegExpr attribute="String" String="[rRuU]?'(?:[^'\\]|\\.)*'"/>
+				<RegExpr attribute="String" String="[rRuU]?&quot;(?:[^&quot;\\]|\\.)*&quot;"/>
+				<RegExpr attribute="F-String" String="[fF][rR]?'(?:[^'\\]|\\.)*'"/>
+				<RegExpr attribute="F-String" String="[fF][rR]?&quot;(?:[^&quot;\\]|\\.)*&quot;"/>
+
+				<RegExpr attribute="Float" String="&beforeDigit;(?:&digitPart;\.(?:&digitPart;)?|&beforePointFloat;\.&digitPart;)(?:[eE][+-]?&digitPart;)?"/>
+				<RegExpr attribute="Float" String="&beforeDigit;&digitPart;[eE][+-]?&digitPart;"/>
+				<RegExpr attribute="Hex" String="&beforeDigit;0[xX](?:_?[0-9a-fA-F])+"/>
+				<RegExpr attribute="Int" String="&beforeDigit;(?:[1-9](?:_?[0-9])*|0(?:_?0)*)"/>
+
+				<DetectIdentifier attribute="Normal Text"/>
+
+				<AnyChar attribute="Operator" String="+*/%|=;&lt;&gt;!^&amp;~-@" context="#stay"/>
+			</context>
+
+			<context name="DoctestCodeA" attribute="Normal Text" lineEndContext="#pop!DoctestOutputA">
+				<IncludeRules context="DoctestRules"/>
+			</context>
+
+			<context name="DoctestCodeQ" attribute="Normal Text" lineEndContext="#pop!DoctestOutputQ">
+				<IncludeRules context="DoctestRules"/>
+			</context>
+
+			<context name="DoctestOutputA" attribute="Normal Text" lineEndContext="#stay" lineEmptyContext="#pop">
+				<RegExpr String="\s*$" column="0" context="#pop"/>
+				<StringDetect attribute="String Deliminator" String="'''" context="#pop#pop" endRegion="Triple A-region"/>
+				<RegExpr attribute="String Substitution" String="&gt;&gt;&gt;(?: |$)" firstNonSpace="true" context="#pop!DoctestCodeA"/>
+				<RegExpr attribute="String Substitution" String="\.\.\.(?: |$)" firstNonSpace="true" context="#pop!DoctestCodeA"/>
+			</context>
+
+			<context name="DoctestOutputQ" attribute="Normal Text" lineEndContext="#stay" lineEmptyContext="#pop">
+				<RegExpr String="\s*$" column="0" context="#pop"/>
+				<StringDetect attribute="String Deliminator" String="&quot;&quot;&quot;" context="#pop#pop" endRegion="Triple Q-region"/>
+				<RegExpr attribute="String Substitution" String="&gt;&gt;&gt;(?: |$)" firstNonSpace="true" context="#pop!DoctestCodeQ"/>
+				<RegExpr attribute="String Substitution" String="\.\.\.(?: |$)" firstNonSpace="true" context="#pop!DoctestCodeQ"/>
+			</context>
+
 			<!-- Strings -->
 
 			<!-- format characters -->
 			<context name="stringformat" attribute="String Substitution" lineEndContext="#stay">
-				<RegExpr attribute="String Substitution" String="&strsubstitution_py2;|&strsubstitution_py3;" context="#stay"/>
+				<RegExpr attribute="String Substitution" String="&strsubstitution_py3;" context="#stay"/>
 				<Detect2Chars attribute="String Substitution" char="{" char1="{" context="#stay" />
 				<Detect2Chars attribute="String Substitution" char="}" char1="}" context="#stay" />
 			</context>
@@ -776,6 +832,8 @@
 			<!-- Triple-quoted A-strings -->
 			<context name="Triple A-string" attribute="String" lineEndContext="#stay" noIndentationBasedFolding="true">
 				<DetectSpaces attribute="String"/>
+				<RegExpr attribute="String Substitution" String="&gt;&gt;&gt;(?: |$)" firstNonSpace="true" context="DoctestCodeA"/>
+				<RegExpr attribute="String Substitution" String="\.\.\.(?: |$)" firstNonSpace="true" context="DoctestCodeA"/>
 				<DetectIdentifier attribute="String"/>
 				<IncludeRules context="stringescape"/>
 				<IncludeRules context="stringformat"/>
@@ -841,6 +899,8 @@
 			<!-- Triple-quoted Q-strings -->
 			<context name="Triple Q-string" attribute="String" lineEndContext="#stay" noIndentationBasedFolding="true">
 				<DetectSpaces attribute="String"/>
+				<RegExpr attribute="String Substitution" String="&gt;&gt;&gt;(?: |$)" firstNonSpace="true" context="DoctestCodeQ"/>
+				<RegExpr attribute="String Substitution" String="\.\.\.(?: |$)" firstNonSpace="true" context="DoctestCodeQ"/>
 				<DetectIdentifier attribute="String"/>
 				<IncludeRules context="stringescape"/>
 				<IncludeRules context="stringformat"/>
