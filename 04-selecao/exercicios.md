@@ -65,13 +65,13 @@ urlcolor: Blue
         return r
     ```
 
-    a) `f(10, 3)`
+    a) `f(10, 3)`{.python}
 
-    a) `f(5, 5)`
+    a) `f(5, 5)`{.python}
 
-    a) `f(3, 10)`
+    a) `f(3, 10)`{.python}
 
-    a) `f(7, 5)`
+    a) `f(7, 5)`{.python}
 
 
 # Praticando
