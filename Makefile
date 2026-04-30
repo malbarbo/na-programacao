@@ -17,6 +17,7 @@ PANDOC_NOTAS_CMD=$(PANDOC) \
 		--syntax-definition ../templates/python.xml \
 		--syntax-definition ../templates/python-repl.xml \
 		--highlight-style ../templates/spython.theme \
+		--lua-filter=../filters/spython_image.lua \
 		--to beamer \
 		--standalone
 

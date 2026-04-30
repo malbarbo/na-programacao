@@ -11,12 +11,16 @@ pdfs = []
 handouts = []
 texs = []
 
+
 def gen_pdf(kind):
-    print(f'{target}: $(PANDOC) $(TECTONIC) {cap}/{item} templates/default.latex templates/python.xml templates/python-repl.xml templates/spython.theme')
+    print(
+        f'{target}: $(PANDOC) $(TECTONIC) {cap}/{item} templates/default.latex templates/python.xml templates/python-repl.xml templates/spython.theme filters/spython_image.lua'
+    )
     print(f'\t@echo {target}')
     print(f'\t@mkdir -p {DEST}/handout')
     print(f'\t@cd {cap} && ../$(PANDOC_{kind}_CMD) -o ../{target} {item}')
     print()
+
 
 for cap in sorted(os.listdir()):
     if not os.path.isdir(cap) or cap[2:3] != '-':
