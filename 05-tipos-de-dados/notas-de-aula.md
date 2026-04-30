@@ -20,10 +20,10 @@ Um **tipo de dado** define um conjunto de valores e as operações que podem ser
 
 Exemplos \pause
 
-- `bool`{.python} $= \{$ `True`{.python} , `False`{.python} $\}$ \pause
-- `int`{.python} = $\{\dots, -2, -1, 0, 1, 2, \dots \}$ \pause
-- `float`{.python} = $\{\dots, -0.1, -0.0, 0.0, 0.1, \dots \}$ \pause
-- `str`{.python} = $\{$ `''`{.python}, `'a'`{.python}, `'b'`{.python}, $\dots \}$
+- `bool = {True, False}`{.python} \pause
+- `int = {..., -2, -1, 0, 1, 2, ...}`{.python} \pause
+- `float = {..., -0.1, ..., 0.0, ..., 0.1, ... }`{.python} \pause
+- `str = { '', 'a', 'b', ...}`{.python}
 
 
 # Requisitos de um tipo de dado
@@ -370,12 +370,12 @@ Para a implementação podemos olhar ou para as formas de respostas ou para a en
 ```python
 def proxima_cor(atual: Cor) -> Cor:
     if atual == Cor.VERDE:
-        proximo = Cor.AMARELO
+        proxima = Cor.AMARELO
     elif atual == Cor.AMARELO:
-        proximo = Cor.VERMELHO
+        proxima = Cor.VERMELHO
     elif atual == Cor.VERMELHO:
-        proximo = Cor.VERDE
-    return ...
+        proxima = Cor.VERDE
+    return proxima
 ```
 
 </div>
