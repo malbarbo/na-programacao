@@ -1,5 +1,5 @@
 def numero_digitos(n: int) -> int:
-    '''
+    """
     Calcula o número de dígitos de *n*.
     Se *n* for 0, devolve 1.
     Se *n* for negativo, devolve a quantidade de dígitos
@@ -12,5 +12,5 @@ def numero_digitos(n: int) -> int:
     4
     >>> numero_digitos(-45)
     2
-    '''
+    """
     return len(str(abs(n)))

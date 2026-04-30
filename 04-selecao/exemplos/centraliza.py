@@ -1,5 +1,5 @@
 def centraliza(s: str, n: int) -> str:
-    '''
+    """
     Produz uma string adicionando espaços no início e fim de *s*, se
     necessário, de modo que ela fique com *n* caracteres.
 
@@ -21,7 +21,7 @@ def centraliza(s: str, n: int) -> str:
     '  apenas  '
     >>> centraliza('apenas', 9)
     '  apenas '
-    '''
+    """
     if len(s) >= n:
         r = s
     else:

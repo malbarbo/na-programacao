@@ -1,7 +1,8 @@
 from enum import Enum, auto
 
+
 class Direcao(Enum):
-    '''
+    """
     Representa um dos pontos cardiais de acordo com o esquema a seguir
 
           Norte
@@ -9,7 +10,8 @@ class Direcao(Enum):
     Oeste -   - Leste
             |
            Sul
-    '''
+    """
+
     NORTE = auto()
     LESTE = auto()
     SUL = auto()
@@ -17,7 +19,7 @@ class Direcao(Enum):
 
 
 def direcao_oposta(d: Direcao) -> Direcao:
-    '''Produz a direção oposta de *d*.
+    """Produz a direção oposta de *d*.
 
     Exemplos
     >>> direcao_oposta(Direcao.NORTE).name
@@ -28,7 +30,7 @@ def direcao_oposta(d: Direcao) -> Direcao:
     'OESTE'
     >>> direcao_oposta(Direcao.OESTE).name
     'LESTE'
-    '''
+    """
     if d == Direcao.NORTE:
         do = Direcao.SUL
     elif d == Direcao.SUL:
@@ -41,7 +43,7 @@ def direcao_oposta(d: Direcao) -> Direcao:
 
 
 def direcao_90_horario(d: Direcao) -> Direcao:
-    '''
+    """
     Devolve a direcao que está a 90 graus no sentido horário de *d*.
 
     Exemplos
@@ -53,7 +55,7 @@ def direcao_90_horario(d: Direcao) -> Direcao:
     'OESTE'
     >>> direcao_90_horario(Direcao.OESTE).name
     'NORTE'
-    '''
+    """
     if d == Direcao.NORTE:
         dh = Direcao.LESTE
     elif d == Direcao.LESTE:
@@ -66,7 +68,7 @@ def direcao_90_horario(d: Direcao) -> Direcao:
 
 
 def direcao_90_anti_horario(d: Direcao) -> Direcao:
-    '''
+    """
     Devolve a direcao que está a 90 graus no sentido anti-horário de *d*.
 
     Exemplos
@@ -78,5 +80,5 @@ def direcao_90_anti_horario(d: Direcao) -> Direcao:
     'LESTE'
     >>> direcao_90_anti_horario(Direcao.OESTE).name
     'SUL'
-    '''
+    """
     return direcao_90_horario(direcao_90_horario(direcao_90_horario(d)))

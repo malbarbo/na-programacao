@@ -1,5 +1,5 @@
 def maximo(lst: list[int]) -> int:
-    '''
+    """
     Encontra o valor máximo de *lst*.
     Requer que lst seja não vazia.
 
@@ -12,7 +12,7 @@ def maximo(lst: list[int]) -> int:
     4
     >>> maximo([2, 4, 3, 7])
     7
-    '''
+    """
     assert len(lst) != 0
     maximo = lst[0]
     for n in lst:

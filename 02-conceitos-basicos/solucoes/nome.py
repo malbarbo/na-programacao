@@ -1,5 +1,5 @@
 def nome_eh_paula(nome_completo: str) -> bool:
-    '''
+    """
     Produz True se o primeiro nome de *nome_completo* é Paula, False caso contrário.
 
     Requer que *nome_completo* não começe e nem termine com espaços e que
@@ -12,12 +12,12 @@ def nome_eh_paula(nome_completo: str) -> bool:
     False
     >>> nome_eh_paula('J B')
     False
-    '''
+    """
     return nome_completo[:6] == 'Paula '
 
 
 def sobrenome_eh_silva(nome_completo: str) -> bool:
-    '''
+    """
     Produz True se o último nome (sobrenome) de *nome_completo* é Silva, False
     caso contrário.
 
@@ -31,5 +31,5 @@ def sobrenome_eh_silva(nome_completo: str) -> bool:
     False
     >>> nome_eh_paula('J B')
     False
-    '''
+    """
     return nome_completo[-6:] == ' Silva'

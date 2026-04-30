@@ -1,5 +1,5 @@
 def isento_tarifa(idade: int) -> bool:
-    '''
+    """
     Produz True se uma pessoa de *idade* anos é isento da tarifa de transporte
     público, isto é, tem menos que 18 anos ou 65 ou mais. Produz False caso
     contrário.
@@ -15,5 +15,5 @@ def isento_tarifa(idade: int) -> bool:
     True
     >>> isento_tarifa(70)
     True
-    '''
+    """
     return idade < 18 or idade >= 65

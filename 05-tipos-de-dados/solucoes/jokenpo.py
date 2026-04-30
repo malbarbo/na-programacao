@@ -8,26 +8,29 @@ from enum import Enum, auto
 # - A jogada será representada por uma enumeração
 # - O resultado será respresentado por uma enumeração
 
+
 class Jogada(Enum):
-    '''
+    """
     Uma das jogadas (símbolo) no jogo Jokenpô.
-    '''
+    """
+
     PEDRA = auto()
     PAPEL = auto()
     TESOURA = auto()
 
 
 class Resultado(Enum):
-    '''
+    """
     O resultado de uma rodada no jogo Jokenpô.
-    '''
+    """
+
     EMPATE = auto()
     PRIMEIRO = auto()
     SEGUNDO = auto()
 
 
 def jokenpo_resultado(a: Jogada, b: Jogada) -> Resultado:
-    '''
+    """
     Determina qual é o símbolo vencedor, *a* ou *b*.
 
     PEDRA ganha de TESOURA, TESOURA ganha de PAPEL e PAPEL ganha de PEDRA.
@@ -60,12 +63,14 @@ def jokenpo_resultado(a: Jogada, b: Jogada) -> Resultado:
     'SEGUNDO'
     >>> jokenpo_resultado(Jogada.TESOURA, Jogada.PEDRA).name
     'SEGUNDO'
-    '''
+    """
     if a == b:
         r = Resultado.EMPATE
-    elif (a == Jogada.PEDRA and b == Jogada.TESOURA) or \
-            (a == Jogada.TESOURA and b == Jogada.PAPEL) or \
-            (a == Jogada.PAPEL and b == Jogada.PEDRA):
+    elif (
+        (a == Jogada.PEDRA and b == Jogada.TESOURA)
+        or (a == Jogada.TESOURA and b == Jogada.PAPEL)
+        or (a == Jogada.PAPEL and b == Jogada.PEDRA)
+    ):
         r = Resultado.PRIMEIRO
     else:
         r = Resultado.SEGUNDO

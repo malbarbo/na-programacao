@@ -1,5 +1,5 @@
 def par(n: int) -> bool:
-    '''
+    """
     Devolve True se *n* é par, isso é, é múltiplo de 2. False caso contrário.
     Requer que n >= 0.
 
@@ -14,7 +14,7 @@ def par(n: int) -> bool:
     False
     >>> par(4)
     True
-    '''
+    """
     assert n >= 0
     if n == 0:
         p = True
@@ -24,8 +24,9 @@ def par(n: int) -> bool:
     # ou
     # return n == 0 or impar(n - 1)
 
+
 def impar(n: int) -> bool:
-    '''
+    """
     Devolve False se *n* é ímpar, isso é, não é múltiplo de 2. False caso contrário.
     Requer que n >= 0.
 
@@ -40,7 +41,7 @@ def impar(n: int) -> bool:
     True
     >>> impar(4)
     False
-    '''
+    """
     assert n >= 0
     if n == 0:
         p = False

@@ -1,5 +1,5 @@
 def novo_seculo(data: str) -> bool:
-    '''
+    """
     Verifica se *data* representa o primeiro dia de um século, isto
     é, primeiro de janeiro de um ano que termina com 00.
 
@@ -14,7 +14,7 @@ def novo_seculo(data: str) -> bool:
     False
     >>> novo_seculo('01/01/1230')
     False
-    '''
+    """
     dia = data[:2]
     mes = data[3:5]
     decada = data[8:]

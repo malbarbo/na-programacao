@@ -1,5 +1,5 @@
 def palindromo(lst: list[int]) -> bool:
-    '''
+    """
     Produz True se *lst* é palíndromo, isto é, tem os mesmos elementos quando
     vistos da direira para esquerda e da esquerda para direita. Produz False
     caso contrário.
@@ -19,7 +19,7 @@ def palindromo(lst: list[int]) -> bool:
     True
     >>> palindromo([1, 5, 1, 5])
     False
-    '''
+    """
     eh_palindromo = True
     i = 0
     j = len(lst) - 1

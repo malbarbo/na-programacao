@@ -1,5 +1,5 @@
 def em_ordem(lst: list[int]) -> bool:
-    '''
+    """
     Produz True se os elementos de *lst* estão em ordem não decrescente, False
     caso contrário.
 
@@ -16,7 +16,7 @@ def em_ordem(lst: list[int]) -> bool:
     True
     >>> em_ordem([3, 3, 5, 4, 6])
     False
-    '''
+    """
     if lst == []:
         ordem = True
     elif len(lst) == 1:

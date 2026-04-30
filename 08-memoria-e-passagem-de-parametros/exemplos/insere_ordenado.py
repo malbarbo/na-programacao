@@ -1,5 +1,5 @@
 def insere_ordenado(lst: list[int], v: int):
-    '''
+    """
     Insere *v* em *lst* de maneira que *lst* permaneça em ordem não
     decrescente.
 
@@ -22,7 +22,7 @@ def insere_ordenado(lst: list[int], v: int):
     >>> insere_ordenado(lst, 8)
     >>> lst
     [1, 3, 4, 5, 8]
-    '''
+    """
     lst.append(v)
     i = len(lst) - 1
     while i > 0 and lst[i - 1] > lst[i]:

@@ -6,8 +6,9 @@
 #
 # O texto será representado com uma string.
 
+
 def sem_espacos_inicio_fim(texto: str) -> bool:
-    '''
+    """
     Produz True se *texto* não começa e nem termina com espaços.
     Produz False, caso contrário.
 
@@ -22,5 +23,5 @@ def sem_espacos_inicio_fim(texto: str) -> bool:
     False
     >>> sem_espacos_inicio_fim(' no início e fim ')
     False
-    '''
+    """
     return texto == '' or (texto[0] != ' ' and texto[-1] != ' ')

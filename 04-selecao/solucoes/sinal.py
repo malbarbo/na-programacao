@@ -1,5 +1,5 @@
 def sinal(n: int) -> int:
-    '''
+    """
     Determina o sinal de *n*.
     Se n < 0, produz -1.
     Se n == 0, produz 0.
@@ -12,7 +12,7 @@ def sinal(n: int) -> int:
     0
     >>> sinal(10)
     1
-    '''
+    """
     if n < 0:
         s = -1
     elif n == 0:

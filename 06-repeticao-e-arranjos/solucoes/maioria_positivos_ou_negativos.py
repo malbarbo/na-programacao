@@ -1,13 +1,16 @@
 from enum import Enum, auto
 
+
 class Maioria(Enum):
-    '''Representa o tipo de valores que é a maioria em uma lista de números'''
+    """Representa o tipo de valores que é a maioria em uma lista de números"""
+
     POSITIVOS = auto()
     NEGATIVOS = auto()
     NENHUM = auto()
 
+
 def maioria(lst: list[int]) -> Maioria:
-    '''
+    """
     Determinar a classe da maioria dos elementos de *lst*.
     Exemplos
     >>> maioria([]).name
@@ -18,7 +21,7 @@ def maioria(lst: list[int]) -> Maioria:
     'NEGATIVOS'
     >>> maioria([0, -4, 0, 2, 0]).name
     'NENHUM'
-    '''
+    """
     # Conta os positivos e negativos
     positivos = 0
     negativos = 0

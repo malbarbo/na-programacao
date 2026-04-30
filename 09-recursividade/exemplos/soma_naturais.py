@@ -1,5 +1,5 @@
 def soma_naturais(n: int) -> int:
-    '''
+    """
     Soma todos os número naturais menores ou iguais que *n*.
 
     Requer que n >= 0.
@@ -15,7 +15,7 @@ def soma_naturais(n: int) -> int:
     6
     >>> soma_naturais(4)
     10
-    '''
+    """
     if n == 0:
         soma = 0
     else:

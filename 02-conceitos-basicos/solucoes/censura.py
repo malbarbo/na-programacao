@@ -1,5 +1,5 @@
 def censura(frase: str, n: int) -> str:
-    '''
+    """
     Produz uma string trocando as as primeiras *n* letras de *frase* por *n* 'x'.
 
     Exemplos
@@ -7,5 +7,5 @@ def censura(frase: str, n: int) -> str:
     'xxxxx de lanche!'
     >>> censura('ferrou geral!', 6)
     'xxxxxx geral!'
-    '''
+    """
     return 'x' * n + frase[n:]

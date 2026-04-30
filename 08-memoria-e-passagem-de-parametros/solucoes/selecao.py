@@ -1,5 +1,5 @@
 def ordena_selecao(lst: list[int]):
-    '''
+    """
     Ordena os valores de *lst* em ordem não decrescente.
 
     Exemplos
@@ -7,7 +7,7 @@ def ordena_selecao(lst: list[int]):
     >>> ordena_selecao(lst)
     >>> lst
     [1, 2, 4, 5, 8]
-    '''
+    """
     # A sublista lst[:i] está ordenada
     for i in range(len(lst) - 1):
         # Índice do elemento mínimo de lst[i:]

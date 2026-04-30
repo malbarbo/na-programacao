@@ -1,18 +1,20 @@
 from dataclasses import dataclass
 
+
 @dataclass
 class Tempo:
-    '''
+    """
     Representa o tempo de duração de um evento. horas, minutos e segundos devem
     ser positivos. minutos e segundos devem ser menores que 60.
-    '''
+    """
+
     horas: int
     minutos: int
     segundos: int
 
 
 def segundos_para_tempo(segundos: int) -> Tempo:
-    '''
+    """
     Converte a quantidade *segundos* para o tempo equivalente em horas, minutos
     e segundos. A quantidade de segundos e minutos da resposta é sempre menor
     que 60.
@@ -28,7 +30,7 @@ def segundos_para_tempo(segundos: int) -> Tempo:
     >>> # 160 // 60 -> 2 mins, 160 % 60 -> 40 segs
     >>> segundos_para_tempo(3760)
     Tempo(horas=1, minutos=2, segundos=40)
-    '''
+    """
     h = segundos // 3600
     # segundos que não foram convertidos para hora
     restantes = segundos % 3600
@@ -38,7 +40,7 @@ def segundos_para_tempo(segundos: int) -> Tempo:
 
 
 def tempo_para_string(t: Tempo) -> str:
-    '''
+    """
     Converte *t* em uma mensagem para o usuário. Cada componente de *t* aparece
     com a sua unidade, mas se o valor do componente for 0, ele não aparece na
     mensagem. Os componentes são separados com "e" ou "," respeitando as regras
@@ -78,7 +80,7 @@ def tempo_para_string(t: Tempo) -> str:
     >>> # horas != 0 and minutos == 0 and segundos == 0
     >>> tempo_para_string(Tempo(3, 0, 0))
     '3 hora(s)'
-    '''
+    """
     h = str(t.horas) + ' hora(s)'
     m = str(t.minutos) + ' minuto(s)'
     s = str(t.segundos) + ' segundo(s)'

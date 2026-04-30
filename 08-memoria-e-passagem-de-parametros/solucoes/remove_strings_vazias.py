@@ -1,5 +1,5 @@
 def remove_strings_vazias(lst: list[str]):
-    '''
+    """
     Remove as strings vazias de *lst*.
 
     Exemplos
@@ -15,7 +15,7 @@ def remove_strings_vazias(lst: list[str]):
     >>> remove_strings_vazias(lst)
     >>> lst
     ['esta', 'string', 'nao', 'tem']
-    '''
+    """
     # Todos os elementos nas posições < i não são vazios
     # Todos os elementos nas posições >= i e < j são vazios
     i = 0

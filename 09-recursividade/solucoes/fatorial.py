@@ -1,5 +1,5 @@
 def fatorial(n: int) -> int:
-    '''
+    """
     Calcula o fatorial de *n*, isto é, o produto dos *n* primeiros números
     naturais maiores que 0.
 
@@ -16,7 +16,7 @@ def fatorial(n: int) -> int:
     6
     >>> fatorial(4)
     24
-    '''
+    """
     assert n >= 0
     if n == 0:
         fat = 1

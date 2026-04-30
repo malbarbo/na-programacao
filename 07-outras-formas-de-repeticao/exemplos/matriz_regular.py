@@ -1,5 +1,5 @@
 def eh_regular(a: list[list[int]]) -> bool:
-    '''
+    """
     Produz True se *a* é uma matriz regular, isso é, todas as linhas tem a
     mesma quantidade de elementos.
 
@@ -24,7 +24,7 @@ def eh_regular(a: list[list[int]]) -> bool:
     True
     >>> eh_regular([[2], [4], [7, 2]])
     False
-    '''
+    """
     regular = True
     i = 1
     while i < len(a) and regular:

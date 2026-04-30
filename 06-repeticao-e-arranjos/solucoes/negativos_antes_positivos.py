@@ -1,5 +1,5 @@
 def negativos_antes_positivos(lst: list[int]) -> list[int]:
-    '''
+    """
     Cria uma nova lista com os elementos negativos de *lst*,
     seguidos dos elementos neutros e dos elementos positivos.
     Exemplos
@@ -7,7 +7,7 @@ def negativos_antes_positivos(lst: list[int]) -> list[int]:
     []
     >>> negativos_antes_positivos([3, 0, -1, 0, 4])
     [-1, 0, 0, 3, 4]
-    '''
+    """
     # Separa os negativos, neutros e positivos
     negativos = []
     neutros = []

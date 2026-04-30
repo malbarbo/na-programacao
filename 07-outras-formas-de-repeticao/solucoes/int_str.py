@@ -1,5 +1,5 @@
 def int_str(n: int) -> str:
-    '''
+    """
     Converte *n* para uma string.
     Requer que n >= 0.
 
@@ -14,7 +14,7 @@ def int_str(n: int) -> str:
     '71620'
     >>> int_str(123456)
     '123456'
-    '''
+    """
     assert n >= 0
     digitos = '0123456789'
     if n == 0:

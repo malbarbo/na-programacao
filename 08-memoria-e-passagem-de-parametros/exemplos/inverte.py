@@ -1,5 +1,5 @@
 def inverte(lst: list[int]) -> list[int]:
-    '''
+    """
     Cria uma nova lista invertendo os elementos de *lst*, isto é, o último
     aparece como primeiro, o penúltimo com segundo, e assim por diante.
 
@@ -12,7 +12,7 @@ def inverte(lst: list[int]) -> list[int]:
     [1, 6]
     >>> inverte([5, 1, 4])
     [4, 1, 5]
-    '''
+    """
     r = []
     for i in range(len(lst)):
         r.append(lst[len(lst) - i - 1])
@@ -25,7 +25,7 @@ def inverte(lst: list[int]) -> list[int]:
 
 
 def invertem(lst: list[int]):
-    '''
+    """
     Modifica *lst* invertendo a ordem dos elementos, isto é, colocando o último
     elemento na primeiro posição, o penúltimo elemento na segunda posição, e
     assim por diante.
@@ -39,7 +39,7 @@ def invertem(lst: list[int]):
     >>> invertem(x)
     >>> x
     [8, 6, 1, 4, 5]
-    '''
+    """
     for i in range(len(lst) // 2):
         t = lst[i]
         lst[i] = lst[len(lst) - i - 1]

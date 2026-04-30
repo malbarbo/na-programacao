@@ -1,5 +1,5 @@
 def zera_dezena_e_unidade(n: int) -> int:
-    '''
+    """
     Zera a dezena e unidade de *n*.
 
     >>> zera_dezena_e_unidade(19)
@@ -8,5 +8,5 @@ def zera_dezena_e_unidade(n: int) -> int:
     300
     >>> zera_dezena_e_unidade(5251)
     5200
-    '''
+    """
     return n // 100 * 100

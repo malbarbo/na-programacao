@@ -1,5 +1,5 @@
 def freq(v: int, lst: list[int]) -> int:
-    '''
+    """
     Conta quantas vezes *v* aparece
     em *lst*.
 
@@ -12,7 +12,7 @@ def freq(v: int, lst: list[int]) -> int:
     2
     >>> freq(4, [4, 1, 7, 4, 4])
     3
-    '''
+    """
     if lst == []:
         cont = 0
     else:

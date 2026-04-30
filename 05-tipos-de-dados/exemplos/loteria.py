@@ -10,9 +10,11 @@ from dataclasses import dataclass
 #
 # A aposta e os sorteados, são composta de seis número, então vamos definir uma estrutura.
 
+
 @dataclass
 class SeisNumeros:
-    '''Coleção de 6 números distintos entre 1 e 60.'''
+    """Coleção de 6 números distintos entre 1 e 60."""
+
     a: int
     b: int
     c: int
@@ -22,25 +24,39 @@ class SeisNumeros:
 
 
 def numero_acertos(aposta: SeisNumeros, sorteados: SeisNumeros) -> int:
-    '''
+    """
     Determina quantos números da *aposta* estão em *sorteados*.
 
     Exemplos
-    >>> numero_acertos(SeisNumeros(1, 2, 3, 4, 5, 6), SeisNumeros(8, 12, 20, 41, 52, 57))
+    >>> numero_acertos(
+    ...     SeisNumeros(1, 2, 3, 4, 5, 6), SeisNumeros(8, 12, 20, 41, 52, 57)
+    ... )
     0
-    >>> numero_acertos(SeisNumeros(8, 2, 3, 4, 5, 6), SeisNumeros(8, 12, 20, 41, 52, 57))
+    >>> numero_acertos(
+    ...     SeisNumeros(8, 2, 3, 4, 5, 6), SeisNumeros(8, 12, 20, 41, 52, 57)
+    ... )
     1
-    >>> numero_acertos(SeisNumeros(8, 12, 3, 4, 5, 6), SeisNumeros(8, 12, 20, 41, 52, 57))
+    >>> numero_acertos(
+    ...     SeisNumeros(8, 12, 3, 4, 5, 6), SeisNumeros(8, 12, 20, 41, 52, 57)
+    ... )
     2
-    >>> numero_acertos(SeisNumeros(8, 12, 20, 4, 5, 6), SeisNumeros(8, 12, 20, 41, 52, 57))
+    >>> numero_acertos(
+    ...     SeisNumeros(8, 12, 20, 4, 5, 6), SeisNumeros(8, 12, 20, 41, 52, 57)
+    ... )
     3
-    >>> numero_acertos(SeisNumeros(8, 12, 20, 41, 5, 6), SeisNumeros(8, 12, 20, 41, 52, 57))
+    >>> numero_acertos(
+    ...     SeisNumeros(8, 12, 20, 41, 5, 6), SeisNumeros(8, 12, 20, 41, 52, 57)
+    ... )
     4
-    >>> numero_acertos(SeisNumeros(8, 12, 20, 41, 52, 6), SeisNumeros(8, 12, 20, 41, 52, 57))
+    >>> numero_acertos(
+    ...     SeisNumeros(8, 12, 20, 41, 52, 6), SeisNumeros(8, 12, 20, 41, 52, 57)
+    ... )
     5
-    >>> numero_acertos(SeisNumeros(8, 12, 20, 41, 52, 57), SeisNumeros(8, 12, 20, 41, 52, 57))
+    >>> numero_acertos(
+    ...     SeisNumeros(8, 12, 20, 41, 52, 57), SeisNumeros(8, 12, 20, 41, 52, 57)
+    ... )
     6
-    '''
+    """
     acertos = 0
 
     if sorteado(aposta.a, sorteados):
@@ -60,7 +76,7 @@ def numero_acertos(aposta: SeisNumeros, sorteados: SeisNumeros) -> int:
 
 
 def sorteado(n: int, sorteados: SeisNumeros) -> bool:
-    '''
+    """
     Produz True se *n* é um dos números em *sorteados*. False caso contrário.
 
     Exemplos
@@ -79,7 +95,7 @@ def sorteado(n: int, sorteados: SeisNumeros) -> bool:
     True
     >>> sorteado(2, sorteados)
     False
-    '''
+    """
     em_sorteados = False
 
     if n == sorteados.a:

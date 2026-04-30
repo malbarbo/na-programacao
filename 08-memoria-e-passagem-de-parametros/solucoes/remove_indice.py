@@ -1,5 +1,5 @@
 def remove_indice(lst: list[int], i: int):
-    '''
+    """
     Remove o elemento do índice *i* de *lst* movendo
     os elementos das posições i + 1, i + 2, ..., len(lst)
     para as posições i, i + 1, ..., len(lst) - 1.
@@ -20,7 +20,7 @@ def remove_indice(lst: list[int], i: int):
     >>> remove_indice(lst, 0)
     >>> lst
     []
-    '''
+    """
     assert 0 <= i < len(lst)
     while i < len(lst) - 1:
         lst[i] = lst[i + 1]

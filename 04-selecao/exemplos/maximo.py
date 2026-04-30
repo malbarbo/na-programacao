@@ -1,5 +1,5 @@
 def maximo(a: int, b: int) -> int:
-    '''
+    """
     Devolve o valor máximo entre *a* e *b*.
 
     Exemplos
@@ -11,7 +11,7 @@ def maximo(a: int, b: int) -> int:
     -1
     >>> maximo(6, 6)
     6
-    '''
+    """
     if a > b:
         m = a
     else:
@@ -20,7 +20,7 @@ def maximo(a: int, b: int) -> int:
 
 
 def maximo3(a: int, b: int, c: int) -> int:
-    '''
+    """
     Encontra o valor máximo entre *a*, *b* e *c*.
 
     Exemplos
@@ -48,5 +48,5 @@ def maximo3(a: int, b: int, c: int) -> int:
     18
     >>> maximo3(8, 8, 18)
     18
-    '''
+    """
     return maximo(maximo(a, b), c)

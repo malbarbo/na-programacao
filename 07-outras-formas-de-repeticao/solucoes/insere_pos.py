@@ -12,8 +12,9 @@
 #   planejamento da solução em três etapas, o que pode não ser claro a primeira
 #   vista.
 
+
 def insere_pos(lst: list[int], i: int, n: int) -> list[int]:
-    '''
+    """
     Cria uma nova lista inserindo *n* na posicão *i* de *lst*.
 
     Requer que 0 <= i <= len(lst).
@@ -29,7 +30,7 @@ def insere_pos(lst: list[int], i: int, n: int) -> list[int]:
     [5, 10, 7]
     >>> insere_pos([5, 7], 2, 10)
     [5, 7, 10]
-    '''
+    """
     assert 0 <= i <= len(lst)
 
     r = []
@@ -48,7 +49,7 @@ def insere_pos(lst: list[int], i: int, n: int) -> list[int]:
 
 
 def insere_pos2(lst: list[int], i: int, n: int) -> list[int]:
-    '''
+    """
     Cria uma nova lista inserindo *n* na posicão *i* de *lst*.
 
     Requer que 0 <= i <= len(lst).
@@ -64,7 +65,7 @@ def insere_pos2(lst: list[int], i: int, n: int) -> list[int]:
     [5, 10, 7]
     >>> insere_pos2([5, 7], 2, 10)
     [5, 7, 10]
-    '''
+    """
     assert 0 <= i <= len(lst)
     r = []
     for j in range(len(lst) + 1):
@@ -76,7 +77,7 @@ def insere_pos2(lst: list[int], i: int, n: int) -> list[int]:
 
 
 def insere_pos3(lst: list[int], i: int, n: int) -> list[int]:
-    '''
+    """
     Cria uma nova lista inserindo *n* na posicão *i* de *lst*.
 
     Requer que 0 <= i <= len(lst).
@@ -92,6 +93,6 @@ def insere_pos3(lst: list[int], i: int, n: int) -> list[int]:
     [5, 10, 7]
     >>> insere_pos3([5, 7], 2, 10)
     [5, 7, 10]
-    '''
+    """
     assert 0 <= i <= len(lst)
     return lst[:i] + [n] + lst[i:]

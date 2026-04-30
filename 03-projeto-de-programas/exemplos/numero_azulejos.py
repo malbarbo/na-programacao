@@ -11,8 +11,9 @@ import math
 # A largura e a altura são dados em metros e representadas com números
 # positivos.
 
+
 def numero_azulejos(comprimento: float, altura: float) -> int:
-    '''
+    """
     Calcula o número de azulejos de 0,2mx0,2m necessários para azulejar uma
     parede de tamanho *comprimento* x *altura* (em metros) considerando que
     nenhum azulejo é perdido e que recortes são descartados.
@@ -36,5 +37,5 @@ def numero_azulejos(comprimento: float, altura: float) -> int:
     4
     >>> numero_azulejos(0.4, 0.4)
     4
-    '''
+    """
     return math.ceil(comprimento / 0.2) * math.ceil(altura / 0.2)

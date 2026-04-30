@@ -9,6 +9,7 @@
 
 import sys
 
+
 def main():
     # Entrada
     a = int(sys.argv[1])
@@ -27,6 +28,7 @@ def main():
 
     # Saída
     print(a)
+
 
 if __name__ == '__main__':
     main()

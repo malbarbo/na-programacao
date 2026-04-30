@@ -1,5 +1,5 @@
 def inverte(lst: list[int], inicio: int, fim: int):
-    '''
+    """
     Inverte a ordem dos elementos de *lst[inicio:fim]*.
 
     Requer que 0 <= inicio <= fim <= len(lst).
@@ -12,7 +12,7 @@ def inverte(lst: list[int], inicio: int, fim: int):
     >>> inverte(lst, 2, 5)
     >>> lst
     [9, 3, 1, 5, 7, 4]
-    '''
+    """
     assert 0 <= inicio <= fim <= len(lst)
     if inicio < fim - 1:
         t = lst[inicio]

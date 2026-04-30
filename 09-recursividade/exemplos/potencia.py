@@ -1,5 +1,5 @@
 def potencia(a: float, n: int) -> float:
-    '''
+    """
     Calcula *a* elevado a *n*.
     Requer que a != 0 e n >= 0.
 
@@ -16,7 +16,7 @@ def potencia(a: float, n: int) -> float:
     27.0
     >>> potencia(3.0, 4)
     81.0
-    '''
+    """
     if n == 0:
         an = 1.0
     else:

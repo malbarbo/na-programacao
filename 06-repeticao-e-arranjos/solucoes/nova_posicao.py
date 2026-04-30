@@ -14,21 +14,23 @@ from enum import Enum, auto
 
 @dataclass
 class Posicao:
-    '''
+    """
     Representa a posição do personagem no jogo
-    '''
+    """
+
     x: int
     y: int
     z: int
 
 
 class Deslocamento(Enum):
-    '''
+    """
     Representa um deslocamento do personagem no jogo.
     NORTE(+) e SUL(-) correspondem ao eixo x.
     LESTE(+) e OESTE(-) correspondem ao eixo y.
     CIMA(+) e BAIXO(-) correspondem ao eixo z.
-    '''
+    """
+
     NORTE = auto()
     SUL = auto()
     LESTE = auto()
@@ -38,7 +40,7 @@ class Deslocamento(Enum):
 
 
 def nova_posicao(p: Posicao, deslocamentos: list[Deslocamento]) -> Posicao:
-    '''
+    """
     Calcula a nova posição do personagem considerando que ele
     partiu de *p* e realizou os *deslocamentos*.
 
@@ -46,11 +48,15 @@ def nova_posicao(p: Posicao, deslocamentos: list[Deslocamento]) -> Posicao:
     >>> D = Deslocamento
     >>> nova_posicao(Posicao(6, 1, 3), [])
     Posicao(x=6, y=1, z=3)
-    >>> nova_posicao(Posicao(6, 1, 3), [D.CIMA, D.NORTE, D.LESTE, D.CIMA, D.CIMA, D.NORTE])
+    >>> nova_posicao(
+    ...     Posicao(6, 1, 3), [D.CIMA, D.NORTE, D.LESTE, D.CIMA, D.CIMA, D.NORTE]
+    ... )
     Posicao(x=8, y=2, z=6)
-    >>> nova_posicao(Posicao(6, 1, 3), [D.BAIXO, D.SUL, D.OESTE, D.BAIXO, D.BAIXO, D.SUL])
+    >>> nova_posicao(
+    ...     Posicao(6, 1, 3), [D.BAIXO, D.SUL, D.OESTE, D.BAIXO, D.BAIXO, D.SUL]
+    ... )
     Posicao(x=4, y=0, z=0)
-    '''
+    """
     x = p.x
     y = p.y
     z = p.z

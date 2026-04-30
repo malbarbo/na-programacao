@@ -8,8 +8,9 @@
 #
 # A aposta e os sorteados, são composta de seis número, então vamos usar lista de inteiros.
 
+
 def numero_acertos(aposta: list[int], sorteados: list[int]) -> int:
-    '''
+    """
     Determina quantos números da *aposta* estão em *sorteados*.
 
     Exemplos
@@ -27,18 +28,18 @@ def numero_acertos(aposta: list[int], sorteados: list[int]) -> int:
     5
     >>> numero_acertos([8, 12, 20, 41, 52, 57], [8, 12, 20, 41, 52, 57])
     6
-    '''
+    """
     acertos = 0
 
     for n in aposta:
-       if sorteado(n, sorteados):
-           acertos = acertos + 1
+        if sorteado(n, sorteados):
+            acertos = acertos + 1
 
     return acertos
 
 
 def sorteado(n: int, sorteados: list[int]) -> bool:
-    '''
+    """
     Produz True se *n* é um dos números em *sorteados*. False caso contrário.
 
     Exemplos
@@ -57,7 +58,7 @@ def sorteado(n: int, sorteados: list[int]) -> bool:
     True
     >>> sorteado(2, sorteados)
     False
-    '''
+    """
     em_sorteados = False
 
     for x in sorteados:

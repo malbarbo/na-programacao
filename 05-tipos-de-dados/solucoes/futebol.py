@@ -14,9 +14,10 @@ from dataclasses import dataclass
 
 @dataclass
 class Desempenho:
-    '''
+    """
     Um time e seu desempenho em um campeonato de futebol.
-    '''
+    """
+
     time: str
     # quantidade de pontos (3 pontos por vitória e 1 por empate)
     pontos: int
@@ -27,7 +28,7 @@ class Desempenho:
 
 
 def melhor_desempenho(a: Desempenho, b: Desempenho) -> str:
-    '''
+    """
     Devolve o nome do time com melhor desempenho entre *a* e *b*.
 
     O melhor desempenho é aquele tem a maior quantidade de pontos;
@@ -38,27 +39,45 @@ def melhor_desempenho(a: Desempenho, b: Desempenho) -> str:
     Requer que os times de *a* e *b* sejam diferentes.
 
     Exemplos
-    >>> melhor_desempenho(Desempenho('Maringá', 4, 1, 2), Desempenho('Londrina', 1, 0, -2))
+    >>> melhor_desempenho(
+    ...     Desempenho('Maringá', 4, 1, 2), Desempenho('Londrina', 1, 0, -2)
+    ... )
     'Maringá'
-    >>> melhor_desempenho(Desempenho('Maringá', 4, 1, 2), Desempenho('Londrina', 4, 2, 2))
+    >>> melhor_desempenho(
+    ...     Desempenho('Maringá', 4, 1, 2), Desempenho('Londrina', 4, 2, 2)
+    ... )
     'Londrina'
-    >>> melhor_desempenho(Desempenho('Maringá', 5, 2, 2), Desempenho('Londrina', 5, 2, 1))
+    >>> melhor_desempenho(
+    ...     Desempenho('Maringá', 5, 2, 2), Desempenho('Londrina', 5, 2, 1)
+    ... )
     'Maringá'
-    >>> melhor_desempenho(Desempenho('Maringá', 5, 2, 2), Desempenho('Londrina', 5, 2, 2))
+    >>> melhor_desempenho(
+    ...     Desempenho('Maringá', 5, 2, 2), Desempenho('Londrina', 5, 2, 2)
+    ... )
     'Londrina'
-    '''
-    if a.pontos > b.pontos or \
-            a.pontos == b.pontos and a.vitorias > b.vitorias or \
-            a.pontos == b.pontos and a.vitorias == b.vitorias and a.saldo > b.saldo or \
-            a.pontos == b.pontos and a.vitorias == b.vitorias and a.saldo == b.saldo and a.time < b.time:
+    """
+    if (
+        a.pontos > b.pontos
+        or a.pontos == b.pontos
+        and a.vitorias > b.vitorias
+        or a.pontos == b.pontos
+        and a.vitorias == b.vitorias
+        and a.saldo > b.saldo
+        or a.pontos == b.pontos
+        and a.vitorias == b.vitorias
+        and a.saldo == b.saldo
+        and a.time < b.time
+    ):
         time = a.time
     else:
         time = b.time
     return time
 
 
-def atualiza_desempenho(d: Desempenho, gols_marcados: int, gols_sofridos: int) -> Desempenho:
-    '''
+def atualiza_desempenho(
+    d: Desempenho, gols_marcados: int, gols_sofridos: int
+) -> Desempenho:
+    """
     Devolve um novo desempenho atualizado a partir de *d* considerando que o
     time fez *gol_marcados* gols e o adiversário *gol_sofridos* gols.
 
@@ -80,7 +99,7 @@ def atualiza_desempenho(d: Desempenho, gols_marcados: int, gols_sofridos: int) -
     Desempenho(time='Maringa', pontos=9, vitorias=2, saldo=1)
     >>> atualiza_desempenho(Desempenho('Maringa', 8, 2, 1), 1, 4)
     Desempenho(time='Maringa', pontos=8, vitorias=2, saldo=-2)
-    '''
+    """
     pontos = d.pontos
     vitorias = d.vitorias
     saldo = d.saldo + gols_marcados - gols_sofridos

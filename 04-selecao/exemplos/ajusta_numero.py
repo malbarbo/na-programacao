@@ -1,5 +1,5 @@
 def ajusta_numero(numero: str) -> str:
-    '''
+    """
     Ajusta *numero* adicionando o 9 como nono dígito se necessário, ou seja, se
     *numero* tem apenas 8 dígitos (sem contar o DDD).
 
@@ -13,7 +13,7 @@ def ajusta_numero(numero: str) -> str:
     >>> # '(44) 9787-1241'[:5] + '9' + '(44) 9787-1241'[5:]
     >>> ajusta_numero('(44) 9787-1241')
     '(44) 99787-1241'
-    '''
+    """
     if len(numero) == 15:
         ajustado = numero
     else:

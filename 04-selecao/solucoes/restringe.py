@@ -1,5 +1,5 @@
 def restringe(n: int, minimo: int, maximo: int) -> int:
-    '''
+    """
     Restringe o valor de *n* para o intervalo [*minimo*, *maximo*].
 
     Se *n* já está no intervalo, então devolve *n*.
@@ -17,7 +17,7 @@ def restringe(n: int, minimo: int, maximo: int) -> int:
     10
     >>> restringe(14, 2, 10)
     10
-    '''
+    """
     if n < minimo:
         r = minimo
     elif maximo < n:
@@ -26,8 +26,9 @@ def restringe(n: int, minimo: int, maximo: int) -> int:
         r = n
     return r
 
+
 def restringe_alt(n: int, minimo: int, maximo: int) -> int:
-    '''
+    """
     Restringe o valor de *n* para o intervalo [*minimo*, *maximo*].
 
     Se *n* já está no intervalo, então devolve *n*.
@@ -45,5 +46,5 @@ def restringe_alt(n: int, minimo: int, maximo: int) -> int:
     10
     >>> restringe_alt(14, 2, 10)
     10
-    '''
+    """
     return max(minimo, min(n, maximo))

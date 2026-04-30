@@ -16,7 +16,7 @@ from enum import Enum, auto
 
 
 class Direcao(Enum):
-    '''
+    """
     A direção em que o personagem está virado.
 
     Para o norte o número da linha aumenta, para o sul diminui.
@@ -30,7 +30,8 @@ class Direcao(Enum):
     |     |
     |     S
     --------------->
-    '''
+    """
+
     NORTE = auto()
     LESTE = auto()
     SUL = auto()
@@ -39,9 +40,10 @@ class Direcao(Enum):
 
 @dataclass
 class Personagem:
-    '''
+    """
     A posição e direção que um personagem se encontra no tabuleiro.
-    '''
+    """
+
     # A linha, deve estar entre 1 e 10
     lin: int
     # A coluna, deve estar entre 1 e 10
@@ -50,7 +52,7 @@ class Personagem:
 
 
 def maximo_casas(p: Personagem) -> int:
-    '''
+    """
     Determina o número máximo de casas que o personagem *p* pode avançar
     considerando a sua posição atual e a direção que ele está virado.
 
@@ -71,7 +73,7 @@ def maximo_casas(p: Personagem) -> int:
     1
     >>> maximo_casas(Personagem(lin=4, col=1, dir=Direcao.OESTE))
     0
-    '''
+    """
     if p.dir == Direcao.NORTE:
         casas = 10 - p.lin
     elif p.dir == Direcao.SUL:

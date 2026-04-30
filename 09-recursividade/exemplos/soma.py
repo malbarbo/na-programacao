@@ -1,5 +1,5 @@
 def soma(lst: list[int]) -> int:
-    '''
+    """
     Soma os elementos de *lst*.
     Exemplos
     >>> soma([])
@@ -10,7 +10,7 @@ def soma(lst: list[int]) -> int:
     9
     >>> soma([7, 3, 6])
     16
-    '''
+    """
     if lst == []:
         s = 0
     else:
@@ -19,7 +19,7 @@ def soma(lst: list[int]) -> int:
 
 
 def soma_inc(lst: list[int], i: int) -> int:
-    '''
+    """
     Soma os elementos de *lst* a partir de *i*, isto é,
     soma os elementos de *lst[i:]*.
     Requer que 0 <= i <= len(lst)
@@ -31,7 +31,7 @@ def soma_inc(lst: list[int], i: int) -> int:
     6
     >>> soma_inc([7, 3, 6], 3)
     0
-    '''
+    """
     if i >= len(lst):
         s = 0
     else:
@@ -40,7 +40,7 @@ def soma_inc(lst: list[int], i: int) -> int:
 
 
 def soma_dec(lst: list[int], i: int) -> int:
-    '''
+    """
     Soma os primeiro *i* elementos de *lst*, isto é,
     soma os elementos de *lst[:i]*.
     Requer que 0 <= i <= len(lst)
@@ -52,7 +52,7 @@ def soma_dec(lst: list[int], i: int) -> int:
     10
     >>> soma_dec([7, 3, 6], 3)
     16
-    '''
+    """
     if i <= 0:
         s = 0
     else:

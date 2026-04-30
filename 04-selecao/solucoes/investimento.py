@@ -10,8 +10,9 @@
 #
 # O valor investido e o rendimento são números positivos.
 
+
 def rendimento1(valor: float) -> float:
-    '''
+    """
     Determina quanto o investimento de *valor* renderá em um ano considerando
     as seguintes taxas:
 
@@ -30,7 +31,7 @@ def rendimento1(valor: float) -> float:
     600.0
     >>> rendimento1(6000.0)
     780.0
-    '''
+    """
     if valor <= 2000.0:
         r = valor * 0.1
     elif valor <= 5000.0:
@@ -41,7 +42,7 @@ def rendimento1(valor: float) -> float:
 
 
 def rendimento2(valor: float) -> float:
-    '''
+    """
     Determina quanto o investimento de *valor* renderá em dois ano considerando
     as seguintes taxas por ano:
 
@@ -60,5 +61,5 @@ def rendimento2(valor: float) -> float:
     728.0
     >>> rendimento2(6000.0)
     881.4
-    '''
+    """
     return rendimento1(valor + rendimento1(valor))

@@ -2,14 +2,15 @@ from enum import Enum, auto
 
 
 class Cor(Enum):
-    '''A cor de um semáforo de trânsito.'''
+    """A cor de um semáforo de trânsito."""
+
     VERDE = auto()
     VERMELHO = auto()
     AMARELO = auto()
 
 
 def proxima_cor(atual: Cor) -> Cor:
-    '''
+    """
     Produz a próxima cor de um semáforo que está na cor *atual*.
 
     Exemplos
@@ -19,7 +20,7 @@ def proxima_cor(atual: Cor) -> Cor:
     'VERMELHO'
     >>> proxima_cor(Cor.VERMELHO).name
     'VERDE'
-    '''
+    """
     if atual == Cor.VERDE:
         proxima = Cor.AMARELO
     elif atual == Cor.AMARELO:

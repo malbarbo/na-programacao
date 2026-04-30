@@ -1,6 +1,5 @@
-
 def media_tamanho(lst: list[str]) -> float:
-    '''
+    """
     Calcula a média dos tamanhos das strings de *lst*.
     Requer que *lst* seja não vazia.
 
@@ -13,7 +12,7 @@ def media_tamanho(lst: list[str]) -> float:
     2.0
     >>> media_tamanho(['casa', 'da', '', 'onça'])
     2.5
-    '''
+    """
     quant = 0
     media = 0.0
     for s in lst:
@@ -23,7 +22,7 @@ def media_tamanho(lst: list[str]) -> float:
 
 
 def media_tamanho2(lst: list[str]) -> float:
-    '''
+    """
     Calcula a média dos tamanhos das strings de *lst*.
     Requer que *lst* seja não vazia.
 
@@ -36,7 +35,7 @@ def media_tamanho2(lst: list[str]) -> float:
     2.0
     >>> media_tamanho2(['casa', 'da', '', 'onça'])
     2.5
-    '''
+    """
     assert len(lst) != 0
 
     # Soma dos tamanhos

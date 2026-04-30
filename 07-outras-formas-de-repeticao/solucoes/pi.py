@@ -1,5 +1,5 @@
 def pi(n: int) -> float:
-    '''
+    """
     Cacula pi usando os primeiros *n* termos da série
     pi = 4 * (1/1 - 1/3 + 1/5 - 1/7 + 1/9 - ...)
     Requer que n > 0
@@ -15,7 +15,7 @@ def pi(n: int) -> float:
     2.8952380952380956
     >>> pi(5)
     3.3396825396825403
-    '''
+    """
     num = 1.0
     denum = 1.0
     pi_4 = num / denum

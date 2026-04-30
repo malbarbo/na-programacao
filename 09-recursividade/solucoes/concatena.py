@@ -1,5 +1,5 @@
 def concatena(lst: list[str]) -> str:
-    '''
+    """
     Concatena todos os elementos de *lst*.
 
     Exemplos
@@ -9,7 +9,7 @@ def concatena(lst: list[str]) -> str:
     'cc'
     >>> concatena(['cc', ' é ', 'ciência da computação'])
     'cc é ciência da computação'
-    '''
+    """
     if lst == []:
         s = ''
     else:

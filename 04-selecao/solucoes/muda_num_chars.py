@@ -1,5 +1,5 @@
 def muda_num_chars(s: str, n: int) -> str:
-    '''
+    """
     Cria uma nova string com *n* caracteres a partir de *s*.
     Se *s* tem menos que *n* caracteres, adiciona espaços no final.
     Se *s* tem mais que *n* caracteres, remove os caracteres excedentes do final.
@@ -14,7 +14,7 @@ def muda_num_chars(s: str, n: int) -> str:
     'comp'
     >>> muda_num_chars('python', 6)
     'python'
-    '''
+    """
     assert n >= 0
     if len(s) < n:
         r = s + ' ' * (n - len(s))

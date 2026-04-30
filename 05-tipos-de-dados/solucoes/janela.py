@@ -6,9 +6,10 @@ from dataclasses import dataclass
 #
 # Definição de tipos de dados
 
+
 @dataclass
 class Janela:
-    '''
+    """
     Representa o espaço que uma janela ocupa em um ambiente gráfico.
 
     A coordenada (x, y) descreve a posição do canto superior esquerdo. A
@@ -16,23 +17,27 @@ class Janela:
     representa a quantidade de pixels abaixo de (x, y).
 
     Os valores da largura e altura devem ser maiores que zero.
-    '''
+    """
+
     x: int
     y: int
     largura: int
     altura: int
 
+
 @dataclass
 class Clique:
-    '''
+    """
     Representa a posição de um clique no ambiente gráfico.  Os valores de x e y
     devem ser maiores que 0 e menores do que as dimensões do ambiente.
-    '''
+    """
+
     x: int
     y: int
 
+
 def dentro_janela(j: Janela, c: Clique) -> bool:
-    '''
+    """
     Devolve True se o clique *c* está dentro do espaço da janela *j*, False contrário.
 
     Exemplos
@@ -85,12 +90,13 @@ def dentro_janela(j: Janela, c: Clique) -> bool:
     True
     >>> dentro_janela(janela, Clique(100, 300))
     False
-    '''
+    """
     # c.x está dentro do espaço da largura e c.y dentro do espaço da altura
     return j.x <= c.x < (j.x + j.largura) and j.y <= c.y < (j.y + j.altura)
 
+
 def janelas_soprepoem(a: Janela, b: Janela) -> bool:
-    '''
+    """
 
     Produz True se o espaço das janelas *a* e *b* se soprepõem, False caso contrário.
 
@@ -98,7 +104,7 @@ def janelas_soprepoem(a: Janela, b: Janela) -> bool:
 
     # fixa (eixo y): a janela a vem antes da janela b
     # variável: posição da borda direita de a
-    >>> janelas_soprepoem(Janela( 10, 20, 100, 200), Janela(300, 400, 50, 100))
+    >>> janelas_soprepoem(Janela(10, 20, 100, 200), Janela(300, 400, 50, 100))
     False
     >>> janelas_soprepoem(Janela(210, 20, 100, 200), Janela(300, 400, 50, 100))
     False
@@ -109,7 +115,7 @@ def janelas_soprepoem(a: Janela, b: Janela) -> bool:
 
     # fixa: (eixo y) interseção da parte de baixo de a com a parte de cima de b
     # variável: posição da borda direita de a
-    >>> janelas_soprepoem(Janela( 10, 250, 100, 200), Janela(300, 400, 50, 100))
+    >>> janelas_soprepoem(Janela(10, 250, 100, 200), Janela(300, 400, 50, 100))
     False
     >>> janelas_soprepoem(Janela(210, 250, 100, 200), Janela(300, 400, 50, 100))
     True
@@ -120,7 +126,7 @@ def janelas_soprepoem(a: Janela, b: Janela) -> bool:
 
     # fixa: (eixo y) interseção da parte de cima de a com a parte de baixo de b
     # variável: posição da borda direita de a
-    >>> janelas_soprepoem(Janela( 10, 450, 100, 200), Janela(300, 400, 50, 100))
+    >>> janelas_soprepoem(Janela(10, 450, 100, 200), Janela(300, 400, 50, 100))
     False
     >>> janelas_soprepoem(Janela(210, 450, 100, 200), Janela(300, 400, 50, 100))
     True
@@ -131,7 +137,7 @@ def janelas_soprepoem(a: Janela, b: Janela) -> bool:
 
     # fixa: (eixo y) a janela a vem depois da janela b
     # variável: posição da borda direita de a
-    >>> janelas_soprepoem(Janela( 10, 550, 100, 200), Janela(300, 400, 50, 100))
+    >>> janelas_soprepoem(Janela(10, 550, 100, 200), Janela(300, 400, 50, 100))
     False
     >>> janelas_soprepoem(Janela(210, 550, 100, 200), Janela(300, 400, 50, 100))
     False
@@ -139,12 +145,14 @@ def janelas_soprepoem(a: Janela, b: Janela) -> bool:
     False
     >>> janelas_soprepoem(Janela(410, 550, 100, 200), Janela(300, 400, 50, 100))
     False
-    '''
+    """
     # borda direta de a vem antes da borda esquerda de b
     # borda direta de b vem antes da borda esquerda de a
     # borda superior de a vem antes da borda inferior de b
     # borda superior de b vem antes da borda inferior de a
-    return a.x < (b.x + b.largura) and \
-           b.x < (a.x + a.largura) and \
-           a.y < (b.y + b.altura) and \
-           b.y < (a.y + a.altura)
+    return (
+        a.x < (b.x + b.largura)
+        and b.x < (a.x + a.largura)
+        and a.y < (b.y + b.altura)
+        and b.y < (a.y + a.altura)
+    )

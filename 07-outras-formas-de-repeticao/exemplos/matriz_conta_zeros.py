@@ -1,5 +1,5 @@
 def conta_zeros(a: list[list[int]]) -> int:
-    '''
+    """
     Conta a quantidade de zeros da matriz *m*.
 
     Exemplos
@@ -7,7 +7,7 @@ def conta_zeros(a: list[list[int]]) -> int:
     3
     >>> conta_zeros([[1, 0], [1, 2], [0, 2]])
     2
-    '''
+    """
     num_zeros = 0
     for i in range(len(a)):
         for j in range(len(a[i])):
@@ -17,7 +17,7 @@ def conta_zeros(a: list[list[int]]) -> int:
 
 
 def conta_zeros2(a: list[list[int]]) -> int:
-    '''
+    """
     Conta a quantidade de zeros da matriz *m*.
 
     Exemplos
@@ -25,7 +25,7 @@ def conta_zeros2(a: list[list[int]]) -> int:
     3
     >>> conta_zeros2([[1, 0], [1, 2], [0, 2]])
     2
-    '''
+    """
     num_zeros = 0
     for linha in a:
         for elem in linha:

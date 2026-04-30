@@ -1,5 +1,5 @@
 def ordem_nao_decrescente(lst: list[int]) -> bool:
-    '''
+    """
     Produz True se os elementos de lst estão em ordem não decrescente,
     False caso contrário.
 
@@ -20,7 +20,7 @@ def ordem_nao_decrescente(lst: list[int]) -> bool:
     True
     >>> ordem_nao_decrescente([4, 3, 6, 7])
     False
-    '''
+    """
     em_ordem = True
     for i in range(1, len(lst)):
         if lst[i - 1] > lst[i]:
@@ -29,7 +29,7 @@ def ordem_nao_decrescente(lst: list[int]) -> bool:
 
 
 def ordem_nao_decrescente2(lst: list[int]) -> bool:
-    '''
+    """
     Produz True se os elementos de lst estão em ordem não decrescente,
     False caso contrário.
 
@@ -50,7 +50,7 @@ def ordem_nao_decrescente2(lst: list[int]) -> bool:
     True
     >>> ordem_nao_decrescente2([4, 3, 6, 7])
     False
-    '''
+    """
     em_ordem = True
     i = 1
     while i < len(lst) and em_ordem:
