@@ -32,7 +32,7 @@ Esta parte do Spython é experimental, então pode conter erros. Se você identi
 
 O Spython fornece várias funções para criação de imagens geométricas básicas, como retângulos, elipses, polígonos e textos. Também fornece funções para transformar e combinar imagens, como rotacionar, espelhar, colocar uma ao lado da outra, entre outras. \pause
 
-As funções para criar, combinar e transformar imagens estão no módulo `spython`{.python} e podem ser importadas diretamente. \pause
+As funções para criar, combinar e transformar imagens estão no módulo `spython`{.python} e podem ser importadas com `from spython import *`{.python} . \pause
 
 Uma forma geométrica tem um estilo, que inclui um contorno (_stroke_) e um preenchimento (_fill_). O contorno tem uma cor e uma espessura. O preenchimento pode ou não ter uma cor. \pause
 
@@ -183,19 +183,15 @@ As funções para especificar o estilo são `stroke`{.python} e `fill`{.python}.
 
 ## Texto
 
-```python-repl
+```python-image
 >>> text("Casa", fill(black), size=20)  # texto e tamanho da fonte
 ```
 
-![](imagens/Casa.pdf)
-
 \pause
 
-```python-repl
+```python-image
 >>> text("aTa", stroke(darkgreen), size=30)  # texto e tamanho da fonte
 ```
-
-![](imagens/aTa.pdf)
 
 
 ## Combinações
@@ -347,11 +343,9 @@ Escala.
 
 \pause
 
-```python-repl
+```python-image
 >>> scale_xy(text("teste", fill(black), size=16), 2.5, 1.2)
 ```
-
-![](imagens/teste_scale.png)
 
 
 ## Transformações
@@ -546,7 +540,7 @@ spython run estrela.py > estrela.svg
 
 ## Cores
 
-![](imagens/cores.pdf)
+![](imagens/cores.py)
 
 
 ## Cores
@@ -669,14 +663,15 @@ Vamos criar uma animação que colore uma letra de um texto por vez (veja o arqu
 
 ```python
 def cena_texto(tick: int) -> Image:
-    palavra = 'computação'
+    FONTE = Font(family='monospace', size=30)
+    PALAVRA = 'computação'
     # dividimos por 10 para desacelerar a animação
     i = tick // 10 % len(palavra)
-    inicio = palavra[:i]
-    letra = palavra[i:i + 1]
-    fim = palavra[i + 1:]
-    t = beside(text(inicio, fill(black), size=30), text(letra, fill(red), size=30))
-    t = beside(t, text(fim, fill(black), size=30))
+    inicio = PALAVRA[:i]
+    letra = PALAVRA[i:i + 1]
+    fim = PALAVRA[i + 1:]
+    t = beside(text(inicio, fill(black), font=FONTE), text(letra, fill(red), font=FONTE))
+    t = beside(t, text(fim, fill(black), font=FONTE))
     return overlay(t, empty_scene(230, 50))
 ```
 
@@ -686,33 +681,60 @@ def cena_texto(tick: int) -> Image:
 <div class="column" width="33%">
 \footnotesize
 
-```python-repl
+```python-image
+FONTE = Font(family='monospace', size=30)
+def cena_texto(tick: int) -> Image:
+    palavra = 'computação'
+    i = tick // 10 % len(palavra)
+    inicio = palavra[:i]
+    letra = palavra[i:i + 1]
+    fim = palavra[i + 1:]
+    t = beside(text(inicio, fill(black), font=FONTE), text(letra, fill(red), font=FONTE))
+    t = beside(t, text(fim, fill(black), font=FONTE))
+    return overlay(t, empty_scene(230, 50))
+
 >>> cena_texto(10)
 ```
 
-![](imagens/cena_texto_10.png)
-
 \pause
 </div>
 <div class="column" width="33%">
 \footnotesize
 
-```python-repl
+```python-image
+FONTE = Font(family='monospace', size=30)
+def cena_texto(tick: int) -> Image:
+    palavra = 'computação'
+    i = tick // 10 % len(palavra)
+    inicio = palavra[:i]
+    letra = palavra[i:i + 1]
+    fim = palavra[i + 1:]
+    t = beside(text(inicio, fill(black), font=FONTE), text(letra, fill(red), font=FONTE))
+    t = beside(t, text(fim, fill(black), font=FONTE))
+    return overlay(t, empty_scene(230, 50))
+
 >>> cena_texto(40)
 ```
 
-![](imagens/cena_texto_40.png)
-
 \pause
 </div>
 <div class="column" width="33%">
 \footnotesize
 
-```python-repl
+```python-image
+FONTE = Font(family='monospace', size=30)
+def cena_texto(tick: int) -> Image:
+    palavra = 'computação'
+    i = tick // 10 % len(palavra)
+    inicio = palavra[:i]
+    letra = palavra[i:i + 1]
+    fim = palavra[i + 1:]
+    t = beside(text(inicio, fill(black), font=FONTE), text(letra, fill(red), font=FONTE))
+    t = beside(t, text(fim, fill(black), font=FONTE))
+    return overlay(t, empty_scene(230, 50))
+
 >>> cena_texto(76)
 ```
-
-![](imagens/cena_texto_76.png)
 
 </div>
 </div>

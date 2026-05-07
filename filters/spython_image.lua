@@ -5,7 +5,7 @@
 -- a primeira é "hide" (incluída no script mas não exibida no slide),
 -- a segunda é o conteúdo exibido, cuja primeira linha começa com `>>> `
 -- (e linhas de continuação com `... `) e contém a expressão final que é
--- passada para `to_svg`.
+-- passada para `to_pdf`.
 --
 -- Imports do spython são adicionados automaticamente.
 
@@ -67,7 +67,7 @@ from spython import (
     empty_scene, empty_scene_color,
     place_image, place_images, put_image,
     add_line, add_polygon, add_curve, add_solid_curve,
-    to_svg,
+    to_pdf,
 )
 ]]
 
@@ -122,65 +122,12 @@ local function file_size(path)
     return size
 end
 
--- Mirrors HtDP/2htdp/image's interactive bitmap renderer, which draws an
--- image of nominal size W x H onto a (W+1) x (H+1) bitmap so that 1px
--- outline strokes painted on the bbox boundary are not clipped. The
--- library's `to_svg` keeps the nominal W x H (matching `save-svg-image`
--- in Racket) because composition relies on those nominal sizes; we only
--- enlarge the outermost canvas at render time.
---
--- Whether the viewBox needs a -0.5 shift depends on the path coordinate
--- alignment used by the library:
---
---   * Default 1px outline-only paths use half-pixel coords (e.g. paths
---     starting at "M 0.5 0.5 ..."): the stroke fits in canvas pixel
---     boundaries with viewBox "0 0 W+1 H+1", crisp on all four edges.
---     Shifting the viewBox would land strokes mid-pixel and blur them.
---
---   * Everything else (filled+stroked, thick outline) uses integer
---     coords and the stroke straddles each bbox edge by half its width:
---     viewBox "-0.5 -0.5 W+1 H+1" gives breathing room equally on all
---     sides so the four edges render symmetrically.
---
--- We detect "default 1px outline-only" by looking for any path with
--- fill="none" and no stroke-width attribute. If found, we skip the
--- shift; otherwise we apply it.
-local function has_default_outline(content)
-    for tag in content:gmatch('<path[^/]-/>') do
-        if tag:find('fill="none"', 1, true)
-            and tag:find('stroke=', 1, true)
-            and not tag:find('stroke-width=', 1, true) then
-            return true
-        end
-    end
-    return false
-end
-
-local function inflate_svg_canvas(path)
-    local f = io.open(path, "rb")
-    if not f then return end
-    local content = f:read("*all")
+local function file_mtime(path)
+    local f = io.popen("stat -c %Y '" .. path .. "' 2>/dev/null")
+    if not f then return 0 end
+    local v = f:read("*a")
     f:close()
-    local w_str = content:match('<svg%s+width="([^"]+)"')
-    local h_str = content:match('height="([^"]+)"')
-    if not w_str or not h_str then return end
-    local w = tonumber(w_str)
-    local h = tonumber(h_str)
-    if not w or not h then return end
-    local nw = w + 1
-    local nh = h + 1
-    local vb_x, vb_y = 0.0, 0.0
-    if not has_default_outline(content) then
-        vb_x, vb_y = -0.5, -0.5
-    end
-    local new_header = string.format(
-        '<svg width="%g" height="%g" viewBox="%g %g %g %g"',
-        nw, nh, vb_x, vb_y, nw, nh)
-    -- Replace the leading <svg ... xmlns="..."> opening tag.
-    content = content:gsub('<svg[^>]*xmlns', new_header .. ' xmlns', 1)
-    f = io.open(path, "wb")
-    f:write(content)
-    f:close()
+    return tonumber(v) or 0
 end
 
 function CodeBlock(el)
@@ -195,26 +142,23 @@ function CodeBlock(el)
     local expr = strip_prompts(content)
 
     local py = "target/spython_images/" .. name .. ".py"
-    local svg = "target/spython_images/" .. name .. ".svg"
     local pdf = "target/spython_images/" .. name .. ".pdf"
     -- sufixos de arquivos temporários únicos por processo (evita race entre
     -- builds paralelos: slides + handout + tex compartilham os mesmos iN.*)
     local tag = UUID .. "." .. tostring(cont)
     local py_tmp = py .. "." .. tag .. ".tmp"
-    local svg_tmp = svg .. "." .. tag .. ".tmp"
     local pdf_tmp = pdf .. "." .. tag .. ".tmp"
     os.execute("mkdir -p ../target/spython_images/")
 
     -- monta o conteúdo do .py em memória para podermos comparar com o existente
-    local py_content = IMPORTS .. "\n"
+    local py_content = "import sys\n" .. IMPORTS .. "\n"
     if hide ~= "" then
         py_content = py_content .. hide .. "\n"
     end
-    py_content = py_content .. "print(to_svg((\n" .. expr .. "\n)))\n"
+    py_content = py_content .. "sys.stdout.buffer.write(to_pdf((\n" .. expr .. "\n)))\n"
 
     -- pula se .py já existe com mesmo conteúdo e .pdf já está pronto e não vazio
     local up_to_date = file_read("../" .. py) == py_content
-        and file_size("../" .. svg) > 0
         and file_size("../" .. pdf) > 0
 
     if not up_to_date then
@@ -222,13 +166,10 @@ function CodeBlock(el)
         fpy:write(py_content)
         fpy:close()
         os.execute("mv ../" .. py_tmp .. " ../" .. py)
-        -- Run spython into a private tmp; inflate the canvas so outline strokes
-        -- at the bbox edges are not clipped (HtDP-style); then convert to PDF.
-        -- The final atomic mv guards against races between parallel builds.
-        os.execute("cd ../ && spython run -l 5 " .. py .. " > " .. svg_tmp .. " 2>/dev/null")
-        inflate_svg_canvas("../" .. svg_tmp)
-        os.execute("cd ../ && rsvg-convert --format pdf1.5 --output " .. pdf_tmp .. " " .. svg_tmp
-            .. " && mv " .. svg_tmp .. " " .. svg
+        -- Run spython into a private tmp PDF, then atomically rename. The mv
+        -- guards against races between parallel builds (slides + handout + tex
+        -- share the same iN.pdf).
+        os.execute("cd ../ && spython run -l 5 " .. py .. " > " .. pdf_tmp .. " 2>/dev/null"
             .. " && mv " .. pdf_tmp .. " " .. pdf)
     end
 
@@ -236,4 +177,33 @@ function CodeBlock(el)
         pandoc.CodeBlock(content, {class = "python-repl"}),
         pandoc.Para{pandoc.Image({}, "../" .. pdf)}
     }
+end
+
+-- Imagens cuja fonte termina em ".py" são geradas pelo spython em tempo de
+-- build: o script é executado e seus bytes em stdout são gravados como PDF,
+-- que substitui o caminho da imagem. O .py deve ser auto-contido (incluir
+-- imports e chamar `sys.stdout.buffer.write(to_pdf(...))` no final).
+function Image(el)
+    local src = el.src
+    if not src or not src:match("%.py$") then
+        return el
+    end
+
+    -- src é relativo ao diretório do capítulo (cwd do pandoc).
+    -- Slug derivado do caminho para não colidir com blocos inline (iN.pdf).
+    local slug = "file_" .. src:gsub("/", "_"):gsub("%.py$", "")
+    local pdf = "target/spython_images/" .. slug .. ".pdf"
+    local tag = UUID .. "." .. slug
+    local pdf_tmp = pdf .. "." .. tag .. ".tmp"
+
+    os.execute("mkdir -p ../target/spython_images/")
+
+    -- Regenera quando o .py é mais novo que o .pdf cacheado (ou .pdf não existe).
+    if file_mtime(src) > file_mtime("../" .. pdf) then
+        os.execute("spython run -l 5 " .. src .. " > ../" .. pdf_tmp .. " 2>/dev/null"
+            .. " && mv ../" .. pdf_tmp .. " ../" .. pdf)
+    end
+
+    el.src = "../" .. pdf
+    return el
 end
