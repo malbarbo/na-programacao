@@ -2,6 +2,7 @@
 # vim: set spell spelllang=pt_br:
 title: Seleção
 # TODO: falar de função total e função parcial
+# TODO: adicionar o conceito de predicado
 ---
 
 # Introdução
