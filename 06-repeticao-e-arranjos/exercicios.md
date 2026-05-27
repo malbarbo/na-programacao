@@ -24,7 +24,7 @@ urlcolor: Blue
 
 @) Quais são as três perguntas que precisamos responder para implementar uma função utilizando a abordagem incremental com o "para cada"?
 
-@) Considere a função a seguir e indique a ordem em que as linhas são executadas para a chamada `f([3, -1, 0, 5, -2])`. Qual é o valor retornado?
+@) Considere a função a seguir e indique a ordem em que as linhas são executadas para a chamada `f([3, -1, 0, 5, -2])`{.python}. Qual é o valor retornado?
 
     ```{.python .number-lines}
     def f(lst: list[int]) -> int:
