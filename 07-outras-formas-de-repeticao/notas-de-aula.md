@@ -1615,7 +1615,7 @@ Revisão: \pause `1`{.python} e `n`{.python} são sempre divisores de `n`, além
 def primo(n: int) -> bool:
     num_divisores = 0
     i = 2
-    while i < n // 2 and num_divisores == 0:
+    while i <= n // 2 and num_divisores == 0:
         if n % i == 0:
             num_divisores = num_divisores + 1
         i = i + 1
@@ -1644,7 +1644,7 @@ Vamos alterar o `return`{.python} para `n != 1 and num_divisores == 0`{.python}.
 def primo(n: int) -> bool:
     num_divisores = 0
     i = 2
-    while i < n // 2 and num_divisores == 0:
+    while i <= n // 2 and num_divisores == 0:
         if n % i == 0:
             num_divisores = num_divisores + 1
         i = i + 1
@@ -1665,7 +1665,7 @@ Revisão: \pause `num_divisores` só pode assumir dois valores: `0`{.python} ou 
 def primo(n: int) -> bool:
     eh_primo = True
     i = 2
-    while i < n // 2 and eh_primo:
+    while i <= n // 2 and eh_primo:
         if n % i == 0:
             eh_primo = False
         i = i + 1
@@ -1687,7 +1687,7 @@ Revisão: \pause `eh_primo` não diz de fato se é primo pois ainda depende da c
 def primo(n: int) -> bool:
     eh_primo = n != 1
     i = 2
-    while i < n // 2 and eh_primo:
+    while i <= n // 2 and eh_primo:
         if n % i == 0:
             eh_primo = False
         i = i + 1
