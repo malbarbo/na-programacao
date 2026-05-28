@@ -14,7 +14,7 @@ Até o momento nós estudamos alguns aspectos de
 
 \pause
 
-Agora vamos ver as construções básicas da linguagem Python, para em seguida começarmos a estudar o processo de projeto de programas.
+Agora vamos ver as construções básicas da linguagem Python, para em seguida começarmos a estudar o processo de projeto de funções.
 
 
 # Spython
@@ -1890,7 +1890,7 @@ O Python faz verificação estática de tipos? \pause
 
 # Projeto de funções
 
-Agora que conhecemos os conceitos básicos de programação e do Python, podemos avançar para o processo de projeto de programas. \pause
+Agora que conhecemos os conceitos básicos de programação e do Python, podemos avançar para o processo de projeto de funções. \pause
 
 Mas antes, pratique fazendo a lista de exercícios disponível na página da disciplina! \pause
 

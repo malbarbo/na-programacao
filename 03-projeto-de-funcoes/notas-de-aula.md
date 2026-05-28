@@ -1,6 +1,6 @@
 ---
 # vim: set spell spelllang=pt_br:
-title: Projeto de programas
+title: Projeto de funções
 ---
 
 # Introdução
