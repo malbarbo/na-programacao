@@ -285,7 +285,7 @@ Qual das duas soluções é mais simples? \pause A da direita.
 
 # Exemplo - verificação de ordem
 
-Projete uma função que verifique se os elementos de uma lista estão em ordem não decrescente.
+Projete uma função que verifique se os elementos de uma lista estão em ordem monotonicamente crescente.
 
 
 # Exemplo - verificação de ordem - especificação
@@ -299,7 +299,7 @@ Projete uma função que verifique se os elementos de uma lista estão em ordem 
 def nao_decrescente(lst: list[int]) -> bool:
     '''
     Produz True se os elementos de lst estão em
-    ordem não decrescente, False caso contrário.
+    ordem monotonicamente crescente, False caso contrário.
     Exemplos
     >>> nao_decrescente([])
     True
@@ -350,7 +350,7 @@ Vamos implementar a função para uma lista de 5 elementos escrevendo o código 
 def nao_decrescente(lst: list[int]) -> bool:
     assert len(lst) == 5
     # Assumimos com em_ordem = True que lst
-    # está em ordem não decrescente, se
+    # está em ordem monotonicamente crescente, se
     # encontramos um elemento "fora de ordem",
     # mudamos em_ordem para False.
     em_ordem = True

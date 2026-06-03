@@ -1,6 +1,6 @@
 def em_ordem(lst: list[int]) -> bool:
     """
-    Produz True se os elementos de *lst* estão em ordem não decrescente, False
+    Produz True se os elementos de *lst* estão em ordem monotonicamente crescente, False
     caso contrário.
 
     Exemplos

@@ -12,7 +12,7 @@ handouts = []
 texs = []
 
 
-def gen_pdf(kind):
+def gen_pdf(kind) -> None:
     print(
         f'{target}: $(PANDOC) $(TECTONIC) {cap}/{item} templates/default.latex templates/python.xml templates/python-repl.xml templates/spython.theme filters/spython_image.lua'
     )

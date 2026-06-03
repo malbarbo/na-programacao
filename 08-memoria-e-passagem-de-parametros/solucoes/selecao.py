@@ -1,6 +1,6 @@
-def ordena_selecao(lst: list[int]):
+def ordena_selecao(lst: list[int]) -> None:
     """
-    Ordena os valores de *lst* em ordem não decrescente.
+    Ordena os valores de *lst* em ordem monotonicamente crescente.
 
     Exemplos
     >>> lst = [8, 5, 4, 1, 2]

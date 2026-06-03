@@ -745,7 +745,7 @@ def freq(v: int, lst: list[int]) -> int:
 
 # Exemplo: ordem
 
-Projete uma função recursiva que verifique se os elementos de uma lista estão em ordem não decrescente.
+Projete uma função recursiva que verifique se os elementos de uma lista estão em ordem monotonicamente crescente.
 
 
 # Exemplo: ordem
@@ -758,7 +758,7 @@ Projete uma função recursiva que verifique se os elementos de uma lista estão
 def em_ordem(lst: list[int]) -> bool:
     '''
     Produz True se os elementos de *lst* estão
-    em ordem não decrescente, False caso
+    em ordem monotonicamente crescente, False caso
     contrário.
     Exemplos
     >>> em_ordem([])
@@ -817,7 +817,7 @@ else:
 def em_ordem(lst: list[int]) -> bool:
     '''
     Produz True se os elementos de *lst* estão
-    em ordem não decrescente, False caso
+    em ordem monotonicamente crescente, False caso
     contrário.
     Exemplos
     >>> em_ordem([])
@@ -866,7 +866,7 @@ return ordem
 def em_ordem(lst: list[int]) -> bool:
     '''
     Produz True se os elementos de *lst* estão
-    em ordem não decrescente, False caso
+    em ordem monotonicamente crescente, False caso
     contrário.
     Exemplos
     >>> em_ordem([])

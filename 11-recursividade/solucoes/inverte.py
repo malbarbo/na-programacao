@@ -1,4 +1,4 @@
-def inverte(lst: list[int], inicio: int, fim: int):
+def inverte(lst: list[int], inicio: int, fim: int) -> None:
     """
     Inverte a ordem dos elementos de *lst[inicio:fim]*.
 

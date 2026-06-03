@@ -484,7 +484,7 @@ Generalizando para qualquer tamanho: \pause
 
 # Exemplo: insere ordenado
 
-Dada uma lista de números em ordem não decrescente e um valor `v`, projete uma função que modifique a lista inserindo o valor `v` de maneira que o arranjo continue em ordem.
+Dada uma lista de números em ordem monotonicamente crescente e um valor `v`, projete uma função que modifique a lista inserindo o valor `v` de maneira que o arranjo continue em ordem.
 
 
 # Exemplo: insere ordenado
@@ -497,8 +497,8 @@ Dada uma lista de números em ordem não decrescente e um valor `v`, projete uma
 def insere_ordenado(lst: list[int], v: int):
     '''
     Insere *v* em *lst* de maneira que *lst*
-    permaneça em ordem não decrescente. Requer
-    que *lst* esteja em ordem não decrescente.
+    permaneça em ordem monotonicamente crescente. Requer
+    que *lst* esteja em ordem monotonicamente crescente.
     Exemplos
     >>> lst = []
     >>> insere_ordenado(lst, 7)
@@ -539,8 +539,8 @@ Vamos escrever o código para uma lista de tamanho fixo e depois generalizar.
 def insere_ordenado(lst: list[int], v: int):
     '''
     Insere *v* em *lst* de maneira que *lst*
-    permaneça em ordem não decrescente. Requer
-    que *lst* esteja em ordem não decrescente.
+    permaneça em ordem monotonicamente crescente. Requer
+    que *lst* esteja em ordem monotonicamente crescente.
     Exemplos
     >>> lst = []
     >>> insere_ordenado(lst, 7)
@@ -626,8 +626,8 @@ def insere_ordenado(lst: list[int], v: int):
 def insere_ordenado(lst: list[int], v: int):
     '''
     Insere *v* em *lst* de maneira que *lst*
-    permaneça em ordem não decrescente. Requer
-    que *lst* esteja em ordem não decrescente.
+    permaneça em ordem monotonicamente crescente. Requer
+    que *lst* esteja em ordem monotonicamente crescente.
     Exemplos
     >>> lst = []
     >>> insere_ordenado(lst, 7)
@@ -694,8 +694,8 @@ Completando
 def insere_ordenado(lst: list[int], v: int):
     '''
     Insere *v* em *lst* de maneira que *lst*
-    permaneça em ordem não decrescente. Requer
-    que *lst* esteja em ordem não decrescente.
+    permaneça em ordem monotonicamente crescente. Requer
+    que *lst* esteja em ordem monotonicamente crescente.
     Exemplos
     >>> lst = []
     >>> insere_ordenado(lst, 7)

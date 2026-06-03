@@ -99,7 +99,7 @@ Projete uma função que implemente o algoritmo de ordenação por inserção. \
 
 def ordena_insercao(lst: list[int]):
     '''
-    Ordena *lst* em ordem não decrescente usando o algoritmo de ordenação por inserção.
+    Ordena *lst* em ordem monotonicamente crescente usando o algoritmo de ordenação por inserção.
     Exemplos
     >>> lst = [5, 2, 4, 6, 1, 3]
     >>> ordena_insercao(lst)
@@ -144,7 +144,7 @@ Projete uma função que implemente o algoritmo de ordenação por seleção. \p
 
 def ordena_selecao(lst: list[int]):
     '''
-    Ordena *lst* em ordem não decrescente usando o algoritmo de ordenação por seleção.
+    Ordena *lst* em ordem monotonicamente crescente usando o algoritmo de ordenação por seleção.
     Exemplos
     >>> lst = [5, 2, 4, 6, 1, 3]
     >>> ordena_selecao(lst)
@@ -274,10 +274,10 @@ Projete uma função que implemente a intercalação.
 ```python
 def intercala(lst: list[int], a: list[int], b: list[int]):
     '''
-    Faz a intercalação em ordem não decrescente dos
+    Faz a intercalação em ordem monotonicamente crescente dos
     elementos de *a* e *b* em *lst*.
     Requer que len(lst) = len(a) + len(b).
-    Requer que a e b estejam em ordem não decrescente.
+    Requer que a e b estejam em ordem monotonicamente crescente.
 
     Exemplos
     >>> lst = [0, 0, 0, 0, 0, 0, 0]
@@ -551,7 +551,7 @@ def ordena_particionamento(lst: list[int],
                            fim: int):
     '''
     Ordena o subarranjo lst[ini:fim] em ordem
-    não decrescente.
+    monotonicamente crescente.
 
     Requer que 0 <= i <= fim <= len(lst).
     '''

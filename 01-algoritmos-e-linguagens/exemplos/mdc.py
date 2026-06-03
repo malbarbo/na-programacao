@@ -10,7 +10,7 @@
 import sys
 
 
-def main():
+def main() -> None:
     # Entrada
     a = int(sys.argv[1])
     b = int(sys.argv[2])

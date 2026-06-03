@@ -24,7 +24,7 @@ def inverte(lst: list[int]) -> list[int]:
     return r
 
 
-def invertem(lst: list[int]):
+def invertem(lst: list[int]) -> None:
     """
     Modifica *lst* invertendo a ordem dos elementos, isto é, colocando o último
     elemento na primeiro posição, o penúltimo elemento na segunda posição, e

@@ -1,4 +1,4 @@
-def remove_indice(lst: list[int], i: int):
+def remove_indice(lst: list[int], i: int) -> None:
     """
     Remove o elemento do índice *i* de *lst* movendo
     os elementos das posições i + 1, i + 2, ..., len(lst)

@@ -1,4 +1,4 @@
-def remove_strings_vazias(lst: list[str]):
+def remove_strings_vazias(lst: list[str]) -> None:
     """
     Remove as strings vazias de *lst*.
 

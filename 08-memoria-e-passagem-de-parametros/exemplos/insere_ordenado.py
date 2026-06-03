@@ -1,9 +1,9 @@
-def insere_ordenado(lst: list[int], v: int):
+def insere_ordenado(lst: list[int], v: int) -> None:
     """
     Insere *v* em *lst* de maneira que *lst* permaneça em ordem não
     decrescente.
 
-    Requer que *lst* esteja em ordem não decrescente.
+    Requer que *lst* esteja em ordem monotonicamente crescente.
 
     Exemplos
     >>> lst = []

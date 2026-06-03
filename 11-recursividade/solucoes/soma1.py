@@ -1,4 +1,4 @@
-def soma1(lst: list[int], n: int):
+def soma1(lst: list[int], n: int) -> None:
     """
     Soma 1 em cada elemento de *lst[:n]*
 
