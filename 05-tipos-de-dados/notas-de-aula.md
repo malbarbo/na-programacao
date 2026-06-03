@@ -1,6 +1,7 @@
 ---
 # vim: set spell spelllang=pt_br:
 title: Tipos de dados
+# TODO: adicionar observação do uso do if sem o else
 ---
 
 # Definição de tipos de dados
@@ -390,6 +391,8 @@ a) Projete uma função que converta uma quantidade de segundos para uma quantid
 
 b) Projete uma função que converta uma quantidade de horas, minutos e segundos em uma string amigável para o usuário (algo como 1 hora, 10 minutos e 2 segundos). A string não deve conter valores zeros.
 
+c) Projete uma função que converta uma quantidade de segundos para uma string amigável para o usuário.
+
 
 # Exemplo - tempo - parte a
 
@@ -668,6 +671,8 @@ a) Projete uma função que converta uma quantidade de segundos para uma quantid
 
 b) Projete uma função que converta uma quantidade de horas, minutos e segundos em uma string amigável para o usuário (algo como 1 hora, 10 minutos e 2 segundos). A string não deve conter valores zeros.
 
+c) Projete uma função que converta uma quantidade de segundos para uma string amigável para o usuário.
+
 \pause
 
 Agora vamos fazer o item b.
@@ -816,6 +821,45 @@ Compare com a sua implementação direta. Qual das duas é mais simples e fácil
 Modifique a especificação e implementação da função anterior para que o plural dos componentes fique de acordo com o Português.
 
 
+# Exemplo - tempo - parte c
+
+Em um determinado programa é necessário exibir para o usuário o tempo que uma operação demorou. Esse tempo está disponível em segundos, mas exibir essa informação em segundos para o usuário pode não ser interessante, afinal, ter uma noção razoável de tempo para 14678 segundos é difícil!
+
+a) Projete uma função que converta uma quantidade de segundos para uma quantidade de horas, minutos e segundos equivalentes.
+
+b) Projete uma função que converta uma quantidade de horas, minutos e segundos em uma string amigável para o usuário (algo como 1 hora, 10 minutos e 2 segundos). A string não deve conter valores zeros.
+
+c) Projete uma função que converta uma quantidade de segundos para uma string amigável para o usuário.
+
+\pause
+
+Agora vamos fazer o item c.
+
+
+# Exemplo - tempo - parte c
+
+Já temos os tipos de dados.
+
+\small
+\pause
+
+```python
+def segundos_para_string(s: int) -> str:
+    '''
+    Converte *s* para uma string amigável de acordo com *tempo_para_segundos*.
+    Exemplos
+    >>> segundos_para_string(Tempo(80))
+    '1 minuto(s) e 20 segundo(s)'
+    '''
+```
+
+\pause
+
+```python
+    return tempo_para_string(segundos_para_tempo(s))
+```
+
+
 # Exemplo - evento
 
 Em uma escola, os eventos do dia são registrados com o tipo do evento e a sua duração. As aulas devem ter no mínimo 50 minutos, as reuniões no mínimo 30 minutos e os intervalos no mínimo 15 minutos. Projete os tipos necessários e uma função que verifique se um evento tem a duração mínima para o seu tipo.
@@ -882,9 +926,13 @@ def duracao_minima(e: Evento) -> bool:
 
 # Exemplo - evento - implementação
 
-Quantas formas de resposta temos? \pause 3, uma para cada tipo de evento. \pause Para cada forma, precisamos converter a duração para minutos e comparar com o mínimo. \pause
+Como proceder com a implementação? \pause
 
-\small
+- Fazer três casos, uma para cada tipo de evento; \pause
+- Fazer dois casos, um para cada forma de resposta: `True`{.python}, `False`{.python}
+
+
+# Exemplo - evento - implementação - três casos
 
 ```python
 def duracao_minima(e: Evento) -> bool:
@@ -896,6 +944,33 @@ def duracao_minima(e: Evento) -> bool:
     else: # e.tipo == TipoEvento.INTERVALO
         resultado = minutos >= 15
     return resultado
+```
+
+
+# Exemplo - evento - implementação - dois casos
+
+\small
+
+```python
+def duracao_minima(e: Evento) -> bool:
+    minutos = e.duracao.horas * 60 + e.duracao.minutos
+    if e.tipo == TipoEvento.AULA and minutos >= 50 or \
+        e.tipo == TipoEvento.REUNIAO and minutos >= 30 or \
+        e.tipo == TipoEvento.INTERVALO and minutos >= 15:
+        resultado = True
+    else:
+        resultado = False
+    return resultado
+```
+
+\pause
+
+```python
+def duracao_minima(e: Evento) -> bool:
+    minutos = e.duracao.horas * 60 + e.duracao.minutos
+    return e.tipo == TipoEvento.AULA and minutos >= 50 or \
+        e.tipo == TipoEvento.REUNIAO and minutos >= 30 or \
+        e.tipo == TipoEvento.INTERVALO and minutos >= 15
 ```
 
 
