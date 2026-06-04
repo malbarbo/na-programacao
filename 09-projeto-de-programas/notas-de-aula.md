@@ -9,17 +9,7 @@ Nós estamos trabalhando a bastante tempo o projeto de tipos de dados e funçõe
 
 Agora vamos ver o projeto de programas, isto é, coleções de tipos e funções para resolver um problema maior. \pause
 
-Antes de ver as técnicas de projeto de programas, vamos ver os tipos de programas e como fazer entrada e saída de dados.
-
-
-# Composição de um programa
-
-Um programa é composto de: \pause
-
-- **Constantes**: nomeia valores fixos \pause
-- **Tipos de dados**: representam as informações \pause
-- **Funções**: fazem o processamento e a entrada e saída de dados \pause
-- **Função principal**: primeira função chamada no programa, coordena a chamada das outras funções
+Antes de ver as técnicas de projeto de programas, vamos ver como os programas são organizados, como eles funcionam e os tipos de programas.
 
 
 # Funcionamento de um programa
@@ -28,11 +18,21 @@ As atividades realizadas por um programa pode ser divididas em: \pause
 
 - **Entrada**: obtém os dados para processamento \pause
 - **Processamento**: computa as saídas a partir das entradas \pause
-- **Saída**: exibe as saídas (resultados) e outra informações \pause
+- **Saída**: exibe as saídas e outra informações \pause
 
 O processamento é o "miolo" do programa, feito por funções. \pause
 
 A entrada e a saída são a "casca" que conecta o programa ao mundo externo.
+
+
+# Composição de um programa
+
+Um programa é composto de: \pause
+
+- **Constantes**: nomeiam valores fixos \pause
+- **Tipos de dados**: representam as informações \pause
+- **Funções**: fazem o processamento e a entrada e saída de dados \pause
+- **Função principal**: primeira função chamada no programa, coordena a chamada das outras funções e da entrada e saída
 
 
 # Tipos de programas
@@ -42,12 +42,12 @@ Os programas se distinguem pela forma como **obtêm a entrada** e **interagem** 
 - **Em lote** (não interativo): recebe todos os dados de uma vez, processa e produz a saída \pause
 - **Interativo**: interage com o usuário durante a execução \pause
 
-Vamos ver um exemplo simples escrito escrito dessas duas formas.
+Vamos começar escrevendo programas interativos.
 
 
 # Exemplo - nome de usuário
 
-Projete um programa que gere nomes de usuário a partir de nomes completos. Cada nome de usuário é gerado da seguinte forma: a primeira letra de cada "parte" do nome, mais todas as letras da última parte. O nome do usuário deve ter no máximo 8 caracteres e todos devem ser minúsculos. \pause
+Projete um programa que gere nomes de usuários a partir de nomes completos. Cada nome de usuário é gerado da seguinte forma: a primeira letra de cada "parte" do nome, mais todas as letras da última parte. O nome do usuário deve ter no máximo 8 caracteres e todos devem ser minúsculos. \pause
 
 Exemplo: "Marco Aurélio Lopes Barbosa" -> malbarbo. \pause
 
@@ -58,242 +58,413 @@ Temos duas opções: \pause
 - Primeiro o projeto da função de processamento e depois a entrada e saída; ou \pause
 - Primeiro a entrada e saída e depois o projeto da função de processamento
 
-<!--
+\pause
+
+Vamos começar com o projeto da função de processamento.
+
 
 # Exemplo - nome de usuário
 
-```
-def nome_usuario(nome: str) -> str:
-```
-
-
-# Exemplo - estatísticas de temperaturas
-
-Queremos um programa que receba uma lista de temperaturas e calcule a temperatura **mínima**, a **máxima** e a **média**. \pause
-
-Seguindo o projeto de programas, primeiro projetamos as funções de processamento e depois escrevemos o `main` que as conecta à entrada e à saída.
-
-
-# Estatísticas - funções de processamento
-
 <div class="columns">
-<div class="column" width="50%">
+<div class="column" width="48%">
+
 \scriptsize
 
 ```python
-def minima(temperaturas: list[float]) -> float:
-    """
-    Devolve a menor temperatura de
-    *temperaturas* (não vazia).
-
-    >>> minima([20.5])
-    20.5
-    >>> minima([20.5, 19.0, 22.0])
-    19.0
-    """
-    menor: float = temperaturas[0]
-    for t in temperaturas:
-        if t < menor:
-            menor = t
-    return menor
+def nome_usuario(nome: str) -> str:
+    '''
+    Cria um nome de usuário a partir de *nome*
+    da seguinte forma:
+    - divide *nome* em partes (separadas por
+      espaço)
+    - junta a primeira letra de cada parte
+     (exceto a última) e a última parte toda
+    O resultado é truncado para 8 caractes
+    em minúsculo.
+    >>> nome_usuario('Maria')
+    'maria'
+    >>> nome_usuario('Pedro Paulo')
+    'ppaulo'
+    >>> nome_usuario('José Paulo da Silveira')
+    'jpdsilve'
+    # alguns exemplos foram omitidos
+    '''
 ```
-</div>
-<div class="column" width="50%">
-\scriptsize
-
-```python
-def media(temperaturas: list[float]) -> float:
-    """
-    Devolve a média de
-    *temperaturas* (não vazia).
-
-    >>> media([20.0])
-    20.0
-    >>> media([20.5, 19.0, 22.0])
-    20.5
-    """
-    soma: float = 0.0
-    for t in temperaturas:
-        soma += t
-    return soma / len(temperaturas)
-```
-</div>
-</div>
 
 \pause
-\small
 
-A função `maxima` é análoga à `minima` (troca `<`{.python} por `>`{.python}). Nada de novo: são funções projetadas com o processo de sempre.
+</div>
+<div class="column" width="48%">
 
-
-# Estatísticas - o programa
-
-<div class="columns">
-<div class="column" width="55%">
 \scriptsize
 
 ```python
-import sys
+def nome_usuario(nome: str) -> str:
+    partes = nome.split()
+    usuario = ''
+    for i in range(len(partes) - 1):
+        usuario = usuario + partes[i][0]
+    if len(partes) > 0:
+        usuario = usuario + partes[len(partes) - 1]
+    return usuario[:8].lower()
+```
+
+\pause
+
+\footnotesize
+
+O `list.split` separa uma string em "palavras", descantando os espaços.
+
+\scriptsize
+
+```python
+>>> '  apenas  um  teste  '.split()
+['apenas', 'um', 'teste']
+```
+
+</div>
+</div>
 
 
+# Exemplo - nome de usuário
+
+Agora vamos criar a função `main`, conectando entrada, processamento e saída.
+
+\pause
+
+<div class="columns">
+<div class="column" width="38%">
+
+\footnotesize
+
+```python
 def main() -> None:
-    # Entrada
-    temperaturas: list[float] = []
-    for argumento in sys.argv[1:]:
-        temperaturas.append(float(argumento))
+    # entrada
+    nome = input('Nome: ')
+    # processamento
+    usuario = nome_usuario(nome)
+    # saída
+    print('Usuário:', usuario)
+```
 
-    # Processamento e saída
-    print("Mínima:", minima(temperaturas))
-    print("Máxima:", maxima(temperaturas))
-    print("Média:", media(temperaturas))
+</div>
+<div class="column" width="59%">
 
+\small
 
-if __name__ == "__main__":
+Como chamar a função `main`? \pause Duas formas: \pause
+
+- Carregar o arquivo e chamar `main` no repl. \pause
+- Chamar o `main` no final do arquivo. \pause
+
+Na segunda usamos uma condicional para que a função `main` não execute quando o arquivo é carregado como módulo:
+
+\footnotesize
+
+```python
+if __name__ == '__main__':
+    # __name__ é uma variável especial, só
+    # é '__main__' quando o arquivo foi carregado
+    # como principal (não módulo).
+    # Quando é carregado como módulo
+    # __name__ é a o nome do arquivo (sem .py)
     main()
 ```
-</div>
-<div class="column" width="45%">
-\small
-
-`sys.argv` é a lista de argumentos da linha de comando. \pause
-
-`sys.argv[0]` é o nome do programa; os valores começam em `sys.argv[1]`. \pause
-
-Cada argumento é uma `str`; convertemos para `float`{.python}.
 
 </div>
 </div>
 
 
-# O ponto de entrada
+# Execução da linha de comando
 
-Por que `if __name__ == "__main__":`? \pause
-
-Quando o Spython executa os doctests (botão **Run** ou `spython check`), ele **carrega as definições** do arquivo. \pause
-
-Sem o guard, o `main()` seria executado nesse momento — mas o `main` lê a entrada do programa, o que não faz sentido durante os testes. \pause
-
-O guard garante que o `main` só é executado quando rodamos o arquivo **como um programa**, e não quando ele é carregado para testar as funções.
-
-
-# Estatísticas - executando
-
-Passamos as temperaturas na linha de comando:
-
-\medskip
-
-```
-$ python3 estatisticas.py 20.5 19.0 22.0 25.5
-Mínima: 19.0
-Máxima: 25.5
-Média: 21.75
-```
-
-\pause
-\medskip
-
-No Spython, os valores são informados da mesma forma na linha de comando.
-
-
-# E se forem muitos valores?
-
-Digitar dezenas de temperaturas na linha de comando é trabalhoso e sujeito a erros. \pause
-
-Melhor guardar os dados em um **arquivo** e pedir que o programa leia de lá. \pause
-
-Agora a linha de comando informa o **nome do arquivo**, não mais os valores.
-
-
-# Estatísticas - lendo de um arquivo
+Podemos usar o python no terminal para executar o programa. \pause
 
 <div class="columns">
-<div class="column" width="55%">
+<div class="column" width="48%">
+\small
+
+Colocamos o código em um arquivo `usuarios.py`.
+
 \scriptsize
 
 ```python
 def main() -> None:
-    # Entrada
-    temperaturas: list[float] = []
-    arquivo = open(sys.argv[1])
-    for linha in arquivo:
-        temperaturas.append(float(linha))
-    arquivo.close()
+    ...
 
-    # Processamento e saída
-    print("Mínima:", minima(temperaturas))
-    print("Máxima:", maxima(temperaturas))
-    print("Média:", media(temperaturas))
+
+def nome_usuario(nome: str) -> str:
+    ...
+
+
+if __name__ == '__main__':
+    main()
 ```
+
+\pause
 </div>
-<div class="column" width="45%">
-\small
-
-Só a **entrada** muda; o processamento e a saída são os mesmos. \pause
-
-`open(nome)` abre o arquivo; iterar sobre ele percorre as **linhas** (cada uma uma `str`). \pause
-
-`close()` fecha o arquivo ao final.
-
-</div>
-</div>
-
-
-# Estatísticas - executando (arquivo)
-
-<div class="columns">
-<div class="column" width="40%">
-
-Arquivo `temperaturas.txt` (uma por linha):
+<div class="column" width="48%">
 
 \small
 
+E executamos com o comando python seguido do nome do arquivo:
+
+\scriptsize
+
 ```
-18.0
-19.0
-20.0
-21.0
-22.0
-23.0
-24.0
+$ python usuarios.py
+Nome: José da Silva
+Usuário: jdsilva
 ```
-</div>
-<div class="column" width="60%">
+
 \pause
 
-```
-$ python3 estatisticas_arquivo.py \
-      temperaturas.txt
-Mínima: 18.0
-Máxima: 24.0
-Média: 21.0
-```
+\small
+
+O programa resolve o problema proposto? \pause
+
+Não, o problema pedia para gerar nomes de usuários a partir de nomes completos, então precisamos de uma repetição.
+
 </div>
 </div>
 
 
-# O miolo é o mesmo
+# Repetição de entrada
 
-Repare: as funções `minima`, `maxima` e `media` — o **processamento** — não mudaram entre as duas versões. \pause
+Como fazer a repetição de entrada do usuário? \pause
 
-Mudou apenas a forma de **obter a entrada** (a casca). \pause
+Temos três opções: \pause
 
-Esse é o coração do projeto de programas: \pause
+- Perguntar quantos nomes \pause
 
-- o processamento é feito por **funções**, que projetamos e testamos com doctests; \pause
-- o programa as **conecta** a uma fonte de entrada e a uma saída.
+- Perguntar após cada nome se deseja continuar \pause
 
-
-# Programas interativos
-
-Um programa **interativo** dialoga com o usuário **durante a execução**, lendo dados com `input()` e respondendo com `print()`, em um laço, até o usuário encerrar. \pause
+- Usar uma entrada especial para sinalizar o fim
 
 
-# Programas reativos
+# Repetição de entrada - quantidade
 
-Um programa **reativo** (orientado a eventos) fica **em execução**, reagindo a um fluxo de eventos, e não termina sozinho. \pause
+<div class="columns">
+<div class="column" width="58%">
 
-Exemplos: jogos, animações e interfaces gráficas (o modelo `World` visto no material de imagens e animações) e também **serviços/servidores**. \pause
+\scriptsize
 
-Um serviço é **reativo**, não em lote: ele não recebe tudo de uma vez, espera e responde requisições ao longo do tempo.
+```python
+def main() -> None:
+    n = int(input('Quantos nomes? '))
+    for i in range(n):
+        # entrada
+        nome = input('Nome ' + str(i + 1) + ': ')
+        # processamento
+        usuario = nome_usuario(nome)
+        # saída
+        print('Usuário:', usuario)
+```
 
--->
+\pause
+</div>
+<div class="column" width="38%">
+
+\small
+
+Algum problema com esse código? \pause
+
+Sim, se o usuário digitar algo que não é um número na quantidade, o programa crasha.
+
+Não vamos ver nessa disciplina como evitar esse problema.
+</div>
+</div>
+
+
+# Repetição de entrada - pergunta
+
+<div class="columns">
+<div class="column" width="48%">
+
+\scriptsize
+
+```python
+def main() -> None:
+    continuar = 's'
+    while continuar:
+        # entrada
+        nome = input('Nome: ')
+        # processamento
+        usuario = nome_usuario(nome)
+        # saída
+        print('Usuário:', usuario)
+        # entrada
+        continuar = input('Continuar (s/n)?')
+```
+
+\pause
+
+</div>
+<div class="column" width="48%">
+
+\small
+
+Algum problema com esse código? \pause
+
+Sim, se o usuário digitar qualquer coisa que não seja `'s'` o programa para. \pause Podemos resolver? Sim! \pause
+
+\scriptsize
+
+```python
+
+
+
+
+
+
+
+
+
+
+
+
+```
+
+</div>
+</div>
+
+
+# Repetição de entrada - pergunta
+
+<div class="columns">
+<div class="column" width="48%">
+
+\scriptsize
+
+```python
+def main() -> None:
+    continuar = 's'
+    while continuar:
+        # entrada
+        nome = input('Nome: ')
+        # processamento
+        usuario = nome_usuario(nome)
+        # saída
+        print('Usuário:', usuario)
+        # entrada
+        continuar = input_sn('Continuar')
+```
+
+</div>
+<div class="column" width="48%">
+
+\small
+
+Algum problema com esse código?
+
+Sim, se o usuário digitar qualquer coisa que não seja `'s'` o programa para. Podemos resolver? Sim!
+
+\scriptsize
+
+```python
+def input_sn(frase: str) -> str:
+    '''
+    Lê a entrada do usuário até que ele
+    digite s ou n.
+    Antes de cada entrada *frase* é exibido
+    seguido de ' (s/n)? '
+    '''
+    continuar = ''
+    while continuar != 's' and continuar != 'n':
+        continuar = input(frase + ' (s/n)? ')
+    return continuar
+```
+
+</div>
+</div>
+
+
+# Repetição de entrada - entrada especial
+
+<div class="columns">
+<div class="column" width="48%">
+
+\scriptsize
+
+```python
+def main() -> None:
+    continuar = True
+    while continuar:
+        # entrada
+        nome = input('Nome (vazio para parar): ')
+        if nome == '':
+            continuar = False
+        else:
+            # processamento
+            usuario = nome_usuario(nome)
+            # saída
+            print('Usuário:', usuario)
+```
+
+</div>
+<div class="column" width="48%">
+
+\small
+
+Algum problema com esse código? \pause Não...
+
+</div>
+</div>
+
+
+# Gerência de usuários
+
+Gerar nomes de usuário é apenas uma funcionalidade, mas como proceder se o programa pode fazer mais de uma? \pause
+
+Projete um programa que gerencie uma coleção de usuários. O programa deve permitir a adicionar novos usuários (gerando o seu nome de usuário e evitando colisão - proponha uma forma). Remover usuários existentes a partir do nome do usuário. Consultar o nome a partir do usuário. Listar os usuários existentes com os nomes. \pause
+
+Como podemos fazer a entrada de um programa que oferece mais de uma funcionalidade? \pause
+
+Usando um menu.
+
+
+# Gerência de usuários
+
+<div class="columns">
+<div class="column" width="48%">
+
+\scriptsize
+
+```python
+def main() -> None:
+    usuarios: list[Usuario] = []
+    continuar = True
+    while continuar:
+        print('1) Cadastrar')
+        print('2) Remover')
+        print('3) Consultar')
+        print('4) Listar')
+        print('5) Sair')
+        opcao = input('Opção? ')
+        if opcao == '1':
+            println('-- Cadastra --' )
+            nome = input('Nome: ')
+            cadastra(usuarios, nome)
+        elif:
+            ... # Outros casos
+        elif opcao == '4':
+            continuar = False
+        else:
+            print('Opção inválida')
+```
+
+</div>
+<div class="column" width="48%">
+\pause
+
+Note a diferença da forma que fizemos o projeto anterior. Antes começamos com a função de processamento e depois fizemos a entrada e saída. Agora fizemos primeiro (parte) da entrada e saída, agora falta fazer o processamento. \pause
+
+Porque `cadastra` não tem retorno? \pause Porque ela tem o efeito colateral de mudar a lista de usuários. \pause
+
+Agora é com você, termine o projeto desse programa!
+</div>
+</div>
+
+
+# Programas em lote
+
+Continua...
