@@ -12,9 +12,9 @@ urlcolor: Blue
 
     a) O que distingue um *programa* de uma *função*?
 
-    a) Descreva, com suas palavras, as três famílias de programas e dê um exemplo de cada.
+    a) Descreva, com suas palavras, os dois tipos de programa vistos (em lote e interativo) e dê um exemplo de cada.
 
-    a) Por que um serviço (servidor) é considerado um programa reativo, e não em lote?
+    a) Classifique cada programa a seguir como *em lote* ou *interativo*, justificando: (i) um programa que converte todas as imagens de uma pasta para outro formato; (ii) um caixa eletrônico.
 
 
 # Exercícios

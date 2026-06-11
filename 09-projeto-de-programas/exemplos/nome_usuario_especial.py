@@ -15,9 +15,9 @@ def main() -> None:
 def nome_usuario(nome: str) -> str:
     '''
     Cria um nome de usuário a partir de *nome* da seguinte forma:
-    - divide *nome* em partes (separadas por  espaço)
+    - divide *nome* em partes (separadas por espaço)
     - junta a primeira letra de cada parte (exceto a última) e a última parte toda
-    O resultado é truncado para 8 caractes  em minúsculo.
+    O resultado é truncado para 8 caracteres em minúsculo.
     >>> nome_usuario('   ')
     ''
     >>> nome_usuario('Maria')

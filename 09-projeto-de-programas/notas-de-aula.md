@@ -5,7 +5,7 @@ title: Projeto de programas
 
 # Introdução
 
-Nós estamos trabalhando a bastante tempo o projeto de tipos de dados e funções isoladas (ou em pequenos conjuntos). \pause
+Nós estamos trabalhando há bastante tempo o projeto de tipos de dados e funções isoladas (ou em pequenos conjuntos). \pause
 
 Agora vamos ver o projeto de programas, isto é, coleções de tipos e funções para resolver um problema maior. \pause
 
@@ -14,11 +14,11 @@ Antes de ver as técnicas de projeto de programas, vamos ver como os programas s
 
 # Funcionamento de um programa
 
-As atividades realizadas por um programa pode ser divididas em: \pause
+As atividades realizadas por um programa podem ser divididas em: \pause
 
 - **Entrada**: obtém os dados para processamento \pause
 - **Processamento**: computa as saídas a partir das entradas \pause
-- **Saída**: exibe as saídas e outra informações \pause
+- **Saída**: exibe as saídas e outras informações \pause
 
 O processamento é o "miolo" do programa, feito por funções. \pause
 
@@ -79,7 +79,7 @@ def nome_usuario(nome: str) -> str:
       espaço)
     - junta a primeira letra de cada parte
      (exceto a última) e a última parte toda
-    O resultado é truncado para 8 caractes
+    O resultado é truncado para 8 caracteres
     em minúsculo.
     >>> nome_usuario('Maria')
     'maria'
@@ -87,6 +87,7 @@ def nome_usuario(nome: str) -> str:
     'ppaulo'
     >>> nome_usuario('José Paulo da Silveira')
     'jpdsilve'
+
     # alguns exemplos foram omitidos
     '''
 ```
@@ -113,11 +114,11 @@ def nome_usuario(nome: str) -> str:
 
 \footnotesize
 
-O `list.split` separa uma string em "palavras", descantando os espaços.
+O `str.split` separa uma string em "palavras", descartando os espaços.
 
 \scriptsize
 
-```python
+```python-repl
 >>> '  apenas  um  teste  '.split()
 ['apenas', 'um', 'teste']
 ```
@@ -167,7 +168,7 @@ if __name__ == '__main__':
     # é '__main__' quando o arquivo foi carregado
     # como principal (não módulo).
     # Quando é carregado como módulo
-    # __name__ é a o nome do arquivo (sem .py)
+    # __name__ é o nome do arquivo (sem .py)
     main()
 ```
 
@@ -268,7 +269,7 @@ def main() -> None:
 
 Algum problema com esse código? \pause
 
-Sim, se o usuário digitar algo que não é um número na quantidade, o programa crasha.
+Sim, se o usuário digitar algo que não é um número na quantidade, o programa falha.
 
 Não vamos ver nessa disciplina como evitar esse problema.
 </div>
@@ -285,7 +286,7 @@ Não vamos ver nessa disciplina como evitar esse problema.
 ```python
 def main() -> None:
     continuar = 's'
-    while continuar:
+    while continuar == 's':
         # entrada
         nome = input('Nome: ')
         # processamento
@@ -293,7 +294,7 @@ def main() -> None:
         # saída
         print('Usuário:', usuario)
         # entrada
-        continuar = input('Continuar (s/n)?')
+        continuar = input('Continuar (s/n)? ')
 ```
 
 \pause
@@ -338,7 +339,7 @@ Sim, se o usuário digitar qualquer coisa que não seja `'s'` o programa para. \
 ```python
 def main() -> None:
     continuar = 's'
-    while continuar:
+    while continuar == 's':
         # entrada
         nome = input('Nome: ')
         # processamento
@@ -415,7 +416,7 @@ Algum problema com esse código? \pause Não...
 
 Gerar nomes de usuário é apenas uma funcionalidade, mas como proceder se o programa pode fazer mais de uma? \pause
 
-Projete um programa que gerencie uma coleção de usuários. O programa deve permitir a adicionar novos usuários (gerando o seu nome de usuário e evitando colisão - proponha uma forma). Remover usuários existentes a partir do nome do usuário. Consultar o nome a partir do usuário. Listar os usuários existentes com os nomes. \pause
+Projete um programa que gerencie uma coleção de usuários. O programa deve permitir: adicionar novos usuários (gerando o seu nome de usuário e evitando colisão -- proponha uma forma); remover usuários existentes a partir do nome de usuário; consultar o nome a partir do nome de usuário; e listar os usuários existentes com os seus nomes. \pause
 
 Como podemos fazer a entrada de um programa que oferece mais de uma funcionalidade? \pause
 
@@ -441,12 +442,11 @@ def main() -> None:
         print('5) Sair')
         opcao = input('Opção? ')
         if opcao == '1':
-            println('-- Cadastra --' )
+            print('-- Cadastra --')
             nome = input('Nome: ')
             cadastra(usuarios, nome)
-        elif:
-            ... # Outros casos
-        elif opcao == '4':
+        # ... outros casos (2, 3, 4)
+        elif opcao == '5':
             continuar = False
         else:
             print('Opção inválida')
@@ -456,9 +456,9 @@ def main() -> None:
 <div class="column" width="48%">
 \pause
 
-Note a diferença da forma que fizemos o projeto anterior. Antes começamos com a função de processamento e depois fizemos a entrada e saída. Agora fizemos primeiro (parte) da entrada e saída, agora falta fazer o processamento. \pause
+Note a diferença da forma que fizemos o projeto anterior. Antes começamos com a função de processamento e depois fizemos a entrada e saída. Agora fizemos primeiro (parte) da entrada e saída, e falta fazer o processamento. \pause
 
-Porque `cadastra` não tem retorno? \pause Porque ela tem o efeito colateral de mudar a lista de usuários. \pause
+Por que `cadastra` não tem retorno? \pause Porque ela tem o efeito colateral de mudar a lista de usuários. \pause
 
 Agora é com você, termine o projeto desse programa!
 </div>
