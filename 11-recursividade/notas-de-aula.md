@@ -4,6 +4,7 @@ title: Recursividade
 # TODO: mostrar em linguagem natural um procedimento para somar os números
 #       naturais, semelhante a verificação se 4 é natural.
 # TODO: quando falar de diminuição e conquista já dar um exemplo.
+# TODO: falar que recursão e repetição são equivalentes, mas que não vamos discutir quando usar cada uma
 ---
 
 # Introdução
@@ -1091,6 +1092,6 @@ A forma mais direta de diminuir um problema é explorar a relação entre autorr
 
 Aplicamos essa forma de diminuir o problema tanto para números naturais quanto para arranjos. \pause
 
-Para arranjos usamos diminuição lógica para para evitar que arranjos sejam criados com a operação de subarranjo (`[1:]`) nas chamadas recursivas. \pause Fizemos a diminuição a partir do início e do fim. \pause
+Para arranjos usamos diminuição lógica para evitar que arranjos sejam criados com a operação de subarranjo (`lst[1:]`{.python}) nas chamadas recursivas. \pause Fizemos a diminuição a partir do início e do fim. \pause
 
 A estratégia de diminuição e conquista não pode ser usada para resolver qualquer problema. \pause Se não conseguimos definir como diminuir o problema ou estender a solução do problema menor para o problema inicial, então não podemos utilizar a técnica de diminuição e conquista.
