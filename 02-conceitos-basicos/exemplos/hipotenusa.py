@@ -1,3 +1,6 @@
+import math
+
+
 def quadrado(a: float) -> float:
     """
     Calcula o quadrado de *a*.
@@ -18,7 +21,7 @@ def raiz(a: float) -> float:
     >>> raiz(4.0)
     2.0
     """
-    return a**0.5
+    return math.sqrt(a)
 
 
 def hipotenusa(a: float, b: float) -> float:
