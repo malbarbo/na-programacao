@@ -13,7 +13,8 @@ def freq(v: int, lst: list[int]) -> int:
     >>> freq(4, [4, 1, 7, 4, 4])
     3
     """
-    if lst == []:
+    vazia: list[int] = []
+    if lst == vazia:
         cont = 0
     else:
         if v == lst[0]:

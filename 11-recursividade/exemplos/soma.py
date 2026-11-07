@@ -11,7 +11,8 @@ def soma(lst: list[int]) -> int:
     >>> soma([7, 3, 6])
     16
     """
-    if lst == []:
+    vazia: list[int] = []
+    if lst == vazia:
         s = 0
     else:
         s = lst[0] + soma(lst[1:])

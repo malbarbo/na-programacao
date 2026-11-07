@@ -10,7 +10,8 @@ def concatena(lst: list[str]) -> str:
     >>> concatena(['cc', ' é ', 'ciência da computação'])
     'cc é ciência da computação'
     """
-    if lst == []:
+    vazia: list[str] = []
+    if lst == vazia:
         s = ''
     else:
         s = lst[0] + concatena(lst[1:])

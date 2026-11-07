@@ -17,7 +17,8 @@ def em_ordem(lst: list[int]) -> bool:
     >>> em_ordem([3, 3, 5, 4, 6])
     False
     """
-    if lst == []:
+    vazia: list[int] = []
+    if lst == vazia:
         ordem = True
     elif len(lst) == 1:
         ordem = True

@@ -475,7 +475,8 @@ Como a definição de lista tem dois casos, vamos começar a implementação da 
 \scriptsize
 
 ```python
-if lst == []:
+vazia: list[int] = []
+if lst == vazia:
     ...
 else:
     # as partes de lst
@@ -525,7 +526,8 @@ def soma(lst: list[int]) -> int:
 
 ```python
 def soma(lst: list[int]) -> int:
-    if lst == []:
+    vazia: list[int] = []
+    if lst == vazia:
         # Qual é a soma dos elementos
         # de uma lista vazia?
         s = ...
@@ -570,7 +572,8 @@ def soma(lst: list[int]) -> int:
 
 ```python
 def soma(lst: list[int]) -> int:
-    if lst == []:
+    vazia: list[int] = []
+    if lst == vazia:
         # Qual é a soma dos elementos
         # de uma lista vazia?
         s = 0
@@ -625,7 +628,8 @@ Como a definição de lista tem dois casos, vamos começar a implementação da 
 \scriptsize
 
 ```python
-if lst == []:
+vazia: list[int] = []
+if lst == vazia:
     v ...
 else:
     # v e as partes de lst
@@ -676,7 +680,8 @@ def freq(v: int, lst: list[int]) -> int:
 
 ```python
 def freq(v: int, lst: list[int]) -> int:
-    if lst == []:
+    vazia: list[int] = []
+    if lst == vazia:
         # Quantas vezes v aparece
         # na lista vazia?
         cont = v ...
@@ -724,7 +729,8 @@ def freq(v: int, lst: list[int]) -> int:
 
 ```python
 def freq(v: int, lst: list[int]) -> int:
-    if lst == []:
+    vazia: list[int] = []
+    if lst == vazia:
         # Quantas vezes v aparece
         # na lista vazia?
         cont = 0
@@ -787,7 +793,8 @@ Como a definição de lista tem dois casos, vamos começar a implementação da 
 \scriptsize
 
 ```python
-if lst == []:
+vazia: list[int] = []
+if lst == vazia:
     ...
 else:
     # as partes de lst
@@ -841,7 +848,8 @@ def em_ordem(lst: list[int]) -> bool:
 \scriptsize
 
 ```python
-if lst == []:
+vazia: list[int] = []
+if lst == vazia:
     # Os elementos de uma lista
     # vazia estão em ordem?
     ordem = ...
@@ -890,7 +898,8 @@ def em_ordem(lst: list[int]) -> bool:
 \scriptsize
 
 ```python
-if lst == []:
+vazia: list[int] = []
+if lst == vazia:
     # Os elementos de uma lista
     # vazia estão em ordem?
     ordem = True
