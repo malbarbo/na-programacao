@@ -6,7 +6,7 @@ def insere_ordenado(lst: list[int], v: int) -> None:
     Requer que *lst* esteja em ordem monotonicamente crescente.
 
     Exemplos
-    >>> lst = []
+    >>> lst: list[int] = []
     >>> insere_ordenado(lst, 5)
     >>> lst
     [5]

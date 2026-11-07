@@ -299,7 +299,7 @@ def invertem(lst: list[int]):
     posição, e assim por diante.
 
     Exemplos
-    >>> x = []
+    >>> x: list[int] = []
     >>> invertem(x)
     >>> x
     []
@@ -500,7 +500,7 @@ def insere_ordenado(lst: list[int], v: int):
     permaneça em ordem monotonicamente crescente. Requer
     que *lst* esteja em ordem monotonicamente crescente.
     Exemplos
-    >>> lst = []
+    >>> lst: list[int] = []
     >>> insere_ordenado(lst, 7)
     >>> lst
     [7]
@@ -542,7 +542,7 @@ def insere_ordenado(lst: list[int], v: int):
     permaneça em ordem monotonicamente crescente. Requer
     que *lst* esteja em ordem monotonicamente crescente.
     Exemplos
-    >>> lst = []
+    >>> lst: list[int] = []
     >>> insere_ordenado(lst, 7)
     >>> lst
     [7]
@@ -629,7 +629,7 @@ def insere_ordenado(lst: list[int], v: int):
     permaneça em ordem monotonicamente crescente. Requer
     que *lst* esteja em ordem monotonicamente crescente.
     Exemplos
-    >>> lst = []
+    >>> lst: list[int] = []
     >>> insere_ordenado(lst, 7)
     >>> lst
     [7]
@@ -697,7 +697,7 @@ def insere_ordenado(lst: list[int], v: int):
     permaneça em ordem monotonicamente crescente. Requer
     que *lst* esteja em ordem monotonicamente crescente.
     Exemplos
-    >>> lst = []
+    >>> lst: list[int] = []
     >>> insere_ordenado(lst, 7)
     >>> lst
     [7]
